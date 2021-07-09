@@ -10,6 +10,7 @@
 
 ### 스토리보드(구글드라이브)
 - [구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
+> 자료 수급용 계정 : http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 
 ### 디자인 산출물
 SVN 저장소 URL : https://59.2.0.242/svn/design
@@ -19,7 +20,3 @@ geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
 
 ### 퍼블리싱 가이드
 - 추후 추가 예정
-
-### 자료 수급용 계정
-http://webmail.16block.com/
-geistkorea1 / 가이스트1
