@@ -1,4 +1,4 @@
-<strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출금지)</strong>
+<strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
 ### 교육자료
 - [웹 접근성 교육자료](https://drive.google.com/file/d/11gZBNEIE6LNDfxLzwDb1tFr7AAKgvd5f/view?usp=sharing)
