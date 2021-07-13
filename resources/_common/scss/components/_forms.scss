@@ -1,0 +1,405 @@
+// 
+// Forms
+// 
+
+.tf,
+.opt {
+	max-width: 100%;
+	height: $form-height;
+	border: 1px solid #dadada;
+	border-radius: 6px;
+	padding: 5px 15px;
+	line-height: $form-height - 12px;
+	appearance: none;
+	text-align: left;
+	background: #fff;
+	font-size: $font-size-base;
+	vertical-align: middle;
+
+	transition-duration: .2s;
+	transition-property: color, border-color, box-shadow;
+	will-change: color, border-color, box-shadow;
+
+	&::-ms-clear {
+		display: none;
+	}
+
+	&.full {
+		width: 100%;
+	}
+
+	&.inline {
+		width: auto !important;
+	}
+
+	// &:hover,
+	// &:focus {
+	// 	box-shadow: $shadow;
+	// }
+
+	&:focus {
+		// outline: 0;
+		color: #333;
+		position: relative;
+		border-color: $border-active;
+	}
+
+	&::-webkit-input-placeholder {
+		color: $placeholder-color;
+		opacity: 1;
+	}
+
+	&:-ms-input-placeholder {
+		color: $placeholder-color !important;
+		opacity: 1;
+	}
+
+	&:disabled,
+	&[readonly=readonly],
+	&.readonly {
+		background-color: $bg-lightgray;
+		opacity: 1;
+
+		&::-ms-value {
+			color: $disabled-color !important;
+		}
+	}
+
+	&:disabled {
+		color: $disabled-color;
+
+		&:hover,
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	&:read-only:not(select):not(button) {
+		// color: $disabled-color;
+		background-color: $bg-lightgray;
+		opacity: 1;
+	}
+
+	// iOS 핀치줌 방지
+	@include media-breakpoint-down(md) {
+		font-size: 16px;
+	}
+}
+
+.opt {
+	max-width: 100%;
+	line-height: normal;
+	padding-right: 30px;
+	background: #fff url(#{$url-img-common}/ico_chevron-down@2x.png) no-repeat right 10px center;
+	background-size: 13px auto;
+
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+textarea.tf {
+	height: auto;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	overflow: auto;
+	line-height: inherit;
+	resize: none;
+}
+
+.ckeck-item,
+.ckeck-item-custom {
+	input {
+		$size: 20px;
+
+		&[type=checkbox],
+		&[type=radio] {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+
+			+label {
+				position: relative;
+				height: $size;
+
+				.sr_only {
+					position: static;
+					margin-right: -6px !important;
+				}
+
+				&:before {
+					box-sizing: border-box;
+					display: inline-block;
+					width: $size;
+					height: $size;
+					border: 1px solid #aaa;
+					vertical-align: middle;
+					border-radius: 0;
+					margin: -2px 5px 0 0;
+
+					background-color: #fff;
+					content: '';
+
+					transition-duration: .2s;
+					transition-property: border-color, box-shadow, background-color;
+					will-change: border-color, box-shadow, background-color;
+				}
+			}
+
+			&:hover,
+			&:focus {
+				+label {
+					&:before {
+						box-shadow: $shadow;
+					}
+				}
+			}
+
+			&:focus {
+				+label {
+					&:before {
+						border-color: $border-active;
+					}
+				}
+			}
+
+			&:disabled {
+				+label {
+					color: #959595;
+
+					&:before {
+						opacity: .3;
+						border-color: #959595;
+						box-shadow: none;
+					}
+				}
+			}
+		}
+
+		&[type=radio] {
+			+label {
+				&:before {
+					border-radius: 50%;
+				}
+			}
+
+			&:checked {
+				+label {
+					&:before {
+						background: #fff url(#{$url-img-common}/ico_radio-checked-gray@2x.png) no-repeat center center;
+						background-size: 10px 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.ckeck-item {
+	input {
+		&[type=checkbox] {
+			&:checked {
+				+label {
+					&:before {
+						background: #fff url(#{$url-img-common}/ico_checkbox-checked-gray@2x.png) no-repeat 45% center;
+						background-size: 12px 10px;
+					}
+				}
+			}
+
+			&:disabled {
+				+label {
+					&:before {
+						background-color: #ccc;
+					}
+				}
+
+				&:checked {
+					+label {
+						&:before {
+							background-image: url(#{$url-img-common}/ico_checkbox-checked-white@2x.png);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.ckeck-item-custom {
+	input {
+		&[type=checkbox] {
+			+label {
+				&:before {
+					border-color: $primary;
+					border-radius: 3px;
+				}
+			}
+
+			&:checked {
+				+label {
+					&:before {
+						background: $primary url(#{$url-img-common}/ico_checkbox-checked-white@2x.png) no-repeat 45% center;
+						background-size: 12px 10px;
+					}
+				}
+			}
+
+			&:disabled {
+				+label {
+					&:before {
+						border-color: transparent;
+						background-color: #ccc;
+					}
+				}
+			}
+		}
+
+		&[type=radio] {
+			+label {
+				&:before {
+					border-color: $primary;
+				}
+			}
+
+			&:checked {
+				+label {
+					&:before {
+						background-image: url(#{$url-img-common}/ico_radio-checked-primary@2x.png);
+					}
+				}
+
+				&:disabled {
+					+label {
+						&:before {
+							background-image: url(#{$url-img-common}/ico_radio-checked-gray@2x.png);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.form_group {
+	// position: relative;
+	display: table;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+
+	.datepicker,
+	.tf {
+		display: tbl_cell;
+		width: 100% !important;
+	}
+
+	.form_addon {
+		display: tbl_cell;
+		width: 1%;
+		padding-left: 10px;
+		vertical-align: middle;
+
+		&+.tf {
+			margin-left: 9px;
+			border-right: 1px solid $border-base;
+		}
+	}
+
+	@include media-breakpoint-down (md) {
+		max-width: none !important;
+	}
+}
+
+.form_row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	.txt_item {
+		flex: 0 0 auto;
+		padding: 0 10px;
+	}
+
+	.tf_item {
+
+		+.tf_item {
+			margin-left: 10px;
+		}
+
+		.tf {
+			width: 100%;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		.tf_item {
+			display: block;
+			flex: 0 0 auto;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		max-width: none !important;
+
+		.txt_item {
+			padding: 0 5px;
+		}
+
+		.tf_item {
+			flex: 1 1 10%;
+
+			&.md-full {
+				flex: 1 1 100%;
+				margin: 15px 0 0 !important;
+				flex-basis: 100%;
+				width: 100%;
+			}
+		}
+
+	}
+}
+
+.form_group_file {
+	display: block;
+	max-width: 500px;
+
+	label {
+		display: inline-block;
+	}
+
+	.form-file {
+		display: none;
+	}
+
+	.tf {
+		display: inline-block;
+		margin: 0 .05rem;
+		max-width: calc(100% - 1.64rem);
+	}
+}
+
+// 입력폼 관련 컴포넌트
+.txt_guide,
+p.txt_guide {
+	// position: relative;
+	// padding-left: 1em;
+	color: $orange;
+	font-size: 14px;
+	margin: 10px 0 0;
+
+	@include media-breakpoint-down(md) {
+		font-size: 15px;
+	}
+}
+
+.req {
+	color: $orange;
+	vertical-align: middle;
+
+	// @include media-breakpoint-up(lg) {
+	// 	position: absolute;
+	// 	margin-left: -11px;
+	// }
+}

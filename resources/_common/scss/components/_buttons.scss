@@ -1,0 +1,181 @@
+//
+// Buttons
+// 
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	vertical-align: middle;
+	white-space: nowrap;
+	overflow: hidden;
+
+	font-family: $font-family-base;
+	font-weight: normal;
+
+	transition-duration: .2s;
+	transition-property: box-shadow, transform;
+	will-change: box-shadow, transform;
+
+	.ico {
+		flex: 0 0 auto;
+		// margin-top: -2px;
+
+		&:first-child {
+			margin-right: 4px;
+		}
+
+		&:only-child {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	*+.ico {
+		margin-left: 4px;
+	}
+}
+
+// 크기
+.btn_xs,
+.btn_sm,
+.btn_md,
+.btn_lg,
+.btn_icon {
+	&:focus {
+		box-shadow: $shadow;
+	}
+
+	@include media-breakpoint-up(lg) {
+		&:hover {
+			box-shadow: $shadow;
+		}
+	}
+}
+
+.btn_xs,
+.btn_sm,
+.btn_md,
+.btn_lg {
+	border-radius: 3px;
+}
+
+.btn_xs {
+	border: 1px solid transparent;
+	min-width: 50px;
+	height: 20px;
+	padding: 0 10px;
+	font-size: 12px;
+}
+
+.btn_sm {
+	border: 1px solid transparent;
+	min-width: 65px;
+	height: 30px;
+	padding: 0 14px;
+	font-size: 14px;
+}
+
+.btn_md {
+	border: 1px solid transparent;
+	min-width: 80px;
+	height: $form-height;
+	font-size: 15px;
+	padding: 0 15px;
+}
+
+.btn_lg {
+	border: 1px solid transparent;
+	min-width: 90px;
+	height: $form-height;
+	font-size: $font-size-lg;
+	padding: 0 20px;
+
+	@include media-breakpoint-down(sm) {
+		min-width: 75px;
+	}
+}
+
+.btn_icon {
+	min-width: auto;
+
+	.ico {
+		margin: 0 !important;
+	}
+}
+
+// 형태
+.btn_block {
+	display: flex;
+	width: 100%;
+}
+
+.btn_round {
+	border-radius: 25px;
+}
+
+// 색상
+.btn_default {
+	color: $white;
+	background-color: #7b7b7b;
+}
+
+.btn_primary {
+	color: $white;
+	background-color: $btn_primary;
+}
+
+.btn_outline_default {
+	color: $default;
+	border-color: #959595;
+	background-color: #fff;
+}
+
+.btn_outline_primary {
+	color: $btn_primary;
+	border-color: $btn_primary;
+	background-color: #fff;
+
+	.bbs-search & {
+		color: $primary;
+		border-color: $primary;
+	}
+}
+
+.tf {
+	+.btn_calendar {
+		margin-left: -5px;
+	}
+}
+
+// 기타
+.btn_more {
+	padding: 0 39px;
+	height: 50px;
+	font-size: 16px;
+
+	border-radius: 25px;
+	color: $default;
+	border: 1px solid #dadada;
+	background-color: $white;
+
+	.count {
+		font-style: normal;
+		margin: 0 5px;
+	}
+
+	&:after {
+		content: '';
+		margin-left: 6px;
+		width: 15px;
+		height: 9px;
+		background: url(#{$url-img-common}/ico_chevron-down-sm@2x.png) no-repeat;
+		background-size: cover;
+	}
+
+	@include media-breakpoint-down(md) {
+		height: 40px;
+		padding: 0 19px
+	}
+}

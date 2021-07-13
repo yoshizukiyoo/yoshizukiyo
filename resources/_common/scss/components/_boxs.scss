@@ -1,0 +1,77 @@
+/* 박스 기본형 */
+.box {
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 4px;
+	padding: 40px;
+	font-weight: 300;
+
+	dt {
+		font-weight: 500;
+		font-size: 20px;
+		letter-spacing: -0.05em;
+	}
+}
+
+/* 토글박스 */
+.box_toggle {
+	border: 1px solid $border-base;
+	border-radius: 10px;
+	overflow: hidden;
+
+	+.box_toggle {
+		margin-top: 5px;
+	}
+
+	.toggle_title {
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		font-size: $font-size-lg;
+		background-color: $bg-lightgray;
+
+		.tit {
+			display: inline-flex;
+			align-items: center;
+			padding: 15px 0 15px 30px;
+			font-size: $font-size-lg;
+			font-weight: bold;
+		}
+
+		.btn {
+			flex: 0 0 auto;
+			margin: 10px;
+			padding: 10px;
+			transition-duration: .2s;
+		}
+
+		&.on {
+			background-color: $bg-lightprimary;
+			border-bottom: 1px dashed $border-base;
+
+			.btn {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+
+	.toggle_content {
+		display: none;
+		padding: 15px 30px;
+	}
+
+	@include media-breakpoint-down(md) {
+		.toggle_title {
+			.tit {
+				padding-left: 20px;
+			}
+
+			.btn {
+				padding: 10px 5px;
+			}
+		}
+
+		.toggle_content {
+			padding: 15px 20px;
+		}
+	}
+}
