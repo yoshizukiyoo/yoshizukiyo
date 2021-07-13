@@ -10,7 +10,7 @@
 
 ### 스토리보드(구글드라이브)
 - [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
-> 자료 수급용 계정 : http://webmail.16block.com/ (geistkorea1 / 가이스트1)
+- 자료 반출용 공용 이메일 계정 : http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 
 ### 디자인 산출물
 - 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
