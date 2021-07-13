@@ -13,10 +13,11 @@
 > 자료 수급용 계정 : http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 
 ### 디자인 산출물
-SVN 저장소 URL : https://59.2.0.242/svn/design
-geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
-- SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
-- SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
+- 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
+- 디자인 산출물 자료 : SVN 저장소 URL : https://59.2.0.242/svn/design
+> geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
+SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
+SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 
 ### 퍼블리싱 가이드
 - 추후 추가 예정
