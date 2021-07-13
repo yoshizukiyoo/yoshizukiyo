@@ -9,7 +9,7 @@
 - [IA구조도(기본)_채널서비스_보험](https://docs.google.com/spreadsheets/d/1j2Qn5H11yWkoxJui4k-OzuHLW5NbywNHs5pJeUkHpE0/edit?usp=sharing)
 
 ### 스토리보드(구글드라이브)
-- [구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
+- [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
 > 자료 수급용 계정 : http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 
 ### 디자인 산출물
