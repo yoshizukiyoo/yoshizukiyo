@@ -1,7 +1,7 @@
 <strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
 ### 교육자료
-- [웹 접근성 교육자료](https://drive.google.com/file/d/11gZBNEIE6LNDfxLzwDb1tFr7AAKgvd5f/view?usp=sharing)
+- [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
 
 ### IA구조도(업무현황표)
 - [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
