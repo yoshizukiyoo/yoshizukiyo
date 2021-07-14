@@ -5,52 +5,38 @@
 // 사이트 기본 설정
 
 $mode: desktop !default; // responsive, mobile, tablet;
-$site : default !default; // 복사 원본 사이트 디렉토리
-
-// 경로
-$url-img: "/resources/deposit/images" !default; // 사이트별 개별 설정
-$url-img-common: "/resources/_common/images" !default;
+$site : deposit !default; // 복사 원본 사이트 디렉토리
 
 // COLORS
 $white: #fff !default;
-$gray: #555 !default;
 $lightgray: #999 !default;
+$gray: #555 !default;
 $darkgray: #333 !default;
 $black: #111 !default;
-$default: $black !default;
-
-// $primary: #FDC61C !default;
-$primary: #EFAE23 !default;
-$darkprimary: #EFAE23 !default;
-$secondary: #f77120 !default;
-
-$yellow: $secondary !default;
-$orange: $secondary !default;
 $red: #D70000 !default;
 
+$default: $black !default;
+$primary: #FDC61C !default;
+$darkprimary: #c78800 !default;
+$secondary: #f77120 !default;
 $invalid: $red !default;
 $valid: #009973 !default;
 
-$bg-primary: #428cf0 !default;
-$bg-darkprimary: #004a85 !default;
+$bg-primary: $primary !default;
+$bg-darkprimary: $darkprimary !default;
 $bg-lightprimary: #FEF5E5 !default;
 
-$bg-gray: #f3f3f3 !default;
-$bg-darkgray: #7c7c7c !default;
-$bg-lightgray: #f9f9f9 !default;
+$bg-gray: #555 !default;
+$bg-lightgray: #f3f3f3 !default;
 
-$bg-whiteblue: #f3f8ff !default;
-$bg-grayblue: #e5ecf6 !default;
-
-$border-base: #e3e3e3 !default;
-$border-light: #eee !default;
+$border-base: #ddd !default;
+$border-light: #f2f2f2 !default;
 $border-dark: #aaa !default;
+$border-active: $primary;
 
-$btn_primary: $darkprimary !default;
-
+$btn_primary: $primary !default;
 $placeholder-color: #959595;
 $disabled-color: #c2c2c2;
-$border-active: #428cf0;
 
 // END COLORS
 
@@ -59,33 +45,28 @@ $colors: map-merge(("default": $default,
 		"white": $white,
 		"primary": $primary,
 		"darkprimary": $darkprimary,
-		// "secondary": $secondary,
 		"invalid": $invalid,
 		"valid": $valid,
 		"red": $red,
-		// "gray": $gray,
-		// "lightgray": $lightgray,
-		// "darkgray": $darkgray,
+		"gray": $gray,
+		"lightgray": $lightgray,
+		"darkgray": $darkgray,
 	),
 	$colors);
 
 $dark-bg-colors: () !default;
 $dark-bg-colors: map-merge(("bg_default": $default,
-		// "bg_primary": $bg_primary,
-		// "bg_darkprimary": $bg_darkprimary,
-		"bg_darkgray": $bg_darkgray,
-		// "bg_secondary": $secondary,
-		"bg_invalid": $invalid,
-		"bg_valid": $valid,
+		"bg_primary": $bg_primary,
+		"bg_darkprimary": $bg_darkprimary,
+		// "bg_invalid": $invalid,
+		// "bg_valid": $valid,
+		"bg_gray": $bg-gray,
 	),
 	$dark-bg-colors);
 
 $light-bg-colors: () !default;
 $light-bg-colors: map-merge(("bg_lightgray": $bg-lightgray,
-		"bg_gray": $bg-gray,
 		"bg_lightprimary": $bg-lightprimary,
-		"bg_grayblue": $bg-grayblue,
-		"bg_whiteblue": $bg-whiteblue,
 		"bg_white": #fff,
 	),
 	$light-bg-colors);
@@ -104,21 +85,15 @@ $font-family-base: // -apple-system,
 Arial,
 sans-serif !default;
 
-$font-family-title: 'SpoqaHanSans',
-"NotoSansKR",
-"malgun gothic",
-Arial,
-sans-serif !default;
-
+$font-family-title: $font-family-base !default;
 $font-family-mobile: $font-family-base;
 
-// $font-size-xs: 14px !default;
+// $font-size-xs: 12px !default;
 $font-size-sm: 14px !default;
 $font-size-base: 16px !default;
 $font-size-lg: 20px !default;
 $font-size-xl: 26px !default;
-$font-size-xxl: 24px !default;
-// $font-size-xxxl: 30px !default;
+$font-size-xxl: 40px !default;
 
 // breakpoints
 $grid-breakpoints: (xs: 0,
@@ -126,7 +101,7 @@ $grid-breakpoints: (xs: 0,
 	md: 768px,
 	lg: 1025px,
 	xl: 1200px,
-	xxl: 1740px) !default;
+	xxl: 1600px) !default;
 
 //
 // 그리드
@@ -136,15 +111,14 @@ $min-width: 360px !default;
 $max-width: 1200px !default;
 
 // PC
-$spacing: 20px !default;
+$spacing: 50px !default;
 $topnav-height: 50px !default;
 $header-util-height: 88px !default;
 $gnb-height: 51px !default;
 // $header-height: $topnav-height+$header-util-height+$gnb-height !default;
 $header-height: 135px !default;
 $header-height-closed: 78px !default;
-$breadcrumb-height: 56px !default;
-$sidebar-width: 220px !default;
+$breadcrumb-height: 45px !default;
 $footer-height: 300px !default;
 
 $spacing-lg: 55px;
@@ -156,18 +130,9 @@ $btn_margin: 10px;
 
 // Mobile
 $mobile-spacing: 15px !default;
-
 $mobile-topnav-height: 35px !default;
 $mobile-header-height: 50px !default;
 $mobile-breadcrumb-height: 30px !default;
 $mobile-footer-height: 195px !default;
-
 // $mobile-allmenu-header: 157px !default;
 // $mobile-allmenu-footer: 50px !default;
-
-//
-// 그리드
-// 
-
-// 박스 호버 스타일
-$shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.2);

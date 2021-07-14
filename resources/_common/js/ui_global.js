@@ -57,7 +57,7 @@ $(document).ready(function () {
 			$(this).parent('.tab_menu').addClass('tab_matrix-md');
 		}
 		if (itemLength > 9) {
-			$(this).parent('.tab_menu').addClass('tab_dropdown-sm');
+			$(this).parent('.tab_menu').addClass('tab_dropdown_sm');
 		}
 	});
 	$('.tab_list .on a').each(function () {
@@ -69,10 +69,10 @@ $(document).ready(function () {
 
 	// 점프투 타입 추가
 	$('.tab_content-jumpto').each(function () {
-		$(this).prepend('<a href="#;" class="btn btn-xs btn-outline-default btn-jumpto-totop">메뉴로 <i class="ico ico-chevron-up-gray ml-1"></i></a>');
+		$(this).prepend('<a href="#;" class="btn btn_xs btn_outline-default btn_jumpto-totop">메뉴로 <i class="ico ico-chevron-up-gray ml-1"></i></a>');
 	});
 
-	$(document).on('click', '.btn-jumpto-totop', function (e) {
+	$(document).on('click', '.btn_jumpto-totop', function (e) {
 		$('body, html').animate({
 			scrollTop: $('.tab_menu_jumpto').offset().top,
 		}, 300);
@@ -105,13 +105,13 @@ $(document).ready(function () {
 					$('body, html').animate({
 						scrollTop: $(tg).offset().top - 78 - 40,
 					}, 300);
-					$('.btn-jumpto-totop', tg).focus();
+					$('.btn_jumpto-totop', tg).focus();
 				} else {
 					if (!$(this).parent('li').hasClass('on')) {
 						$('body, html').animate({
 							scrollTop: $(tg).offset().top - 30,
 						}, 300);
-						$('.btn-jumpto-totop', tg).focus();
+						$('.btn_jumpto-totop', tg).focus();
 					}
 				}
 			} else {
@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 		// 모바일 드롭다운
 		var $currentTab = $(this).closest('.tab_menu');
-		if ($(window).width() < 768 && $currentTab.hasClass('tab_dropdown-sm')) {
+		if ($(window).width() < 768 && $currentTab.hasClass('tab_dropdown_sm')) {
 			$('.tab_menu').not($currentTab).removeClass('opened');
 			$currentTab.toggleClass('opened');
 			if ($(this).parent('li').hasClass('on')) {
@@ -133,7 +133,7 @@ $(document).ready(function () {
 
 // 게시판 등록 : 파일첨부
 $(function () {
-	var fileTarget = $('.form-file');
+	var fileTarget = $('.form_file');
 	fileTarget.on('change', function () {
 		if (window.FileReader) {
 			var filename = $(this)[0].files[0].name;
@@ -144,36 +144,13 @@ $(function () {
 	});
 
 	$('.file-attatch-item .file-name').on('click', function () {
-		$(this).prev('.form-file').click();
+		$(this).prev('.form_file').click();
 	});
 });
 
-// 맨 위로
-// (function toTop() {
-// 	var $header = $('#header');
-
-// 	$(window).scroll(function () {
-// 		if ($(this).scrollTop() > 320) {
-// 			$('#btn-totop').addClass('show');
-// 			$header.addClass('bg-fadein')
-// 		} else {
-// 			$('#btn-totop').removeClass('show');
-// 			$header.removeClass('bg-fadein');
-// 		}
-// 	});
-
-// 	$(document).on('click', '#btn-totop', function (e) {
-// 		e.preventDefault();
-// 		$('body, html').animate({
-// 			scrollTop: 0
-// 		}, 300);
-// 		return false;
-// 	});
-// })();
-
 // 데이트피커
 setTimeout(function () {
-	$('.form-datepicker').each(function () {
+	$('.form_datepicker').each(function () {
 		setDatepicker($(this));
 	}).on('click', function () {
 		openCalendar($(this));
@@ -186,7 +163,7 @@ function removeDatepicker() {
 	}
 }
 
-$(document).on('click', '.btn-datepicker', function (e) {
+$(document).on('click', '.btn_datepicker', function (e) {
 	e.preventDefault();
 	openCalendar($(this).prev());
 });
@@ -196,12 +173,12 @@ function setDatepicker(obj) {
 	if ($(obj).hasClass('full')) {
 		$(obj).parent('.datepicker').addClass('full');
 	}
-	$(obj).after('<button type="button" class="btn btn-datepicker"><i class="ico ico-datepicker-primary"></i><span class="sr-only">달력</span></button>');
+	$(obj).after('<button type="button" class="btn btn_datepicker"><i class="ico ico-datepicker-primary"></i><span class="sr-only">달력</span></button>');
 }
 
 // 일반 레이어
 $(function () {
-	$('.layer-popup.show').each(function () {
+	$('.layer_popup.show').each(function () {
 		openLayer($(this), null);
 	});
 });
@@ -216,7 +193,7 @@ function openLayer(_target, _opener) {
 			});
 		}, 100);
 		setTimeout(function () {
-			$('.popup-inner', _target).attr('tabindex', '0').focus();
+			$('.popup_inner', _target).attr('tabindex', '0').focus();
 			$(_target).scrollTop(0);
 		}, 300);
 	}
@@ -225,7 +202,7 @@ function openLayer(_target, _opener) {
 function closeLayer(_target, _opener) {
 	var tg = $(_target);
 	if (tg.hasClass('show')) {
-		if ($('.layer-popup.show').length == 1) {}
+		if ($('.layer_popup.show').length == 1) {}
 		tg.addClass('hide').removeClass('show');
 		var modalOpener = $(_opener);
 		if (modalOpener.length) {
@@ -237,14 +214,14 @@ function closeLayer(_target, _opener) {
 }
 
 var layerOpener = null;
-$(document).on('click', '.layer-popup .btn-close-popup', function () {
-	var target = $(this).closest('.layer-popup').attr('id');
+$(document).on('click', '.layer_popup .btn_close_popup', function () {
+	var target = $(this).closest('.layer_popup').attr('id');
 	closeModal('#' + target, layerOpener);
 });
 
 // 모달 레이어
 $(function () {
-	$('.modal-popup.show').each(function () {
+	$('.modal_popup.show').each(function () {
 		openModal($(this), null);
 	});
 	// URL 해시 레이어 활성화
@@ -252,28 +229,28 @@ $(function () {
 	if (!(hash === '#' || hash === '' || hash === '#;')) {
 		setTimeout(
 			function () {
-				if ($(hash).hasClass('modal-popup')) openModal(hash);
+				if ($(hash).hasClass('modal_popup')) openModal(hash);
 			}, 300);
 	}
 });
 
 var modalOpener = null;
-$(document).on('click', 'a.js-layer-open', function (e) {
+$(document).on('click', 'a.js-layer_open', function (e) {
 	var tg = $(this).attr('href');
 	openModal(tg, $(this));
 	e.preventDefault();
-}).on('click', '.modal-popup .btn-close-popup, .modal-popup .dimed', function () {
-	var target = $(this).closest('.modal-popup').attr('id');
+}).on('click', '.modal_popup .btn_close_popup, .modal_popup .dimed', function () {
+	var target = $(this).closest('.modal_popup').attr('id');
 	closeModal('#' + target, modalOpener);
-}).on('keydown', '.modal-popup .popup-inner', function (e) {
-	if ($('.popup-inner').is(e.target) && e.keyCode == 9 && e.shiftKey) { // shift + tab
+}).on('keydown', '.modal_popup .popup_inner', function (e) {
+	if ($('.popup_inner').is(e.target) && e.keyCode == 9 && e.shiftKey) { // shift + tab
 		e.preventDefault();
-		$(this).find('.btn-close-popup').focus();
+		$(this).find('.btn_close_popup').focus();
 	}
-}).on('keydown', '.modal-popup .btn-close-popup', function (e) {
+}).on('keydown', '.modal_popup .btn_close_popup', function (e) {
 	if (e.keyCode == 9 && !e.shiftKey) { // tab
 		e.preventDefault();
-		$(this).closest('.popup-inner').attr('tabindex', '0').focus();
+		$(this).closest('.popup_inner').attr('tabindex', '0').focus();
 		$(this).unbind('keydown').keydown();
 	}
 });
@@ -283,12 +260,12 @@ function openModal(_target, _opener) {
 		modalOpener = _opener;
 		$(_target).appendTo('body');
 		bodyScroll(true, $('body').width());
-		$('body').addClass('modal-open');
+		$('body').addClass('modal_open');
 		setTimeout(function () {
 			$(_target).addClass('show').removeClass('hide');
 		}, 100);
 		setTimeout(function () {
-			$('.popup-inner', _target).attr('tabindex', '0').focus();
+			$('.popup_inner', _target).attr('tabindex', '0').focus();
 			$(_target).scrollTop(0);
 		}, 300);
 	}
@@ -297,7 +274,7 @@ function openModal(_target, _opener) {
 function closeModal(_target, _opener) {
 	var tg = $(_target);
 	if (tg.hasClass('show')) {
-		if ($('.modal-popup.show').length == 1) {
+		if ($('.modal_popup.show').length == 1) {
 			bodyScroll(false);
 		}
 		tg.addClass('hide').removeClass('show');
@@ -318,7 +295,7 @@ function bodyScroll(_status, _orgWidth) {
 	var $fixedModal = $('body');
 
 	if (_status) {
-		$fixedModal.addClass('modal-open');
+		$fixedModal.addClass('modal_open');
 		var scrollbarWidth = $('body').width() - _orgWidth;
 		if (scrollbarWidth > 0) {
 			$fixedModal.css({
@@ -329,7 +306,7 @@ function bodyScroll(_status, _orgWidth) {
 			});
 		}
 	} else {
-		$fixedModal.removeClass('modal-open');
+		$fixedModal.removeClass('modal_open');
 		$fixedModal.css({
 			'margin-right': '',
 		});
@@ -406,9 +383,9 @@ _modeDetect();
 
 $(document).ready(function () {
 	// 입력필드 인터랙션
-	$('.form-move .form-control').each(function () {
+	$('.form_move .form_control').each(function () {
 		var value = Boolean($(this).val());
-		var $container = $(this).closest('.form-move');
+		var $container = $(this).closest('.form_move');
 
 		// 최초 세팅
 		$container.toggleClass('active', value);

@@ -2,22 +2,24 @@
 
 /* 화면명1 */
 .page-name-sample1 {
-	// TODO : 데스크탑 및 디바이스 전체 공통스타일 정의
+	// TODO : 전체 공통스타일 정의
 
-	@include media-breakpoint-up(lg) {
-		// TODO : 데스크탑 스타일 정의
-	}
+	@if ($mode=="responsive") {
+		@include media-breakpoint-up(lg) {
+			// TODO : 데스크탑 스타일 정의
+		}
 
-	@include media-breakpoint-only(md) {
-		// TODO : 태블릿 Only 스타일 정의
-	}
+		@include media-breakpoint-only(md) {
+			// TODO : 태블릿 Only 스타일 정의
+		}
 
-	@include media-breakpoint-down(md) {
-		// TODO : 태블릿 + 모바일 스타일 정의
-	}
+		@include media-breakpoint-down(md) {
+			// TODO : 태블릿 + 모바일 스타일 정의
+		}
 
-	@include media-breakpoint-down(sm) {
-		// TODO : 모바일 스타일 정의
+		@include media-breakpoint-down(sm) {
+			// TODO : 모바일 스타일 정의
+		}
 	}
 }
 
@@ -28,12 +30,7 @@ $guide_color: #222;
 	text-align: center;
 
 	@include media-breakpoint-up(lg) {
-		margin: 0 0 65px;
-		padding-top: 73px;
-
-		.cont_title {
-			font-size: 40px;
-			line-height: 52px;
+		.tit_cont {
 			font-family: $font-family-title;
 		}
 	}
@@ -42,7 +39,7 @@ $guide_color: #222;
 		margin: 0 0 39.5px;
 		padding-top: 36px;
 
-		.cont_title {
+		.tit_cont {
 			font-size: 24px;
 			line-height: 29px;
 			padding: 0 $mobile-spacing;
@@ -91,12 +88,12 @@ $guide_color: #222;
 		width: 5px;
 		height: 5px;
 		border-radius: 50%;
-		background-color: $orange;
+		background-color: $darkprimary;
 	}
 
 	.row {
 		.col {
-			display: tbl_cell;
+			display: table-cell;
 			width: 1%;
 			@include clearfix;
 		}
@@ -173,16 +170,35 @@ $guide_color: #222;
 		display: none;
 	}
 
-	@include ico2x('xs-menu', 16px, 16px, #{$url-img-common});
+	// @include ico2x('xs-menu', 16px, 16px, #{$url-img-common});
 
-	.sidebar-title {
+	.sidebar-tit {
+		display: flex;
+		align-items: center;
 		border-bottom: 1px solid #ddd;
 		font-size: 20px;
 		padding-bottom: 10px;
 		margin-bottom: 10px;
+		font-size: 20px;
+
+		.btn_type {
+			margin-left: 4px;
+			font-size: 12px;
+			border-radius: 2px;
+			color: $default;
+			font-weight: normal;
+			padding: 2px 5px;
+			vertical-align: middle;
+
+			&:after {
+				width: 12px;
+				height: 12px;
+				background: url(/resources/_guide/images/ico-refresh.png);
+			}
+		}
 	}
 
-	.nav-title {
+	.nav-tit {
 		font-size: 18px;
 		font-weight: bold;
 		margin-bottom: 5px;
@@ -205,8 +221,13 @@ $guide_color: #222;
 		}
 
 		&.on {
-			font-weight: bold;
-			color: $primary;
+			a {
+				// color: #fff;
+				font-weight: bold;
+				text-decoration: underline;
+				// background-color: $default;
+				// padding: 0 3px 1px;
+			}
 		}
 	}
 
@@ -286,7 +307,7 @@ $guide_color: #222;
 			}
 		}
 
-		.nav-title {
+		.nav-tit {
 			font-size: 14px;
 		}
 
@@ -313,6 +334,40 @@ $guide_color: #222;
 	}
 }
 
+.examples {
+	$cell-size: 13px;
+	$bg-color: rgba(0, 0, 0, 0.03);
+
+	border: 1px solid #eee;
+	border-radius: 4px;
+	padding: 30px;
+
+	background: linear-gradient(45deg,
+			$bg-color 25%,
+			transparent 25%,
+			transparent 75%,
+			$bg-color 75%,
+			$bg-color 0),
+		linear-gradient(45deg,
+			$bg-color 25%,
+			transparent 25%,
+			transparent 75%,
+			$bg-color 75%,
+			$bg-color 0),
+		white;
+	background-repeat: repeat, repeat;
+	background-position: 0px 0, $cell-size $cell-size;
+	transform-origin: 0 0 0;
+	background-origin: padding-box, padding-box;
+	background-clip: border-box, border-box;
+	background-size: $cell-size * 2 $cell-size * 2, $cell-size * 2 $cell-size * 2;
+	transform: scaleX(1) scaleY(1) scaleZ(1);
+
+	@include media-breakpoint-down(md) {
+		padding: 15px;
+	}
+}
+
 .code {
 	border: 1px solid rgba(255, 0, 0, 0.2);
 	padding: 4px 8px;
@@ -334,7 +389,6 @@ $guide_color: #222;
 
 	small {
 		margin-left: 10px;
-		color: $primary;
 	}
 
 	// &:target {
@@ -348,7 +402,7 @@ $guide_color: #222;
 
 .box_html_guide {
 	margin-top: -20px;
-	background-color: $bg-lightgray;
+	background-color: $bg-lightprimary;
 	padding: 15px 20px;
 }
 
