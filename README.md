@@ -1,7 +1,18 @@
 <strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
-### 교육자료
-- [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
+### 퍼블리싱 가이드
+우체국 공통 컴포넌트 가이드 : http://dev.inseq.co.kr:7772/html/index.html
+1. VSCode 및 필수확장도구 설치
+가이드 : https://docs.google.com/document/d/1mQjlcqiTBlXrFuUG825ZDZDLfIpXDm-gPyZ0mw9GFos/edit?usp=sharing
+2. 프로젝트 소스코드 Git 에서 내려받기
+가이드 : https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing
+> 원격저장소 주소가 있습니다. 퍼블리셔 협업시에는 `develop` 브랜치 사용해 주세요
+'master'는 개발팀에 전달할 최종산출물 저장소로 사용할 예정입니다.
+3. 마크업 개발환경 설정하기
+가이드 : https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing
+4. 퍼블리셔 교육자료
+    - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
+    - 우체국차세대금융_고객채널퍼블리싱가이드(초안) : https://drive.google.com/open?id=1OOwH61VRG3K3GBGKEtqQalwp4JFmlMoe
 
 ### IA구조도(업무현황표)
 - [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
@@ -19,6 +30,3 @@ http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 > geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
 SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
 SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
-
-### 퍼블리싱 가이드
-- 추후 추가 예정
