@@ -16,6 +16,13 @@
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
     - 우체국차세대금융_고객채널퍼블리싱가이드(초안) : https://drive.google.com/open?id=1OOwH61VRG3K3GBGKEtqQalwp4JFmlMoe
 
+### 퍼블리셔 팀 협업 가이드
+1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
+2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
+> 퍼블리셔 협업용 메신저 
+메일플러그 메신저(구 퍼들러) https://www.mailplug.com/mailplug/help/help_item_view/443
+3. 기타 사항은 아래에 추가 예정...
+
 ### IA구조도(업무현황표)
 - [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
 - [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
