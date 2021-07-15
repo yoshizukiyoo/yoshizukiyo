@@ -150,7 +150,7 @@ $(function () {
 
 // 데이트피커
 setTimeout(function () {
-	$('.form_datepicker').each(function () {
+	$('.tf_datepicker').each(function () {
 		setDatepicker($(this));
 	}).on('click', function () {
 		openCalendar($(this));
