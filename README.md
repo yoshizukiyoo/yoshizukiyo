@@ -6,7 +6,9 @@
 가이드 : https://docs.google.com/document/d/1mQjlcqiTBlXrFuUG825ZDZDLfIpXDm-gPyZ0mw9GFos/edit?usp=sharing
 2. 프로젝트 소스코드 Git 에서 내려받기
 가이드 : https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing
-> 원격저장소 주소가 있습니다. 퍼블리셔 협업시에는 `develop` 브랜치 사용해 주세요
+> 홈 화면 우측에 원격저장소 복사하기를 눌러서 PULL 받으면 됩니다.
+![22219-2021-7-15-9-51.png](/files/11304) 
+퍼블리셔 협업시에는 `develop` 브랜치 사용해 주세요
 'master'는 개발팀에 전달할 최종산출물 저장소로 사용할 예정입니다.
 3. 마크업 개발환경 설정하기
 가이드 : https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing
