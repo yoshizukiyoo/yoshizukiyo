@@ -1,11 +1,6 @@
 $popup-title-height: 88px;
 $popup-mobile-title-height: 50px;
 
-$popup-width-sm: 360px;
-$popup-width-md: 500px;
-$popup-width-lg: 920px;
-$popup-width-xl: $max-width;
-
 /* 모달, 윈도우 팝업 공통 */
 .popup_header {
 	display: flex;
@@ -40,8 +35,10 @@ $popup-width-xl: $max-width;
 	-webkit-overflow-scrolling: touch;
 	padding: 30px 30px 0;
 
-	@include media-breakpoint-down(md) {
-		padding: $mobile-spacing $mobile-spacing 0;
+	@if ($mode=='responsive') {
+		@include media-breakpoint-down(md) {
+			padding: $mobile-spacing $mobile-spacing 0;
+		}
 	}
 }
 
@@ -104,10 +101,12 @@ $popup-width-xl: $max-width;
 	height: $popup-title-height;
 	background: url(#{$url-img}/common/btn_colse.png) no-repeat center center;
 
-	@include media-breakpoint-down(md) {
-		.modal_popup & {
-			width: 48px;
-			height: $popup-mobile-title-height;
+	@if ($mode=='responsive') {
+		@include media-breakpoint-down(md) {
+			.modal_popup & {
+				width: 48px;
+				height: $popup-mobile-title-height;
+			}
 		}
 	}
 }
@@ -134,13 +133,13 @@ $popup-width-xl: $max-width;
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(#000, 0.8);
+		background-color: rgba(#000, 0.5);
 	}
 
 	.popup_inner {
 		position: relative;
 		z-index: 1100;
-		width: $popup-width-md;
+		width: 600px;
 		transition-duration: 0.3s;
 		transition-property: transform;
 		background-color: #fff;
@@ -178,87 +177,84 @@ $popup-width-xl: $max-width;
 		}
 	}
 
-	&.modal_sm {
-		.popup_inner {
-			width: $popup-width-sm;
-		}
-	}
+	$popup-size: (xs: 400px,
+		sm: 600px,
+		md: 750px,
+		lg: 800px,
+		xl: 880px,
+		xxl: 1100px,
+		alert: 600px,
+	);
 
-	&.modal_md {
-		.popup_inner {
-			width: $popup-width-md;
-		}
-	}
+	@each $size,
+	$width in $popup-size {
 
-	&.modal_lg {
-		.popup_inner {
-			width: $popup-width-lg;
-		}
-	}
-
-	&.modal_xl {
-		.popup_inner {
-			width: $popup-width-xl;
-		}
-	}
-
-	&.modal_full {
-		.popup_inner {
-			// border-radius: 0;
-			display: flex;
-			flex-direction: column;
-			width: calc(100% - 100px);
-			height: calc(100% - 100px);
-		}
-
-		.popup_header,
-		.popup_footer {
-			flex: 0 0 auto;
-			// border-radius: 0;
-		}
-
-		.popup_body {
-			flex: 1 1 auto;
-			max-height: none;
-			padding-bottom: 30px;
-		}
-	}
-
-	@include media-breakpoint-up(lg) {
-		.popup_inner {
-			border-radius: 10px;
-		}
-
-		.popup_body {
-			max-height: calc(100vh - 200px);
-		}
-	}
-
-	@include media-breakpoint-down(md) {
-		&.modal_sm {
+		&.modal_#{$size} {
 			.popup_inner {
-				margin: $mobile-spacing;
-				border-radius: 10px;
+				width: $width;
 			}
 		}
+	}
 
-		&:not(.modal_sm) {
-			.popup_inner {
-				width: 100%;
-				display: flex !important;
-				flex-direction: column !important;
-				justify-content: center !important;
-				height: 100%;
+	// &.modal_full {
+	// 	.popup_inner {
+	// 		// border-radius: 0;
+	// 		display: flex;
+	// 		flex-direction: column;
+	// 		width: calc(100% - 100px);
+	// 		height: calc(100% - 100px);
+	// 	}
+
+	// 	.popup_header,
+	// 	.popup_footer {
+	// 		flex: 0 0 auto;
+	// 		// border-radius: 0;
+	// 	}
+
+	// 	.popup_body {
+	// 		flex: 1 1 auto;
+	// 		max-height: none;
+	// 		padding-bottom: 30px;
+	// 	}
+	// }
+
+	// @include media-breakpoint-up(lg) {
+	.popup_inner {
+		border-radius: 10px;
+	}
+
+	.popup_body {
+		max-height: calc(100vh - 300px);
+	}
+
+	// }
+	@if ($mode=='responsive') {
+		@include media-breakpoint-down(md) {
+			&.modal_sm {
+				.popup_inner {
+					margin: $mobile-spacing;
+					border-radius: 10px;
+				}
 			}
 
-			.popup_header,
-			.popup_footer {
-				flex: 0 0 auto;
-			}
+			&:not(.modal_sm) {
+				.popup_inner {
+					width: 100%;
+					display: flex !important;
+					flex-direction: column !important;
+					justify-content: center !important;
+					height: 100%;
+				}
 
-			.popup_body {
-				flex: 1 1 auto;
-				max-height: 100%;
+				.popup_header,
+				.popup_footer {
+					flex: 0 0 auto;
+				}
+
+				.popup_body {
+					flex: 1 1 auto;
+					max-height: 100%;
+				}
 			}
 		}
 	}
@@ -294,101 +290,102 @@ $popup-width-xl: $max-width;
 	}
 }
 
-.layer-popup {
-	position: absolute;
-	z-index: 1000;
-	transition-duration: 0.3s;
-	transition-property: opacity;
+/* 일반 레이어팝업 */
+// .layer-popup {
+// 	position: absolute;
+// 	z-index: 1000;
+// 	transition-duration: 0.3s;
+// 	transition-property: opacity;
 
-	&.hide {
-		opacity: 0;
-		visibility: hidden;
-	}
+// 	&.hide {
+// 		opacity: 0;
+// 		visibility: hidden;
+// 	}
 
-	&.show {
-		opacity: 1;
-		visibility: visible;
-	}
+// 	&.show {
+// 		opacity: 1;
+// 		visibility: visible;
+// 	}
 
-	.popup_inner {
-		width: $popup-width-sm;
-		position: relative;
-		z-index: 1100;
-		transition-duration: 0.3s;
-		transition-property: transform;
-		background-color: #fff;
-		border-radius: 10px;
-		border: 1px solid $border-active;
-		box-shadow: 0 6px 9px rgba(#000, .2);
-		overflow: hidden;
+// 	.popup_inner {
+// 		width: $popup-width-sm;
+// 		position: relative;
+// 		z-index: 1100;
+// 		transition-duration: 0.3s;
+// 		transition-property: transform;
+// 		background-color: #fff;
+// 		border-radius: 10px;
+// 		border: 1px solid $border-active;
+// 		box-shadow: 0 6px 9px rgba(#000, .2);
+// 		overflow: hidden;
 
-		// &:focus {
-		// 	outline: 0;
-		// 	box-shadow: 0 0 20px 5px rgba(#fff, .2);
-		// }
+// 		// &:focus {
+// 		// 	outline: 0;
+// 		// 	box-shadow: 0 0 20px 5px rgba(#fff, .2);
+// 		// }
 
-		.modal_popup.hide & {
-			transform: scale(0.9);
-		}
+// 		.modal_popup.hide & {
+// 			transform: scale(0.9);
+// 		}
 
-		.modal_popup.show & {
-			transform: scale(1);
-		}
-	}
+// 		.modal_popup.show & {
+// 			transform: scale(1);
+// 		}
+// 	}
 
-	.popup_header {
-		justify-content: flex-start;
-		height: 88px;
-		padding: 0 30px;
+// 	.popup_header {
+// 		justify-content: flex-start;
+// 		height: 88px;
+// 		padding: 0 30px;
 
-		.popup_tit {
-			display: flex;
-			align-items: center;
-			padding-top: 6px;
-			color: $default;
-			font-weight: 600;
+// 		.popup_tit {
+// 			display: flex;
+// 			align-items: center;
+// 			padding-top: 6px;
+// 			color: $default;
+// 			font-weight: 600;
 
-			.ico {
-				margin-top: -4px;
-				margin-right: 4px;
-			}
-		}
+// 			.ico {
+// 				margin-top: -4px;
+// 				margin-right: 4px;
+// 			}
+// 		}
 
-		~.btn_close_popup {
-			top: 0;
-			right: 0;
-			width: 50px;
-			height: 50px;
-			background-image: url(#{$url-img}/common/btn_colse.png);
-			background-size: 20px auto;
-		}
-	}
+// 		~.btn_close_popup {
+// 			top: 0;
+// 			right: 0;
+// 			width: 50px;
+// 			height: 50px;
+// 			background-image: url(#{$url-img}/common/btn_colse.png);
+// 			background-size: 20px auto;
+// 		}
+// 	}
 
-	.popup_body {
-		padding: 16px 20px 20px;
+// 	.popup_body {
+// 		padding: 16px 20px 20px;
 
-		.btn_group {
-			margin-top: 12px;
-		}
-	}
+// 		.btn_group {
+// 			margin-top: 12px;
+// 		}
+// 	}
 
-	@if ($mode=='responsive') {
-		@include media-breakpoint-down(md) {
-			position: fixed;
-			top: 0 !important;
-			bottom: 0 !important;
-			left: 0 !important;
-			right: 0 !important;
+// 	@if ($mode=='responsive') {
+// 		@include media-breakpoint-down(md) {
+// 			position: fixed;
+// 			top: 0 !important;
+// 			bottom: 0 !important;
+// 			left: 0 !important;
+// 			right: 0 !important;
 
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: $mobile-spacing;
+// 			display: flex;
+// 			align-items: center;
+// 			justify-content: center;
+// 			padding: $mobile-spacing;
 
-			.popup_inner {
-				max-width: $popup-width-md;
-				width: 100% !important;
-			}
-		}
-	}
-}
+// 			.popup_inner {
+// 				max-width: $popup-width-md;
+// 				width: 100% !important;
+// 			}
+// 		}
+// 	}
+// }
