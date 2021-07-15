@@ -19,8 +19,7 @@
 ### 퍼블리셔 팀 협업 가이드
 1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
 2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
-> 퍼블리셔 협업용 메신저 
-메일플러그 메신저(구 퍼들러) https://www.mailplug.com/mailplug/help/help_item_view/443
+> 퍼블리셔 협업용 메신저 다운로드 : [메일플러그 메신저(구 퍼들러)](https://www.mailplug.com/mailplug/help/help_item_view/443)
 3. 기타 사항은 아래에 추가 예정...
 
 ### IA구조도(업무현황표)
