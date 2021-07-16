@@ -34,6 +34,31 @@ $(function () {
 	// });
 });
 
+// 더보기 박스
+$(function () {
+	$('.box_more').each(function () {
+		$(this).wrapInner('<div class="inner"></div>').append('<button type="button" class="btn btn_more_white">더보기</button>');
+	});
+});
+
+$(document).on('click', '.box_more .btn_more_white', function () {
+	$(this).parent('.box_more').hasClass('opened') ? $(this).text('더보기') : $(this).text('접기');
+	$(this).parent('.box_more').toggleClass('opened');
+});
+
+// 즐겨찾기 버튼 토글
+$(function () {
+	$('.btn_favorite').on('click', function () {
+		if ($('.ico', this).hasClass('ico_star_primary')) {
+			$('.ico', this).removeClass('ico_star_primary').addClass('ico_star_gray')
+				.next('.sr_only').text('즐겨찾기 추가');
+		} else {
+			$('.ico', this).removeClass('ico_star_gray').addClass('ico_star_primary')
+				.next('.sr_only').text('즐겨찾기 해제');
+		}
+	});
+});
+
 // // 테이블 스크롤 표시
 // $(document).ready(function () {
 // 	if ($('.scroll_container').length > 0) {
@@ -192,7 +217,7 @@ function setDatepicker(obj) {
 	if ($(obj).hasClass('full')) {
 		$(obj).parent('.datepicker').addClass('full');
 	}
-	$(obj).after('<button type="button" class="btn btn_datepicker"><i class="ico ico-datepicker-primary"></i><span class="sr-only">달력</span></button>');
+	$(obj).after('<button type="button" class="btn btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button>');
 }
 
 // 일반 레이어
@@ -372,33 +397,6 @@ function openerFocus() {
 		popOpenBtn = null;
 	}
 }
-
-// 리사이즈 감지 
-var term = 0,
-	timer = null;
-
-$(window).on('load resize', function () {
-	clearTimeout(timer);
-	timer = setTimeout(_modeDetect, term);
-	term = 300;
-});
-
-var _mode;
-
-function _modeDetect() {
-	var widthScreen = $(window).width();
-	var beforeMode = _mode;
-
-	if (widthScreen > 1024) {
-		_mode = 'pc';
-	} else if (widthScreen >= 768) {
-		_mode = 'tablet';
-	} else {
-		_mode = 'mobile';
-	}
-}
-//초기 디바이스 확인용 함수 실행
-_modeDetect();
 
 $(document).ready(function () {
 	// 입력필드 인터랙션

@@ -37,7 +37,6 @@
 	display: inline-block;
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
 	vertical-align: middle;
 	overflow: hidden;
 
@@ -49,6 +48,7 @@
 // 아이콘
 @mixin ico($name, $w:21px, $h:21px, $url: #{$url-img-common}) {
 	.ico_#{$name} {
+		@include ir;
 		width: $w;
 		height: $h;
 		line-height: $h;
@@ -56,34 +56,34 @@
 	}
 }
 
-@mixin ico_lg($name) {
-	.ico_#{$name} {
-		width: 60px;
-		height: 60px;
-		line-height: 60px;
-		background-image: url('#{$url}/ico_lg-#{$name}.png');
-	}
+// @mixin ico_lg($name) {
+// 	.ico_#{$name} {
+// 		width: 60px;
+// 		height: 60px;
+// 		line-height: 60px;
+// 		background-image: url('#{$url}/ico_lg-#{$name}.png');
+// 	}
 
-	@if ($mode=='responsive') {
-		@include media-breakpoint-up(lg) {
-			.ico_#{$name} {
-				width: 60px;
-				height: 60px;
-				line-height: 60px;
-				background-image: url('#{$url}/ico_lg-#{$name}.png');
-			}
-		}
+// 	@if ($mode=='responsive') {
+// 		@include media-breakpoint-up(lg) {
+// 			.ico_#{$name} {
+// 				width: 60px;
+// 				height: 60px;
+// 				line-height: 60px;
+// 				background-image: url('#{$url}/ico_lg-#{$name}.png');
+// 			}
+// 		}
 
-		@include media-breakpoint-down(md) {
-			.ico_#{$name} {
-				width: 40px;
-				height: 40px;
-				line-height: 40px;
-				background-image: url('#{$url}/ico_lg-#{$name}@2x.png');
-			}
-		}
-	}
-}
+// 		@include media-breakpoint-down(md) {
+// 			.ico_#{$name} {
+// 				width: 40px;
+// 				height: 40px;
+// 				line-height: 40px;
+// 				background-image: url('#{$url}/ico_lg-#{$name}@2x.png');
+// 			}
+// 		}
+// 	}
+// }
 
 // // PC 모바일 겸용 아이콘 : 이미지 2배수 저장 @2x
 // @mixin ico2x($name, $w:25px, $h:25px, $url: #{$url-img-common}) {
