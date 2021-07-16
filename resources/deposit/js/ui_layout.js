@@ -2,8 +2,30 @@
 // 예금 레이아웃
 //
 
+
+
 // 스크롤 내비게이션
-$(document).ready(function () {});
+$(document).ready(function () { });
+
+// GNB
+$(document).on('mouseenter focusin', '.header .gnb>ul>li>a', function () {
+	var obj = $(this);
+	obj.addClass('current').parent().siblings().find('>a').removeClass();
+	obj.next().addClass('open').parent().siblings().find('.layer_mn').removeClass('open');
+});
+$(document).on('mouseleave', '#gnb', function () {
+	gnbClose();
+});
+$(document).on('keydown', '#gnb>ul>li:last-child>.layer_mn>.menu_wrap>.menu_list:last-child>ul>li:last-child>a', function (e) {
+	if (e.which == 9 != e.shiftKey && e.which == 9) {
+		gnbClose();
+	}
+});
+
+function gnbClose() {
+	$('.gnb>ul>li>a').removeClass();
+	$('.layer_mn').removeClass('open');
+}
 
 // Breadcrumb
 $(document).on('click', '.breadcrumb_list>li>a', function (e) {
