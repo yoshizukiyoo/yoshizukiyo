@@ -38,3 +38,36 @@ http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 > geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
 SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
 SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
+
+### .vscode/settings.json
+```json
+{
+	// 코딩 컨벤션 기본 설정
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"sassVariablesHelper.route": "**/scss/_variables.scss",
+
+	"liveSassCompile.settings.includeItems": [
+		"**/scss/**.scss",
+	],
+	"liveSassCompile.settings.formats": [{
+		"format": "expanded",
+		"extensionName": ".css",
+		"savePath": "~/../css/"
+	}],
+	"liveSassCompile.settings.excludeList": [
+		"**/node_modules/**",
+		".vscode/**"
+	],
+	"liveSassCompile.settings.generateMap": false,
+	"liveSassCompile.settings.autoprefix": [
+		"> 1%",
+		"last 2 versions"
+	],
+
+	"liveServer.settings.port": 3777,
+	"liveServer.settings.host": "192.168.0.197", // 본인 내부 IP로 변경 사용 (cmd > ipconfig > IPV4 부분 확인)
+}
+```
