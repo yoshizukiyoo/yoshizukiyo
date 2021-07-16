@@ -780,8 +780,6 @@
 							&lt;/div&gt;</pre>
 					</div>
 
-
-
 					<div class="guide_section">
 						<h3 class="tit_guide" id="icon">
 							아이콘 <small class="txt_primary">.ico.ico_*</small>
@@ -899,6 +897,342 @@
 							/* @include ico('아이콘명', width, height); */
 							@include ico('home', 21px, 21px); // ico_home.png
 							@include ico('star_primary', 30px, 29px); // ico_star_primary.png</pre>
+					</div>
+
+
+
+					<div class="guide_section">
+						<h3 class="tit_guide" id="modal_popup">
+							모달 팝업
+							<small class="txt_primary">.modal_popup</small>
+						</h3>
+						<div class="box_html_guide">
+							<ul class="list list2">
+								<li>[웹 접근성] 키보드 포커싱을 위해 호출 및 닫기 버튼은 아래 가이드 사용 필수</li>
+							</ul>
+						</div>
+						<div class="mt_3">
+							<div class="txt_l mt_0">
+								<a href="#layerSampleAlert" class="btn btn_sm btn_primary"
+									onclick="openModal('#layerSampleAlert', this);">.modal_alert (600)</a>
+
+								<a href="#layerSampleXs" class="btn btn_sm btn_default"
+									onclick="openModal('#layerSampleXs', this);">.modal_xs (400)</a>
+								<a href="#layerSampleSm" class="btn btn_sm btn_default"
+									onclick="openModal('#layerSampleSm', this);">.modal_sm (600)</a>
+
+								<a href="#layerSampleMd" class="btn btn_sm btn_default"
+									onclick="openModal('#layerSampleMd', this);">.modal_md (750)</a>
+								<a href="#layerSampleLg" class="btn btn_sm btn_outline_default"
+									onclick="openModal('#layerSampleLg', this);">.modal_lg (800)</a>
+								<a href="#layerSampleXl" class="btn btn_sm btn_outline_default"
+									onclick="openModal('#layerSampleXl', this);">.modal_xl (880)</a>
+
+								<a href="#layerSampleXxl" class="btn btn_sm btn_outline_default"
+									onclick="openModal('#layerSampleXxl', this);">.modal_xxl (1200)</a>
+							</div>
+							<div class="d_up_lg">
+								<pre class="brush:html" title="HTML : 모달 팝업 마크업">
+
+								&lt;!-- s: modal popup --&gt;
+								&lt;!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) --&gt;
+								&lt;!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 --&gt;
+								&lt;div class="modal_popup modal_md hide" id="layerSample"&gt;
+									&lt;div class="dimed"&gt;&lt;/div&gt;
+									&lt;div class="popup_inner"&gt;
+										&lt;!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" --&gt;
+										&lt;div class="popup_header"&gt;
+											&lt;h2 class="popup_tit"&gt;팝업 타이틀&lt;/h2&gt;
+										&lt;/div&gt;
+										&lt;div class="popup_body bg_lightgray"&gt;
+											&lt;p&gt;.popup_body는 여러개 올 수 있으며 미사용시 하나 남기고 제거&lt;/p&gt;
+										&lt;/div&gt;
+										&lt;div class="popup_body"&gt;
+											&lt;p&gt;일반 흰색 배경 콘텐츠&lt;/p&gt;
+											&lt;div class="btn_group"&gt;
+												&lt;button type="button" class="btn btn_lg btn_primary onclick="closeModal('#layerSample');"&gt;확인&lt;/button&gt;
+											&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;!-- 하단 고정 푸터 (미사용시 삭제) --&gt;
+										&lt;div class="popup_footer"&gt;
+											&lt;p&gt;우체국금융고객센터 : &lt;span class="txt_invalid"&gt;1588-1900&lt;/span&gt; (0번 연결)&lt;/p&gt;
+											&lt;p&gt;Copyright 2013 Koreapost All rights Reserved&lt;/p&gt;
+										&lt;/div&gt;
+										&lt;button type="button" class="btn btn_close_popup"&gt;닫기&lt;/button&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+								&lt;!-- e: modal popup --&gt;</pre>
+
+								<h4 class="tit1 mt_10">모달 열기 및 닫기</h4>
+								<div>
+									<pre class="brush:html" title="HTML : 호출 및 닫기 버튼">
+										<!-- 버튼 클릭 이벤트로 열기 : 웹접근성 포커싱 이슈로 this 구문 필수 -->
+										<a href="#;" onclick="openModal('#layerSample', this);"></a>
+
+										<!-- 버튼 클릭 이벤트로 닫기 : closeModal('#레이어팝업 셀렉터') -->
+										<button type="button" onclick="closeModal('#layerSample');"></button>
+
+										<!-- 일반 함수로 열기 : closeModal('#레이어팝업 셀렉터') -->
+										openModal('#layerSample');
+
+										<!-- 일반 함수로 닫기시 포커싱 처리 : closeModal('#레이어팝업 셀렉터', '#닫은 후 포커스 받을 버튼 아이디') -->
+										closeModal('#layerSample', '#btn_for-focus-popup');</pre>
+								</div>
+							</div>
+						</div>
+
+						<!-- Modal Popup : .modal_alert (600) -->
+						<div class="modal_popup modal_alert hide" id="layerSampleAlert">
+							<div class="dimed"></div>
+							<div class="popup_inner">
+								<div class="popup_header txt_l">
+									<h2 class="popup_tit">팝업 타이틀</h2>
+								</div>
+								<div class="popup_body">
+									<div class="scroll_inner">
+										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
+									</div>
+									<div class="btn_group">
+										<button type="button" class="btn btn_lg btn_primary"
+											onclick="closeModal('#layerSampleAlert');">확인</button>
+									</div>
+								</div>
+								<button type="button" class="btn btn_close_popup">닫기</button>
+							</div>
+						</div>
+
+						<!-- Modal Popup : .modal_xs (400) -->
+						<div class="modal_popup modal_xs hide" id="layerSampleXs">
+							<div class="dimed"></div>
+							<div class="popup_inner">
+								<div class="popup_header txt_l">
+									<h2 class="popup_tit">팝업 타이틀</h2>
+								</div>
+								<div class="popup_body">
+									<div class="scroll_inner">
+										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
+									</div>
+									<div class="btn_group">
+										<button type="button" class="btn btn_lg btn_primary"
+											onclick="closeModal('#layerSampleXs');">확인</button>
+									</div>
+								</div>
+								<button type="button" class="btn btn_close_popup">닫기</button>
+							</div>
+						</div>
+
+						<!-- Modal Popup : .modal_sm (600) -->
+						<div class="modal_popup modal_sm hide" id="layerSampleSm">
+							<div class="dimed"></div>
+							<div class="popup_inner">
+								<div class="popup_header txt_l">
+									<h2 class="popup_tit">팝업 타이틀</h2>
+								</div>
+								<div class="popup_body">
+									<div class="scroll_inner">
+										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
+									</div>
+									<div class="btn_group">
+										<button type="button" class="btn btn_lg btn_primary"
+											onclick="closeModal('#layerSampleSm');">확인</button>
+									</div>
+								</div>
+								<div class="popup_footer">
+									<p>우체국금융고객센터 : <span class="txt_invalid">1588-1900</span> (0번 연결)</p>
+									<p>Copyright 2013 Koreapost All rights Reserved</p>
+								</div>
+								<button type="button" class="btn btn_close_popup">닫기</button>
+							</div>
+						</div>
+
+						<!-- Modal Popup : .modal_md (750) -->
+						<div class="modal_popup modal_md hide" id="layerSampleMd">
+							<div class="dimed"></div>
+							<div class="popup_inner">
+								<div class="popup_header">
+									<h2 class="popup_tit">팝업 타이틀</h2>
+								</div>
+								<div class="popup_body">
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>
+										레이어팝업 본문 영역 레이어팝업 본문 영역 레이어 팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역
+										레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역
+									</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<div class="btn_group">
+										<button type="button" class="btn btn_lg btn_primary"
+											onclick="closeModal('#layerSampleAlert');">확인</button>
+									</div>
+								</div>
+								<div class="popup_footer">
+									<p>우체국금융고객센터 : <span class="txt_invalid">1588-1900</span> (0번 연결)</p>
+									<p>Copyright 2013 Koreapost All rights Reserved</p>
+								</div>
+								<button type="button" class="btn btn_close_popup">닫기</button>
+							</div>
+						</div>
+
+						<!-- Modal Popup : .modal_lg (800) -->
+						<div class="modal_popup modal_lg hide" id="layerSampleLg">
+							<div class="dimed"></div>
+							<div class="popup_inner">
+								<div class="popup_header">
+									<h2 class="popup_tit">팝업 타이틀</h2>
+								</div>
+								<div class="popup_body">
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역 레이어 팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문
+										영역 레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<div class="btn_group">
+										<button type="button" class="btn btn_lg btn_primary"
+											onclick="closeModal('#layerSampleLg');">확인</button>
+									</div>
+								</div>
+								<button type="button" class="btn btn_close_popup">닫기</button>
+							</div>
+						</div>
+
+						<!-- Modal Popup : .modal_xl (880) -->
+						<div class="modal_popup modal_xl hide" id="layerSampleXl">
+							<div class="dimed"></div>
+							<div class="popup_inner">
+								<div class="popup_header">
+									<h2 class="popup_tit">팝업 타이틀</h2>
+								</div>
+								<div class="popup_body">
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역 레이어 팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문
+										영역
+										레이어팝업 본문
+										영역
+										레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
+									<div class="btn_group">
+										<button type="button" class="btn btn_lg btn_primary"
+											onclick="closeModal('#layerSampleXl');">확인</button>
+									</div>
+								</div>
+								<button type="button" class="btn btn_close_popup">닫기</button>
+							</div>
+						</div>
+
+						<!-- Modal Popup : .modal_xxl (1200) -->
+						<div class="modal_popup modal_xxl hide" id="layerSampleXxl">
+							<div class="dimed"></div>
+							<div class="popup_inner">
+								<div class="popup_header txt_l">
+									<h2 class="popup_tit">팝업 타이틀</h2>
+								</div>
+								<div class="popup_body bg_lightgray">
+									<p>팝업 콘텐츠 섹션1</p>
+								</div>
+								<div class="popup_body">
+									<p>팝업 콘텐츠 섹션2</p>
+									<div class="btn_group">
+										<button type="button" class="btn btn_lg btn_primary"
+											onclick="closeModal('#layerSampleXxl');">확인</button>
+									</div>
+								</div>
+								<div class="popup_footer">
+									<p>우체국금융고객센터 : <span class="txt_invalid">1588-1900</span> (0번 연결)</p>
+									<p>Copyright 2013 Koreapost All rights Reserved</p>
+								</div>
+								<button type="button" class="btn btn_close_popup">닫기</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="guide_section">
+						<h3 class="tit_guide" id="window-popup">
+							윈도우 팝업
+							<small class="txt_primary">.popup</small>
+						</h3>
+						<div class="box_html_guide">
+							<ul class="list list2">
+								<li>웹 접근성 지침에 따라 사용자에게 새창 공지 및 키보드 포커싱 관련 처리를 위해 아래 가이드를 활용합니다.</li>
+								<li>앵커태그(a) 사용을 권장하며 버튼에 <strong class="txt_invalid">target="_blank</strong> 속성 사용 (새창 타이틀 생략)
+								</li>
+								<li>
+									윈도우 팝업 템플릿 :
+									<a href="/html/deposit/_template_popup.html" target="_blank" class="link">
+										_template_popup.html
+									</a>
+									파일 복사 사용
+								</li>
+							</ul>
+						</div>
+						<div class="mt_3">
+							<a href="/html/deposit/_template_popup.html" target="_blank" class="btn btn_md btn_primary"
+								onclick="openWindow(this, 'popName', '900', '800'); return false;">윈도우 팝업 호출</a>
+							<pre class="brush:html" title="HTML : 호출 및 닫기 버튼">
+									<!-- 링크로 호출 : href에 팝업 URI를 입력하고, openWindow(this, '팝업창이름', '팝업너비', '팝업높이'); return false; 함수 사용 -->
+									<a href="/html/deposit/_template_popup.html" target="_blank" onclick="openWindow(this, 'popName', '900', '800'); return false;">버튼</a>
+
+									<!-- 함수로 호출 : openWindow('팝업URI', '팝업창이름', '팝업너비', '팝업높이', '팝업창 닫은 뒤 포커스 받을 버튼 id (버튼 미존재시 생략가능)'); -->
+									openWindow('popup.html', 'popName', '850', '600', '#btn_for-focus-popup');
+
+									<!-- 윈도우 닫기 : 웹 접근성 키보드 포커싱 처리되어 있음 -->
+									&lt;button type="button" onclick="closeWindow();"&gt;&lt;/button&gt;</pre>
+						</div>
 					</div>
 
 					<div class="guide_section">
@@ -1717,361 +2051,6 @@
 						</div>
 						<pre class="brush:html" title="HTML">
 							&lt;input type="text" class="tf tf_datepicker" style="width: 200px;"&gt;</pre>
-					</div>
-
-					<div class="guide_section">
-						<h3 class="tit_guide" id="modal_popup">
-							모달 팝업
-							<small class="txt_primary">.modal_popup</small>
-						</h3>
-						<div class="box_html_guide">
-							<ul class="list list2">
-								<li>[웹 접근성] 키보드 포커싱을 위해 호출 및 닫기 버튼은 아래 가이드 사용 필수</li>
-							</ul>
-						</div>
-						<div class="mt_3">
-							<div class="txt_l mt_0">
-								<a href="#layerSampleAlert" class="btn btn_sm btn_primary"
-									onclick="openModal('#layerSampleAlert', this);">.modal_alert (600)</a>
-
-								<a href="#layerSampleXs" class="btn btn_sm btn_default"
-									onclick="openModal('#layerSampleXs', this);">.modal_xs (400)</a>
-								<a href="#layerSampleSm" class="btn btn_sm btn_default"
-									onclick="openModal('#layerSampleSm', this);">.modal_sm (600)</a>
-
-								<a href="#layerSampleMd" class="btn btn_sm btn_default"
-									onclick="openModal('#layerSampleMd', this);">.modal_md (750)</a>
-								<a href="#layerSampleLg" class="btn btn_sm btn_outline_default"
-									onclick="openModal('#layerSampleLg', this);">.modal_lg (800)</a>
-								<a href="#layerSampleXl" class="btn btn_sm btn_outline_default"
-									onclick="openModal('#layerSampleXl', this);">.modal_xl (880)</a>
-
-								<a href="#layerSampleXxl" class="btn btn_sm btn_outline_default"
-									onclick="openModal('#layerSampleXxl', this);">.modal_xxl (1100)</a>
-							</div>
-							<div class="d_up_lg">
-								<pre class="brush:html" title="HTML : 모달 팝업 마크업">
-								&lt;!-- 모달 크기에 따른 class 지정 .modal_sm, .modal_md, .modal_lg, .modal_xl, .modal_full --&gt;
-								&lt;!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 --&gt;
-								&lt;div class="modal_popup modal_md hide" id="layerSample"&gt;
-									&lt;div class="dimed"&gt;&lt;/div&gt;
-									&lt;div class="popup_inner"&gt;
-										&lt;!-- 헤더 미사용시 .popup_header 만 제거, 하단 .btn_close_popup 버튼은 남겨둠 --&gt;
-										&lt;div class="popup_header"&gt;
-											&lt;h2 class="popup_tit"&gt;팝업 타이틀&lt;/h2&gt;
-										&lt;/div&gt;
-										&lt;div class="popup_body"&gt;
-											&lt;div class="scroll_inner"&gt;
-												&lt;p&gt;Contents&lt;/p&gt;
-											&lt;/div&gt;
-										&lt;/div&gt;
-
-										&lt;!-- 하단 고정 푸터 (고정을 원하지 않을시 .popup_body 내부에 마크업 ) --&gt;
-										&lt;div class="popup_footer"&gt;
-											&lt;div class="btn_group"&gt;
-												&lt;button type="button" class="btn btn_lg btn_primary"&gt;버튼&lt;/button&gt;
-												&lt;button type="button" class="btn btn_lg btn_default" onclick="closeModal('#layerSample');"&gt;닫기&lt;/button&gt;
-											&lt;/div&gt;
-										&lt;/div&gt;
-										&lt;button type="button" class="btn btn_close_popup"&gt;닫기&lt;/button&gt;
-									&lt;/div&gt;
-								&lt;/div&gt;</pre>
-
-								<h4 class="tit1 mt_10">모달 열기 및 닫기</h4>
-								<div>
-									<pre class="brush:html" title="HTML : 호출 및 닫기 버튼">
-										<!-- 버튼 클릭 이벤트로 열기 : 웹접근성 포커싱 이슈로 this 구문 필수 -->
-										<a href="#;" onclick="openModal('#layerSample', this);"></a>
-
-										<!-- 버튼 클릭 이벤트로 닫기 : closeModal('#레이어팝업 셀렉터') -->
-										<button type="button" onclick="closeModal('#layerSample');"></button>
-
-										<!-- 일반 함수로 열기 : closeModal('#레이어팝업 셀렉터') -->
-										openModal('#layerSample');
-
-										<!-- 일반 함수로 닫기시 포커싱 처리 : closeModal('#레이어팝업 셀렉터', '#닫은 후 포커스 받을 버튼 아이디') -->
-										closeModal('#layerSample', '#btn_for-focus-popup');</pre>
-								</div>
-							</div>
-						</div>
-
-						<!-- Modal Popup : .modal_alert -->
-						<div class="modal_popup modal_alert hide" id="layerSampleAlert">
-							<div class="dimed"></div>
-							<div class="popup_inner">
-								<div class="popup_header">
-									<h2 class="popup_tit">팝업 타이틀</h2>
-								</div>
-								<div class="popup_body">
-									<div class="scroll_inner">
-										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
-									</div>
-								</div>
-								<div class="popup_footer">
-									<div class="btn_group">
-										<button type="button" class="btn btn_lg btn_primary"
-											onclick="closeModal('#layerSampleSm');">확인</button>
-									</div>
-								</div>
-								<button type="button" class="btn btn_close_popup">닫기</button>
-							</div>
-						</div>
-
-						<!-- Modal Popup : .modal_sm -->
-						<div class="modal_popup modal_xs hide" id="layerSampleXs">
-							<div class="dimed"></div>
-							<div class="popup_inner">
-								<div class="popup_header">
-									<h2 class="popup_tit">팝업 타이틀</h2>
-								</div>
-								<div class="popup_body">
-									<div class="scroll_inner">
-										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
-									</div>
-								</div>
-								<div class="popup_footer">
-									<div class="btn_group">
-										<button type="button" class="btn btn_lg btn_primary"
-											onclick="closeModal('#layerSampleSm');">확인</button>
-									</div>
-								</div>
-								<button type="button" class="btn btn_close_popup">닫기</button>
-							</div>
-						</div>
-
-						<!-- Modal Popup : .modal_sm -->
-						<div class="modal_popup modal_sm hide" id="layerSampleSm">
-							<div class="dimed"></div>
-							<div class="popup_inner">
-								<div class="popup_header">
-									<h2 class="popup_tit">팝업 타이틀</h2>
-								</div>
-								<div class="popup_body">
-									<div class="scroll_inner">
-										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
-									</div>
-								</div>
-								<div class="popup_footer">
-									<div class="btn_group">
-										<button type="button" class="btn btn_lg btn_primary"
-											onclick="closeModal('#layerSampleSm');">확인</button>
-									</div>
-								</div>
-								<button type="button" class="btn btn_close_popup">닫기</button>
-							</div>
-						</div>
-
-						<!-- Modal Popup : .modal_md -->
-						<div class="modal_popup modal_md hide" id="layerSampleMd">
-							<div class="dimed"></div>
-							<div class="popup_inner">
-								<div class="popup_header">
-									<h2 class="popup_tit">팝업 타이틀</h2>
-								</div>
-								<div class="popup_body">
-									<div class="scroll_inner">
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>
-											레이어팝업 본문 영역 레이어팝업 본문 영역 레이어 팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역
-											레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역
-										</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-									</div>
-								</div>
-								<div class="popup_footer not-open-today">
-									<span class="ckeck-item">
-										<input type="checkbox" id="inputNotOpenToday">
-										<label for="inputNotOpenToday">오늘 하루 열지 않음</label>
-									</span>
-									<button type="button" class="btn btn_lg btn_default"
-										onclick="closeModal('#layerSampleMd');">닫기</button>
-								</div>
-								<!-- <div class="popup_footer">
-									<div class="btn_group">
-										<button type="button" class="btn btn_lg btn_primary">확인</button>
-										<button type="button" class="btn btn_lg btn_default"
-											onclick="closeModal('#layerSampleMd');">닫기</button>
-									</div>
-								</div> -->
-								<button type="button" class="btn btn_close_popup">닫기</button>
-							</div>
-						</div>
-
-						<!-- Modal Popup : .modal_lg -->
-						<div class="modal_popup modal_lg hide" id="layerSampleLg">
-							<div class="dimed"></div>
-							<div class="popup_inner">
-								<div class="popup_header">
-									<h2 class="popup_tit">팝업 타이틀</h2>
-								</div>
-								<div class="popup_body">
-									<div class="scroll_inner">
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역 레이어 팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문
-											영역
-											레이어팝업 본문
-											영역
-											레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-									</div>
-								</div>
-								<div class="popup_footer">
-									<div class="btn_group">
-										<button type="button" class="btn btn_lg btn_primary">확인</button>
-										<button type="button" class="btn btn_lg btn_default"
-											onclick="closeModal('#layerSampleLg');">닫기</button>
-									</div>
-								</div>
-								<button type="button" class="btn btn_close_popup">닫기</button>
-							</div>
-						</div>
-
-						<!-- Modal Popup : .modal_xl -->
-						<div class="modal_popup modal_xl hide" id="layerSampleXl">
-							<div class="dimed"></div>
-							<div class="popup_inner">
-								<div class="popup_header">
-									<h2 class="popup_tit">팝업 타이틀</h2>
-								</div>
-								<div class="popup_body">
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역 레이어 팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문
-										영역
-										레이어팝업 본문
-										영역
-										레이어팝업 본문 영역</p>
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-								</div>
-								<div class="popup_footer">
-									<div class="btn_group">
-										<button type="button" class="btn btn_lg btn_primary">확인</button>
-										<button type="button" class="btn btn_lg btn_default"
-											onclick="closeModal('#layerSampleXl');">닫기</button>
-									</div>
-								</div>
-								<button type="button" class="btn btn_close_popup">닫기</button>
-							</div>
-						</div>
-
-						<!-- Modal Popup : .modal_full -->
-						<div class="modal_popup modal_xxl hide" id="layerSampleXxl">
-							<div class="dimed"></div>
-							<div class="popup_inner">
-								<div class="popup_header">
-									<h2 class="popup_tit">팝업 타이틀</h2>
-								</div>
-								<div class="popup_body">
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역 레이어 팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문 영역 레이어팝업 본문
-										영역
-										레이어팝업 본문
-										영역
-										레이어팝업 본문 영역</p>
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-									<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
-								</div>
-								<div class="popup_footer">
-									<div class="btn_group">
-										<button type="button" class="btn btn_lg btn_primary">확인</button>
-										<button type="button" class="btn btn_lg btn_default"
-											onclick="closeModal('#layerSampleXxl');">닫기</button>
-									</div>
-								</div>
-								<button type="button" class="btn btn_close_popup">닫기</button>
-							</div>
-						</div>
-					</div>
-
-					<div class="guide_section">
-						<h3 class="tit_guide" id="window-popup">
-							윈도우 팝업
-							<small class="txt_primary">.popup</small>
-						</h3>
-						<div class="box_html_guide">
-							<ul class="list list2">
-								<li>웹 접근성 지침에 따라 사용자에게 새창 공지 및 키보드 포커싱 관련 처리를 위해 아래 가이드를 활용합니다.</li>
-								<li>앵커태그(a) 사용을 권장하며 버튼에 <strong class="txt_invalid">target="_blank</strong> 속성 사용 (새창 타이틀 생략)
-								</li>
-								<li>
-									윈도우 팝업 템플릿 :
-									<a href="/html/deposit/_template-popup.html" target="_blank" class="link">
-										_template-popup.html
-									</a>
-									파일 복사 사용
-								</li>
-							</ul>
-						</div>
-						<div class="mt_3">
-							<a href="/html/deposit/_template-popup.html" target="_blank" class="btn btn_md btn_primary"
-								onclick="openWindow(this, 'popName', '900', '800'); return false;">윈도우 팝업 호출</a>
-							<pre class="brush:html" title="HTML : 호출 및 닫기 버튼">
-									<!-- 링크로 호출 : href에 팝업 URI를 입력하고, openWindow(this, '팝업창이름', '팝업너비', '팝업높이'); return false; 함수 사용 -->
-									<a href="/html/deposit/_template-popup.html" target="_blank" onclick="openWindow(this, 'popName', '900', '800'); return false;">버튼</a>
-
-									<!-- 함수로 호출 : openWindow('팝업URI', '팝업창이름', '팝업너비', '팝업높이', '팝업창 닫은 뒤 포커스 받을 버튼 id (버튼 미존재시 생략가능)'); -->
-									openWindow('popup.html', 'popName', '850', '600', '#btn_for-focus-popup');
-
-									<!-- 윈도우 닫기 : 웹 접근성 키보드 포커싱 처리되어 있음 -->
-									&lt;button type="button" onclick="closeWindow();"&gt;&lt;/button&gt;</pre>
-						</div>
 					</div>
 				</div>
 			</div>
