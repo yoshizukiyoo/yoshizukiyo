@@ -3,9 +3,45 @@
 //
 
 
-
 // 스크롤 내비게이션
 $(document).ready(function () { });
+
+
+// 소스 정리중.....
+function menuOpen() {
+	$('.allmenu_wrap').animate({ height: $('.allmenu_wrap').height() - $('.result_box').outerHeight() });
+	$('.result_box').slideDown();
+}
+
+function menuClose() {
+	$('.result_box').slideUp(function () {
+		height();
+	});
+}
+
+function allMenuScroll() {
+	openModal('#layerSampleXxl', this);
+	height();
+
+	$(".allmenu_wrap").mCustomScrollbar({
+		theme: "dark",
+		axis: "y"
+	});
+
+	$(window).resize(function () {
+		height();
+	});
+}
+
+function height() {
+	var h = $('.allmenu_inner').height();
+	$('.allmenu_wrap').height(h - 200);
+	if ($('.result_box').css('display') == 'block') {
+		$('.allmenu_wrap').height($('.allmenu_wrap').height() - $('.result_box').outerHeight());
+	}
+}
+// 소스 정리중.....
+
 
 // GNB
 $(document).on('mouseenter focusin', '.header .gnb>ul>li>a', function () {
@@ -21,11 +57,11 @@ $(document).on('keydown', '#gnb>ul>li:last-child>.layer_mn>.menu_wrap>.menu_list
 		gnbClose();
 	}
 });
-
 function gnbClose() {
 	$('.gnb>ul>li>a').removeClass();
 	$('.layer_mn').removeClass('open');
 }
+
 
 // Breadcrumb
 $(document).on('click', '.breadcrumb_list>li>a', function (e) {
