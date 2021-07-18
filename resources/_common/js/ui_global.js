@@ -51,10 +51,10 @@ $(function () {
 	$('.btn_favorite').on('click', function () {
 		if ($('.ico', this).hasClass('ico_star_primary')) {
 			$('.ico', this).removeClass('ico_star_primary').addClass('ico_star_gray')
-				.next('.sr_only').text('즐겨찾기 추가');
+				.next('.sr_only').text('마이메뉴 등록');
 		} else {
 			$('.ico', this).removeClass('ico_star_gray').addClass('ico_star_primary')
-				.next('.sr_only').text('즐겨찾기 해제');
+				.next('.sr_only').text('마이메뉴 해제');
 		}
 	});
 });
