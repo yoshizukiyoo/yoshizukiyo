@@ -1171,22 +1171,23 @@
 							<div class="mt_3">
 								<div class="txt_l mt_0">
 									<a href="#layerSampleAlert" class="btn btn_sm btn_primary"
-										onclick="openModal('#layerSampleAlert', this);">.modal_alert (600)</a>
+										onclick="openModal('layerSampleAlert', this);">.modal_alert
+										(600)</a>
 
-									<a href="#layerSampleXs" class="btn btn_sm btn_default"
-										onclick="openModal('#layerSampleXs', this);">.modal_xs (400)</a>
-									<a href="#layerSampleSm" class="btn btn_sm btn_default"
-										onclick="openModal('#layerSampleSm', this);">.modal_sm (600)</a>
+									<a href="#layerSampleXs" class="btn btn_sm btn_default" onclick="openModal('layerSampleXs', this);"
+										data-focus-btn="layerSampleXs">.modal_xs (400)</a>
+									<a href="#layerSampleSm" class="btn btn_sm btn_default" onclick="openModal('layerSampleSm', this);"
+										data-focus-btn="layerSampleSm">.modal_sm (600)</a>
 
-									<a href="#layerSampleMd" class="btn btn_sm btn_default"
-										onclick="openModal('#layerSampleMd', this);">.modal_md (750)</a>
+									<a href="#layerSampleMd" class="btn btn_sm btn_default" onclick="openModal('layerSampleMd', this);"
+										data-focus-btn="layerSampleMd">.modal_md (750)</a>
 									<a href="#layerSampleLg" class="btn btn_sm btn_outline_default"
-										onclick="openModal('#layerSampleLg', this);">.modal_lg (800)</a>
+										onclick="openModal('layerSampleLg', this);" data-focus-btn="layerSampleLg">.modal_lg (800)</a>
 									<a href="#layerSampleXl" class="btn btn_sm btn_outline_default"
-										onclick="openModal('#layerSampleXl', this);">.modal_xl (880)</a>
+										onclick="openModal('layerSampleXl', this);" data-focus-btn="layerSampleXl">.modal_xl (880)</a>
 
 									<a href="#layerSampleXxl" class="btn btn_sm btn_outline_default"
-										onclick="openModal('#layerSampleXxl', this);">.modal_xxl (1200)</a>
+										onclick="openModal('layerSampleXxl', this);" data-focus-btn="layerSampleXxl">.modal_xxl (1200)</a>
 								</div>
 								<div class="d_up_lg">
 									<pre class="brush:html" title="HTML : 모달 팝업 마크업">
@@ -1194,7 +1195,7 @@
 								&lt;!-- s: modal popup --&gt;
 								&lt;!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) --&gt;
 								&lt;!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 --&gt;
-								&lt;div class="modal_popup modal_md hide" id="layerSample"&gt;
+								&lt;div class="modal_popup modal_md hide" data-popup="layerSample"&gt;
 									&lt;div class="dimed"&gt;&lt;/div&gt;
 									&lt;div class="popup_inner"&gt;
 										&lt;!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" --&gt;
@@ -1207,7 +1208,7 @@
 										&lt;div class="popup_body"&gt;
 											&lt;p&gt;일반 흰색 배경 콘텐츠&lt;/p&gt;
 											&lt;div class="btn_group"&gt;
-												&lt;button type="button" class="btn btn_lg btn_primary onclick="closeModal('#layerSample');"&gt;확인&lt;/button&gt;
+												&lt;button type="button" class="btn btn_lg btn_primary onclick="closeModal('layerSample');"&gt;확인&lt;/button&gt;
 											&lt;/div&gt;
 										&lt;/div&gt;
 										&lt;!-- 하단 고정 푸터 (미사용시 삭제) --&gt;
@@ -1224,22 +1225,22 @@
 									<div>
 										<pre class="brush:html" title="HTML : 호출 및 닫기 버튼">
 										<!-- 버튼 클릭 이벤트로 열기 : 웹접근성 포커싱 이슈로 this 구문 필수 -->
-										<a href="#;" onclick="openModal('#layerSample', this);"></a>
+										<a href="#;" onclick="openModal('layerSample', this);"></a>
 
-										<!-- 버튼 클릭 이벤트로 닫기 : closeModal('#레이어팝업 셀렉터') -->
-										<button type="button" onclick="closeModal('#layerSample');"></button>
+										<!-- 버튼 클릭 이벤트로 닫기 : closeModal('레이어팝업 data-popup 속성 값') -->
+										<button type="button" onclick="openModal('layerSample');"></button>
 
-										<!-- 일반 함수로 열기 : closeModal('#레이어팝업 셀렉터') -->
-										openModal('#layerSample');
+										<!-- 일반 함수로 열기 : closeModal('레이어팝업 data-popup 속성 값') -->
+										openModal('layerSample');
 
-										<!-- 일반 함수로 닫기시 포커싱 처리 : closeModal('#레이어팝업 셀렉터', '#닫은 후 포커스 받을 버튼 아이디') -->
-										closeModal('#layerSample', '#btn_for-focus-popup');</pre>
+										<!-- 일반 함수로 닫기시 포커싱 처리 : closeModal('레이어팝업 data-popup 속성 값') -->
+										closeModal('layerSample');</pre>
 									</div>
 								</div>
 							</div>
 
 							<!-- Modal Popup : .modal_alert (600) -->
-							<div class="modal_popup modal_alert hide" id="layerSampleAlert">
+							<div class="modal_popup modal_alert hide" data-popup="layerSampleAlert">
 								<div class="dimed"></div>
 								<div class="popup_inner">
 									<div class="popup_header txt_l">
@@ -1261,9 +1262,9 @@
 										</div>
 										<div class="btn_group">
 											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="closeModal('#layerSampleAlert');">확인</button>
+												onclick="closeModal('layerSampleAlert');">확인</button>
 											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="closeModal('#layerSampleAlert');">취소</button>
+												onclick="closeModal('layerSampleAlert');">취소</button>
 										</div>
 									</div>
 									<button type="button" class="btn btn_close_popup">닫기</button>
@@ -1271,7 +1272,7 @@
 							</div>
 
 							<!-- Modal Popup : .modal_xs (400) -->
-							<div class="modal_popup modal_xs hide" id="layerSampleXs">
+							<div class="modal_popup modal_xs hide" data-popup="layerSampleXs">
 								<div class="dimed"></div>
 								<div class="popup_inner">
 									<div class="popup_header txt_l">
@@ -1281,7 +1282,7 @@
 										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
 										<div class="btn_group">
 											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="closeModal('#layerSampleXs');">확인</button>
+												onclick="closeModal('layerSampleXs');">확인</button>
 										</div>
 									</div>
 									<button type="button" class="btn btn_close_popup">닫기</button>
@@ -1289,7 +1290,7 @@
 							</div>
 
 							<!-- Modal Popup : .modal_sm (600) -->
-							<div class="modal_popup modal_sm hide" id="layerSampleSm">
+							<div class="modal_popup modal_sm hide" data-popup="layerSampleSm">
 								<div class="dimed"></div>
 								<div class="popup_inner">
 									<div class="popup_header txt_l">
@@ -1299,7 +1300,7 @@
 										<p class="txt_c">안내 문구 노출 영역입니다.<br> 텍스트를 입력해 주세요.</p>
 										<div class="btn_group">
 											<button type="button" class="btn btn_lg btn_primary"
-												onclick="closeModal('#layerSampleSm');">확인</button>
+												onclick="closeModal('layerSampleSm');">확인</button>
 										</div>
 									</div>
 									<div class="popup_footer">
@@ -1311,7 +1312,7 @@
 							</div>
 
 							<!-- Modal Popup : .modal_md (750) -->
-							<div class="modal_popup modal_md hide" id="layerSampleMd">
+							<div class="modal_popup modal_md hide" data-popup="layerSampleMd">
 								<div class="dimed"></div>
 								<div class="popup_inner">
 									<div class="popup_header">
@@ -1358,7 +1359,7 @@
 										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
 										<div class="btn_group">
 											<button type="button" class="btn btn_lg btn_primary"
-												onclick="closeModal('#layerSampleAlert');">확인</button>
+												onclick="closeModal('layerSampleMd');">확인</button>
 										</div>
 									</div>
 									<div class="popup_footer">
@@ -1370,7 +1371,7 @@
 							</div>
 
 							<!-- Modal Popup : .modal_lg (800) -->
-							<div class="modal_popup modal_lg hide" id="layerSampleLg">
+							<div class="modal_popup modal_lg hide" data-popup="layerSampleLg">
 								<div class="dimed"></div>
 								<div class="popup_inner">
 									<div class="popup_header">
@@ -1408,7 +1409,7 @@
 										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
 										<div class="btn_group">
 											<button type="button" class="btn btn_lg btn_primary"
-												onclick="closeModal('#layerSampleLg');">확인</button>
+												onclick="closeModal('layerSampleLg');">확인</button>
 										</div>
 									</div>
 									<button type="button" class="btn btn_close_popup">닫기</button>
@@ -1416,7 +1417,7 @@
 							</div>
 
 							<!-- Modal Popup : .modal_xl (880) -->
-							<div class="modal_popup modal_xl hide" id="layerSampleXl">
+							<div class="modal_popup modal_xl hide" data-popup="layerSampleXl">
 								<div class="dimed"></div>
 								<div class="popup_inner">
 									<div class="popup_header">
@@ -1433,7 +1434,7 @@
 										<p>레이어팝업 본문 영역 레이어팝업 본문 영역</p>
 										<div class="btn_group">
 											<button type="button" class="btn btn_lg btn_primary"
-												onclick="closeModal('#layerSampleXl');">확인</button>
+												onclick="closeModal('layerSampleXl');">확인</button>
 										</div>
 									</div>
 									<button type="button" class="btn btn_close_popup">닫기</button>
@@ -1441,7 +1442,7 @@
 							</div>
 
 							<!-- Modal Popup : .modal_xxl (1200) -->
-							<div class="modal_popup modal_xxl hide" id="layerSampleXxl">
+							<div class="modal_popup modal_xxl hide" data-popup="layerSampleXxl">
 								<div class="dimed"></div>
 								<div class="popup_inner">
 									<div class="popup_header txt_l">
@@ -1454,7 +1455,7 @@
 										<p>팝업 콘텐츠 섹션2</p>
 										<div class="btn_group">
 											<button type="button" class="btn btn_lg btn_primary"
-												onclick="closeModal('#layerSampleXxl');">확인</button>
+												onclick="closeModal('layerSampleXxl', 'layerSampleXxl');">확인</button>
 										</div>
 									</div>
 									<div class="popup_footer">

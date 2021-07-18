@@ -246,7 +246,7 @@ function openLayer(_target, _opener) {
 function closeLayer(_target, _opener) {
 	var tg = $(_target);
 	if (tg.hasClass('show')) {
-		if ($('.layer_popup.show').length == 1) {}
+		if ($('.layer_popup.show').length == 1) { }
 		tg.addClass('hide').removeClass('show');
 		var modalOpener = $(_opener);
 		if (modalOpener.length) {
@@ -284,8 +284,8 @@ $(document).on('click', 'a.js-layer_open', function (e) {
 	openModal(tg, $(this));
 	e.preventDefault();
 }).on('click', '.modal_popup .btn_close_popup, .modal_popup .dimed', function () {
-	var target = $(this).closest('.modal_popup').attr('id');
-	closeModal('#' + target, modalOpener);
+	var target = $(this).closest('.modal_popup').attr('data-popup');
+	closeModal(target, modalOpener);
 }).on('keydown', '.modal_popup .popup_inner', function (e) {
 	if ($('.popup_inner').is(e.target) && e.keyCode == 9 && e.shiftKey) { // shift + tab
 		e.preventDefault();
@@ -300,31 +300,31 @@ $(document).on('click', 'a.js-layer_open', function (e) {
 });
 
 function openModal(_target, _opener) {
-	if ($(_target).length > 0) {
+	var tg = $('.modal_popup[data-popup=' + _target + ']');
+	if (tg.length > 0) {
 		modalOpener = _opener;
 		$(_target).appendTo('body');
 		bodyScroll(true, $('body').width());
 		$('body').addClass('modal_open');
 		setTimeout(function () {
-			$(_target).addClass('show').removeClass('hide');
+			tg.addClass('show').removeClass('hide');
 		}, 100);
 		setTimeout(function () {
-			$('.popup_inner', _target).attr('tabindex', '0').focus();
-			$(_target).scrollTop(0);
+			$('.popup_inner', tg).attr('tabindex', '0').focus();
+			tg.scrollTop(0);
 		}, 300);
 	}
 }
 
-function closeModal(_target, _opener) {
-	var tg = $(_target);
+function closeModal(_target) {
+	var tg = $('.modal_popup[data-popup=' + _target + ']');
 	if (tg.hasClass('show')) {
 		if ($('.modal_popup.show').length == 1) {
 			bodyScroll(false);
 		}
 		tg.addClass('hide').removeClass('show');
-		var modalOpener = $(_opener);
-		if (modalOpener.length) {
-			modalOpener.focus();
+		if ($(modalOpener).length) {
+			$(modalOpener).focus();
 		}
 		// 레이어 해시 제거
 		history.pushState('', document.title, window.location.pathname + window.location.search);
