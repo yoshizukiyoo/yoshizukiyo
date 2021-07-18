@@ -32,9 +32,9 @@ function gnbClose() {
 }
 
 // 전체메뉴 실행
-$(document).on('click', '.btn_allmenu', function () {
+$(document).on('click', '.btn_allmenu > button', function () {
 	var obj = $(this);
-	obj.addClass('open');
+	obj.parent().addClass('open');
 	obj.find('>button>span').text('전체메뉴 닫기');
 });
 
