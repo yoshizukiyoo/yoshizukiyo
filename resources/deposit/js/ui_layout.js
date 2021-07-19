@@ -35,7 +35,7 @@ function gnbClose() {
 $(document).on('click', '.btn_allmenu > button', function () {
 	var obj = $(this);
 	obj.parent().addClass('open');
-	obj.find('>button>span').text('전체메뉴 닫기');
+	obj.find('>span').text('전체메뉴 닫기');
 });
 
 function menuBox(box) {
