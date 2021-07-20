@@ -217,7 +217,7 @@ function setDatepicker(obj) {
 	if ($(obj).hasClass('full')) {
 		$(obj).parent('.datepicker').addClass('full');
 	}
-	$(obj).after('<button type="button" class="btn btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button>');
+	$(obj).after('<button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button>');
 }
 
 // 일반 레이어
@@ -246,7 +246,7 @@ function openLayer(_target, _opener) {
 function closeLayer(_target, _opener) {
 	var tg = $(_target);
 	if (tg.hasClass('show')) {
-		if ($('.layer_popup.show').length == 1) { }
+		if ($('.layer_popup.show').length == 1) {}
 		tg.addClass('hide').removeClass('show');
 		var modalOpener = $(_opener);
 		if (modalOpener.length) {

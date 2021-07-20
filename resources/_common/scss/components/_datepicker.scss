@@ -1,5 +1,5 @@
-$datepicker-border-color: #e6e6e6;
-$datepicker-width: 250px;
+$datepicker-border-color: #111;
+$datepicker-width: 425px;
 
 .datepicker {
 	position: relative;
@@ -15,7 +15,7 @@ $datepicker-width: 250px;
 		right: 0;
 		top: 0;
 		bottom: 0;
-		padding: 0 10px;
+		padding: 0 14px;
 	}
 
 	@if ($mode=='responsive') {
@@ -32,12 +32,12 @@ $datepicker-width: 250px;
 #inseq-datepicker {
 	position: absolute;
 	width: $datepicker-width;
-	padding: 12px;
+	padding: 35px 20px 20px;
 	border: 1px solid $datepicker-border-color;
-	font-size: 13px;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 1;
 	background-color: #fff;
-	box-shadow: 0px 8px 15px rgba(66, 73, 80, 0.15);
-	// box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 	z-index: 1500;
 
 	caption {
@@ -48,55 +48,45 @@ $datepicker-width: 250px;
 	}
 
 	table {
-		tbl_layout: auto;
-		margin-top: 0;
+		table-layout: auto;
 		width: 100%;
-		text-align: center;
 		border: 0px solid #000;
+		text-align: center;
 		color: $default;
-		line-height: 2;
-
-		a {
-			line-height: 2;
-		}
 
 		th {
-			height: auto;
+			height: 30px;
 			background: none;
-			padding: 0 0 0.5em;
-			border: 0;
-			margin: 0;
 			text-align: center;
-			line-height: 20px;
-			font-weight: 500;
+			font-weight: normal;
 		}
 
 		td {
+			height: 45px;
 			padding: 0 !important;
 			margin: 0;
-			height: 28px;
 			text-align: center;
 			border: 0;
-			line-height: 1;
 		}
 
 		tbody {
 			td {
-				height: 28px;
-				color: #767676;
 
 				a {
-					width: 28px;
-					height: 28px;
-					line-height: 28px;
-
+					width: 39px;
+					height: 39px;
+					line-height: 39px;
+					border-radius: 50%;
 					display: block;
-					color: #000;
+					margin: auto;
+					color: $default;
 					text-decoration: none;
 
+					&:hover {
+						background-color: $bg-lightgray;
+					}
+
 					&.today {
-						border-radius: 50%;
-						color: #fff !important;
 						background-color: $primary;
 						font-weight: bold;
 					}
@@ -105,11 +95,14 @@ $datepicker-width: 250px;
 		}
 	}
 
-	#tableCalendarTitle {
-		margin-bottom: 8px;
+	#tableCalendarTitle,
+	#tableMonthTitle,
+	#tableYearTitle {
+		margin-bottom: 25px;
 
 		td {
-			font-size: 16px;
+			font-size: 26px;
+			font-weight: 500;
 
 			a {
 				font-size: inherit;
@@ -117,59 +110,39 @@ $datepicker-width: 250px;
 		}
 	}
 
-	#tableMonthTitle td a {
-		font-size: 16px;
-	}
-
-	#tableYearTitle {
-		margin-bottom: 5px;
-
-		td {
+	#tableCalendar {
+		th {
 			font-size: 16px;
 		}
-	}
 
-	#tableCalendarTitle,
-	#tableYear,
-	#tableMonthTitle,
-	#tableMonth {
-		a {
-			color: #000;
-		}
-	}
-
-	#tableCalendar {
-
-		th,
+		// th,
 		td {
+			font-size: 14px;
+
 			&:first-child {
-				color: #cf2121;
+				color: #ff883a;
 
 				a {
 					color: inherit;
 				}
 			}
 
-			&:last-child {
-				color: #0072cf;
+			// &:last-child {
+			// 	color: #0072cf;
 
-				a {
-					color: inherit;
-				}
-			}
+			// 	a {
+			// 		color: inherit;
+			// 	}
+			// }
 		}
 	}
 
 	.prev,
 	.next {
-		width: 21px;
-		height: 21px;
-		border-radius: 11px;
-		line-height: 21px;
-		border: 0;
-		padding: 0;
-		background: url(#{$url-img-common}/ico_chevron-left-gray@2x.png) no-repeat;
-		background-size: 20px auto;
+		margin-top: 2px;
+		width: 36px;
+		height: 36px;
+		background: url(#{$url-img-common}/ico_cal_arr_left.png) no-repeat center center;
 		text-indent: -9999px;
 		text-align: left;
 
@@ -182,18 +155,16 @@ $datepicker-width: 250px;
 
 	.prev {
 		float: left;
-		margin-left: 30px;
-		background-position: right center;
+		margin-left: 50px;
 	}
 
 	.next {
 		float: right;
-		margin-right: 30px;
-		background-image: url(#{$url-img-common}/ico_chevron-right-gray@2x.png);
-		background-position: left center;
+		margin-right: 50px;
+		background-image: url(#{$url-img-common}/ico_cal_arr_right.png);
 	}
 
-	.btn_cal-close {
+	.btn-cal-close {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -205,8 +176,7 @@ $datepicker-width: 250px;
 			height: 20px;
 			// opacity: .5;
 			color: transparent;
-			background: url(#{$url-img-common}/ico_times-gray@2x.png) no-repeat center center;
-			background-size: 20px auto;
+			background: url(#{$url-img-common}/ico_close_sm.png) no-repeat center center;
 		}
 	}
 
