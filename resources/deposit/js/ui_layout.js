@@ -54,7 +54,7 @@ function menuBox(box) {
 		allMenuHeight();
 	} else {
 		$('.allmenu_wrap').animate({ height: $('.allmenu_wrap').height() - $('.result_box').outerHeight() });
-		$('.result_box').slideDown();
+		$('.result_box').show();
 	}
 }
 
