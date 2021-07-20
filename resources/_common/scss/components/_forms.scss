@@ -385,3 +385,149 @@ p.txt_guide {
 	// 	margin-left: -11px;
 	// }
 }
+
+
+
+
+
+.selectbox_wrap {
+
+	&.sm {
+		height: 32px;
+
+		dt a {
+			height: 32px;
+			font-size: 14px;
+			color: $darkgray;
+
+			>span {
+				height: 32px;
+				margin: 0 45px 0 15px;
+				line-height: 30px;
+
+				&::after {
+					top: 13px;
+				}
+			}
+		}
+
+		&.active {
+			dt a {
+				border-radius: 6px 6px 0 0;
+			}
+
+			dd {
+				top: 31px;
+				font-size: 14px;
+
+				a span {
+					height: 32px;
+					line-height: 32px;
+				}
+			}
+		}
+	}
+
+	position: relative;
+	display: inline-block;
+	height: 46px;
+	text-align: left;
+	z-index: 99;
+	vertical-align: middle;
+
+	dl {
+		position: relative;
+	}
+
+	dt a {
+		display: block;
+		border: 1px solid $border-base;
+		border-radius: 6px;
+		background: $white;
+
+		>span {
+			display: block;
+			margin: 0 40px 0 15px;
+			height: 44px;
+			font-weight: 200;
+			line-height: 44px;
+			vertical-align: top;
+
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 20px;
+				right: 15px;
+				width: 13px;
+				height: 7px;
+				background: url(#{$url-img-common}/ico_arr_down_sm.png) no-repeat 0 0;
+			}
+		}
+	}
+
+	dd {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 43px;
+		width: 100%;
+
+		ul {
+			border: 1px solid $darkgray;
+			border-top: none;
+			border-radius: 0 0 6px 6px;
+		}
+
+		a {
+			display: block;
+			background: $white;
+		}
+
+		li {
+			&:first-child a {
+				border-top: 1px solid #eee;
+			}
+
+			&:last-child a {
+				border-radius: 0 0 5px 5px;
+			}
+		}
+
+		a span {
+			display: block;
+			margin: 0 40px 0 15px;
+			height: 44px;
+			line-height: 44px;
+			vertical-align: top;
+		}
+
+		li.active a {
+			background: #fafafa;
+		}
+	}
+
+	&.active {
+		z-index: 100;
+
+		dd {
+			display: block;
+		}
+
+		dt a {
+			border: 1px solid #333;
+		}
+	}
+
+	&.disabled a {
+		background: #f3f3f3;
+
+		>span {
+			color: #999;
+		}
+	}
+
+	&.error a {
+		border: 1px solid #d70000;
+	}
+}
