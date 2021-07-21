@@ -440,3 +440,17 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 	$('[data-sub-tab^="sub"]').hide();
 	$('[data-sub-tab=' + tg + ']').show();
 });
+
+// 디자인 셀렉트박스
+$(document).on('click', '.selectbox_wrap dt a', function () {
+		$('.selectbox_wrap').not($(this).parents('.selectbox_wrap')).removeClass('active');
+		$(this).parents('.selectbox_wrap').toggleClass('active');
+		return false;
+});
+var win = $(window);
+var selectBox = $('.selectbox_wrap dt a');
+win.on("click", function(e){
+	if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)){
+		$('.selectbox_wrap').removeClass('active');
+	}
+});

@@ -6,7 +6,7 @@
 .opt {
 	max-width: 100%;
 	height: $form-height;
-	border: 1px solid #dadada;
+	border: 1px solid $border-base;
 	border-radius: 6px;
 	padding: 5px 15px;
 	line-height: $form-height - 12px;
@@ -19,6 +19,7 @@
 	transition-duration: .2s;
 	transition-property: color, border-color, box-shadow;
 	will-change: color, border-color, box-shadow;
+	color: #666;
 
 	&::-ms-clear {
 		display: none;
@@ -94,12 +95,28 @@
 }
 
 textarea.tf {
-	height: auto;
-	padding-top: 12px;
-	padding-bottom: 12px;
-	overflow: auto;
+	width: 100%;
+	height: 200px;
+	padding: 17px 20px;
+	border: 1px solid $border-base;
+	border-radius: 6px;
 	line-height: inherit;
 	resize: none;
+	font-weight: 200;
+	font-size: 16px;
+	color: $darkgray;
+
+	&:focus {
+		color: #333;
+		position: relative;
+		border-color: $border-active;
+	}
+
+	&::placeholder {
+		font-weight: 200;
+		font-size: 16px;
+		color: $darkgray;
+	}
 }
 
 .ckeck-item,
@@ -448,10 +465,9 @@ p.txt_guide {
 		>span {
 			display: block;
 			margin: 0 40px 0 15px;
-			height: 44px;
-			font-weight: 200;
-			line-height: 44px;
-			vertical-align: top;
+			height: 46px;
+			line-height: 46px;
+			color: $darkgray;
 
 			&:after {
 				content: '';
@@ -470,7 +486,7 @@ p.txt_guide {
 		display: none;
 		position: absolute;
 		left: 0;
-		top: 43px;
+		top: 47px;
 		width: 100%;
 
 		ul {
@@ -482,6 +498,15 @@ p.txt_guide {
 		a {
 			display: block;
 			background: $white;
+
+			&:hover {
+				background: #f3f3f3;
+				color: $darkgray;
+			}
+
+			>span {
+				color: #666;
+			}
 		}
 
 		li {
@@ -497,13 +522,16 @@ p.txt_guide {
 		a span {
 			display: block;
 			margin: 0 40px 0 15px;
-			height: 44px;
-			line-height: 44px;
-			vertical-align: top;
+			height: 50px;
+			line-height: 50px;
 		}
 
 		li.active a {
-			background: #fafafa;
+			background: #f3f3f3;
+
+			>span {
+				color: $darkgray;
+			}
 		}
 	}
 
@@ -516,6 +544,7 @@ p.txt_guide {
 
 		dt a {
 			border: 1px solid #333;
+			border-radius: 6px 6px 0 0;
 		}
 	}
 
@@ -529,5 +558,36 @@ p.txt_guide {
 
 	&.error a {
 		border: 1px solid #d70000;
+	}
+}
+
+.phone_number {
+	position: relative;
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		width: 11px;
+		height: 1px;
+		margin-top: -1px;
+		background: $border-base;
+	}
+
+	&::before {
+		left: 103px;
+	}
+
+	&::after {
+		left: 227px;
+	}
+
+	>div {
+		display: inline-block;
+
+		&:not(:first-child) {
+			margin-left: 26px;
+		}
 	}
 }
