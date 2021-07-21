@@ -1,7 +1,12 @@
 <strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
-### 퍼블리싱 가이드
-우체국 공통 컴포넌트 가이드 : http://dev.inseq.co.kr:7772/html/index.html
+# 우체국 퍼블리싱 가이드
+
+### 공통 컴포넌트 가이드
+- develop(테스트서버) : http://test.epost.inseq.co.kr:7789/html/index.html
+- master(완료) : http://epost.inseq.co.kr:7789/html/index.html
+
+### 개발환경 세팅 가이드
 1. VSCode 및 필수확장도구 설치
 가이드 : https://docs.google.com/document/d/1mQjlcqiTBlXrFuUG825ZDZDLfIpXDm-gPyZ0mw9GFos/edit?usp=sharing
 2. 프로젝트 소스코드 Git 에서 내려받기
@@ -18,11 +23,15 @@
 
 ### 퍼블리셔 팀 협업 가이드
 1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
+'게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
 2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
 > 퍼블리셔 협업용 메신저 다운로드 : [메일플러그 메신저(구 퍼들러)](https://www.mailplug.com/mailplug/help/help_item_view/443)
 3. 기타 사항은 아래에 추가 예정...
 
-### IA구조도(업무현황표)
+
+
+# 자료
+### 디자인팀 산출물 목록 IA구조도(업무현황표)
 - [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
 - [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
 - [IA구조도(기본)_채널서비스_보험](https://docs.google.com/spreadsheets/d/1j2Qn5H11yWkoxJui4k-OzuHLW5NbywNHs5pJeUkHpE0/edit?usp=sharing)
