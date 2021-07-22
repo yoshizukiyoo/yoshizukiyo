@@ -301,3 +301,78 @@ $popup-size: (xs: 400px,
 		flex: 0 0 auto;
 	}
 }
+
+/* 툴팁 */
+.tooltip {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: -66px;
+
+	border-radius: 6px;
+	box-shadow: 0 5px 12px 0 #d8d8d8;
+	font-weight: 200;
+	font-size: 14px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: 34px;
+		bottom: -13px;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 0 13px 10px;
+		color: #555;
+	}
+
+	&.tooltip_sm {
+		padding: 14px 20px;
+		background: #fef5e5;
+		white-space: nowrap;
+
+		&::before {
+			border-color: #fef5e5 #fef5e5 transparent #fef5e5;
+		}
+	}
+
+	&.tooltip_md {
+		width: 322px;
+		padding: 16px 42px 16px 20px;
+		background: #fff;
+		line-height: 1.5;
+
+		>button {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 42px;
+			height: 48px;
+			background: url(#{$url-img-common}/ico_close_sm.png) no-repeat 50% 50%;
+		}
+
+		&::before {
+			border-color: #fff #fff transparent #fff;
+		}
+	}
+
+	.tooltip_list {
+		font-size: 14px;
+
+		>li {
+			position: relative;
+			padding-left: 18px;
+
+			&:not(:last-child) {
+				margin-bottom: 7px;
+			}
+
+			&::before {
+				content: '※';
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		}
+	}
+}
