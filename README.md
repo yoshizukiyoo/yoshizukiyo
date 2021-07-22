@@ -52,6 +52,7 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 ```json
 {
 	// 코딩 컨벤션 기본 설정
+	"editor.defaultFormatter": "HookyQR.beautify",
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
@@ -70,7 +71,7 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 		"**/node_modules/**",
 		".vscode/**"
 	],
-	"liveSassCompile.settings.generateMap": false,
+	"liveSassCompile.settings.generateMap": true,
 	"liveSassCompile.settings.autoprefix": [
 		"> 1%",
 		"last 2 versions"
