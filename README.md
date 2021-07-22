@@ -20,13 +20,13 @@
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
     - 우체국차세대금융_고객채널퍼블리싱가이드(초안) : https://drive.google.com/open?id=1OOwH61VRG3K3GBGKEtqQalwp4JFmlMoe
+5. [디자인-퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
 ### 퍼블리셔 팀 협업 가이드
 1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
 '게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
 2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
 > 퍼블리셔 협업용 메신저 다운로드 : [메일플러그 메신저(구 퍼들러)](https://www.mailplug.com/mailplug/help/help_item_view/443)
-3. [디자인-퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
 # 자료
 ### 디자인팀 산출물 목록 IA구조도(업무현황표)
