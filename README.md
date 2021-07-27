@@ -19,7 +19,7 @@
 가이드 : https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
-    - 우체국차세대금융_고객채널퍼블리싱가이드(초안) : https://drive.google.com/open?id=1OOwH61VRG3K3GBGKEtqQalwp4JFmlMoe
+    - 우체국차세대금융_고객채널퍼블리싱가이드 : https://drive.google.com/open?id=1ODkhQ8JqBjgljTmt0rQ8h7o6ZhH0wo2s
 5. [디자인-퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
 ### 퍼블리셔 팀 협업 가이드
@@ -36,6 +36,7 @@
 
 ### 스토리보드(구글드라이브)
 - [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
+- 7/9 수급 스토리보드 : https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w
 - 자료 반출용 공용 이메일 계정
 http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 
