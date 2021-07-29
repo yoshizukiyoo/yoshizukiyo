@@ -1,6 +1,7 @@
 <strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
 # PMS 사용 안내
+협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
 - `이슈` : 업무나 자료 전달 확인 요청시
 - `게시판` : 프로젝트 전체 기간동안 지속확인이 필요한 정보나 가이드 문서 공유
 - 이미지 첨부 : 클립보드에 복사(Ctrl + C)해 놓은 이미지를 텍스트 입력창에 Ctrl + V
