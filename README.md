@@ -9,6 +9,29 @@
 ### 이슈트래킹 가이드 (담당자 지정 필수)
 <img src="/files/11595" alt="" style="max-height:none">
 
+<br><br>
+
+# 자료
+### 디자인팀 산출물 목록 IA구조도(업무현황표)
+- [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
+- [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
+- [IA구조도(기본)_채널서비스_보험](https://docs.google.com/spreadsheets/d/1j2Qn5H11yWkoxJui4k-OzuHLW5NbywNHs5pJeUkHpE0/edit?usp=sharing)
+
+### 스토리보드(구글드라이브)
+- [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
+- 7/9 수급 스토리보드 : https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w
+- 자료 반출용 공용 이메일 계정
+http://webmail.16block.com/ (geistkorea1 / 가이스트1)
+
+### 디자인 산출물
+- 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
+- 디자인 산출물 자료 : SVN 저장소 URL : https://59.2.0.242/svn/design
+> geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
+SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
+SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
+
+<br><br>
+
 # 우체국 퍼블리싱 가이드
 
 ### 공통 컴포넌트 가이드
@@ -36,25 +59,6 @@
 '게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
 2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
 > 퍼블리셔 협업용 메신저 다운로드 : [메일플러그 메신저(구 퍼들러)](https://www.mailplug.com/mailplug/help/help_item_view/443)
-
-# 자료
-### 디자인팀 산출물 목록 IA구조도(업무현황표)
-- [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
-- [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
-- [IA구조도(기본)_채널서비스_보험](https://docs.google.com/spreadsheets/d/1j2Qn5H11yWkoxJui4k-OzuHLW5NbywNHs5pJeUkHpE0/edit?usp=sharing)
-
-### 스토리보드(구글드라이브)
-- [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
-- 7/9 수급 스토리보드 : https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w
-- 자료 반출용 공용 이메일 계정
-http://webmail.16block.com/ (geistkorea1 / 가이스트1)
-
-### 디자인 산출물
-- 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
-- 디자인 산출물 자료 : SVN 저장소 URL : https://59.2.0.242/svn/design
-> geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
-SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
-SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 
 ### .vscode/settings.json
 ```json
