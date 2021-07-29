@@ -30,7 +30,7 @@ http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
 SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 
-<br><br>
+<br>
 
 # 우체국 퍼블리싱 가이드
 
