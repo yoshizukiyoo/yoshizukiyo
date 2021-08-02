@@ -99,6 +99,14 @@ $(document).on('click', '.btn_mymenu_box > a', function () {
 	$(this).addClass('current').siblings().removeClass('current');
 });
 
+// 전체 메뉴 탭메뉴
+$(document).on('click', '.tab_all_menu a', function () {
+    var menuId = $(this).data('layer-tab');
+    $(this).addClass('current').parent().siblings().find('>a').removeClass('current');
+    $('.tab_sub_menu[data-menu-box="' + menuId + '"]').show().siblings().hide();
+	return false;
+});
+
 // 최근 이용 메뉴 체크
 function latelyCheck() {
 	$('.lately_check').addClass('on');
