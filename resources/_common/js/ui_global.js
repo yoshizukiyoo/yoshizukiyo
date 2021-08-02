@@ -443,9 +443,16 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 
 // 디자인 셀렉트박스
 $(document).on('click', '.selectbox_wrap dt a', function () {
-		$('.selectbox_wrap').not($(this).parents('.selectbox_wrap')).removeClass('active');
-		$(this).parents('.selectbox_wrap').toggleClass('active');
-		return false;
+    var obj = $(this);
+    $('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
+    obj.parents('.selectbox_wrap').toggleClass('active');
+    return false;
+});
+$(document).on('click', '.selectbox_wrap dd a', function () {
+    var obj = $(this);
+    obj.closest('dd').prev().find('>a>span').text(obj.text());
+    obj.parents('.selectbox_wrap').toggleClass('active');
+    return false;
 });
 var win = $(window);
 var selectBox = $('.selectbox_wrap dt a');
