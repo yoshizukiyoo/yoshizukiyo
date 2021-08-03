@@ -113,6 +113,16 @@ function latelyCheck() {
 	closeModal('myMenuAlert');
 }
 
+// 퀵메뉴 열기
+$(document).on('click', '.btn_quick_open', function (){
+	$('.quick_menu_inner').addClass('open');
+});
+
+// 퀵메뉴 닫기
+$(document).on('click', '.btn_quick_close', function (){
+	$('.quick_menu_inner').removeClass('open');
+});
+
 // Breadcrumb
 $(document).on('click', '.breadcrumb_list>li>a', function (e) {
 	if ($(this).next('.sub_list_wrap').length) {
