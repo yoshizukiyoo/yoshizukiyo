@@ -1,5 +1,10 @@
 <strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
+- 퍼블리싱팀 업무현황표 : https://docs.google.com/spreadsheets/d/1FP6ksttEi-J0CVUV3ORCr9w4CEy-aE2efMCpqV8xJzc/edit?usp=sharing
+- 퍼블리싱팀 공통 컴포넌트 가이드 
+    - 내부 테스트 서버(develop) : http://test.epost.inseq.co.kr:7789/html/index.html
+    - 개발팀 전달(master) : http://epost.inseq.co.kr:7789/html/index.html
+
 # PMS 사용 안내
 협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
 - `이슈` : 업무나 자료 전달 확인 요청시
@@ -33,11 +38,6 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 <br>
 
 # 우체국 퍼블리싱 가이드
-
-### 공통 컴포넌트 가이드
-- develop(테스트서버) : http://test.epost.inseq.co.kr:7789/html/index.html
-- master(완료) : http://epost.inseq.co.kr:7789/html/index.html
-
 ### 개발환경 세팅 가이드
 1. VSCode 및 필수확장도구 설치
 가이드 : https://docs.google.com/document/d/1mQjlcqiTBlXrFuUG825ZDZDLfIpXDm-gPyZ0mw9GFos/edit?usp=sharing
@@ -52,7 +52,7 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
     - 우체국차세대금융_고객채널퍼블리싱가이드 : https://drive.google.com/open?id=1ODkhQ8JqBjgljTmt0rQ8h7o6ZhH0wo2s
-5. [디자인-퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
+5. [퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
 ### 퍼블리셔 팀 협업 가이드
 1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
