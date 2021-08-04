@@ -17,6 +17,7 @@ $(document).on('mouseenter focusin', '.header .gnb>ul>li>a', function () {
 	var obj = $(this);
 	obj.addClass('current').parent().siblings().find('>a').removeClass();
 	obj.next().addClass('open').parent().siblings().find('.layer_memu_box').removeClass('open');
+	$('.quick_menu_wrap').addClass('quick_hidden');
 });
 $(document).on('mouseleave', '#gnb', function () {
 	gnbClose();
@@ -29,6 +30,7 @@ $(document).on('keydown', '#gnb>ul>li:last-child>.layer_memu_box>.menu_wrap>.men
 function gnbClose() {
 	$('.gnb>ul>li>a').removeClass();
 	$('.layer_memu_box').removeClass('open');
+	$('.quick_menu_wrap').removeClass('quick_hidden');
 }
 
 // 전체메뉴 실행
@@ -53,7 +55,8 @@ function menuBox(box) {
 	if ($('.result_box').css('display') == 'block') {
 		allMenuHeight();
 	} else {
-		$('.allmenu_wrap').animate({ height: $('.allmenu_wrap').height() - $('.result_box').outerHeight() });
+		//$('.allmenu_wrap').animate({ height: $('.allmenu_wrap').height() - $('.result_box').outerHeight() });
+		$('.allmenu_wrap').height($('.allmenu_wrap').height() - $('.result_box').outerHeight());
 		$('.result_box').show();
 	}
 }
@@ -75,10 +78,10 @@ function allMenuScroll() {
 	openModal('allMenuLayer', '.btn_allmenu > button');
 	allMenuHeight();
 
-	$(".allmenu_wrap").mCustomScrollbar({
-		theme: "dark",
-		axis: "y"
-	});
+	// $(".allmenu_wrap").mCustomScrollbar({
+	// 	theme: "dark",
+	// 	axis: "y"
+	// });
 
 	$(window).resize(function () {
 		allMenuHeight();
