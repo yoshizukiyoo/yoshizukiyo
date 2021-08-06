@@ -433,7 +433,7 @@ $(document).ready(function () {
 });
 
 // 더블 탭메뉴 활성화
-$(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
+$(document).on('click', '.tab_menu_type3 a , .tab_menu_double > .tab_menu_type1 a',function () {
 	var obj = $(this);
 	var tg = obj.data('tab-tg');
 	obj.addClass('current').parent().siblings().find('>a').removeClass();

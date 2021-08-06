@@ -5,12 +5,12 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="format-detection" content="telephone=no">
-	<title>가계수표조회 | 수표조회 | 조회 | 우체국 예금</title>
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
 	<link rel="stylesheet" href="/resources/deposit/css/style.css">
 
 	<!-- JavaScript -->
 	<script src="/resources/_common/js/jquery-3.3.1.js"></script>
-	<script src="/resources/_common/js/jquery.mCustomScrollbar.js"></script>
+	<script src="/resources/_common/js/jquery.print.js"></script>
 	<script src="/resources/_common/js/slick.js"></script>
 	<script src="/resources/_common/js/datepicker.js"></script>
 	<script src="/resources/_common/js/ui_global.js"></script>
@@ -37,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">가계수표조회</h2>
+				<h2 class="tit_cont">신계좌번호조회</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -56,44 +56,65 @@
 				<!-- s: 본문 -->
 				<div class="box">
 					<ul class="list list1">
-						<li>고객님의 가계수표 교부내역을 조회 하실 수 있는 서비스입니다.</li>
+						<li>기존의 구계좌번호만을 알고 계신 고객님은 구계좌번호를 통해 신계좌번호 및 가입상품명을 확인하실 수 있습니다.</li>
 					</ul>
 				</div>
 
-				<div class="mt_16 ">
+				<div class="mt_20">
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">가계수표조회 표로 수표번호 정보 제공</caption>
+							<caption class="sr_only">신계좌번호조회 표로 조회구분, 통장구분, 구계좌번호 정보 제공</caption>
 							<colgroup>
 								<col style="width: 194px;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">수표번호 <strong class="necessary">*</strong></th>
+									<th scope="row">조회구분 <strong class="necessary">*</strong></th>
 									<td>
-										<div class="selectbox_wrap" style="width: 329px;">
+										<div class="selectbox_wrap" style="width: 420px;">
 											<dl title="조건 선택">
-												<dt><a href="#none"><span>계좌번호를 선택하십시오</span></a></dt>
+												<dt><a href="#none"><span>구계좌단위[계좌번호 15~17자리]</span></a></dt>
 												<dd>
 													<ul>
-														<li class="active"><a href="#none"><span>1234567890</span></a></li>
-														<li><a href="#none"><span>1234567890</span></a></li>
+														<li class="active"><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
 													</ul>
 												</dd>
 											</dl>
 										</div>
 									</td>
 								</tr>
+								<tr>
+									<th scope="row">통장구분</th>
+									<td>
+										<div class="selectbox_wrap disabled" style="width: 420px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>전자종합통장</span></a></dt>
+												<dd>
+													<ul>
+														<li class="active"><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">구계좌번호 <strong class="necessary">*</strong></th>
+									<td><input type="text" class="tf" title="구계좌번호 입력" style="width: 420px;"></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="btn_tbl_btm">
-						<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
+						<button type="button" class="btn btn_xl btn_outline_default btn_result">조회</button>
+						<button type="button" class="btn btn_xl btn_primary">재입력</button>
 					</div>
 				</div>
 
-				<!-- 조회 결과 -->
+				<!-- s: 조회 결과 -->
 				<div class="mt_20 btm_result_box">
 					<div class="tbl_tit">
 						<h3 class="tit1">조회결과</h3>
@@ -103,7 +124,7 @@
 					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">가계수표조회 조회결과 표로 계좌번호, 가계수표종류 정보 제공</caption>
+							<caption class="sr_only">신계좌번호조회 조회결과 표로 구계좌번호, 신계좌번호, 예금종류, 고객번호, 예금주, 재발급여부 정보 제공</caption>
 							<colgroup>
 								<col style="width: 181px;">
 								<col>
@@ -112,65 +133,30 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">계좌번호</th>
-									<td>010017-01-032283</td>
+									<th scope="row">구계좌번호</th>
+									<td>121123-12-123311</td>
+									<th scope="row">신계좌번호</th>
+									<td>100057-02-000010</td>
+								</tr>
+								<tr>
+									<th scope="row">예금종류</th>
+									<td>2040+α저축예금</td>
+									<th scope="row">고객번호</th>
+									<td>120031221</td>
+								</tr>
+								<tr>
 									<th scope="row">예금주</th>
-									<td>홍길동</td>
+									<td colspan="3">홍길동</td>
 								</tr>
 								<tr>
-									<th scope="row">가계수표종류</th>
-									<td colspan="3">10만원권정액</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					<div class="tbl_data tbl_list_data mt_4">
-						<table>
-							<caption class="sr_only">가계수표조회 조회결과 표로 교부일, 시작번호, 끝번호, 교부매수, 교부구분 정보 제공</caption>
-							<colgroup>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">교부일</th>
-									<th scope="col">시작번호</th>
-									<th scope="col">끝번호</th>
-									<th scope="col">교부매수</th>
-									<th scope="col">교부구분</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>2019-07-15</td>
-									<td class="txt_c">000012</td>
-									<td class="txt_c">000014</td>
-									<td class="txt_c">1</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>2019-07-15</td>
-									<td class="txt_c">000012</td>
-									<td class="txt_c">000014</td>
-									<td class="txt_c">2</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>2019-07-15</td>
-									<td class="txt_c">000012</td>
-									<td class="txt_c">000014</td>
-									<td class="txt_c">3</td>
-									<td></td>
+									<th scope="row">재발급여부</th>
+									<td colspan="3">자기인자</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="mt_4 txt_r">
-						<button type="button" class="btn btn_sm btn_outline_default">화면인쇄</button>
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 					</div>
 				</div>
 				<!-- e: 조회 결과 -->
