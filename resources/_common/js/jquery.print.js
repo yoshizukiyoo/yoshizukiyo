@@ -215,6 +215,7 @@
 			// Add in the styles
 			copy.append(jQueryCloneWithSelectAndTextAreaValues($styles));
 			// Update title
+			copy.append('<style>.popup_inner{width:auto !important}.btn_close_popup,.btn{display:none}</style>');
 			if (options.title) {
 					var title = $("title", copy);
 					if (title.length === 0) {

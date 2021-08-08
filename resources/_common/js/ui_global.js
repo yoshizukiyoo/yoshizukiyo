@@ -17,11 +17,11 @@ $(document).on('click', '.skip_nav', function (e) {
 
 // 스크롤바 커스텀 디자인
 $(function () {
-	$('.custom_scroll').mCustomScrollbar({
-		theme: "dark",
-		axis: "yx",
-		scrollInertia: 200
-	});
+	// $('.custom_scroll').mCustomScrollbar({
+	// 	theme: "dark",
+	// 	axis: "yx",
+	// 	scrollInertia: 200
+	// });
 	// $('.scroll_container').mCustomScrollbar({
 	// 	theme: "dark-thin",
 	// 	axis: "x",
@@ -301,6 +301,7 @@ $(document).on('click', 'a.js-layer_open', function (e) {
 
 function openModal(_target, _opener) {
 	var tg = $('.modal_popup[data-popup=' + _target + ']');
+	tg.removeClass('dim_hide');
 	if (tg.length > 0) {
 		modalOpener = _opener;
 		$(_target).appendTo('body');
@@ -308,6 +309,7 @@ function openModal(_target, _opener) {
 		$('body').addClass('modal_open');
 		setTimeout(function () {
 			tg.addClass('show').removeClass('hide');
+			$('.modal_popup').not($('.modal_popup[data-popup=' + _target + ']')).addClass('dim_hide');
 		}, 100);
 		setTimeout(function () {
 			$('.popup_inner', tg).attr('tabindex', '0').focus();
@@ -318,6 +320,9 @@ function openModal(_target, _opener) {
 
 function closeModal(_target) {
 	var tg = $('.modal_popup[data-popup=' + _target + ']');
+	if ($('.modal_popup').hasClass('show')) {
+		$('.modal_popup').removeClass('dim_hide');
+	}
 	if (tg.hasClass('show')) {
 		if ($('.modal_popup.show').length == 1) {
 			bodyScroll(false);
