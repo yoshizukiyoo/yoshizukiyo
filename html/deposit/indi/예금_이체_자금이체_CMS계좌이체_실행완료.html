@@ -22,9 +22,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').click(function () {
-				$('.btm_result_box').show();
-			});
+			// 이곳에 정의
 		});
 	</script>
 </head>
@@ -37,7 +35,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">예약이체조회/취소</h2>
+				<h2 class="tit_cont">CMS계좌이체</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -54,27 +52,34 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="mb_16">
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li class="on"><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="mb_20">
 					<div class="box mt_8">
 						<div class="inner">
 							<ul class="list list1">
-								<li>취소할 예약이체 정보가 맞는지 다시 확인하신후 출금계좌 비밀번호를 입력하시기 바랍니다.</li>
+								<li>CMS계좌이체가 위와 같이 처리되었습니다</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 
 				<div class="mb_20">
-					<div class="tbl_tit">
-						<h3 class="tit1">예약취소정보</h3>
-					</div>
+					<h3 class="tit1">출금정보</h3>
 					<div class="tbl_data tbl_complex_data">
 						<table>
-							<caption class="sr_only">${표제목}</caption>
+							<caption class="sr_only">출금정보 안내 (출금계좌번호, 입금계좌번호, 보내는분, 입금기관, 내 통장 표기, 받는분 통장 표기, 이체금액, 수수료, 거래후 잔액)
+							</caption>
 							<colgroup>
-								<col style="width: 15%">
+								<col style="width: 14.2%">
 								<col>
-								<col style="width: 15%">
+								<col style="width: 14.2%">
 								<col>
 							</colgroup>
 							<thead>
@@ -91,68 +96,61 @@
 									<td>010017-02-526768</td>
 								</tr>
 								<tr>
-									<th scope="row">내통장표기</th>
-									<td>나봄미</td>
-									<th scope="row">받는분통장표기</th>
+									<th scope="row">보내는분</th>
 									<td>홍길동</td>
+									<th scope="row">입금기관</th>
+									<td>임감송치공충가눈</td>
 								</tr>
 								<tr>
-									<th scope="row">예약이체일</th>
-									<td>2021-05-27 (9시)</td>
-									<th scope="row">입금은행</th>
-									<td>우체국</td>
+									<th scope="row">내 통장 표기</th>
+									<td>CMS테스트</td>
+									<th scope="row">받는분 통장 표기</th>
+									<td>홍길동</td>
 								</tr>
 							</tbody>
 							<tfoot>
 								<tr>
-									<td colspan="4" class="line_td">
+									<td colspan="2" class="line_td">
 										<div class="transfer_moeny">
 											<div class="th_cell">이체금액</div>
-											<div class="td_cell">10,000원</div>
+											<div class="td_cell mr_3">10,000원</div>
+										</div>
+									</td>
+									<td colspan="2" class="line_td">
+										<div class="transfer_moeny">
+											<div class="th_cell">수수료</div>
+											<div class="td_cell mr_3">500원</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<div class="transfer_moeny mt_0">
+											<div class="th_cell">거래후잔액</div>
+											<div class="td_cell mr_3 txt_darkprimary">9,999,999,999원</div>
 										</div>
 									</td>
 								</tr>
 							</tfoot>
 						</table>
 					</div>
-				</div>
-
-				<div>
-					<div class="tbl_tit">
-						<h3 class="tit1">출금계좌 비밀번호 확인</h3>
-					</div>
-					<div class="tbl_row2">
-						<table>
-							<caption class="sr_only"></caption>
-							<colgroup>
-								<col style="width: 16%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">출금계좌비밀번호</th>
-									<td>
-										<div class="btn_mouse_pwd">
-											<input type="password" class="tf" style="width: 420px;" title="출금계좌 비밀번호 입력" placeholder="숫자4자리"
-												maxlength="4">
-											<button type="button">
-												<span class="sr_only">마우스로 출금계좌비밀번호 입력</span>
-											</button>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="mt_4 txt_r">
+						<button type="button" class="btn btn_sm btn_outline_default">SMS전송(카카오톡 알림)</button>
+						<button type="button" class="btn btn_sm btn_outline_default">이체확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+						<button type="button" class="btn btn_sm btn_outline_default">자주쓰는입금계좌로등록</button>
 					</div>
 					<div class="btn_tbl_btm">
-						<a href="#;" class="btn btn_xl btn_primary">실행</a>
-						<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+						<a href="#;" class="btn btn_xl btn_primary">확인</a>
+						<a href="#;" class="btn btn_xl btn_outline_default">이체결과조회</a>
 					</div>
 				</div>
-				<!-- e: 본문 -->
 			</div>
-		</article>
-		<footer class=" footer"></footer>
+
+			<!-- e: 본문 -->
+	</div>
+	</article>
+	<footer class=" footer"></footer>
 	</div>
 </body>
 
