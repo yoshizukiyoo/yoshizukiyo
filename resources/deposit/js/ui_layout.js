@@ -7,10 +7,10 @@
 $(document).ready(function () { });
 
 // IE감지
-var agent = navigator.userAgent.toLowerCase();
-if (agent.indexOf("msie") > -1 || agent.indexOf("trident") > -1) {
-	$('html').addClass('ie_html');
-}
+// var agent = navigator.userAgent.toLowerCase();
+// if (agent.indexOf("msie") > -1 || agent.indexOf("trident") > -1) {
+// 	$('html').addClass('ie_html');
+// }
 
 // GNB
 $(document).on('mouseenter focusin', '.header .gnb>ul>li>a', function () {
