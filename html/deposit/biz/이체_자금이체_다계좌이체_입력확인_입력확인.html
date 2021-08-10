@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/deposit/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/_common/js/jquery-3.3.1.js"></script>
+	<script src="/resources/_common/js/jquery.print.js"></script>
+	<script src="/resources/_common/js/slick.js"></script>
+	<script src="/resources/_common/js/datepicker.js"></script>
+	<script src="/resources/_common/js/ui_global.js"></script>
+	<script src="/resources/deposit/js/ui_layout.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/deposit/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">다계좌이체등록</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+				
+				<div class="box box_more mt_8">
+					<ul class="list list1">
+						<li>고객명 고객님이 입력하신 이체 정보입니다. 입력한 정보가 맞는지 확인하신 후 [이체]버튼을 클릭하십시오.</li>
+						<li>“구분”란에 오류로 표시된 내용은 이체처리 되지 않습니다.</li>
+						<li>다계좌이체 결재요청은 당일 최종승인결재 한해서만 유효합니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 다계좌 이체정보 -->
+				<div class="mt_16">
+					<h3 class="tit1">다계좌 이체정보</h3>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">다계좌 이체정보 목록표이며 순번, 출금계좌번호, 내 통장 표기, 입금은행, 입금계좌번호, 받는분 통장 표기, 받는분, 이체금액, 등록상태, 구분 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 5%;">
+								<col>
+								<col style="width: 9%;">
+								<col style="width: 9%;">
+								<col style="width: 15%;">
+								<col style="width: 12%;">
+								<col style="width: 8%;">
+								<col style="width: 10%;">
+								<col style="width: 8%;">
+								<col style="width: 8%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">순번</th>
+									<th scope="col">출금계좌번호</th>
+									<th scope="col">내 통장 표기</th>
+									<th scope="col">입금은행</th>
+									<th scope="col">입금계좌번호</th>
+									<th scope="col">받는분 통장 표기</th>
+									<th scope="col">받는분</th>
+									<th scope="col">이체금액</th>
+									<th scope="col">등록상태</th>
+									<th scope="col">구분</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td class="txt_c">010017-01-032283</td>
+									<td class="txt_c">3월용돈</td>
+									<td class="txt_c">우체국</td>
+									<td class="txt_c">01001702191237</td>
+									<td class="txt_c">용돈</td>
+									<td class="txt_c">홍길동</td>
+									<td class="txt_r">10,000원</td>
+									<td class="txt_c">정상</td>
+									<td class="txt_c"><button type="button" class="btn btn_xs btn_default" onclick="openModal('confirm_popup', this);">삭제</button></td>
+								</tr>
+								<tr>
+									<td class="txt_c">1</td>
+									<td class="txt_c">010017-01-032283</td>
+									<td class="txt_c">3월용돈</td>
+									<td class="txt_c">우체국</td>
+									<td class="txt_c">01001702191237</td>
+									<td class="txt_c">용돈</td>
+									<td class="txt_c">홍길동</td>
+									<td class="txt_r">10,000원</td>
+									<td class="txt_c">정상</td>
+									<td class="txt_c"><button type="button" class="btn btn_xs btn_default" onclick="openModal('confirm_popup', this);">삭제</button></td>
+								</tr>
+								<tr>
+									<td class="txt_c">1</td>
+									<td class="txt_c">010017-01-032283</td>
+									<td class="txt_c">3월용돈</td>
+									<td class="txt_c">우체국</td>
+									<td class="txt_c">01001702191237</td>
+									<td class="txt_c">용돈</td>
+									<td class="txt_c">홍길동</td>
+									<td class="txt_r">10,000원</td>
+									<td class="txt_c">EEA036</td>
+									<td class="txt_c"><button type="button" class="btn btn_xs btn_default" onclick="openModal('alert_popup', this);">오류</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 다계좌 이체정보 -->
+
+				<!-- s: Confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<p>해당 이체 목록을 삭제하시겠습니까?</p>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: Confirm 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<p>
+										아래의 내용을 확인하세요.<br><br>
+										메시지 코드 : [EDZ144]<br>
+										메시지 내역 : 해당되는 계좌번호가 없습니다.
+									</p>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="이체_자금이체_다계좌이체_입력확인_입력확인(인증).html" class="btn btn_xl btn_primary">이체</a>
+				</div>
+
+				<div class="mt_15">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>당행(우체국) : 24시간( 04:00 ~ 05:00 제외)</li>
+								<li>타은행 : 24시간( 04:00 ~ 05:00, 23:50 ~ 익일 00:10 제외)</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
