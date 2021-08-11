@@ -17,7 +17,7 @@
 }
 
 .tbl_scroll_y {
-  height: 375px;
+  max-height: 375px;
   overflow-y: auto;
 }
 
@@ -163,6 +163,10 @@
   overflow: hidden;
   padding-right: 10px;
   text-align: right;
+}
+
+.transfer_double_cell .transfer_commission {
+  border-left: 1px solid #ddd;
 }
 
 .payment_write_box {
@@ -350,19 +354,42 @@
   font-weight: 500;
 }
 
-.box {
-  position: relative;
+.box.box_tbl {
+  display: table;
+  width: 100%;
 }
 
-.box .btn_center {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  margin-top: -14px;
+.box.box_tbl .l,
+.box.box_tbl .r {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.box.box_tbl .r {
+  padding-left: 10px;
 }
 
 .fw_r {
   font-weight: 400;
+}
+
+.term_date > div {
+  position: relative;
+  display: inline-block;
+}
+
+.term_date > div:not(:first-child) {
+  margin-left: 65px;
+}
+
+.term_date > div:not(:first-child):after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -41px;
+  width: 11px;
+  height: 1px;
+  background: #ddd;
 }
 
 .box_otp_card {

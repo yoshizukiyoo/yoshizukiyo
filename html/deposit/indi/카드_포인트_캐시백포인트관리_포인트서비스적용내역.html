@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/deposit/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/_common/js/jquery-3.3.1.js"></script>
+	<script src="/resources/_common/js/jquery.print.js"></script>
+	<script src="/resources/_common/js/slick.js"></script>
+	<script src="/resources/_common/js/datepicker.js"></script>
+	<script src="/resources/_common/js/ui_global.js"></script>
+	<script src="/resources/deposit/js/ui_layout.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/deposit/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_result').click(function(){
+				$('.btm_result_box').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">포인트 서비스 적용 내역</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box box_more mt_8">
+					<ul class="list list1">
+						<li>고객님의 우체국체크카드 사용실적에 따라 적립된 포인트 내역을 조회하실 수 있습니다.</li>
+						<li>적용포인트는 해당 월에 매입처리된 건에 한해서 제공됩니다.</li>
+						<li>적립포인트는 캐시백으로 전환 신청하실 수 있습니다.</li>
+						<li>조회기간은 개인: 매출일자, 법인:적립일자 기준입니다.</li>
+					</ul>
+				</div>
+
+				<div class="mt_19">
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">포인트 서비스 적용 내역</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">카드번호</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 490px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>카드를 선택하여 주십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>카드를 선택하여 주십시오</span></a></li>
+														<li><a href="#none"><span>카드를 선택하여 주십시오</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default"  onclick="openModal('layer01', this);">카드조회</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>조회기간</th>
+									<td>
+										<div class="btn_trans_money">
+											<button type="button" class="btn btn_sm btn_default">당일</button>
+											<button type="button" class="btn btn_sm btn_outline_default">3일</button>
+											<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+											<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+											<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+											<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
+										</div>
+										<div class="trans_date mt_2">
+											<span><span class="datepicker"><input type="text" class="tf tf_datepicker" title="시작 날짜 선택"><button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button></span></span>
+											<span><span class="datepicker"><input type="text" class="tf tf_datepicker" title="종료 날짜 선택"><button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button></span></span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn_tbl_btm">
+						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
+					</div>
+				</div>
+
+				<!-- s: 조회 결과 -->
+				<div class="mt_16 btm_result_box">
+					<div class="mt_20">
+						<div class="tbl_tit">
+							<h3 class="tit1">포인트 서비스 적용 내역 조회</h3>
+							<div class="txt_right">
+								<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							</div>
+						</div>
+						<div class="tbl_data tbl_list_data">
+							<table>
+								<caption class="sr_only">포인트 서비스 적용 내역 조회</caption>
+								<colgroup>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">매출일자</th>
+										<th scope="col">가맹점명</th>
+										<th scope="col">청구금액</th>
+										<th scope="col">적용포인트</th>
+										<th scope="col">적립율</th>
+										<th scope="col">결제일자</th>
+										<th scope="col">미적용사유명</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="7" class="txt_c">
+											조회된 대상이 없습니다.
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- e: 조회 결과 -->
+
+				<!-- Modal Popup : 다른카드조회 -->
+				<div class="modal_popup modal_sm hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h2 class="popup_tit">카드정보</h2>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+								</div>
+							</div>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">이용내역</caption>
+									<colgroup>
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">카드정보</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>9440-****-****-4953 우체국 多Dream 체크카드(보험서비스)</td>
+										</tr>
+										<tr>
+											<td>9440-****-****-4953 우체국 多Dream 체크카드(보험서비스)</td>
+										</tr>
+										<tr>
+											<td>9440-****-****-4953 우체국 多Dream 체크카드(보험서비스)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 다른카드조회 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
