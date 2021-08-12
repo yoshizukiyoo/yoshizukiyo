@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/deposit/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/_common/js/jquery-3.3.1.js"></script>
+	<script src="/resources/_common/js/jquery.print.js"></script>
+	<script src="/resources/_common/js/slick.js"></script>
+	<script src="/resources/_common/js/datepicker.js"></script>
+	<script src="/resources/_common/js/ui_global.js"></script>
+	<script src="/resources/deposit/js/ui_layout.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/deposit/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">자동이체등록</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">약관동의</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li><span class="num">4</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="mb_20">
+					<div class="box box_more mt_8">
+						<div class="inner">
+							<ul class="list list1">
+								<li>고객님이 지정하신 날짜에 매월 일정 금액이 자동이체 되도록 신청하는 서비스입니다.</li>
+								<li>입금계좌가 가상계좌인 경우는 입금 처리가 안될 수 있으니, 해당은행에 문의하시기 바랍니다.</li>
+								<li>타행 자동이체 수수료는 고객기준 면제가능 건수 소진 후에는 건당 300원의 수수료가 적용됩니다.</li>
+								<li><span class="txt_darkprimary">자유적금 월불입성 자동이체 약정(변경)시 이체종료년월이 적금 만기일 이후 일 때는 이체종료일은 적금 만기일의 전영업일로
+										설정됩니다.(만기일:입금 불가)</span></li>
+								<li><span class="txt_darkprimary">매월(매분기) 입금 한도가 있는 자유적금 상품인 경우 자동이체일이 월말이면서 휴일인 경우 전영업일에 이체 되니 출금계좌의
+										잔액을 확인하여 주시기 바랍니다.</span></li>
+								<li>(예시) 이체일 : 매월 30일, 2019.4.30(토) : 2019.4.29(금) 이체 처리</li>
+								<li>출금통장표시내용은 이체종류가 일반, 타행인 경우만 입력 가능합니다.</li>
+								<li>매일모아e적금 계좌로 매일자동이체를 신청하고자 할 경우 <span class="txt_darkprimary">마이페이지>예금전계좌조회>계좌관리>매일자동이체약정</span> 메뉴를
+									이용하시기 바랍니다.</li>
+							</ul>
+						</div>
+						<button type="button" class="btn btn_more_white">더보기</button>
+					</div>
+				</div>
+
+				<div class="mb_20">
+					<div class="tbl_tit">
+						<h3 class="tit1"><span class="v_bot">출금 정보</span> <i class="ico ico_mouse ml_3 mr_2"></i><span
+								class="txt_md txt_normal txt_gray">마우스
+								전용</span></h3>
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">자동이체등록을 위한 출금정보 등록표(출금계좌번호, 출금계좌비밀번호, 입금계좌명칭, 내통장표기)</caption>
+							<colgroup>
+								<col style="width: 16%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="출금계좌 선택">
+												<dt><a href="#;"><span>계좌를 선택하여 주십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>123456789</span></a></li>
+														<li><a href="#;"><span>987654321</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">출금가능금액</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">출금계좌비밀번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="btn_mouse_pwd">
+											<input type="password" class="tf" style="width: 420px;" title="선택계좌 비밀번호 입력"
+												placeholder="최대 5회까지 입력가능" maxlength="4">
+											<button type="button">
+												<span class="sr_only">마우스로 출금계좌비밀번호 입력</span>
+											</button>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">비밀번호오류횟수조회</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌명칭(별칭)</th>
+									<td>
+										<input type="text" class="tf" style="width: 420px;" title="입금계좌명칭(별칭) 입력"
+											placeholder="최대 한글 10자, 영/숫자 20자">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">내 통장 표기</th>
+									<td>
+										<input type="text" class="tf" style="width: 420px;" title="내통장표기 입력"
+											placeholder="최대 한글 10자, 영/숫자 20자">
+										<!-- [D] 입금계좌 : 우체국, 이체종류 : 월불입성 선택시 비활성화 -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="mb_20">
+					<div class="tbl_tit">
+						<h3 class="tit1">입금정보</h3>
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">자동이체등록을 위한 입금정보 등록표(입금은행, 입금계좌번호, 받는분통장표기)</caption>
+							<colgroup>
+								<col style="width: 16%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">입금은행
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="입금은행 계좌선택">
+												<dt>
+													<a href="#;"><span>계좌를 선택하여 주십시오.</span></a>
+												</dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>123456789</span></a></li>
+														<li><a href="#;"><span>987654321</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">장해은행</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="text" class="tf" style="width: 420px;" title="입금계좌번호 입력" placeholder="-없이 입력하세요">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">자주쓰는입금계좌</button>
+											<button type="button" class="btn btn_md btn_outline_default">최근입금계좌</button>
+											<button type="button" class="btn btn_md btn_outline_default">본인계좌</button>
+											<button type="button" class="btn btn_md btn_outline_default">오픈뱅킹계좌</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">받는분 통장 표기</th>
+									<td>
+										<input type="text" class="tf mr_1" style="width: 420px;" title="받는분 통장 표기 입력"
+											placeholder="최대 한글 10자 입력 가능">
+										단, 신한, 대구, 제주는 7자, 씨티는 9자만 입금계좌에 표시됩니다.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div>
+					<div class="tbl_tit">
+						<h3 class="tit1">자동이체</h3>
+						<div class="txt_right">
+							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">자동이체등록을 위한 입력표(이체금액, 이체종류, 자동이체기간, 자동이체일)</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">이체금액
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="trans_money">
+											<div class="btn_trans_money">
+												<button type="button" class="btn btn_sm btn_outline_default">1만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+											</div>
+											<input type="text" class="tf" style="width: 420px;" title="이체금액 입력">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">이체종류
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap mr_1" style="width: 420px;">
+											<dl title="이체종류 선택">
+												<dt><a href="#;"><span>일반</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>타행이체(당일출금)</span></a></li>
+														<!-- [D] 입금은행 우체국 선택시 타행이체 선택 비활성화 -->
+														<li><a href="#;"><span>월불입성</span></a></li>
+														<li><a href="#;"><span>일반</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										우체국 자유입출금계좌로의 자동이체
+										<!-- [D] 타행이체(당일출금) : 이체지정일 당일 출금하는 타행계좌로의 자동이체 -->
+										<!-- [D] 월불입성 : 우체국 적립성예금으로의 자동이체 -->
+										<!-- [D] 일반 : 우체국 자유입출금계좌로의 자동이체 -->
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">자동이체기간
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="trans_date">
+											<input type="text" class="tf tf_datepicker">
+											<input type="text" class="tf tf_datepicker">
+											<!-- [D] 입금계좌 : 우체국, 이체종류 : 월불입성 선택시 년,월 로만 표기 -->
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">자동이체일
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap mr_3" style="width: 117px;">
+											<dl title="자동이체일 선택">
+												<dt><a href="#;"><span>25일</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>29일</span></a></li>
+														<li><a href="#;"><span>30일</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										일 (예: 25 ← 매월 25일)
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+				</div>
+				<div class="box mt_12">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>각종 공과금 납부는 [공과금납부] 메뉴를 이용하시기 바랍니다.</li>
+								<li>타행이체인 경우 <span class="txt_darkprimary">이체지정일</span> 06:00~08:00 인출되며, <span
+										class="txt_darkprimary">잔액부족으로 이체불능시</span> 당일 오후에 재인출 처리됩니다.</li>
+								<li>이체지정일이 토요일이나 휴일인 경우, 익영업일에 입금계좌로 입금됩니다.</li>
+								<li>상대은행에서 처리 오류가 발생하여 이체금액이 반환되는 경우 아래와 같이 고개님의 계좌로 다시 입금 처리됩니다.
+									<ul class="list list3">
+										<li>- 타행이체(전일출금) : 이체지정일 다음 영업일</li>
+										<li>- 타행이체(당일출금) : 이체지정일 당일</li>
+									</ul>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>

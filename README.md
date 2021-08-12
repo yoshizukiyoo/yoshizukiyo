@@ -1,6 +1,7 @@
 <strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
 - 퍼블리싱팀 업무현황표 : https://docs.google.com/spreadsheets/d/1FP6ksttEi-J0CVUV3ORCr9w4CEy-aE2efMCpqV8xJzc/edit?usp=sharing
+- 퍼블리싱팀 파일 공유용 구글드라이브 : https://drive.google.com/drive/folders/1e5NJ5CQ3C1jNKhGjJTVgU2kg1lJrNol2?usp=sharing
 - 퍼블리싱팀 공통 컴포넌트 가이드 
     - 내부 테스트 서버(develop) : http://test.epost.inseq.co.kr:7789/html/index.html
     - 개발팀 전달(master) : http://epost.inseq.co.kr:7789/html/index.html
