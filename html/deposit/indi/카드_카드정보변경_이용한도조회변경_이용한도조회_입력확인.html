@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/deposit/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/_common/js/jquery-3.3.1.js"></script>
+	<script src="/resources/_common/js/jquery.print.js"></script>
+	<script src="/resources/_common/js/slick.js"></script>
+	<script src="/resources/_common/js/datepicker.js"></script>
+	<script src="/resources/_common/js/ui_global.js"></script>
+	<script src="/resources/deposit/js/ui_layout.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/deposit/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		//
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">이용한도조회</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+				<div class="box mt_8">
+					<ul class="list list1">
+						<li>고객님의 체크카드 이용한도 조회 및 변경신청을 하실 수 있는 서비스입니다.</li>
+						<li>이용한도는 1일 이용한도(카드단위)는 개인(1일 5,000만원 / 월 5,000만원), 법인(1일 1억원 / 월 3억원) 범위 내에서 조정 가능합니다.</li>
+					</ul>
+				</div>
+
+				<div class="mt_11">
+					<div class="tbl_tit">
+						<h3 class="tit1">카드정보</h3>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">카드정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">카드번호</th>
+									<td>4114-****-****-2216</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="mt_20">
+					<div class="tbl_tit">
+						<h3 class="tit1">이용한도 변경신청</h3>
+					</div>
+					<div class="tbl_data tbl_list_data mt_4">
+						<table>
+							<caption class="sr_only">이용한도 변경신청</caption>
+							<colgroup>
+								<col style="width: 25%">
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">구분</th>
+									<th scope="col">변경전(원)</th>
+									<th scope="col">변경후(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>일일한도</td>
+									<td class="txt_r">600만</td>
+									<td class="txt_r">
+										<input type="text" title="변경후 이용한도 입력" class="tf" style="width: 260px;">
+										<span class="ml6">만</span>
+									</td>
+								</tr>
+								<tr>
+									<td>한도</td>
+									<td class="txt_r">2,000만</td>
+									<td class="txt_r">
+										<input type="text" title="변경후 이용한도 입력" class="tf" style="width: 260px;">
+										<span class="ml6">만</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- s: 보안매체 인증번호 입력 -->
+				<div class="mt_20">
+					<h3 class="tit1">보안매체 인증번호 입력</h3>
+					<div class="box_security_card">
+						<div class="security_card_inner">
+							<p>
+								영업점에서 발급 받으신 보안카드를 확인하여<br>
+								아래의 빈 칸에 보안카드 코드를 입력하십시오.
+							</p>
+							<div class="security_card_num">
+								<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+								<span class="security_masking mas_r">
+									<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력"
+										style="width: 50px;height: 32px;">
+								</span>
+								<span class="btn_security"><button type="button" class="btn_mouse"><span class="sr_only">마우스로 보안카드번호
+											입력</span></button></span>
+							</div>
+							<div class="security_card_num mt_4">
+								<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
+								<span class="security_masking mas_l">
+									<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리"
+										style="width: 50px;height: 32px;">
+								</span>
+								<span class="btn_security"><button type="button" class="btn_mouse"><span class="sr_only">마우스로 보안카드번호
+											입력</span></button></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 보안매체 인증번호 입력 -->
+
+				<!-- s: OTP 인증번호 입력 -->
+				<div class="mt_4">
+					<div class="box_otp_card">
+						<div class="box_otp_inner">
+							<span class="sr_only">OTP번호는 절대 타인에게 알려주지 마세요</span>
+							<p class="mb_3">OTP발생번호 <span class="txt_invalid">숫자6자리</span>를 입력하십시오.</p>
+							<div class="otp_card_num">
+								비밀번호
+								<input type="password" class="tf" maxlength="6" style="width: 210px;" title="OTP번호 6자리 입력">
+							</div>
+							<a href="#;" target="_blank" class="btn btn_sm btn_outline_default btn_right_top" title="새창으로 열림">OTP카드안내
+								▶</a>
+						</div>
+					</div>
+				</div>
+				<!-- e: OTP 인증번호 입력 -->
+
+				<div class="box mt_4">
+					<dt>유의사항</dt>
+					<dd>
+						<ul class="list list2">
+							<li>보안카드 비밀번호 5회 연속 오류(통합OTP는 10회) 시 서비스 이용이 제한되니 주의하시기 바라며, 오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야
+								합니다.</li>
+						</ul>
+					</dd>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<!-- <button type="button" class="btn btn_xl btn_outline_default">재실행</button> -->
+					<a href="카드_카드정보변경_이용한도조회변경_이용한도조회_정보입력.html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="카드_카드정보변경_이용한도조회변경_이용한도조회_실행완료.html" class="btn btn_xl btn_primary">변경실행</a>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
