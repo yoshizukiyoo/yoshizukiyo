@@ -456,7 +456,8 @@ $(document).on('click', '.selectbox_wrap dt a', function () {
 $(document).on('click', '.selectbox_wrap dd a', function () {
     var obj = $(this);
     obj.closest('dd').prev().find('>a>span').text(obj.text());
-    obj.parents('.selectbox_wrap').toggleClass('active');
+    obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
+		obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
     return false;
 });
 var win = $(window);

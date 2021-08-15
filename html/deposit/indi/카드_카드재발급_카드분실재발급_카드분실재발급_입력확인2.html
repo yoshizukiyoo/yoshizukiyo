@@ -220,14 +220,17 @@
 								<tr>
 									<th scope="row">이용한도</th>
 									<td>
-										<span>
-											일 한도 
-											<input type="text" class="tf txt_r ml6 mr_2" title="이용한도 일 한도 입력" value="100" style="width: 111px;"> 만원,
-										</span>
-										<span class="ml_6">
-											월 한도 
-											<input type="text" class="tf txt_r ml6 mr_2" title="이용한도 일 한도 입력" value="500" style="width: 111px;"> 만원,
-										</span>
+										<div>
+											<span>
+												일 한도 
+												<input type="text" class="tf txt_r ml6 mr_2 error" title="이용한도 일 한도 입력" value="100" style="width: 111px;"> 만원,<!-- [D] Field error : class 속성에 error 추가 -->
+											</span>
+											<span class="ml_6">
+												월 한도 
+												<input type="text" class="tf txt_r ml6 mr_2" title="이용한도 일 한도 입력" value="500" style="width: 111px;"> 만원,
+											</span>
+											<div class="error_info">일 한도를 입력해주십시오.</div><!-- [D] error 메세지 -->
+										</div>
 										<ul class="list list1 mt_2">
 											<li>미지정 시 1일 600만원, 월 한도는 2000만원으로 한도가 부여됩니다.</li>
 											<li>한도액지정 시 1일 5,000만원, 월 한도 5,000만원까지 변경 가능합니다.</li>
@@ -383,7 +386,7 @@
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
-							<h2 class="popup_tit">우체국조회</h2>
+							<h3 class="popup_tit">우체국조회</h3>
 						</div>
 						<div class="popup_body">
 							<div class="popup_box_gray">
@@ -485,6 +488,66 @@
 					</div>
 				</div>
 				<!-- e: 우체국조회 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
 
 				<!-- e: 본문 -->
 			</div>

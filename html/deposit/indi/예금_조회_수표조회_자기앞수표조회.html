@@ -89,6 +89,13 @@
 									</td>
 								</tr>
 								<tr>
+									<th scope="row">수표번호<strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf error" title="수표번호 입력" style="width: 329px;"><!-- [D] Field error : class 속성에 error 추가 -->
+										<div class="error_info">수표번호를 입력해주십시오.</div><!-- [D] error 메세지 -->
+									</td>
+								</tr>
+								<tr>
 									<th scope="row">
 										수표매수
 										<strong class="necessary">*</strong>
@@ -129,6 +136,29 @@
 												</dd>
 											</dl>
 										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										자기앞수표종류
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap error" style="width: 329px;"><!-- [D] Field error : class 속성에 error 추가 -->
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택하여 주십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>10만원권정액</span></a></li>
+														<li><a href="#none"><span>30만원권정액</span></a></li>
+														<li><a href="#none"><span>50만원권정액</span></a></li>
+														<li><a href="#none"><span>100만원권정액</span></a></li>
+														<li><a href="#none"><span>무정액권</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="error_info">자기앞수표종류를 선택하여 주십시오.</div><!-- [D] error 메세지 -->
 									</td>
 								</tr>
 							</tbody>
@@ -228,16 +258,76 @@
 				</div>
 				<!-- e: 조회 결과 -->
 
-				<div class="box mt_12">
-					<dt>참고사항</dt>
-					<dd>
-						<ul class="list list1">
-							<li>본 수표조회는 우체국 발행 자기앞수표에 대한 조회시점의 사고신고 유무의 단순한 조회로, 법률적인 효력이 전혀 없으며 조회 이후에도 사고신고가 될 수 있음을 유념하시기 바랍니다.</li>
-						</ul>
-					</dd>
+				<div class="mt_12">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list1">
+								<li>본 수표조회는 우체국 발행 자기앞수표에 대한 조회시점의 사고신고 유무의 단순한 조회로, 법률적인 효력이 전혀 없으며 조회 이후에도 사고신고가 될 수 있음을 유념하시기 바랍니다.</li>
+							</ul>
+						</dd>
+					</dl>
 				</div>
 
-				
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
 
 				<!-- e: 본문 -->
 			</div>

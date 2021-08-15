@@ -61,7 +61,7 @@
 				</div>
 
 				<div class="mb_20">
-					<div class="box box_more mt_8">
+					<div class="box mt_8">
 						<div class="inner">
 							<ul class="list list1">
 								<li>CMS계좌이체는 보험회사 등 거래기관이 입금인을 확인하기 위해 부여된 CMS코드를 입금정보에 추가하여 이체하는 서비스 입니다.</li>
@@ -69,7 +69,6 @@
 								<li>CMS계좌번호는 다른 은행 계좌를 사용하실 수 없습니다.</li>
 							</ul>
 						</div>
-						<button type="button" class="btn btn_more_white">더보기</button>
 					</div>
 				</div>
 
@@ -116,6 +115,33 @@
 									</td>
 								</tr>
 								<tr>
+									<th scope="row">출금계좌번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap error" style="width: 420px;"><!-- [D] Field error : class 속성에 error 추가 -->
+											<dl title="출금계좌 선택">
+												<dt>
+													<a href="#;">
+														<span>계좌를 선택하여 주십시오</span>
+													</a>
+												</dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>123456789</span></a></li>
+														<li><a href="#;"><span>123456789</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default mr_3">출금가능금액</button>
+											※ 출금가능금액은 99,999,999,999원 입니다.
+										</div>
+										<div class="error_info">계좌를 선택하여 주십시오.</div><!-- [D] error 메세지 -->
+									</td>
+								</tr>
+								<tr>
 									<th scope="row">계좌비밀번호 <strong class="necessary">*</strong></th>
 									<td>
 										<div class="btn_mouse_pwd">
@@ -151,8 +177,15 @@
 								<tr>
 									<th scope="row">내 통장 표기</th>
 									<td>
-										<input type="text" class="tf mr_3" style="width: 420px;" title="통장표시내용 입력"
+										<input type="text" class="tf" style="width: 420px;" title="통장표시내용 입력"
 											placeholder="최대 한글 10자, 영/숫자 20자 입력 가능">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">내 통장 표기</th>
+									<td>
+										<input type="text" class="tf error" style="width: 420px;" title="통장표시내용 입력" placeholder="최대 한글 10자, 영/숫자 20자 입력 가능"><!-- [D] Field error : class 속성에 error 추가 -->
+										<div class="error_info">통장 표기 내용으 입력해주십시오.</div><!-- [D] error 메세지 -->
 									</td>
 								</tr>
 							</tbody>
@@ -206,8 +239,8 @@
 				</div>
 
 				<div class="btn_tbl_btm mb_12">
-					<a href="#;" class="btn btn_xl btn_primary">다음</a>
 					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
 				</div>
 
 				<div class="box">
@@ -222,6 +255,67 @@
 						</dd>
 					</dl>
 				</div>
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+				
 				<!-- e: 본문 -->
 			</div>
 		</article>

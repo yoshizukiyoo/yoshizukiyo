@@ -91,6 +91,13 @@
 									</td>
 								</tr>
 								<tr>
+									<th scope="row">이름 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf error" title="이름 입력" style="width: 185px;"><!-- [D] Text Field error : class 속성에 error 추가 -->
+										<div class="error_info">이름을 입력해주세요.</div><!-- [D] Text Field error 메세지 -->
+									</td>
+								</tr>
+								<tr>
 									<th scope="row">주소 <strong class="necessary">*</strong></th>
 									<td>
 										<div class="address_form">
@@ -142,53 +149,113 @@
 					<a href="#;" class="btn btn_xl btn_primary btn_result">등록</a>
 				</div>
 				
-					<!-- s: 조회 결과 -->
-					<div class="mt_12 btm_result_box">
-						<div class="tbl_tit">
-							<h3 class="tit1">자주쓰는 주소 목록</h3>
-							<div class="txt_right">
-								<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							</div>
-						</div>
-						<div class="tbl_data tbl_list_data">
-							<table>
-								<caption class="sr_only">자주쓰는주소관리</caption>
-								<colgroup>
-									<col>
-									<col style="width:36%">
-									<col>
-									<col>
-									<col style="width:10%">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">이름</th>
-										<th scope="col">주소</th>
-										<th scope="col">전화번호</th>
-										<th scope="col">참고사항</th>
-										<th scope="col">삭제</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="txt_c">나봄미</td>
-										<td class="txt_c">(58217)전라남도 나주시 상야4길 11 10(빛가람동)</td>
-										<td class="txt_c">010-1111-2222</td>
-										<td class="txt_c">경조금배달 테스트1</td>
-										<td class="txt_c"><button type="button" class="btn btn_sm btn_outline_default">삭제</button></td>
-									</tr>
-									<tr>
-										<td class="txt_c">나봄미</td>
-										<td class="txt_c">(58217)전라남도 나주시 상야4길 11 10(빛가람동)</td>
-										<td class="txt_c">010-1111-2222</td>
-										<td class="txt_c">경조금배달 테스트1</td>
-										<td class="txt_c"><button type="button" class="btn btn_sm btn_outline_default">삭제</button></td>
-									</tr>
-								</tbody>
-							</table>
+				<!-- s: 조회 결과 -->
+				<div class="mt_12 btm_result_box">
+					<div class="tbl_tit">
+						<h3 class="tit1">자주쓰는 주소 목록</h3>
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
 						</div>
 					</div>
-					<!-- e: 조회 결과 -->
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">자주쓰는주소관리</caption>
+							<colgroup>
+								<col>
+								<col style="width:36%">
+								<col>
+								<col>
+								<col style="width:10%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">이름</th>
+									<th scope="col">주소</th>
+									<th scope="col">전화번호</th>
+									<th scope="col">참고사항</th>
+									<th scope="col">삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">나봄미</td>
+									<td class="txt_c">(58217)전라남도 나주시 상야4길 11 10(빛가람동)</td>
+									<td class="txt_c">010-1111-2222</td>
+									<td class="txt_c">경조금배달 테스트1</td>
+									<td class="txt_c"><button type="button" class="btn btn_sm btn_outline_default">삭제</button></td>
+								</tr>
+								<tr>
+									<td class="txt_c">나봄미</td>
+									<td class="txt_c">(58217)전라남도 나주시 상야4길 11 10(빛가람동)</td>
+									<td class="txt_c">010-1111-2222</td>
+									<td class="txt_c">경조금배달 테스트1</td>
+									<td class="txt_c"><button type="button" class="btn btn_sm btn_outline_default">삭제</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 조회 결과 -->
+				
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
 
 				<!-- e: 본문 -->
 			</div>
