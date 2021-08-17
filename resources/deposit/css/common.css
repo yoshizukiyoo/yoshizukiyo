@@ -1990,6 +1990,67 @@ caption.sr_only {
   background: #eee;
 }
 
+.btn_mouse_toggle {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn_mouse_toggle > .switch {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+.btn_mouse_toggle > .switch > input[type=checkbox] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.btn_mouse_toggle > .switch > input[type=checkbox]:checked + label {
+  background: #fdcc34;
+}
+
+.btn_mouse_toggle > .switch > input[type=checkbox]:checked + label::before {
+  left: 2px;
+}
+
+.btn_mouse_toggle > .switch > label {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 25px;
+  border-radius: 15px;
+  background: #ddd;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.btn_mouse_toggle > .switch > label::before {
+  content: '';
+  position: absolute;
+  left: 26px;
+  top: 2px;
+  width: 22px;
+  height: 21px;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.btn_mouse_toggle > .btn_name {
+  font-size: 14px;
+  font-weight: 200;
+  color: #001111;
+}
+
 input[type=password]::-ms-reveal,
 input[type=password]::-ms-clear {
   display: none;
@@ -2481,6 +2542,9 @@ p.txt_guide {
 
 .selectbox_wrap dd a:hover {
   background: #f3f3f3;
+}
+
+.selectbox_wrap dd a:hover > span {
   color: #333;
 }
 
@@ -3528,9 +3592,15 @@ input.error {
   margin-bottom: 20px;
 }
 
-.tbl_tit > h3 {
+.tbl_tit > .tit_left {
   margin-right: auto;
+}
+
+.tbl_tit > .tit_left > h3,
+.tbl_tit > .tit_left > h4 {
+  display: inline-block;
   margin-bottom: 0;
+  vertical-align: top;
 }
 
 .tbl_tit > .txt_right {
