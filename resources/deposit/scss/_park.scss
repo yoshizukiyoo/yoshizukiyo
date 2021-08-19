@@ -291,7 +291,7 @@
 .num_list {
 	>li {
 		position: relative;
-		padding-left: 13px;
+		padding-left: 15px;
 		counter-increment: list;
 
 		&:before {
@@ -332,5 +332,352 @@
 		width: px;
 		height: px;
 		background: url(#{$url-img-common}/ico_check_xl_primary.png) no-repeat center center;
+	}
+}
+
+.qna_list {
+	border-top: 1px solid #111;
+
+	>li {
+		border-bottom: 1px solid #111;
+
+		.qna_q {
+
+			a {
+				position: relative;
+				display: block;
+				padding: 26px 70px;
+				background-image:url(#{$url-img-common}/ico_arr_down_sm.png);
+				background-repeat: no-repeat;
+				background-position: calc(100% - 20px) 37px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					left: 20px;
+					top: 20px;
+					width: 40px;
+					height: 40px;
+					background: url(#{$url-img-common}/ico_question.png) no-repeat center center;
+				}
+			}
+
+			&.active a {
+				background-image:url(#{$url-img-common}/ico_arr_up_sm.png);
+				background-repeat: no-repeat;
+				background-position: calc(100% - 20px) 37px;
+			}
+		}
+
+		.qna_a {
+			position: relative;
+			padding: 36px 40px 36px 110px;
+			background: #f3f3f3;
+			display: none;
+
+			&:before {
+				content: '';
+				position: absolute;
+				left: 60px;
+				top: 34px;
+				width: 40px;
+				height: 40px;
+				background: url(#{$url-img-common}/ico_answer.png) no-repeat center center;
+			}
+		}
+	}
+}
+
+.check_item input[type=radio]:disabled {
+	+label {
+		color: #aaa;
+	}
+}
+
+.bar_wrap {
+	font-size: 0;
+
+	>div {
+		position: relative;
+		display: inline-block;
+		font-size: 16px;
+
+		&:not(:first-child) {
+			margin-left: 30px;
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: -20px;
+				width: 11px;
+				height: 1px;
+				background: #ddd;
+			}
+		}
+	}
+}
+
+.login_certi_top {
+	padding: 37px 57px 59px;
+	background: #f6f6f6;
+
+	h3 {
+		font-size: 25px;
+		font-weight: 400;
+	}
+
+	.txt {
+		position: relative;
+		padding-left: 80px;
+		min-height: 57px;
+		color: #555;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: 10px;
+			top: 0;
+			width: 49px;
+			height: 57px;
+			background: url(#{$url-img}/content/login_certi_img01.png) no-repeat top left;
+
+		}
+	}
+}
+
+.login_certi_list {
+	@include clearfix;
+
+	>li {
+		position: relative;
+		float: left;
+		width: 580px;
+		margin-right: 40px;
+		margin-top: 40px;
+		padding: 37px 58px 49px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.05);
+		background-repeat: no-repeat;
+		transition: 0.2s ease-in-out;
+
+		&.list01 {
+			background-image:url(#{$url-img}/content/login_certi_img02.png);
+			background-position: calc(100% - 59px) 69px;
+		}
+
+		&.list02 {
+			background-image:url(#{$url-img}/content/login_certi_img03.png);
+			background-position: calc(100% - 61px) 70px;
+		}
+
+		&.list03 {
+			background-image:url(#{$url-img}/content/login_certi_img04.png);
+			background-position: calc(100% - 60px) 68px;
+		}
+
+		&.list04 {
+			background-image:url(#{$url-img}/content/login_certi_img05.png);
+			background-position: calc(100% - 53px) 73px;
+		}
+
+		&.list05 {
+			background-image:url(#{$url-img}/content/login_certi_img06.png);
+			background-position: calc(100% - 60px) 69px;
+		}
+
+		&.list06 {
+			background-image:url(#{$url-img}/content/login_certi_img07.png);
+			background-position: calc(100% - 62px) 80px;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 38px;
+			right: 38px;
+			width: 154px;
+			height: 154px;
+			background: #f3f3fa;
+			border-radius: 50%;
+			z-index: -1;
+			transition: 0.2s ease-in-out;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			width: 100%;
+			height: 100%;
+			border: 2px solid #fdc61c;
+			border-radius: 4px;
+			z-index: -1;
+			opacity: 0;
+			transition: 0.2s ease-in-out;
+		}
+
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+
+		&:nth-child(-n+2) {
+			margin-top: 0;
+		}
+
+		h4 {
+			font-size: 26px;
+			font-weight: 400;
+			margin-bottom: 6px;
+			letter-spacing: -0.5px;
+		}
+
+		p {
+			color: #333;
+		}
+
+		a {
+			background: #eee;
+			width: 120px;
+			margin-top: 18px;
+			transition: 0.2s ease-in-out;
+		}
+
+		&:hover {
+			border-color: transparent;
+			transition: 0.2s ease-in-out;
+
+			&:before {
+				background: #fef5e5;
+				transition: 0.2s ease-in-out;
+			}
+
+			&:after {
+				opacity: 1;
+				transition: 0.2s ease-in-out;
+			}
+
+			a {
+				background: #fdc61c;
+				border-color: #fdc61c;
+				color: #111;
+				transition: 0.2s ease-in-out;
+			}
+		}
+	}
+}
+
+.btn_help {
+	min-width: 74px;
+	height: 28px;
+	padding: 5px 8px 6px 6px;
+	font-size: 14px;
+	font-weight: 200;
+	color: #fff;
+	background: #555;
+	border-radius: 15px;
+	margin-right: 8px;
+
+	.ico {
+		margin-top: 0;
+	}
+}
+
+.cont_body.certi_abolition {
+	width: 100%;
+	background: #fafafa;
+
+	.abolition_inner {
+		width: 1200px;
+		margin: 0 auto;
+	}
+
+	.abolition_con {
+		@include clearfix;
+		border-radius: 10px 10px 10px 40px;
+		background: #fff;
+		box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.1);
+		margin-top: -30px;
+
+		>div {
+			float: left;
+			width: 50%;
+			height: 515px;
+			padding: 54px 80px 66px;
+			color: #555;
+
+			.txt {
+				position: relative;
+				height: 100%;
+
+				&.bg01 {
+					background: url(#{$url-img}/content/login_abolition_img01.png) no-repeat 100% 24px;
+				}
+
+				&.bg02 {
+					background: url(#{$url-img}/content/login_abolition_img02.png) no-repeat 100% 24px;
+				}
+
+				>span {
+					min-width: 100px;
+					padding: 0 20px;
+					background: #fafafa;
+					border-radius: 15px;
+				}
+
+				h3 {
+					font-size: 30px;
+					color: #111;
+
+					span {
+						display: block;
+						font-size: 20px;
+						font-weight: 400;
+					}
+				}
+
+				p {
+					color: #333;
+				}
+
+				a {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 440px;
+
+				}
+			}
+		}
+	}
+}
+
+.num_list2 {
+	>li {
+		position: relative;
+		padding-left: 29px;
+		counter-increment: list;
+
+		&:before {
+			content: counter(list);
+			position: absolute;
+			top: 6px;
+			left: 0;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			line-height: 17px;
+			color: #fff;
+			background: #555;
+			font-size: 12px;
+			font-weight: 400;
+			text-align: center;
+		}
+
+		&:nth-child(n+10) {
+			padding-left: 25px;
+		}
 	}
 }
