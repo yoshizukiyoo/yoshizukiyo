@@ -340,6 +340,7 @@
 
 	>li {
 		border-bottom: 1px solid #111;
+		color: #333;
 
 		.qna_q {
 
@@ -350,6 +351,7 @@
 				background-image:url(#{$url-img-common}/ico_arr_down_sm.png);
 				background-repeat: no-repeat;
 				background-position: calc(100% - 20px) 37px;
+
 
 				&:before {
 					content: '';
@@ -383,6 +385,10 @@
 				width: 40px;
 				height: 40px;
 				background: url(#{$url-img-common}/ico_answer.png) no-repeat center center;
+			}
+
+			&.on {
+				display: block;
 			}
 		}
 	}
@@ -603,10 +609,23 @@
 
 		>div {
 			float: left;
+			position: relative;
 			width: 50%;
 			height: 515px;
 			padding: 54px 80px 66px;
 			color: #555;
+
+			&:not(:first-child) {
+				&:before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 50px;
+					width: 1px;
+					height: 395px;
+					background: #eee;
+				}
+			}
 
 			.txt {
 				position: relative;
@@ -678,6 +697,58 @@
 
 		&:nth-child(n+10) {
 			padding-left: 25px;
+		}
+	}
+}
+
+.box_list {
+	@include clearfix;
+
+	>li {
+		float: left;
+		width: calc(100% / 3 - 9px);
+		margin-right: 13px;
+		margin-top: 13px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 39px 48px 30px;
+		color: #333;
+		background-position: calc(100% - 30px) calc(100% - 30px);
+		background-repeat: no-repeat;
+
+		&:nth-child(-n+3) {
+			margin-top: 0;
+		}
+
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+
+		&.bg01 {
+			background-image: url(#{$url-img}/content/service_center_img01.png);
+		}
+
+		&.bg02 {
+			background-image: url(#{$url-img}/content/service_center_img02.png);
+		}
+
+		&.bg03 {
+			background-image: url(#{$url-img}/content/service_center_img03.png);
+		}
+
+		h4 {
+			font-size: 23px;
+			font-weight: 400;
+			margin-bottom: 5px;
+		}
+
+		p {
+			line-height: 24px;
+		}
+
+		a {
+			width: 120px;
+			margin-top: 17px;
 		}
 	}
 }
