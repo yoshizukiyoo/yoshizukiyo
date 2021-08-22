@@ -52,7 +52,7 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 가이드 : [https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing](https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing)
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
-    - 우체국차세대금융_고객채널퍼블리싱가이드 : [https://drive.google.com/open?id=1ODkhQ8JqBjgljTmt0rQ8h7o6ZhH0wo2s](https://drive.google.com/open?id=1ODkhQ8JqBjgljTmt0rQ8h7o6ZhH0wo2s)
+    - 우체국차세대금융_고객채널퍼블리싱가이드 : [https://drive.google.com/drive/folders/1EDub7JB3uM4FumvZLCK4e-X0v_iiDdMV?usp=sharing](https://drive.google.com/drive/folders/1EDub7JB3uM4FumvZLCK4e-X0v_iiDdMV?usp=sharing)
 5. [퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
 ### 퍼블리셔 팀 협업 가이드
