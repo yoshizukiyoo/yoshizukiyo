@@ -51,7 +51,7 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 3. [마크업 개발환경 설정 가이드](https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing)
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
-    - [우체국차세대금융_고객채널퍼블리싱가이드](https://drive.google.com/drive/folders/1EDub7JB3uM4FumvZLCK4e-X0v_iiDdMV?usp=sharing)
+    - [우체국차세대금융_고객채널퍼블리싱가이드](https://docs.google.com/presentation/d/1SSQpJfcXbevYXzevfWQSdBF2BbFL47cn/edit?usp=sharing&ouid=100874491042190796911&rtpof=true&sd=true)
 5. [퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
 ### 퍼블리셔 팀 협업 가이드
