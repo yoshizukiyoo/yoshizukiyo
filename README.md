@@ -25,31 +25,31 @@
 
 ### 스토리보드(구글드라이브)
 - [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
-- 7/9 수급 스토리보드 : https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w
+- 7/9 수급 스토리보드 : [https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w](https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w)
 - 자료 반출용 공용 이메일 계정
-http://webmail.16block.com/ (geistkorea1 / 가이스트1)
+[http://webmail.16block.com/](http://webmail.16block.com/) (geistkorea1 / 가이스트1)
 
 ### 디자인 산출물
-- 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
-- 디자인 산출물 자료 : SVN 저장소 URL : https://59.2.0.242/svn/design
+- 디자인 공통 가이드(디자이너 협업용) : [http://epost.test.ubiqos.co.kr/html/main/main01.html](http://epost.test.ubiqos.co.kr/html/main/main01.html)
+- 디자인 산출물 자료 : SVN 저장소 URL : [https://59.2.0.242/svn/design](http://epost.test.ubiqos.co.kr/html/main/main01.html)
 > geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
-SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
-SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
+SVN 클라이언트 다운로드 : [https://tortoisesvn.net/downloads.html](http://epost.test.ubiqos.co.kr/html/main/main01.html)
+SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn](http://epost.test.ubiqos.co.kr/html/main/main01.html)
 
 <br>
 
 # 우체국 퍼블리싱 가이드
 ### 개발환경 세팅 가이드
 1. VSCode 및 필수확장도구 설치
-가이드 : https://docs.google.com/document/d/1mQjlcqiTBlXrFuUG825ZDZDLfIpXDm-gPyZ0mw9GFos/edit?usp=sharing
+가이드 : [https://docs.google.com/document/d/1mQjlcqiTBlXrFuUG825ZDZDLfIpXDm-gPyZ0mw9GFos/edit?usp=sharing](https://docs.google.com/document/d/1mQjlcqiTBlXrFuUG825ZDZDLfIpXDm-gPyZ0mw9GFos/edit?usp=sharing)
 2. 프로젝트 소스코드 Git 에서 내려받기
-가이드 : https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing
+가이드 : [https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing](https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing)
 > 홈 화면 우측에 원격저장소 복사하기를 눌러서 PULL 받으면 됩니다.
 ![22219-2021-7-15-9-51.png](/files/11304) 
 퍼블리셔 협업시에는 `develop` 브랜치 사용해 주세요
 'master'는 개발팀에 전달할 최종산출물 저장소로 사용할 예정입니다.
 3. 마크업 개발환경 설정하기
-가이드 : https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing
+가이드 : [https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing](https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing)
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
     - 우체국차세대금융_고객채널퍼블리싱가이드 : https://drive.google.com/open?id=1ODkhQ8JqBjgljTmt0rQ8h7o6ZhH0wo2s
