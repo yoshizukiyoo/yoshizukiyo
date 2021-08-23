@@ -14,7 +14,6 @@
 
 ### 이슈트래킹 가이드 (담당자 지정 필수)
 <img src="/files/11595" alt="" style="max-height:none">
-
 <br><br>
 
 # 자료
@@ -31,10 +30,10 @@
 
 ### 디자인 산출물
 - 디자인 공통 가이드(디자이너 협업용) : [http://epost.test.ubiqos.co.kr/html/main/main01.html](http://epost.test.ubiqos.co.kr/html/main/main01.html)
-- 디자인 산출물 자료 : SVN 저장소 URL : [https://59.2.0.242/svn/design](http://epost.test.ubiqos.co.kr/html/main/main01.html)
+- 디자인 산출물 자료 : SVN 저장소 URL : [https://59.2.0.242/svn/design](https://59.2.0.242/svn/design)
 > geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
-SVN 클라이언트 다운로드 : [https://tortoisesvn.net/downloads.html](http://epost.test.ubiqos.co.kr/html/main/main01.html)
-SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn](http://epost.test.ubiqos.co.kr/html/main/main01.html)
+SVN 클라이언트 다운로드 : [https://tortoisesvn.net/downloads.html](https://tortoisesvn.net/downloads.html)
+SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn](http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn)
 
 <br>
 
