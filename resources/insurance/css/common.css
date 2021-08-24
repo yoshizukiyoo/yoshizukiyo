@@ -1921,7 +1921,7 @@ caption.sr_only {
 
 .btn_default {
   color: #444;
-  background-color: #e9e9e9;
+  background-color: #eee;
   border-color: #ddd;
 }
 
@@ -1939,6 +1939,12 @@ caption.sr_only {
 .btn_outline_default.btn_lg, .btn_outline_default.btn_xl {
   color: #111;
   border-color: #555;
+}
+
+.btn_outline_gray {
+  color: #555;
+  border-color: #a2a2a2;
+  background-color: #eee;
 }
 
 .btn_more,
@@ -1980,6 +1986,25 @@ caption.sr_only {
   background-image: url(/resources/insurance/images/common/ico_arr_down_sm.png);
 }
 
+.btn_explain {
+  height: 28px;
+  padding: 0 12px 0 15px;
+  border-radius: 25px;
+  background: #555;
+  font-weight: 200;
+  font-size: 14px;
+  color: #fff;
+}
+
+.btn_explain::after {
+  display: inline-block;
+  content: '';
+  width: 4px;
+  height: 5px;
+  margin: 1px 0 0 8px;
+  background: url(/resources/insurance/images/content/bul_arrow_small_white.png) no-repeat;
+}
+
 .btn_xl.btn_primary.btn_disabled {
   background: #FFC39C;
   color: #111;
@@ -1988,6 +2013,67 @@ caption.sr_only {
 .btn_xl.btn_outline_default.btn_disabled {
   border-color: #eee;
   background: #eee;
+}
+
+.btn_mouse_toggle {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn_mouse_toggle > .switch {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+.btn_mouse_toggle > .switch > input[type=checkbox] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.btn_mouse_toggle > .switch > input[type=checkbox]:checked + label {
+  background: #fdcc34;
+}
+
+.btn_mouse_toggle > .switch > input[type=checkbox]:checked + label::before {
+  left: 2px;
+}
+
+.btn_mouse_toggle > .switch > label {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 25px;
+  border-radius: 15px;
+  background: #ddd;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.btn_mouse_toggle > .switch > label::before {
+  content: '';
+  position: absolute;
+  left: 26px;
+  top: 2px;
+  width: 22px;
+  height: 21px;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.btn_mouse_toggle > .btn_name {
+  font-size: 14px;
+  font-weight: 200;
+  color: #001111;
 }
 
 input[type=password]::-ms-reveal,
@@ -2187,7 +2273,7 @@ textarea.tf::placeholder {
 
 .check_item.square > input[type=checkbox] + label {
   padding-left: 33px;
-  background: url(/resources/insurance/images/common/ico_checkbox1_default.png) no-repeat 0 0;
+  background: url(/resources/insurance/images/common/ico_checkbox1_default.png) no-repeat 0 1px;
 }
 
 .check_item.square > input[type=checkbox]:checked + label {
@@ -2219,6 +2305,7 @@ textarea.tf::placeholder {
 }
 
 .check_item > label {
+  padding-bottom: 2px;
   cursor: pointer;
   color: #333;
 }
@@ -2481,6 +2568,9 @@ p.txt_guide {
 
 .selectbox_wrap dd a:hover {
   background: #f3f3f3;
+}
+
+.selectbox_wrap dd a:hover > span {
   color: #333;
 }
 
@@ -2494,7 +2584,7 @@ p.txt_guide {
 
 .selectbox_wrap dd a span {
   display: block;
-  margin: 0 40px 0 15px;
+  margin: 0 27px 0 15px;
   height: 50px;
   line-height: 50px;
 }
@@ -2603,6 +2693,7 @@ p.txt_guide {
 
 .phone_number {
   position: relative;
+  display: inline-block;
 }
 
 .phone_number::before, .phone_number::after {
@@ -3306,6 +3397,106 @@ input.error {
   transition: .3s;
 }
 
+/* 우편번호 */
+.zipcode_search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #111;
+  border-radius: 6px;
+}
+
+.zipcode_search > input[type=text] {
+  width: calc(100% - 57px);
+  padding-left: 15px;
+  border: 0;
+  border-radius: 6px;
+  height: 44px;
+  font-weight: 200;
+  font-size: 16px;
+}
+
+.zipcode_search > button {
+  width: 57px;
+  height: 44px;
+  border-radius: 0 6px 6px 0;
+  background: url(/resources/insurance/images/common/ico_search_bold.png) no-repeat 50% 50%;
+}
+
+.txt_info_zipcode {
+  margin-top: 23px;
+}
+
+.address_example {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px 0 0 -15px;
+  border-radius: 6px;
+  background: #FF883A;
+}
+
+.address_example > .box_l {
+  width: 97px;
+  text-align: center;
+}
+
+.address_example > .box_l > span {
+  display: inline-block;
+  padding-top: 32px;
+  background: url(/resources/insurance/images/content/ico_search_zipcode.png) no-repeat 50% 0;
+  font-weight: 400;
+  color: #111;
+}
+
+.address_example > .box_r {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  padding: 17px 30px;
+  background: #f6f6f6;
+  font-size: 14px;
+  color: #555;
+}
+
+.address_example > .box_r li > span {
+  display: inline-block;
+  width: 165px;
+}
+
+.zipcode_search_result {
+  margin-top: 23px;
+}
+
+.address_write {
+  margin-top: 23px;
+}
+
+.txt_last_address {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 60px 0;
+}
+
+.txt_last_address > p {
+  padding-left: 34px;
+  background: url(/resources/insurance/images/common/ico_check_primary.png) no-repeat 0 0;
+}
+
+.line_popup .popup_inner {
+  border: 1px solid #111;
+}
+
 .tbl table {
   width: 100%;
   table-layout: fixed;
@@ -3522,19 +3713,23 @@ input.error {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
   margin-bottom: 20px;
 }
 
-.tbl_tit > h3 {
+.tbl_tit > .tit_left {
   margin-right: auto;
+}
+
+.tbl_tit > .tit_left > h3,
+.tbl_tit > .tit_left > h4 {
+  display: inline-block;
   margin-bottom: 0;
+  vertical-align: top;
 }
 
 .tbl_tit > .txt_right {
   margin-left: auto;
+  padding-top: 11px;
   line-height: 1;
   color: #555;
 }
@@ -3641,10 +3836,6 @@ input.error {
   margin-right: 10px;
 }
 
-.search_tbl_box > .opt_box {
-  border-bottom: 1px solid #111;
-}
-
 .search_tbl_box > .opt_box > select {
   width: 120px;
   height: 30px;
@@ -3661,20 +3852,19 @@ input.error {
 .tf_search_txt {
   position: relative;
   padding-right: 48px;
-  border-bottom: 1px solid #111;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 .tf_search_txt > input[type=text] {
-  width: 312px;
-  height: 30px;
+  width: 292px;
+  height: 46px;
   padding: 0 15px;
   border: 0;
-  -webkit-transform: translate3d(0, -6px, 0);
-          transform: translate3d(0, -6px, 0);
-  font-weight: 200;
+  border-radius: 6px;
   font-size: 16px;
-  color: #333;
-  background-color: transparent;
+  font-weight: 200;
+  color: #666;
 }
 
 .tf_search_txt > input[type=text]::-webkit-input-placeholder {
@@ -3706,8 +3896,9 @@ input.error {
   right: 0;
   top: 0;
   width: 48px;
-  height: 31px;
-  background: url(/resources/insurance/images/common/ico_search.png) no-repeat 50% 0;
+  height: 100%;
+  border-radius: 6px;
+  background: #fff url(/resources/insurance/images/common/ico_search.png) no-repeat 50% 50%;
 }
 
 .transfer_moeny {
@@ -4763,6 +4954,36 @@ input.error {
   height: 87px;
   line-height: 87px;
   background-image: url("/resources/insurance/images/common/ico_alert_xxl_primary.png");
+}
+
+.ico_alert_xxl_primary {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  width: 96px;
+  height: 87px;
+  line-height: 87px;
+  background-image: url("/resources/insurance/images/common/ico_alert_xxl_primary.png");
+}
+
+.ico_help {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  background-image: url("/resources/insurance/images/common/ico_help.png");
 }
 
 /* 오류화면 스타일 정의 */
