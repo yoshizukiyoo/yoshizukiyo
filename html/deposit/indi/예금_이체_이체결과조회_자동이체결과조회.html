@@ -135,21 +135,18 @@
 								<tr>
 									<th scope="row">조회기간</th>
 									<td>
-										<div class="btn_trans_money">
-											<button type="button" class="btn btn_sm btn_outline_default">당일</button>
-											<button type="button" class="btn btn_sm btn_outline_default">7일</button>
-											<button type="button" class="btn btn_sm btn_outline_default">15일</button>
-											<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
-											<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
-											<button type="button" class="btn btn_sm btn_outline_default">6개월</button>
-										</div>
-										<div class="trans_date mt_2">
-											<span class="datepicker"><input type="text" class="tf tf_datepicker" title="시작 날짜 선택"><button
-													type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span
-														class="sr_only">달력</span></button></span>
-											<span class="datepicker"><input type="text" class="tf tf_datepicker" title="종료 날짜 선택"><button
-													type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span
-														class="sr_only">달력</span></button></span>
+										<div class="mulit_date_box">
+											<div class="btn_date">
+												<button type="button" class="btn btn_sm btn_default">당일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+											</div>
+											<div class="datepicker_box">
+												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
+											</div>
 										</div>
 									</td>
 								</tr>
@@ -246,82 +243,77 @@
 				<div class="modal_popup modal_xl hide" data-popup="popup01">
 					<div class="dimed"></div>
 					<div class="popup_inner">
-							<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
-							<div class="popup_header">
-									<h2 class="popup_tit">이체확인증</h2>
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+								<h2 class="popup_tit">이체확인증</h2>
+						</div>
+						<div class="popup_body">
+							<div class="mb_4 txt_r">
+								<button type="button" class="btn btn_xs btn_outline_default" onclick="$.print('.modal_popup[data-popup=popup01]');">화면인쇄</button>
 							</div>
-							<div class="popup_body">
-								<div class="mb_4 txt_r">
-									<button type="button" class="btn btn_xs btn_outline_default" onclick="$.print('.modal_popup[data-popup=popup01]');">화면인쇄</button>
-								</div>
-								<div class="tbl_data tbl_row_data">
-									<table>
-										<caption class="sr_only">이체확인증 내용 안내(이체일시, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용, 이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
-										<colgroup>
-											<col style="width: 20%;">
-											<col>
-											<col style="width: 20%;">
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row">이체일시</th>
-												<td class="txt_c">2020.12.29  10:44:08</td>
-												<th scope="row">입금은행</th>
-												<td class="txt_c">우체국</td>
-											</tr>
-											<tr>
-												<th scope="row">출금계좌번호</th>
-												<td class="txt_c">010017-02-526***</td>
-												<th scope="row">입금계좌번호</th>
-												<td class="txt_c">010017-02-691911</td>
-											</tr>
-											<tr>
-												<th scope="row">보내는 분</th>
-												<td class="txt_c">나봄미</td>
-												<th scope="row">받는분</th>
-												<td class="txt_c">이덕용</td>
-											</tr>
-											<tr>
-												<th scope="row">출금통장 표시내용</th>
-												<td class="txt_c">이덕용</td>
-												<th scope="row">입금통장 표시내용</th>
-												<td class="txt_c">나봄미</td>
-											</tr>
-											<tr>
-												<th scope="row">이체금액</th>
-												<td class="txt_r">10,000원</td>
-												<th scope="row">매체구분</th>
-												<td class="txt_c">인터넷</td>
-											</tr>
-											<tr>
-												<th scope="row">수수료</th>
-												<td class="txt_r">0원</td>
-												<th scope="row">이체결과</th>
-												<td class="txt_c">정상</td>
-											</tr>
-											<tr>
-												<th scope="row">CMS번호/통신문</th>
-												<td class="txt_c"></td>
-												<th scope="row">전문번호</th>
-												<td class="txt_c">0710D4E0C3710</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<ul class="list list1 mt_4">
-									<li>본 확인증은 영수증으로 사용할 수 없으며, 거래의 참고용으로만 사용할 수 있습니다.</li>
-									<li>2021년 06월 02일 15시 33분 19초</li>
-								</ul>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용, 이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+										<col style="width: 20%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">이체일시</th>
+											<td class="txt_c">2020.12.29  10:44:08</td>
+											<th scope="row">입금은행</th>
+											<td class="txt_c">우체국</td>
+										</tr>
+										<tr>
+											<th scope="row">출금계좌번호</th>
+											<td class="txt_c">010017-02-526***</td>
+											<th scope="row">입금계좌번호</th>
+											<td class="txt_c">010017-02-691911</td>
+										</tr>
+										<tr>
+											<th scope="row">보내는 분</th>
+											<td class="txt_c">나봄미</td>
+											<th scope="row">받는분</th>
+											<td class="txt_c">이덕용</td>
+										</tr>
+										<tr>
+											<th scope="row">출금통장 표시내용</th>
+											<td class="txt_c">이덕용</td>
+											<th scope="row">입금통장 표시내용</th>
+											<td class="txt_c">나봄미</td>
+										</tr>
+										<tr>
+											<th scope="row">이체금액</th>
+											<td class="txt_r">10,000원</td>
+											<th scope="row">매체구분</th>
+											<td class="txt_c">인터넷</td>
+										</tr>
+										<tr>
+											<th scope="row">수수료</th>
+											<td class="txt_r">0원</td>
+											<th scope="row">이체결과</th>
+											<td class="txt_c">정상</td>
+										</tr>
+										<tr>
+											<th scope="row">CMS번호/통신문</th>
+											<td class="txt_c"></td>
+											<th scope="row">전문번호</th>
+											<td class="txt_c">0710D4E0C3710</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-							<!-- 하단 고정 푸터 (미사용시 삭제) -->
-							<div class="popup_footer">
-									<p>우체국금융고객센터 : <span class="txt_invalid">1588-1900</span> (0번 연결)</p>
-									<p>Copyright 2022 KOREAPOST All rights Reserved</p>
-							</div>
-							<button type="button" class="btn btn_close_popup">닫기</button>
+							<ul class="list list1 mt_4">
+								<li>본 확인증은 영수증으로 사용할 수 없으며, 거래의 참고용으로만 사용할 수 있습니다.</li>
+								<li>2021년 06월 02일 15시 33분 19초</li>
+							</ul>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
-			</div>
+				</div>
 				<!-- e: modal 팝업 -->
 
 				<!-- s: alert 팝업 -->
