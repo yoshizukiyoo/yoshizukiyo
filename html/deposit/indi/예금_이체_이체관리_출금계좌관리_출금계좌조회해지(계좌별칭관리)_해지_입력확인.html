@@ -22,7 +22,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			
 		});
 	</script>
 </head>
@@ -35,7 +35,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">간편송금설정</h2>
+				<h2 class="tit_cont">출금계좌조회/해지(계좌별칭관리)</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -52,56 +52,96 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="cont_header_right">
-					<ul class="step">
-						<li><span class="num">1</span><span class="txt">정보입력</span></li>
-						<li><span class="num">2</span><span class="txt">입력확인</span></li>
-						<li class="on"><span class="num">3</span><span class="txt">실행완료</span></li>
-					</ul>
-				</div>
 
 				<div class="mb_16">
 					<div class="box mt_8">
 						<ul class="list list1">
-							<li>간편송금 서비스 신청이 아래와 같이 처리되었습니다.</li>
+							<li>고객님이 출금해지계좌로 등록할 계좌정보입니다. 내용이 맞는지 확인하시기 바랍니다.</li>
 						</ul>
 					</div>
 				</div>
 
-				<div>
+				<div class="mb_20">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">간편송금설정 결과 확인(우체국 본인계좌로 이체, 타인(타행)계좌로 이체)</caption>
+							<caption class="sr_only">출금해지계좌 입력정보 확인(예금종류, 계좌번호, 잔액, 계좌비밀번호)</caption>
 							<colgroup>
-								<col style="width: 17%;">
+								<col style="width: 15%;">
+								<col>
+								<col style="width: 15%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">우체국 본인계좌로 이체</th>
-									<td>보안매체 및 공동인증서 입력 생략</td>
+									<th scope="row">예금종류</th>
+									<td colspan="3">일반저축예금</td>
 								</tr>
 								<tr>
-									<th scope="row">타인(타행)계좌로 이체</th>
-									<td>사전 지정 PC에서 거래시 보안매체 입력 생략 (PC지정 미등록단말)</td>
+									<th scope="row">계좌번호</th>
+									<td>600833-02-000590</td>
+									<th scope="row">잔액</th>
+									<td class="txt_r">151,081,347원</td>
+								</tr>
+								<tr>
+									<th scope="col">계좌비밀번호</th>
+									<td colspan="3">
+										<div class="btn_mouse_pwd">
+											<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 320px;">
+											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
+										</div>
+									</td>
+								</tr>
+								<tr><!-- [D] error guide : 개발시 삭제되는 행 입니다 -->
+									<th scope="col">계좌비밀번호</th>
+									<td colspan="3">
+										<div class="btn_mouse_pwd">
+											<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 320px;"><!-- [D] Field error : class 속성에 error 추가 -->
+											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
+										</div>
+										<div class="error_info">계좌비밀번호를 입력해 주십시오.</div><!-- [D] error 메세지 -->
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="box mt_4">
-						<dl>
-							<dt>참고사항</dt>
-							<dd>
-								<ul class="list list2">
-									<li>주로 이용하는 PC를 지정하면 1일 300만원 미만 타행거래 시 보안매체(보안카드, OTP)를 사용하지 않아도 됩니다. <a href="#;" class="btn btn_explain ml_1">PC 지정하기</a></li>
-								</ul>
-							</dd>
-						</dl>
+				</div>
+				
+				<div>
+					<h3 class="tit1">보안매체 인증번호 입력</h3>
+					<div class="box_security_cert bg_security_card">
+						<div class="security_cert_inner">
+							<p class="txt_security">영업점에서 발급 받으신 보안카드를 확인하여 아래의 빈 칸에 보안카드 코드를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_r">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_r">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+							</div>
+							<p class="txt_security_caution">
+								<strong>보안카드 비밀번호 5회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
 					</div>
 				</div>
 
 				<div class="btn_tbl_btm">
-					<a href="예금_이체_이체관리_간편송금설정_정보입력.html" class="btn btn_xl btn_primary">확인</a>
+					<a href="예금_이체_이체관리_출금계좌관리_출금계좌조회해지(계좌별칭관리).html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="예금_이체_이체관리_출금계좌관리_출금계좌조회해지(계좌별칭관리)_해지_실행완료.html" class="btn btn_xl btn_primary">해지실행</a><!-- [D] 해지실행 버튼 클릭 시 공인인증창 호출-->
 				</div>
 
 				<!-- s: alert 팝업 -->
@@ -125,10 +165,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>

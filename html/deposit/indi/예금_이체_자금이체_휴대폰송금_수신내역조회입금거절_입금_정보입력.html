@@ -22,9 +22,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').click(function () {
-				$('.btm_result_box').show();
-			});
+			
 		});
 	</script>
 </head>
@@ -37,7 +35,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">수신내역조회</h2>
+				<h2 class="tit_cont">수신내역조회/입금/거절: 입금</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -54,62 +52,67 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="mb_20">
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="mb_16">
 					<div class="box box_more mt_8">
 						<div class="inner">
 							<ul class="list list1">
-								<li>고객님께 송금요청된 내역을 확인하실 수 있습니다.</li>
-								<li>송금요청된 내역에 대하여 입금 및 입금거절 처리기간은 15일입니다. 처리기간내에 송금된 자금에 대하여 입금 또는 거절 처리를 하지 않으면 자동으로 취소됩니다.</li>
-								<li>송금요청이 '등록' 상태이면 입금 및 입금거절 서비스가 가능합니다.</li>
-								<li>입금은 "개인정보활용"에 동의를 하신 고객만 가능합니다.</li>
+								<li>고객님께 송금요청된 내역은 다음과 같습니다.</li>
+								<li>고객님의 <span class="txt_normal">입금계좌번호 및 송금인에게 통보받은 출금인증번호(숫자6자리)를 입력</span>하십시요.</li>
+								<li>입금실행시 송금인 출금계좌 잔액이 부족한 경우 입금이 불가능 할 수 있습니다. 송금된 자금에 대하여 <span class="txt_normal">출금 처리기간 (15일이내) 입금을 시도</span> 하시기 바랍니다.</li>
+								<li>입금실행 후 반드시 거래내역조회 또는 수신내역조회를 통해 결과를 확인해 주십시요.</li>
 							</ul>
 						</div>
+					</div>
+				</div>
+
+				<div class="mb_20">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">보내는분</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">보낸는분 정보 확인(송금인명, 보내는금액, 통신문)</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">송금인명</th>
+									<td>김성명</td>
+									<th scope="row">보내는금액</th>
+									<td class="txt_r">100원</td>
+								</tr>
+								<tr>
+									<th scope="row">통신문(보낸 메시지)</th>
+									<td colspan="3">20160510_암호화테스트</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 
 				<div>
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">조회정보</h3>
-						</div>
-					</div>
-					<div class="tbl_row2">
-						<table>
-							<caption class="sr_only">조회기간 선택</caption>
-							<colgroup>
-								<col style="width: 17%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">조회기간</th>
-									<td>
-										<div class="datepicker_box">
-											<input type="text" class="tf tf_datepicker">
-											<input type="text" class="tf tf_datepicker">
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="btn_tbl_btm">
-						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
-					</div>
-				</div>
-
-				<div class="btm_result_box mt_12">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">조회정보</h3>
-						</div>
-						<div class="txt_right">
-							<span class="inpuiry_time">조회시간 : 2021년 06월 02일 14시45분46초</span>
+							<h3 class="tit1">받으실분</h3>
 						</div>
 					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">조회정보 (수신자 휴대전화번호, 조회기간)</caption>
+							<caption class="sr_only">받으실분 정보 확인(수취인명, 휴대폰번호, 입금계좌번호 선택, 출금인증번호 입력)</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -118,103 +121,65 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">수신자 휴대번호</th>
-									<td>0101-7484-0909</td>
-									<th scope="row">조회기간</th>
-									<td>2016-06-01 ~ 2021-06-02</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_list_data mt_4">
-						<table>
-							<caption class="sr_only">조회정보 (일련번호, 송금일자, 송금인명, 수취인명, 송금액, 상태, 상세정보/입금/거절)</caption>
-							<colgroup>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col style="width: 17%;">
-								<col style="width: 20%;">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">일련번호</th>
-									<th scope="col">송금일자</th>
-									<th scope="col">송금인명</th>
-									<th scope="col">수취인명</th>
-									<th scope="col">송금액(원)</th>
-									<th scope="col">상태</th>
-									<th scope="col">상세정보/입금/거절</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>0000000001</td>
-									<td>2016-12-28</td>
-									<td>김성명</td>
+									<th scope="row">수취인명</th>
 									<td>나봄미</td>
-									<td class="txt_r">40,000</td>
-									<td>거절</td>
-									<td class="txt_l">
-										<a href="#;" class="btn btn_xs btn_outline_default">상세정보</a>
+									<th scope="row">휴대폰번호</th>
+									<td>010-7484-0909</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌번호</th>
+									<td colspan="3">
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="입금계좌번호 선택">
+												<dt><a href="#;"><span>계좌를 선택하여 주십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>123456789</span></a></li>
+														<li><a href="#;"><span>987654321</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">출금가능금액</button>
+										</div>
 									</td>
 								</tr>
 								<tr>
-									<td>0000000001</td>
-									<td>2016-12-28</td>
-									<td>김성명</td>
-									<td>나봄미</td>
-									<td class="txt_r">40,000</td>
-									<td>등록</td>
-									<td class="txt_l">
-										<a href="#;" class="btn btn_xs btn_outline_default">상세정보</a>
-										<a href="#;" class="btn btn_xs btn_outline_default">입금</a>
-										<a href="#;" class="btn btn_xs btn_outline_default">거절</a>
+									<th scope="row">입금계좌번호</th>
+									<td colspan="3">
+										<div class="selectbox_wrap error" style="width: 420px;"><!-- [D] Field error : class 속성에 error 추가 -->
+											<dl title="입금계좌번호 선택">
+												<dt><a href="#;"><span>계좌를 선택하여 주십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>123456789</span></a></li>
+														<li><a href="#;"><span>987654321</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">출금가능금액</button>
+										</div>
+										<div class="error_info">출금계좌를 선택하여 주십시오.</div><!-- [D] error 메세지 -->
 									</td>
 								</tr>
 								<tr>
-									<td>0000000001</td>
-									<td>2016-12-28</td>
-									<td>김성명</td>
-									<td>나봄미</td>
-									<td class="txt_r">40,000</td>
-									<td>입금완료</td>
-									<td class="txt_l">
-										<a href="#;" class="btn btn_xs btn_outline_default">상세정보</a>
-									</td>
-								</tr>
-								<tr>
-									<td>0000000001</td>
-									<td>2016-12-28</td>
-									<td>김성명</td>
-									<td>나봄미</td>
-									<td class="txt_r">40,000</td>
-									<td>송금인요청취소</td>
-									<td class="txt_l">
-										<a href="#;" class="btn btn_xs btn_outline_default">상세정보</a>
-									</td>
-								</tr>
-								<tr>
-									<td>0000000001</td>
-									<td>2016-12-28</td>
-									<td>김성명</td>
-									<td>나봄미</td>
-									<td class="txt_r">40,000</td>
-									<td>등록</td>
-									<td class="txt_l">
-										<a href="#;" class="btn btn_xs btn_outline_default">상세정보</a>
-										<a href="#;" class="btn btn_xs btn_outline_default">입금</a>
-										<a href="#;" class="btn btn_xs btn_outline_default">거절</a>
+									<th scope="row">출금인증번호</th>
+									<td colspan="3">
+										<input type="text" class="tf mr_1" style="width: 420px;" title="출금인증번호 입력" placeholder="숫자 6자리">
+										송금인에게 통보받은 출금인증번호를 입력하십시오.
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="mt_4 txt_r">
-						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print()">화면출력</button>
-					</div>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="예금_이체_자금이체_휴대폰송금_수신내역조회입금거절_입금_입력확인.html" class="btn btn_xl btn_primary">다음</a>
 				</div>
 
 				<!-- s: alert 팝업 -->

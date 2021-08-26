@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/deposit/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/_common/js/jquery-3.3.1.js"></script>
+	<script src="/resources/_common/js/jquery.print.js"></script>
+	<script src="/resources/_common/js/slick.js"></script>
+	<script src="/resources/_common/js/datepicker.js"></script>
+	<script src="/resources/_common/js/ui_global.js"></script>
+	<script src="/resources/deposit/js/ui_layout.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/deposit/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">장기미이체 거래제한 해제</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="mb_16">
+					<div class="box mt_8">
+						<ul class="list list1">
+							<li>인터넷뱅킹 장기미이체 거래제한 해제를 위한 사용자 확인 단계입니다.</li>
+							<li>우체국에서 인터넷뱅킹 약정시 등록하신 계좌번호와 계좌비밀번호를 입력하세요.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div>
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">거래제한 해제를 위한 정보 입력(계좌번호, 계좌비밀번호)</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">계좌번호
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<input type="text" class="tf" style="width: 420px;" title="계좌번호 입력" placeholder="- 없이 입력하세요">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">계좌비밀번호
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="btn_mouse_pwd">
+											<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 350px;">
+											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a><!-- [D] 취소 버튼 클릭시 입력값 초기화 -->
+					<a href="예금_이체_이체관리_장기미이체거래제한해제_입력확인.html" class="btn btn_xl btn_primary">확인</a>
+				</div>
+
+				<div class="box mt_12">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>장기미이체 거래 제한은 금융사기 예방을 위해 12개월이상 이체성 이용 실적이 없는 장기 미사용 이용고객의 이체거래를 제한하는 것입니다.</li>
+								<li>이체성거래는 즉시이체, 다계좌이체, 예약이체, CMS이체, 그룹이체, 해외송금, 휴대폰송금이 포함됩니다.</li>
+								<li>위의 경우로 인해 이체거래가 중지된 경우 장기미이체 제한 해제 후 이체서비스를 이용하실 수 있습니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- s: alert01 팝업 > 계좌번호 미입력시 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										출금계좌를 정확히 입력하십시오
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert01');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert01 팝업 -->
+
+				<!-- s: alert02 팝업 > 비밀번호 미입력시 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert02">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										계좌비밀번호를 정확히 입력하십시오
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert02');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert02');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert02 팝업 -->
+
+				<!-- s: alert03 팝업 > 거래제한 계좌가 아닐경우-->
+				<div class="modal_popup modal_alert hide" data-popup="alert03">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										장기미사용이체거래제한 상태가 아니어서 거래해제를 할 수 없습니다.
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert03');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert03');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert03 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>

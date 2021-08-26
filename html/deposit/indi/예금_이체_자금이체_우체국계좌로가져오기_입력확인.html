@@ -22,7 +22,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			
 		});
 	</script>
 </head>
@@ -35,7 +35,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">간편송금설정</h2>
+				<h2 class="tit_cont">우체국계좌로 가져오기</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -55,53 +55,77 @@
 				<div class="cont_header_right">
 					<ul class="step">
 						<li><span class="num">1</span><span class="txt">정보입력</span></li>
-						<li><span class="num">2</span><span class="txt">입력확인</span></li>
-						<li class="on"><span class="num">3</span><span class="txt">실행완료</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="mb_16">
-					<div class="box mt_8">
-						<ul class="list list1">
-							<li>간편송금 서비스 신청이 아래와 같이 처리되었습니다.</li>
-						</ul>
+				<div class="mt_20">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">조회정보</h3>
+						</div>
 					</div>
-				</div>
-
-				<div>
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">간편송금설정 결과 확인(우체국 본인계좌로 이체, 타인(타행)계좌로 이체)</caption>
+							<caption class="sr_only">우체국계좌로 가져오기 입력정보 확인(출금은행계좌번호, 출금통장표시내용, 계좌번호, 받는분, 받는통장표시내용)</caption>
 							<colgroup>
-								<col style="width: 17%;">
+								<col style="width: 25%;">
+								<col>
+								<col style="width: 25%;">
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="colgroup" colspan="2">출금정보</th>
+									<th scope="colgroup" colspan="3">입금 우체국 계좌정보</th>
+								</tr>
+								<tr>
+									<th scope="col">출금은행<br>계좌번호</th>
+									<th scope="col">출금통장<br>표시내용</th>
+									<th scope="col">계좌번호</th>
+									<th scope="col">받는분</th>
+									<th scope="col">받는통장<br>표시내용</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>우리<br>1002261669120</td>
+									<td>우체국오픈뱅킹</td>
+									<td>우체국<br>013912-02-000012</td>
+									<td>사아자</td>
+									<td>사아자</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_data tbl_row_data mt_4">
+						<table>
+							<caption class="sr_only">이체금액 안내</caption>
+							<colgroup>
+								<col style="width: 11%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">우체국 본인계좌로 이체</th>
-									<td>보안매체 및 공동인증서 입력 생략</td>
-								</tr>
-								<tr>
-									<th scope="row">타인(타행)계좌로 이체</th>
-									<td>사전 지정 PC에서 거래시 보안매체 입력 생략 (PC지정 미등록단말)</td>
+									<th scope="row">이체금액</th>
+									<td class="txt_r">10,000원</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="box mt_4">
-						<dl>
-							<dt>참고사항</dt>
-							<dd>
-								<ul class="list list2">
-									<li>주로 이용하는 PC를 지정하면 1일 300만원 미만 타행거래 시 보안매체(보안카드, OTP)를 사용하지 않아도 됩니다. <a href="#;" class="btn btn_explain ml_1">PC 지정하기</a></li>
-								</ul>
-							</dd>
-						</dl>
+						<ul class="list list2">
+							<li>고객님이 입력하신 이체정보입니다. 이체를 실행하신 후에는 취소가 불가하오니 입력하신 입/출금 정보가 맞는지 다시 한번 확인하시기 바랍니다.</li>
+							<li>지금 시도하려는 이체가 전화/메신저 등 금융사기인지 한 번 더 확인하여 금융사기 피해를 예방하시기 바랍니다.</li>
+						</ul>
 					</div>
-				</div>
+				</div>				
 
 				<div class="btn_tbl_btm">
-					<a href="예금_이체_이체관리_간편송금설정_정보입력.html" class="btn btn_xl btn_primary">확인</a>
+					<a href="예금_이체_자금이체_우체국계좌로가져오기_정보입력.html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="예금_이체_자금이체_우체국계좌로가져오기_실행완료.html" class="btn btn_xl btn_primary">이체</a>
 				</div>
 
 				<!-- s: alert 팝업 -->
@@ -125,17 +149,15 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
 				<!-- e: alert 팝업 -->
-				
+
 				<!-- s: confirm 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
 					<div class="dimed"></div>
