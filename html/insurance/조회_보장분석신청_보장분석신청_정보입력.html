@@ -22,6 +22,17 @@
 	<script>
 		$(document).ready(function () {
 			// 이곳에 정의
+			$('.direct-box').click(function () {
+				console.log('test3');
+				$(this).children('input[type="radio"]').attr("checked")
+				if ($('.test').prop("checked") == true) {
+					console.log('test1');
+					$('.input-direct').attr("disabled", false);
+				} else {
+					console.log('test2');
+					$('.input-direct').attr("disabled", true);
+				}
+			});
 		});
 	</script>
 </head>
@@ -57,8 +68,8 @@
 							<li>고객님께서 가입하신 우체국보험상품의 보장금액을 분석진단 · 신청하는 서비스입니다.</li>
 							<li>보장분석을 신청하시면 우체국에서 고객님께 보장분석결과를 우편으로 또는 직접전달하여 드립니다.</li>
 							<li>신청대상 보험목록을 조회 후 [보장분석신청] 탭으로 이동하여 신청할 수 있습니다.</li>
-							<li>보장분석 신청시 모집자(유지관리자)번호를 입력하시면 해당 모집자(유지관리자)가, 또는 모집자(유지관리자)번호를입력하지 않으시면 </li>
-							<li>최근에 가입하신 보험의 유지관리자가 분석결과를 신청일로부터 2~5일(우체국 영업일 기준)이내에 알려드립니다.</li>
+							<li>보장분석 신청시 모집자(유지관리자)번호를 입력하시면 해당 모집자(유지관리자)가, 또는 모집자(유지관리자)번호를 입력하지 않으시면 </li>
+							<li>최근에 가입하신 보험의 유지관리자가 분석결과를 신청일로부터 2~5일(우체국 영업일 기준) 이내에 알려드립니다.</li>
 							<li>신청시간 : 09:00~21:00 (토,일,공휴일포함)</li>
 						</ul>
 					</div><button type="button" class="btn btn_more_white">더보기</button>
@@ -78,7 +89,7 @@
 							<h3 class="tit1">계약사항 내역</h3>
 						</div>
 					</div>
-					<div class="tbl_row2">
+					<div class="tbl_row2 row-input-type">
 						<table>
 							<caption class="sr_only">
 								계약사항 내역 정보 상세내용이며 신청자, 신청 유지관리자 정보를 제공하고 있습니다.
@@ -95,16 +106,16 @@
 								<tr>
 									<th scope="row">신청 유지관리자</th>
 									<td>
-										<span class="check_item">
+										<span class="check_item direct-box">
 											<input type="radio" name="radioCheck" id="radioCheck1_1" checked>
 											<label for="radioCheck1_1">최근에 가입한 보험의 유지관리자</label>
 										</span>
-										<span class="check_item d_i">
-											<input type="radio" name="radioCheck" id="radioCheck1_2">
+										<span class="check_item d_i direct-box">
+											<input type="radio" name="radioCheck" id="radioCheck1_2" class="test">
 											<label for="radioCheck1_2">
 												<span class="d_i_b mr_2">직접입력</span>
-												<input style="width:100%; max-width:380px; height: 45px;" class="" type="text" disabled>
 											</label>
+											<input class="input-direct" type="text" title="직접입력" disabled>
 										</span>
 									</td>
 								</tr>
