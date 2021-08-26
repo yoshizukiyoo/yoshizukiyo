@@ -74,12 +74,13 @@
 				<div class="mt_12">
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<div class="txt_xxl txt_light">
+							<div class="txt_xxl txt_light account_tit">
 								홍길동 고객님이 보유하고 계신<br>예금 잔액 합계는 <strong class="txt_darkyellow price_txt">7,000,000</strong>원 입니다.
 							</div>
 						</div>
 						<div class="txt_right">
 							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
 				</div>
@@ -103,11 +104,11 @@
 									<span>100057-02-000010</span>
 								</div>
 								<div class="r">
-									<span><strong>500,000</strong>원</span>
+									<span class="price"><strong>500,000</strong>원</span>
 									<div class="mt_4">
 										<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
-										<button type="button" class="btn btn_md btn_outline_default">거래내역</button>
-										<button type="button" class="btn btn_md btn_primary txt_medium">즉시이체</button>
+										<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
+										<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
 									</div>
 								</div>
 							</div>
@@ -146,15 +147,15 @@
 									<span><strong>500,000</strong>원</span>
 									<div class="mt_4">
 										<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
-										<button type="button" class="btn btn_md btn_outline_default">거래내역</button>
-										<button type="button" class="btn btn_md btn_primary txt_medium">즉시이체</button>
+										<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
+										<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
 									</div>
 								</div>
 							</div>
 							<div class="btm">
 								<button type="button" onclick="openModal('layer04', this);">계좌별칭관리</button>
-								<button type="button">등록해지</button>
-								<button type="button">순서변경</button>
+								<button type="button" onclick="openModal('layer05', this);">등록해지</button>
+								<button type="button" onclick="openModal('layer06', this);">순서변경</button>
 							</div>
 						</li>
 						<li>
@@ -168,15 +169,15 @@
 									<span><strong>500,000</strong>원</span>
 									<div class="mt_6">
 										<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
-										<button type="button" class="btn btn_md btn_outline_default">거래내역</button>
-										<button type="button" class="btn btn_md btn_primary txt_medium">즉시이체</button>
+										<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
+										<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
 									</div>
 								</div>
 							</div>
 							<div class="btm">
 								<button type="button" onclick="openModal('layer04', this);">계좌별칭관리</button>
-								<button type="button">등록해지</button>
-								<button type="button">순서변경</button>
+								<button type="button" onclick="openModal('layer05', this);">등록해지</button>
+								<button type="button" onclick="openModal('layer06', this);">순서변경</button>
 							</div>
 						</li>
 					</ul>
@@ -184,7 +185,6 @@
 				<div class="txt_r mt_4">
 					<button type="button" class="btn btn_xs btn_outline_gray">인터넷예금 가입/조회/예약</button>
 					<button type="button" class="btn btn_xs btn_outline_gray">입출금예금계좌해약</button>
-					<button type="button" class="btn btn_xs btn_outline_default">새로고침</button>
 					<button type="button" class="btn btn_xs btn_outline_default">엑셀저장</button>
 					<button type="button" class="btn btn_xs btn_outline_default" onclick="window.print();">화면인쇄</button>
 				</div>
@@ -335,12 +335,14 @@
 										<col>
 									</colgroup>
 									<thead>
-										<th scope="row">예금종류</th>
-										<th scope="row">계좌번호</th>
-										<th scope="row">개설일</th>
-										<th scope="row">잔액(원)</th>
-										<th scope="row">상태</th>
-										<th scope="row">등록/해제</th>
+										<tr>
+											<th scope="row">예금종류</th>
+											<th scope="row">계좌번호</th>
+											<th scope="row">개설일</th>
+											<th scope="row">잔액(원)</th>
+											<th scope="row">상태</th>
+											<th scope="row">등록/해제</th>
+										</tr>
 									</thead>
 									<tbody>
 										<tr>
@@ -444,7 +446,7 @@
 				<!-- e: 간편계좌등록 -->
 
 				<!-- Modal Popup : 계좌별칭관리 -->
-				<div class="modal_popup modal_lg hide" data-popup="layer04" style="opacity: 1; visibility: visible;">
+				<div class="modal_popup modal_lg hide" data-popup="layer04">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
@@ -460,9 +462,11 @@
 										<col>
 									</colgroup>
 									<thead>
-										<th scope="row">은행명</th>
-										<th scope="row">계좌번호</th>
-										<th scope="row">계좌별칭</th>
+										<tr>
+											<th scope="row">은행명</th>
+											<th scope="row">계좌번호</th>
+											<th scope="row">계좌별칭</th>
+										</tr>
 									</thead>
 									<tbody>
 										<tr>
@@ -484,6 +488,162 @@
 					</div>
 				</div>
 				<!-- e: 계좌별칭관리 -->
+
+				<!-- Modal Popup : 등록해지 -->
+				<div class="modal_popup modal_sm hide" data-popup="layer05">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">다른은행 계좌 등록해지</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">등록해지</caption>
+									<colgroup>
+										<col style="width: 25%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="row">은행명</th>
+											<th scope="row">계좌번호</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우리은행</td>
+											<td>xxxxxxxxxxxxxxxxx</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer05');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 등록해지 -->
+
+				<!-- Modal Popup : 순서변경 -->
+				<div class="modal_popup modal_lg hide" data-popup="layer06">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">다른은행 계좌 순서변경</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">순서변경</caption>
+									<colgroup>
+										<col style="width: 20%">
+										<col style="width: 18%">
+										<col>
+										<col style="width: 18%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="row">계좌별칭</th>
+											<th scope="row">은행명</th>
+											<th scope="row">계좌번호</th>
+											<th scope="row">순서변경</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>다른은행 1번</td>
+											<td>우리은행</td>
+											<td>xxxxxxxxxxxxxxxxx</td>
+											<td class="txt_c">
+												<button>
+													<i class="ico ico_arr_round_down"></i>
+													<span class="sr_only">순서 아래로 이동</span>
+												</button>
+												<button>
+													<i class="ico ico_arr_round_up"></i>
+													<span class="sr_only">순서 위로 이동</span>
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td>또 다른은행</td>
+											<td>신한은행</td>
+											<td>xxxxxxxxxxxxxxxxx</td>
+											<td class="txt_c">
+												<button>
+													<i class="ico ico_arr_round_down"></i>
+													<span class="sr_only">순서 아래로 이동</span>
+												</button>
+												<button>
+													<i class="ico ico_arr_round_up"></i>
+													<span class="sr_only">순서 위로 이동</span>
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td>하나은행</td>
+											<td>xxxxxxxxxxxxxxxxx</td>
+											<td class="txt_c">
+												<button>
+													<i class="ico ico_arr_round_down"></i>
+													<span class="sr_only">순서 아래로 이동</span>
+												</button>
+												<button>
+													<i class="ico ico_arr_round_up"></i>
+													<span class="sr_only">순서 위로 이동</span>
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td>농협</td>
+											<td>xxxxxxxxxxxxxxxxx</td>
+											<td class="txt_c">
+												<button>
+													<i class="ico ico_arr_round_down"></i>
+													<span class="sr_only">순서 아래로 이동</span>
+												</button>
+												<button>
+													<i class="ico ico_arr_round_up"></i>
+													<span class="sr_only">순서 위로 이동</span>
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td>또또 다른은행</td>
+											<td>카카오뱅크</td>
+											<td>xxxxxxxxxxxxxxxxx</td>
+											<td class="txt_c">
+												<button>
+													<i class="ico ico_arr_round_down"></i>
+													<span class="sr_only">순서 아래로 이동</span>
+												</button>
+												<button>
+													<i class="ico ico_arr_round_up"></i>
+													<span class="sr_only">순서 위로 이동</span>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<ul class="list list1 mt_2">
+								<li>홍길동 고객님이 등록하신 다른은행 계좌의 순서를 변경할 수 있습니다.</li>
+							</ul>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer06');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer06');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 순서변경 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
