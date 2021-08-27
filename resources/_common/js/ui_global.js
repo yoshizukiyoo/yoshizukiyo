@@ -42,8 +42,14 @@ $(function () {
 });
 
 $(document).on('click', '.box_more .btn_more_white', function () {
-	$(this).parent('.box_more').hasClass('opened') ? $(this).text('더보기') : $(this).text('접기');
-	$(this).parent('.box_more').toggleClass('opened');
+
+	if ($(this).closest(".box_more").hasClass("new_controlls")) {
+		$(this).parent('.box_more').hasClass('opened') ? $(this).text('계약정보 상세보기') : $(this).text('상세보기 닫기');
+		$(this).parent('.box_more').toggleClass('opened');
+	} else {
+		$(this).parent('.box_more').hasClass('opened') ? $(this).text('더보기') : $(this).text('접기');
+		$(this).parent('.box_more').toggleClass('opened');
+	}
 });
 
 // 즐겨찾기 버튼 토글
@@ -438,7 +444,7 @@ $(document).ready(function () {
 });
 
 // 더블 탭메뉴 활성화
-$(document).on('click', '.tab_menu_type3 a , .tab_menu_double > .tab_menu_type1 a, .tab_btn a ',function () {
+$(document).on('click', '.tab_menu_type3 a , .tab_menu_double > .tab_menu_type1 a, .tab_btn a ', function () {
 	var obj = $(this);
 	var tg = obj.data('tab-tg');
 	obj.addClass('current').parent().siblings().find('>a').removeClass();
@@ -448,22 +454,22 @@ $(document).on('click', '.tab_menu_type3 a , .tab_menu_double > .tab_menu_type1 
 
 // 디자인 셀렉트박스
 $(document).on('click', '.selectbox_wrap dt a', function () {
-    var obj = $(this);
-    $('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
-    obj.parents('.selectbox_wrap').toggleClass('active');
-    return false;
+	var obj = $(this);
+	$('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
+	obj.parents('.selectbox_wrap').toggleClass('active');
+	return false;
 });
 $(document).on('click', '.selectbox_wrap dd a', function () {
-    var obj = $(this);
-    obj.closest('dd').prev().find('>a>span').text(obj.text());
-    obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
-		obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
-    return false;
+	var obj = $(this);
+	obj.closest('dd').prev().find('>a>span').text(obj.text());
+	obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
+	obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
+	return false;
 });
 var win = $(window);
 var selectBox = $('.selectbox_wrap dt a');
-win.on("click", function(e){
-	if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)){
+win.on("click", function (e) {
+	if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)) {
 		$('.selectbox_wrap').removeClass('active');
 	}
 });
