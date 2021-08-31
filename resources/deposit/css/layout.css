@@ -898,8 +898,7 @@ label {
 }
 
 .breadcrumb {
-  margin-top: 134px;
-  border-bottom: 1px solid #eee;
+  margin-top: 153px;
 }
 
 .breadcrumb .breadcrumb_list {
@@ -909,7 +908,10 @@ label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 44px;
+  height: 34px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   color: #555;
 }
 
@@ -930,30 +932,19 @@ label {
   max-height: none;
 }
 
-.breadcrumb .breadcrumb_list > li:first-child > a:hover {
-  background-color: #FDC61C;
-}
-
-.breadcrumb .breadcrumb_list > li:first-child > a:hover .ico_home {
-  background-image: url(/resources/deposit/images/common/ico_home_black.png);
-}
-
-.breadcrumb .breadcrumb_list > li:last-child {
-  border-right: 1px solid #f2f2f2;
-}
-
 .breadcrumb .breadcrumb_list > li:last-child > a {
   color: #111;
   font-weight: 500;
 }
 
 .breadcrumb .breadcrumb_list > li:nth-child(n+2) {
-  border-left: 1px solid #f2f2f2;
-  min-width: 115px;
+  padding: 0 7px 0 13px;
+  background: url(/resources/deposit/images/common/ico_arr_right_sm.png) no-repeat 0 50%;
 }
 
 .breadcrumb .breadcrumb_list > li:nth-child(n+2) > a {
-  display: block;
+  display: inline-block;
+  position: relative;
   max-width: 100%;
   white-space: nowrap;
   max-height: 44px;
@@ -961,14 +952,16 @@ label {
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 200px;
-  height: 100%;
+  padding: 8px 33px 8px 15px;
   max-height: none;
-  padding: 0 58px 0 19px;
-  border-radius: 0;
+  border-radius: 20px;
+  background-image: url(/resources/deposit/images/common/ico_arr_circle_down.png);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) 50%;
+  line-height: 1;
   text-align: left;
-  font-size: 16px;
-  background: #fff url(/resources/deposit/images/common/ico_arr_down_sm.png) no-repeat right 20px center;
-  background-size: 13px auto;
+  vertical-align: top;
+  font-size: 18px;
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
   -webkit-transition-property: color, border-color, -webkit-box-shadow;
@@ -979,8 +972,8 @@ label {
 }
 
 .breadcrumb .breadcrumb_list > li.on:nth-child(n+2) > a {
-  background-image: url(/resources/deposit/images/common/ico_arr_up_sm.png);
-  background-color: #FDC61C;
+  background-color: #fdc61c;
+  background-image: url(/resources/deposit/images/common/ico_arr_circle_down_on.png);
   font-weight: 500;
   color: #111;
 }
@@ -993,29 +986,36 @@ label {
   display: none;
   position: absolute;
   z-index: 10;
-  left: -1px;
+  left: 50%;
   right: 0;
-  margin-top: 1px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-top: 56px;
   width: calc(100% + 1px);
   min-width: 115px;
   overflow-y: auto;
-  border: 1px solid #f2f2f2;
-  -webkit-box-shadow: 0 7px 17px 0 #e2e2e2;
-          box-shadow: 0 7px 17px 0 #e2e2e2;
+  border: 1px solid #555;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 7px 17px 0 #dcdcdc;
+          box-shadow: 0 7px 17px 0 #dcdcdc;
   background-color: #fff;
-  border-top: 0;
-  font-size: 15px;
 }
 
 .breadcrumb .sub_list_wrap ul {
   overflow-y: auto;
   max-height: 500px;
-  padding: 19px 40px 20px 20px;
+  padding: 23px 24px 19px;
   font-size: 16px;
 }
 
+.breadcrumb .sub_list_wrap ul > li {
+  padding: 0 17px;
+}
+
 .breadcrumb .sub_list_wrap ul > li:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 11px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #eee;
 }
 
 .breadcrumb .sub_list_wrap a {
@@ -1023,13 +1023,37 @@ label {
   position: relative;
   line-height: 1.3;
   white-space: nowrap;
-  font-weight: 300;
-  color: #555;
+  text-align: center;
+  font-weight: 200;
+  color: #333;
 }
 
 .breadcrumb .sub_list_wrap a:hover {
   font-weight: 500;
   color: #111;
+}
+
+.breadcrumb .sub_list_wrap::before, .breadcrumb .sub_list_wrap::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border-style: solid;
+}
+
+.breadcrumb .sub_list_wrap::before {
+  top: -22px;
+  border-color: transparent transparent #555 transparent;
+  border-width: 11px;
+}
+
+.breadcrumb .sub_list_wrap::after {
+  top: -21px;
+  border-color: transparent transparent #fff transparent;
+  border-width: 11px;
 }
 
 .quick_menu_wrap {
@@ -1203,7 +1227,7 @@ label {
   width: 1200px;
   margin: auto;
   position: relative;
-  padding: 80px 0 0;
+  padding: 30px 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
