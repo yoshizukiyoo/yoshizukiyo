@@ -82,7 +82,7 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 		"**/node_modules/**",
 		".vscode/**"
 	],
-	"liveSassCompile.settings.generateMap": true,
+	"liveSassCompile.settings.generateMap": false,
 	"liveSassCompile.settings.autoprefix": [
 		"> 1%",
 		"last 2 versions"
