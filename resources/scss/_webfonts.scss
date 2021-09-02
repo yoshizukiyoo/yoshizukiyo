@@ -1,0 +1,58 @@
+/* 웹폰트 */
+
+$url-fonts: "/resources/fonts";
+
+$font-weights1: ( // Light: 200,
+	Regular: 400,
+	Medium: 500,
+	Bold: 600,
+);
+
+$font-weights2: ( // Thin: 100,
+	Light: 200,
+	DemiLight: 300,
+	Regular: 400,
+	Medium: 500,
+	Bold: 600,
+	// Black: 700,
+);
+
+// $font-weights3: (regular: 400,
+// 	bold: 600,
+// );
+
+@each $weight-name,
+$weight-size in $font-weights1 {
+	$font-family: "SpoqaHanSans";
+	$font-file-name: "SpoqaHanSans";
+
+	@font-face {
+		font-family: $font-family;
+		font-style: normal;
+		font-weight: $weight-size;
+		src: url("#{$url-fonts}/#{$font-file-name}#{$weight-name}.woff2") format("woff2"),
+		url("#{$url-fonts}/#{$font-file-name}#{$weight-name}.woff") format("woff");
+		unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+		// 영문 (대문자) : U+0041-005A
+		// 영문 (소문자) : U+0061-007A
+		// 숫자 : U+0030-0039
+		// 한글 : U+AC00-U+D7A3
+	}
+}
+
+@each $weight-name,
+$weight-size in $font-weights2 {
+	$font-family: "NotoSansKR";
+	$font-file-name: "NotoSans";
+
+	@font-face {
+		font-family: $font-family;
+		font-style: normal;
+		font-weight: $weight-size;
+		src: url("#{$url-fonts}/#{$font-file-name}-#{$weight-name}.eot");
+		src: url("#{$url-fonts}/#{$font-file-name}-#{$weight-name}.eot?#iefix") format('embedded-opentype'),
+		// url("#{$url-fonts}/#{$font-file-name}-#{$weight-name}.otf") format('opentype'),
+		url("#{$url-fonts}/#{$font-file-name}-#{$weight-name}.woff2") format("woff2"),
+		url("#{$url-fonts}/#{$font-file-name}-#{$weight-name}.woff") format('woff');
+	}
+}

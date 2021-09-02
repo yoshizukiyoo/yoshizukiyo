@@ -1,0 +1,279 @@
+//
+// Buttons
+// 
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	vertical-align: middle;
+	white-space: nowrap;
+	overflow: hidden;
+
+	font-family: $font-family-base;
+	font-weight: normal;
+
+	+.btn {
+		margin-left: 1px;
+	}
+
+	+.btn_lg,
+	+.btn_xl {
+		margin-left: 6px;
+	}
+
+	.ico {
+		flex: 0 0 auto;
+		margin-top: 2px;
+
+		&:first-child {
+			margin-right: 5px;
+		}
+
+		&:only-child {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	*+.ico {
+		margin-left: 5px;
+	}
+}
+
+// 크기
+.btn_xs,
+.btn_sm,
+.btn_md,
+.btn_lg,
+.btn_xl {
+	border: 1px solid transparent;
+	border-radius: 6px;
+}
+
+.btn_xs {
+	min-width: 54px;
+	height: 28px;
+	padding: 0 15px;
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.btn_sm {
+	min-width: 54px;
+	height: 32px;
+	padding: 0 12px;
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.btn_md {
+	min-width: 80px;
+	height: $form-height;
+	padding: 0 20px;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.btn_lg {
+	min-width: 130px;
+	height: 56px;
+	font-size: 18px;
+	font-weight: 500;
+	padding: 0 50px;
+}
+
+.btn_xl {
+	min-width: 160px;
+	height: 64px;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 0 50px;
+}
+
+.btn_icon {
+	min-width: auto;
+
+	.ico {
+		margin: 0 !important;
+	}
+}
+
+// 형태
+// .btn_block {
+// 	display: flex;
+// 	width: 100%;
+// }
+
+// .btn_round {
+// 	border-radius: 50px;
+// }
+
+// 색상
+.btn_default {
+	color: #444;
+	background-color: #eee;
+	border-color: #ddd;
+}
+
+.btn_primary {
+	color: $default;
+	background-color: $btn_primary;
+}
+
+.btn_outline_default {
+	color: $gray;
+	border-color: #a2a2a2;
+	background-color: #fff;
+
+	&.btn_lg,
+	&.btn_xl {
+		color: $default;
+		border-color: #555;
+	}
+}
+
+.btn_outline_gray {
+	color: $gray;
+	border-color: #a2a2a2;
+	background-color: #eee;
+}
+
+// .btn_outline_primary {
+// 	color: $btn_primary;
+// 	border-color: $btn_primary;
+// 	background-color: #fff;
+// }
+
+// 기타
+.btn_more,
+.btn_more_white {
+	justify-content: space-between;
+	width: 110px;
+	padding: 0 22px;
+	height: 32px;
+	border: 1px solid transparent;
+	font-size: 14px;
+	font-weight: 200;
+
+	border-radius: 25px;
+	color: $white;
+	background-color: $bg-gray;
+
+	&:after {
+		display: inline-block;
+		content: '';
+		width: 13px;
+		height: 7px;
+		background: url(#{$url-img-common}/ico_arr_down_sm_white.png) no-repeat;
+	}
+}
+
+.btn_more_white {
+	justify-content: center;
+	color: $default;
+	border-color: #a2a2a2;
+	background-color: $white;
+
+	&:after {
+		margin-left: 10px;
+		background-image: url(#{$url-img-common}/ico_arr_down_sm.png);
+	}
+}
+
+.btn_explain {
+	height: 28px;
+	padding: 0 12px 0 15px;
+	border-radius: 25px;
+	background: $gray;
+	font-weight: 200;
+	font-size: 14px;
+	color: $white;
+
+	&::after {
+		display: inline-block;
+		content: '';
+		width: 4px;
+		height: 5px;
+		margin: 1px 0 0 8px;
+		background: url(#{$url-img-common}/bul_arrow_small_white.png) no-repeat;
+	}
+}
+
+.btn_xl {
+	&.btn_primary.btn_disabled {
+		background: $btn-xl-disable1;
+		color: #111;
+	}
+
+	&.btn_outline_default.btn_disabled {
+		border-color: $btn-xl-disable2;
+		background: #eee;
+	}
+}
+
+.btn_mouse_toggle {
+	display: inline-flex;
+	align-items: center;
+
+	>.switch {
+		display: inline-flex;
+		margin-right: 10px;
+
+		>input[type=checkbox] {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+		}
+
+		// >input[type=checkbox]:focus+label {
+		// 	box-shadow: 0 0 1px 1px #111;
+		// }
+
+		>input[type=checkbox]:checked+label {
+			background: #fdcc34;
+
+			&::before {
+				left: 2px;
+			}
+		}
+
+		>label {
+			display: inline-block;
+			position: relative;
+			width: 50px;
+			height: 25px;
+			border-radius: 15px;
+			background: #ddd;
+			transition: .3s ease;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 26px;
+				top: 2px;
+				width: 22px;
+				height: 21px;
+				border-radius: 50%;
+				background: #fff;
+				transition: .3s ease;
+			}
+		}
+	}
+
+	>.btn_name {
+		font-size: 14px;
+		font-weight: 200;
+		color: #001111;
+	}
+}
+
+.btn_refresh {
+	width: 21px;
+	height: 21px;
+	margin-left: 6px;
+	background: url(#{$url-img-common}/ico_refresh_round.png) no-repeat;
+	vertical-align: text-bottom;
+}

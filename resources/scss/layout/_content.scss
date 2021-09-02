@@ -1,0 +1,152 @@
+#content {
+	min-height: calc(100vh - #{$header-height + $footer-height + $breadcrumb-height});
+}
+
+.cont_header {
+	@include container;
+	@include clearfix;
+	position: relative;
+	padding: 30px 0 0;
+
+	display: flex;
+	align-items: center;
+
+	.tit_cont {
+		display: inline-block;
+		margin: 0 10px 0 0;
+	}
+}
+
+.cont_header_right {
+	position: absolute;
+	top: -40px;
+	right: 0;
+	height: 40px;
+	display: flex;
+	align-items: center;
+
+	.step {
+		display: flex;
+		align-items: center;
+
+		li {
+			color: #595959;
+			font-weight: 400;
+			letter-spacing: -0.05em;
+			margin-left: 20px;
+			line-height: 0;
+
+			.num {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				background: $gray;
+				border-radius: 100%;
+				color: transparent;
+			}
+
+			.txt {
+				display: none;
+			}
+
+			&.on {
+				.num {
+					display: inline-block;
+					width: 32px;
+					height: 32px;
+					margin-right: 8px;
+					background: $gray;
+					color: $white;
+					text-align: center;
+					line-height: 32px;
+					border-radius: 100%;
+				}
+
+				.txt {
+					display: inline;
+				}
+
+				~li {
+					.num {
+						background-color: $border-base;
+					}
+				}
+			}
+		}
+	}
+}
+
+.cont_body {
+	position: relative;
+	@include container;
+	//padding-top: 40px;
+	padding-top: .1px;
+	padding-bottom: 120px;
+}
+
+.blind {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.fx_lr {
+	display: flex;
+
+	>.fx_left {
+		margin-right: auto;
+	}
+
+	>.fx_right {
+		margin-left: auto;
+	}
+}
+
+
+.war_style1 {
+	display: inline-block;
+	padding-left: 23px;
+	background: url(#{$url-img-common}/ico_emp.png) no-repeat 0 6px;
+	font-weight: 200;
+	color: $gray;
+}
+
+.war_style2 {
+	line-height: 1.3;
+
+	>strong {
+		display: block;
+		font-weight: 200;
+		color: $gray;
+
+		>span {
+			display: inline-block;
+			padding-left: 23px;
+			background: url(#{$url-img-common}/ico_emp.png) no-repeat 0 2px;
+		}
+	}
+
+}
+
+.inp_checkbox {
+	>label {
+		display: inline-block;
+		padding-left: 32px;
+		background: url(#{$url-img-common}/ico_checkbox2_default.png) no-repeat 0 3px;
+		font-weight: 200;
+		color: $gray;
+	}
+
+	>input[type=checkbox]:checked+label {
+		background-image: url(#{$url-img-common}/ico_checkbox2_checked.png);
+	}
+
+	>input[type=checkbox]:focus+label {
+		outline: 1px solid $gray;
+	}
+}

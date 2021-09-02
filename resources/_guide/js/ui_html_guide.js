@@ -23,15 +23,15 @@ $(document).ready(function () {
 	});
 });
 
-$(document).on('click', '.btn_type', function () {
-	if ($('.common-css').attr('href') == '/resources/deposit/css/common.css') {
-		$('.common-css').attr('href', '/resources/insurance/css/common.css');
-		$(this).text('보험');
-	} else {
-		$('.common-css').attr('href', '/resources/deposit/css/common.css');
-		$(this).text('예금');
-	}
-});
+// $(document).on('click', '.btn_type', function () {
+// 	if ($('.common-css').attr('href') == '/resources/css/common.css') {
+// 		$('.common-css').attr('href', '/resources/css/common.css');
+// 		$(this).text('보험');
+// 	} else {
+// 		$('.common-css').attr('href', '/resources/css/common.css');
+// 		$(this).text('예금');
+// 	}
+// });
 
 // HTML 가이드 JumpTo
 function guideNavJumpTo() {
