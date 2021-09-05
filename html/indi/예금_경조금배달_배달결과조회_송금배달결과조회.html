@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_result').click(function(){
+				$('.btm_result_box').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">송금·배달결과조회</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="box box_more first_section">
+					<ul class="list list1">
+						<li>등록하신 경조금이나 온라인환이 정상적으로 송금되었는지 확인 하실 수 있습니다</li>
+						<li>송금·배달결과는 최근 1년까지 조회 가능합니다.</li>
+						<li>「현금배달」인 경우 배달 완료 후 1~2일 후에 “지급” 상태가 됩니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">송금·배달결과조회</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">조회구분</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_1" checked>
+											<label for="chk1_1">경조금송금</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_2">
+											<label for="chk1_2">경조금다량배달</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_3">
+											<label for="chk1_3">경조금예약</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">조회정보</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">배달결과조회</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택하십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">출금계좌번호 <strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap error" style="width: 420px;"><!-- [D] SelectBox error : class 속성에 error 추가 -->
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택하십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="error_info">계좌를 선택하여 주십시오.</div><!-- [D] Text Field error 메세지 -->
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">조회일 (배달희망일)</th>
+									<td>
+										<div class="mulit_date_box">
+											<div class="btn_date">
+												<button type="button" class="btn btn_sm btn_default">당일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+											</div>
+											<div class="datepicker_box">
+												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn_data_search">
+						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
+					</div>
+				</div>
+
+				<!-- s: 조회 결과 -->
+				<div class="mt_12 btm_result_box">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">신청조회/취소 조회결과 표로 교부일, 시작번호, 끝번호, 교부매수, 교부구분 정보 제공</caption>
+							<colgroup>
+								<col style="width:16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td>010017-02-191237</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- s: 경조금, 경조금 예약 선택 시 -->
+					<div class="tbl_data tbl_list_data mt_4">
+						<table>
+							<caption class="sr_only">경조금 조회결과 표로 송금일, 원부번호, 보내는분, 받는분, 보내는금액 (원), 매수, 상태, 등기번호 정보 제공</caption>
+							<colgroup>
+								<col>
+								<col style="width:16%">
+								<col>
+								<col>
+								<col>
+								<col style="width:10%;">
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">송금일</th>
+									<th scope="col">원부번호</th>
+									<th scope="col">보내는분</th>
+									<th scope="col">받는분</th>
+									<th scope="col">보내는금액 (원)</th>
+									<th scope="col">매수</th>
+									<th scope="col">상태</th>
+									<th scope="col">등기번호</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">2021.05.20</td>
+									<td>71-104950-046806</td>
+									<td>나봄미</td>
+									<td>한여름</td>
+									<td class="txt_r">10,000</td>
+									<td>01매</td>
+									<td class="txt_c">미지급</td>
+									<td>XXXXXXXXXXX</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2021.05.20</td>
+									<td>71-104950-046806</td>
+									<td>나봄미</td>
+									<td>한여름</td>
+									<td class="txt_r">10,000</td>
+									<td>01매</td>
+									<td class="txt_c">지급</td>
+									<td>XXXXXXXXXXX</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- e : 경조금, 경조금 예약 선택 시 -->
+
+					<!-- s: 경조금다량배달 선택 시 -->
+					<div class="tbl_data tbl_list_data mt_4">
+						<table>
+							<caption class="sr_only">경조금다량배달 조회결과 표로 원부번호, 출금계좌번호, 받는분, 보내는금액 (원), 수수료(원), 상태 정보 제공</caption>
+							<colgroup>
+								<col>
+								<col style="width:16%">
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">원부번호</th>
+									<th scope="col">출금계좌번호</th>
+									<th scope="col">받는분</th>
+									<th scope="col">보내는금액 (원)</th>
+									<th scope="col">수수료(원)</th>
+									<th scope="col">상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>86-010017-506881</td>
+									<td>71-104950-046806</td>
+									<td>나봄미</td>
+									<td class="txt_r">10,000</td>
+									<td class="txt_r">2,000</td>
+									<td class="txt_c">정상처리</td>
+								</tr>
+								<tr>
+									<td>86-010017-506881</td>
+									<td>71-104950-046806</td>
+									<td>나봄미</td>
+									<td class="txt_r">10,000</td>
+									<td class="txt_r">2,000</td>
+									<td class="txt_c"><button type="button" class="btn btn_sm btn_default">오류처리</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- e : 경조금다량배달 선택 시 -->
+
+					<div class="mt_4 txt_r">
+						<button type="button" class="btn btn_xs btn_outline_default" onclick="window.print();">화면인쇄</button>
+					</div>
+					<div class="txt_last_data">
+						<p>마지막 자료입니다.</p>
+					</div>
+				</div>
+				<!-- e: 조회 결과 -->
+
+				<!-- Modal Popup : 상세보기 -->
+				<div class="modal_popup modal_xl hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">상세보기</h3>
+						</div>
+						<div class="popup_body">
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>등록하신 경조금 예약 등록 내역 및 송금 결과를 확인하실 수 있습니다.</li>
+								</ul>
+							</div>
+
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">상세보기</caption>
+									<colgroup>
+										<col style="width: 22%">
+										<col>
+										<col style="width: 22%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">접수번호</th>
+											<td>0001</td>
+											<th scope="row">상태</th>
+											<td>예약</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
+							<div class="mt_8">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h3 class="tit1">보내는 분</h3>
+									</div>
+								</div>
+								<div class="tbl_data tbl_row_data">
+									<table>
+										<caption class="sr_only">보내는 분</caption>
+										<colgroup>
+											<col style="width: 22%">
+											<col>
+											<col style="width: 22%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">출금계좌번호</th>
+												<td>013912-11-111111</td>
+												<th scope="row">보내는분</th>
+												<td>홍길동</td>
+											</tr>
+											<tr>
+												<th scope="row">문자메시지 수신여부</th>
+												<td>(N) 수신안함</td>
+												<th scope="row">전화번호</th>
+												<td>010-1111-2222</td>
+											</tr>
+											<tr>
+												<th scope="row">주소</th>
+												<td colspan="3">전라남도 나주 빛가람동</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="mt_8">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h3 class="tit1">받는분</h3>
+									</div>
+								</div>
+								<div class="tbl_data tbl_row_data">
+									<table>
+										<caption class="sr_only">받는분</caption>
+										<colgroup>
+												<col style="width: 22%">
+												<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">받는분</th>
+												<td>여름</td>
+											</tr>
+											<tr>
+												<th scope="row">전화번호</th>
+												<td>010-3333-4444</td>
+											</tr>
+											<tr>
+												<th scope="row">주소</th>
+												<td>서울시 구로 디지털단지</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="mt_8">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h3 class="tit1">경조금 배달 정보</h3>
+									</div>
+								</div>
+								<div class="tbl_data tbl_row_data">
+									<table>
+										<caption class="sr_only">경조금 배달 정보</caption>
+										<colgroup>
+												<col style="width: 22%">
+												<col>
+												<col style="width: 22%">
+												<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">원부번호</th>
+												<td>86 – 011111 - 222333</td>
+												<th scope="row">경조예약일</th>
+												<td>2021.05.25</td>
+											</tr>
+											<tr>
+												<th scope="row">배달구분</th>
+												<td>증서배달</td>
+												<th scope="row">경조카드</th>
+												<td>결혼11</td>
+											</tr>
+											<tr>
+												<th scope="row">보내는금액</th>
+												<td class="txt_r">10,000원</td>
+												<th scope="row">수수료</th>
+												<td class="txt_r">2,000원</td>
+											</tr>
+											<tr>
+												<th scope="row">경조인사문</th>
+												<td colspan="3">결혼을 축하며 복된 가정 이루기 바랍니다.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="mt_4 txt_r">
+								<button type="button" class="btn btn_sm btn_outline_default" onclick="$.print('.modal_popup[data-popup=layer01]');">화면인쇄</button>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 상세보기 -->
+				
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

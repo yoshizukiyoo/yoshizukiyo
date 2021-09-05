@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.qna_list li a').click(function(){
+				var parent = $(this).parent();
+				parent.toggleClass('active');
+				if(parent.hasClass('active')){
+					$(this).attr('title','답변 닫기');
+				}
+				else {
+					$(this).attr('title','답변 보기');
+				}
+				parent.next('.qna_a').toggleClass('on');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">자주 묻는 질문</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box first_section">
+					<strong class="txt_lg">휴대폰저장 서비스란?</strong>
+					<p class="txt_gray">인터넷 뱅킹에서 사용되는 인증서를 휴대폰에 저장해 두었다가, 본인의 인증서가 저장되어 있지 않은 PC에서(PC방 등) 휴대폰에 저장된 인증서를 불러와 인터넷뱅킹을 사용할 수 있도록 하는 유료서비스 입니다.
+						<button type="button" class="btn btn_xs btn_outline_default ml6">휴대폰에 인증서 저장하기</button>
+					</p>
+				</div>
+
+				<div class="tab_btn tab_menu_type1 mt_12">
+					<ul>
+						<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>PC관련</span></a></li>
+						<li><a href="#;" data-tab-tg="sub_tab2"><span>단말기 관련</span></a></li>
+						<li><a href="#;" data-tab-tg="sub_tab3"><span>네트워크(방화벽) 관련</span></a></li>
+						<li><a href="#;" data-tab-tg="sub_tab4"><span>서비스 관련</span></a></li>
+					</ul>
+				</div>
+
+				<div class="mt_12" data-sub-tab="sub_tab1">
+					<h3 class="tit1">PC관련</h3>
+					<ul class="qna_list">
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스 실행 시 PC에 “프로그램이 손상되었습니다”는 오류가 뜹니다. 어떻게 해야 하나요?</a>
+							</div>
+							<div class="qna_a">프로그램 다운로드 시 다른 프로그램과 충돌 등으로 인해 프로그램이 손상될 수 있습니다. 이런 경우는 제어판>프로그램 추가/제거에서 ‘휴대폰인증서(저장)서비스’나 ‘UBIKey’ 프로그램을 삭제하시고 다시 서비스를 시작하시면 됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">인증서를 PC에 전송 후, PC에서 인증서 암호를 입력하려는데 인증서가 보이지 않아요!</a>
+							</div>
+							<div class="qna_a">
+								<ul class="num_list">
+									<li>인증서 발급기관과 유효기간을 확인해 보시기 바랍니다. 해당사이트에서 사용할 수 없는 인증서이거나 인증서 만료일이 지나 폐기된 인증서는 인증서 PC전송 후 인증서가 보이지 않을 수 있습니다. - 은행에서 사용 가능한 인증서: 은행/보험/신용카드용(개인), 범용(개인) </li>
+									<li>해당 사이트의 키보드 보안 프로그램 (ex. AnySign등) 삭제 후 재설치 하여 이용하시기 바랍니다. </li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">휴대폰 접속에 실패하였습니다. 처음부터 다시 접속하세요.” 라는 메시지가 PC에서 뜹니다. 어떻게 해야 하나요?</a>
+							</div>
+							<div class="qna_a">서비스 중단 후 이용방법에 따라서 다시 절차를 수행하세요 </div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스를 사용할 때 SMS(문자) 연결외에 다른방법은 있나요?</a>
+							</div>
+							<div class="qna_a">PC가 인증서 송수신 상태라면 SMS를 연결하지 않아도 이용 가능 합니다. PC에서 정보를 입력한 후, 휴대폰인증서 서비스 앱을 실행 한 후, [서비스 시작]을 선택하면 됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">인증서를 휴대폰에 저장 시 인증서 암호 입력에 대한 제한이 있나요?</a>
+							</div>
+							<div class="qna_a">인증서 암호 입력에 대한 제한은 없습니다.</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="mt_12" data-sub-tab="sub_tab2" style="display: none;">
+					<h3 class="tit1">단말기 관련</h3>
+					<ul class="qna_list">
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">휴대폰 단말기를 업그레이드 할 경우 저장된 인증서를 그대로 사용할 수 있나요?</a>
+							</div>
+							<div class="qna_a">단말기에 따라서 인증서가 삭제될 수도 있고, 안될 수도 있습니다.<br>저장된 인증서가 삭제된 경우에는 반드시 인증서를 다시 저장하세요</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스 이용 중, 문자메시지(SMS)가 오면 어떻게 되나요?</a>
+							</div>
+							<div class="qna_a">SMS는 문자메시지 보관함에 저장되고, 서비스는 그대로 진행됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스 이용 중, 전화가 오면 어떻게 되나요?</a>
+							</div>
+							<div class="qna_a">서비스가 중지되고, 전화로 연결하게 됩니다. 전화통화 종료 후, 다시 서비스 진행이 가능합니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">PC에 휴대폰 번호를 입력하고 난 후 문자가 오지 않습니다. 어떻게 하나요?</a>
+							</div>
+							<div class="qna_a">문자가 오지 않을 때는 스팸 여부 또는 이통사에서 문자 차단 여부를 확인해 보시기 바랍니다. 문자를 받지 않아도 휴대폰에 설치 해놓은 앱을 실행하면 서비스를 이용할 수 있습니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">휴대폰 인증서 서비스 앱을 삭제하면 저장된 인증서도 삭제 되나요?</a>
+							</div>
+							<div class="qna_a">설치한 휴대폰 인증서 서비스 앱 삭제 시 저장된 인증서도 함께 삭제됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">몇 개의 인증서를 휴대폰으로 저장할 수 있나요?</a>
+							</div>
+							<div class="qna_a">최대 9개까지 휴대폰에 저장할 수 있습니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">인증서를 휴대폰으로 저장하려고 할 때, PC에서 “서비스를 이용 할 수 없는 단말기 입니다” 라는 메시지가 나옵니다. 어떻게 해야 하나요?</a>
+							</div>
+							<div class="qna_a">지금 사용중인 단말기는 서비스 지원이 되지 않는 단말기입니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">휴대폰에 저장된 인증서를 다른 저장매체에 저장하고 싶어요. 어떻게 하면 되나요?</a>
+							</div>
+							<div class="qna_a">휴대폰에 저장된 인증서는 PC나 다른 저장매체에 저장 할 수 없습니다. 본 서비스는 APP 내 인증서 저장 및 저장된 인증서를 PC로 전송하는 서비스로 타 저장매체의 복사기능은 지원하지 않습니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">16자리는 사용할 때 마다 받아야 하나요?</a>
+							</div>
+							<div class="qna_a">16자리는 PC와 휴대폰 간 인증서를 안전하게 전송하기 위한 1회용 숫자입니다. 안전성을 위해 사용 후 자동 삭제되므로 사용 시 마다 받으셔야 합니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">문자를 받고 서비스 실행 시 휴대폰 월정액 공지사항 화면에서 다음 단계로 진행하려면 어떻게 해야 하나요?</a>
+							</div>
+							<div class="qna_a">휴대폰에서 ‘확인’ 또는 ‘OK’버튼을 누르면 다음 단계로 진행됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">다른 사람의 휴대폰을 사용하고 있습니다. 휴대폰에 본인 인증서를 저장 할 수 있나요?</a>
+							</div>
+							<div class="qna_a">타인 명의의 휴대폰에도 본인의 인증서를 저장할 수 있습니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">휴대폰을 기기변경을 한 경우는 어떻게 해야 하나요?</a>
+							</div>
+							<div class="qna_a">휴대폰 기기변경 시는 변경된 단말기에 인증서 저장을 다시 하신 후, 진행하셔야 합니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">휴대폰을 일시정지 했습니다. 그래도 이용 할 수 있나요?</a>
+							</div>
+							<div class="qna_a">휴대폰을 일시정지 한 경우에는 서비스 사용이 불가능합니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">휴대폰 번호이동을 하였습니다. 저장된 인증서는 어떻게 하나요?</a>
+							</div>
+							<div class="qna_a">번호이동을 해도 단말기에 저장된 인증서는 남아 있으니 번호이동 전에 휴대폰에서 인증서를 삭제하시기 바랍니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스 이용 가능한 단말기 종류는?</a>
+							</div>
+							<div class="qna_a">이용하시는 PC 인증서 선택창에서 [휴대폰아이콘] 클릭후, 휴대폰 번호를 입력하면 단말기의 서비스 이용이 가능한지 확인할 수 있습니다. </div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="mt_12" data-sub-tab="sub_tab3" style="display: none;">
+					<h3 class="tit1">네트워크(방화벽) 관련</h3>
+					<ul class="qna_list">
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">인증서를 휴대폰에 저장하는 과정 또는 휴대폰에서 PC 전송 중에 네트워크가 중단되었습니다. 어떻게 해야 하나요?</a>
+							</div>
+							<div class="qna_a">서비스 이용 방법에 따라 다시 절차를 수행하세요.<br>네트워크 중단 시, 인증서 일부가 휴대폰이나 PC로 저장되지 않을 수 있습니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">인증서가 휴대폰에 저장이 되지 않습니다. 이유가 무엇인가요?</a>
+							</div>
+							<div class="qna_a">첫째, 네트워크 장애로 무선 인터넷이 끓어진 경우.<br>
+								둘째, 휴대폰 번호 입력을 잘못한 경우.<br>
+								셋째, 인증서 암호가 틀린 경우.<br>
+								기타의 경우 고객센터(02-718-1860)로 문의 바랍니다.</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="mt_12" data-sub-tab="sub_tab4" style="display: none;">
+					<h3 class="tit1">서비스 관련</h3>
+					<ul class="qna_list">
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스 가입 방법은 어떻게 되나요?</a>
+							</div>
+							<div class="qna_a">
+								아래와 같은 방법으로 가입이 가능합니다.
+								<ul class="num_list">
+									<li>자주 이용하시는 은행의 인터넷 뱅킹 사이트를 통해 가입 가능</li>
+									<li>통신사별 고객센터 114를 통해 부가서비스 가입 진행 (단, LG U+ 제외)</li>
+									<li>유비키 홈페이지를 통해 가입가능 </li>
+									<li>구글 플레이 스토어, 앱스토어, 원스토어 등에서 “휴대폰 인증서 서비스” 앱을 다운 받은 후, 서비스 가입절차 진행</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스 이용시간에 제한이 있나요?</a>
+							</div>
+							<div class="qna_a">이용시간 제한은 없습니다. 해지 전까지 365일 서비스는 가능합니다.<br>(단, 서비스 업데이트 및 장애 발생 또는 이통사 점검 시에는 가입 및 이용 제한이 있을 수 있습니다.) </div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스 이용요금은 얼마인가요?</a>
+							</div>
+							<div class="qna_a">
+								<ul class="num_list">
+									<li>SKT, KT, LG U+ 990원/월(부가세 포함) 이동통신사 부가서비스로 다음달 휴대폰요금 청구서에 부과됩니다. 가입 기간이 한달을 채우지 않은 경우 이용일 수만큼 일할 계산되어 청구됩니다.</li>
+									<li>Apple iPhone 1년 이용권의 경우,앱 내 구입 (In App Purchases)으로 서비스 가입 시 1년 이용권 $9.89 (부가세 포함)이며, 앱스토어에 등록된 결제 수단을 통해 요금이 청구됩니다.</li>
+									<li>알뜰폰의 경우,구글 정기 구독 결제로 1,100원/(부가세 포함)이 매월 구글 플레이 스토어에 등록된 결제 수단으로 청구됩니다. (안드로이드 사용자만 해당) </li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">서비스를 해지 하려고 합니다 어떻게 하면 되나요?</a>
+							</div>
+							<div class="qna_a">아래와 같은 방법 중 하나를 택하여 진행하시면 됩니다.
+								<ul class="num_list">
+									<li>각 이동통신사별 고객센터(휴대폰에서 114)를 통해 해지</li>
+									<li>유비키 PC 홈페이지 (www.ubikey.co.kr) 휴대폰 본인인증을 통한 해지<br>(모바일로 홈페이지 접속 시 해지 불가/ 일부 알뜰폰 해지불가)</li>
+									<li>유비키 APP 내 [서비스안내]-[이용방법]-[서비스해지] 휴대폰 본인인증을 통한 해지</li>
+									<li>유비키 고객센터 상담원 연결을 통한 해지<br>유비키 고객센터 02-718-1860 (월~금, 공휴일 휴무, 09:00~18:00, 점심시간 (12:00~13:00)</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">인증서 비밀번호를 잊어버렸어요.</a>
+							</div>
+							<div class="qna_a">인증서 비밀번호를 잊어버린 경우 해당 인증서는 사용할 수 없으므로, 인증서 재발급을 진행하여 인증서 비밀번호를 다시 설정하여 주시기 바랍니다.<br>(비밀번호 재설정 후, 신규로 발급받은 인증서는 다시 저장해야 합니다.)</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">만료일이 지난 인증서는 어떻게 해야 하나요?</a>
+							</div>
+							<div class="qna_a">인증서 만료일이 지났을 경우 발급받았던 기관에서 인증서를 재발급하여 휴대폰에 다시 저장하여 주세요.</div>
+						</li>
+					</ul>
+				</div>
+				
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

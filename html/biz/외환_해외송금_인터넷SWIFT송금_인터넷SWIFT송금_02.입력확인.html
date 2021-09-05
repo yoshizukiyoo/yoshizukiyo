@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		//
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">SWIFT송금</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>고객님이 입력하신 해외송금 정보입니다. 내용이 맞는지 확인하시기 바랍니다.</li>
+					</ul>
+				</div>
+				
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">송금인정보</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">송금인정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">송금인</th>
+									<td>나봄미</td>
+									<th scope="row">전화번호</th>
+									<td>01187870909</td>
+								</tr>
+								<tr>
+									<th scope="row">주소</th>
+									<td colspan="3">전라남도 나주시 빛가람로200번지</td>
+								</tr>
+								<tr>
+									<th scope="row">거주성</th>
+									<td>거주자</td>
+									<th scope="row">기업규모구분</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row">국적</th>
+									<td>US</td>
+									<th scope="row">거래주체성격</th>
+									<td>민간</td>
+								</tr>
+								<tr>
+									<th scope="row">사유코드</th>
+									<td>37205 : 개인의 이전거래</td>
+									<th scope="row">송금목적별 코드</th>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">수취인정보</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">수취인정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">수취인</th>
+									<td>나봄미</td>
+									<th scope="row">전화번호</th>
+									<td>01087870909489752341</td>
+								</tr>
+								<tr>
+									<th scope="row">주소</th>
+									<td colspan="3"></td>
+								</tr>
+								<tr>
+									<th scope="row">국가</th>
+									<td>US</td>
+									<th scope="row">입금은행</th>
+									<td>신한은행</td>
+								</tr>
+								<tr>
+									<th scope="row">입금은행코드</th>
+									<td>0</td>
+									<th scope="row">입금계좌번호</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row">입금은행주소</th>
+									<td colspan="3"></td>
+								</tr>
+								<tr>
+									<th scope="row">통신문</th>
+									<td colspan="3"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- s: 송금정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">송금정보</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">송금정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">송금액</th>
+									<td class="txt_r">1.00</td>
+									<th scope="row">적용환율</th>
+									<td class="txt_r">1125.10</td>
+								</tr>
+								<tr>
+									<th scope="row">원화환산금액①</th>
+									<td class="txt_r">1,120 원</td>
+									<th scope="row">수수료②</th>
+									<td class="txt_r">0 원</td>
+								</tr>
+								<tr>
+									<th scope="row">총 출금액(①+②)</th>
+									<td colspan="3" class="txt_r">1,120 원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 송금정보 -->
+
+				<!-- s: 송금인정보 -->
+				<div class="section">
+					<h3 class="tit1">송금인정보</h3>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col>
+								<col style="width: 17%">
+								<col style="width: 17%">
+								<col style="width: 17%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">출금가능금액(원)</th>
+									<th scope="col">1일 송금가능금액(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="fx_lr fx_align_center">
+											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_xs btn_default v_base fx_right" onclick="openModal('popup01', this);">전체계좌조회</button>
+										</div>
+									</td>
+									<td class="txt_r">3,100,000</td>
+									<td class="txt_r">100,000</td>
+									<td class="txt_r">10,000,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mt_5">
+						<div class="tbl_tit">
+							<div class="txt_right">
+								<strong class="necessary">*</strong>
+								표시는 필수입력사항입니다.
+							</div>
+						</div>
+						<div class="tbl_row2">
+							<table>
+								<caption class="sr_only">경조금배달 보내는 분</caption>
+								<colgroup>
+									<col style="width: 17%;">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">
+											계좌비밀번호
+											<strong class="necessary">*</strong>
+										</th>
+										<td>
+											<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 420px">
+											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											계좌비밀번호
+											<strong class="necessary">*</strong>
+										</th>
+										<td>
+											<input type="password" class="tf error" title="계좌비밀번호 입력" style="width: 420px"><!-- [D] Field error : class 속성에 error 추가 -->
+											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+											<div class="error_info">계좌비밀번호를 입력해 주십시오.</div><!-- [D] error 메세지 -->
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- e: 송금인정보 -->
+
+				<!-- s: 보안매체 인증번호 입력 -->
+				<div class="section">
+					<h3 class="tit1">보안매체 인증번호 입력</h3>
+					<div class="box_security_cert bg_security_card">
+						<div class="security_cert_inner">
+							<p class="txt_security">영업점에서 발급 받으신 보안카드를 확인하여 아래의 빈 칸에 보안카드 코드를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_r">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
+									<span class="security_masking mas_l">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+							</div>
+							<p class="txt_security_caution">
+								<strong>보안카드 비밀번호 5회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
+					<div class="box_security_cert bg_otp">
+						<div class="security_cert_inner">
+							<p class="txt_security">OTP발생번호 <strong>숫자6자리</strong>를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="6">
+								</div>
+								<button type="button" class="btn btn_lg btn_outline_default">OTP카드안내</button>
+							</div>
+							<p class="txt_security_caution">
+								<strong>통합OTP는 비밀번호 10회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- e: 보안매체 인증번호 입력 -->
+
+				<div class="btn_tbl_btm">
+					<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금_01.정보입력_2.html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금_03.실행완료.html" class="btn btn_xl btn_primary">송금실행</a>
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('popup03', this);">결재선조회</a>
+					<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금_03.실행완료.html" class="btn btn_xl btn_primary">결재요청</a>
+				</div>
+
+				<!-- s: 전체계좌조회 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col style="width: 23%">
+										<col style="width: 18%">
+										<col style="width: 19%">
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">대표계좌설정</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌조회 팝업 -->
+
+				<!-- s: 출금가능금액 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">출금가능금액</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">출금가능금액</caption>
+									<colgroup>
+										<col style="width: 34%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">현재잔액</th>
+											<td class="txt_r">100,000원</td>
+										</tr>
+										<tr>
+											<th scope="row">출금가능금액</th>
+											<td class="txt_r">100,000원</td>
+										</tr>
+										<tr>
+											<th scope="row">1일이체가능금액</th>
+											<td class="txt_r">100,000원</td>
+										</tr>
+										<tr>
+											<th scope="row">1회이체가능금액</th>
+											<td class="txt_r">100,000원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>	
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 출금가능금액 팝업 -->
+
+				<!-- s: 결재선조회 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="popup03">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">결재선 조회</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">업무 구분 선택을 할 수 있습니다.</caption>
+									<colgroup>
+										<col style="width: 20%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">업무 구분</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 150px;">
+													<dl title="업무구분 선택">
+														<dt><a href="#none"><span>외환</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>외환1</span></a></li>
+																<li><a href="#none"><span>외환2</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">결제선 조회 목록이며 등록자, 승인자, 전결자 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 30%">
+										<col style="width: 35%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">등록자</th>
+											<th scope="colgroup" colspan="2">김테스(testa)</th>
+										</tr>
+										<tr>
+											<th scope="col">확인(1단계)자</th>
+											<th scope="col">확인(2단계)자</th>
+											<th scope="col">확인(3단계)자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="bdr_btm_line">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_1">
+													<label for="inputCheck1_1">박확인(1st acc)</label>
+												</span>
+											</td>
+											<td class="bdr_btm_line">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_2">
+													<label for="inputCheck1_2">임확인(2st acc)</label>
+												</span>
+											</td>
+											<td class="bdr_btm_line">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_3">
+													<label for="inputCheck1_3">이확인(3st acc)</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">승인자</th>
+											<td colspan="2">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_4">
+													<label for="inputCheck1_4">박최종(final)</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">전결자</th>
+											<td colspan="2"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="mt_3">
+								<p>
+									※ 해당 결재자에게 본 건에 대해 SMS로 결재요청을 하실 경우, 사용자 이름 앞에 체크박스 “□”를 선택하여 보내실 수 있습니다. SMS결재알림을 원하시는 해당자만 선택하여 보내실 수도 있습니다.
+								</p>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup03');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 결재선조회 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

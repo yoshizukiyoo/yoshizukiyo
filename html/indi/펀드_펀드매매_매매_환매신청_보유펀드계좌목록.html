@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function(){
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">환매신청</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">보유펀드계좌목록</span></li>
+						<li><span class="num">2</span><span class="txt">신청정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력정보확인</span></li>
+						<li><span class="num">4</span><span class="txt">환매신청완료</span></li>
+					</ul>
+				</div>
+				<div class="first_section box box_more">
+					<ul class="list list1">
+						<li>인터넷 환매 가능시간 : 09:00 ~ 16:00 (영업일만 가능)</li>
+						<li>환매시 적용기준가격 및 지급일자(신청일 기준으로 일자를 계산합니다.)</li>
+					</ul>
+					<div class="tbl_data tbl_list_data box_inner_tbl mt_2">
+						<table>
+							<caption class="sr_only">환매시 적용기준가격 및 지급일자 표로 유형, 예탁결제원기준시간, 당일, 제2영업일(T+1), 제3영업일(T+2), 제4영업일(T+3), 제5영업일(T+4), 정보 제공</caption>
+							<colgroup>
+								<col style="width: 12%;">
+								<col style="width: 12%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">유형</th>
+									<th scope="col" colspan="2">예탁결제원기준시간</th>
+									<th scope="col">당일</th>
+									<th scope="col">제2영업일(T+1)</th>
+									<th scope="col">제3영업일(T+2)</th>
+									<th scope="col">제4영업일(T+3)</th>
+									<th scope="col">제5영업일(T+4)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c" rowspan="2">주식형<br>주식혼합형</td>
+									<td class="txt_c" rowspan="2">15:30</td>
+									<td>이전</td>
+									<td>신청</td>
+									<td>기준가적용</td>
+									<td></td>
+									<td>지급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>이후</td>
+									<td>신청</td>
+									<td></td>
+									<td>기준가적용</td>
+									<td>지급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="txt_c" rowspan="2">채권혼합형</td>
+									<td class="txt_c" rowspan="2">17:00</td>
+									<td>이전</td>
+									<td>신청</td>
+									<td></td>
+									<td>기준가적용</td>
+									<td>지급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>이후</td>
+									<td>신청</td>
+									<td></td>
+									<td></td>
+									<td>기준가적용</td>
+									<td>지급</td>
+								</tr>
+								<tr>
+									<td class="txt_c" rowspan="2">채권형</td>
+									<td class="txt_c" rowspan="2">17:00</td>
+									<td>이전</td>
+									<td>신청</td>
+									<td></td>
+									<td>기준가적용/지급</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>이후</td>
+									<td>신청</td>
+									<td></td>
+									<td></td>
+									<td>기준가적용/지급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="txt_c" rowspan="2">MMF</td>
+									<td class="txt_c" rowspan="2">17:00</td>
+									<td>이전</td>
+									<td>신청</td>
+									<td>기준가적용/지급</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>이후</td>
+									<td>신청</td>
+									<td></td>
+									<td>기준가적용/지급</td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="list list1 mt_1">
+						<li>개별 펀드별로 환매시 기준가격 적용일 및 환매대금 지급일이 다를 수 있으니 해당 약관 또는 투자설명서를 참고하시거나 창구직원에게 문의하여 확인하시기 바랍니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">환매신청 표로 펀드계좌번호, 펀드명, 저축유형, 개설일/만기일, 좌수(좌), 원금(원), 수익금(원), 평가액(원), 환매신청액(원), 신청 정보제공</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col style="width: 19%;">
+								<col>
+								<col style="width: 10%;">
+								<col>
+								<col>
+								<col>
+								<col>
+								<col style="width: 8%;">
+								<col style="width: 11%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">펀드계좌번호</th>
+									<th scope="col">펀드명</th>
+									<th scope="col">저축유형</th>
+									<th scope="col">개설일/<br>만기일</th>
+									<th scope="col">좌수(좌)</th>
+									<th scope="col">원금(원)</th>
+									<th scope="col">수익금(원)</th>
+									<th scope="col">평가액(원)</th>
+									<th scope="col">환매신청액(원)</th>
+									<th scope="col">신청</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>010017-95-001647
+										<button type="button" class="btn btn_xs btn_outline_default mt_1" onclick="openModal('layer01', this)">계좌상세정보</button>
+									</td>
+									<td>
+										NH-Amundi4차산업혁명 30증권투자신탁(채권혼합)Ce
+										<button type="button" class="btn btn_xs btn_outline_default mt_1" onclick="openModal('layer', this)">펀드상품정보</button>
+									</td>
+									<td>임의식</td>
+									<td class="txt_r">2021.03.23</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">211</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">30,465</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_xs btn_outline_default">환매신청중</button>
+									</td>
+								</tr>
+								<tr>
+									<td>010017-95-001647
+										<button type="button" class="btn btn_xs btn_outline_default mt_1" onclick="openModal('layer01', this)">계좌상세정보</button>
+									</td>
+									<td>
+										NH-Amundi4차산업혁명 30증권투자신탁(채권혼합)Ce
+										<button type="button" class="btn btn_xs btn_outline_default mt_1" onclick="openModal('layer', this)">펀드상품정보</button>
+									</td>
+									<td>적립식(자유)</td>
+									<td class="txt_r">2021.03.23<br>2021.03.23</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">211</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">30,465</td>
+									<td class="txt_c">
+										<a href="펀드_펀드매매_매매_환매신청_신청정보입력.html" class="btn btn_xs btn_outline_default">환매신청</a>
+									</td>
+								</tr>
+								<tr>
+									<td>010017-95-001647
+										<button type="button" class="btn btn_xs btn_outline_default mt_1" onclick="openModal('layer01', this)">계좌상세정보</button>
+									</td>
+									<td>
+										NH-Amundi4차산업혁명 30증권투자신탁(채권혼합)Ce
+										<button type="button" class="btn btn_xs btn_outline_default mt_1" onclick="openModal('layer', this)">펀드상품정보</button>
+									</td>
+									<td>거치식</td>
+									<td class="txt_r">2021.03.23<br>2021.03.23</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">211</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">30,465</td>
+									<td class="txt_c"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="mt_4 txt_c">
+					<button type="button" class="btn btn_more">더보기</button>
+				</div>
+
+				<!-- s: 계좌상세정보 -->
+				<div class="modal_popup modal_1100 hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">계좌상세정보</h2>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">계좌상세정보 표로 펀드상세정보(펀드계좌번호, 잔고좌수(좌), 기준가(원), 세전평가액(원), 환매수수료(원), 과표가(원), 세금(원), 환매예상금액(원), 투자원금(원), 잔고수익률, 매수신청금액(원), 펀드번호, 연결계좌번호), 
+										펀드기본(펀드명, 계좌가입일, 계좌만기일, 저축유형, 환매수수료면제일, 기준가적용일(현재), 환매신청기준일, 환매기준가적용일, 환매대금지급일, 환매제한여부, 세제혜택, 적립식월납입액(원), 적립식납입회수) 정보 제공</caption>
+									<colgroup>
+										<col style="width: 20%">
+										<col>
+										<col style="width: 20%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col" colspan="2">펀드상세정보</th>
+											<th scope="col" colspan="2">펀드기본</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">펀드계좌번호</th>
+											<td>010017-95-001345</td>
+											<th scope="row">펀드명</th>
+											<td>NH-Amundi4차산업혁명30증권 투자신탁 (채권혼합)Ce</td>
+										</tr>
+										<tr>
+											<th scope="row">잔고좌수(좌)</th>
+											<td class="txt_r">95909</td>
+											<th scope="row">계좌가입일</th>
+											<td>2021.04.14</td>
+										</tr>
+										<tr>
+											<th scope="row">기준가</th>
+											<td class="txt_r">1,001.48 원</td>
+											<th scope="row">계좌만기일</th>
+											<td>-</td>
+										</tr>
+										<tr>
+											<th scope="row">세전평가액</th>
+											<td class="txt_r">96,050 원</td>
+											<th scope="row">저축유형</th>
+											<td>임의식</td>
+										</tr>
+										<tr>
+											<th scope="row">환매수수료</th>
+											<td class="txt_r">0</td>
+											<th scope="row">환매수수료면제일</th>
+											<td>-</td>
+										</tr>
+										<tr>
+											<th scope="row">과표가</th>
+											<td class="txt_r">1,001.48 원</td>
+											<th scope="row">기준가적용일(현재)</th>
+											<td>2021.05.31</td>
+										</tr>
+										<tr>
+											<th scope="row">세금</th>
+											<td class="txt_r">0</td>
+											<th scope="row">환매신청기준일</th>
+											<td>2021.05.31</td>
+										</tr>
+										<tr>
+											<th scope="row">환매예상금액</th>
+											<td class="txt_r">96,050 원</td>
+											<th scope="row">환매기준가적용일</th>
+											<td>2021.05.31</td>
+										</tr>
+										<tr>
+											<th scope="row">투자원금</th>
+											<td class="txt_r">96,002 원</td>
+											<th scope="row">환매대금지급일</th>
+											<td>2021.05.31</td>
+										</tr>
+										<tr>
+											<th scope="row">잔고수익률</th>
+											<td>0.04%</td>
+											<th scope="row">환매제한여부</th>
+											<td>해당사항없음</td>
+										</tr>
+										<tr>
+											<th scope="row">매수신청금액</th>
+											<td class="txt_r">0</td>
+											<th scope="row">세제혜택 번호</th>
+											<td>일반</td>
+										</tr>
+										<tr>
+											<th scope="row">펀드번호</th>
+											<td>21003</td>
+											<th scope="row">적립식월납입액</th>
+											<td>해당사항없음</td>
+										</tr>
+										<tr>
+											<th scope="row">연결계좌번호</th>
+											<td>000000-00-00000</td>
+											<th scope="row">적립식납입회수</th>
+											<td>해당사항없음</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 계좌상세정보 -->
+
+				
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

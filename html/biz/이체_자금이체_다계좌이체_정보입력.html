@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">다계좌이체등록</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+				
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>고객님의 출금계좌(우체국)에서 다수의 입금계좌(우체국 및 타은행)로 이체 할 수 있으며, 최대 10건까지 이체 가능한 서비스입니다.</li>
+						<li>
+							전화 및 메신저 금융사기에 주의 바랍니다. (문의) 1588-1900, 1599-1900<br>
+							지금 시도하려는 이체가 전화/메신저 금융사기인지 한 번 더 확인하여 금융사기 피해를 예방하시기 바랍니다.
+						</li>
+					</ul>
+				</div>
+
+				<!-- s: 출금정보 -->
+				<div class="section">
+					<h3 class="tit1">출금정보</h3>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col>
+								<col style="width: 17%">
+								<col style="width: 17%">
+								<col style="width: 17%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">출금가능금액(원)</th>
+									<th scope="col">1일 송금가능금액(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="fx_lr fx_align_center">
+											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_xs btn_default v_base fx_right" onclick="openModal('popup01', this);">전체계좌조회</button>
+										</div>
+									</td>
+									<td class="txt_r">3,100,000</td>
+									<td class="txt_r">100,000</td>
+									<td class="txt_r">10,000,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_tit mt_4">
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">이체금액 입력 폼이며 이체금액(원)을 입력하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 194px;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										계좌비밀번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="password" class="tf" style="width: 200px;" title="계좌비밀번호 입력">
+										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										계좌비밀번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="password" class="tf error" style="width: 200px;" title="계좌비밀번호 입력"><!-- [D] Field error : class 속성에 error 추가 -->
+										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+										<div class="error_info">비밀번호를 입력해 주십시오.</div><!-- [D] error 메세지 -->
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										이체금액(원)
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="trans_money">
+											<input type="text" class="tf txt_r" title="이체금액 입력">
+											<span class="ml6">금액 원</span>
+											<div class="btn_trans_money">
+												<button type="button" class="btn btn_sm btn_default">1만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 출금정보 -->
+
+				<!-- s: 입금정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">입금정보</h3>
+						</div>
+						<div class="txt_right">
+							<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('popup02', this);">자주쓰는입금계좌</button>
+							<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('popup03', this);">최근입금계좌</button>
+						</div>
+					</div>
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">입금정보 등록 양식표이며 입금은행, 입금계좌번호, 입금계좌 예금주, 이체금액, 내 통장 표기, 받는분 통장 표기 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 6%;">
+								<col>
+								<col style="width: 19%;">
+								<col style="width: 12%;">
+								<col style="width: 15%;">
+								<col style="width: 14%;">
+								<col style="width: 14%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">순번</th>
+									<th scope="col">
+										입금은행
+										<strong class="necessary">*</strong>
+									</th>
+									<th scope="col">
+										입금계좌번호
+										<strong class="necessary">*</strong>
+									</th>
+									<th scope="col">
+										입금계좌 예금주<br>
+										<div class="mt_1"><button type="button" class="btn btn_xs btn_outline_default">일괄조회</button></div>
+									</th>
+									<th scope="col">
+										이체금액
+										<strong class="necessary">*</strong>
+									</th>
+									<th scope="col">내 통장 표기</th>
+									<th scope="col">받는분 통장 표기</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span class="txt_invalid">오류</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">2</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>선택하십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span>홍길동</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">3</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>선택하십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span>홍길동</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">4</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span>홍길동</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">5</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span>홍길동</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">6</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span>홍길동</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">7</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span>홍길동</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">8</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span>홍길동</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">9</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span class="txt_invalid">오류</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+								<tr>
+									<td class="txt_c">10</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 100%;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>우체국</span></a></li>
+														<li><a href="#none"><span>국민은행</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td><input type="text" class="tf" title="입금계좌번호 입력" style="width: 100%;"></td>
+									<td class="txt_c"><span class="txt_invalid">오류</span></td>
+									<td><input type="text" class="tf txt_r" title="이체금액 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="출금통장표시내용 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" title="입금통장표시내용 입력" style="width: 100%;"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 입금정보 -->
+
+				<!-- s: 전체계좌목록 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col style="width: 23%">
+										<col style="width: 18%">
+										<col style="width: 19%">
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">대표계좌설정</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌목록 팝업 -->
+
+				<!-- s: 자주쓰는입금계좌 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup02">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">자주쓰는입금계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">자주쓰는입금계좌 그룹을 선택하실 수 있습니다.</caption>
+									<colgroup>
+										<col style="width: 20%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">그룹선택</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 350px;">
+													<dl title="그룹 선택">
+														<dt><a href="#none"><span>선택하여 주십시오.</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>선택1</span></a></li>
+																<li><a href="#none"><span>선택2</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default">자주쓰는입금계좌관리</a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tbl_data tbl_list_data tbl_scroll_y mt_4">
+								<table>
+									<caption class="sr_only">자주쓰는입금계좌 그룹 목록표이며 선택, 순번, 입금은행, 입금계좌번호(예금주), 그룹, 참고사항, 휴대폰번호 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 7%;">
+										<col style="width: 8%;">
+										<col style="width: 11%;">
+										<col style="width: 25%;">
+										<col style="width: 14%;">
+										<col style="width: 20%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">선택</th>
+											<th scope="col">순번</th>
+											<th scope="col">입금은행</th>
+											<th scope="col">입금계좌번호(예금주)</th>
+											<th scope="col">그룹</th>
+											<th scope="col">참고사항</th>
+											<th scope="col">휴대폰번호</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">
+												<span class="check_item square single">
+													<input type="checkbox" name="ckbox" id="Check1_1">
+													<label for="Check1_1">활성화</label>
+												</span>
+											</td>
+											<td class="txt_c">1</td>
+											<td>농협</td>
+											<td class="txt_c">010017-01-023296(예금주)</td>
+											<td>Tester</td>
+											<td></td>
+											<td>010-1234-1231</td>
+										</tr>
+										<tr>
+											<td class="txt_c">
+												<span class="check_item square single">
+													<input type="checkbox" name="ckbox" id="Check1_2">
+													<label for="Check1_2">활성화</label>
+												</span>
+											</td>
+											<td class="txt_c">1</td>
+											<td>농협</td>
+											<td class="txt_c">010017-01-023296(예금주)</td>
+											<td>Tester</td>
+											<td></td>
+											<td>010-1234-1231</td>
+										</tr>
+										<tr>
+											<td class="txt_c">
+												<span class="check_item square single">
+													<input type="checkbox" name="ckbox" id="Check1_3">
+													<label for="Check1_3">활성화</label>
+												</span>
+											</td>
+											<td class="txt_c">1</td>
+											<td>농협</td>
+											<td class="txt_c">010017-01-023296(예금주)</td>
+											<td>Tester</td>
+											<td></td>
+											<td>010-1234-1231</td>
+										</tr>
+										<tr>
+											<td class="txt_c">
+												<span class="check_item square single">
+													<input type="checkbox" name="ckbox" id="Check1_4">
+													<label for="Check1_4">활성화</label>
+												</span>
+											</td>
+											<td class="txt_c">1</td>
+											<td>농협</td>
+											<td class="txt_c">010017-01-023296(예금주)</td>
+											<td>Tester</td>
+											<td></td>
+											<td>010-1234-1231</td>
+										</tr>
+										<tr>
+											<td class="txt_c">
+												<span class="check_item square single">
+													<input type="checkbox" name="ckbox" id="Check1_5">
+													<label for="Check1_5">활성화</label>
+												</span>
+											</td>
+											<td class="txt_c">1</td>
+											<td>농협</td>
+											<td class="txt_c">010017-01-023296(예금주)</td>
+											<td>Tester</td>
+											<td></td>
+											<td>010-1234-1231</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default fx_w150" onclick="closeModal('popup02');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="closeModal('popup02');">선택완료</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 자주쓰는입금계좌 팝업 -->
+
+				<!-- s: 최근입금계좌 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup03">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">최근입금계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">최근입금계좌 목푝표이며 선택, 순번, 입금은행, 입금계좌번호, 예금주명, 자주쓰는 입금계좌, 최근입금 계좌관리 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 7%;">
+										<col style="width: 8%;">
+										<col style="width: 13%;">
+										<col>
+										<col style="width: 14%;">
+										<col style="width: 15%;">
+										<col style="width: 15%;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">선택</th>
+											<th scope="col">순번</th>
+											<th scope="col">입금은행</th>
+											<th scope="col">입금계좌번호</th>
+											<th scope="col">예금주명</th>
+											<th scope="col">자주쓰는 입금계좌</th>
+											<th scope="col">최근입금 계좌관리</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">
+												<span class="check_item square single">
+													<input type="checkbox" name="ckbox" id="Check2_1">
+													<label for="Check2_1">활성화</label>
+												</span>
+											</td>
+											<td class="txt_c">1</td>
+											<td>우체국</td>
+											<td class="txt_c">XXXXXXXXXXXXX</td>
+											<td>홍길동</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">등록</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">삭제</button></td>
+										</tr>
+										<tr>
+											<td class="txt_c">
+												<span class="check_item square single">
+													<input type="checkbox" name="ckbox" id="Check2_2">
+													<label for="Check2_2">활성화</label>
+												</span>
+											</td>
+											<td class="txt_c">1</td>
+											<td>우체국</td>
+											<td class="txt_c">XXXXXXXXXXXXX</td>
+											<td>홍길동</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">삭제</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default fx_w150" onclick="closeModal('popup03');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="closeModal('popup03');">선택완료</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 최근입금계좌 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">안내</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<div class="section">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>당행(우체국) : 24시간( 04:00 ~ 05:00 제외)</li>
+								<li>타은행 : 24시간( 04:00 ~ 05:00, 23:50 ~ 익일 00:10 제외)</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="이체_자금이체_다계좌이체_입력확인_입력확인.html" class="btn btn_xl btn_primary">다음</a>
+				</div>
+
+				
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

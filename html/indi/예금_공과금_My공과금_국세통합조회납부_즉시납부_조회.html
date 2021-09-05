@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//조회 결과 버튼
+			$('.btn_result').click(function () {
+				$('.btm_result_box').show();
+			});
+
+			//check1 option
+			$('input[name=check1]').click(function () {
+				if ($('#check1_2').prop('checked')) {
+					$('.check_option').removeClass('d_n');
+					$('.check_item1').removeClass('d_n')
+					$('.check_item2').addClass('d_n');
+				} else if ($('#check1_3').prop('checked')) {
+					$('.check_option').removeClass('d_n');
+					$('.check_item1').addClass('d_n');
+					$('.check_item2').removeClass('d_n');
+				} else {
+					$('.check_option').addClass('d_n');
+				}
+			})
+
+			//check4 disabled
+			$('input[name=check4]').click(function () {
+				if ($('#check4_1').prop('checked')) {
+					$('.check4_1').removeAttr('disabled')
+					$('.check4_2').attr('disabled', '""')
+				} else {
+					$('.check4_1').attr('disabled', '""')
+					$('.check4_2').removeAttr('disabled')
+				}
+			})
+
+			//more list
+			$('.btn_more').click(function () {
+				$('.list_length_check').children('tr:not(:visible)').fadeIn(600);
+				$(this).parent().addClass('d_n');
+
+				if ($('.list_length_check').children('tr').length >= 15) {
+					$('.paging').removeClass('d_n')
+				}
+			})
+
+			//check5 check_all
+			$('.check_all').on('click', function () {
+				if($('.check_all').is(':checked')){
+					$('input[name=check5]:visible').prop('checked', true)
+				} else {
+					$('input[name=check5]:visible').prop('checked', false)
+				}
+			})
+
+			$('input[name=check5], .btn_more').click(function () {
+
+				var chk = $('input[name=check5]:not(.check_all):visible');
+				var chkChecked = $('input[name=check5]:not(.check_all):checked')
+
+				if (chk.length === chkChecked.length) {
+					$('.check_all').prop('checked', true)
+				} else {
+					$('.check_all').prop('checked', false)
+				}
+			})
+
+			//check5 length
+			$('.list_length_check').children('tr:gt(6)').hide();
+
+			if ($('.list_length_check').children('tr').length >= 8) {
+				$('.btn_more_wrap').removeClass('d_n');
+			}
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">통합 국고</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">조회</span></li>
+						<li><span class="num">2</span><span class="txt">정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li><span class="num">4</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 mt_10">
+					<ul>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_즉시납부_조회.html" class="current">즉시납부</a></li>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_예약납부_조회.html">예약납부</a></li>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_자진납부_조회.html">자진납부</a></li>
+					</ul>
+				</div>
+
+				<div class="mb_20 mt_4">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">즉시납부 종류 선택(전체, 국세/전파사용료/ 관세/기금/기타국고, 항만수수료, 특허수수료)</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">구분
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_1" checked="">
+											<label for="check1_1">전체</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_2">
+											<label for="check1_2">국세/전파사용료</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_3">
+											<label for="check1_3">관세/기금/기타국고</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_4">
+											<label for="check1_4">항만수수료</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_5">
+											<label for="check1_5">특허수수료</label>
+										</span>
+									</td>
+								</tr>
+								<tr class="check_option d_n">
+									<th scope="row">상세구분
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="check_item1 d_n">
+											<span class="check_item">
+												<input type="radio" name="check2" id="check2_1" checked="">
+												<label for="check2_1">전체</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check2" id="check2_2">
+												<label for="check2_2">국세</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check2" id="check2_3">
+												<label for="check2_3">전파사용료</label>
+											</span>
+										</div>
+										<div class="check_item2 d_n">
+											<span class="check_item">
+												<input type="radio" name="check3" id="check3_1" checked="">
+												<label for="check3_1">전체</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check3" id="check3_2">
+												<label for="check3_2">관세</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check3" id="check3_3">
+												<label for="check3_3">기금</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check3" id="check3_4">
+												<label for="check3_4">기타국고</label>
+											</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div>
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">조회정보</h3>
+						</div>
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1">
+								<span class="check_item">
+									<input type="radio" name="check4" id="check4_1" checked="">
+									<label for="check4_1">간편납부번호 <span class="necessary">*</span></label>
+								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf check4_1" style="width: 350px;" title="간편납부번호 입력">
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1">
+								<span class="check_item">
+									<input type="radio" name="check4" id="check4_2">
+									<label for="check4_2">전자납부번호 <span class="necessary">*</span></label>
+								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf check4_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
+				</div>
+
+				<!-- s: 조회 결과 -->
+				<div class="btm_result_box mt_12">
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">국세통합조회내역 상세(지자체, 세목, 고지구분, 납부기한, 납부금액, 납부하기)</caption>
+							<colgroup>
+								<col style="width: 11%;">
+								<col style="width: 14%;">
+								<col style="width: 14%;">
+								<col style="width: 15%;">
+								<col style="width: 14%;">
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_1" class="check_all">
+											<label for="Check5_1"><span class="sr_only">전체선택</span></label>
+										</span>
+									</th>
+									<th scope="col">지자체</th>
+									<th scope="col">세목</th>
+									<th scope="col">고지구분</th>
+									<th scope="col">납부기한</th>
+									<th scope="col">납부금액(원)</th>
+									<th scope="col">납부하기</th>
+								</tr>
+							</thead>
+							<tbody class="list_length_check">
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_2">
+											<label for="Check5_2"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_3">
+											<label for="Check5_3"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_4">
+											<label for="Check5_4"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_5">
+											<label for="Check5_5"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_6">
+											<label for="Check5_6"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_7">
+											<label for="Check5_7"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_8">
+											<label for="Check5_8"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
+											<input type="checkbox" name="check5" id="Check5_9">
+											<label for="Check5_9"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default" onclick="openModal('confirm01', this)">상세보기</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="mt_4 txt_c btn_more_wrap d_n">
+						<button type="button" class="btn btn_more">더보기</button>
+					</div>
+
+					<!-- s: 페이징 >> 조회목록이 15건 초과 시 활성화 -->
+					<div class="paging d_n">
+						<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
+						<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
+						<strong>1</strong>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#" class="dir next"><span class="sr_only">다음</span></a>
+						<a href="#" class="dir lst"><span class="sr_only">끝</span></a>
+					</div>
+					<!-- e: 페이징 -->
+
+					<div class="mt_6 txt_c">
+						<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+						<a href="#;" class="btn btn_xl btn_primary">납부</a>
+					</div>
+				</div>
+				<!-- e: 조회 결과 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										해당페이지를 벗어나시겠습니까?
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">취소</button>
+								<a href="#;" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>
