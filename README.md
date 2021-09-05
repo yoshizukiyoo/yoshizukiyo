@@ -3,8 +3,8 @@
 - 퍼블리싱팀 업무현황표 : https://docs.google.com/spreadsheets/d/1FP6ksttEi-J0CVUV3ORCr9w4CEy-aE2efMCpqV8xJzc/edit?usp=sharing
 - 퍼블리싱팀 파일 공유용 구글드라이브 : https://drive.google.com/drive/folders/1e5NJ5CQ3C1jNKhGjJTVgU2kg1lJrNol2?usp=sharing
 - 퍼블리싱팀 공통 컴포넌트 가이드 
-    - 내부 테스트 서버(develop) : http://test.epost.inseq.co.kr:7789/html/index.html
-    - 개발팀 전달(master) : http://epost.inseq.co.kr:7789/html/index.html
+    - 인터넷예금(deposit) : http://d.epost.inseq.co.kr:7789/html/index.html
+    - 인터넷보험(insurance) : http://i.epost.inseq.co.kr:7789/html/index.html
 
 # PMS 사용 안내
 협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
