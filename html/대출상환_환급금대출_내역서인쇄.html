@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">화면명</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#agreement_pop" class="btn btn_sm btn_outline_default ml_2"
+					onclick="openModal('agreement_pop', this);">
+					<span>환급금 대출내역서</span>
+				</a>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xl show" data-popup="agreement_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">환급금 대출내역서</h2>
+						</div>
+						<div class="popup_body">
+							<div class="resurrection_info">
+
+								<div class="tit_top">
+									<h3 class="txt_xl txt_c">환급금 대출내역서</h3>
+
+									<button type="button" class="btn btn_sm btn_outline_default">화면인쇄</button>
+								</div>
+
+
+								<div class="tbl_data tbl_complex_data">
+									<table>
+										<caption class="sr_only">증서번호, 대출신청금액(원), 대출금분할상환 약정금액(원), 이율에 대한 정보표 입니다.</caption>
+										<thead>
+											<tr>
+												<th scope="col">증서번호</th>
+												<th scope="col">대출신청금액(원)</th>
+												<th scope="col">대출금분할상환<br>약정금액(원)</th>
+												<th scope="col">이율</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_c">01123040102</td>
+												<td class="txt_r">10,000</td>
+												<td class="txt_r">0</td>
+												<td class="txt_c">3.22%</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+
+								<div class="tbl_data tbl_complex_data mt_4">
+									<table>
+										<caption class="sr_only">은행명, 계좌번호, 이율에 대한 정보표 입니다.</caption>
+										<thead>
+											<tr>
+												<th scope="col" colspan="4">대출금공제내역(①-(②+③)) = ④</th>
+												<th scope="col">다음이자납입일</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr>
+												<th scope="col">① 대출잔액(원)</th>
+												<th scope="col">② 기대출금(원)</th>
+												<th scope="col">③ 이자상환액(원)</th>
+												<th scope="col">④ 총지급액(원)</th>
+												<td rowspan="2" class="txt_c" style="border-bottom-color:#ddd;">
+													자동이체<br>
+													약정에 따른 <br>
+													이체일에 출금
+												</td>
+											</tr>
+
+											<tr>
+												<td class="txt_r">110,000</td>
+												<td class="txt_r">110,000</td>
+												<td class="txt_r">710</td>
+												<td class="txt_r" style="border-right:1px solid #ddd;">9,280</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+
+								<div class="tbl_data tbl_complex_data mt_4">
+									<table>
+										<caption class="sr_only">은행명, 계좌번호, 이율에 대한 정보표 입니다.</caption>
+										<thead>
+											<tr>
+												<th scope="col">은행명</th>
+												<th scope="col">계좌번호</th>
+												<th scope="col">이율</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_c">우체국</td>
+												<td class="txt_c">010123412341234</td>
+												<td class="txt_c">나보미</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<p class="txt_c mt_3">
+									위 보험계약의 대출금을 지급하였습니다.
+								</p>
+
+								<p class="txt_c mt_2">
+									2021년 07월 02일
+								</p>
+
+								<strong class="txt_xl d_b txt_c mt_7">우정사업본부장</strong>
+
+								<p class="txt_c mt_5">
+									※ 본 확인증은 영수증으로 사용할 수 없으며, 거래의 참고용으로만 사용할 수있습니다.
+								</p>
+
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary"
+										onclick="closeModal('agreement_pop');">저장하기</button>
+								</div>
+
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
