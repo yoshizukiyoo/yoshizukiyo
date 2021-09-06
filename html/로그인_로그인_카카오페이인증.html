@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 로그인 페이지 전용 class
+			$('#content').addClass('login_pg');
+		});
+
+		// 개인 PASS인증서 로그인 팝업 호출
+		function kakaoPopup(obj) {
+			if ($(obj).is(':checked') == true) {
+				openModal('kakaopay_popup', obj);
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">로그인</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#;" class="btn btn_primary" onchange="kakaoPopup(this);">카카오페이인증</a>
+
+
+				<!-- s: 카카오페이 인증 팝업 -->
+				<div class="modal_popup modal_md show" data-popup="kakaopay_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">카카오페이 인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_row2 ">
+								<table>
+									<caption class="sr_only">PASS인증서 로그인 입력 양식이며 성명, 이동통신사, 휴대폰번호 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 160px">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">이름</th>
+											<td class="pr_4">
+												<input type="text" class="tf error" title="이름을 입력해주세요." style="width: 100%;">
+												<!-- [D] Field error : class 속성에 error 추가 -->
+												<div class="error_info">이름을 입력하여 주십시오.</div><!-- [D] error 메세지 -->
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">주민등록번호</th>
+											<td>
+												<input type="text" class="tf" title="주민등록번호 앞 6자리" style="width: 200px" placeholder="앞 6자리">
+												<span class="v_mid">ㅡ</span>
+												<input type="text" class="tf" title="주민등록번호 뒤 7자리" style="width: 200px" placeholder="뒤 7자리">
+												<i class="ico ico_mouse ml_2"></i>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">생년월일</th>
+											<td class="pr_4">
+												<input type="text" class="tf" title="샹뇬유ㅗㄹ알" style="width: 100%" placeholder="예) 19900101">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">휴대폰번호</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap">
+														<dl title="이동통신사 선택">
+															<dt><a href="#none"><span>통신사 선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>선택1</span></a></li>
+																	<li><a href="#none"><span>선택2</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div class="selectbox_wrap middle_phone">
+														<dl title="조건 선택">
+															<dt><a href="#none" title="휴대폰번호 식별번호 선택"><span>선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>011</span></a></li>
+																	<li><a href="#none"><span>016</span></a></li>
+																	<li><a href="#none"><span>017</span></a></li>
+																	<li><a href="#none"><span>018</span></a></li>
+																	<li><a href="#none"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="휴대폰번호 가운데 자리 입력" style="width: 80px"></div>
+													<div><input type="text" class="tf" title="휴대폰번호 마지막 자리 입력" style="width: 80px"></div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="pass_agree mt_8">
+								<span class="check_item square mb_2">
+									<input type="checkbox" name="inputCheck" id="inputCheck1_1">
+									<label for="inputCheck1_1" class="txt_xl" style="background-position:0 center;">개인정보 제3자
+										제공동의(필수)</label>
+								</span>
+
+								<div class="tbl_row2">
+									<table>
+										<caption class="sr_only">개인정보 제3자 제공동의 정보</caption>
+										<tbody>
+											<tr>
+												<td class="pl_4">
+													<div style="height:150px;max-height:150px;overflow-y:auto;">
+														<ol>
+															<li>
+																<strong>1. 이용목적</strong>
+																<p>해당서비스 이용시 본인의 확인 </p>
+																<strong>2. 이용하는 개인정보 항목</strong>
+																<p>주민등록 번호, 성명 등 개인식별정보</p>
+															</li>
+															<li>
+																<strong>1. 이용목적</strong>
+																<p>해당서비스 이용시 본인의 확인 </p>
+																<strong>2. 이용하는 개인정보 항목</strong>
+																<p>주민등록 번호, 성명 등 개인식별정보</p>
+															</li>
+															<li>
+																<strong>1. 이용목적</strong>
+																<p>해당서비스 이용시 본인의 확인 </p>
+																<strong>2. 이용하는 개인정보 항목</strong>
+																<p>주민등록 번호, 성명 등 개인식별정보</p>
+															</li>
+															<li>
+																<strong>1. 이용목적</strong>
+																<p>해당서비스 이용시 본인의 확인 </p>
+																<strong>2. 이용하는 개인정보 항목</strong>
+																<p>주민등록 번호, 성명 등 개인식별정보</p>
+															</li>
+														</ol>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+								<button type="button" class="btn btn_lg btn_primary ">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: PASS인증서 로그인 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

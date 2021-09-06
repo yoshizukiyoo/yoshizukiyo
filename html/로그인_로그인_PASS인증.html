@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		// 개인 PASS인증서 로그인 팝업 호출
+		function passCertPopup(obj) {
+			if ($(obj).is(':checked') == true) {
+				openModal('pass_login_popup', obj);
+			}
+		}
+
+		// 개인 PASS인증서 로그인 실패 레이어팝업 호출
+		function passCertError() {
+			closeModal('pass_login_popup');
+			openModal('pass_error_popup', $('#btn_indi_cert4'));
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">로그인</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#;" class="btn btn_md btn_primary" onclick="openModal('pass_login_popup', this);">pass 인증팝업</a>
+
+
+				<!-- s: PASS인증서 로그인 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="pass_login_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner w650" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">PASS인증서 로그인</h3>
+						</div>
+						<div class="popup_body">
+							<p class="txt_cert_top">
+								인증서가 없어도 손쉽게 인터넷뱅킹을 이용할 수 있습니다.<br>
+								아래 정보를 입력하신 후 PASS인증서 로그인 버튼을 눌러주세요.
+							</p>
+							<div class="tbl_row2 mt_3">
+								<table>
+									<caption class="sr_only">PASS인증서 로그인 입력 양식이며 성명, 이동통신사, 휴대폰번호 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 32%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">성명</th>
+											<td>
+												<input type="text" class="tf error" title="성명 입력" style="width: 100%;">
+												<!-- [D] Field error : class 속성에 error 추가 -->
+												<div class="error_info">성명을 입력하여 주십시오.</div><!-- [D] error 메세지 -->
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">이동통신사</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 93px;">
+													<dl title="이동통신사 선택">
+														<dt><a href="#none"><span>선택</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>선택1</span></a></li>
+																<li><a href="#none"><span>선택2</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">휴대폰번호</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl title="조건 선택">
+															<dt><a href="#none" title="휴대폰번호 식별번호 선택"><span>선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>011</span></a></li>
+																	<li><a href="#none"><span>016</span></a></li>
+																	<li><a href="#none"><span>017</span></a></li>
+																	<li><a href="#none"><span>018</span></a></li>
+																	<li><a href="#none"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="휴대폰번호 가운데 자리 입력" style="width: 93px"></div>
+													<div><input type="text" class="tf" title="휴대폰번호 마지막 자리 입력" style="width: 93px"></div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="pass_agree">
+								<span class="check_item square">
+									<input type="checkbox" name="inputCheck" id="inputCheck1_1">
+									<label for="inputCheck1_1">개인정보 제3자 제공동의(필수)</label>
+								</span>
+								<a href="#;" class="btn_cert_arrow">자세히보기</a>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary btn_full" onclick="passCertError();">PASS인증서
+									로그인</button>
+							</div>
+							<div class="txt_pass_war">
+								<p class="txt_warning">로그인 후 일반거래 전자서명(인증)은 스마트인증으로 진행됩니다.</p>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: PASS인증서 로그인 팝업 -->
+
+				<!-- s: PASS인증서 로그인 실패 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="pass_error_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										PASS인증서 로그인이 실패하였습니다.<br>
+										(실패 사유: 통신사에 가입되어 있지 않은 사용자)<br><br>
+										PASS 인증 팝업이 종료됩니다.
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('pass_error_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: PASS인증서 로그인 실패 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
