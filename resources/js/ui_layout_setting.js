@@ -345,7 +345,7 @@ $(document).on('mouseenter focusin', '.header .gnb>ul>li>a', function () {
 	var obj = $(this);
 	obj.addClass('current').parent().siblings().find('>a').removeClass();
 	obj.next().addClass('open').parent().siblings().find('.layer_memu_box').removeClass('open');
-	$('.quick_menu_wrap').addClass('quick_hidden');
+	//$('.quick_menu_wrap').addClass('quick_hidden');
 });
 $(document).on('mouseleave', '#gnb', function () {
 	gnbClose();
