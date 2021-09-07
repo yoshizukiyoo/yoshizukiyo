@@ -1,4 +1,3 @@
-펀드_펀드매매_판매사이동_판매사이동조회
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -23,11 +22,11 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			$('.btn_result').click(function () {
+		$(document).ready(function(){
+			$('.btn_result').click(function(){
 				$('.btm_result_box').show();
 			});
-		});
+		})
 	</script>
 </head>
 
@@ -40,7 +39,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">판매사이동조회</h2>
+				<h2 class="tit_cont">잔액증명서발급내역</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -59,16 +58,49 @@
 				<!-- s: 본문 -->
 
 				<div class="first_section">
-					<div class="tbl_row2">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">판매사이동조회</caption>
+							<caption class="sr_only">잔액증명서발급내역</caption>
 							<colgroup>
-								<col style="width: 17%;">
+								<col style="width: 15%;">
 								<col>
 							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" colspan="2">잔액증명서를 발급받기 위해서는 전체로 검색하거나 각 계좌단위로 검색하시면 됩니다.</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<th>기간선택</th>
+									<td class="txt_c" colspan="2">
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_1" checked>
+											<label for="chk1_1">고객의 전체 잔액증명서 발급신청</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_2">
+											<label for="chk1_2">계좌별 펀드잔액증명서 발급신청</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="border_b">계좌선택</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 560px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>계좌를 선택해 주세요.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>키움단기국공채증권자투자신탁제1호[채권]Ce</span></a></li>
+														<li><a href="#none"><span>키움단기국공채증권자투자신탁제1호[채권]Ce</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">발급일자</th>
 									<td>
 										<div class="mulit_date_box">
 											<div class="btn_date">
@@ -88,92 +120,57 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="btn_data_search">
-						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
-					</div>
 				</div>
 
-				<!-- s: 조회 결과 -->
-				<div class="mt_12 btm_result_box">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">신청내역</h3>
-						</div>
-					</div>
+				<div class="btn_tbl_btm btn_data_search">
+					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
+				</div>
+
+				<div class="section btm_result_box">
 					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">판매사이동조회 신청내역 순번, 구분, 펀드명, 계좌번호, 수량, 상대기관명, 상대계좌번호, 신청일/완료일, 처리상태 정보 제공</caption>
+							<caption class="sr_only">잔액증명서발급내역 표로 순번, 계좌번호, 발급일자, 증명일자, 한영구분 정보제공</caption>
 							<colgroup>
-								<col style="width: 6%;">
-								<col style="width: 7%;">
-								<col style="width: 15%;">
-								<col style="width: 15%;">
+								<col style="width: 10%;">
+								<col style="width: 30%;">
 								<col>
 								<col>
-								<col style="width: 13%;">
-								<col style="width: 12%;">
-								<col style="width: 8%;">
-								<col style="width: 8%;">
+								<col>
 							</colgroup>
 							<thead>
 								<tr>
 									<th scope="col">순번</th>
-									<th scope="col">구분</th>
-									<th scope="col">펀드명</th>
 									<th scope="col">계좌번호</th>
-									<th scope="col">수량</th>
-									<th scope="col">상대기관명</th>
-									<th scope="col">상대계좌번호</th>
-									<th scope="col">신청일/완료일</th>
-									<th scope="col">처리상태</th>
-									<th scope="col">취소</th>
+									<th scope="col">발급일자</th>
+									<th scope="col">증명일자</th>
+									<th scope="col">한영구분</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td class="txt_c">3</td>
-									<td class="txt_c">전입</td>
-									<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
-									<td>013913-02-000012</td>
-									<td>100,000</td>
-									<td>교보증권</td>
-									<td>0000-00-00000</td>
-									<td class="txt_c">2021.06.01<br>2021.06.01</td>
-									<td>처리중</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_xs btn_outline_default">취소</button>
-									</td>
+									<td class="txt_c">1</td>
+									<td>010017-95-001647</td>
+									<td class="txt_c">2021.06.04</td>
+									<td class="txt_c">2021.06.04</td>
+									<td>국문</td>
 								</tr>
 								<tr>
 									<td class="txt_c">2</td>
-									<td class="txt_c">전입</td>
-									<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
-									<td>013913-02-000012</td>
-									<td>100,000</td>
-									<td>교보증권</td>
-									<td>0000-00-00000</td>
-									<td class="txt_c">2021.06.01<br>2021.06.01</td>
-									<td>이동완료</td>
-									<td class="txt_c"></td>
-								</tr>
-								<tr>
-									<td class="txt_c">1</td>
-									<td class="txt_c">전입</td>
-									<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
-									<td>013913-02-000012</td>
-									<td>100,000</td>
-									<td>교보증권</td>
-									<td>0000-00-00000</td>
-									<td class="txt_c">2021.06.01<br>2021.06.01</td>
-									<td>반려</td>
-									<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">취소</button></td>
+									<td>010017-95-001647</td>
+									<td class="txt_c">2021.06.04</td>
+									<td class="txt_c">2021.06.04</td>
+									<td>국문</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<div class="txt_last_data">
+						<p>마지막 자료입니다.</p>
+					</div>
 				</div>
-				<!-- e: 조회 결과 -->
-
+				
+				
+				
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
 					<div class="dimed"></div>
@@ -195,10 +192,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -227,10 +222,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('confirm_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('confirm_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>

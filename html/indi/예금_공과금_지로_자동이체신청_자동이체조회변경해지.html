@@ -1,4 +1,3 @@
-펀드_펀드매매_판매사이동_판매사이동조회
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -23,11 +22,11 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			$('.btn_result').click(function () {
+		$(document).ready(function(){
+			$('.btn_result').on('click', function(){
 				$('.btm_result_box').show();
-			});
-		});
+			})
+		})
 	</script>
 </head>
 
@@ -40,7 +39,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">판매사이동조회</h2>
+				<h2 class="tit_cont">자동이체조회/해지/변경</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -58,121 +57,132 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="first_section">
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>등록하신 지로자동이체 내역을 확인 및 변경, 해지하실 수 있습니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">판매사이동조회</caption>
+							<caption class="sr_only">자동이체등록내역 조회를 위한 출금계좌번호 선택</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th>기간선택</th>
+									<th scope="row">출금계좌번호</th>
 									<td>
-										<div class="mulit_date_box">
-											<div class="btn_date">
-												<button type="button" class="btn btn_sm btn_default">당일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
-											</div>
-											<div class="datepicker_box">
-												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
-												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
-											</div>
+										<div class="selectbox_wrap mr_1" style="width: 420px;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#;"><span>선택하십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>123123123</span></a></li>
+														<li><a href="#;"><span>321321321</span></a></li>
+													</ul>
+												</dd>
+											</dl>
 										</div>
+										(공과금 출금 계좌번호 선택)
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="btn_data_search">
-						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
-					</div>
 				</div>
 
-				<!-- s: 조회 결과 -->
-				<div class="mt_12 btm_result_box">
+				<div class="btn_data_search">
+					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
+				</div>
+
+				<div class="btm_result_box section">
 					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">신청내역</h3>
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
 					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">판매사이동조회 신청내역 순번, 구분, 펀드명, 계좌번호, 수량, 상대기관명, 상대계좌번호, 신청일/완료일, 처리상태 정보 제공</caption>
+							<caption class="sr_only">자동이체조회내역 상세</caption>
 							<colgroup>
-								<col style="width: 6%;">
-								<col style="width: 7%;">
-								<col style="width: 15%;">
-								<col style="width: 15%;">
+								<col style="width: 16%;">
+								<col style="width: 19%;">
+								<col style="width: 18%;">
 								<col>
 								<col>
-								<col style="width: 13%;">
-								<col style="width: 12%;">
-								<col style="width: 8%;">
-								<col style="width: 8%;">
+								<col>
+								<col style="width: 14%;">
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">순번</th>
-									<th scope="col">구분</th>
-									<th scope="col">펀드명</th>
-									<th scope="col">계좌번호</th>
-									<th scope="col">수량</th>
-									<th scope="col">상대기관명</th>
-									<th scope="col">상대계좌번호</th>
-									<th scope="col">신청일/완료일</th>
-									<th scope="col">처리상태</th>
-									<th scope="col">취소</th>
+									<th scope="col">지로번호</th>
+									<th scope="col">청구기관명</th>
+									<th scope="col">납부자번호</th>
+									<th scope="col">등록일</th>
+									<th scope="col">해지일</th>
+									<th scope="col">상태</th>
+									<th scope="col">변경/해지</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td class="txt_c">3</td>
-									<td class="txt_c">전입</td>
-									<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
-									<td>013913-02-000012</td>
-									<td>100,000</td>
-									<td>교보증권</td>
-									<td>0000-00-00000</td>
-									<td class="txt_c">2021.06.01<br>2021.06.01</td>
-									<td>처리중</td>
+									<td>3001187</td>
+									<td>(주) 가톨릭신문사</td>
+									<td>04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">해제</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_xs btn_outline_default">취소</button>
+										<a href="#;" class="btn btn_sm btn_default">변경</a>
+										<a href="#;" class="btn btn_sm btn_default">해지</a>
 									</td>
 								</tr>
 								<tr>
-									<td class="txt_c">2</td>
-									<td class="txt_c">전입</td>
-									<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
-									<td>013913-02-000012</td>
-									<td>100,000</td>
-									<td>교보증권</td>
-									<td>0000-00-00000</td>
-									<td class="txt_c">2021.06.01<br>2021.06.01</td>
-									<td>이동완료</td>
-									<td class="txt_c"></td>
+									<td>3001187</td>
+									<td>(주) 가톨릭신문사</td>
+									<td>04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">해제</td>
+									<td class="txt_c">
+										<a href="#;" class="btn btn_sm btn_default">변경</a>
+										<a href="#;" class="btn btn_sm btn_default">해지</a>
+									</td>
 								</tr>
 								<tr>
-									<td class="txt_c">1</td>
-									<td class="txt_c">전입</td>
-									<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
-									<td>013913-02-000012</td>
-									<td>100,000</td>
-									<td>교보증권</td>
-									<td>0000-00-00000</td>
-									<td class="txt_c">2021.06.01<br>2021.06.01</td>
-									<td>반려</td>
-									<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">취소</button></td>
+									<td>3001187</td>
+									<td>(주) 가톨릭신문사</td>
+									<td>04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">임의해제</td>
+									<td class="txt_c">
+										<a href="#;" class="btn btn_sm btn_default">변경</a>
+										<a href="#;" class="btn btn_sm btn_default">해지</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<div class="txt_c mt_4">
+						<button type="button" class="btn btn_more">더보기</button>
+					</div>
 				</div>
-				<!-- e: 조회 결과 -->
+
+				<div class="box section">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>자동이체 변경,해지는 해당 지로요금 납기일 30일전에 신청하셔야 합니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
@@ -221,7 +231,7 @@
 								<div class="cont">
 									<!-- s: confirm 메세지 입력 영역 -->
 									<p>
-										컨펌 메세지 입력 영역
+										confirm 메세지 입력 영역
 									</p>
 									<!-- e: confirm 메세지 입력 영역 -->
 								</div>
@@ -229,8 +239,7 @@
 							<div class="btn_group">
 								<button type="button" class="btn btn_md btn_outline_default"
 									onclick="closeModal('confirm_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('confirm_popup');">확인</button>
+								<a href="#;" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</a>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -241,7 +250,7 @@
 				<!-- e: 본문 -->
 			</div>
 		</article>
-		<footer class="footer"></footer>
+		<footer class=" footer"></footer>
 	</div>
 </body>
 
