@@ -128,7 +128,8 @@ $(document).on('click', '.layer_popup .btn_close_popup', function () {
 // 모달 레이어
 $(function () {
 	$('.modal_popup.show').each(function () {
-		openModal($(this), null);
+		//openModal($(this), null);
+		openModal($(this).data('popup'));
 	});
 	// URL 해시 레이어 활성화
 	var hash = location.hash;
