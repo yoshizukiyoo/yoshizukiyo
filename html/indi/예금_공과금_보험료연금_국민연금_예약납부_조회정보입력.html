@@ -23,11 +23,11 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('input[name=check1]').on('click', function(){
-				if($('#check1_1').prop('checked')){
-					$('.check_option').attr('disabled', '""').val(null)
-				} else{
-					$('.check_option').removeAttr('disabled')
+			$('input[name=check2]').on('click', function () {
+				if ($('#check2_1').prop('checked')) {
+					$('.inp_checker').attr('disabled', '').val(null)
+				} else {
+					$('.inp_checker').removeAttr('disabled')
 				}
 			})
 		});
@@ -43,7 +43,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">예약납부</h2>
+				<h2 class="tit_cont">국민연금 예약납부</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -75,13 +75,13 @@
 
 				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>인터넷으로 편리하게 경찰청범칙금을 예약납부 하실 수 있습니다.</li>
-						<li>경찰청 범칙금은 본인 예약납부만 가능합니다.</li>
+						<li>국민건강보험공단에서 부과하는 반납금,추납보험료 및 연금보험료지원환수금을 예약납부하실 수 있습니다.</li>
+						<li>국민건강보험공단에서 고지하는 연금보험료는 통합징수보험료 메뉴에서 납부하여야 합니다.</li>
+						<li>반납금,추납보험료의 본인내역 납부 시 주민등록번호(전자납부번호)로 조회하실 수 있으며 ,미납 및 타인내역 납부 시 전자납부번호로 조회하실 수 있습니다.</li>
+						<li>연금보험료지원환수금의 납부 시 전자납부번호로 조회하실 수 있습니다.</li>
 						<li>예약납부를 신청하시면 지정한 날에 고객님의 출금계좌에서 해당 금액이 인출되어 납부 처리되오니, 미리 출금계좌의 잔액을 확인하시기 바랍니다.</li>
-						<li>예약납부 신청은 납부희망일 전일까지 가능하고, 납부희망일은 납부마감일 3영업일까지 가능합니다.</li>
-						<li>자세한 내용은 “우체국 인터넷뱅킹 공과금 예약납부 약관”의 내용을 참고하십시오.</li>
-						<li>본인에게 부과된 공과금을 납부할 경우 보안매체(보안카드/OTP)인증과 공동인증서 전자서명을 생략합니다.</li>
-						<li>단, 인터넷뱅킹 간편송금서비스를 해지한 고객은 보안매체 및 인증 절차를 정상적으로 거치게 됩니다.</li>
+						<li>예약납부 신청은 납부희망일 전일까지 가능하고, 납부희망일은 납부마감일 3영업일까지 가능합니다.(자세한 내용은 "우체국 인터넷뱅킹 공과금 예약납부 약관"의 내용을 참고하십시오.)</li>
+						<li>본인에게 부과된 공과금을 납부할 경우 보안매체(보안카드/OTP)인증과 공동인증서 전자서명을 생략합니다.단, 인터넷뱅킹 간편송금서비스를 해지한 고객은 보안매체 및 인증 절차를 정상적으로 거치게 됩니다. </li>
 						<li>납부기관 장애여부는 [장애기관]버튼을 클릭하시면 확인하실 수 있습니다. <button type="button" class="btn btn_xs btn_outline_default" onclick="openModal('popup01', this)">장애기관</button></li>
 					</ul>
 				</div>
@@ -89,30 +89,23 @@
 				<div class="section">
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">납부 조회방식 선택(주민(사업자)등록번호, 전자납부번호)</caption>
+							<caption class="sr_only">연금보험료 납부 종류 선택</caption>
 							<colgroup>
-								<col style="width: 19%;">
+								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">
+									<th scope="row">연금보험료</th>
+									<td>
 										<span class="check_item">
 											<input type="radio" name="check1" id="check1_1" checked="">
-											<label for="check1_1">주민(사업자)등록번호</label>
+											<label for="check1_1">지역 연금보험료/추납보험료/반납금</label>
 										</span>
-									</th>
-									<td>102-81-*****</td>
-								</tr>
-								<tr>
-									<th scope="row">
 										<span class="check_item">
 											<input type="radio" name="check1" id="check1_2">
-											<label for="check1_2">전자납부번호</label>
+											<label for="check1_2">사업장 연금보험료</label>
 										</span>
-									</th>
-									<td>
-										0137 - <input type="text" class="tf ml_1 check_option" style="width: 420px;" title="전자납부번호 입력" disabled="">
 									</td>
 								</tr>
 							</tbody>
@@ -120,8 +113,52 @@
 					</div>
 				</div>
 
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">
+								<span class="check_item">
+									<input type="radio" name="check2" id="check2_1" checked="">
+									<label for="check2_1">납부자번호</label>
+								</span>
+							</h3>
+						</div>
+					</div>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1" style="width: 200px;">납부자번호(주민등록번호)</div>
+							<div class="b2">000000-0000000
+								<input type="text" class="tf" style="width: 360px; display: none;" title="납부자번호 입력"><!-- [D] 구분값 > 사업장 연금보험료 선택시 활성화 -->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">
+								<span class="check_item">
+									<input type="radio" name="check2" id="check2_2">
+									<label for="check2_2">전자납부번호 조회</label>
+								</span>
+							</h3>
+						</div>
+					</div>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1" style="width: 200px;">전자납부번호</div>
+							<div class="b2">
+								<input type="text" class="tf inp_checker" style="width: 360px;" title="전자납부번호 입력" placeholder="숫자 14자리"
+									disabled="">
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="btn_tbl_btm">
-					<a href="예금_공과금_범칙벌과금_경찰청범칙금_예약납부_조회결과확인.html" class="btn btn_xl btn_primary">조회</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="예금_공과금_보험료연금_국민연금_예약납부_조회결과확인.html" class="btn btn_xl btn_primary">조회</a>
 				</div>
 
 				<div class="box section">
@@ -129,6 +166,7 @@
 						<dt>참고사항</dt>
 						<dd>
 							<ul class="list list2">
+								<li>국민건강보험공단의 연체금 일할계산 납부제도 시행(2016.6.23)으로 건강, 연금보험료 납부 시, 납부기한 경과일수에 따라 고지서 상의 금액과 조회 금액이 다를 수 있습니다.</li>
 								<li>공과금 예약납부신청 가능시간 : 연중무휴 24시간 (04:00 ~ 05:00 제외) 가능.</li>
 								<li>예약납부 희망일이 임시공휴일로 지정된 경우에는 임시공휴일 이후 첫 영업일에 출금 처리합니다.</li>
 								<li>공과금 예약납부신청 취소 가능시간: 납부희망일 전일 24:00까지 가능.</li>

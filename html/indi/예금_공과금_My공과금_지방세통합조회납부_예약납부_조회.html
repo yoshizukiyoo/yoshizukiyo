@@ -23,8 +23,58 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			
+			$('.btn_result').click(function () {
+				$('.btm_result_box').show();
+			});
 
+			//check2 disabled
+			$('input[name=check2]').click(function () {
+				if ($('#check2_1').prop('checked')) {
+					$('.check2_1').removeAttr('disabled')
+					$('.check2_2').attr('disabled', '""')
+				} else {
+					$('.check2_1').attr('disabled', '""')
+					$('.check2_2').removeAttr('disabled')
+				}
+			})
+
+			//more list
+			$('.btn_more').click(function () {
+				$('.list_length_check').children('tr:not(:visible)').fadeIn(600);
+				$(this).parent().addClass('d_n');
+
+				if ($('.list_length_check').children('tr').length >= 15) {
+					$('.paging').removeClass('d_n')
+				}
+			})
+
+			//check3 check_all
+			$('.check_all').on('click', function () {
+				if ($('.check_all').is(':checked')) {
+					$('input[name=check3]:visible').prop('checked', true)
+				} else {
+					$('input[name=check3]:visible').prop('checked', false)
+				}
+			})
+
+			$('input[name=check3], .btn_more').click(function () {
+
+				var chk = $('input[name=check3]:not(.check_all):visible');
+				var chkChecked = $('input[name=check3]:not(.check_all):checked')
+
+				if (chk.length === chkChecked.length) {
+					$('.check_all').prop('checked', true)
+				} else {
+					$('.check_all').prop('checked', false)
+				}
+			})
+
+			//check3 length
+			$('.list_length_check').children('tr:gt(6)').hide();
+
+			if ($('.list_length_check').children('tr').length >= 8) {
+				$('.btn_more_wrap').removeClass('d_n');
+			}
 		});
 	</script>
 </head>
