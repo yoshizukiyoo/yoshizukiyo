@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_result').click(function(){
+				$('.btm_result_box').show();
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">주요지수</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="first_section">
+					<div class="tab_menu_type1">
+						<ul>
+							<li><a href="펀드_고객지원_펀드동향_주요지수_유형별수익률.html">유형별수익률</a></li>
+							<li><a href="펀드_고객지원_펀드동향_주요지수_펀드대지수비교.html">펀드 대 지수비교</a></li>
+							<li><a href="펀드_고객지원_펀드동향_주요지수_대표지수비교.html" class="current">대표지수비교 </a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">펀드 대 지수비교</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">지수</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 260px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택</span></a></li>
+														<li><a href="#none"><span>선택</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">추가</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">기간</th>
+									<td>
+										<div class="mulit_date_box">
+											<div class="btn_date">
+												<button type="button" class="btn btn_sm btn_default">당일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+											</div>
+											<div class="datepicker_box">
+												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="box mt_4">
+						<ul>
+							<li>
+								<span class="check_item square">
+									<input type="checkbox" name="" id="chk1">
+									<label for="chk1">KOSPI</label>
+								</span>
+							</li>
+							<li class="mt3">
+								<span class="check_item square">
+									<input type="checkbox" name="" id="chk2">
+									<label for="chk2">KOSPI대형주지수</label>
+								</span>
+							</li>
+							<li class="mt3">
+								<span class="check_item square">
+									<input type="checkbox" name="" id="chk3">
+									<label for="chk3">KOSPI소형주지수</label>
+								</span>
+							</li>
+							<li class="mt3">
+								<span class="check_item square">
+									<input type="checkbox" name="" id="chk4">
+									<label for="chk4">KOSDAQ</label>
+								</span>
+							</li>
+							<li class="mt3">
+								<span class="check_item square">
+									<input type="checkbox" name="" id="chk5">
+									<label for="chk5">CD</label>
+								</span>
+							</li>
+						</ul>
+						<div class="tab_menu_type3 txt_c">
+							<button type="button" class="btn btn_md btn_outline_default">삭제</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn_tbl_btm btn_data_search">
+					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
+				</div>
+
+				<div class="section btm_result_box">
+					<img src="/resources/img/content/fund_chart_img.jpg" alt="">
+				</div>
+
+			
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">유형별펀드리스트</h2>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_box_top">
+								<div class="box_left">기준일 : 2021-06-11</div>
+								<div class="box_right">단위(%)</div>
+							</div>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">유형별수익률 표로 펀드명, 제로인펀드 등급, 수익률(%)(1M, 3M, 6M, 1Y, 3Y), 선취수수료, 총보수 정보 제공</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+										<col>
+										<col style="width: 7%;">
+										<col style="width: 7%;">
+										<col style="width: 7%;">
+										<col style="width: 7%;">
+										<col style="width: 7%;">
+										<col>
+										<col style="width: 8%;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col" rowspan="2">펀드명</th>
+											<th scope="col" rowspan="2">제로인펀드<br>등급</th>
+											<th scope="col" rowspan="2">기준가</th>
+											<th scope="col" colspan="5">수익률(%)</th>
+											<th scope="col" rowspan="2">선취수수료</th>
+											<th scope="col" rowspan="2">총보수</th>
+										</tr>
+										<tr>
+											<th scope="col">1M</th>
+											<th scope="col">3M</th>
+											<th scope="col">6M</th>
+											<th scope="col">1Y</th>
+											<th scope="col" class="border_r">3Y</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>키움단기국공채증권자투자신탁제1호[채권]Ce</td>
+											<td class="txt_c"></td>
+											<td>1280.70</td>
+											<td>2.07</td>
+											<td>3.56</td>
+											<td>12.65</td>
+											<td>38.82</td>
+											<td>33.01</td>
+											<td>-</td>
+											<td>-</td>
+										</tr>
+										<tr>
+											<td>키움단기국공채증권자투자신탁제1호[채권]Ce</td>
+											<td class="txt_c"></td>
+											<td>1280.70</td>
+											<td>2.07</td>
+											<td>3.56</td>
+											<td>12.65</td>
+											<td>38.82</td>
+											<td>33.01</td>
+											<td>투자금액의 1.00%</td>
+											<td>-</td>
+										</tr>
+										<tr>
+											<td>키움단기국공채증권자투자신탁제1호[채권]Ce</td>
+											<td class="txt_c"></td>
+											<td>1280.70</td>
+											<td>2.07</td>
+											<td>3.56</td>
+											<td>12.65</td>
+											<td>38.82</td>
+											<td>33.01</td>
+											<td>-</td>
+											<td>1.96</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="paging">
+								<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
+								<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
+								<strong>1</strong>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+								<a href="#" class="dir next"><span class="sr_only">다음</span></a>
+								<a href="#" class="dir lst"><span class="sr_only">끝</span></a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

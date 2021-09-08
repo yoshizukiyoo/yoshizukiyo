@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_primary').on('click', function(){
+				if($('#check1_2').is(':checked')){
+					openModal('alert01');
+					return false;
+				}
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">통합 국고</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">조회</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">약관동의</span></li>
+						<li><span class="num">3</span><span class="txt">정보입력</span></li>
+						<li><span class="num">4</span><span class="txt">입력확인</span></li>
+						<li><span class="num">5</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 first_section">
+					<ul>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_즉시납부_조회.html">즉시납부</a></li>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_예약납부_조회.html" class="current">예약납부</a></li>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_자진납부_조회.html">자진납부</a></li>
+					</ul>
+				</div>
+
+				<div class="mt_12">
+					<div class="terms_wrap">
+						<h3 class="tit1">우체국 인터넷뱅킹 공과능 예약납부 약관</h3>
+						<div class="terms_con">
+							<strong class="txt_lg">『우체국 인터넷뱅킹 공과금 예약납부』약관</strong>
+							<div class="mt_6 pl_8">
+								<ol class="txt_normal list_number">
+									<li class="mb_8">신청인이 인터넷뱅킹으로 공과금 예약납부를 신청하는 경우 지정한 우체국 예금계좌에서 납부희망일<br>
+										16:30～22:00에 해당금액을 인출하여 납부합니다. 다만, 납부희망일은 영업일로 한정합니다.<br>
+										※ 영업일 : 금융영업일(토요일, 일요일 및 공휴일 제외)<br>
+										예약납부 희망일이 임시공휴일로 지정된 경우에는 임시공휴일 이후 첫 영업일에 출금 처리합니다.</li>
+									<li>공과금 납부희망일은 납부마감일 3영업일 전까지 지정 가능하고, 예약납부 신청은 납부희망일 전일까지<br>
+										가능하며, 예약납부 취소는 납부희망일 전일 24:00까지 가능합니다. </li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1 pl_9">위 약관에 동의하십니까?</div>
+							<div class="b3">
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_1" checked="">
+									<label for="check1_1">동의합니다.</label>
+								</span>
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_2">
+									<label for="check1_2">동의하지 않습니다.</label>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="공과금_My공과금_국세통합조회납부_예약납부_03.정보입력.html" class="btn btn_xl btn_primary">확인</a>
+				</div>
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										약관에 동의하셔야 예약납부를 하실수있습니다.
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>
