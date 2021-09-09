@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('input[name=check1]').on('click', function(){
+				if($('#check1_1').prop('checked')){
+					$('.inp_checker').attr('disabled', '""').val(null)
+				} else{
+					$('.inp_checker').removeAttr('disabled')
+				}
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">납부</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">조회결과확인</span></li>
+						<li><span class="num">3</span><span class="txt">상세조회결과</span></li>
+						<li><span class="num">4</span><span class="txt">정보입력</span></li>
+						<li><span class="num">5</span><span class="txt">입력확인</span></li>
+						<li><span class="num">6</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="box box_more first_section">
+					<ul class="list list1">
+						<li>인터넷으로 편리하게 법무부 국고금을 납부하실 수 있습니다.</li>
+						<li>본인에게 부과된 공과금을 납부할 경우 보안매체(보안카드/OTP)인증과 공동인증서 전자서명을 생략합니다.단, 인터넷뱅킹 간편송금서비스를 해지한 고객은 보안매체 및 인증 절차를 정상적으로 거치게 됩니다.</li>
+						<li>납부기관 장애여부는 [장애기관]버튼을 클릭하시면 확인하실 수 있습니다. <button type="button" class="btn btn_xs btn_outline_default" onclick="openModal('popup01', this)">장애기관</button></li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">납부 조회방식 선택(주민(사업자)등록번호, 조회기간, 전자납부번호)</caption>
+							<colgroup>
+								<col style="width: 19%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_1" checked="">
+											<label for="check1_1">주민(사업자)등록번호</label>
+										</span>
+									</th>
+									<td>102-81-*****</td>
+								</tr>
+								<tr>
+									<th scope="row">조회기간</th>
+									<td>
+										<div class="mulit_date_box">
+											<div class="btn_date">
+												<button type="button" class="btn btn_sm btn_default">당일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+											</div>
+											<div class="datepicker_box">
+												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_2">
+											<label for="check1_2">전자납부번호</label>
+										</span>
+									</th>
+									<td>
+										<div class="bar_wrap">
+											<div>
+												0137
+											</div>
+											<div>
+												<input type="text" class="tf inp_checker" style="width: 360px;" title="전자납부번호 입력" disabled="">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="예금_공과금_범칙벌과금_법무부국고금_즉시납부_조회결과확인.html" class="btn btn_xl btn_primary">조회</a>
+				</div>
+
+				<div class="box section">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>이용가능시간 : 07:00 ~ 23:30 (토 · 일요일, 공휴일 이용 가능)</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- s: 장애기관 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_body">
+							<h3 class="tit2">현재 이체(납부)거래가 불가능한 장애기관입니다.</h3>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">장애기관 목록 안내(기관코드, 기관명)</caption>
+									<thead>
+										<tr>
+											<th scope="col">기관코드</th>
+											<th scope="col">기관명</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="2" class="txt_c">현재 장애기관이 없습니다</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('popup01');">닫기</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 장애기관 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										confirm 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<a href="#;" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>

@@ -27,71 +27,6 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
-
-			//check1 option
-			$('input[name=check1]').click(function () {
-				if ($('#check1_2').prop('checked')) {
-					$('.check_option').removeClass('d_n');
-					$('.check_item1').removeClass('d_n')
-					$('.check_item2').addClass('d_n');
-				} else if ($('#check1_3').prop('checked')) {
-					$('.check_option').removeClass('d_n');
-					$('.check_item1').addClass('d_n');
-					$('.check_item2').removeClass('d_n');
-				} else {
-					$('.check_option').addClass('d_n');
-				}
-			})
-
-			//check4 disabled
-			$('input[name=check4]').click(function () {
-				if ($('#check4_1').prop('checked')) {
-					$('.check4_1').removeAttr('disabled')
-					$('.check4_2').attr('disabled', '""')
-				} else {
-					$('.check4_1').attr('disabled', '""')
-					$('.check4_2').removeAttr('disabled')
-				}
-			})
-
-			//more list
-			$('.btn_more').click(function () {
-				$('.list_length_check').children('tr:not(:visible)').fadeIn(600);
-				$(this).parent().addClass('d_n');
-
-				if ($('.list_length_check').children('tr').length >= 15) {
-					$('.paging').removeClass('d_n')
-				}
-			})
-
-			//check5 check_all
-			$('.check_all').on('click', function () {
-				if($('.check_all').is(':checked')){
-					$('input[name=check5]:visible').prop('checked', true)
-				} else {
-					$('input[name=check5]:visible').prop('checked', false)
-				}
-			})
-
-			$('input[name=check5], .btn_more').click(function () {
-
-				var chk = $('input[name=check5]:not(.check_all):visible');
-				var chkChecked = $('input[name=check5]:not(.check_all):checked')
-
-				if (chk.length === chkChecked.length) {
-					$('.check_all').prop('checked', true)
-				} else {
-					$('.check_all').prop('checked', false)
-				}
-			})
-
-			//check5 visible
-			$('.list_length_check').children('tr:gt(6)').hide();
-
-			if ($('.list_length_check').children('tr').length >= 8) {
-				$('.btn_more_wrap').removeClass('d_n');
-			}
-
 		});
 	</script>
 </head>
@@ -133,7 +68,7 @@
 					</ul>
 				</div>
 
-				<div class="tab_menu_type1 mt_10">
+				<div class="tab_menu_type1 first_section">
 					<ul>
 						<li><a href="예금_공과금_My공과금_국세통합조회납부_즉시납부_조회.html">즉시납부</a></li>
 						<li><a href="예금_공과금_My공과금_국세통합조회납부_예약납부_조회.html" class="current">예약납부</a></li>
@@ -141,7 +76,13 @@
 					</ul>
 				</div>
 
-				<div class="mb_20 mt_4">
+				<div class="mt_12">
+					<ul class="list list1">
+						<li>000</li>
+					</ul>
+				</div>
+
+				<div class="mt_8">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
@@ -182,12 +123,12 @@
 										</span>
 									</td>
 								</tr>
-								<tr class="check_option d_n">
+								<tr class="check_option">
 									<th scope="row">상세구분
 										<span class="necessary">*</span>
 									</th>
 									<td>
-										<div class="check_item1 d_n">
+										<div class="check_item1">
 											<span class="check_item">
 												<input type="radio" name="check2" id="check2_1" checked="">
 												<label for="check2_1">전체</label>
@@ -201,7 +142,7 @@
 												<label for="check2_3">전파사용료</label>
 											</span>
 										</div>
-										<div class="check_item2 d_n">
+										<div class="check_item2">
 											<span class="check_item">
 												<input type="radio" name="check3" id="check3_1" checked="">
 												<label for="check3_1">전체</label>
@@ -226,7 +167,7 @@
 					</div>
 				</div>
 
-				<div>
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
 							<h3 class="tit1">조회정보</h3>
@@ -261,12 +202,12 @@
 					</div>
 				</div>
 
-				<div class="btn_tbl_btm">
+				<div class="btn_data_search">
 					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
 				</div>
 
 				<!-- s: 조회 결과 -->
-				<div class="btm_result_box mt_12">
+				<div class="btm_result_box section">
 					<div class="tbl_data tbl_row_data">
 						<table>
 							<caption class="sr_only">국세통합조회내역 상세(지자체, 세목, 고지구분, 납부기한, 납부금액, 납부하기)</caption>
@@ -281,12 +222,7 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_1" class="check_all">
-											<label for="Check5_1"><span class="sr_only">전체선택</span></label>
-										</span>
-									</th>
+									<th scope="col">선택</th>
 									<th scope="col">지자체</th>
 									<th scope="col">세목</th>
 									<th scope="col">고지구분</th>
@@ -298,9 +234,9 @@
 							<tbody class="list_length_check">
 								<tr>
 									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_2">
-											<label for="Check5_2"><span class="sr_only">선택</span></label>
+										<span class="check_item single">
+											<input type="radio" name="inputCheck1" id="inputCheck1_1">
+											<label for="inputCheck1_1">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -309,15 +245,14 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
+										<button type="button" class="btn btn_sm btn_default">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_3">
-											<label for="Check5_3"><span class="sr_only">선택</span></label>
+										<span class="check_item single">
+											<input type="radio" name="inputCheck1" id="inputCheck1_2">
+											<label for="inputCheck1_2">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -326,15 +261,14 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
+										<button type="button" class="btn btn_sm btn_default">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_4">
-											<label for="Check5_4"><span class="sr_only">선택</span></label>
+										<span class="check_item single">
+											<input type="radio" name="inputCheck1" id="inputCheck1_3">
+											<label for="inputCheck1_3">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -343,105 +277,19 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_5">
-											<label for="Check5_5"><span class="sr_only">선택</span></label>
-										</span>
-									</td>
-									<td>경기도성남시</td>
-									<td>등록면허세(면허)</td>
-									<td>체납</td>
-									<td class="txt_c">2021.05.31</td>
-									<td class="txt_r">27,810</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_6">
-											<label for="Check5_6"><span class="sr_only">선택</span></label>
-										</span>
-									</td>
-									<td>경기도성남시</td>
-									<td>등록면허세(면허)</td>
-									<td>체납</td>
-									<td class="txt_c">2021.05.31</td>
-									<td class="txt_r">27,810</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_7">
-											<label for="Check5_7"><span class="sr_only">선택</span></label>
-										</span>
-									</td>
-									<td>경기도성남시</td>
-									<td>등록면허세(면허)</td>
-									<td>체납</td>
-									<td class="txt_c">2021.05.31</td>
-									<td class="txt_r">27,810</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_8">
-											<label for="Check5_8"><span class="sr_only">선택</span></label>
-										</span>
-									</td>
-									<td>경기도성남시</td>
-									<td>등록면허세(면허)</td>
-									<td>체납</td>
-									<td class="txt_c">2021.05.31</td>
-									<td class="txt_r">27,810</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">
-										<span class="check_item square">
-											<input type="checkbox" name="check5" id="Check5_9">
-											<label for="Check5_9"><span class="sr_only">선택</span></label>
-										</span>
-									</td>
-									<td>경기도성남시</td>
-									<td>등록면허세(면허)</td>
-									<td>체납</td>
-									<td class="txt_c">2021.05.31</td>
-									<td class="txt_r">27,810</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('confirm01', this)">상세보기</button>
+										<button type="button" class="btn btn_sm btn_default">상세보기</button>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
-					<div class="mt_4 txt_c btn_more_wrap d_n">
+					<div class="mt_4 txt_c btn_more_wrap">
 						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 
-					<!-- s: 페이징 >> 조회목록이 15건 까지 표시, 초과시 페이징 -->
-					<div class="paging d_n">
+					<!-- s: 페이징 >> 조회목록이 15건 초과 시 활성화 -->
+					<div class="paging">
 						<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
 						<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
 						<strong>1</strong>
@@ -454,7 +302,7 @@
 
 					<div class="mt_6 txt_c">
 						<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-						<a href="예금_공과금_My공과금_국세통합조회납부_예약납부_약관동의.html" class="btn btn_xl btn_primary">예약납부</a>
+						<a href="공과금_My공과금_국세통합조회납부_즉시납부_02.정보입력.html" class="btn btn_xl btn_primary">납부</a>
 					</div>
 				</div>
 				<!-- e: 조회 결과 -->
