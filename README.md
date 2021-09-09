@@ -3,8 +3,8 @@
 - 퍼블리싱팀 업무현황표 : https://docs.google.com/spreadsheets/d/1FP6ksttEi-J0CVUV3ORCr9w4CEy-aE2efMCpqV8xJzc/edit?usp=sharing
 - 퍼블리싱팀 파일 공유용 구글드라이브 : https://drive.google.com/drive/folders/1e5NJ5CQ3C1jNKhGjJTVgU2kg1lJrNol2?usp=sharing
 - 퍼블리싱팀 공통 컴포넌트 가이드 
-    - 인터넷예금(deposit) : http://d.epost.inseq.co.kr:7789/html/index.html
-    - 인터넷보험(insurance) : http://i.epost.inseq.co.kr:7789/html/index.html
+    - 내부 테스트 서버(develop) : http://test.epost.inseq.co.kr:7789/html/index.html
+    - 개발팀 전달(master) : http://epost.inseq.co.kr:7789/html/index.html
 
 # PMS 사용 안내
 협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
@@ -24,16 +24,16 @@
 
 ### 스토리보드(구글드라이브)
 - [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
-- 7/9 수급 스토리보드 : [https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w](https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w)
+- 7/9 수급 스토리보드 : https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w
 - 자료 반출용 공용 이메일 계정
 [http://webmail.16block.com/](http://webmail.16block.com/) (geistkorea1 / 가이스트1)
 
 ### 디자인 산출물
-- 디자인 공통 가이드(디자이너 협업용) : [http://epost.test.ubiqos.co.kr/html/main/main01.html](http://epost.test.ubiqos.co.kr/html/main/main01.html)
-- 디자인 산출물 자료 : SVN 저장소 URL : [https://59.2.0.242/svn/design](https://59.2.0.242/svn/design)
+- 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main.html
+- 디자인 산출물 자료 : SVN 저장소 URL : https://59.2.0.242/svn/design
 > geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
-SVN 클라이언트 다운로드 : [https://tortoisesvn.net/downloads.html](https://tortoisesvn.net/downloads.html)
-SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn](http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn)
+SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
+SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 
 <br>
 
@@ -82,7 +82,7 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 		"**/node_modules/**",
 		".vscode/**"
 	],
-	"liveSassCompile.settings.generateMap": false,
+	"liveSassCompile.settings.generateMap": true,
 	"liveSassCompile.settings.autoprefix": [
 		"> 1%",
 		"last 2 versions"
