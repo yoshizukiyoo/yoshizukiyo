@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+
+			$(".search_result .tf_search_txt.areas button").click(function () {
+				$(".search_result .area_result").addClass("on");
+				$(".search_result .area_result .areas").show();
+			})
+
+			$(".search_result .area_result .areas a").click(function () {
+				$(".txt_result").css({
+					display: "block"
+				});
+				$(".popup_body.search_result .txt_result em").text($(this).closest("li").find("dt").text())
+
+				$(".search_result .area_result .areas").hide();
+				$(".search_result .area_result .manage").show();
+				$(".search_result .tf_search_txt.areas").hide();
+				$(".search_result .tf_search_txt.manage").show();
+				$(".search_result .area_result").scrollTop(0);
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">유지국·유지관리자 찾기</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#manage_search_pop" class="btn btn_sm btn_outline_default ml_2"
+					onclick="openModal('manage_search_pop', this);">
+					<span>유지국·유지관리자 찾기</span>
+				</a>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_sm show" data-popup="manage_search_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">유지국·유지관리자 찾기</h2>
+						</div>
+						<div class="popup_body search_result">
+
+							<!-- s 우체국/지역명 -->
+							<div class="tf_search_txt areas">
+								<input type="text" title="우체국/지역명을 입력하세요." placeholder="우체국/지역명을 입력하세요.">
+								<button type="submit"><span class="sr_only">검색</span></button>
+							</div>
+							<!-- e 우체국/지역명 -->
+
+							<!-- s 유지관리자명 -->
+							<div class="tf_search_txt manage">
+								<input type="text" title="유지관리자명을 입력하세요" placeholder="유지관리자명을 입력하세요">
+								<button type="submit"><span class="sr_only">검색</span></button>
+							</div>
+							<!-- e 유지관리자명 -->
+
+							<ul class="list list1 mt_2">
+								<li>
+									유지국으로 변경할 우체국을 선택하시면 해당 우체국의 유지관리 목록을 확인 할 수 있습니다.
+								</li>
+							</ul>
+
+							<!-- s 우체국 결과 -->
+							<strong class="txt_result">
+								<em>나주우체국</em>
+								<span>유지관리자 선택</span>
+							</strong>
+							<!-- e 우체국 결과 -->
+
+							<div class="area_result">
+								<!-- s 우체국 지역 리스트 -->
+								<ul class="areas">
+									<li>
+										<dl>
+											<dt>나주금천우체국</dt>
+											<dd>
+												전라남도 나주시 금천면 금영로 923 <br>
+												(금천면, 나주금천우체국)
+											</dd>
+										</dl>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+										<dl>
+											<dt>나주성북동우체국</dt>
+											<dd>
+												전라남도 나주시 금성길 46 (성북동,) <br>
+												나주성북동우체국
+											</dd>
+										</dl>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+										<dl>
+											<dt>나주우체국</dt>
+											<dd>
+												전라남도 나주시 시청길 18 <br>
+												(송월동,나주우체국)
+											</dd>
+										</dl>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+										<dl>
+											<dt>나주증서국</dt>
+											<dd>
+												전라남도 나주시 시청길 18 <br>
+												(송월동,나주우체국)
+											</dd>
+										</dl>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+										<dl>
+											<dt>나주금천우체국</dt>
+											<dd>
+												전라남도 나주시 금천면 금영로 923 <br>
+												(금천면, 나주금천우체국)
+											</dd>
+										</dl>
+
+										<a href="#;">선택</a>
+									</li>
+								</ul>
+								<!-- e 우체국 지역 리스트 -->
+
+								<!-- s 유지관리자 리스트 -->
+								<ul class="manage">
+									<li>
+
+										<em>모집번호</em>
+										<strong>04003671</strong>
+										<em>유지관리자</em>
+										<strong>명최안1</strong>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+
+										<em>모집번호</em>
+										<strong>04003672</strong>
+										<em>유지관리자</em>
+										<strong>명최안2</strong>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+
+										<em>모집번호</em>
+										<strong>04003673</strong>
+										<em>유지관리자</em>
+										<strong>명최안3</strong>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+
+										<em>모집번호</em>
+										<strong>04003674</strong>
+										<em>유지관리자</em>
+										<strong>명최안4</strong>
+
+										<a href="#;">선택</a>
+									</li>
+									<li>
+
+										<em>모집번호</em>
+										<strong>04003675</strong>
+										<em>유지관리자</em>
+										<strong>홍길똥5</strong>
+
+										<a href="#;">선택</a>
+									</li>
+								</ul>
+								<!-- e 유지관리자 리스트 -->
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleMd');">확인</button>
+							</div>
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
