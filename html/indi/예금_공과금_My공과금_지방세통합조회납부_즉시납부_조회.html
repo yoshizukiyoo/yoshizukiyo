@@ -27,56 +27,6 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
-
-			//check2 disabled
-			$('input[name=check2]').click(function () {
-				if ($('#check2_1').prop('checked')) {
-					$('.check2_1').removeAttr('disabled')
-					$('.check2_2').attr('disabled', '""')
-				} else {
-					$('.check2_1').attr('disabled', '""')
-					$('.check2_2').removeAttr('disabled')
-				}
-			})
-
-			//more list
-			$('.btn_more').click(function () {
-				$('.list_length_check').children('tr:not(:visible)').fadeIn(600);
-				$(this).parent().addClass('d_n');
-
-				if ($('.list_length_check').children('tr').length >= 15) {
-					$('.paging').removeClass('d_n')
-				}
-			})
-
-			//check3 check_all
-			$('.check_all').on('click', function () {
-				if ($('.check_all').is(':checked')) {
-					$('input[name=check3]:visible').prop('checked', true)
-				} else {
-					$('input[name=check3]:visible').prop('checked', false)
-				}
-			})
-
-			$('input[name=check3], .btn_more').click(function () {
-
-				var chk = $('input[name=check3]:not(.check_all):visible');
-				var chkChecked = $('input[name=check3]:not(.check_all):checked')
-
-				if (chk.length === chkChecked.length) {
-					$('.check_all').prop('checked', true)
-				} else {
-					$('.check_all').prop('checked', false)
-				}
-			})
-
-			//check3 length
-			$('.list_length_check').children('tr:gt(6)').hide();
-
-			if ($('.list_length_check').children('tr').length >= 8) {
-				$('.btn_more_wrap').removeClass('d_n');
-			}
-
 		});
 	</script>
 </head>
@@ -117,6 +67,12 @@
 					</ul>
 				</div>
 
+				<div class="box mt_12">
+					<ul class="list list1">
+						<li>도움말 영역</li>
+					</ul>
+				</div>
+
 				<div class="tab_menu_type1 first_section">
 					<ul>
 						<li><a href="예금_공과금_My공과금_지방세통합조회납부_즉시납부_조회.html" class="current">즉시납부</a></li>
@@ -124,31 +80,29 @@
 					</ul>
 				</div>
 
-				<div class="mb_20 mt_4">
+				<!-- s: 납부 구분 선택 -->
+				<div class="mt_6">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
 						</div>
 					</div>
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">즉시납부 종류 선택(전체, 지방세, 환경개선부담금, 세외수입)</caption>
+							<caption class="sr_only">납부내역 구분을 선택하실 수 있습니다.</caption>
 							<colgroup>
-								<col style="width: 15%;">
+								<col style="width: 16%">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">구분
-										<span class="necessary">*</span>
+									<th scope="row">
+										구분
+										<strong class="necessary">*</strong>
 									</th>
 									<td>
 										<span class="check_item">
-											<input type="radio" name="check1" id="check1_1" checked="">
-											<label for="check1_1">전체</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1" id="check1_2">
+											<input type="radio" name="check1" id="check1_2" checked>
 											<label for="check1_2">지방세</label>
 										</span>
 										<span class="check_item">
@@ -165,41 +119,53 @@
 						</table>
 					</div>
 				</div>
+				<!-- e: 납부 구분 선택 -->
 
-				<div>
+				<!-- s: 조회정보 -->
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
 							<h3 class="tit1">조회정보</h3>
 						</div>
 						<div class="txt_right">
-							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
 						</div>
 					</div>
-					<div class="check_list_box">
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check2" id="check2_1" checked="">
-									<label for="check2_1">간편납부번호 <span class="necessary">*</span></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf check2_1" style="width: 350px;" title="간편납부번호 입력">
-							</div>
-						</div>
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check2" id="check2_2">
-									<label for="check2_2">전자납부번호 <span class="necessary">*</span></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf check2_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
-							</div>
-						</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">간편납부번호, 전자납부번호 입력 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check2" id="check2_1" checked>
+											<label for="check2_1">간편납부번호 <strong class="necessary">*</strong></label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf check2_1" style="width: 350px;" title="간편납부번호 입력">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check2" id="check2_2">
+											<label for="check2_2">전자납부번호 <strong class="necessary">*</strong></label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf check2_2" style="width: 350px;" title="간편납부번호 입력" disabled>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
+				<!-- e: 조회정보 -->
 
 				<div class="btn_data_search">
 					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
@@ -376,12 +342,12 @@
 						</table>
 					</div>
 
-					<div class="mt_4 txt_c btn_more_wrap d_n">
+					<div class="mt_4 txt_c btn_more_wrap">
 						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 
 					<!-- s: 페이징 >> 조회목록이 15건 초과 시 활성화 -->
-					<div class="paging d_n">
+					<div class="paging">
 						<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
 						<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
 						<strong>1</strong>
