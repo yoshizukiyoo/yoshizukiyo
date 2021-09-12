@@ -264,22 +264,32 @@ label {
 
 .gnb {
   height: 81px;
-  padding: 28px 160px 0 0;
-}
-
-.gnb > ul {
+  padding-top: 28px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.gnb > ul > li {
+.gnb .gnb_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(100% - 500px);
+}
+
+.gnb .gnb_list > li {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
-.gnb > ul > li > a {
+.gnb .gnb_list > li > a {
   display: block;
   position: relative;
   height: 49px;
@@ -289,7 +299,7 @@ label {
   font-size: 20px;
 }
 
-.gnb > ul > li > a::before {
+.gnb .gnb_list > li > a::before {
   content: '';
   position: absolute;
   bottom: -1px;
@@ -305,7 +315,7 @@ label {
   transition: .2s ease-in-out;
 }
 
-.gnb > ul > li > a.current::before, .gnb > ul > li > a:focus::before, .gnb > ul > li > a:hover::before {
+.gnb .gnb_list > li > a.current::before, .gnb .gnb_list > li > a:focus::before, .gnb .gnb_list > li > a:hover::before {
   width: 45px;
 }
 
@@ -370,13 +380,55 @@ label {
   display: block;
 }
 
-.btn_header_search {
-  position: absolute;
-  right: calc((100% - 1200px) / 2 + (60px));
-  top: 80px;
+.gnb .icon_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 205px;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
 }
 
-.btn_header_search > button {
+.gnb .icon_menu li {
+  margin-left: 30px;
+}
+
+.gnb .icon_menu .ico {
+  margin-top: -2px;
+  margin-right: 4px;
+}
+
+.btn_mybox {
+  position: absolute;
+  right: calc(50% - 600px + 120px);
+  top: 84px;
+}
+
+.btn_mybox .btn {
+  position: relative;
+  vertical-align: top;
+  overflow: visible;
+}
+
+.btn_mybox .badge {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #FF883A;
+  overflow: hidden;
+}
+
+.btn_header_search {
+  position: absolute;
+  right: calc(50% - 600px + 60px);
+  top: 84px;
+}
+
+.btn_header_search .btn {
   width: 19px;
   height: 20px;
   background: url(/resources/img/common/ico_search_bold.png) no-repeat 0 0;
@@ -385,15 +437,15 @@ label {
 
 .btn_allmenu {
   position: absolute;
-  right: calc((100% - 1200px) / 2);
-  top: 80px;
+  right: calc(50% - 600px);
+  top: 84px;
 }
 
-.btn_allmenu > button {
+.btn_allmenu .btn {
   width: 20px;
   height: 18px;
   -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
+          transform: rotate(0deg);
   -webkit-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   vertical-align: top;
@@ -408,7 +460,7 @@ label {
   opacity: 1;
   left: 0;
   -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
+          transform: rotate(0deg);
   -webkit-transition: .25s ease-in-out;
   transition: .25s ease-in-out;
 }
@@ -416,24 +468,24 @@ label {
 .btn_allmenu i:nth-child(1) {
   top: 0px;
   -webkit-transform-origin: left center;
-  transform-origin: left center;
+          transform-origin: left center;
 }
 
 .btn_allmenu i:nth-child(2) {
   top: 8px;
   -webkit-transform-origin: left center;
-  transform-origin: left center;
+          transform-origin: left center;
 }
 
 .btn_allmenu i:nth-child(3) {
   top: 16px;
   -webkit-transform-origin: left center;
-  transform-origin: left center;
+          transform-origin: left center;
 }
 
 .btn_allmenu.open i:nth-child(1) {
   -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+          transform: rotate(45deg);
   top: 1px;
   left: 3px;
 }
@@ -445,7 +497,7 @@ label {
 
 .btn_allmenu.open i:nth-child(3) {
   -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+          transform: rotate(-45deg);
   top: 15px;
   left: 3px;
 }
@@ -605,11 +657,15 @@ label {
 }
 
 .allmenu_wrap .menu_section {
-  padding: 40px 0 60px;
+  padding: 0 0 25px;
 }
 
 .allmenu_wrap .menu_section:not(:last-child) {
   border-bottom: 1px solid #eee;
+}
+
+.allmenu_wrap .menu_section + .menu_section {
+  margin-top: 35px;
 }
 
 .allmenu_wrap .menu_section > h3 {
@@ -617,11 +673,12 @@ label {
   line-height: 1;
   font-weight: 500;
   font-size: 20px;
-  color: #efae23;
+  color: #FF883A;
 }
 
 .allmenu_wrap .menu_section > .allmenu_list {
   display: inline-block;
+  margin-bottom: 25px;
   width: calc(98.6% / 5);
   vertical-align: top;
 }
@@ -659,11 +716,24 @@ label {
   padding: 24px 50px;
 }
 
+.mymenu_list_box .fx_lr {
+  font-size: 14px;
+}
+
+.mymenu_list_box .war_style1 {
+  background-position: 0 4px;
+}
+
+.mymenu_list_box .fx_right .ico {
+  margin-top: -2px;
+}
+
 .lately_check {
   padding-left: 32px;
   background: url(/resources/img/common/ico_checkbox2_default.png) no-repeat 0 50%;
   font-weight: 200;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 24px;
   color: #555;
 }
 
@@ -850,7 +920,7 @@ label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 2px solid #fdc61c;
+  border-bottom: 2px solid #FF883A;
 }
 
 .search_word_write > .search_inner > select {
@@ -1093,7 +1163,7 @@ label {
 }
 
 .breadcrumb {
-  padding-top: 153px;
+  padding-top: 151px;
 }
 
 .breadcrumb .breadcrumb_list {
@@ -1104,9 +1174,9 @@ label {
   display: -ms-flexbox;
   display: flex;
   height: 34px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   color: #555;
 }
 
@@ -1123,7 +1193,7 @@ label {
           align-items: center;
   font-size: 13px;
   height: 100%;
-  padding: 0 13px;
+  padding-right: 13px;
   max-height: none;
 }
 
@@ -1263,7 +1333,7 @@ label {
   width: 1200px;
   margin: auto;
   position: relative;
-  padding: 30px 0 0;
+  padding: 40px 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1380,11 +1450,22 @@ label {
 }
 
 .war_style1 {
+  position: relative;
   display: inline-block;
   padding-left: 23px;
-  background: url(/resources/img/common/ico_emp.png) no-repeat 0 6px;
   font-weight: 200;
   color: #555;
+}
+
+.war_style1:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .35em;
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: url(/resources/img/common/ico_emp.png);
 }
 
 .war_style2 {
@@ -1406,7 +1487,7 @@ label {
 .inp_checkbox > label {
   display: inline-block;
   padding-left: 32px;
-  background: url(/resources/img/common/ico_checkbox2_default.png) no-repeat 0 3px;
+  background: url(/resources/img/common/ico_checkbox2_default.png) no-repeat 0 center;
   font-weight: 200;
   color: #555;
 }
@@ -1525,4 +1606,3 @@ label {
 .footer .footer_menu ul li a strong {
   font-weight: 500;
 }
-/*# sourceMappingURL=layout.css.map */

@@ -416,7 +416,7 @@ function allMenuScroll() {
 // 전체메뉴 높이 구하기
 function allMenuHeight() {
 	var h = $('.allmenu_inner').height();
-	$('.allmenu_wrap').height(h - 243);
+	$('.allmenu_wrap').height(h - 188);
 	if ($('.result_box').css('display') == 'block') {
 		$('.allmenu_wrap').height($('.allmenu_wrap').height() - $('.result_box').outerHeight());
 	}
