@@ -2,20 +2,15 @@ var div, x, y, day, obj, mode;
 var agent = navigator.userAgent;
 
 function openCalendar(_obj, _mode) {
-	div = document.createElement("div");
-	div.id = "inseq-datepicker";
-
 	obj = _obj[0];
 	mode = _mode;
 
-	if ($('.modal-popup.show').length) {
-		x = $(_obj).offset().left;
-		y = $(_obj).offset().top;
-		wH = window.innerHeight;
-		h = 250 + obj.offsetHeight;
-		if (y > wH - h) {
-			y = wH - h;
-		}
+	div = document.createElement("div");
+	div.id = "inseq-datepicker";
+
+	if ($('.modal_popup.show').length) {
+		x = $(_obj).offsetParent().position().left;
+		y = $(_obj).offsetParent().position().top + $('.modal_popup.show .popup-body').scrollTop();
 	} else {
 		x = document.documentElement.clientLeft + GetObjectLeft(obj);
 		y = document.documentElement.clientTop + GetObjectTop(obj);
@@ -497,13 +492,11 @@ function showCalendar(_year, _month, _day, _stat) {
 
 	$(obj).parent().append(div);
 
-	if ($('.modal-popup.show').length) {
-		// $(obj).parent().append(div);
-		// console.log('llll');
-
-		$('.modal-popup.show').append(div);
+	if ($('.modal_popup.show').length) {
+		var container = $('.modal_popup.show .popup-body');
+		$('#inseq-datepicker').appendTo(container);
 	} else {
-		document.body.appendChild(div);
+		$('#inseq-datepicker').appendTo('body');
 	}
 
 	setTimeout(
@@ -531,11 +524,11 @@ function clickCalendar(_obj, _mode) {
 			inputVal = _obj.title.substring(0, 10);
 		}
 		obj.value = inputVal;
-		/* 콜백 함수 */
-		if (typeof fn_cals != "undefined") {
-			fn_cals(obj);
-		}
-		/* // 콜백 함수 */
+
+		// 콜백 함수
+		// if (typeof fn_cals != "undefined") {
+		// 	fn_cals(obj);
+		// }
 	}
 
 	div.parentNode.removeChild(div);
