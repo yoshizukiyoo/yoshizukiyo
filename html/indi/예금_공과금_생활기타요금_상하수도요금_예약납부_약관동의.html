@@ -23,7 +23,12 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			
+			$('.btn_primary').on('click', function () {
+				if ($('#check1_2').is(':checked')) {
+					openModal('alert01');
+					return false;
+				}
+			})
 		});
 	</script>
 </head>
@@ -37,7 +42,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">전기요금 납부</h2>
+				<h2 class="tit_cont">상하수도요금 예약납부</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -57,86 +62,100 @@
 
 				<div class="cont_header_right">
 					<ul class="step">
-						<li><span class="num">1</span><span class="txt">조회정보입력</span></li>
-						<li><span class="num">2</span><span class="txt">조회결과확인</span></li>
-						<li><span class="num">3</span><span class="txt">정보입력</span></li>
-						<li><span class="num">4</span><span class="txt">입력확인</span></li>
-						<li class="on"><span class="num">5</span><span class="txt">실행완료</span></li>
+						<li class="on"><span class="num">1</span><span class="txt">약관동의</span></li>
+						<li><span class="num">2</span><span class="txt">행정구역</span></li>
+						<li><span class="num">3</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">4</span><span class="txt">조회결과확인</span></li>
+						<li><span class="num">5</span><span class="txt">상세조회결과</span></li>
+						<li><span class="num">6</span><span class="txt">정보입력</span></li>
+						<li><span class="num">7</span><span class="txt">입력확인</span></li>
+						<li><span class="num">8</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>전기요금 납부가 아래와 같이 처리되었습니다.</li>
-						<li>납부결과는 납부내역조회/취소에서 3년간 확인하실 수 있습니다.</li>
+						<li>상하수도요금 예약납부 신청을 위해서는 아래의 약관에 동의하셔야 합니다.</li>
 					</ul>
 				</div>
 
 				<div class="section">
-					<div class="tbl_data tbl_row_data">
-						<table>
-							<caption class="sr_only">전기요금 납부 실행결과 안내(전자납부번호, 납세자, 부과년월, 고지구분, 납기기한)</caption>
-							<colgroup>
-								<col style="width: 15%;">
-								<col>
-								<col style="width: 15%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">전자납부번호</th>
-									<td colspan="3">0115541137</td>
-								</tr>
-								<tr>
-									<th scope="row">납세자</th>
-									<td>양귀순</td>
-									<th scope="row">부과년월</th>
-									<td>1993.08</td>
-								</tr>
-								<tr>
-									<th scope="row">고지구분</th>
-									<td>정상분</td>
-									<th scope="row">납기기한</th>
-									<td>1993.09.20</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="terms_wrap">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1">우체국 인터넷뱅킹 공과금 예약납부 약관</h3>
+							</div>
+							<div class="txt_right">
+								<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+								<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+							</div>
+						</div>
+						<div class="terms_con">
+							<strong class="txt_lg">『우체국 인터넷뱅킹 공과금 예약납부』약관</strong>
+							<div class="mt_6 pl_8">
+								<ol class="txt_normal list_number">
+									<li class="mb_8">신청인이 인터넷뱅킹으로 공과금 예약납부를 신청하는 경우 지정한 우체국 예금계좌에서 납부희망일<br>
+										16:30～22:00에 해당금액을 인출하여 납부합니다. 다만, 납부희망일은 영업일로 한정합니다.<br>
+										※ 영업일 : 금융영업일(토요일, 일요일 및 공휴일 제외)<br>
+										예약납부 희망일이 임시공휴일로 지정된 경우에는 임시공휴일 이후 첫 영업일에 출금 처리합니다.
+									</li>
+									<li>공과금 납부희망일은 납부마감일 3영업일 전까지 지정 가능하고, 예약납부 신청은 납부희망일 전일까지<br>
+										가능하며, 예약납부 취소는 납부희망일 전일 24:00까지 가능합니다.
+									</li>
+								</ol>
+							</div>
+						</div>
 					</div>
-					<div class="tbl_data tbl_row_data mt_4">
-						<table>
-							<caption class="sr_only">전기요금 납부 실행결과 안내 이어서(출금계좌번호, 예금주 전화번호, 납부금액, 납부일)</caption>
-							<colgroup>
-								<col style="width: 15%;">
-								<col>
-								<col style="width: 15%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">출금계좌번호</th>
-									<td>0000000000</td>
-									<th scope="row">예금주 전화번호</th>
-									<td>000000000</td>
-								</tr>
-								<tr>
-									<th scope="row">납부금액</th>
-									<td class="txt_r">40,000원</td>
-									<th scope="row">납부일</th>
-									<td>2012.10.10</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="txt_r mt_4">
-						<a href="#;" class="btn btn_sm btn_outline_default">납부내역조회</a>
-						<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
-						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1 pl_9">위 약관에 동의하십니까?</div>
+							<div class="b3">
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_1" checked>
+									<label for="check1_1">동의합니다.</label>
+								</span>
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_2">
+									<label for="check1_2">동의하지 않습니다.</label>
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 
 				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_primary">확인</a>
+					<a href="예금_공과금_생활기타요금_상하수도요금_예약납부_행정구역.html" class="btn btn_xl btn_primary">확인</a>
 				</div>
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										약관에 동의하셔야 예약납부를 하실수있습니다.
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">

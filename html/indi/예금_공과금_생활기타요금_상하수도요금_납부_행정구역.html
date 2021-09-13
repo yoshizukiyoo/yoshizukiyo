@@ -23,17 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('input[name=check1]').on('click', function(){
-				if($('#check1_1').prop('checked')){
-					$('.phone_number > .selectbox_wrap').addClass('disabled');
-					$('.inp_checker1_2').attr('disabled', '""').val(null)
-					$('.inp_checker1_1').removeAttr('disabled')
-				} else{
-					$('.phone_number > .selectbox_wrap').removeClass('disabled')
-					$('.inp_checker1_2').removeAttr('disabled')
-					$('.inp_checker1_1').attr('disabled', '""').val(null)
-				}
-			})
+			
 		});
 	</script>
 </head>
@@ -47,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">KT통신요금 납부</h2>
+				<h2 class="tit_cont">상하수도요금 납부</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -67,83 +57,72 @@
 
 				<div class="cont_header_right">
 					<ul class="step">
-						<li class="on"><span class="num">1</span><span class="txt">조회정보입력</span></li>
-						<li><span class="num">2</span><span class="txt">조회결과확인</span></li>
-						<li><span class="num">3</span><span class="txt">정보입력</span></li>
-						<li><span class="num">4</span><span class="txt">입력확인</span></li>
-						<li><span class="num">5</span><span class="txt">실행완료</span></li>
+						<li class="on"><span class="num">1</span><span class="txt">행정구역</span></li>
+						<li><span class="num">2</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">조회결과확인</span></li>
+						<li><span class="num">4</span><span class="txt">상세조회결과</span></li>
+						<li><span class="num">5</span><span class="txt">정보입력</span></li>
+						<li><span class="num">6</span><span class="txt">입력확인</span></li>
+						<li><span class="num">7</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="box first_section">
+				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>인터넷으로 편리하게 KT에서 부과한 전화요금(유선전화) 및 통신요금을 납부하실 수 있습니다.</li>
+						<li>상하수도요금이 부과된 지방자치단체를 선택한 후 납부하시기 바랍니다.(도, 광역시 선택 후 해당 지자체 선택)</li>
+						<li>납부내역은 실시간으로 해당 징수기관 앞으로 통지됩니다.</li>
 						<li>납부기관 장애여부는 [장애기관]버튼을 클릭하시면 확인하실 수 있습니다. <button type="button" class="btn btn_xs btn_outline_default"
 								onclick="openModal('popup01', this)">장애기관</button></li>
 					</ul>
 				</div>
 
 				<div class="section">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_1" checked>
-									<label for="check1_1">전자납부번호로 조회</label>
-								</span>
-							</h3>
-						</div>
-					</div>
-					<div class="check_list_box">
-						<div class="row_box">
-							<div class="b1" style="width: 200px;">전자납부번호</div>
-							<div class="b2">
-								<input type="text" class="tf inp_checker1_1" style="width: 360px;" title="전자납부번호 조회">
-							</div>
-						</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">상하수도요금 납부를 위한 행정구역 선택표</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">행정구역</th>
+									<td>
+										<div class="bar_wrap">
+											<div class="selectbox_wrap" style="width: 240px;">
+												<dl title="도, 광역시 선택">
+													<dt><a href="#;"><span>전국</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#;"><span>전국</span></a></li>
+															<li><a href="#;"><span>서울특별시</span></a></li>
+															<li><a href="#;"><span>경기도</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div class="selectbox_wrap" style="width: 240px;">
+												<dl title="지자체 선택">
+													<dt><a href="#;"><span></span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#;"><span>강동구</span></a></li>
+															<li><a href="#;"><span>강남구</span></a></li>
+															<li><a href="#;"><span>관악구</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 
-				<div class="section">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_2">
-									<label for="check1_2">전화번호로 조회</label>
-								</span>
-							</h3>
-						</div>
-					</div>
-					<div class="check_list_box">
-						<div class="row_box">
-							<div class="b1" style="width: 200px;">전화번호</div>
-							<div class="b2">
-								<div class="phone_number">
-									<div class="selectbox_wrap disabled" style="width: 93px;">
-										<dl title="조건 선택">
-											<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
-											<dd>
-												<ul>
-													<li><a href="#none"><span>02</span></a></li>
-													<li><a href="#none"><span>031</span></a></li>
-													<li><a href="#none"><span>032</span></a></li>
-													<li><a href="#none"><span>033</span></a></li>
-													<li><a href="#none"><span>041</span></a></li>
-													<li><a href="#none"><span>042</span></a></li>
-												</ul>
-											</dd>
-										</dl>
-									</div>
-									<div><input type="text" class="tf inp_checker1_2" title="전화번호 가운데 자리 입력" style="width: 93px" disabled=""></div>
-									<div><input type="text" class="tf inp_checker1_2" title="전화번호 마지막 자리 입력" style="width: 93px" disabled=""></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
 				<div class="btn_tbl_btm">
-					<a href="예금_공과금_생활기타요금_KT통신요금_납부_조회결과확인.html" class="btn btn_xl btn_primary">조회</a>
+					<a href="예금_공과금_생활기타요금_상하수도요금_납부_조회정보입력.html" class="btn btn_xl btn_primary">확인</a>
 				</div>
 
 				<div class="box section">
@@ -151,6 +130,8 @@
 						<dt>참고사항</dt>
 						<dd>
 							<ul class="list list2">
+								<li>상하수도요금 메뉴 이외의 방법으로 납부(가상계좌 등)하신 경우 납부사실이 반영되지 않을 수있사오니 이중납부되지 않도록 반드시 확인하신 후 납부하시기 바라며, 이중납부되신 경우 해당지방자치단체로 환급신청하여 주시기 바랍니다.</li>
+								<li>상하수도요금은 지방자치단체 요청에 따라 납부취소가 허용되지 않습니다.</li>
 								<li>이용가능시간 : 07:00 ~ 23:30 (토 · 일요일, 공휴일 이용 가능)</li>
 							</ul>
 						</dd>
