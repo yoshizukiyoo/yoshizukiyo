@@ -27,6 +27,54 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
+
+			//check1 select && check2 disabled
+			$('.select_current > li').on('click', function () {
+
+				var liNum = $(this).index();
+				var _this = $('.select_option');
+
+				_this.removeClass('on')
+				var viewOpt = _this.eq(liNum).addClass('on')
+				var chkOpt = _this.eq(liNum).children('.check_item:eq(0)').children('input[name=check1]').prop('checked',
+					true);
+
+				if (liNum == 1) {
+					$('#check2_2').removeAttr('disabled')
+					$('#check2_1').prop('checked', true)
+				} else if (liNum == 0 || liNum == 7) {
+					viewOpt = false;
+					chkOpt = false;
+					$('input[name=check1]').prop('checked', false)
+					$('#check2_2').attr('disabled', '""')
+					$('#check2_1').prop('checked', true)
+					_this.eq(0).addClass('on')
+				} else {
+					$('#check2_2').attr('disabled', '""')
+					$('#check2_1').prop('checked', true)
+				}
+			})
+
+			//list_length_check currentView 10
+			$('.list_length_check').children('tr:gt(9)').hide();
+
+			$('.btn_result').click(function () {
+				if ($('.list_length_check').children('tr').length >= 11) {
+					$('.btn_more').show();
+				} else {
+					$('.btn_more').hide();
+				}
+			})
+
+			//more_list perView
+			$('.btn_more').click(function () {
+				var perView = 10;
+
+				$('.list_length_check').children('tr:not(:visible)').slice(0, perView).fadeIn(600);
+				//$(this).addClass('d_n');
+
+			})
+
 		});
 	</script>
 </head>
@@ -66,9 +114,9 @@
 
 				<div class="tab_menu_type1 section">
 					<ul>
-						<li><a href="예금_공과금_My공과금_납부내역조회_납부내역조회_조회.html" class="current">납부내역조회</a></li>
-						<li><a href="예금_공과금_My공과금_납부내역조회_예약납부내역조회_조회.html">예약납부내역조회</a></li>
-						<li><a href="예금_공과금_My공과금_납부내역조회_자동납부내역조회_조회.html">자동납부내역조회</a></li>
+						<li><a href="#;" class="current">납부내역조회</a></li>
+						<li><a href="#;">예약납부내역조회</a></li>
+						<li><a href="#;">자동납부내역조회</a></li>
 					</ul>
 				</div>
 
@@ -201,7 +249,7 @@
 									<td>
 										<div class="selectbox_wrap" style="width: 360px;">
 											<dl title="아파트 기관코드 선택">
-												<dt><a href="#;"><span></span></a></dt>
+												<dt><a href="#;"><span>선택하십시오.</span></a></dt>
 												<dd>
 													<ul>
 														<li><a href="#;"><span>1111111111</span></a></li>
