@@ -21,7 +21,7 @@
 ### 디자인팀 산출물 목록 IA구조도(업무현황표)
 - [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
 - [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
-- [IA구조도(기본)_채널서비스_보험](https://docs.google.com/spreadsheets/d/1Qy_OLzyyO7zvBgQC_DfMu0lJtVXVTKituiBrsX_5i10/edit?usp=sharing)
+- [01. 인터넷보험_작업대장](https://docs.google.com/spreadsheets/d/1m2UaAgVRFU84DGTGrKSx76tnNcWpi5cqCBcLq-lPumQ/edit#gid=0)
 
 ### 스토리보드(구글드라이브)
 - [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
