@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">자동화기기이용안내</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="first_section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">이용한도</h3>
+						</div>
+						<div class="txt_right">
+							<span class="inpuiry_time">(기준일자 : 2020. 10. 29. 현재)</span>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">이용한도 표로 거래구분, 1회 한도, 1일 한도, 비 고 정보 제공</caption>
+							<colgroup>
+								<col style="width: 12%;">
+								<col style="width: 12%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 12%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" colspan="2">거래구분</th>
+									<th scope="col" colspan="2">1회 한도</th>
+									<th scope="col">1일 한도</th>
+									<th scope="col">비 고</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row" rowspan="3" class="txt_c">출금</th>
+									<th scope="row" rowspan="2" class="txt_c">카드/통장</th>
+									<td class="txt_c">현금</td>
+									<td class="txt_c">100만원</td>
+									<td rowspan="2" class="txt_c">600만원</td>
+									<td rowspan="3">
+										<ul class="list list1">
+											<li>수표출금은 10만원권만 가능</li>
+											<li>타행카드는 수표 출금 불가</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">수표</td>
+									<td class="txt_c border_r">500만원</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">무통장/무카드</th>
+									<td colspan="2" class="txt_c">100만원</td>
+									<td class="txt_c border_r">100만원</td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="4" class="txt_c">입금</th>
+									<th scope="row" rowspan="2" class="txt_c">카드/통장</th>
+									<td colspan="2" class="txt_c">현금 150매</td>
+									<td rowspan="3" class="txt_c">제한없음</td>
+									<td rowspan="3">
+										&lt; 타행수표 입금 후 현금화 시간 &gt;
+										<div class="tbl_data tbl_list_data box_inner_tbl mt_3">
+											<table>
+												<caption class="sr_only">타행수표 입금 후 현금화 시간 표로 입금 시간, 현금화 시간 정보 제공</caption>
+												<colgroup>
+													<col>
+													<col>
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col">입금 시간</th>
+														<th scope="col">현금화 시간</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td class="txt_c">평일 17시 까지</td>
+														<td>다음날 12시 20분</td>
+													</tr>
+													<tr>
+														<td class="txt_c">평일 17시 이후</td>
+														<td>다다음날 12시 20분</td>
+													</tr>
+													<tr>
+														<td class="txt_c">금요일 17시 이후</td>
+														<td>화요일 12시 20분</td>
+													</tr>
+													<tr>
+														<td colspan="2" class="txt_c">토·일 및 휴일 : 타행수표 입금 불가</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="txt_c border_r">수표 10매</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">타행카드</th>
+									<td colspan="2" class="txt_c border_r">현금 100만원</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">무통장/무카드</th>
+									<td colspan="2" class="txt_c">100만원</td>
+									<td class="txt_c">100만원</td>
+									<td>
+										<ul class="list list1">
+											<li>타랭카드는 수표 입금 불가</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">계좌이체</th>
+									<th scope="row" class="txt_c">카드/통장</th>
+									<td colspan="2" class="txt_c">600만원</td>
+									<td class="txt_c">3,000만원</td>
+									<td>
+										<ul class="list list1">
+											<li>우체국 계좌, 우체국 수표에 한하여 입금 가능</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">무통장/무카드</th>
+									<td colspan="2" class="txt_c">100만원</td>
+									<td class="txt_c">100만원</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="list list1 mt_2">
+						<li>무통장/무카드(무매체 거래) 및 통장 출금/이체는 우체국 창구에서 약정 후 이용할 수 있으며, 우체국 자동화기 기에서만 거래 가능합니다.</li>
+						<li>최근 1년 이내 자동화기기에서 이체 실적이 없는 계좌는 이체한도가 1회/1일 70만원, 입금/출금/이체 실적이 없는 계좌는 출금/이체</li>
+						<li>한도가 1회/1일 70만원으로 조정됩니다. 이용한도 변경은 가까운 우체국을 방문하여 신청하시기 바랍니다.</li>
+						<li>계좌에 100만원 이상 입금된 경우, 입금된 시점으로 부터 30분간 자동화기기에서 인출 및 이체 거래가 불가합니다.</li>
+						<li>우체국 금융시스템 점검으로 매일 새벽 4~5시에는 모든 우체국 거래가 불가합니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">이용수수료</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">이용수수료 표로 거래구분, 영업시간 내, 영업시간 외, 비 고 정보 제공</caption>
+							<colgroup>
+								<col style="width: 11%;">
+								<col style="width: 9%;">
+								<col style="width: 8%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" colspan="3" rowspan="2">거래구분</th>
+									<th scope="col" colspan="2">영업시간 내</th>
+									<th scope="col" colspan="2">영업시간 외</th>
+									<th scope="col" rowspan="2">비 고</th>
+								</tr>
+								<tr>
+									<th scope="col">10만원 이하</th>
+									<th scope="col">10만원 초과</th>
+									<th scope="col">10만원 이하</th>
+									<th scope="col" class="border_r">10만원 초과</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row" rowspan="4" class="txt_c">우체국 기기<br> 이용 시</th>
+									<th scope="row" colspan="2" class="txt_c">예금출금</th>
+									<td colspan="2" class="txt_c">면제</td>
+									<td colspan="2" class="txt_c">500원<br>※ 5만원 이하 또는 연속인출 시 250원</td>
+									<td rowspan="3">
+										<ul class="list list1">
+											<li>수수료는 창구, 전자금융, ATM을 이용한 타행이체 및 영업시간 외 ATM 출금 등 이용 건수를 합산하여 매월 10건 까지 면제됩니다.</li>
+											<li>자세한 내용은 우체국예금보험 홈페이지 www.epostbank.go.kr를 참고하시기 바랍니다.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">계좌 이체</th>
+									<th scope="row" class="txt_c">자행</th>
+									<td colspan="2" class="txt_c">면제</td>
+									<td colspan="2" class="txt_c border_r">면제</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">타행</th>
+									<td class="txt_c">500원</td>
+									<td class="txt_c">750원</td>
+									<td class="txt_c">600원</td>
+									<td class="txt_c border_r">1,000원</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2" class="txt_c">타행카드 입금</th>
+									<td colspan="2" class="txt_c">900원</td>
+									<td colspan="2" class="txt_c">1,200원</td>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">타은행 기기<br>이용 시</th>
+									<th scope="row" colspan="2" class="txt_c">예금출금</th>
+									<td colspan="2" class="txt_c">600원</td>
+									<td colspan="2" class="txt_c">800원</td>
+									<td rowspan="2">
+										<ul class="list list1">
+											<li>예금출금 : Premium 고객 면제</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2" class="txt_c">계좌이체</th>
+									<td class="txt_c">500원</td>
+									<td class="txt_c">750원</td>
+									<td class="txt_c">600원</td>
+									<td class="txt_c border_r">1,000원</td>
+								</tr>
+								<tr>
+									<td colspan="7">※ 기초생활수급자, 장애인, 소년소녀가장, 차상위계층, 국가유공자, 독립유공자, 대학생 전액면제</td>
+									<td>
+										<ul class="list list1">
+											<li>우체국카드로 우체국기기 이용 시<br>(관련서류 창구제출 후부터 가능)</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="list list1 mt_2">
+						<li>공휴일(비영업일 포함) 또는 우체국 영업시간 외에는 영업시간 외 수수료가 적용됩니다.
+							<ul class="list list3">
+								<li>영업시간 내 : 평일 08:30~18:00, 토요일 08:30~14:00</li>
+								<li>영업시간 외 : 영업시간을 제외한 시간 및 공휴일(비영업일 포함)</li>
+							</ul>
+						</li>
+						<li>타행카드로 출금 및 계좌이체를 할 경우에는 카드발급 은행의 이용한도 및 수수료를 적용합니다.</li>
+						<li>타행카드로 입금 시에는 우체국의 이용한도 및 수수료를 적용합니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<h3 class="tit1">우체국 자동화기기 공동이용 은행</h3>
+					<ul class="list list1">
+						<li>기업, 씨티, 산업, 하나, 전북</li>
+						<li>타행 계좌이체 시 해당은행 수수료 적용</li>
+						<li>우체국 자기앞수표 입금 · 지급 가능하고, 출금 시 1회 인출한도 100만원</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<h3 class="tit1">이용고객 안전 수칙</h3>
+					<ul class="list list1">
+						<li>비밀번호 입력 시 타인에게 노출되지 않도록 주의하시고, 비밀번호 노출이 의심될 때에는 비밀번호를 변경하십시오.</li>
+						<li>거래를 마친 후에는 카드/통장 회수여부를 반드시 확인하십시오.</li>
+						<li>거래명세표를 버릴 경우에는 타인이 볼 수 없도록 파쇄하거나 찢어 버리십시오.</li>
+						<li>장애 발생 시 담당자에게 연락하고 안내를 받으십시오.</li>
+					</ul>
+				</div>
+				
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
