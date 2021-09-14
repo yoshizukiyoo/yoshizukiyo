@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">보안카드/OTP발생기 사고신고</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">해제신청</span></li>
+						<li><span class="num">3</span><span class="txt">신청완료</span></li>
+					</ul>
+				</div>
+				<div class="first_section">
+					<div class="tab_menu_type1">
+						<ul>
+							<li><a href="고객센터_사고신고_보안카드OTP발생기_사고신고_정보입력.html">사고신고</a></li>
+							<li><a href="고객센터_사고신고_보안카드OTP발생기_사고신고조회해제_정보입력.html" class="current">사고신고 조회/해제</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="section box box_more">
+					<ul class="list list1">
+						<li>사업자 및 단체 고객은 온라인 OTP 사고해제 불가하니 가까운 우체국 창구를 방문하시기 바랍니다.</li>
+						<li>사고등록된 OTP는 등록하여 사용중인 금융기관 중 한 곳 이상에서 사고해제된 이후에만 온라인 사고해제가능합니다.</li>
+						<li>사고등록 이후 첫 1회는 우체국 창구 또는 등록금융기관 영업점에서 사고해제 하시기 바랍니다.</li>
+						<li>OTP 사고해제 시 우체국은 정상 이용 가능하나,타기관에 OTP를 등록해서 사용하는 경우 각 기관별로 사고해제 후 이용하셔야 합니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">보안카드/OTP발생기 사고신고</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">이용자ID</th>
+									<td>
+										<input type="text" class="tf" title="이용자ID 입력" style="width: 350px;">
+										<div class="btn_inline_box">
+											<a href="#;" class="btn btn_md btn_outline_default">ID(아이디) 찾기</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">OTP 일련번호(S/N)</th>
+									<td>
+										<input type="text" class="tf" title="OTP 일련번호(S/N) 입력" style="width: 350px;">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default" onclick="openModal('layer01'), this">OTP 일련번호(S/N)란?</button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">확인</a>
+				</div>
+
+				<!-- Modal Popup : OTP 일련번호(S/N)란 -->
+				<div class="modal_popup modal_lg hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">OTP 일련번호(S/N)란
+								<button type="button" class="btn btn_favorite ml6">
+									<i class="ico ico_star_gray"></i>
+									<span class="sr_only">마이메뉴 등록</span>
+								</button>
+							</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>OTP 일련번호(S/N)란 OTP 발생기 뒷면에 있는 숫자입니다.</li>
+								<li>보기 사진의 OTP 일련번호(S/N)는 고객님의 이해를 돕기위한 견본으로 단순 참조하시기바랍니다.</li>
+							</ul>
+							<div class="txt_c mt_12">
+								<img src="/resources/img/content/img_otp_card.png" alt="">
+							</div>
+							<div class="box mt_4">
+								<ul class="list list1">
+									<li>디지털OTP 일련번호(S/N)</li>
+									<li>스마트뱅킹 &gt; 보안인증센터 &gt; 디지털OTP &gt; 등록정보</li>
+								</ul>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: OTP 일련번호(S/N)란 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
