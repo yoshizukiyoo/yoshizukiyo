@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//조회 결과 버튼
+			$('.btn_result').click(function () {
+				$('.btm_result_box').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">자동이체조회/해지/변경</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>등록하신 지로자동이체 내역을 확인 및 변경, 해지하실 수 있습니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 상세내용 -->
+				<div class="section">
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">지로자동이체 내역 목록이며 출금계좌번호, 청구기관명, 납부자번호, 자동이체 등록일 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td></td>
+									<th scope="row">청구기관명</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row">납부자번호</th>
+									<td></td>
+									<th scope="row">자동이체 등록일</th>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 상세내용 -->
+
+				<!-- s: 변경정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">지로자동이체 내역 목록이며 출금계좌번호, 청구기관명, 납부자번호, 자동이체 등록일 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row">
+										출금계좌비밀번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="btn_mouse_pwd">
+											<input type="password" class="tf" title="출금계좌비밀번호 입력" placeholder="숫자4자리" style="width: 420px;">
+											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
+										</div>
+										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 변경정보 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_02.실행완료_2.html" class="btn btn_xl btn_primary">해지실행</a>
+				</div>
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+			<!-- e: 본문 -->
+			</div>
+		</article>
+
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>

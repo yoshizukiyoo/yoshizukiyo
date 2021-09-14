@@ -40,7 +40,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">납부증명서발급</h2>
+				<h2 class="tit_cont">자동이체조회/해지/변경</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -60,7 +60,7 @@
 
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>도움말 영역</li>
+						<li>등록하신 지로자동이체 내역을 확인 및 변경, 해지하실 수 있습니다.</li>
 					</ul>
 				</div>
 
@@ -72,54 +72,31 @@
 					</div>
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">납부증명서발급 조회 정보를 제공하고 있으며 기간선택, 구분값 입력 및 선택하실 수 있습니다.</caption>
+							<caption class="sr_only">납부내역조회 정보 입력표(구분, 납부구분, 출금계좌번호, 기간선택)</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">기간선택
-										<span class="necessary">*</span>
-									</th>
-									<td>
-										<div class="mulit_date_box">
-											<div class="btn_date">
-												<button type="button" class="btn btn_sm btn_default">당일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
-												<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
-											</div>
-											<div class="datepicker_box">
-												<input type="text" class="tf tf_datepicker" style="width: 200px;" title="시작날짜 선택">
-												<input type="text" class="tf tf_datepicker" style="width: 200px;" title="종료날짜 선택">
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
 									<th scope="row">
-										구분값
+										출금계좌번호
 										<span class="necessary">*</span>
 									</th>
 									<td>
-										<span class="check_item">
-											<input type="radio" name="check1" id="check1_1" checked>
-											<label for="check1_1">전체</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1" id="check1_2">
-											<label for="check1_2">출금계좌번호</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1" id="check1_3">
-											<label for="check1_3">주민등록번호</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1" id="check1_4">
-											<label for="check1_4">납부자번호</label>
-										</span>
+										<div class="selectbox_wrap" style="width: 360px;">
+											<dl title="출금계좌번호 선택">
+												<dt><a href="#;"><span>선택하십시오</span></a></dt>
+												<dd>
+													<ul class="select_current">
+														<li><a href="#;"><span>123-456-789</span></a></li>
+														<li><a href="#;"><span>123-456-789</span></a></li>
+														<li><a href="#;"><span>123-456-789</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<span class="ml6">(공과금 출금 계좌번호 선택)</span>
 									</td>
 								</tr>
 							</tbody>
@@ -132,73 +109,95 @@
 				</div>
 
 				<!-- s: 조회결과 -->
-				<div class="btm_result_box section">
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
 							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data"><!-- [D] : 구분값 전체 table -->
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">납부증명서발급 전체 조회내역 안내(항목, 납부일자, 청구기관, 납부자 번호, 주민등록번호, 납부금액(원), 납부계좌번호, 증명서발급)</caption>
+							<caption class="sr_only">지로자동이체 내역 목록이며 지로번호, 청구기관명, 납부자번호, 등록일, 해지일, 상태, 변경/해지 정보를 제고하고 있습니다.</caption>
 							<colgroup>
-								<col style="width: 10%;">
-								<col style="width: 10%;">
-								<col>
-								<col>
-								<col style="width: 13%;">
+								<col style="width: 15%;">
+								<col style="width: 20%;">
+								<col style="width: 15%;">
+								<col style="width: 12%;">
+								<col style="width: 12%;">
 								<col style="width: 11%;">
 								<col>
-								<col style="width: 10%;">
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">항목</th>
-									<th scope="col">납부일자</th>
-									<th scope="col">청구기관</th>
-									<th scope="col">납부자 번호</th>
-									<th scope="col">주민등록번호</th>
-									<th scope="col">납부금액(원)</th>
-									<th scope="col">납부계좌번호</th>
-									<th scope="col">증명서발급</th>
+									<th scope="col">지로번호</th>
+									<th scope="col">청구기관명</th>
+									<th scope="col">납부자번호</th>
+									<th scope="col">등록일</th>
+									<th scope="col">해지일</th>
+									<th scope="col">상태</th>
+									<th scope="col">변경/해지</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="list_length_check">
 								<tr>
-									<td>지방세</td>
-									<td class="txt_c">2017.03.02</td>
-									<td>각지방 자치단체</td>
-									<td>111111111111111</td>
-									<td>123456-*******</td>
-									<td class="txt_r">30,000</td>
-									<td></td>
+									<td class="txt_c">3001187</td>
+									<td class="txt_c">(주)가톨릭신문사</td>
+									<td class="txt_c">04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">해제</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_1.html" class="btn btn_sm btn_default">변경</a>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_2.html" class="btn btn_sm btn_outline_default">해지</a>
 									</td>
 								</tr>
 								<tr>
-									<td>지방세</td>
-									<td class="txt_c">2017.03.02</td>
-									<td>각지방 자치단체</td>
-									<td>111111111111111</td>
-									<td>123456-*******</td>
-									<td class="txt_r">30,000</td>
-									<td></td>
+									<td class="txt_c">3001187</td>
+									<td class="txt_c">(주)가톨릭신문사</td>
+									<td class="txt_c">04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">해제</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_1.html" class="btn btn_sm btn_default">변경</a>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_2.html" class="btn btn_sm btn_outline_default">해지</a>
 									</td>
 								</tr>
 								<tr>
-									<td>지방세</td>
-									<td class="txt_c">2017.03.02</td>
-									<td>각지방 자치단체</td>
-									<td>111111111111111</td>
-									<td>123456-*******</td>
-									<td class="txt_r">30,000</td>
-									<td></td>
+									<td class="txt_c">3001187</td>
+									<td class="txt_c">(주)가톨릭신문사</td>
+									<td class="txt_c">04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">해제</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_1.html" class="btn btn_sm btn_default">변경</a>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_2.html" class="btn btn_sm btn_outline_default">해지</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">3001187</td>
+									<td class="txt_c">(주)가톨릭신문사</td>
+									<td class="txt_c">04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">해제</td>
+									<td class="txt_c">
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_1.html" class="btn btn_sm btn_default">변경</a>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_2.html" class="btn btn_sm btn_outline_default">해지</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">3001187</td>
+									<td class="txt_c">(주)가톨릭신문사</td>
+									<td class="txt_c">04002017093</td>
+									<td class="txt_c">2016.04.22</td>
+									<td class="txt_c">2017.02.09</td>
+									<td class="txt_c">해제</td>
+									<td class="txt_c">
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_1.html" class="btn btn_sm btn_default">변경</a>
+										<a href="공과금_지로_자동이체신청_지로자동이체조회변경해지_01.정보입력_2.html" class="btn btn_sm btn_outline_default">해지</a>
 									</td>
 								</tr>
 							</tbody>
@@ -206,10 +205,20 @@
 					</div>
 					<div class="mt_4 txt_r pos_box">
 						<button type="button" class="btn btn_more pos_center">더보기</button>
-						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print()">화면인쇄</button>
 					</div>
 				</div>
 				<!-- e: 조회결과 -->
+
+				<div class="section">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>자동이체 변경, 해지는 해당 지로요금 납기일 30일전에 신청하셔야 합니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
@@ -274,6 +283,7 @@
 					</div>
 				</div>
 				<!-- e: confirm 팝업 -->
+
 			<!-- e: 본문 -->
 			</div>
 		</article>
