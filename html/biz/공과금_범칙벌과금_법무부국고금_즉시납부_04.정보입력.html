@@ -37,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">예약납부</h2>
+				<h2 class="tit_cont">납부</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -57,9 +57,9 @@
 
 				<div class="cont_header_right">
 					<ul class="step">
-						<li><span class="num">1</span><span class="txt">약관동의</span></li>
-						<li><span class="num">2</span><span class="txt">조회정보입력</span></li>
-						<li><span class="num">3</span><span class="txt">조회결과확인</span></li>
+						<li><span class="num">1</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">간략조회결과</span></li>
+						<li><span class="num">3</span><span class="txt">상세조회결과</span></li>
 						<li class="on"><span class="num">4</span><span class="txt">정보입력</span></li>
 						<li><span class="num">5</span><span class="txt">입력확인</span></li>
 						<li><span class="num">6</span><span class="txt">실행완료</span></li>
@@ -68,15 +68,19 @@
 
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>일반지로요금 고지 내역입니다.</li>
-						<li>납부할 고지내역은 선택하신 후 [납부] 버튼을 클릭하시기 바랍니다.</li>
+						<li>납부할 출금 정보를 입력하신 후 [확인]버튼을 클릭하시기 바랍니다.</li>
 					</ul>
 				</div>
 
 				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">법무부국고금 정보</h3>
+						</div>
+					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">선택하신 지로예납 내역 안내(전자납부번호, 지로번호, 청구기관, 고지구분, 납기기한)</caption>
+							<caption class="sr_only">법무부국고금 정보 상세(전자납부번호, 납세자, 주민(사업자)등록번호, 납기내기한, 납기후기한, 납기내금액, 납기후금액)</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -86,19 +90,25 @@
 							<tbody>
 								<tr>
 									<th scope="row">전자납부번호</th>
-									<td colspan="3"></td>
+									<td colspan="3">0137110910215001633</td>
 								</tr>
 								<tr>
-									<th scope="row">지로번호</th>
-									<td></td>
-									<th scope="row">청구기관</th>
-									<td></td>
+									<th scope="row">납세자</th>
+									<td>노현홍</td>
+									<th scope="row">주민(사업자)등록번호</th>
+									<td>102-81-*****</td>
 								</tr>
 								<tr>
-									<th scope="row">고지구분</th>
-									<td></td>
-									<th scope="row">납기기한</th>
-									<td></td>
+									<th scope="row">납기내 기한</th>
+									<td>2021.12.31</td>
+									<th scope="row">납기후 기한</th>
+									<td>2021.12.31</td>
+								</tr>
+								<tr>
+									<th scope="row">납기내 금액</th>
+									<td class="txt_r">40,000원</td>
+									<th scope="row">납기후 금액</th>
+									<td class="txt_r">40,000원</td>
 								</tr>
 							</tbody>
 						</table>
@@ -168,44 +178,12 @@
 												<input type="password" class="tf" title="출금계좌비밀번호 입력" placeholder="숫자4자리" style="width: 420px;">
 												<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
 											</div>
-											<div class="btn_inline_box">
-												<button type="button" class="btn btn_md btn_outline_default" onclick="openModal('popup02', this);">비밀번호오류횟수조회</button>
-												<span class="ml6">(최대 5회까지 입력가능)</span>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">예약납부일</th>
-										<td>
-											<div class="datepicker_box">
-												<input type="text" class="tf tf_datepicker" title="예약납부일 선택">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">예약납부시간</th>
-										<td>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_1" checked>
-												<label for="transfer_1">9시</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_2">
-												<label for="transfer_2">11시</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_3">
-												<label for="transfer_3">14시</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_4">
-												<label for="transfer_4">17시</label>
-											</span>
+											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
 										</td>
 									</tr>
 									<tr>
 										<th scope="row">납부금액</th>
-										<td class="txt_r">36,859,460원</td>
+										<td class="txt_r">40,000원</td>
 									</tr>
 									<tr>
 										<th scope="row">
@@ -219,12 +197,12 @@
 														<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
 														<dd>
 															<ul>
-																<li><a href="#none"><span>010</span></a></li>
-																<li><a href="#none"><span>011</span></a></li>
-																<li><a href="#none"><span>016</span></a></li>
-																<li><a href="#none"><span>017</span></a></li>
-																<li><a href="#none"><span>018</span></a></li>
-																<li><a href="#none"><span>019</span></a></li>
+																<li><a href="#none"><span>02</span></a></li>
+																<li><a href="#none"><span>031</span></a></li>
+																<li><a href="#none"><span>032</span></a></li>
+																<li><a href="#none"><span>033</span></a></li>
+																<li><a href="#none"><span>041</span></a></li>
+																<li><a href="#none"><span>042</span></a></li>
 															</ul>
 														</dd>
 													</dl>
@@ -243,8 +221,19 @@
 
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="예금_공과금_지로_지로납부_예약납부_조회결과확인.html" class="btn btn_xl btn_outline_default">이전화면</a>
-					<a href="예금_공과금_지로_지로납부_예약납부_입력확인.html" class="btn btn_xl btn_primary">예약납부</a>
+					<a href="공과금_범칙벌과금_법무부국고금_즉시납부_03.상세조회결과.html" class="btn btn_xl btn_outline_default">이전화면</a>
+					<a href="공과금_범칙벌과금_법무부국고금_즉시납부_05.입력확인.html" class="btn btn_xl btn_primary">납부</a>
+				</div>
+
+				<div class="section">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>참고사항 영역</li>
+							</ul>
+						</dd>
+					</dl>
 				</div>
 
 				<!-- s: 전체계좌목록 팝업 -->
@@ -368,39 +357,6 @@
 					</div>
 				</div>
 				<!-- e: 전체계좌목록 팝업 -->
-
-				<!-- Modal Popup : 비밀번호오류횟수조회 -->
-				<div class="modal_popup modal_sm hide" data-popup="popup02">
-					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_header">
-							<h3 class="popup_tit">비밀번호오류횟수조회</h3>
-						</div>
-						<div class="popup_body">
-							<div class="tbl_data tbl_row_data">
-								<table>
-									<caption class="sr_only">비밀번호오류횟수조회</caption>
-									<colgroup>
-										<col style="width: 38%">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">계좌비밀번호오류횟수</th>
-											<td>4회</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>	
-							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary" 
-									onclick="closeModal('popup02');">닫기</button>
-							</div>
-						</div>
-						<button type="button" class="btn btn_close_popup">닫기</button>
-					</div>
-				</div>
-				<!-- e: 비밀번호오류횟수조회 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
