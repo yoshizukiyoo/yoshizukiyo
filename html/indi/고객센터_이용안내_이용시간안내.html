@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">이용시간안내</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="first_section">
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">이용시간안내 표로 서비스종류, 이용시간(평일, 토요일, 일요일+공휴일) 정보 제공</caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" colspan="3" rowspan="2">서비스종류</th>
+									<th scope="col" colspan="3">이용시간</th>
+								</tr>
+								<tr>
+									<th scope="col">평일</th>
+									<th scope="col">토요일</th>
+									<th scope="col">일요일+공휴일</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="txt_c">
+									<th scope="row" rowspan="9" class="txt_c">예금서비스</th>
+									<th scope="row" colspan="2" class="txt_c">예금조회</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" rowspan="3" class="txt_c">예금이체</th>
+									<th scope="row" class="txt_c">우체국간</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">CMS계좌</th>
+									<td>09:00~17:50</td>
+									<td>불가</td>
+									<td>불가</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">타행간<br>(타행운용시간 내)</th>
+									<td>05:00~익일04:00<br>(23:50~24:10 중단)</td>
+									<td>05:00~익일04:00<br>(23:50~24:10 중단)</td>
+									<td>05:00~익일04:00<br>(23:50~24:10 중단)</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">인터넷 예금·적금 가입/해약</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">경조금배달</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">사고신고</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">증명서발급</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">외환</th>
+									<td>05:00~익일04:00<br>(23:50~24:10 중단)</td>
+									<td>05:00~익일04:00<br>(23:50~24:10 중단)</td>
+									<td>05:00~익일04:00<br>(23:50~24:10 중단)</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" rowspan="17" class="txt_c">공과금납부</th>
+									<th scope="row" rowspan="8" class="txt_c">세금납부</th>
+									<th scope="row" class="txt_c">국세</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">지방세</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">경찰청 범칙금</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">특허수수료</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">항만수수료</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">전파사용료</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">기금 및 기타 국고</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">벌과금</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" rowspan="8" class="txt_c">공과금 납부</th>
+									<th scope="row" class="txt_c">국민연금</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">국민연금 예약납부</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">건강보험료</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">상하수도요금</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">고용보험료</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">산재보험료</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">방송대 등록금</th>
+									<td>07:00~23:30</td>
+									<td>불가</td>
+									<td>불가</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" class="txt_c">KT통신요금</th>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+									<td>07:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">지로자동납부등록</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" rowspan="11" class="txt_c">보험서비스</th>
+									<th scope="row" colspan="2" class="txt_c">보험조회</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">보험료납입</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">환급금대출</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">환급금대출상환</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">자동이체관리</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">증명서발급</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">보험가입</th>
+									<td>05:00~23:30</td>
+									<td>05:00~23:30</td>
+									<td>05:00~23:30</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">보험청약철회</th>
+									<td>05:00~22:00</td>
+									<td>불가</td>
+									<td>불가</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">상품안내/설계</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">보장분석신청</th>
+									<td>09:00~21:00</td>
+									<td>09:00~21:00</td>
+									<td>09:00~21:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="2" class="txt_c">e-보험알림서비스</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="3" class="txt_c">인증서관리</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+								<tr class="txt_c">
+									<th scope="row" colspan="3" class="txt_c">개인정보관리</th>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+									<td>05:00~익일04:00</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
