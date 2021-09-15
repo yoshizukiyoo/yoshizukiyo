@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">구비서류안내 팝업</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#required_documents_pop" class="btn btn_sm btn_outline_default ml_2"
+					onclick="openModal('required_documents_pop', this);">
+					<span>구비서류안내 팝업</span>
+				</a>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xxl show" data-popup="required_documents_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">구비서류안내</h2>
+						</div>
+						<div class="popup_body">
+
+							<div class="tbl_tit">
+								<div class="tit_left">
+									<h3 class="tit1">공통서류</h3>
+								</div>
+							</div>
+							<ul class="list list1">
+								<li>보험청구서 + 개인(신용)정보처리동의 + 수익자신분증(주민등록증, 외국인등록증, 운전면허증 등)</li>
+								<li>보험금 수익자의 정당 예금계좌 필수기재
+								</li>
+							</ul>
+							<p>※ 보험금 청구권자는 원칙적으로 수익자이므로, 수익자를 기준으로 작성한 자료임을 안내드립니다.
+							</p>
+
+							<div class="box bg_lightgray mt_6">
+								<strong class="txt_lg d_b mb_1">[필요시] 추가제출서류(원본제출 원칙)</strong>
+								<ul class="list list1">
+									<li>
+										미성년자 청구(친권자가 대리청구할 경우) : 미성년자 기준의 기본증명서(상세) + 가족관계증명서(상세)
+										<ul class="list list2">
+											<li>
+												100만원 이하는 책임변제각서, 100만원 초과는 대표수익자지정위임장 + 위임자 인감증명서로 친권자 1인에게 지급 가능
+											</li>
+										</ul>
+									</li>
+									<li>
+										종피보험자의 지급사유로 청구 시 : 종피보험자 기준의 혼인관계증명서(상세)
+										<ul class="list list2">
+											<li>
+												배우자 보장상품 : 백년연금(’95. 12. 4. ~ ’00. 12. 31.), 암치료보험(’95. 12. 4. ~ ’00. 2. 6.), 우리가족암보험(2종, 부부형,
+												’16. 8. 12. ~)
+											</li>
+										</ul>
+									</li>
+									<li>보험금 대리청구 : 수익자의 위임장 + 수익자의 인감증명서 + 수익자의 개인(신용)정보처리동의서 + 대리수령자 신분증</li>
+									<li>
+										보험금 대리접수 : 대리접수자 신분증
+										<ul class="list list2">
+											<li>
+												대리접수란? 수익자의 보험금 청구 구비서류를 대신 접수하는 행위
+											</li>
+										</ul>
+									</li>
+									<li>
+										재해입증서류 : 서고사실확인원(경찰서), 보상처리확인서(자동차보험사), 119구급일지(소방서), 병원 초진기록지 등
+									</li>
+								</ul>
+							</div>
+
+							<p class="mt_3">
+								※ 병원발급서류는 직인, 병명, 환자인적사항 및 청구사유별 치료내역이 기재되어 있어야 하며, 청구금액 100만원 이하일 경우 사본 가능
+							</p>
+
+							<div class="tbl_data tbl_list_data mt_10">
+								<table>
+									<caption class="sr_only">사망, 구비서류, 세부사항에 대한 정보표 입니다.</caption>
+									<colgroup>
+										<col style="width: 50%" span="2">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col" colspan="2">사망</th>
+										</tr>
+										<tr>
+											<th scope="col">구비서류</th>
+											<th scope="col">세부사항</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<ul class="list list3">
+													<li>사망진단서 또는 사체검안서</li>
+												</ul>
+												<p class="mt_3">※추가제출서류</p>
+												<ul class="list list3">
+													<li>재해사망은 재해입증서류</li>
+													<li>사망수익자 미지정시 상속관계서류</li>
+												</ul>
+											</td>
+											<td>
+												<ul class="list list3">
+													<li>
+														사본제출 시 사망사실이 기재된 기본증명서 추가로 제출
+													</li>
+													<li>
+														사망자 기준 가족관계증명서(상세), 제적등본 등
+													</li>
+													<li>
+														대표수익자 지정 위임장 및 상속인 전원의 인감증명서(또는 본인서명 사실확인서)
+													</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('required_documents_pop');">확인</button>
+							</div>
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

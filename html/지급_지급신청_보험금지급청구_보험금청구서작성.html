@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+
+			$(".tooltip.tooltip_md > button").click(function () {
+				$(this).closest(".tooltip").hide();
+			})
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">보험금지급청구</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">개인정보처리동의</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">보험금청구서작성</span></li>
+						<li><span class="num">3</span><span class="txt">청구신청 완료</span></li>
+					</ul>
+				</div>
+
+				<!-- s 개인정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">개인정보</h3>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">청구내용의 자동차보험, 산업재해보험, 기타에 대한 정보입니다.</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">청구유형</th>
+									<td>나보미</td>
+									<th scope="row">생년월일</th>
+									<td>650528-*******</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호</th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>011</span></a></li>
+															<li><a href="#none"><span>016</span></a></li>
+															<li><a href="#none"><span>017</span></a></li>
+															<li><a href="#none"><span>018</span></a></li>
+															<li><a href="#none"><span>019</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+										</div>
+									</td>
+									<th scope="row">
+										알림 수신동의
+										<div class="tooltip_box">
+											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer2">
+												<span class="sr_only">실지급액 정보</span>
+											</i>
+
+											<div class="tooltip tooltip_md" tabindex="0"
+												style="left:-20px;top:-85px; display:none; z-index: 100;" data-toggle-content="layer2">
+												<p>
+													지급청구 진행 정보에 대한 알림 수신 동의여부
+												</p>
+												<button type="button"><span class="sr_only">닫기</span></button>
+											</div>
+										</div>
+									</th>
+									<td>
+										<span class="check_item square single">
+											<input type="checkbox" name="" id="alram1">
+											<label for="alram1">선택하기</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">주소</th>
+									<td colspan="3">[52482] 전라남도 나주시 정보화길 1 313호(빛가람동, 우정사업정보센터)
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 개인정보 -->
+
+				<!-- s 청구내용 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">청구내용</h3>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">청구내용의 자동차보험, 산업재해보험, 기타에 대한 정보입니다.</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">청구유형 <strong class="necessary">*</strong>
+										<div class="tooltip_box">
+											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer1">
+												<span class="sr_only">실지급액 정보</span>
+											</i>
+
+											<div class="tooltip tooltip_md" tabindex="0"
+												style="left:-20px;top:-150px; display:none; z-index: 100;" data-toggle-content="layer1">
+												<p>
+													정액 : 보험 사고의 발생 시 지급하는 보험금액이 미리 계약시에 정해져 있는 보험 <br>
+													실손 : 보험 가입자가 질병이나 상해로 입원 또는 통원치료 시 의료비로 실제 부담한 금액을 보장해 주는 보험
+												</p>
+												<button type="button"><span class="sr_only">닫기</span></button>
+											</div>
+										</div>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width:90%;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택해주세요</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택해주세요</span></a></li>
+														<li><a href="#none"><span>선택해주세요</span></a></li>
+														<li><a href="#none"><span>선택해주세요</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<th scope="row">
+										발생원인 <strong class="necessary">*</strong>
+										<div class="tooltip_box">
+											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer2">
+												<span class="sr_only">실지급액 정보</span>
+											</i>
+
+											<div class="tooltip tooltip_md" tabindex="0"
+												style="left:-20px;top:-210px; display:none; z-index: 100;" data-toggle-content="layer2">
+												<p>
+													질병 : 신체 내부의 요인으로 몸이 불편하여 의사의 진단을 요구하는 치료를 받는 경우 <br>
+													[예시] 감기, 장염, 당뇨, 고혈압, 추간판탈출증, 암 등 <br>
+													상해 : 피보험자가 급격하고도 우연한 외래의 사고로 신체에 부상을 입고 치료를 받는 경우 <br>
+													[예시] 골정, 화상, 염좌, 절단, 상처 등
+												</p>
+												<button type="button"><span class="sr_only">닫기</span></button>
+											</div>
+										</div>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width:90%;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택해주세요</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택해주세요</span></a></li>
+														<li><a href="#none"><span>선택해주세요</span></a></li>
+														<li><a href="#none"><span>선택해주세요</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">청구사유 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_1">
+											<label for="reason_1">통원</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_2">
+											<label for="reason_2">입원</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_3">
+											<label for="reason_3">골절</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_4">
+											<label for="reason_4">수술</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_5">
+											<label for="reason_5">진단</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_6">
+											<label for="reason_6">장해</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_7">
+											<label for="reason_7">요양</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_8">
+											<label for="reason_8">치아</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="reason" id="reason_9">
+											<label for="reason_9">기타</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">진단명<strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf" title="사고장소 입력" placeholder="진단명을 간략하게 적어주세요." style="width:366px;">
+									</td>
+									<th scope="row">사고일시</th>
+									<td>
+										<input type="text" class="tf tf_datepicker" title="" placeholder="">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">사고장소</th>
+									<td colspan="3">
+										<input type="text" class="tf" title="사고장소 입력" placeholder="진단명을 간략하게 적어주세요." style="width:366px;">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">사고경위</th>
+									<td colspan="3">
+										<textarea class="tf" style="width:100%;" title="사고경위 입력" placeholder="예) 신호대기 중 뒷차량 추돌함"></textarea>
+										<p>
+											<strong>0</strong>/200Byte (최대 한글 100자, 영/숫자 200자)
+										</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 청구내용 -->
+
+				<!-- s 사고처리여부 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">사고처리여부</h3>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">사고처리여부의 자동차보험, 산업재해보험, 기타에 대한 정보입니다.</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">자동차보험</th>
+									<td colspan="3">
+										<span class="check_item mr_2 square single">
+											<input type="checkbox" name="car" id="car_1">
+											<label for="car_1">선택하기</label>
+										</span>
+
+										<input type="text" class="tf" title="보험사명을 입력 " style="width:350px;" placeholder="보험사명을 입력해주세요"
+											disabled>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">산업재해보험</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="jindustry1" id="jindustry1_1">
+											<label for="jindustry1_1">예</label>
+										</span>
+
+										<span class="check_item ml_6">
+											<input type="radio" name="jindustry1" id="jindustry1_2" checked="">
+											<label for="jindustry1_2">아니요</label>
+										</span>
+									</td>
+									<th scope="row">경찰서신고</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="police1" id="police1_1">
+											<label for="police1_1">예</label>
+										</span>
+										<span class="check_item ml_6">
+											<input type="radio" name="police1" id="police1_2" checked="">
+											<label for="police1_2">아니요</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">기타</th>
+									<td colspan="3">
+										<textarea class="tf" style="width:100%;" title="기타 입력" placeholder="추가 내용을 입력해 주세요."></textarea>
+										<p>
+											<strong>0</strong>/200Byte (최대 한글 100자, 영/숫자 200자)
+										</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 사고처리여부 -->
+
+				<!-- s 타보험 가입내용 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">타보험 가입내용</h3>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">타보험 가입내용의 가입여부, 실손가입여부에 대한 정보입니다.</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">가입여부</th>
+									<td>
+										<span class="check_item mr_2">
+											<input type="radio" name="join_chk1" id="join_chk1_1">
+											<label for="join_chk1_1">예</label>
+										</span>
+
+										<input type="text" class="tf" title="보험사명을 입력 " style="width:350px;" placeholder="보험사명을 입력해주세요"
+											disabled>
+
+										<span class="check_item ml_6">
+											<input type="radio" name="join_chk1" id="join_chk1_2" checked="">
+											<label for="join_chk1_2">아니요</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">실손가입여부</th>
+									<td>
+										<span class="check_item mr_2">
+											<input type="radio" name="join_chk2" id="join_chk2_1">
+											<label for="join_chk2_1">예</label>
+										</span>
+
+										<input type="text" class="tf" title="보험사명을 입력 " style="width:350px;" placeholder="보험사명을 입력해주세요"
+											disabled>
+
+										<span class="check_item ml_6">
+											<input type="radio" name="join_chk2" id="join_chk2_2" checked="">
+											<label for="join_chk2_2">아니요</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 타보험 가입내용 -->
+
+				<!-- s 구비서류첨부 -->
+				<div class="section file_add_box">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">구비서류첨부</h3>
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">계좌정보</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">첨부서류</th>
+									<td>
+										<div class="file_add_area">
+											<ul>
+												<li>
+													<span class="img">
+														<img src="../resources/img/content/_sample.jpg" alt="샘플 이미지">
+													</span>
+													<button class="delete">삭제</button>
+												</li>
+												<li>
+													<span class="img">
+														<img src="../resources/img/content/_sample.jpg" alt="샘플 이미지">
+													</span>
+													<button class="delete">삭제</button>
+												</li>
+												<li>
+													<span class="img">
+														<img src="../resources/img/content/_sample.jpg" alt="샘플 이미지">
+													</span>
+													<button class="delete">삭제</button>
+												</li>
+												<li>
+													<span class="img">
+														<img src="../resources/img/content/_sample.jpg" alt="샘플 이미지">
+													</span>
+													<button class="delete">삭제</button>
+												</li>
+												<li>
+													<span class="img">
+														<img src="../resources/img/content/_sample.jpg" alt="샘플 이미지">
+													</span>
+													<button class="delete">삭제</button>
+												</li>
+												<li>
+													<span class="img">
+														<img src="../resources/img/content/_sample.jpg" alt="샘플 이미지">
+													</span>
+													<button class="delete">삭제</button>
+												</li>
+											</ul>
+										</div>
+										<a href="#;" class="btn btn_md btn_outline_default">파일선택</a>
+										<span class="ml_4">
+											<strong>6</strong> /
+											<span>20장</span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<ul class="list list1 mt_3 pl_2">
+						<li>보험금 청구에 관한 서류에 고의로 사실과 다른 것을 기재하거나 그 서류 또는 증거를 위·변조하는 행위는 명백한 보험사기이며, 보험금 지급이 거절됩니다.</li>
+						<li>글자 판독이 불가한 이미지, PDF 서류가 첨부된 경우 사고보험금 심사 시 반송될 수 있으니 유의하시기 바랍니다.</li>
+						<li>다중파일 선택이 가능, 파일 1개 당 3MB 이하의 JPG, PNG, GIF, BMP, JPEG), PDF파일을 첨부</li>
+					</ul>
+
+				</div>
+				<!-- e 구비서류첨부 -->
+
+				<!-- s 추천국/추천인 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">추천국/추천인</h3>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">추천국/추천인</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">추천국/추천인</th>
+									<td>
+										<input type="text" class="tf" title="추천국/추천인 입력" style="width:350px;" placeholder="추천국/추천인을 검색해주세요."
+											disabled>
+										<a href="#;" class="btn btn_md btn_outline_default">검색</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 추천국/추천인 -->
+
+				<!-- s 계좌정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">계좌정보</h3>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">계좌정보</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">계좌정보</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 150px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>그룹1</span></a></li>
+														<li><a href="#none"><span>그룹2</span></a></li>
+														<li><a href="#none"><span>그룹3</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="selectbox_wrap" style="width: 350px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>계좌선택</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>그룹1</span></a></li>
+														<li><a href="#none"><span>그룹2</span></a></li>
+														<li><a href="#none"><span>그룹3</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 계좌정보 -->
+
+				<!-- s 추가인증 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">추가인증</h3>
+						</div>
+					</div>
+					<div class="box bg_lightgray">
+						<ul class="add_certification">
+							<li>
+								<a href="#;" class="sms">SMS인증</a>
+							</li>
+							<li>
+								<a href="#;" class="ars">ARS인증</a>
+							</li>
+						</ul>
+					</div>
+					<div class="box mt_3">
+						<ul class="list list1">
+							<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
+							<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
+						</ul>
+					</div>
+				</div>
+				<!-- e 추가인증 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">청구신청 하기</a>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

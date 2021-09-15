@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+			$(".billing_type_tab .tab li").click(function () {
+				var idx = $(this).index();
+				$(".billing_type_tab .tab li").removeClass("on");
+				$(this).addClass("on");
+			})
+
+			$(".section.acodian_area .tbl_tit").click(function () {
+				$(this).toggleClass("on");
+			})
+
+			$(".section.acodian_area").each(function (i) {
+				if ($(".section.acodian_area").eq(i).hasClass("last")) {
+					$(".section.acodian_area").eq(i).find(".tbl_tit").addClass("on");
+				}
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">예상보험금조회</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>단체 계약을 제외한 계약이 현재 유지중일 경우 계약자/피보험자/수익자에 한해서 이용이 가능합니다.</li>
+						<li>현재 유지중인 정액보험 계약건에 대해 사망/장해/진단/입원/수술/통원/골절/깁스에 한해서 확인 가능합니다.</li>
+						<li>제휴/단체계약 및 일부보험(치아보험, 요양보험, 치매진단, 항앙방사선 및 약물치료)등에 대해서는 본 서비스가 불가능할 수 있습니다.</li>
+						<li>실제 지급되는 보험금은 청구 후 심사과정을 거쳐 최종 결정되며 조회되는 예상보험금과 다를 수 있습니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">대상자 선택 정보</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">대상자 선택</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>12345678910</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- s 청구 유형 -->
+				<div class="section billing_type_tab">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">청구 유형</h3>
+						</div>
+					</div>
+					<ul class="tab">
+						<li class="on">
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money1.png" alt="">
+							</span>
+							<strong>골절</strong>
+						</li>
+						<li>
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money2.png" alt="">
+							</span>
+							<strong>깁스</strong>
+						</li>
+						<li>
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money3.png" alt="">
+							</span>
+							<strong>입원</strong>
+						</li>
+						<li>
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money4.png" alt="">
+							</span>
+							<strong>통원</strong>
+						</li>
+						<li>
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money5.png" alt="">
+							</span>
+							<strong>수술</strong>
+						</li>
+						<li>
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money6.png" alt="">
+							</span>
+							<strong>진단</strong>
+						</li>
+						<li>
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money7.png" alt="">
+							</span>
+							<strong>장해</strong>
+						</li>
+						<li>
+							<span class="img">
+								<img src="../resources/img/content/ico_insurance_money8.png" alt="">
+							</span>
+							<strong>사망</strong>
+						</li>
+					</ul>
+				</div>
+				<!-- e 청구 유형 -->
+
+				<!-- s 골절 -->
+				<div class="section acodian_area">
+					<div class="tbl_tit " data-toggle-btn="acodian_area1">
+						<div class="tit_left">
+							<h3 class="tit1">골절</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2" data-toggle-content="acodian_area1">
+						<table>
+							<caption class="sr_only">골절 정보</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										사고일
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="datepicker_box">
+											<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+										</div>
+									</td>
+									<th scope="row">
+										지급사유 발생일
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="datepicker_box">
+											<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										질병코드
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="text" class="tf" title="질병코드 입력" placeholder="질병코드를 선택해주세요" style="width:280px;"
+											disabled>
+										<a href="#;" class="btn btn_md btn_outline_default">검색</a>
+									</td>
+									<th scope="row">
+										재해질병코드
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+
+										<input type="text" class="tf" title="질병코드 입력" placeholder="질병코드를 선택해주세요" style="width:280px;"
+											disabled>
+										<a href="#;" class="btn btn_md btn_outline_default">검색</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">특정사고원인</th>
+									<td colspan="3">
+										<div class="selectbox_wrap" style="width: 365px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>12345678910</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 골절 -->
+
+				<!-- s 깁스 -->
+				<div class="section acodian_area last">
+					<div class="tbl_tit " data-toggle-btn="acodian_area2">
+						<div class="tit_left">
+							<h3 class="tit1">깁스</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2" data-toggle-content="acodian_area2">
+						<table>
+							<caption class="sr_only">깁스 정보</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										사고일
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="datepicker_box">
+											<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+										</div>
+									</td>
+									<th scope="row">
+										지급사유 발생일
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="datepicker_box">
+											<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										질병코드
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="text" class="tf" title="질병코드 입력" placeholder="질병코드를 선택해주세요" style="width:280px;"
+											disabled>
+										<a href="#;" class="btn btn_md btn_outline_default">검색</a>
+									</td>
+									<th scope="row">
+										재해질병코드
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+
+										<input type="text" class="tf" title="질병코드 입력" placeholder="질병코드를 선택해주세요" style="width:280px;"
+											disabled>
+										<a href="#;" class="btn btn_md btn_outline_default">검색</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">특정사고원인</th>
+									<td colspan="3">
+										<div class="selectbox_wrap" style="width: 365px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>12345678910</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+														<li><a href="#none"><span>12345678910</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e 깁스 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">예상보험금 조회</a>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

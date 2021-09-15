@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">질병코드 조회</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#code_pop" class="btn btn_sm btn_outline_default ml_2" onclick="openModal('code_pop', this);">
+					<span>질병코드 조회</span>
+				</a>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xxl show" data-popup="code_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">질병코드 조회</h2>
+						</div>
+						<div class="popup_body code_pop">
+
+							<div class="tbl_row1 type2 ">
+								<table>
+									<caption class="sr_only">질병코드 조회으 ㅣ질병코드, 중분류 정보표 입니다.</caption>
+									<colgroup>
+										<col style="width: 110px">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">질병코드</th>
+											<td>
+												<input type="text" class="tf" title="질병코드 선택" placeholder="질병코드 선택해주세요." style="width:500px;"
+													disabled>
+												<span class="v_mid ml_2">
+													질병 중분류 선택 후 “상세코드 검색” 주세요.
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">중분류</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 800px;">
+													<dl title="조건 선택">
+														<dt><a href="#none"><span>12345678910</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>12345678910</span></a></li>
+																<li><a href="#none"><span>12345678910</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+												<button type="button" class="btn btn_md btn_outline_default ml_2">상세코드 검색</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="tbl_data tbl_list_data mt_4">
+								<table>
+									<caption class="sr_only">${표제목}</caption>
+									<colgroup>
+										<col style="width: 115px">
+										<col>
+										<col style="width: 115px">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">코드</th>
+											<th scope="col" colspan="2">질병사인분류명</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												처치 당시에는 재난에 대한 언급이 없었으나 환자의 이상반응 또는 이후 합병증의 원인이 된 외과적 수술 및 기타 외과적 처치 <br>
+												(Surgical operation and other surgical procedures as the cause of abnormal reaction of the
+												patient, or of later complication, without mention of misadventure at the time of the procedure)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round on">선택</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												아래발의 골절 <br>
+												(Fracture of Forearm)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round">선택</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												아래발의 골절 <br>
+												(Fracture of Forearm)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round">선택</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												아래발의 골절 <br>
+												(Fracture of Forearm)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round">선택</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												아래발의 골절 <br>
+												(Fracture of Forearm)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round">선택</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												아래발의 골절 <br>
+												(Fracture of Forearm)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round">선택</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												아래발의 골절 <br>
+												(Fracture of Forearm)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round">선택</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">S02.650</td>
+											<td>
+												아래발의 골절 <br>
+												(Fracture of Forearm)
+											</td>
+											<td>
+												<a href="#;" class="btn btn_md btn_outline_default round">선택</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('code_pop');">확인</button>
+							</div>
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
