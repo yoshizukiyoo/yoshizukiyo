@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+
+		$(document).on('click', 'a[href^="#"]', function (event) {
+			event.preventDefault();
+
+				$('html, body').animate({
+						scrollTop: $($.attr(this, 'href')).offset().top - 154
+				}, 500);
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">이용안내</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="first_section">
+					<div class="tab_menu_type1">
+						<ul>
+							<li><a href="#section1"class="current">공동인증서</a></li>
+							<li><a href="#section2">서비스이용안내</a></li>
+							<li><a href="#section3">인터넷뱅킹보안성</a></li>
+							<li><a href="#section4">신규사용자이용안내</a></li>
+							<li><a href="#section5">각종비밀번호안내</a></li>
+							<li><a href="#section6">사용문의요령</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="section">
+					<h3 class="tit1">PC 권장사항</h3>
+					<ul class="list list1">
+						<li>PC : 1 GHz 이상의 CPU 탑재 기기</li>
+						<li>OS : Windows 10 이상</li>
+						<li>브라우저 : Internet Explorer 10 이상, Edge, Chrome, Firefox, Opera</li>
+						<li>메모리 : 최소 512MB, 권장 1GB 이상</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">계좌이체한도</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">계좌이체한도 표로 구분, 안전등급(OTP, HSM), 일반등급(보안카드) 정보 제공</caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" colspan="3">구분</th>
+									<th scope="col">안전등급(OTP, HSM)</th>
+									<th scope="col">일반등급(보안카드)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row" rowspan="6" class="txt_c">인터넷 뱅킹<br>(모파일포함)</th>
+									<th scope="row" rowspan="2" class="txt_c">개인</th>
+									<th scope="row" class="txt_c">1회</th>
+									<td>1억원</td>
+									<td>1천만원</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">1일</th>
+									<td>5억원</td>
+									<td>5천만원</td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">법인</th>
+									<th scope="row" class="txt_c">1회</th>
+									<td>10억원</td>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">1일</th>
+									<td>50억원</td>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">법인(별도계약)</th>
+									<th scope="row" class="txt_c">1회</th>
+									<td>10억원</td>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">1일</th>
+									<td>무제한</td>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="4" class="txt_c">폰 뱅 킹</th>
+									<th scope="row" rowspan="2" class="txt_c">개인</th>
+									<th scope="row" class="txt_c">1회</th>
+									<td>5천만원</td>
+									<td>300만원</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">1일</th>
+									<td>2억 5천만원</td>
+									<td>500만원</td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">법인</th>
+									<th scope="row" class="txt_c">1회</th>
+									<td>1억원</td>
+									<td></td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">1일</th>
+									<td>5억원</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="section">
+					<h3 class="tit1">이용절차</h3>
+					<ul class="list list1">
+						<li>이용자 확인을 위해 먼저 가까운 우체국 창구에 방문합니다.</li>
+						<li>통장, 도장, 신분증을 지참하여 소정의 신청서를 통해 우체국과 이용약정을 맺으신후, 이용자ID,보안카드 등을 부여 받고 인터넷에 접속하여 서비스를이용합니다.</li>
+						<li>(기존 온라인서비스 이용고객은 우체국방문하여 사용하시던 사용자ID로 등록하실 수 있습니다.)</li>
+						<li>복수의 출금계좌 등록을 원하는 경우는 해당 통장 모두를 지참하셔야 합니다.</li>
+					</ul>
+				</div>
+
+				<div class="section" id="section1">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">공동인증서</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">법인 표로 구분, 발급대상, 수수료, 용도, 유효기간 정보 제공</caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col style="width: 40%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">구분</th>
+									<th scope="col">발급대상</th>
+									<th scope="col">수수료</th>
+									<th scope="col">용도</th>
+									<th scope="col">유효기간</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">전자거래범용</th>
+									<th scope="row" class="txt_c">개인</th>
+									<td>4,400 원</td>
+									<td rowspan="2">인터넷뱅킹 등 은행 및 금융결제원 제공 분야<br>전자정부에서 제공하는 서비스<br>기타 모든 전자거래</td>
+									<td rowspan="7">1년</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">기업(법인) 단체</th>
+									<td class="border_r">110,000 원</td>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">은행보험용</th>
+									<th scope="row" class="txt_c">개인</th>
+									<td rowspan="2">무료</td>
+									<td rowspan="2" class="border_r">은행업무(개별 및 업무)<br>보험 및 전자정부 민원서비스(단, 전자입찰제외)</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">기업(법인) 단체</th>
+								</tr>
+								<tr>
+									<th scope="row" rowspan="2" class="txt_c">전자세금융</th>
+									<th scope="row" class="txt_c">개인사업자</th>
+									<td rowspan="2">4,400 원</td>
+									<td rowspan="2" class="border_r">국세청 사이트(e세로)<br>전자세금계산서 관련 ASP, ERP 사이트<br>국세청 제공 민원업무(홈텍스 등)</td>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">기업(법인) 단체</th>
+								</tr>
+								<tr>
+									<th scope="row" class="txt_c">신용카드용 개인증명서</th>
+									<th scope="row" class="txt_c">개인</th>
+									<td>무료</td>
+									<td class="border_r">신용카드 업무<br>전자정부 민원서비스</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="section" id="section2">
+					<h3 class="tit1">서비스이용안내</h3>
+					<ul class="num_list">
+						<li>고객의 PC에서 인터넷접속이 가능해야 합니다.</li>
+						<li>고객의 PC에 인터넷 익스플로러 10 이상의 브라우져가 설치되어 있어야 합니다.</li>
+						<li>우체국에 방문하시어 전자금융 서비스 신청서를 작성해 주세요.
+							<ul class="list list1">
+								<li>인터넷뱅킹을 이용 하시려면 우체국을 방문하여 전자금융 서비스 신청서를 작성해주세요. 사용자 본인 확인을 위한 과정이오니 불편하시더라도 꼭 방문해 주세요. (준비물 : 통장/신분증/도장)</li>
+								<li>단, 스마트뱅킹을 통해 가입한 고객이시라면, '스마트뱅킹/보안인증센터/인터넷(PC) 사용권한설정' 하신 후 인증서이동 후에 로그인 가능합니다.</li>
+							</ul>
+						</li>
+						<li>우체국에서 발급 받으신 이용자 ID와4.이용자 ID(아이디)를 기억하십시오. 인터넷뱅킹 신청을 하시면 우체국에서 이용자 ID와 보안카드를 발급하여 드립니다.(사용자 인증서 신청 및 인터넷뱅킹 이용시 꼭 필요하므로 잘 기억해두세요.)</li>
+						<li>우체국예금·보험 홈페이지(www.epostbank.go.kr)로 접속합니다.</li>
+						<li>화면 좌측의 로그인버튼을 클릭하여 인터넷뱅킹 페이지로 접속합니다.</li>
+						<li>인터넷뱅킹 메인 페이지 왼쪽상단의 인증센터버튼을 클릭하여 인증서를 발급 받습니다.
+							<ul class="list list1">
+								<li>우체국에서 발급 받으신 이용자 ID와 보안카드 번호 등을 입력하세요.</li>
+								<li>인증서 신청이 끝나면 고객께서 사용하실 인증서 암호를 입력합니다.</li>
+								<li>인증서 신청 완료후 인증서 저장매체 선택하십시오.</li>
+								<li>발급된 인증서는 사용자의 PC와 인증서버에 설치 됩니다.</li>
+								<li>발급된 인증서를 폐기하시려면 로그인 과정 없이 인터넷뱅킹 페이지의 왼쪽에 있는 인증서센터 버튼을 눌러 인증서관리를 클릭합니다.</li>
+							</ul>
+						</li>
+						<li>우체국 인터넷뱅킹에 로그인 합니다.
+							<ul class="list list1">
+								<li>사용하실 인증서를 선택하신 후에 고객께서 지정하신 인증서암호를 입력하세요.</li>
+							</ul>
+						</li>
+						<li>로그인에 성공하시면 고객님께서 가지고 계신 우체국 약정계좌 정보가 출력 됩니다.
+							<ul class="list list1">
+								<li>출금계좌 조회 페이지가 출력되며 계좌에 대한 잔액을 바로 확인하실 수 있습니다.</li>
+							</ul>
+						</li>
+						<li>화면 상단 및 왼쪽의 거래 메뉴에서 원하시는 거래를 선택하시어 이용하시기 바랍니다.</li>
+					</ul>
+				</div>
+
+				<div class="section" id="section3">
+					<h3 class="tit1">인터넷뱅킹 보안성</h3>
+					<ul class="num_list">
+						<li>우체국금융은 한국정보인증 보안모듈을 사용하고 있습니다.<br>
+							우체국금융은 고객의 개인정보를 안전하게 보호하기 위해 세계적으로 널리 사용되고 있는 시큐어 소켓 레이어 (Secure Socket Layer: SSL)라는 암호화 통신방법인 한국정보인증 보안모듈을 사용하고 있습니다.
+						</li>
+						<li class="mt_1">사용자 인증서를 사용하고 있습니다.<br>
+							우체국금융 인터넷 뱅킹은 강력한 고객인증 방법인 인증서 기반의 서비스를 제공하고 있습니다. 공동인증서란 고객과 우체국간의 본인여부 확인을 위한 한 방법으로 한국정보인증에서 발급한 인증서를 고객의 PC 또는 기타 저장매체에 설치한후 인터넷뱅킹 사이트 접속시 사용자인증서를 제출하게 함으로서 서로간의 인증서를 비교하여 고객에게 서비스 이용권한을 주는 방식입니다.
+						</li>
+						<li class="mt_1">우체국 인터넷뱅킹에 로그인 합니다.<br>
+							먼저 고객께서는 인터넷 뱅킹을 이용하시기 전에 인터넷 뱅킹 이용 약관을 잘 읽어보셔야 합니다. 또한 고객께서는 고객님의 개인정보와 계좌번호, 각종비밀번호, 보안카드등을 잘 관리하셔야 합니다.	
+							우체국금융의 강력한 보안환경에도 불구하고 고객께서 방심하실 경우 문제가 생길수도 있습니다. 
+							만일 인터넷 뱅킹의 사용과 관련된 비밀번호등이 유출된 경우나 보안카드가 분실되었을 경우 즉시, 우체국금융 고객센터로 신고하시기 바랍니다.	
+							개인 PC가 아닐 경우 (PC방 이용 또는 타인의 PC 이용) 고객님의 계좌번호가 누출 될 경우가 있으므로 거래후에는 브라우저의 캐시를 지워주시기 바랍니다. (캐시 지우는방법 : 도구 → 인터넷옵션 → 파일삭제, 쿠키삭제)
+						</li>
+					</ul>
+				</div>
+
+				<div class="section" id="section4">
+					<h3 class="tit1">신규이용자안내</h3>
+					<img src="/resources/img/content/webtoon_test_img.jpg" alt="test">
+				</div>
+
+				<div class="section" id="section5">
+					<h3 class="tit1 mb_6">각종 비밀번호 안내</h3>
+					<div class="tbl_tit mb_2">
+						<div class="tit_left">
+							<h4 class="tit3 m_0">각종 비밀번호 안내</h4>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">각종 비밀번호 안내 표로 설명, 비고, 분실시 요령 정보 제공</caption>
+							<colgroup>
+								<col style="width: 17%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">설명</th>
+									<td>인증서를 신청시 고객께서 직접 설정하신 암호입니다.<br>
+										인증서 암호 변경은 '인증서 관리' 메뉴를 통해서 변경하실 수 있습니다. <br>
+										인증서 암호를 잊어버리신 경우 우체국 인터넷뱅킹에 접속 하실 수 없으므로 관리에 유의하시기 바랍니다.<br>
+										(인증서 암호는 대/소문자를 구별합니다. 아래에 이어지는 이용자 ID 등은 대/소문자를 구별하지 않습니다.)</td>
+								</tr>
+								<tr>
+									<th scope="row">비고</th>
+									<td>대/소문자 구별</td>
+								</tr>
+								<tr>
+									<th scope="row">분실시 요령</th>
+									<td>인증서를 재발급 받으시기 바랍니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mt_10">
+						<div class="tbl_tit mb_2">
+							<div class="tit_left">
+								<h4 class="tit3 m_0">이용자ID</h4>
+							</div>
+						</div>
+						<div class="tbl_data tbl_row_data">
+							<table>
+								<caption class="sr_only">이용자ID 표로 설명, 비고, 분실시 요령 정보 제공</caption>
+								<colgroup>
+									<col style="width: 17%">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">설명</th>
+										<td>인터넷 뱅킹 이용신청시 우체국에서 발급해드린 이용자 번호 입니다.</td>
+									</tr>
+									<tr>
+										<th scope="row">비고</th>
+										<td>영,숫자 혼합 6~14자리 이내</td>
+									</tr>
+									<tr>
+										<th scope="row">분실시 요령</th>
+										<td>우체국금융고객센터로 문의 또는 우체국에 방문하여 본인여부 확인후 안내</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="mt_10">
+						<div class="tbl_tit mb_2">
+							<div class="tit_left">
+								<h4 class="tit3 m_0">보안카드 비밀번호</h4>
+							</div>
+						</div>
+						<div class="tbl_data tbl_row_data">
+							<table>
+								<caption class="sr_only">보안카드 비밀번호 표로 설명, 비고, 분실시 요령 정보 제공</caption>
+								<colgroup>
+									<col style="width: 17%">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">설명</th>
+										<td>보안카드와 OTP카드로 나뉩니다. <br>
+											보안카드는 이체 거래를 이용할 때, 고객의 안전한 금융거래를 도모하기 위한 것으로 인터넷뱅킹 이용신청시 우체국에서 발급해드립니다.<br>
+											이체 거래를 이용할 때 보안카드 비밀번호 입력을 요구하는 경우, 보안카드(질의)번호 2자리(OPT카드의 경우 6자리)에 해당하는 보안카드 비밀번호 4자리(OPT카드의 경우 6자리)를 고객이 소지하고 계신 보안카드 숫자판(코드표)에서 찾아 입력하시면 됩니다.<br>
+											(보안카드 비밀번호가 연속으로 5회 이상 틀릴 경우 서비스이용이 정지됩니다. 서비스 이용이 정지될 경우에는 우체국을 방문하시어 서비스 재개 신청을 하셔야 합니다.)</td>
+									</tr>
+									<tr>
+										<th scope="row">비고</th>
+										<td>보안카드 우측 상단에 적혀있는 숫자 8자리는 '보안카드 고유번호'로서 보안카드 비밀번호가 아닙니다.</td>
+									</tr>
+									<tr>
+										<th scope="row">분실시 요령</th>
+										<td>우체국을 방문하시어 서비스 재개 신청(또는 재발급 신청)을 하십시오.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="section" id="section6">
+					<h3 class="tit1 mb_6">사용문의 요령</h3>
+					<div class="tbl_tit mb_2">
+						<div class="tit_left">
+							<h4 class="tit3 m_0">이용관련 전화번호</h4>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">이용관련 전화번호 표로 각종 비밀번호 오류 및 분실 인터넷뱅킹 거래중 오류, 인증서관련, 보안모듈 다운로드 정보 제공</caption>
+							<colgroup>
+								<col style="width: 60%">
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">각종 비밀번호 오류 및 분실 인터넷뱅킹 거래중 오류</th>
+									<th scope="col">인증서관련</th>
+									<th scope="col">보안모듈 다운로드</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="txt_c">
+									<td>우체국금융고객센터 (1599-1900, 1588-1900)</td>
+									<td>한국정보인증<br>(1577-8787)</td>
+									<td>소프트포럼㈜<br>(1644-4128)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mt_10">
+						<div class="tbl_tit mb_2">
+							<div class="tit_left">
+								<h4 class="tit3 m_0">업무별 상담원 연결코드 및 상담시간</h4>
+							</div>
+						</div>
+						<div class="tbl_data tbl_list_data">
+							<table>
+								<caption class="sr_only">업무별 상담원 연결코드 및 상담시간 표로 코드, 서비스, 이용시간 정보 제공</caption>
+								<colgroup>
+									<col>
+									<col style="width: 12%">
+									<col style="width: 40%">
+									<col>
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col"></th>
+										<th scope="col">코드</th>
+										<th scope="col">서비스</th>
+										<th scope="col">이용시간</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="txt_c">
+										<td rowspan="5">예금 1599-1900 <br>1588-1900</td>
+										<td>01</td>
+										<td>분실, 사고신고 상담</td>
+										<td rowspan="5">평일 09:00~18:00</td>
+									</tr>
+									<tr class="txt_c">
+										<td>02</td>
+										<td class="border_r">예금잔액조회, 거래내역조회, 팩스/이메일 서비스 상담</td>
+									</tr>
+									<tr class="txt_c">
+										<td>03</td>
+										<td class="border_r">예금관련 기타상담</td>
+									</tr>
+									<tr class="txt_c">
+										<td>04</td>
+										<td class="border_r">인터넷/스마트/폰뱅킹 상담</td>
+									</tr>
+									<tr class="txt_c">
+										<td>05</td>
+										<td class="border_r">카드상담</td>
+									</tr>
+									<tr class="txt_c">
+										<td>예금 1599-1900 <br>1588-1900</td>
+										<td>07</td>
+										<td>펀드관련 상담	</td>
+										<td>평일 09:00~18:00</td>
+									</tr>
+									<tr class="txt_c">
+										<td rowspan="5">보험 1599-0100	</td>
+										<td>01</td>
+										<td>환급금 대출</td>
+										<td rowspan="5">평일 09:00~18:00</td>
+									</tr>
+									<tr class="txt_c">
+										<td>02</td>
+										<td class="border_r">보험료 납입·자동이체·증명서 고객정보 변경</td>
+									</tr>
+									<tr class="txt_c">
+										<td>03</td>
+										<td class="border_r">수술·입원·실손보험금</td>
+									</tr>
+									<tr class="txt_c">
+										<td>04</td>
+										<td class="border_r">연금·보험실효부활·계약사항</td>
+									</tr>
+									<tr class="txt_c">
+										<td>05</td>
+										<td class="border_r">해약·만기·배당금·휴면보험금</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<ul class="list list1 mt_2">
+						<li>18:00시 이후 : 일부 이용안내 및 분실신고만 야간 상담원에게 연결(토.일요일 및 공휴일 포함)</li>
+					</ul>
+				</div>
+				
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
