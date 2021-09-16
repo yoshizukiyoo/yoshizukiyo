@@ -29,6 +29,16 @@
 				$(this).closest(".tooltip").hide();
 			})
 
+			$(".search_result .tf_search_txt.areas button").click(function () {
+				$(".search_result .area_result").addClass("on");
+				$(".search_result .area_result .areas").show();
+			})
+
+			$(".search_result .area_result.sug_chk li").click(function () {
+				$(".popup_body.search_result .area_result .areas").hide();
+				$(".popup_body.search_result .area_result .manage").show();
+			})
+
 		});
 	</script>
 </head>
@@ -230,12 +240,12 @@
 									<th scope="row">
 										알림 수신동의
 										<div class="tooltip_box">
-											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer2">
+											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer1">
 												<span class="sr_only">실지급액 정보</span>
 											</i>
 
 											<div class="tooltip tooltip_md" tabindex="0"
-												style="left:-20px;top:-85px; display:none; z-index: 100;" data-toggle-content="layer2">
+												style="left:-20px;top:-85px; display:none; z-index: 100;" data-toggle-content="layer1">
 												<p>
 													지급청구 진행 정보에 대한 알림 수신 동의여부
 												</p>
@@ -427,12 +437,12 @@
 								<tr>
 									<th scope="row">청구유형 <strong class="necessary">*</strong>
 										<div class="tooltip_box">
-											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer1">
+											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer2">
 												<span class="sr_only">실지급액 정보</span>
 											</i>
 
 											<div class="tooltip tooltip_md" tabindex="0"
-												style="left:-20px;top:-150px; display:none; z-index: 100;" data-toggle-content="layer1">
+												style="left:-20px;top:-150px; display:none; z-index: 100;" data-toggle-content="layer2">
 												<p>
 													정액 : 보험 사고의 발생 시 지급하는 보험금액이 미리 계약시에 정해져 있는 보험 <br>
 													실손 : 보험 가입자가 질병이나 상해로 입원 또는 통원치료 시 의료비로 실제 부담한 금액을 보장해 주는 보험
@@ -458,12 +468,12 @@
 									<th scope="row">
 										발생원인 <strong class="necessary">*</strong>
 										<div class="tooltip_box">
-											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer2">
+											<i class="ico ico_warning_gray ml_1" data-toggle-btn="layer3">
 												<span class="sr_only">실지급액 정보</span>
 											</i>
 
 											<div class="tooltip tooltip_md" tabindex="0"
-												style="left:-20px;top:-210px; display:none; z-index: 100;" data-toggle-content="layer2">
+												style="left:-20px;top:-190px; display:none; z-index: 100;" data-toggle-content="layer3">
 												<p>
 													질병 : 신체 내부의 요인으로 몸이 불편하여 의사의 진단을 요구하는 치료를 받는 경우 <br>
 													[예시] 감기, 장염, 당뇨, 고혈압, 추간판탈출증, 암 등 <br>
@@ -786,7 +796,8 @@
 									<td>
 										<input type="text" class="tf" title="추천국/추천인 입력" style="width:350px;" placeholder="추천국/추천인을 검색해주세요."
 											disabled>
-										<a href="#;" class="btn btn_md btn_outline_default">검색</a>
+										<a href="#;" class="btn btn_md btn_outline_default"
+											onclick="openModal('sug_search_pop', this);">검색</a>
 									</td>
 								</tr>
 							</tbody>
@@ -875,6 +886,126 @@
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_primary">청구신청 하기</a>
 				</div>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_sm hide" data-popup="sug_search_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">추천국/추천인 선택 찾기</h2>
+						</div>
+						<div class="popup_body search_result">
+
+							<!-- s 추천국/추천인 선택 -->
+							<div class="tf_search_txt areas">
+								<input type="text" title="추천국을 입력하세요." placeholder="추천국을 입력하세요.">
+								<button type="submit"><span class="sr_only">검색</span></button>
+							</div>
+							<!-- e 추천국/추천인 선택 -->
+
+							<ul class="list list1 mt_2">
+								<li>
+									추천국 선택 후 추천인 선택이 가능합니다.
+								</li>
+							</ul>
+
+							<!-- s 우체국 결과 -->
+							<strong class="txt_result">
+								<em>나주우체국</em>
+								<span>유지관리자 선택</span>
+							</strong>
+							<!-- e 우체국 결과 -->
+
+							<div class="area_result sug_chk">
+								<!-- s 우체국 지역 리스트 -->
+								<ul class="areas ">
+									<li>
+										<dl>
+											<dt>나주금천우체국</dt>
+											<dd>
+												전라남도 나주시 금천면 금영로 923
+												(금천면, 나주금천우체국)
+											</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>나주성북동우체국</dt>
+											<dd>
+												전라남도 나주시 금성길 46 (성북동,)
+												나주성북동우체국
+											</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>나주우체국</dt>
+											<dd>
+												전라남도 나주시 시청길 18
+												(송월동,나주우체국)
+											</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>나주증서국</dt>
+											<dd>
+												전라남도 나주시 시청길 18
+												(송월동,나주우체국)
+											</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>나주금천우체국</dt>
+											<dd>
+												전라남도 나주시 금천면 금영로 923
+												(금천면, 나주금천우체국)
+											</dd>
+										</dl>
+									</li>
+								</ul>
+								<!-- e 우체국 지역 리스트 -->
+
+								<!-- s 유지관리자 리스트 -->
+								<ul class="manage">
+									<li>
+										<strong>영눈면(012344123)</strong>
+									</li>
+									<li>
+										<strong>무파발(012344123)</strong>
+									</li>
+									<li>
+										<strong>아무개(012344123)</strong>
+									</li>
+									<li>
+										<strong>영눈면(012344123)</strong>
+									</li>
+									<li>
+										<strong>영눈면(012344123)</strong>
+									</li>
+									<li>
+										<strong>영눈면(012344123)</strong>
+									</li>
+									<li>
+										<strong>영눈면(012344123)</strong>
+									</li>
+								</ul>
+								<!-- e 유지관리자 리스트 -->
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('sug_search_pop');">확인</button>
+							</div>
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
 
 				<!-- e: 본문 -->
 			</div>
