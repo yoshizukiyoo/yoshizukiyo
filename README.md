@@ -8,7 +8,8 @@
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
 - 퍼블리싱 산출물 내부망 공유용 SVN 저장소 : http://pms.inseq.co.kr:9000/svn/geistkorea/epost-html (본 PMS 계정 사용)
 - Git 브랜치 : 공통(master) 브랜치는 퍼블리싱 파트 PL 외 수정하지 않도록 합니다.
-개인별 브랜치 만들어서 사용해도 됩니다. 단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
+팀원별 개별 브랜치 생성시 네이밍 : 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach
+단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
 >PC웹 공통 : master
 인터넷뱅킹 : deposit
 인터넷보험 : insurance
