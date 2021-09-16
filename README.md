@@ -54,12 +54,6 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
     - [우체국차세대금융_고객채널퍼블리싱가이드](https://docs.google.com/presentation/d/1SSQpJfcXbevYXzevfWQSdBF2BbFL47cn/edit?usp=sharing&ouid=100874491042190796911&rtpof=true&sd=true)
 5. [퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
-### 퍼블리셔 팀 협업 가이드
-1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
-'게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
-2. 긴급하거나 긴밀한 논의가 필요한 경우 채널톡 메신저로 협업 합니다.
-> 퍼블리셔 협업용 메신저 채널톡 다운로드 : https://channel.io/ko/download
-
 ### Git 브랜치 전략
 - PC웹 공통 : master (퍼블리싱 PL 승인외 수정 금지)
 인터넷뱅킹 : deposit
@@ -70,6 +64,12 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 - 팀원별 임시 브랜치 생성시 네이밍 규칙
 > 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach
 단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
+
+### 퍼블리셔 팀 협업 가이드
+1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
+'게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
+2. 긴급하거나 긴밀한 논의가 필요한 경우 채널톡 메신저로 협업 합니다.
+> 퍼블리셔 협업용 메신저 채널톡 다운로드 : https://channel.io/ko/download
 
 ### .vscode/settings.json
 ```json
