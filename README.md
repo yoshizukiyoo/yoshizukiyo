@@ -47,8 +47,14 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 가이드 : [https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing](https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing)
 > 홈 화면 우측에 원격저장소 복사하기를 눌러서 PULL 받으면 됩니다.
 ![22219-2021-7-15-9-51.png](/files/11304) 
-퍼블리셔 협업시에는 `develop` 브랜치 사용해 주세요
-'master'는 개발팀에 전달할 최종산출물 저장소로 사용할 예정입니다.
+공통 브랜치는 퍼블리싱 파트 PL 외 수정하지 않도록 합니다.
+PC웹 공통 : master
+인터넷뱅킹 : deposit
+인터넷보험 : insurance
+스마트(모바일) 공통 : smart-master
+스마트뱅킹 : smart-deposit
+스마트보험 : smart-insurance
+
 3. [마크업 개발환경 설정 가이드](https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing)
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
