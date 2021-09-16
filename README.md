@@ -57,8 +57,8 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 ### 퍼블리셔 팀 협업 가이드
 1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
 '게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
-2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
-> 퍼블리셔 협업용 메신저 다운로드 : [메일플러그 메신저(구 퍼들러)](https://www.mailplug.com/mailplug/help/help_item_view/443)
+2. 긴급하거나 긴밀한 논의가 필요한 경우 채널톡 메신저로 협업 합니다.
+> 퍼블리셔 협업용 메신저 채널톡 다운로드 : https://channel.io/ko/download
 
 ### Git 브랜치 전략
 - PC웹 공통 : master (퍼블리싱 PL 승인외 수정 금지)
