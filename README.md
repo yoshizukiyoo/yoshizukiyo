@@ -25,18 +25,18 @@
 - [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
 - [01. 인터넷보험_작업대장](https://docs.google.com/spreadsheets/d/1m2UaAgVRFU84DGTGrKSx76tnNcWpi5cqCBcLq-lPumQ/edit#gid=0)
 
-### 스토리보드(구글드라이브)
-- [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
-- 7/9 수급 스토리보드 : [https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w](https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w)
-- 자료 반출용 공용 이메일 계정
-[http://webmail.16block.com/](http://webmail.16block.com/) (geistkorea1 / 가이스트1)
-
 ### 디자인 산출물
-- 디자인 공통 가이드(디자이너 협업용) : [http://epost.test.ubiqos.co.kr/html/main/main01.html](http://epost.test.ubiqos.co.kr/html/main/main01.html)
-- 디자인 산출물 자료 : SVN 저장소 URL : [https://59.2.0.242/svn/design](https://59.2.0.242/svn/design)
+- 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
+- 디자인 산출물 자료 SVN
+> SVN 저장소 URL : https://59.2.0.242/svn/design
 > geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
-SVN 클라이언트 다운로드 : [https://tortoisesvn.net/downloads.html](https://tortoisesvn.net/downloads.html)
-SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn](http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn)
+SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
+SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
+
+### 스토리보드(구글드라이브)
+- 보험 스토리보드 SVN : SVN 우체국_문서\07. 내부문서\30. 설계단계\03. 보험
+- [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
+- 자료 반출용 공용 이메일 계정 : http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 
 <br>
 
