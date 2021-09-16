@@ -23,7 +23,9 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			$('.btn_result').on('click', function(){
+				$('.btm_result_box').show();
+			})
 		});
 	</script>
 </head>
@@ -37,7 +39,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">예약납부</h2>
+				<h2 class="tit_cont">즉시이체결과조회</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -55,197 +57,136 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="cont_header_right">
-					<ul class="step">
-						<li><span class="num">1</span><span class="txt">약관동의</span></li>
-						<li><span class="num">2</span><span class="txt">조회정보입력</span></li>
-						<li><span class="num">3</span><span class="txt">조회결과확인</span></li>
-						<li class="on"><span class="num">4</span><span class="txt">정보입력</span></li>
-						<li><span class="num">5</span><span class="txt">입력확인</span></li>
-						<li><span class="num">6</span><span class="txt">실행완료</span></li>
-					</ul>
-				</div>
-
-				<div class="box first_section">
+				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>일반지로요금 고지 내역입니다.</li>
-						<li>납부할 고지내역은 선택하신 후 [납부] 버튼을 클릭하시기 바랍니다.</li>
+						<li>고객님의 출금계좌와 조회 기간을 선택하시면 전자금융(인터넷뱅킹, 폰뱅킹, 모바일뱅킹)을 통한 이체결과를 확인하실 수 있습니다. </li>
+						<li>즉시이체 거래로 국세를 납부한 경우 공과금>국고>국세>납부내역조회 화면에서 확인 가능합니다.</li>
+						<li>이체결과조회는 최근 6개월간의 이체결과를 조회하실 수 있습니다.</li>
+						<li>일괄 이체확인증 및 증명서 발급은 과거거래내역조회에서 가능합니다. <a href="#;" class="btn btn_xs btn_outline_default ml_1">서비스
+								바로가기</a></li>
 					</ul>
 				</div>
 
+				<!-- s: 조회정보 -->
 				<div class="section">
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">조회정보</h3>
+						</div>
+					</div>
+					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">선택하신 지로예납 내역 안내(전자납부번호, 지로번호, 청구기관, 고지구분, 납기기한)</caption>
+							<caption class="sr_only">조회정보 입력표(출금계좌번호, 조회기간 자동조회, 조회기간, 구분)</caption>
 							<colgroup>
-								<col style="width: 15%;">
-								<col>
-								<col style="width: 15%;">
+								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">전자납부번호</th>
-									<td colspan="3"></td>
+									<th scope="row">출금계좌번호</th>
+									<td>
+										000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌
+										<button type="button" class="btn btn_md btn_outline_default ml_6"
+											onclick="openModal('popup01', this);">전체계좌조회</button>
+									</td>
 								</tr>
 								<tr>
-									<th scope="row">지로번호</th>
-									<td></td>
-									<th scope="row">청구기관</th>
-									<td></td>
+									<th scope="row">조회기간 자동조회</th>
+									<td>
+										<div class="btn_date">
+											<button type="button" class="btn btn_sm btn_default">당일</button>
+											<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+											<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+											<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+											<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
+											<button type="button" class="btn btn_sm btn_outline_default">6개월</button>
+										</div>
+									</td>
 								</tr>
 								<tr>
-									<th scope="row">고지구분</th>
-									<td></td>
-									<th scope="row">납기기한</th>
-									<td></td>
+									<th scope="row">조회기간</th>
+									<td>
+										<div class="datepicker_box">
+											<input type="text" class="tf tf_datepicker" title="시작날짜선택">
+											<input type="text" class="tf tf_datepicker" title="종료날짜선택">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">구분</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1">이체</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_2" checked="">
+											<label for="check1_2">예약이체</label>
+										</span>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
+				<!-- e: 조회정보 -->
 
-				<!-- s: 출금정보 -->
-				<div class="section">
+				<div class="btn_data_search">
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
+				</div>
+
+				<!-- s: 조회결과 -->
+				<div class="btm_result_box section">
 					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">출금정보</h3>
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data tbl_row_data">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">출금정보 안내(출금계좌번호/출금은행/계좌별칭(상품명) 선택, 잔액, 출금가능금액, 1일 송금가능금액)</caption>
+							<caption class="sr_only">즉시이체결과 조회표(이체일시, 은행명/입금계좌번호, 출금통장표시, 이체금액(원)/수수료(원), 매체, 결과)</caption>
 							<colgroup>
-								<col style="width: 50%;">
+								<col>
+								<col>
+								<col>
 								<col>
 								<col>
 								<col>
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
-									<th scope="col">잔액(원)</th>
-									<th scope="col">출금가능금액(원)</th>
-									<th scope="col">1일 송금가능금액(원)</th>
+									<th scope="col">이체일시</th>
+									<th scope="col">은행명<br>입금계좌번호</th>
+									<th scope="col">출금통장표시</th>
+									<th scope="col">이체금액(원)<br>수수료(원)</th>
+									<th scope="col">매체</th>
+									<th scope="col">결과</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>
-										<div class="fx_lr fx_align_center">
-											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
-											<button type="button" class="btn btn_xs btn_default v_base fx_right" onclick="openModal('popup01', this);">전체계좌조회</button>
+									<td class="txt_c">2021.12.29 10:44:08</td>
+									<td>우체국<br>010017002691911</td>
+									<td>이덕용</td>
+									<td class="txt_r">10,000<br>0</td>
+									<td>인터넷</td>
+									<td class="txt_c">
+										<div class="btn_block_box">
+											<button type="button" class="btn btn_xs btn_outline_default" onclick="openModal('popup02', this)">이체확인증</button>
+											<button type="button" class="btn btn_xs btn_outline_default">증명서발급</button>
 										</div>
 									</td>
-									<td class="txt_r">3,100,000</td>
-									<td class="txt_r">100,000</td>
-									<td class="txt_r">10,000,000</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="mt_4">
-						<div class="tbl_tit">
-							<div class="txt_right">
-								<span class="necessary">*</span> 표시는 필수입력사항입니다.
-							</div>
-						</div>
-						<div class="tbl_row2">
-							<table>
-								<caption class="sr_only">출금정보 안내 이어서(납부금액, 예금주 전화번호 선택)</caption>
-								<colgroup>
-									<col style="width: 16%;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">
-											출금계좌 비밀번호
-											<strong class="necessary">*</strong>
-										</th>
-										<td>
-											<div class="btn_mouse_pwd">
-												<input type="password" class="tf" title="출금계좌비밀번호 입력" placeholder="숫자4자리" style="width: 420px;">
-												<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
-											</div>
-											<div class="btn_inline_box">
-												<button type="button" class="btn btn_md btn_outline_default" onclick="openModal('popup02', this);">비밀번호오류횟수조회</button>
-												<span class="ml6">(최대 5회까지 입력가능)</span>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">예약납부일</th>
-										<td>
-											<div class="datepicker_box">
-												<input type="text" class="tf tf_datepicker" title="예약납부일 선택">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">예약납부시간</th>
-										<td>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_1" checked>
-												<label for="transfer_1">9시</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_2">
-												<label for="transfer_2">11시</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_3">
-												<label for="transfer_3">14시</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="transfer_time" id="transfer_4">
-												<label for="transfer_4">17시</label>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">납부금액</th>
-										<td class="txt_r">36,859,460원</td>
-									</tr>
-									<tr>
-										<th scope="row">
-											예금주 전화번호
-											<strong class="necessary">*</strong>
-										</th>
-										<td>
-											<div class="phone_number">
-												<div class="selectbox_wrap" style="width: 93px;">
-													<dl title="조건 선택">
-														<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
-														<dd>
-															<ul>
-																<li><a href="#none"><span>010</span></a></li>
-																<li><a href="#none"><span>011</span></a></li>
-																<li><a href="#none"><span>016</span></a></li>
-																<li><a href="#none"><span>017</span></a></li>
-																<li><a href="#none"><span>018</span></a></li>
-																<li><a href="#none"><span>019</span></a></li>
-															</ul>
-														</dd>
-													</dl>
-												</div>
-												<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
-												<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					<div class="txt_c mt_4">
+						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 				</div>
-				<!-- e: 출금정보 -->
-
-				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="예금_공과금_지로_지로납부_예약납부_조회결과확인.html" class="btn btn_xl btn_outline_default">이전화면</a>
-					<a href="예금_공과금_지로_지로납부_예약납부_입력확인.html" class="btn btn_xl btn_primary">예약납부</a>
-				</div>
+				<!-- e: 조회결과 -->
 
 				<!-- s: 전체계좌목록 팝업 -->
 				<div class="modal_popup modal_xxl hide" data-popup="popup01">
@@ -361,7 +302,7 @@
 								</table>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup03');">확인</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -369,38 +310,83 @@
 				</div>
 				<!-- e: 전체계좌목록 팝업 -->
 
-				<!-- Modal Popup : 비밀번호오류횟수조회 -->
-				<div class="modal_popup modal_sm hide" data-popup="popup02">
+				<!-- s: 이체확인증 팝업 -->
+				<div class="modal_popup modal_xl hide" data-popup="popup02">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
-							<h3 class="popup_tit">비밀번호오류횟수조회</h3>
+							<h3 class="popup_tit">이체확인증</h3>
 						</div>
 						<div class="popup_body">
+							<div class="mb_4 txt_r">
+								<button type="button" class="btn btn_xs btn_outline_default"
+									onclick="$.print('.modal_popup[data-popup=popup02]');">화면인쇄</button>
+							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">비밀번호오류횟수조회</caption>
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용,
+										이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
 									<colgroup>
-										<col style="width: 38%">
+										<col style="width: 20%;">
+										<col>
+										<col style="width: 20%;">
 										<col>
 									</colgroup>
 									<tbody>
 										<tr>
-											<th scope="row">계좌비밀번호오류횟수</th>
-											<td>4회</td>
+											<th scope="row">이체일시</th>
+											<td class="txt_c">2020.12.29 10:44:08</td>
+											<th scope="row">입금은행</th>
+											<td class="txt_c">우체국</td>
+										</tr>
+										<tr>
+											<th scope="row">출금계좌번호</th>
+											<td class="txt_c">010017-02-526***</td>
+											<th scope="row">입금계좌번호</th>
+											<td class="txt_c">010017-02-691911</td>
+										</tr>
+										<tr>
+											<th scope="row">보내는 분</th>
+											<td class="txt_c">나봄미</td>
+											<th scope="row">받는분</th>
+											<td class="txt_c">이덕용</td>
+										</tr>
+										<tr>
+											<th scope="row">출금통장 표시내용</th>
+											<td class="txt_c">이덕용</td>
+											<th scope="row">입금통장 표시내용</th>
+											<td class="txt_c">나봄미</td>
+										</tr>
+										<tr>
+											<th scope="row">이체금액</th>
+											<td class="txt_r">10,000원</td>
+											<th scope="row">매체구분</th>
+											<td class="txt_c">인터넷</td>
+										</tr>
+										<tr>
+											<th scope="row">수수료</th>
+											<td class="txt_r">0원</td>
+											<th scope="row">이체결과</th>
+											<td class="txt_c">정상</td>
+										</tr>
+										<tr>
+											<th scope="row">CMS번호/통신문</th>
+											<td class="txt_c"></td>
+											<th scope="row">전문번호</th>
+											<td class="txt_c">0710D4E0C3710</td>
 										</tr>
 									</tbody>
 								</table>
-							</div>	
-							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary" 
-									onclick="closeModal('popup02');">닫기</button>
 							</div>
+							<ul class="list list1 mt_4">
+								<li>본 확인증은 영수증으로 사용할 수 없으며, 거래의 참고용으로만 사용할 수 있습니다.</li>
+								<li>2021년 06월 02일 15시 33분 19초</li>
+							</ul>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 비밀번호오류횟수조회 -->
+				<!-- e: 이체확인증 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
@@ -449,7 +435,7 @@
 								<div class="cont">
 									<!-- s: confirm 메세지 입력 영역 -->
 									<p>
-										confirm 메세지 입력 영역
+										컨펌 메세지 입력 영역
 									</p>
 									<!-- e: confirm 메세지 입력 영역 -->
 								</div>
@@ -457,7 +443,8 @@
 							<div class="btn_group">
 								<button type="button" class="btn btn_md btn_outline_default"
 									onclick="closeModal('confirm_popup');">취소</button>
-								<a href="#;" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</a>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>

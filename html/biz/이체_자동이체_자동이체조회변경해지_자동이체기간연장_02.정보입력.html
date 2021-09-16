@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">자동이체기간연장</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">약관동의</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li><span class="num">4</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>고객님이 지정하신 날짜에 매월 일정 금액이 자동이체 되도록 신청하는 서비스입니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 출금정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">출금정보</h3>
+						</div>
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">출금정보 입력표(출금계좌번호, 계좌비밀번호, 입금계좌명칭(별칭), 출금계좌표시)</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td>
+										000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default"
+												onclick="openModal('popup01', this)">전체계좌조회</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">계좌비밀번호
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="btn_mouse_pwd mr_1">
+											<input type="password" class="tf" title="출금계좌비밀번호 입력" style="width: 360px;"
+												placeholder="최대 5회까지 입력가능">
+											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
+										</div>
+										※ 비밀번호 오류 회수는 0/5회 입니다.
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌명칭(별칭)</th>
+									<td>
+										<input type="text" class="tf" style="width: 360px;" title="입금계좌명칭(별칭) 입력">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">출금계좌표시</th>
+									<td>
+										<input type="text" class="tf" style="width: 360px;" title="출금계좌표시 입력">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 출금정보 -->
+
+				<!-- s: 입금정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">입금정보</h3>
+						</div>
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">입금정보 입력표(입금은행, 입금계좌번호, 입금계좌표시)</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">입금은행
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 360px;">
+											<dl title="입금은행 선택">
+												<dt><a href="#;"><span>은행을 선택하여 주십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>우체국</span></a></li>
+														<li><a href="#;"><span>경남</span></a></li>
+														<li><a href="#;"><span>광주</span></a></li>
+														<li><a href="#;"><span>교보증권</span></a></li>
+														<li><a href="#;"><span>국민(구 주택)</span></a></li>
+														<li><a href="#;"><span>기업</span></a></li>
+														<li><a href="#;"><span>농협</span></a></li>
+														<li><a href="#;"><span>대구</span></a></li>
+														<li><a href="#;"><span>대신증권</span></a></li>
+														<li><a href="#;"><span>도이치</span></a></li>
+														<li><a href="#;"><span>메리츠증권</span></a></li>
+														<li><a href="#;"><span>미래에셋증권</span></a></li>
+														<li><a href="#;"><span>뱅크오브아메리카(BOA)</span></a></li>
+														<li><a href="#;"><span>부국증권</span></a></li>
+														<li><a href="#;"><span>부산</span></a></li>
+														<li><a href="#;"><span>비엔피파리바은행</span></a></li>
+														<li><a href="#;"><span>산림조합중앙회</span></a></li>
+														<li><a href="#;"><span>산업</span></a></li>
+														<li><a href="#;"><span>삼성증권</span></a></li>
+														<li><a href="#;"><span>새마을</span></a></li>
+														<li><a href="#;"><span>수협</span></a></li>
+														<li><a href="#;"><span>신영증권</span></a></li>
+														<li><a href="#;"><span>신한(구 조흥)</span></a></li>
+														<li><a href="#;"><span>신한금융투자</span></a></li>
+														<li><a href="#;"><span>신협</span></a></li>
+														<li><a href="#;"><span>우리(구 한빛,평화)</span></a></li>
+														<li><a href="#;"><span>유안타증권(구 동양증권)</span></a></li>
+														<li><a href="#;"><span>유진투자증권</span></a></li>
+														<li><a href="#;"><span>이베스트투자증권</span></a></li>
+														<li><a href="#;"><span>저축은행</span></a></li>
+														<li><a href="#;"><span>전북</span></a></li>
+														<li><a href="#;"><span>제주</span></a></li>
+														<li><a href="#;"><span>중국공상은행</span></a></li>
+														<li><a href="#;"><span>중국건설은행</span></a></li>
+														<li><a href="#;"><span>중국은행</span></a></li>
+														<li><a href="#;"><span>카카오뱅크</span></a></li>
+														<li><a href="#;"><span>카카오페이증권(구 바로투자증권)</span></a></li>
+														<li><a href="#;"><span>케이뱅크</span></a></li>
+														<li><a href="#;"><span>케이프투자증권(구 LIG투자증권)</span></a></li>
+														<li><a href="#;"><span>키움증권</span></a></li>
+														<li><a href="#;"><span>토스뱅크</span></a></li>
+														<li><a href="#;"><span>토스증권</span></a></li>
+														<li><a href="#;"><span>하나금융투자</span></a></li>
+														<li><a href="#;"><span>하나은행</span></a></li>
+														<li><a href="#;"><span>하이투자증권</span></a></li>
+														<li><a href="#;"><span>한국씨티(구 한미,씨티)</span></a></li>
+														<li><a href="#;"><span>한국투자증권</span></a></li>
+														<li><a href="#;"><span>한국포스증권</span></a></li>
+														<li><a href="#;"><span>한화투자증권</span></a></li>
+														<li><a href="#;"><span>현대차증권</span></a></li>
+														<li><a href="#;"><span>DB금융투자</span></a></li>
+														<li><a href="#;"><span>HSBC</span></a></li>
+														<li><a href="#;"><span>IBK투자증권</span></a></li>
+														<li><a href="#;"><span>JP모간 체이스은행</span></a></li>
+														<li><a href="#;"><span>KB증권</span></a></li>
+														<li><a href="#;"><span>KTB투자증권</span></a></li>
+														<li><a href="#;"><span>NH투자증권(구 우리투자증권)</span></a></li>
+														<li><a href="#;"><span>SC제일은행</span></a></li>
+														<li><a href="#;"><span>SK증권</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌번호
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<input type="text" class="tf" style="width: 360px;" title="입금계좌번호 입력">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌표시</th>
+									<td>
+										<input type="text" class="tf" style="width: 360px;" title="입금계좌표시 입력">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 입금정보 -->
+
+				<!-- s: 자동이체정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">자동이체정보</h3>
+						</div>
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">자동이체정보 입력표(이체금액(원), 이체종류, 자동이체기간, 자동이체일)</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">이체금액
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="trans_money">
+											<input type="text" class="tf txt_r" title="이체금액 입력">
+											<span class="ml6">일만 원</span>
+											<div class="btn_trans_money">
+												<button type="button" class="btn btn_sm btn_default">1만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">이체종류
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 170px;">
+											<dl title="이체종류 선택">
+												<dt><a href="#;"><span>일반</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>일반</span></a></li>
+														<li><a href="#;"><span>타행이체</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<span class="ml6">우체국 자유계좌로의 자동이체</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">자동이체기간
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="datepicker_box">
+											<input type="text" class="tf tf_datepicker" title="시작날짜선택">
+											<input type="text" class="tf tf_datepicker" title="종료날짜선택">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">자동이체일
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 117px;">
+											<dl title="자동이체일 선택">
+												<dt><a href="#;"><span>25</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>25</span></a></li>
+														<li><a href="#;"><span>26</span></a></li>
+														<li><a href="#;"><span>27</span></a></li>
+														<li><a href="#;"><span>28</span></a></li>
+														<li><a href="#;"><span>29</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<span class="ml6">일 </span>(예: 25 ← 매월 25일)
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 자동이체정보 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="이체_자동이체_자동이체조회변경해지_자동이체기간연장_03.입력확인.html" class="btn btn_xl btn_primary">다음</a>
+				</div>
+
+				<div class="box section">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>각종 공과금 납부는 [공과금납부] 메뉴를 이용하시기 바랍니다.</li>
+								<li>타행이체인 경우 이체지정일 06:00~08:00 인출되며, 잔액부족으로 이체불능시 당일 오후에 재인출 처리됩니다.</li>
+								<li>이체지정일이 토요일이나 휴일인 경우, 익영업일에 입금계좌로 입금됩니다.</li>
+								<li>상대은행에서 처리 오류가 발생하여 이체금액이 반환되는 경우 아래와 같이 고객님의 계좌로 다시 입금 처리됩니다.
+									<ul class="list list3">
+										<li>타행이체(전일출금) : 이체지정일 다음 영업일</li>
+										<li>타행이체(당일출금) : 이체지정일 당일</li>
+									</ul>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- s: 전체계좌조회 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col style="width: 23%">
+										<col style="width: 18%">
+										<col style="width: 19%">
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">대표계좌설정</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌조회 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>

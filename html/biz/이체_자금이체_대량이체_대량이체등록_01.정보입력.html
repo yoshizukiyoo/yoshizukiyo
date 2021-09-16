@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">대량이체등록</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="box box_more first_section">
+					<ul class="list list1">
+						<li>고객님의 출금계좌(우체국)에서 다수의 입금계좌(우체국 및 타은행)로 1회 최대 5,000건을 즉시이체 또는 예약이체 할 수 있는 서비스 이며, 직접 또는 엑셀 파일로 이체 할 내용을 등록 할 수 있습니다. </li>
+						<li>* 즉시 대량이체(즉시 이체 실행), 예약 대량이체(영업일 기준 5일 이내)</li>
+						<li>일괄출금대량이체 선택시 일괄출금 후 이체(1건으로 통장인자)</li>
+						<li>일괄출금대량이체 선택시 이체수수료 포함 일괄출금 후 일반고객기본면제 건이 존재하면 면제수수료를 반환 입금합니다.</li>
+						<li>건별출금대량이체 선택시 건별출금 후 이체(건별로 통장인자)</li>
+						<li>즉시 대량이체 및 예약 대량이체 건에 대해서는 당일 23:00시 이전 최종승인결재가 완료되어야 이체 가능합니다.</li>
+						<li>엑셀파일 사이즈는 최대 500KB입니다.</li>
+					</ul>
+				</div>
+				<!-- s: 출금정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">출금정보</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">대량이체등록를 위한 출금정보 (출금계좌번호, 출금은행, 계좌별칭(상품명), 잔액(원), 출금가능금액(원), 1일송금가능금액(원))</caption>
+							<colgroup>
+								<col>
+								<col style="width: 17%;">
+								<col style="width: 17%;">
+								<col style="width: 17%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">출금가능금액(원)</th>
+									<th scope="col">1일 송금가능금액(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="fx_lr fx_align_center">
+											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_xs btn_default v_base fx_right"
+												onclick="openModal('popup01', this);">전체계좌조회</button>
+										</div>
+									</td>
+									<td class="txt_r">3,100,000</td>
+									<td class="txt_r">100,000</td>
+									<td class="txt_r">10,000,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_tit mt_4">
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">대량이체등록를 위한 출금정보 이어서(계좌비밀번호, 이체처리일, 출금계좌표시내용, 입금계좌표시내용)</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">계좌 비밀번호
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<div class="btn_mouse_pwd mr_1">
+											<input type="password" class="tf" title="출금계좌비밀번호 입력" style="width: 360px;" placeholder="최대 5회까지 입력가능">
+											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
+										</div>
+										※ 비밀번호 오류 회수는 0/5회 입니다.
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">이체처리일</th>
+									<td>
+										<input type="text" class="tf tf_datepicker" style="width: 200px;" title="이체처리일 선택">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">출금계좌표시내용</th>
+									<td>
+										<input type="text" class="tf" style="width: 420px;" title="출금계좌표시내용 입력" placeholder="최대한글 10자 입력가능">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌표시내용</th>
+									<td>
+										<input type="text" class="tf mr_1" style="width: 420px;" title="출금계좌표시내용 입력" placeholder="최대한글 10자 입력가능">
+										* 단, 신한, 대구, 제주는 7자. 씨티는 9자만 입금계좌에 표시됩니다.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 출금정보 -->
+
+				<!-- s: 대량이체대상-->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">대량이체대상</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">대량이체대상 정보 안내(입금은행, 입금계좌번호, 이체금액(원), 수취인)</caption>
+							<colgroup>
+								<col style="width: 9%;">
+								<col>
+								<col style="width: 26%;">
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">입금은행</th>
+									<th scope="col">입금계좌번호</th>
+									<th scope="col">이체금액(원)</th>
+									<th scope="col">수취인</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td>우체국</td>
+									<td>123123123123</td>
+									<td class="txt_r">30,000</td>
+									<td>김길동</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2</td>
+									<td>경남</td>
+									<td>123123123123</td>
+									<td class="txt_r">30,000</td>
+									<td>김길동</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="txt_r mt_4">
+						<button type="button" class="btn btn_sm btn_outline_default">샘플파일 다운로드</button>
+						<button type="button" class="btn btn_sm btn_outline_default">파일읽기</button>
+						<button type="button" class="btn btn_sm btn_outline_default">파일저장</button>
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('add_popup', this);">추가</button>
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('modify_popup', this);">수정</button>
+						<button type="button" class="btn btn_sm btn_outline_default">삭제</button>
+						<button type="button" class="btn btn_sm btn_outline_default">초기화</button>
+					</div>
+				</div>
+				<!-- e: 대량이체대상-->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="이체_자금이체_대량이체_대량이체등록_02.입력확인.html" class="btn btn_xl btn_primary">일괄출금대량이체</a>
+					<a href="이체_자금이체_대량이체_대량이체등록_02.입력확인.html" class="btn btn_xl btn_primary">건별출금대량이체</a>
+					<a href="이체_자금이체_대량이체_대량이체등록_02.입력확인.html" class="btn btn_xl btn_primary">대량수취인조회</a>
+				</div>
+
+				<div class="section">
+					<h3 class="tit1">대량이체 등록 가능 시간</h3>
+					<ul class="list list1">
+						<li>즉시 대량이체: 평일 07:00 ~ 23:00</li>
+						<li>예약 대량이체: 매일 07:00 ~ 23:00(토/일/공휴일 등록 가능)</li>
+						<li>단, 예약 대량이체 건은 이체지정일 전일까지 최종승인결재가 완료되어야 이체 가능</li>
+					</ul>
+				</div>
+				
+				<div class="section">
+					<h3 class="tit1">대량이체 처리 시간</h3>
+					<ul class="list list1">
+						<li>즉시 대량이체: 이체지정일(평일) 즉시 입금 처리</li>
+						<li>예약 대량이체: 이체지정일(평일) 09:00 이후 입금처리<br>
+							<span class="txt_sm">* 이체처리 시간은 시스템 사정에 따라 일부 변경 될 수 있습니다.</span></li>
+						</ul>
+				</div>
+
+				<div class="box mt_4">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>대량이체 등록은 07:00시부터 23:00시까지 가능합니다.</li>
+								<li>잔액 부족 시 이체가 실행되지 않으므로 예약 대량이체 처리시간 전까지 반드시 잔액을 유지하여 주시기 바랍니다.</li>
+								<li>전화 및 메신저 금융사기에 주의 바랍니다. (문의) 1588-1900, 1599-1900</li>
+								<li>지금 시도하려는 이체가 전화/메신저 금융사기인지 한 번 더 확인하여 금융사기 피해를 예방하시기 바랍니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- s: 전체계좌목록 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col style="width: 23%">
+										<col style="width: 18%">
+										<col style="width: 19%">
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">대표계좌설정</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌목록 팝업 -->
+
+				<!-- s: 입금정보 등록 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="add_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">입금정보 등록</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>대량이체 등록 및 수정을 하실 수 있습니다.</li>
+							</ul>
+							<div class="mt_3">
+								<div class="tbl_tit">
+									<div class="txt_right">
+										<strong class="necessary">*</strong>
+										표시는 필수입력사항입니다.
+									</div>
+								</div>
+								<div class="tbl_row2">
+									<table>
+										<caption class="sr_only">입금정보 등록 양식이며 입금은행, 입금계좌번호, 수취인, 이체금액(원) 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 25%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">
+													입금은행
+													<strong class="necessary">*</strong>
+												</th>
+												<td>
+													<div class="selectbox_wrap" style="width: 358px;">
+														<dl title="입금은행 선택">
+															<dt><a href="#none"><span>선택하여 주십시오.</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>우체국</span></a></li>
+																	<li><a href="#none"><span>농협</span></a></li>
+																	<li><a href="#none"><span>국민은행</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">
+													입금계좌번호
+													<strong class="necessary">*</strong>
+												</th>
+												<td><input type="text" class="tf" title="입금계좌번호 입력(-없이 입력하세요)" placeholder="-없이 입력하세요" style="width: 358px;"></td>
+											</tr>
+											<tr>
+												<th scope="row">수취인</th>
+												<td><input type="text" class="tf" title="수취인 입력" style="width: 358px;"></td>
+											</tr>
+											<tr>
+												<th scope="row">
+													이체금액 (원)
+													<strong class="necessary">*</strong>
+												</th>
+												<td>
+													<div class="trans_money">
+														<input type="text" class="tf txt_r" title="이체금액 입력">
+														<span class="ml6">일백만원</span>
+														<div class="btn_trans_money">
+															<button type="button" class="btn btn_sm btn_default">1만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('add_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('add_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 입금정보 등록 팝업 -->
+
+				<!-- s: 입금정보 수정 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="modify_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">입금정보 수정</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>대량이체 등록 및 수정을 하실 수 있습니다.</li>
+							</ul>
+							<div class="mt_3">
+								<div class="tbl_tit">
+									<div class="txt_right">
+										<strong class="necessary">*</strong>
+										표시는 필수입력사항입니다.
+									</div>
+								</div>
+								<div class="tbl_row2">
+									<table>
+										<caption class="sr_only">입금정보 등록 양식이며 입금은행, 입금계좌번호, 수취인, 이체금액(원) 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 25%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">
+													입금은행
+													<strong class="necessary">*</strong>
+												</th>
+												<td>
+													<div class="selectbox_wrap" style="width: 358px;">
+														<dl title="입금은행 선택">
+															<dt><a href="#none"><span>선택하여 주십시오.</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>우체국</span></a></li>
+																	<li><a href="#none"><span>농협</span></a></li>
+																	<li><a href="#none"><span>국민은행</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">
+													입금계좌번호
+													<strong class="necessary">*</strong>
+												</th>
+												<td><input type="text" class="tf" title="입금계좌번호 입력(-없이 입력하세요)" placeholder="-없이 입력하세요" style="width: 358px;"></td>
+											</tr>
+											<tr>
+												<th scope="row">수취인</th>
+												<td><input type="text" class="tf" title="수취인 입력" style="width: 358px;"></td>
+											</tr>
+											<tr>
+												<th scope="row">
+													이체금액 (원)
+													<strong class="necessary">*</strong>
+												</th>
+												<td>
+													<div class="trans_money">
+														<input type="text" class="tf txt_r" title="이체금액 입력">
+														<span class="ml6">일백만원</span>
+														<div class="btn_trans_money">
+															<button type="button" class="btn btn_sm btn_default">1만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+															<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('modify_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('modify_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 입금정보 수정 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
