@@ -7,15 +7,7 @@
     - 인터넷뱅킹(deposit) : http://ceb.epost.inseq.co.kr:7789/html/index.html
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
 - 퍼블리싱 산출물 내부망 공유용 SVN 저장소 : http://pms.inseq.co.kr:9000/svn/geistkorea/epost-html (본 PMS 계정 사용)
-- Git 브랜치 : 공통(master) 브랜치는 퍼블리싱 파트 PL 외 수정하지 않도록 합니다.
-팀원별 개별 브랜치 생성시 네이밍 : 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach
-단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
->PC웹 공통 : master
-인터넷뱅킹 : deposit
-인터넷보험 : insurance
->스마트(모바일) 공통 : smart-master
-스마트뱅킹 : smart-deposit
-스마트보험 : smart-insurance
+
 
 # PMS 사용 안내
 협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
@@ -67,6 +59,17 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 '게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
 2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
 > 퍼블리셔 협업용 메신저 다운로드 : [메일플러그 메신저(구 퍼들러)](https://www.mailplug.com/mailplug/help/help_item_view/443)
+
+### Git 브랜치 전략
+- PC웹 공통 : master (퍼블리싱 PL 승인외 수정 금지)
+인터넷뱅킹 : deposit
+인터넷보험 : insurance
+- 스마트(모바일) 공통 : smart-master (퍼블리싱 PL 승인외 수정 금지)
+스마트뱅킹 : smart-deposit
+스마트보험 : smart-insurance
+- 팀원별 임시 브랜치 생성시 네이밍 규칙
+> 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach
+단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
 
 ### .vscode/settings.json
 ```json
