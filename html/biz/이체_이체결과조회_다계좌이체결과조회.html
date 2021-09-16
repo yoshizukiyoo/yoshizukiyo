@@ -23,13 +23,14 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').click(function () {
+			$('.btn_result').on('click', function () {
 				$('.btm_result_box').show();
-			});
+			})
 
-			$('.check_all').on('click', function () {
+			$('#check1_all').on('click', function () {
 				$('input[name=check1]').prop('checked', this.checked)
 			})
+			
 		});
 	</script>
 </head>
@@ -60,6 +61,8 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
+
+				<!-- s: 조회정보 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
@@ -68,7 +71,7 @@
 					</div>
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">다계좌이체결과조회를 위한 조회기간 선택</caption>
+							<caption class="sr_only">조회기간 입력표</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -77,24 +80,17 @@
 								<tr>
 									<th scope="row">조회기간</th>
 									<td>
-										<input type="text" class="tf tf_datepicker" style="width: 170px;">
-									</td>
-								</tr>
-								<tr>
-									<!-- [D] error guide : 개발시 삭제되는 행 입니다-->
-									<th scope="row">조회기간</th>
-									<td>
-										<input type="text" class="tf tf_datepicker error" style="width: 170px;">
-										<!-- [D] Field error : class 속성에 error 추가 -->
-										<div class="error_info">날짜를 선택하여 주십시오</div><!-- [D] error 메세지 -->
+										<input type="text" class="tf tf_datepicker" title="조회기간 선택">
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="btn_data_search">
-						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
-					</div>
+				</div>
+				<!-- e: 조회정보 -->
+
+				<div class="btn_data_search">
+					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
 				</div>
 
 				<!-- s: 조회결과 -->
@@ -121,8 +117,8 @@
 							<thead>
 								<tr>
 									<th scope="col">
-										<span class="check_item square">
-											<input type="checkbox" name="check1" id="check1_all" class="check_all">
+										<span class="check_item square single">
+											<input type="checkbox" name="check1" id="check1_all">
 											<label for="check1_all"><span class="sr_only">전체선택</span></label>
 										</span>
 									</th>
@@ -138,7 +134,7 @@
 							<tbody>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item square">
+										<span class="check_item square single">
 											<input type="checkbox" name="check1" id="check1_1">
 											<label for="check1_1"><span class="sr_only">선택</span></label>
 										</span>
@@ -153,7 +149,7 @@
 								</tr>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item square">
+										<span class="check_item square single">
 											<input type="checkbox" name="check1" id="check1_2">
 											<label for="check1_2"><span class="sr_only">선택</span></label>
 										</span>
