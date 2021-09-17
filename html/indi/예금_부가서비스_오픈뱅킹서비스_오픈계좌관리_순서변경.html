@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">오픈뱅킹 계좌 순서변경</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>나봄미 고객님이 등록하신 오픈뱅킹계좌의 순서를 변경할 수 있습니다.</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">오픈뱅킹 계좌 순서변경 표로 계좌별칭, 은행명, 계좌번호, 순서변경 정보 제공</caption>
+							<colgroup>
+								<col style="width: 20%">
+								<col style="width: 18%">
+								<col>
+								<col style="width: 18%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">계좌별칭</th>
+									<th scope="col">은행명</th>
+									<th scope="col">계좌번호</th>
+									<th scope="col">순서변경</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>-</td>
+									<td>우리</td>
+									<td>1002261669120</td>
+									<td class="txt_c">
+										<button>
+											<i class="ico ico_arr_round_up"></i>
+											<span class="sr_only">순서 위로 이동</span>
+										</button>
+										<button>
+											<i class="ico ico_arr_round_down"></i>
+											<span class="sr_only">순서 아래로 이동</span>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>나봄미다요</td>
+									<td>오픈은행(테스트)</td>
+									<td>1002261669120</td>
+									<td class="txt_c">
+										<button>
+											<i class="ico ico_arr_round_up"></i>
+											<span class="sr_only">순서 위로 이동</span>
+										</button>
+										<button>
+											<i class="ico ico_arr_round_down"></i>
+											<span class="sr_only">순서 아래로 이동</span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">저장</a>
+					<a href="예금_부가서비스_오픈뱅킹서비스_오픈계좌관리.html" class="btn btn_xl btn_primary">오픈뱅킹 계좌 관리</a>
+				</div>
+
+				<!-- Modal Popup : SMS인증확인 -->
+				<div class="modal_popup modal_md hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">휴대폰본인인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>금융사기 예방을 위하여 본인 명의의 휴대전화번호만 등록하실 수 있습니다.</li>
+									<li>휴대전화 본인 확인 관련 약관에 동의하셔야 이용 가능합니다.</li>
+									<li>이동통신사 및 휴대전화 번호를 입력하신 후 "인증번호 전송"을 클릭하세요.</li>
+								</ul>
+							</div>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">휴대폰본인인증</caption>
+									<colgroup>
+										<col style="width: 17%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">이동통신사</th>
+											<td>
+												<div class="selectbox_wrap" style="width:180px">
+													<dl title="검색조건 선택">
+															<dt><a href="#none"><span>skt</span></a></dt>
+															<dd>
+																	<ul>
+																			<li><a href="#none"><span>skt</span></a></li>
+																	</ul>
+															</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">휴대폰번호</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl title="조건 선택">
+															<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>011</span></a></li>
+																	<li><a href="#none"><span>016</span></a></li>
+																	<li><a href="#none"><span>017</span></a></li>
+																	<li><a href="#none"><span>018</span></a></li>
+																	<li><a href="#none"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+													<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">성별</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="chk8" id="chk8_1" checked>
+													<label for="chk8_1">남자</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk8" id="chk8_2">
+													<label for="chk8_2">여자</label>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="mt_6">
+								<span class="check_item square">
+									<input type="checkbox" name="chk9" id="chk9">
+									<label for="chk9">아래 전체 약관에 동의합니다.</label>
+								</span>
+								<div class="mt_2 payment_write_box">
+									<div>
+										<button type="button" class="btn btn_sm btn_default">전문보기</button>
+										<span class="check_item square ml6">
+											<input type="checkbox" name="chk10" id="chk10">
+											<label for="chk10">본인확인 서비스 이용 약관</label>
+										</span>
+									</div>
+									<div class="mt_2">
+										<button type="button" class="btn btn_sm btn_default">전문보기</button>
+										<span class="check_item square ml6">
+											<input type="checkbox" name="chk11" id="chk11">
+											<label for="chk11">개인정보 이용 및 제공 동의</label>
+										</span>
+									</div>
+									<div class="mt_2">
+										<button type="button" class="btn btn_sm btn_default">전문보기</button>
+										<span class="check_item square ml6">
+											<input type="checkbox" name="chk12" id="chk12">
+											<label for="chk12">고유식별정보처리 동의</label>
+										</span>
+									</div>
+									<div class="mt_2">
+										<button type="button" class="btn btn_sm btn_default">전문보기</button>
+										<span class="check_item square ml6">
+											<input type="checkbox" name="chk13" id="chk13">
+											<label for="chk13">통신사 본인확인서비스 이용 동의</label>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('layer01');">인증번호 발송</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: SMS인증확인 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
