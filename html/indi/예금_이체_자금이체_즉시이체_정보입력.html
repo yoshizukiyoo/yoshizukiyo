@@ -26,19 +26,6 @@
 			// 보이스피싱 경고 팝업
 			//openModal('alert01');
 
-			// 출금정보 박스
-			$('.btn_payment').on('click', function () {
-				$(this).toggleClass('on');
-				if ($('.payment_write_box .payment_inner').css('display') == 'block') {
-					$('.payment_write_box .payment_inner').hide();
-				} else {
-					$('.payment_write_box .payment_inner').show();
-					$('.payment_write_box .payment_inner, .payment_msg1').show();
-					$('.transfer_info_box, .security_number_box, .payment_msg2').hide();
-					$('.btn_payment').removeClass('on');
-				}
-			});
-
 			// 입금정보 탭
 			$('.tab_menu_type1 a').on('click', function () {
 				var obj = $(this);
@@ -49,12 +36,6 @@
 			});
 
 		});
-
-		function transferBox() {
-			$('.payment_write_box .payment_inner, .payment_msg1').hide();
-			$('.transfer_info_box, .security_number_box, .payment_msg2').show();
-			$('.btn_payment').addClass('on');
-		}
 	</script>
 </head>
 
@@ -105,21 +86,20 @@
 				</div>
 
 				<!-- s: 출금정보 -->
-				<div class="payment_write_box mt_19">
+				<div class="payment_write_box section">
 					<div class="fx_lr">
 						<h3 class="tit1 fx_left">출금정보</h3>
-						<button type="button" class="btn_payment fx_right"><span class="blind">출금정보 닫기</span></button>
+						<button type="button" class="btn btn_sm btn_outline_default fx_right">추가이체</button>
 					</div>
 					<div class="payment_inner mt_4">
-						<div class="tbl_data tbl_list_data">
+						<div class="tbl_data tbl_list_data tbl_payment">
 							<table>
-								<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원)
-									정보를 제공하고 있습니다.</caption>
+								<caption class="sr_only">출금정보 상세내용이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를 제공하고 있습니다.</caption>
 								<colgroup>
 									<col>
-									<col style="width: 17%">
-									<col style="width: 17%">
-									<col style="width: 17%">
+									<col style="width: 14%">
+									<col style="width: 15%">
+									<col style="width: 15%">
 								</colgroup>
 								<thead>
 									<tr>
@@ -134,8 +114,7 @@
 										<td>
 											<div class="fx_lr fx_align_center">
 												<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
-												<button type="button" class="btn btn_xs btn_default v_base fx_right"
-													onclick="openModal('popup01', this);">전체계좌조회</button>
+												<button type="button" class="btn btn_xs btn_default v_base fx_right" onclick="openModal('popup01', this);">전체계좌조회</button>
 											</div>
 										</td>
 										<td class="txt_r">3,100,000</td>
@@ -147,17 +126,12 @@
 						</div>
 
 						<!-- s: 출금계좌정보 -->
-						<div class="tbl_tit mt_4">
-							<div class="txt_right">
-								<strong class="necessary">*</strong>
-								표시는 필수입력사항입니다.
-							</div>
-						</div>
+						
 						<div class="tbl_row2">
 							<table>
 								<caption class="sr_only">이체금액 입력 폼이며 이체금액(원)을 입력하실 수 있습니다.</caption>
 								<colgroup>
-									<col style="width: 194px;">
+									<col style="width: 16%;">
 									<col>
 								</colgroup>
 								<tbody>
@@ -167,7 +141,7 @@
 											<strong class="necessary">*</strong>
 										</th>
 										<td>
-
+											
 											<input type="password" class="tf" style="width: 200px;" title="계좌비밀번호 입력">
 											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
 										</td>
@@ -178,8 +152,8 @@
 											<strong class="necessary">*</strong>
 										</th>
 										<td>
-											<input type="password" class="tf error" style="width: 200px;" title="계좌비밀번호 입력">
-											<!-- [D] Text Field error : class 속성에 error 추가 -->
+											
+											<input type="password" class="tf error" style="width: 200px;" title="계좌비밀번호 입력"><!-- [D] Text Field error : class 속성에 error 추가 -->
 											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
 											<div class="error_info">비밀번호를 입력해주세요.</div><!-- [D] Text Field error 메세지 -->
 										</td>
@@ -210,14 +184,14 @@
 						<!-- e: 출금계좌정보 -->
 
 						<!-- s: 입금정보 -->
-						<div class="mt_16">
+						<div class="section">
 							<h3 class="tit1">입금정보</h3>
 							<div class="tab_menu_type1 mb_4">
 								<ul>
-									<li><a href="#;" class="current" data-tab="tab_table01">최근입금계좌</a></li>
-									<li><a href="#;" data-tab="tab_table02">자주쓰는입금계좌</a></li>
-									<li><a href="#;" data-tab="tab_table03">본인계좌</a></li>
-									<li><a href="#;" data-tab="tab_table04">직접입력</a></li>
+										<li><a href="#;" class="current" data-tab="tab_table01">최근입금계좌</a></li>
+										<li><a href="#;" data-tab="tab_table02">자주쓰는입금계좌</a></li>
+										<li><a href="#;" data-tab="tab_table03">본인계좌</a></li>
+										<li><a href="#;" data-tab="tab_table04">직접입력</a></li>
 								</ul>
 							</div>
 
@@ -251,8 +225,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -260,8 +233,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -269,8 +241,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -278,8 +249,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -287,8 +257,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -296,8 +265,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -305,8 +273,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -314,8 +281,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -323,8 +289,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
@@ -332,8 +297,7 @@
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 										</tbody>
 									</table>
@@ -359,7 +323,7 @@
 								</div>
 								<div class="tbl tbl_scroll_y tbl_tab mt_2">
 									<table>
-										<caption class="sr_only">자주쓰는입금계좌 목록 표이며 번호, 입금은행명, 입금계좌번호, 예금주, 그룹, 계좌선택 정보를 제공하고 있습니다.</caption>
+										<caption class="sr_only">자주쓰는입금계좌 목록 표이며 번호, 입금은행명, 입금계좌번호, 예금주, 거래일자, 계좌선택 정보를 제공하고 있습니다.</caption>
 										<colgroup>
 											<col style="width: 10%">
 											<col style="width: 21%">
@@ -374,7 +338,7 @@
 												<th scope="col">입금은행명</th>
 												<th scope="col">입금계좌번호</th>
 												<th scope="col">예금주</th>
-												<th scope="col">그룹</th>
+												<th scope="col">거래일자</th>
 												<th scope="col">계좌선택</th>
 											</tr>
 										</thead>
@@ -384,90 +348,80 @@
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>가족</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>가족</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
-												<td>친구</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 										</tbody>
 									</table>
@@ -479,12 +433,13 @@
 							<div data-tab-table="tab_table03" style="display: none;">
 								<div class="tbl tbl_scroll_y tbl_tab mt_2">
 									<table>
-										<caption class="sr_only">본인계좌 목록 표이며 번호, 입금은행명, 입금계좌번호, 계좌별칭(상품명), 계좌선택 정보를 제공하고 있습니다.</caption>
+										<caption class="sr_only">본인계좌 목록 표이며 번호, 입금은행명, 입금계좌번호, 예금주, 거래일자, 계좌선택 정보를 제공하고 있습니다.</caption>
 										<colgroup>
 											<col style="width: 10%">
-											<col style="width: 24%">
-											<col style="width: 24%">
 											<col style="width: 21%">
+											<col style="width: 21%">
+											<col style="width: 19%">
+											<col style="width: 16%">
 											<col>
 										</colgroup>
 										<thead>
@@ -492,7 +447,8 @@
 												<th scope="col">번호</th>
 												<th scope="col">입금은행명</th>
 												<th scope="col">입금계좌번호</th>
-												<th scope="col">계좌별칭(상품명)</th>
+												<th scope="col">예금주</th>
+												<th scope="col">거래일자</th>
 												<th scope="col">계좌선택</th>
 											</tr>
 										</thead>
@@ -501,81 +457,81 @@
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_l">XXXXXXXXXXXXXX</td>
-												<td>생활비(e-Postbank예금)</td>
-												<td><button type="button" class="btn btn_xs btn_default" onclick="transferBox();">선택</button>
-												</td>
+												<td>홍길동</td>
+												<td>2021.06.30</td>
+												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 										</tbody>
 									</table>
@@ -591,101 +547,39 @@
 										표시는 필수입력사항입니다.
 									</div>
 								</div>
-								<div class="tbl_data tbl_row_data">
+								<div class="tbl_row2">
 									<table>
-										<caption class="sr_only">직접입력 표이며 입금은행선택, 입금계좌번호입력 후 이체를 실행하실 수 있습니다.</caption>
+										<caption class="sr_only">${표제목}</caption>
 										<colgroup>
-											<col style="width: 15%;">
-											<col>
-											<col style="width: 15%;">
+											<col style="width: 16%;">
 											<col>
 										</colgroup>
 										<tbody>
 											<tr>
-												<th scope="row">입금은행
-													<span class="necessary">*</span>
+												<th scope="row">
+													입금은행
+													<strong class="necessary">*</strong>
 												</th>
 												<td>
-													<div class="selectbox_wrap" style="width: 100%;">
-														<dl title="입금은행 선택">
-															<dt><a href="#;"><span>은행을 선택하여 주십시오.</span></a></dt>
+													<div class="selectbox_wrap" style="width: 355px;">
+														<dl title="은행 선택">
+															<dt><a href="#none"><span>은행을 선택하여 주십시오</span></a></dt>
 															<dd>
 																<ul>
-																	<li><a href="#;"><span>국세</span></a></li>
-																	<li><a href="#;"><span>지방세입</span></a></li>
-																	<li><a href="#;"><span>우체국</span></a></li>
-																	<li><a href="#;"><span>경남</span></a></li>
-																	<li><a href="#;"><span>광주</span></a></li>
-																	<li><a href="#;"><span>교보증권</span></a></li>
-																	<li><a href="#;"><span>국민(구 주택)</span></a></li>
-																	<li><a href="#;"><span>기업</span></a></li>
-																	<li><a href="#;"><span>농협</span></a></li>
-																	<li><a href="#;"><span>대구</span></a></li>
-																	<li><a href="#;"><span>대신증권</span></a></li>
-																	<li><a href="#;"><span>도이치</span></a></li>
-																	<li><a href="#;"><span>메리츠증권</span></a></li>
-																	<li><a href="#;"><span>미래에셋증권</span></a></li>
-																	<li><a href="#;"><span>뱅크오브아메리카(BOA)</span></a></li>
-																	<li><a href="#;"><span>부국증권</span></a></li>
-																	<li><a href="#;"><span>부산</span></a></li>
-																	<li><a href="#;"><span>비엔피파리바은행</span></a></li>
-																	<li><a href="#;"><span>산림조합중앙회</span></a></li>
-																	<li><a href="#;"><span>산업</span></a></li>
-																	<li><a href="#;"><span>삼성증권</span></a></li>
-																	<li><a href="#;"><span>새마을</span></a></li>
-																	<li><a href="#;"><span>수협</span></a></li>
-																	<li><a href="#;"><span>신영증권</span></a></li>
-																	<li><a href="#;"><span>신한(구 조흥)</span></a></li>
-																	<li><a href="#;"><span>신한금융투자</span></a></li>
-																	<li><a href="#;"><span>신협</span></a></li>
-																	<li><a href="#;"><span>우리(구 한빛,평화)</span></a></li>
-																	<li><a href="#;"><span>유안타증권(구 동양증권)</span></a></li>
-																	<li><a href="#;"><span>유진투자증권</span></a></li>
-																	<li><a href="#;"><span>이베스트투자증권</span></a></li>
-																	<li><a href="#;"><span>저축은행</span></a></li>
-																	<li><a href="#;"><span>전북</span></a></li>
-																	<li><a href="#;"><span>제주</span></a></li>
-																	<li><a href="#;"><span>중국공상은행</span></a></li>
-																	<li><a href="#;"><span>중국건설은행</span></a></li>
-																	<li><a href="#;"><span>중국은행</span></a></li>
-																	<li><a href="#;"><span>카카오뱅크</span></a></li>
-																	<li><a href="#;"><span>카카오페이증권(구 바로투자증권)</span></a></li>
-																	<li><a href="#;"><span>케이뱅크</span></a></li>
-																	<li><a href="#;"><span>케이프투자증권(구 LIG투자증권)</span></a></li>
-																	<li><a href="#;"><span>키움증권</span></a></li>
-																	<li><a href="#;"><span>토스뱅크</span></a></li>
-																	<li><a href="#;"><span>토스증권</span></a></li>
-																	<li><a href="#;"><span>하나금융투자</span></a></li>
-																	<li><a href="#;"><span>하나은행</span></a></li>
-																	<li><a href="#;"><span>하이투자증권</span></a></li>
-																	<li><a href="#;"><span>한국씨티(구 한미,씨티)</span></a></li>
-																	<li><a href="#;"><span>한국투자증권</span></a></li>
-																	<li><a href="#;"><span>한국포스증권</span></a></li>
-																	<li><a href="#;"><span>한화투자증권</span></a></li>
-																	<li><a href="#;"><span>현대차증권</span></a></li>
-																	<li><a href="#;"><span>DB금융투자</span></a></li>
-																	<li><a href="#;"><span>HSBC</span></a></li>
-																	<li><a href="#;"><span>IBK투자증권</span></a></li>
-																	<li><a href="#;"><span>JP모간 체이스은행</span></a></li>
-																	<li><a href="#;"><span>KB증권</span></a></li>
-																	<li><a href="#;"><span>KTB투자증권</span></a></li>
-																	<li><a href="#;"><span>NH투자증권(구 우리투자증권)</span></a></li>
-																	<li><a href="#;"><span>SC제일은행</span></a></li>
-																	<li><a href="#;"><span>SK증권</span></a></li>
+																	<li><a href="#none"><span>은행선택1</span></a></li>
+																	<li><a href="#none"><span>은행선택2</span></a></li>
 																</ul>
 															</dd>
 														</dl>
 													</div>
 												</td>
-												<th scope="row">입금계좌번호
-													<span class="necessary">*</span>
+											</tr>
+											<tr>
+												<th scope="row">
+													입금계좌번호
+													<strong class="necessary">*</strong>
 												</th>
-												<td>
-													<input type="text" class="tf" style="width: 264px;" title="계좌번호 입력" placeholder="-없이 입력하세요.">
-													<div class="btn_inline_box">
-														<button type="button" class="btn btn_sm btn_default">이체</button>
-													</div>
-												</td>
+												<td><input type="text" class="tf" placeholder="-없이 입력하세요." style="width: 355px;"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -699,7 +593,7 @@
 				<!-- e: 출금정보 -->
 
 				<!-- s: 이체정보 -->
-				<div class="transfer_info_box mt_16" style="display: none;">
+				<div class="transfer_info_box mt_5">
 					<div class="tbl_data tbl_row_data">
 						<table>
 							<caption class="sr_only">출금계좌번호, 출금은행 정보를 제공하고 있습니다.</caption>
@@ -760,21 +654,11 @@
 				<!-- e: 이체정보 -->
 
 				<!-- s: 참고사항 -->
-				<div class="mt_4">
+				<div class="section">
 					<dl class="box">
 						<dt>참고사항</dt>
 						<dd>
 							<ul class="list list2">
-								<li style="display: none;"><!-- [D] : 지연이체일경우 추가 노출 -->
-									지연이체 거래안내
-									<ul class="list list3">
-										<li>지연이체 대상으로 3시간 뒤 이체거래가 처리됩니다.</li>
-										<li>이체거래 처리 시점에 예금잔액 부족, 이체한도 초과 등의 사유로 거래가 취소될 수 있으며, 처리 시점을 기분으로 수수료면제 여부가 결정됩니다.</li>
-										<li>지연이체 서비스 약정 고객은 이체거래 시 추가인증을 필수로 실시해야 합니다.</li>
-										<li>50만원 “이하＂이체거래는 즉시이체 가능합니다.</li>
-										<li>고객님의 연락처가 바뀌신 경우 고객정보수정을 통하여 변경할 수 있으며, 고객정보수정 버튼 클릭시 입력값은 모두 초기화 됩니다.</li>
-									</ul>
-								</li>
 								<li>
 									이체가능시간
 									<ul class="list list3">
@@ -788,24 +672,79 @@
 				</div>
 				<!-- e: 참고사항 -->
 
-				<!-- s: 보안매체 인증번호입력 -->
-				<div class="security_number_box mt_16" style="display: none;">
-					<div class="security_number">
-						<h3 class="tit1">보안매체 인증번호 입력</h3>
-						<div class="box_security_cert bg_otp">
-							<div class="security_cert_inner">
-								<p class="txt_security">OTP발생번호 <strong>숫자6자리</strong>를 입력하십시오.</p>
-								<div class="security_cert_wrap">
-									<div class="cert_number">
-										<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="6">
-									</div>
-									<button type="button" class="btn btn_lg btn_outline_default">OTP카드안내</button>
-								</div>
-								<p class="txt_security_caution">
-									<strong>통합OTP는 비밀번호 10회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
-									오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
-								</p>
+				<!-- s: 추가인증 -->
+				<div class="section">
+					<h3 class="tit1">추가인증</h3>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1">휴대폰 SMS 인증</div>
+							<div class="b2">고객님의 휴대폰으로 인증번호를 발송하고, 전송받은 인증번호를 입력하여 본인 여부를 확인합니다.</div>
+							<div class="b3"><a href="#;" class="btn btn_md btn_outline_default">인증확인</a></div>
+						</div>
+						<div class="row_box">
+							<div class="b1">ARS인증</div>
+							<div class="b2">
+								화면에 출력된 인증번호를 고객님께서 선택하신 휴대폰이나 유선전화로 ARS수신 후 인증번호를<br>
+								입력하여 보인 여부를 확인합니다.
 							</div>
+							<div class="b3"><a href="#;" class="btn btn_md btn_outline_default">인증확인</a></div>
+						</div>
+						<div class="row_box">
+							<div class="b1">1회용인증번호</div>
+							<div class="b2">
+								우체국에서 발급받은 1회용인증번호 6자리를 입력하여 본인 여부를 확인합니다.
+							</div>
+							<div class="b3"><a href="#;" class="btn btn_md btn_outline_default">인증확인</a></div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 추가인증 -->
+
+				<!-- s: 보안매체 인증번호입력 -->
+				<div class="section">
+					<h3 class="tit1">보안매체 인증번호 입력</h3>
+					<div class="box_security_cert bg_security_card">
+						<div class="security_cert_inner">
+							<p class="txt_security">영업점에서 발급 받으신 보안카드를 확인하여 아래의 빈 칸에 보안카드 코드를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_r">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
+									<span class="security_masking mas_l">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+							</div>
+							<p class="txt_security_caution">
+								<strong>보안카드 비밀번호 5회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
+					<div class="box_security_cert bg_otp">
+						<div class="security_cert_inner">
+							<p class="txt_security">OTP발생번호 <strong>숫자6자리</strong>를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="6">
+								</div>
+								<button type="button" class="btn btn_lg btn_outline_default">OTP카드안내</button>
+							</div>
+							<p class="txt_security_caution">
+								<strong>통합OTP는 비밀번호 10회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
 						</div>
 					</div>
 				</div>
