@@ -1,10 +1,13 @@
 <strong style="color:red">모든 자료는 대외비이므로 보안에 신경써 주세요 (유출절대금지)</strong>
 
 - 퍼블리싱팀 업무현황표 : https://docs.google.com/spreadsheets/d/1FP6ksttEi-J0CVUV3ORCr9w4CEy-aE2efMCpqV8xJzc/edit?usp=sharing
+> 사용법 : http://pms.inseq.co.kr:9000/geistkorea/epost/post/5
 - 퍼블리싱팀 파일 공유용 구글드라이브 : https://drive.google.com/drive/folders/1e5NJ5CQ3C1jNKhGjJTVgU2kg1lJrNol2?usp=sharing
 - 퍼블리싱팀 공통 컴포넌트 가이드 
     - 인터넷뱅킹(deposit) : http://ceb.epost.inseq.co.kr:7789/html/index.html
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
+- 퍼블리싱 산출물 내부망 공유용 SVN 저장소 : http://pms.inseq.co.kr:9000/svn/geistkorea/epost-html (본 PMS 계정 사용)
+
 
 # PMS 사용 안내
 협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
@@ -20,20 +23,20 @@
 ### 디자인팀 산출물 목록 IA구조도(업무현황표)
 - [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
 - [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
-- [IA구조도(기본)_채널서비스_보험](https://docs.google.com/spreadsheets/d/1Qy_OLzyyO7zvBgQC_DfMu0lJtVXVTKituiBrsX_5i10/edit?usp=sharing)
-
-### 스토리보드(구글드라이브)
-- [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
-- 7/9 수급 스토리보드 : [https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w](https://drive.google.com/open?id=11bJx-W0PaS2aeN8VM70UavhCHqQY2Z2w)
-- 자료 반출용 공용 이메일 계정
-[http://webmail.16block.com/](http://webmail.16block.com/) (geistkorea1 / 가이스트1)
+- [01. 인터넷보험_작업대장](https://docs.google.com/spreadsheets/d/1m2UaAgVRFU84DGTGrKSx76tnNcWpi5cqCBcLq-lPumQ/edit#gid=0)
 
 ### 디자인 산출물
-- 디자인 공통 가이드(디자이너 협업용) : [http://epost.test.ubiqos.co.kr/html/main/main01.html](http://epost.test.ubiqos.co.kr/html/main/main01.html)
-- 디자인 산출물 자료 : SVN 저장소 URL : [https://59.2.0.242/svn/design](https://59.2.0.242/svn/design)
+- 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
+- 디자인 산출물 자료 SVN
+> SVN 저장소 URL : https://59.2.0.242/svn/design
 > geistpb / rkdltmxmzhfldk (가이스트코리아 영자 타이핑)
-SVN 클라이언트 다운로드 : [https://tortoisesvn.net/downloads.html](https://tortoisesvn.net/downloads.html)
-SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn](http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn)
+SVN 클라이언트 다운로드 : https://tortoisesvn.net/downloads.html
+SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
+
+### 스토리보드(구글드라이브)
+- 보험 스토리보드 SVN : SVN 우체국_문서\07. 내부문서\30. 설계단계\03. 보험
+- [디자인팀에서 제공한 구글드라이브](https://drive.google.com/drive/folders/1C3noRtUIxfrlmCNpPTzfGlc5jQGCiqnn?usp=sharing)
+- 자료 반출용 공용 이메일 계정 : http://webmail.16block.com/ (geistkorea1 / 가이스트1)
 
 <br>
 
@@ -45,19 +48,28 @@ SVN 클라이언트 사용법 : [http://lmc.cs.kookmin.ac.kr/readmore/tortoisesv
 가이드 : [https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing](https://docs.google.com/document/d/15UB-K3fcg57qi6pksz36txB_Tc-qOpIsMrC5KMYeS9g/edit?usp=sharing)
 > 홈 화면 우측에 원격저장소 복사하기를 눌러서 PULL 받으면 됩니다.
 ![22219-2021-7-15-9-51.png](/files/11304) 
-퍼블리셔 협업시에는 `develop` 브랜치 사용해 주세요
-'master'는 개발팀에 전달할 최종산출물 저장소로 사용할 예정입니다.
 3. [마크업 개발환경 설정 가이드](https://docs.google.com/document/d/1SuPkM-HWfoaw4Fpkpe8P44rMUBD_1gUFYgm9BFKJ4Uc/edit?usp=sharing)
 4. 퍼블리셔 교육자료
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
     - [우체국차세대금융_고객채널퍼블리싱가이드](https://docs.google.com/presentation/d/1SSQpJfcXbevYXzevfWQSdBF2BbFL47cn/edit?usp=sharing&ouid=100874491042190796911&rtpof=true&sd=true)
 5. [퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
 
+### Git 브랜치 전략
+- PC웹 공통 : master (퍼블리싱 PL 승인외 수정 금지)
+인터넷뱅킹 : deposit
+인터넷보험 : insurance
+- 스마트(모바일) 공통 : smart-master (퍼블리싱 PL 승인외 수정 금지)
+스마트뱅킹 : smart-deposit
+스마트보험 : smart-insurance
+- 팀원별 임시 브랜치 생성시 네이밍 규칙
+> 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach
+단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
+
 ### 퍼블리셔 팀 협업 가이드
 1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
 '게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
-2. 긴급하거나 긴밀한 논의가 필요한 경우 메신저로 협업 합니다.
-> 퍼블리셔 협업용 메신저 다운로드 : [메일플러그 메신저(구 퍼들러)](https://www.mailplug.com/mailplug/help/help_item_view/443)
+2. 긴급하거나 긴밀한 논의가 필요한 경우 채널톡 메신저로 협업 합니다.
+> 퍼블리셔 협업용 메신저 채널톡 다운로드 : https://channel.io/ko/download
 
 ### .vscode/settings.json
 ```json
