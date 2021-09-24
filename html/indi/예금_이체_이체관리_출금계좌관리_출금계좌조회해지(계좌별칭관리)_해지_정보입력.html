@@ -23,7 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			
+
 		});
 	</script>
 </head>
@@ -37,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">출금계좌등록</h2>
+				<h2 class="tit_cont">출금계좌조회/해지(계좌별칭관리)</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -56,24 +56,22 @@
 				<!-- s: 본문 -->
 				<div class="cont_header_right">
 					<ul class="step">
-						<li><span class="num">1</span><span class="txt">정보입력</span></li>
-						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
-						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="mb_16">
-					<div class="box first_section">
-						<ul class="list list1">
-							<li>고객님이 출금계좌로 등록할 계좌정보입니다. 내용이 맞는지 확인하시기 바랍니다.</li>
-						</ul>
-					</div>
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>고객님이 출금해지계좌로 등록할 계좌정보입니다. 내용이 맞는지 확인하시기 바랍니다.</li>
+					</ul>
 				</div>
 
-				<div class="mb_20">
+				<!-- s: 출금정보 -->
+				<div class="section">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">출금계좌등록 입력정보 확인(예금종류, 통지구분, 계좌번호, 잔액, 계좌비밀번호입력)</caption>
+							<caption class="sr_only">선택한 출금해지계좌 정보이며 예금종류, 계좌번호, 잔액 정보 및 계좌비밀번호 입력 양식을 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -83,15 +81,13 @@
 							<tbody>
 								<tr>
 									<th scope="row">예금종류</th>
-									<td>보통예금</td>
-									<th scope="row">통지구분</th>
-									<td>입/출금통지</td>
+									<td colspan="3">일반저축예금</td>
 								</tr>
 								<tr>
 									<th scope="row">계좌번호</th>
-									<td>010041-01-065849</td>
+									<td>600833-02-000590</td>
 									<th scope="row">잔액</th>
-									<td class="txt_r">99,999,977원</td>
+									<td class="txt_r">151,081,347원</td>
 								</tr>
 								<tr>
 									<th scope="col">계좌비밀번호</th>
@@ -102,11 +98,13 @@
 										</div>
 									</td>
 								</tr>
-								<tr><!-- [D] error guide : 개발시 삭제되는 행 입니다 -->
+								<tr>
+									<!-- [D] error guide : 개발시 삭제되는 행 입니다 -->
 									<th scope="col">계좌비밀번호</th>
 									<td colspan="3">
 										<div class="btn_mouse_pwd">
-											<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 320px;"><!-- [D] Field error : class 속성에 error 추가 -->
+											<input type="password" class="tf error" title="계좌비밀번호 입력" style="width: 320px;">
+											<!-- [D] Field error : class 속성에 error 추가 -->
 											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
 										</div>
 										<div class="error_info">계좌비밀번호를 입력해 주십시오.</div><!-- [D] error 메세지 -->
@@ -116,8 +114,10 @@
 						</table>
 					</div>
 				</div>
-				
-				<div>
+				<!-- s: 출금정보 -->
+
+				<!-- s: 보안매체 인증번호 입력 -->
+				<div class="section">
 					<h3 class="tit1">보안매체 인증번호 입력</h3>
 					<div class="box_security_cert bg_security_card">
 						<div class="security_cert_inner">
@@ -126,7 +126,8 @@
 								<div class="cert_number">
 									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
 									<span class="security_masking mas_r">
-										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력"
+											style="width: 50px;height: 32px;">
 									</span>
 									<button type="button" class="btn_mouse">
 										<span class="sr_only">마우스로 보안카드번호입력</span>
@@ -135,7 +136,8 @@
 								<div class="cert_number">
 									<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
 									<span class="security_masking mas_l">
-										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력"
+											style="width: 50px;height: 32px;">
 									</span>
 									<button type="button" class="btn_mouse">
 										<span class="sr_only">마우스로 보안카드번호입력</span>
@@ -149,10 +151,12 @@
 						</div>
 					</div>
 				</div>
+				<!-- e: 보안매체 인증번호 입력 -->
 
 				<div class="btn_tbl_btm">
-					<a href="예금_이체_이체관리_출금계좌관리_출금계좌등록_정보입력.html" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="예금_이체_이체관리_출금계좌관리_출금계좌등록_실행완료.html" class="btn btn_xl btn_primary">등록실행</a>
+					<a href="예금_이체_이체관리_출금계좌관리_출금계좌조회해지(계좌별칭관리).html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="예금_이체_이체관리_출금계좌관리_출금계좌조회해지(계좌별칭관리)_해지_실행완료.html" class="btn btn_xl btn_primary">해지실행</a>
+					<!-- [D] 해지실행 버튼 클릭 시 공인인증창 호출-->
 				</div>
 
 				<!-- s: alert 팝업 -->
@@ -176,15 +180,17 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
 				<!-- e: alert 팝업 -->
-				
+
 				<!-- s: confirm 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
 					<div class="dimed"></div>

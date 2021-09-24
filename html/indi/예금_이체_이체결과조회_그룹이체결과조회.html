@@ -40,13 +40,14 @@
 				if ($('#check1_1').prop('checked')) {
 					$('.date_type01').show();
 					$('.date_type02').hide();
-				} else if($('#check1_2').prop('checked')){
+				} else if ($('#check1_2').prop('checked')) {
 					$('.date_type01').hide();
 					$('.date_type02').show();
 				}
+				$('.tf_datepicker').val(null)
 			})
 
-			$('.check_all').on('click', function () {
+			$('#check2_all').on('click', function () {
 				$('input[name=check2]').prop('checked', this.checked)
 			})
 		});
@@ -80,18 +81,17 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="mb_16">
-					<div class="box box_more first_section">
-						<ul class="list list1">
-							<li>고객님이 이체하신 그룹이체결과 내역 및 예약이체 내역을 조회하실 수 있습니다.</li>
-							<li>그룹즉시이체조회는 당일 즉시이체 처리결과를 확인하실 수 있습니다.</li>
-							<li>그룹예약이체조회는 미실행된 거래에 대해서 취소 신청을 하실 수 있습니다.</li>
-							<li>그룹예약이체 등록취소는 이체일 지정일 전일까지 하실 수 있습니다.</li>
-						</ul>
-					</div>
+				<div class="box box_more first_section">
+					<ul class="list list1">
+						<li>고객님이 이체하신 그룹이체결과 내역 및 예약이체 내역을 조회하실 수 있습니다.</li>
+						<li>그룹즉시이체조회는 당일 즉시이체 처리결과를 확인하실 수 있습니다.</li>
+						<li>그룹예약이체조회는 미실행된 거래에 대해서 취소 신청을 하실 수 있습니다.</li>
+						<li>그룹예약이체 등록취소는 이체일 지정일 전일까지 하실 수 있습니다.</li>
+					</ul>
 				</div>
 
-				<div>
+				<!-- s: 조회정보 -->
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
 							<h3 class="tit1">조회정보</h3>
@@ -102,7 +102,7 @@
 					</div>
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">조회정보 입력표(그룹명, 조회구분, 조회기간)</caption>
+							<caption class="sr_only">조회정보 입력 양식이며 그룹명, 조회구분, 조회기간을 입력하실 수 있습니다.</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -126,7 +126,8 @@
 											</dl>
 										</div>
 										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default" onclick="openModal('popup01')">전체그룹조회</button>
+											<button type="button" class="btn btn_md btn_outline_default"
+												onclick="openModal('popup01')">전체그룹조회</button>
 										</div>
 									</td>
 								</tr>
@@ -150,7 +151,8 @@
 											</dl>
 										</div>
 										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default" onclick="openModal('popup01')">전체그룹조회</button>
+											<button type="button" class="btn btn_md btn_outline_default"
+												onclick="openModal('popup01')">전체그룹조회</button>
 										</div>
 										<div class="error_info">그룹을 선택하여 주십시오.</div><!-- [D] error 메세지 -->
 									</td>
@@ -192,6 +194,7 @@
 						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
 					</div>
 				</div>
+				<!-- e: 조회정보 -->
 
 				<!-- s: 조회결과 -->
 				<!-- s: 조회결과01 : 조회구분 == 그룹즉시이체조회 선택 시 -->
@@ -202,33 +205,33 @@
 							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data mt_4">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<!-- 설계도 미완성으로 인한 임시 테이블 : 추후 작업 -->
-							<caption class="sr_only">그룹즉시이체조회내역 결과(이체실행일 상태, 출금계좌번호, 입금은행, 입금계좌번호, 받는분, 이체금액(수수료))</caption>
+							<caption class="sr_only">그룹즉시이체조회내역 목록이며 이체실행일/상태, 출금계좌번호, 입금은행, 입금계좌번호, 입금계좌 예금주, 이체금액(수수료) 정보를 제공하고
+								있습니다.</caption>
 							<colgroup>
 								<col style="width: 6%;">
+								<col style="width: 15%;">
 								<col style="width: 17%;">
-								<col style="width: 10%;">
-								<col style="width: 16%;">
-								<col style="width: 10%;">
-								<col style="width: 12%;">
+								<col style="width: 13%;">
+								<col style="width: 17%;">
+								<col style="width: 15%;">
 								<col>
 							</colgroup>
 							<thead>
 								<tr>
 									<th scope="col">
-										<span class="check_item square">
-											<input type="checkbox" name="check2" id="check1_all" class="check_all">
-											<label for="check1_all"><span class="sr_only">전체선택</span></label>
+										<span class="check_item square single">
+											<input type="checkbox" name="check2" id="check2_all">
+											<label for="check2_all"><span class="sr_only">전체선택</span></label>
 										</span>
 									</th>
 									<th scope="col">이체실행일<br>상태</th>
 									<th scope="col">출금계좌번호</th>
 									<th scope="col">입금은행</th>
 									<th scope="col">입금계좌번호</th>
-									<th scope="col">받는분</th>
-									<th scope="col">이체금액(수수료)</th>
+									<th scope="col">입금계좌 예금주</th>
+									<th scope="col">이체금액<br>(수수료)</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -264,25 +267,26 @@
 							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data mt_4">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<!-- 설계도 미완성으로 인한 임시 테이블 : 추후 작업 -->
-							<caption class="sr_only">그룹예약이체조회(이체실행일 기준)내역 결과(이체실행일 상태, 출금계좌번호(내 통장 표기), 입금은행(받는분), 입금계좌번호(받는분 통장 표기),
-								이체금액(원), 상태)</caption>
+							<caption class="sr_only">그룹예약이체조회(이체실행일 기준)목록이며 이체실행일, 출금계좌번호, 출금통장표시, 입금은행/입금계좌번호, 입금은행표시, 이체금액(원), 상태
+								정보를 제공하고 있습니다.</caption>
 							<colgroup>
-								<col style="width: 16%;">
-								<col style="width: 19%;">
-								<col style="width: 19%;">
-								<col style="width: 19%;">
+								<col style="width: 14%;">
 								<col style="width: 17%;">
+								<col style="width: 14%;">
+								<col style="width: 17%;">
+								<col style="width: 14%;">
 								<col>
+								<col style="width: 9%;">
 							</colgroup>
 							<thead>
 								<tr>
 									<th scope="col">이체실행일</th>
-									<th scope="col">출금계좌번호<br>(내 통장 표기)</th>
-									<th scope="col">입금은행<br>(받는분)</th>
-									<th scope="col">입금계좌번호<br>(받는분 통장 표기)</th>
+									<th scope="col">출금계좌번호</th>
+									<th scope="col">출금통장표시</th>
+									<th scope="col">입금은행<br>입금계좌번호</th>
+									<th scope="col">입금은행표시</th>
 									<th scope="col">이체금액(원)</th>
 									<th scope="col">상태</th>
 								</tr>
@@ -290,22 +294,24 @@
 							<tbody>
 								<tr>
 									<td class="txt_c">2019.09.30 (오전)</td>
-									<td>010017-02-191237<br>(형성인)</td>
-									<td>국민<br>(형성인)</td>
-									<td>233210529429<br>(나봄미)</td>
+									<td>010017-02-191237</td>
+									<td>형성인</td>
+									<td>국민<br>233210529429</td>
+									<td>나봄미</td>
 									<td class="txt_r">10,000</td>
 									<td class="txt_c">
-										<a href="예금_이체_이체결과조회_그룹이체결과조회_취소_정보확인.html" class="btn btn_sm  btn_outline_default">취소</a>
+										<a href="예금_이체_이체결과조회_그룹이체결과조회_취소_정보입력.html" class="btn btn_sm  btn_outline_default">취소</a>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">2019.09.30 (오전)</td>
-									<td>010017-02-191237<br>(형성인)</td>
-									<td>국민<br>(형성인)</td>
-									<td>233210529429<br>(나봄미)</td>
+									<td>010017-02-191237</td>
+									<td>형성인</td>
+									<td>국민<br>233210529429</td>
+									<td>나봄미</td>
 									<td class="txt_r">10,000</td>
 									<td class="txt_c">
-										<a href="예금_이체_이체결과조회_그룹이체결과조회_취소_정보확인.html" class="btn btn_sm  btn_outline_default">취소</a>
+										<a href="예금_이체_이체결과조회_그룹이체결과조회_취소_정보입력.html" class="btn btn_sm  btn_outline_default">취소</a>
 									</td>
 								</tr>
 							</tbody>
@@ -326,7 +332,7 @@
 							<div class="tbl_tit">
 								<div class="txt_right">
 									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 								</div>
 							</div>
 							<div class="tbl_data tbl_list_data">
