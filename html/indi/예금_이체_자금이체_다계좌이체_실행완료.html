@@ -24,6 +24,17 @@
 	<script>
 		$(document).ready(function () {
 
+			// 보내는 분 휴대전화 번호 박스
+			$('.sms_phone_check input[type=radio]').change(function(){
+				if($(this).val() == 'sms_phone1'){
+					$('[data-sms-phone=phone1]').show();
+					$('[data-sms-phone=phone2]').hide();
+				} else {
+					$('[data-sms-phone=phone1]').hide();
+					$('[data-sms-phone=phone2]').show();
+				}
+			});
+
 		});
 	</script>
 </head>
@@ -126,7 +137,7 @@
 							<tbody>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item">
+										<span class="check_item single">
 											<input type="radio" name="check1" id="check1_1">
 											<label for="check1_1"><span class="sr_only">선택</span></label>
 										</span>
@@ -142,7 +153,7 @@
 								</tr>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item">
+										<span class="check_item single">
 											<input type="radio" name="check1" id="check1_2">
 											<label for="check1_2"><span class="sr_only">선택</span></label>
 										</span>
@@ -158,7 +169,7 @@
 								</tr>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item">
+										<span class="check_item single">
 											<input type="radio" name="check1" id="check1_3">
 											<label for="check1_3"><span class="sr_only">선택</span></label>
 										</span>
@@ -197,8 +208,8 @@
 					<div class="mt_4 txt_r">
 						<button type="button" class="btn btn_sm btn_default" onclick="openModal('popup01', this)">자주쓰는입금계좌로등록</button>
 						<button type="button" class="btn btn_sm btn_default" onclick="openModal('popup02', this)">SMS전송(카카오톡 알림)</button>
-						<button type="button" class="btn btn_sm btn_default" onclick="openModal('popup03', this)">이체확인증</button>
-						<button type="button" class="btn btn_sm btn_default">증명서발급</button>
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('popup03', this)">이체확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 					</div>
 				</div>
 				<!-- e: 이체정보 -->
@@ -603,17 +614,18 @@
 				</div>
 				<!-- e: confirm 팝업 -->
 
-				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_outline_default">이체계속</a>
-					<a href="#;" class="btn btn_xl btn_outline_default">다계좌이체결과조회</a>
-				</div>
-
-				<div class="box section">
+				<div class="mt_8">
 					<ul class="list list1">
 						<li>다계좌이체 결과는 다계좌이체결과조회 메뉴를 통하여 확인하실 수 있습니다.</li>
 						<li>다계좌이체결과조회 메뉴에서 이체 정상여부를 반드시 확인하시기 바랍니다.</li>
 					</ul>
 				</div>
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">이체계속</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">다계좌이체결과조회</a>
+				</div>
+				
 				<!-- e: 본문 -->
 			</div>
 		</article>
