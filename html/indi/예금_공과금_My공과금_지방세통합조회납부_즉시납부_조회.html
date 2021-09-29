@@ -27,6 +27,17 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
+
+			// check2 disable
+			$('input[name=check2]').on('change', function(){
+				$('[data-inp-active]').attr('disabled', '""').val(null);
+
+				if($('#check2_1').prop('checked')){
+					$('[data-inp-active=check2_1]').removeAttr('disabled')
+				} else {
+					$('[data-inp-active=check2_2]').removeAttr('disabled')
+				}
+			})
 		});
 	</script>
 </head>
@@ -67,13 +78,13 @@
 					</ul>
 				</div>
 
-				<div class="box mt_12">
+				<div class="box first_section">
 					<ul class="list list1">
 						<li>도움말 영역</li>
 					</ul>
 				</div>
 
-				<div class="tab_menu_type1 first_section">
+				<div class="tab_menu_type1 section">
 					<ul>
 						<li><a href="예금_공과금_My공과금_지방세통합조회납부_즉시납부_조회.html" class="current">즉시납부</a></li>
 						<li><a href="예금_공과금_My공과금_지방세통합조회납부_예약납부_조회.html">예약납부</a></li>
@@ -81,7 +92,7 @@
 				</div>
 
 				<!-- s: 납부 구분 선택 -->
-				<div class="mt_6">
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
@@ -102,7 +113,11 @@
 									</th>
 									<td>
 										<span class="check_item">
-											<input type="radio" name="check1" id="check1_2" checked>
+											<input type="radio" name="check1" id="check1_1" checked>
+											<label for="check1_1">전체</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_2">
 											<label for="check1_2">지방세</label>
 										</span>
 										<span class="check_item">
@@ -121,21 +136,21 @@
 				</div>
 				<!-- e: 납부 구분 선택 -->
 
-				<!-- s: 조회정보 -->
+				<!-- s: 조회정보 입력 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
 							<h3 class="tit1">조회정보</h3>
 						</div>
 						<div class="txt_right">
-							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
 						</div>
 					</div>
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">간편납부번호, 전자납부번호 입력 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">조회방식 선택 양식으로 간편납부번호, 전자납부번호 중 선택하실 수 있습니다.</caption>
 							<colgroup>
-								<col style="width: 16%">
+								<col style="width: 16%;">
 								<col>
 							</colgroup>
 							<tbody>
@@ -143,29 +158,29 @@
 									<th scope="row">
 										<span class="check_item">
 											<input type="radio" name="check2" id="check2_1" checked>
-											<label for="check2_1">간편납부번호 <strong class="necessary">*</strong></label>
+											<label for="check2_1">간편납부번호 <span class="necessary">*</span></label>
 										</span>
 									</th>
 									<td>
-										<input type="text" class="tf check2_1" style="width: 350px;" title="간편납부번호 입력">
+										<input type="text" class="tf" data-inp-active="check2_1" style="width: 350px;" title="간편납부번호 입력">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">
 										<span class="check_item">
 											<input type="radio" name="check2" id="check2_2">
-											<label for="check2_2">전자납부번호 <strong class="necessary">*</strong></label>
+											<label for="check2_2">전자납부번호 <span class="necessary">*</span></label>
 										</span>
 									</th>
 									<td>
-										<input type="text" class="tf check2_2" style="width: 350px;" title="간편납부번호 입력" disabled>
+										<input type="text" class="tf" data-inp-active="check2_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 조회정보 -->
+				<!-- e: 조회정보 입력 -->
 
 				<div class="btn_data_search">
 					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
@@ -175,7 +190,7 @@
 				<div class="btm_result_box section">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">국세통합조회내역 상세(지자체, 세목, 고지구분, 납부기한, 납부금액, 납부하기)</caption>
+							<caption class="sr_only">국세통합조회 목록이며 지자체, 세목, 고지구분, 납부기한, 납부금액, 납부하기 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 11%;">
 								<col style="width: 14%;">
@@ -189,8 +204,8 @@
 								<tr>
 									<th scope="col">
 										<span class="check_item square">
-											<input type="checkbox" name="check3" id="Check3_1" class="check_all">
-											<label for="Check3_1"><span class="sr_only">전체선택</span></label>
+											<input type="checkbox" name="check3" id="Check3_all">
+											<label for="Check3_all"><span class="sr_only">전체선택</span></label>
 										</span>
 									</th>
 									<th scope="col">지자체</th>
@@ -205,6 +220,23 @@
 								<tr>
 									<td class="txt_c">
 										<span class="check_item square">
+											<input type="checkbox" name="check3" id="Check3_1">
+											<label for="Check3_1"><span class="sr_only">선택</span></label>
+										</span>
+									</td>
+									<td>경기도성남시</td>
+									<td>등록면허세(면허)</td>
+									<td>체납</td>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_r">27,810</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item square">
 											<input type="checkbox" name="check3" id="Check3_2">
 											<label for="Check3_2"><span class="sr_only">선택</span></label>
 										</span>
@@ -216,7 +248,7 @@
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('popup01', this)">상세보기</button>
+											onclick="openModal('popup02', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
@@ -233,7 +265,7 @@
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('popup02', this)">상세보기</button>
+											onclick="openModal('popup03', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
@@ -250,7 +282,7 @@
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('popup03', this)">상세보기</button>
+											onclick="openModal('popup01', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
@@ -267,7 +299,7 @@
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('popup01', this)">상세보기</button>
+											onclick="openModal('popup02', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
@@ -284,7 +316,7 @@
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('popup01', this)">상세보기</button>
+											onclick="openModal('popup03', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
@@ -318,7 +350,7 @@
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('popup01', this)">상세보기</button>
+											onclick="openModal('popup02', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
@@ -335,14 +367,14 @@
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_default"
-											onclick="openModal('popup01', this)">상세보기</button>
+											onclick="openModal('popup03', this)">상세보기</button>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
-					<div class="mt_4 txt_c btn_more_wrap">
+					<div class="mt_4 txt_c">
 						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 
@@ -358,7 +390,7 @@
 					</div>
 					<!-- e: 페이징 -->
 
-					<div class="mt_6 txt_c">
+					<div class="btn_tbl_btm">
 						<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
 						<a href="예금_공과금_My공과금_지방세통합조회납부_즉시납부_정보입력.html" class="btn btn_xl btn_primary">납부</a>
 					</div>

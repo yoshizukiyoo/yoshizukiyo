@@ -27,6 +27,29 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
+
+			// check1 option
+			$('input[name=check1]').on('change', function(){
+				$('[data-check-option]').hide();
+
+				if($('#check1_2').prop('checked')){
+					$('[data-check-option=check1_2').show();
+				} else if ($('#check1_3').prop('checked')){
+					$('[data-check-option=check1_3').show();
+				}
+			})
+
+			// check2 disable
+			$('input[name=check2]').on('change', function(){
+				$('[data-inp-active]').attr('disabled', '""').val(null);
+
+				if($('#check2_1').prop('checked')){
+					$('[data-inp-active=check2_1]').removeAttr('disabled')
+				} else {
+					$('[data-inp-active=check2_2]').removeAttr('disabled')
+				}
+			})
+
 		});
 	</script>
 </head>
@@ -68,7 +91,13 @@
 					</ul>
 				</div>
 
-				<div class="tab_menu_type1 first_section">
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>도움말 영역</li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 section">
 					<ul>
 						<li><a href="예금_공과금_My공과금_국세통합조회납부_즉시납부_조회.html">즉시납부</a></li>
 						<li><a href="예금_공과금_My공과금_국세통합조회납부_예약납부_조회.html" class="current">예약납부</a></li>
@@ -76,13 +105,8 @@
 					</ul>
 				</div>
 
-				<div class="mt_12">
-					<ul class="list list1">
-						<li>000</li>
-					</ul>
-				</div>
-
-				<div class="mt_8">
+				<!-- s: 조회구분값 입력 -->
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
@@ -90,9 +114,9 @@
 					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">즉시납부 종류 선택(전체, 국세/전파사용료/ 관세/기금/기타국고, 항만수수료, 특허수수료)</caption>
+							<caption class="sr_only">조회구분값을 선택하실 수 있습니다.</caption>
 							<colgroup>
-								<col style="width: 15%;">
+								<col style="width: 16%;">
 								<col>
 							</colgroup>
 							<tbody>
@@ -123,50 +147,55 @@
 										</span>
 									</td>
 								</tr>
-								<tr class="check_option">
+								<tr data-check-option="check1_2" style="display: none;">
 									<th scope="row">상세구분
 										<span class="necessary">*</span>
 									</th>
 									<td>
-										<div class="check_item1">
-											<span class="check_item">
-												<input type="radio" name="check2" id="check2_1" checked>
-												<label for="check2_1">전체</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="check2" id="check2_2">
-												<label for="check2_2">국세</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="check2" id="check2_3">
-												<label for="check2_3">전파사용료</label>
-											</span>
-										</div>
-										<div class="check_item2">
-											<span class="check_item">
-												<input type="radio" name="check3" id="check3_1" checked>
-												<label for="check3_1">전체</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="check3" id="check3_2">
-												<label for="check3_2">관세</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="check3" id="check3_3">
-												<label for="check3_3">기금</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="check3" id="check3_4">
-												<label for="check3_4">기타국고</label>
-											</span>
-										</div>
+										<span class="check_item">
+											<input type="radio" name="check1_2" id="check1_2_1" checked>
+											<label for="check1_2_1">전체</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1_2" id="check1_2_2">
+											<label for="check1_2_2">국세</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1_2" id="check1_2_3">
+											<label for="check1_2_3">전파사용료</label>
+										</span>
+									</td>
+								</tr>
+								<tr data-check-option="check1_3" style="display: none;">
+									<th scope="row">상세구분
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="check1_3" id="check1_3_1" checked>
+											<label for="check1_3_1">전체</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1_3" id="check1_3_2">
+											<label for="check1_3_2">관세</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1_3" id="check1_3_3">
+											<label for="check1_3_3">기금</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1_3" id="check1_3_4">
+											<label for="check1_3_4">기타국고</label>
+										</span>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
+				<!-- e: 조회구분값 입력 -->
 
+				<!-- s: 조회정보 입력 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
@@ -176,31 +205,41 @@
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
 						</div>
 					</div>
-					<div class="check_list_box">
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check4" id="check4_1" checked>
-									<label for="check4_1">간편납부번호 <span class="necessary">*</span></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf check4_1" style="width: 350px;" title="간편납부번호 입력">
-							</div>
-						</div>
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check4" id="check4_2">
-									<label for="check4_2">전자납부번호 <span class="necessary">*</span></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf check4_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
-							</div>
-						</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">조회방식 선택 양식으로 간편납부번호, 전자납부번호 중 선택하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 16%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check2" id="check2_1" checked>
+											<label for="check2_1">간편납부번호 <span class="necessary">*</span></label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf" data-inp-active="check2_1" style="width: 350px;" title="간편납부번호 입력">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check2" id="check2_2">
+											<label for="check2_2">전자납부번호 <span class="necessary">*</span></label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf" data-inp-active="check2_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
+				<!-- e: 조회정보 입력 -->
 
 				<div class="btn_data_search">
 					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
@@ -222,7 +261,12 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">선택</th>
+									<th scope="col">
+										<span class="check_item square single">
+											<input type="checkbox" name="check3" id="check3_all">
+											<label for="check3_all">전체선택</label>
+										</span>
+									</th>
 									<th scope="col">지자체</th>
 									<th scope="col">세목</th>
 									<th scope="col">고지구분</th>
@@ -231,12 +275,12 @@
 									<th scope="col">납부하기</th>
 								</tr>
 							</thead>
-							<tbody class="list_length_check">
+							<tbody>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_1">
-											<label for="inputCheck1_1">선택</label>
+										<span class="check_item square single">
+											<input type="checkbox" name="check3" id="check3_1">
+											<label for="check3_1">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -250,9 +294,9 @@
 								</tr>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_2">
-											<label for="inputCheck1_2">선택</label>
+										<span class="check_item square single">
+											<input type="checkbox" name="check3" id="check3_2">
+											<label for="check3_2">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -266,9 +310,9 @@
 								</tr>
 								<tr>
 									<td class="txt_c">
-										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_3">
-											<label for="inputCheck1_3">선택</label>
+										<span class="check_item square single">
+											<input type="checkbox" name="check3" id="check3_3">
+											<label for="check3_3">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -284,7 +328,7 @@
 						</table>
 					</div>
 
-					<div class="mt_4 txt_c btn_more_wrap">
+					<div class="mt_4 txt_c">
 						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 
@@ -300,9 +344,9 @@
 					</div>
 					<!-- e: 페이징 -->
 
-					<div class="mt_6 txt_c">
+					<div class="btn_tbl_btm">
 						<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-						<a href="공과금_My공과금_국세통합조회납부_즉시납부_02.정보입력.html" class="btn btn_xl btn_primary">납부</a>
+						<a href="예금_공과금_My공과금_국세통합조회납부_예약납부_약관동의.html" class="btn btn_xl btn_primary">예약납부</a>
 					</div>
 				</div>
 				<!-- e: 조회 결과 -->

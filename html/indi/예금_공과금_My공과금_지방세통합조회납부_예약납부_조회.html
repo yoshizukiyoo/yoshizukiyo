@@ -26,6 +26,17 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
+
+			// check2 disable
+			$('input[name=check2]').on('change', function(){
+				$('[data-inp-active]').attr('disabled', '""').val(null);
+
+				if($('#check2_1').prop('checked')){
+					$('[data-inp-active=check2_1]').removeAttr('disabled')
+				} else {
+					$('[data-inp-active=check2_2]').removeAttr('disabled')
+				}
+			})
 		});
 	</script>
 </head>
@@ -81,7 +92,7 @@
 				</div>
 
 				<!-- s: 납부 구분 선택 -->
-				<div class="mt_6">
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
@@ -89,7 +100,7 @@
 					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">즉시납부 종류 선택(전체, 지방세, 환경개선부담금, 세외수입)</caption>
+							<caption class="sr_only">납부내역 구분을 선택하실 수 있습니다.</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -120,22 +131,23 @@
 								</tr>
 								<tr>
 									<th scope="row">조회기간
-										<span class="necessary">*</span>
+										<strong class="necessary">*</strong>
 									</th>
 									<td>
 										<div class="mulit_date_box">
 											<div class="btn_date">
-													<button type="button" class="btn btn_sm btn_default">당일</button>
-													<button type="button" class="btn btn_sm btn_outline_default">7일</button>
-													<button type="button" class="btn btn_sm btn_outline_default">15일</button>
-													<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
-													<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
+												<button type="button" class="btn btn_sm btn_default">당일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
 											</div>
 											<div class="datepicker_box">
-													<span class="datepicker"><input type="text" class="tf tf_datepicker" title="시작 날짜 선택"><button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button></span>
-													<span class="datepicker"><input type="text" class="tf tf_datepicker" title="종료 날짜 선택"><button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button></span>
+												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
 											</div>
-									</div>
+										</div>
+									</td>
 									</td>
 								</tr>
 							</tbody>
@@ -144,7 +156,7 @@
 				</div>
 				<!-- e: 납부 구분 선택 -->
 
-				<!-- s: 조회정보 -->
+				<!-- s: 조회정보 입력 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
@@ -154,32 +166,41 @@
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
 						</div>
 					</div>
-					<div class="check_list_box">
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check2" id="check2_1" checked>
-									<label for="check2_1">간편납부번호 <span class="necessary">*</span></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf check2_1" style="width: 350px;" title="간편납부번호 입력">
-							</div>
-						</div>
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check2" id="check2_2">
-									<label for="check2_2">전자납부번호 <span class="necessary">*</span></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf check2_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
-							</div>
-						</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">조회방식 선택 양식으로 간편납부번호, 전자납부번호 중 선택하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 16%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check2" id="check2_1" checked>
+											<label for="check2_1">간편납부번호 <span class="necessary">*</span></label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf" data-inp-active="check2_1" style="width: 350px;" title="간편납부번호 입력">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check2" id="check2_2">
+											<label for="check2_2">전자납부번호 <span class="necessary">*</span></label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf" data-inp-active="check2_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<!-- e: 조회정보 -->
+				<!-- e: 조회정보 입력 -->
 
 				<div class="btn_data_search">
 					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
@@ -189,7 +210,7 @@
 				<div class="btm_result_box section">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">국세통합조회내역 상세(지자체, 세목, 고지구분, 납부기한, 납부금액, 납부하기)</caption>
+							<caption class="sr_only">국세통합조회 목록이며 지자체, 세목, 고지구분, 납부기한, 납부금액, 납부하기 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 11%;">
 								<col style="width: 14%;">
@@ -207,15 +228,15 @@
 									<th scope="col">고지구분</th>
 									<th scope="col">납부기한</th>
 									<th scope="col">납부금액(원)</th>
-									<th scope="col">납부하기</th>
+									<th scope="col">납부내역</th>
 								</tr>
 							</thead>
-							<tbody class="list_length_check">
+							<tbody>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_1">
-											<label for="inputCheck1_1">선택</label>
+											<input type="radio" name="check3" id="check3_1">
+											<label for="check3_1">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -224,15 +245,15 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup01', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_2">
-											<label for="inputCheck1_2">선택</label>
+											<input type="radio" name="check3" id="check3_2">
+											<label for="check3_2">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -241,15 +262,15 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup02', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_3">
-											<label for="inputCheck1_3">선택</label>
+											<input type="radio" name="check3" id="check3_3">
+											<label for="check3_3">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -258,15 +279,15 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup03', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_4">
-											<label for="inputCheck1_4">선택</label>
+											<input type="radio" name="check3" id="check3_4">
+											<label for="check3_4">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -275,15 +296,15 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup01', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_5">
-											<label for="inputCheck1_5">선택</label>
+											<input type="radio" name="check3" id="check3_5">
+											<label for="check3_5">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -292,15 +313,15 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup01', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_6">
-											<label for="inputCheck1_6">선택</label>
+											<input type="radio" name="check3" id="check3_6">
+											<label for="check3_6">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -309,15 +330,15 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup01', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_7">
-											<label for="inputCheck1_7">선택</label>
+											<input type="radio" name="check3" id="check3_7">
+											<label for="check3_7">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -326,15 +347,15 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup01', this)">상세보기</button>
 									</td>
 								</tr>
 								<tr>
 									<td class="txt_c">
 										<span class="check_item single">
-											<input type="radio" name="inputCheck1" id="inputCheck1_8">
-											<label for="inputCheck1_8">선택</label>
+											<input type="radio" name="check3" id="check3_8">
+											<label for="check3_8">선택</label>
 										</span>
 									</td>
 									<td>경기도성남시</td>
@@ -343,7 +364,7 @@
 									<td class="txt_c">2021.05.31</td>
 									<td class="txt_r">27,810</td>
 									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_default"
+										<button type="button" class="btn btn_xs btn_default"
 											onclick="openModal('popup01', this)">상세보기</button>
 									</td>
 								</tr>
@@ -351,7 +372,7 @@
 						</table>
 					</div>
 
-					<div class="mt_4 txt_c btn_more_wrap">
+					<div class="mt_4 txt_c">
 						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 
