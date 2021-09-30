@@ -471,6 +471,99 @@ th {
 			}
 		}
 	}
+
+	&.application_list {
+		ul {
+			li {
+				padding: 26px 35px;
+
+				&:last-child {
+					border-bottom: 1px solid #ddd;
+				}
+			}
+		}
+
+		.left_info {
+			width: 80%;
+
+			.inline_info {
+				width: 187px;
+				font-size: inherit;
+			}
+
+			.list_name {
+				display: inline-block;
+				margin-top: 0;
+				font-size: $font-size-base;
+			}
+		}
+
+		.right_info {
+			width: 20%;
+		}
+	}
+
+	&.list_only {
+		ul {
+			li {
+				padding-bottom: 30px;
+				padding-left: 65px;
+
+				.left_info {
+					width: calc(100% - 200px);
+				}
+
+				.right_info {
+					width: 200px;
+				}
+			}
+		}
+
+		.inline_block {
+			margin-top: 5px;
+			display: block;
+		}
+
+		.lab_status {
+			&.outline_gray {
+				border: 1px solid #ddd;
+			}
+
+			&.outline_primary {
+				border: 1px solid $primary;
+			}
+
+			&.txt_gray {
+				color: #737373;
+				font-size: 14px;
+				font-weight: 200;
+			}
+		}
+	}
+
+	&.list_slt {
+		ul {
+			li {
+				position: relative;
+				padding: 25px 30px 26px 30px;
+
+				.left_info {
+					width: calc(100% - 390px);
+				}
+
+				.right_info {
+					width: 390px;
+					padding-right: 90px;
+
+					.btn_mouse_toggle {
+						position: absolute;
+						top: calc(50% - 12.5px);
+						right: 30px;
+					}
+				}
+			}
+		}
+	}
 }
 
 .total_price {
@@ -1875,6 +1968,30 @@ th {
 	>.btn_cert_arrow {
 		margin-left: 10px;
 	}
+
+	.agree_all {
+		padding-bottom: 10px;
+		border-bottom: 1px solid #111;
+	}
+
+	.agree_list {
+		>li {
+			padding: 20px 0;
+			border-bottom: 1px solid #ddd;
+			display: flex;
+			justify-content: space-between;
+
+			.check_item {
+				margin: 1px 0;
+				vertical-align: top;
+			}
+
+			.btn {
+				min-width: 73px;
+				font-weight: 200;
+			}
+		}
+	}
 }
 
 .txt_pass_war {
@@ -2767,4 +2884,64 @@ th {
 		}
 	}
 
+}
+
+
+/* 구비서류 */
+.doc_info {
+	.list_num {
+		counter-reset: num;
+
+		li {
+			position: relative;
+			padding-left: 20px;
+
+			.list_num2 {
+				counter-reset: num2;
+
+				li {
+					&::before {
+						counter-increment: num2;
+						content: counter(num2) " ";
+						width: 16px;
+						padding-top: 6px;
+						font-size: 11px;
+						text-align: center;
+					}
+
+					&::after {
+						position: absolute;
+						top: 8px;
+						left: 0;
+						width: 14px;
+						height: 14px;
+						border: 1px solid #111;
+						border-radius: 8px;
+					}
+				}
+			}
+
+			.box {
+				margin: 10px 0 20px -20px;
+				padding: 23px 30px;
+			}
+
+			&:last-child {
+				.box {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		>li {
+			&::before {
+				counter-increment: num;
+				content: counter(num) ". ";
+			}
+		}
+	}
+
+	.bg_lightgray {
+		border: 0;
+	}
 }

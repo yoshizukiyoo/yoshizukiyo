@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">청약철회 지급내역서</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#required_document_pop" class="btn btn_sm btn_outline_default ml_2"
+					onclick="openModal('required_document_pop', this);">
+					<span>공통서류</span>
+				</a>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xl show" data-popup="required_document_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">구비서류</h2>
+						</div>
+						<div class="popup_body">
+							<div class="doc_info">
+								<div class="tit_left">
+									<h3 class="tit1">장해급부금</h3>
+								</div>
+								<ul class="list list_num">
+									<li>장해 확인서류 : 후유장해진단서
+										<div class="box bg_lightgray mt_2 mb_2">
+											<ul class="list list1">
+												<li>신체의 관절운동장해는 A.M.A식(운동각도 기재)발행</li>
+												<li>추가판탈출증 장해의 경우 1999.8.1이후 계약은 운동장해는 인정하지 않고 후유장애에 따라 장해 판정</li>
+												<li>진단명, 사고(질병)발생일, 장해진단일, 영구장해 여부 등 기재</li>
+												<li>사고(질병)발생일로부터 180일 경과 후 청구</li>
+												<li>확정장해의 경우 180일 경과 여부와 상관없이 일반진단서로 청구가능 (수술일 = 장해진단일)</li>
+											</ul>
+										</div>
+										<ul class="list list_num2">
+											<li>사지절단 : 절단수술일, 절단부위, 현재상태(접합 유무 등)기재</li>
+											<li>인공관절 : 인공관절 치환 수술명, 수술일 기재</li>
+											<li>비장, 안구 적출 : 비장, 안구 적출 수술명, 수술일 기재</li>
+											<li>심장, 신장, 간장의 장기 이식 : 장기 이식 수술명, 수술일 기재</li>
+											<li>만성심부전 : 최초투석일자(혈액 및 복막)기재</li>
+										</ul>
+										<div class="box bg_lightgray">
+											<ul class="list list1">
+												<li>팔/다리/척추 등의 운동장해시는 AMA방식의 운동각도 측정내용 기재</li>
+												<li>보험가입 년도별 장해등급 적용기준 상이함에 주의(해당 약관 필히 확인)</li>
+												<li>2005.10.5이후 계약인 경우 장해진단서에 장해의 내용과 그 정도, 사고와의 인과 관계 및 사고기여도, <br> 향후 치료의 문제 및 호전도 등을 필수적으로 기재
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>재해사고 증명서류 : 재해 사고시</li>
+									<li>일단진단서로 대체 가능한 장해
+										<div class="box bg_lightgray mt_2 mb_2">
+											<ul class="list list1">
+												<li>만성신부전(최초 투석일, 영구투석여부 기재), 사지절단(절단일, 절단부위 기재), 인공 관절(치환일, 치환부위 기재), 비장상실(적출일 기재), 안구적출(적출일
+													기재)</li>
+												<li>생명보험사 제출용 진단서만 인정(동사무소 제출용으로 작성된 장해진단서는 장해판정 기준이 상이하므로 불인정)</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
