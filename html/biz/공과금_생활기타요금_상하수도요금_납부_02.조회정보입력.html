@@ -23,7 +23,10 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			
+			$('input[name=check1]').on('click', function(){
+				$('.tf').attr('disabled','""').val(null);
+				$(this).parents('.b1').siblings('.b2').find('.tf').removeAttr('disabled')
+			})
 		});
 	</script>
 </head>
@@ -37,7 +40,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">아파트거주자 관리비 자동이체 변경</h2>
+				<h2 class="tit_cont">상하수도요금 납부</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -55,59 +58,82 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="box first_section">
-					<ul class="list list1">
-						<li>아파트관리비 자동이체 변경이 완료되었습니다.</li>
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">행정구역</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">간략조회결과</span></li>
+						<li><span class="num">4</span><span class="txt">상세조회결과</span></li>
+						<li><span class="num">5</span><span class="txt">정보입력</span></li>
+						<li><span class="num">6</span><span class="txt">입력확인</span></li>
+						<li><span class="num">7</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="section">
-					<div class="tbl_data tbl_row_data">
-						<table>
-							<caption class="sr_only">아파트관리비 자동이체등록 변경 실행결과 안내(고객명, 출금계좌번호, 아파트기관코드, 납부자번호, 수납기관명, 아파트 상세주소, 신청구분)</caption>
-							<colgroup>
-								<col style="width: 15%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">고객명</th>
-									<td>황은가</td>
-								</tr>
-								<tr>
-									<th scope="row">출금계좌번호</th>
-									<td>0000000000000</td>
-								</tr>
-								<tr>
-									<th scope="row">아파트기관코드</th>
-									<td>1811000174</td>
-								</tr>
-								<tr>
-									<th scope="row">납부자번호</th>
-									<td>1811000000</td>
-								</tr>
-								<tr>
-									<th scope="row">수납기관명</th>
-									<td>100761842 아파트관리사무소</td>
-								</tr>
-								<tr>
-									<th scope="row">아파트 상세주소</th>
-									<td>102동 101호</td>
-								</tr>
-								<tr>
-									<th scope="row">신청구분</th>
-									<td>변경</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>	
+				<div class="box box_more first_section">
+					<ul class="list list1">
+						<li>고지서의 전자수용가번호/간편납부번호 혹은 전자납부번호로 조회하실 수 있습니다.(서울시는 고객번호로 가능)</li>
+						<li>타인에게 부과된 상하수도요금도 조회 후 납부하실 수 있습니다.</li>
+						<li>서울시 상하수도 수시분의 경우 납부자께서는 서울시 Etax에서 납부해 주시기 바랍니다.</li>
+					</ul>
 				</div>
+
+				<!-- s: 조회방식 선택 -->
+				<div class="section">
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1">
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_1" checked="">
+									<label for="check1_1">전자납부번호 <strong class="necessary">*</strong></label>
+								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf" style="width: 360px;" title="전자납부번호 입력">
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1">
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_2">
+									<label for="check1_2">전자수용가번호 <strong class="necessary">*</strong></label>
+								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf" style="width: 360px;" title="전자수용가번호 입력" disabled="">
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1">
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_3">
+									<label for="check1_3">고객번호(서울시) <strong class="necessary">*</strong></label>
+								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf" style="width: 360px;" title="고객번호 입력(서울시 전용)" disabled="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 조회방식 선택 -->
 
 				<div class="btn_tbl_btm">
-					<a href="예금_공과금_생활기타요금_아파트관리비_관리비자동이체조회변경해지.html" class="btn btn_xl btn_primary">확인</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="공과금_생활기타요금_상하수도요금_납부_03.간략조회결과.html" class="btn btn_xl btn_primary">조회</a>
 				</div>
 
-				
+				<div class="box section">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>상하수도요금 메뉴 이외의 방법으로 납부(가상계좌 등)하신 경우 납부사실이 반영되지 않을 수있사오니 이중납부되지 않도록 반드시 확인하신 후 납부하시기 바라며, 이중납부되신 경우 해당지방자치단체로 환급신청하여 주시기 바랍니다.</li>
+								<li>이용가능시간 : 07:00 ~ 23:30 (토 · 일요일, 공휴일 이용 가능)</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
