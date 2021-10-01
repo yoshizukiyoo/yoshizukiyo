@@ -12,23 +12,64 @@
 
 		form {
 			position: relative;
-			background-color: $white;
-			border-radius: 6px;
-			box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06v);
+
 
 			.form_integrated_search {
 				display: block;
+				height: 56px;
+				background-color: $white;
+				border-radius: 6px;
+				box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.06);
 
-				.opt {
-					border: 0;
-					border-radius: 0;
-					border-radius: 6px 0 0 6px;
+				&:after {
+					@include clearfix();
+				}
+
+				.selectbox_wrap {
+					float: left;
+					height: 100%;
+
+					&.active {
+						dt {
+							a {
+								border-radius: 6px 6px 0 0;
+							}
+						}
+					}
+
+					dt {
+						a {
+							border: 0;
+							border-radius: 6px;
+							background-color: $white;
+
+							span {
+								line-height: 56px;
+								height: 100%;
+
+								&:after {
+									top: 25px;
+								}
+							}
+						}
+					}
+
+					dd {
+						top: 57px;
+
+						ul {
+							border: 0;
+						}
+					}
 				}
 
 				.tf {
 					width: calc(100% - 130px);
 					border: 0;
 					padding-right: 50px;
+					height: 100%;
+					font-size: 18px;
+					color: #666;
 				}
 
 				.btn {
