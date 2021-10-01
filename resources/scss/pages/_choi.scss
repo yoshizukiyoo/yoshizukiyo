@@ -1,16 +1,23 @@
-.btn_right_top {
-	position: absolute;
-	right: 0;
-	top: 0;
-}
+//타이틀
+.tit_bul2 {
+	display: block;
+	position: relative;
+	padding-left: 10px;
+	color:#333;
+	font-weight: 400;
 
-.btn_block_box{
-	.btn{
-		&:not(:first-child){
-			margin-top: 4px;
-		}
+	&::before {
+		content: "";
+		position: absolute;
+		width: 5px;
+		height: 6px;
+		left: 0;
+		top: 12px;
+		background: url(#{$url-img-common}/bul_list2.png) no-repeat;
 	}
 }
+
+// 테이블
 .tbl_united{
 	table{
 		border-style: solid none solid;
@@ -39,6 +46,8 @@
 		}
 	}
 }
+
+//박스
 .pos_box{
 	position: relative;
 	.pos_left{
@@ -58,22 +67,37 @@
 		top: 0;
 	}
 }
-.select_option {
-	display: none;
-	.select_option_none{
-		height: 30px;
+
+.box{
+	&.box_clear{
+		border: none;
 	}
-	&.on {
-		display: block;
+	&.box_wide{
+		padding: 20px;
 	}
-}
-.tbl_option {
-	display: none;
-	&.on {
-		display: block;
+	&.box_xs {
+		padding: 8px 20px;
+	}
+	&.box_heading{
+		padding: 5px 20px 20px 20px;
 	}
 }
 
+.data_transfer_box{
+	position: relative;
+	&::after{
+		content: "";
+		width: 43px;
+		height: 58px;
+		background: url(#{$url-img-common}/ico_arr_right_lg_primary.png) no-repeat;
+		position: absolute;
+		right: -36px;
+		top: 25px;
+		z-index: -10;
+	}
+}
+
+//인풋
 .tit1{
 	.check_item{
 		>input[type=radio] + label{
@@ -83,6 +107,16 @@
 	}
 }
 
+.check_item_wrap{
+	display: inline-block;
+	margin-top: -8px;
+	margin-left: -26px;
+	.check_item{
+		margin-top: 8px;
+		margin-left: 26px;
+	}
+}
+//텍스트
 $font-size-xm : 18px !default;
 
 .txt_xm{
@@ -93,21 +127,59 @@ $font-size-xm : 18px !default;
 	letter-spacing: $letter-spacing !important;
 }
 
-.account_con {
-	>li {
-		.btm {
-			button {
-				&:hover {
-					color: $black;
-					font-weight: 400;
-				}
+$txt_demigray : #666 !important;
+
+.txt_demigray{
+	color: $txt_demigray;
+}
+
+//리스트
+.list{
+	&.list_mt_2{
+		>li{
+			&:not(:first-child){
+				margin-top: 10px;
 			}
 		}
 	}
 }
 
-.fx_align_base {
-	align-items: baseline;
+//배경색
+$bg_demigray : #e9e9e9 !important;
+
+.bg_demigray {
+	background-color: $bg_demigray;
+}
+
+//아이콘
+.ico_cancel_black {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  width: 19px;
+  height: 19px;
+  line-height: 19px;
+  background-image: url(#{$url-img-common}/ico_cancel_black.png);
+}
+
+//버튼
+.btn_right_top {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.btn_block_box{
+	.btn{
+		&:not(:first-child){
+			margin-top: 4px;
+		}
+	}
 }
 
 .btn_plus {
@@ -131,5 +203,48 @@ $font-size-xm : 18px !default;
 		height: 10px;
 		margin-left: 10px;
 		background: url(#{$url-img-common}/ico_plus.png) no-repeat;
+	}
+}
+
+//플렉스
+.fx_align_base {
+	align-items: baseline;
+}
+
+.fx_direction_col{
+	flex-direction: column;
+}
+
+//etc
+.scroll_y{
+	overflow-y: scroll;
+}
+
+.account_con {
+	>li {
+		.btm {
+			button {
+				&:hover {
+					color: $black;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+}
+
+.select_option {
+	display: none;
+	.select_option_none{
+		height: 30px;
+	}
+	&.on {
+		display: block;
+	}
+}
+.tbl_option {
+	display: none;
+	&.on {
+		display: block;
 	}
 }

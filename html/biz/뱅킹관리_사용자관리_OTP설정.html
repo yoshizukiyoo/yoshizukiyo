@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">OTP설정</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box box_more first_section">
+					<ul class="list list1">
+						<li>사용자별 OTP 등록 내역 및 상태를 조회하실 수 있습니다.</li>
+						<li>OTP 등록은 직원사용자에 한해 권한을 부여하실 수 있으며 등록 및 수정시에는 상태란에 [등록] 및 [수정]버튼을 클릭하세요.</li>
+						<li>총괄관리자의 OTP변경은 우체국 영업점에서만 가능합니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 등록 OTP 목록 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">등록 OTP</h3>
+						</div>
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">OTP 등록 조회결과 목록이며 인증업체코드, 일련번호, 사용자, 등록일자, 상태 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 8%;">
+								<col style="width: 15%;">
+								<col>
+								<col>
+								<col>
+								<col style="width: 12%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">인증업체코드</th>
+									<th scope="col">일련번호</th>
+									<th scope="col">사용자</th>
+									<th scope="col">등록일자</th>
+									<th scope="col">상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td class="txt_c">018</td>
+									<td class="txt_c">17738123</td>
+									<td class="txt_c">테스트 (TEST2018)</td>
+									<td class="txt_c">2021.01.18</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_xs btn_default" onclick="openModal('popup01', this)">등록</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2</td>
+									<td class="txt_c">018</td>
+									<td class="txt_c">17738123</td>
+									<td class="txt_c">테스트 (TEST2018)</td>
+									<td class="txt_c">2021.01.18</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_xs btn_outline_default" onclick="openModal('popup02', this)">수정</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 등록 OTP 목록 -->
+
+				<!-- s: OTP사용자 등록 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">OTP사용자 등록</h2>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">OTP사용자 등록 입력 양식입니다.</caption>
+									<colgroup>
+										<col style="width: 30%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">일련번호</th>
+											<td>177328123</td>
+										</tr>
+										<tr>
+											<th scope="row">사용자</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 100%;">
+													<dl title="사용자 선택">
+														<dt><a href="#;"><span>HK11(HK00001)</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#;"><span>HK11(HK00001)</span></a></li>
+																<li><a href="#;"><span>HKT111(hkt10000)</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup01');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('popup01');">등록</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: OTP사용자 등록 팝업 -->
+
+				<!-- s: OTP사용자 수정 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="popup02">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">OTP사용자 수정</h2>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">OTP사용자 수정 입력 양식입니다.</caption>
+									<colgroup>
+										<col style="width: 30%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">일련번호</th>
+											<td>177328123</td>
+										</tr>
+										<tr>
+											<th scope="row">사용자</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 100%;">
+													<dl title="사용자 선택">
+														<dt><a href="#;"><span>HK11(HK00001)</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#;"><span>HK11(HK00001)</span></a></li>
+																<li><a href="#;"><span>HKT111(hkt10000)</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup02');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('popup02');">수정</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: OTP사용자 수정 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>
