@@ -202,6 +202,13 @@ th.top_dt {
   font-size: 16px;
 }
 
+.inline_info.block .lab_status {
+  border: 1px solid red;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 15px;
+}
+
 .inline_info * {
   display: inline-block;
   vertical-align: top;
@@ -277,6 +284,7 @@ th.top_dt {
 .contract_list > ul > li {
   border-bottom: 1px solid #ddd;
   padding: 30px 35px;
+  position: relative;
 }
 
 .contract_list > ul > li.last {
@@ -309,7 +317,6 @@ th.top_dt {
 
 .contract_list > ul > li:first-child {
   border-top: 1px solid #606060;
-  border-bottom: 1px solid #ddd;
 }
 
 .contract_list > ul > li .left_info {
@@ -365,8 +372,20 @@ th.top_dt {
   clear: both;
 }
 
-.contract_list > ul + .total_price {
-  margin-top: -1px;
+.contract_list.bottom_add ul li {
+  padding-bottom: 0;
+}
+
+.contract_list.right_controll ul li {
+  padding-right: 130px;
+}
+
+.contract_list.right_controll .btn_mouse_toggle {
+  position: absolute;
+  right: 45px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .contract_list.right_small .left_info {
@@ -427,6 +446,12 @@ th.top_dt {
 
 .contract_list .tbl_row2 + .bottom_info {
   margin-top: 0;
+  padding-bottom: 30px;
+}
+
+.contract_list .tbl_row2 .bottom_total {
+  text-align: right;
+  padding: 15px 30px 20px;
 }
 
 .contract_list.special_info ul li .left_info {
@@ -486,8 +511,7 @@ th.top_dt {
 
 .contract_list.list_chk > ul > li {
   position: relative;
-  padding-left: 35px;
-  padding-bottom: 0;
+  padding-left: 60px;
 }
 
 .contract_list.list_chk > ul > li .left_info {
@@ -522,7 +546,7 @@ th.top_dt {
 
 .contract_list .bottom_info {
   position: relative;
-  padding: 25px 0px;
+  padding-top: 30px;
   float: left;
   width: 100%;
   text-align: right;
@@ -641,6 +665,10 @@ th.top_dt {
   border-top: 1px solid #ddd;
 }
 
+.total_price.bd_none {
+  border-top: 0;
+}
+
 .total_price em {
   font-style: normal;
   font-weight: 200;
@@ -707,7 +735,7 @@ th.top_dt {
 
 .left_info .top_info {
   display: block;
-  width: 680px;
+  width: 800px;
 }
 
 .left_info .top_info > a.list_name {
@@ -2909,6 +2937,65 @@ th.top_dt {
 
 .doc_info .bg_lightgray {
   border: 0;
+}
+
+.toggle_info {
+  position: relative;
+  float: left;
+  margin-top: 35px;
+  width: 100%;
+}
+
+.toggle_info.on .tbl_row2 {
+  display: none;
+}
+
+.toggle_info.on .btn_more_white:after {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+
+.toggle_info .tbl_row2 {
+  margin-top: 0;
+}
+
+.toggle_info:after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  left: -35px;
+  bottom: 0;
+  right: -35px;
+  z-index: 1;
+}
+
+.toggle_info .btn_more_white {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: -15px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.toggle_info .btn_more_white:after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.txt_right.toggle_controll a {
+  width: 135px;
+}
+
+.txt_right.toggle_controll a:after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.txt_right.toggle_controll a.on:after {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
 }
 
 /* 공통 검색 페이지 */

@@ -59,6 +59,13 @@ th {
 				font-size: 16px;
 			}
 		}
+
+		.lab_status {
+			border: 1px solid red;
+			font-size: 14px;
+			text-align: center;
+			padding: 0 15px;
+		}
 	}
 
 	* {
@@ -131,7 +138,6 @@ th {
 				display: none;
 			}
 		}
-
 	}
 }
 
@@ -140,6 +146,7 @@ th {
 		>li {
 			border-bottom: 1px solid #ddd;
 			padding: 30px 35px;
+			position: relative;
 
 			&.last {
 				border-color: #000;
@@ -173,7 +180,6 @@ th {
 
 			&:first-child {
 				border-top: 1px solid #606060;
-				border-bottom: 1px solid #ddd;
 			}
 
 			.left_info {
@@ -242,8 +248,27 @@ th {
 		}
 	}
 
-	>ul+.total_price {
-		margin-top: -1px;
+	&.bottom_add {
+		ul {
+			li {
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	&.right_controll {
+		ul {
+			li {
+				padding-right: 130px;
+			}
+		}
+
+		.btn_mouse_toggle {
+			position: absolute;
+			right: 45px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
 	}
 
 	&.right_small {
@@ -313,6 +338,12 @@ th {
 
 		&+.bottom_info {
 			margin-top: 0;
+			padding-bottom: 30px;
+		}
+
+		.bottom_total {
+			text-align: right;
+			padding: 15px 30px 20px;
 		}
 
 	}
@@ -397,8 +428,7 @@ th {
 		>ul {
 			>li {
 				position: relative;
-				padding-left: 35px;
-				padding-bottom: 0;
+				padding-left: 60px;
 
 				.left_info {
 					width: 530px;
@@ -436,7 +466,7 @@ th {
 
 	.bottom_info {
 		position: relative;
-		padding: 25px 0px;
+		padding-top: 30px;
 		float: left;
 		width: 100%;
 		text-align: right;
@@ -571,6 +601,10 @@ th {
 	padding-top: 30px;
 	border-top: 1px solid #ddd;
 
+	&.bd_none {
+		border-top: 0;
+	}
+
 	em {
 		font-style: normal;
 		font-weight: 200;
@@ -647,7 +681,7 @@ th {
 
 	.top_info {
 		display: block;
-		width: 680px;
+		width: 800px;
 
 		>a {
 			&.list_name {
@@ -2943,5 +2977,71 @@ th {
 
 	.bg_lightgray {
 		border: 0;
+	}
+}
+
+
+.toggle_info {
+	position: relative;
+	float: left;
+	margin-top: 35px;
+	width: 100%;
+
+	&.on {
+		.tbl_row2 {
+			display: none;
+		}
+
+		.btn_more_white {
+			&:after {
+				transform: rotate(0)
+			}
+		}
+	}
+
+	.tbl_row2 {
+		margin-top: 0;
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		border-bottom: 1px solid #ddd;
+		position: absolute;
+		left: -35px;
+		bottom: 0;
+		right: -35px;
+		z-index: 1;
+	}
+
+
+	.btn_more_white {
+		position: absolute;
+		z-index: 2;
+		left: 50%;
+		bottom: -15px;
+		transform: translateX(-50%);
+
+		&:after {
+			transform: rotate(180deg)
+		}
+	}
+}
+
+.txt_right {
+	&.toggle_controll {
+		a {
+			width: 135px;
+
+			&:after {
+				transform: rotate(180deg)
+			}
+
+			&.on {
+				&:after {
+					transform: rotate(0)
+				}
+			}
+		}
 	}
 }

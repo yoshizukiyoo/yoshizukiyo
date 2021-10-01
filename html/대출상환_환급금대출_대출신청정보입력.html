@@ -24,6 +24,37 @@
 	<script>
 		$(document).ready(function () {
 			// 이곳에 정의
+
+			$(".toggle_info .btn_more_white").click(function () {
+
+				if (!$(this).closest(".toggle_info").hasClass("on")) {
+					$(this).closest(".toggle_info").addClass("on");
+					$(this).addClass("on").text("열기");
+				} else {
+					$(this).closest(".toggle_info").removeClass("on");
+					$(this).removeClass("on").text("접기");
+				}
+			})
+
+			$(".toggle_controll .btn_more_white").click(function () {
+				if (!$(this).hasClass("on")) {
+					$(".toggle_info").each(function (i) {
+						$(".toggle_info").eq(i).addClass("on")
+					})
+					$(this).addClass("on").text("전체열기");
+					$(".toggle_info .btn_more_white").each(function (i) {
+						$(".toggle_info .btn_more_white").eq(i).removeClass("on").text("열기");
+					})
+				} else {
+					$(".toggle_info").each(function (i) {
+						$(".toggle_info").eq(i).removeClass("on")
+					})
+					$(this).removeClass("on").text("전체접기");;
+					$(".toggle_info .btn_more_white").each(function (i) {
+						$(".toggle_info .btn_more_white").eq(i).addClass("on").text("접기");
+					})
+				}
+			})
 		});
 	</script>
 </head>
@@ -76,261 +107,284 @@
 						<div class="tit_left">
 							<h3 class="tit1">환급금대출 신청정보</h3>
 						</div>
-					</div>
 
-					<!-- 반복 부분 -->
-					<div class="contract_info left_middle2">
-						<span class="left_info">
-							<span class="top_info">
-								<span class="lab_status v_top type1">정상</span>
-								<span class="inline_info">
-									<span>
-										<em class="pl_0">대출번호</em>
-										<a href="#;" class="link">70332598135</a>
-										<a href="#;" class="copy">
-											<i class="ico ico_copy">
-												<span class="sr_only">대출번호 복사</span>
-											</i>
-										</a>
-									</span>
-									<span>
-										<em>계약기간</em>
-										<span>2021.05.31 - 2037.05.31</span>
-									</span>
-								</span>
-							</span>
-							<a href="#;" class="list_name">예금담보대출</a>
-						</span>
-
-						<span class="right_info">
-							<span class="inline_info">
-								<span>
-									<em>계약자</em>
-									<span>나봄미</span>
-								</span>
-								<span>
-									<em>피보험자</em>
-									<span>나보미</span>
-								</span>
-							</span>
-
-							<span class="inline_info bottom">
-								<span>
-									<em>계약일</em>
-									<span>2021.06.20</span>
-								</span>
-								<span>
-									<em>최종납입월</em>
-									<span>2021.06</span>
-								</span>
-								<span>
-									<em>주보험금</em>
-									<span>36,000,000원</span>
-								</span>
-							</span>
-
-						</span>
-
-						<div class="tbl_row2 ">
-							<table class="bg_lightgray">
-								<caption class="sr_only">계약정보의 총납입보험료, 해약환급금, 기대출금, 선지급경조금, 자동대출금, 대출가능금액, 대출이율, 대출신청금액, 대출금분할상환신청,
-									기약정금액,
-									신규약정금액에 대한 정보표 입니다.</caption>
-								<colgroup>
-									<col style="width: 17%;">
-									<col>
-									<col style="width: 17%;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">총납입보험료</th>
-										<td class="txt_r pr_6">23,452,600원</td>
-										<th scope="row">해약환급금</th>
-										<td class="txt_r pr_6">0원</td>
-									</tr>
-									<tr>
-										<th scope="row">기대출금</th>
-										<td class="txt_r pr_6">0원</td>
-										<th scope="row">선지급경조금</th>
-										<td class="txt_r pr_6">0원</td>
-									</tr>
-									<tr>
-										<th scope="row">자동대출금</th>
-										<td class="txt_r pr_6">0원</td>
-										<th scope="row">대출가능금액</th>
-										<td class="txt_r pr_6">500,000,000원</td>
-									</tr>
-									<tr>
-										<th scope="row">대출이율</th>
-										<td class="txt_r pr_6">6.00%</td>
-										<th scope="row">대출신청금액</th>
-										<td class="txt_r pr_6">
-											<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 330px" value="500,000">
-											<span class="v_mid ml_1">원</span>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">대출금분할상환신청</th>
-										<td colspan="3">
-											<span class="check_item">
-												<input type="radio" name="div_app" id="div_app_1">
-												<label for="div_app_1">신청</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="div_app" id="div_app_2" checked>
-												<label for="div_app_2">아니요</label>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">기약정금액</th>
-										<td class="txt_r pr_6">
-											<input type="text" class="tf txt_r bg_" title="대출신청금액 입력" style="width: 330px" value="0" disabled>
-											<span class="v_mid ml_1">원</span>
-										</td>
-										<th scope="row">신규약정금액</th>
-										<td class="txt_r pr_6">
-											<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 330px" value="0" disabled>
-											<span class="v_mid ml_1">원</span>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="bottom_total">
-								<p>실수령액</p>
-								<strong>490,930원</strong>
-							</div>
+						<div class="txt_right toggle_controll">
+							<a href="#;" class="btn btn_more_white">전체접기</a>
 						</div>
 					</div>
-					<!-- // 반복 부분 -->
 
-					<!-- 반복 부분 -->
-					<div class="contract_info left_middle2">
-						<span class="left_info">
-							<span class="top_info">
-								<span class="lab_status v_top type1">정상</span>
-								<span class="inline_info">
-									<span>
-										<em class="pl_0">대출번호</em>
-										<a href="#;" class="link">70332598135</a>
-										<a href="#;" class="copy">
-											<i class="ico ico_copy">
-												<span class="sr_only">대출번호 복사</span>
-											</i>
-										</a>
-									</span>
-									<span>
-										<em>계약기간</em>
-										<span>2021.05.31 - 2037.05.31</span>
-									</span>
-								</span>
-							</span>
-							<a href="#;" class="list_name">예금담보대출</a>
-						</span>
-
-						<span class="right_info">
-							<span class="inline_info">
-								<span>
-									<em>계약자</em>
-									<span>나봄미</span>
-								</span>
-								<span>
-									<em>피보험자</em>
-									<span>나보미</span>
-								</span>
-							</span>
-
-							<span class="inline_info bottom">
-								<span>
-									<em>계약일</em>
-									<span>2021.06.20</span>
-								</span>
-								<span>
-									<em>최종납입월</em>
-									<span>2021.06</span>
-								</span>
-								<span>
-									<em>주보험금</em>
-									<span>36,000,000원</span>
-								</span>
-							</span>
-
-						</span>
-
-						<div class="tbl_row2 ">
-							<table class="bg_lightgray">
-								<caption class="sr_only">계약정보의 총납입보험료, 해약환급금, 기대출금, 선지급경조금, 자동대출금, 대출가능금액, 대출이율, 대출신청금액, 대출금분할상환신청,
-									기약정금액,
-									신규약정금액에 대한 정보표 입니다.</caption>
-								<colgroup>
-									<col style="width: 17%;">
-									<col>
-									<col style="width: 17%;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">총납입보험료</th>
-										<td class="txt_r pr_6">23,452,600원</td>
-										<th scope="row">해약환급금</th>
-										<td class="txt_r pr_6">0원</td>
-									</tr>
-									<tr>
-										<th scope="row">기대출금</th>
-										<td class="txt_r pr_6">0원</td>
-										<th scope="row">선지급경조금</th>
-										<td class="txt_r pr_6">0원</td>
-									</tr>
-									<tr>
-										<th scope="row">자동대출금</th>
-										<td class="txt_r pr_6">0원</td>
-										<th scope="row">대출가능금액</th>
-										<td class="txt_r pr_6">500,000,000원</td>
-									</tr>
-									<tr>
-										<th scope="row">대출이율</th>
-										<td class="txt_r pr_6">6.00%</td>
-										<th scope="row">대출신청금액</th>
-										<td class="txt_r pr_6">
-											<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 330px" value="500,000">
-											<span class="v_mid ml_1">원</span>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">대출금분할상환신청</th>
-										<td colspan="3">
-											<span class="check_item">
-												<input type="radio" name="div_app" id="div_app_1">
-												<label for="div_app_1">신청</label>
+					<div class="contract_list bottom_add left_middle2">
+						<ul>
+							<li>
+								<span class="left_info">
+									<span class="top_info">
+										<span class="lab_status v_top type1">정상</span>
+										<span class="inline_info">
+											<span>
+												<em class="pl_0">대출번호</em>
+												<a href="#;" class="link">70332598135</a>
+												<a href="#;" class="copy">
+													<i class="ico ico_copy">
+														<span class="sr_only">대출번호 복사</span>
+													</i>
+												</a>
 											</span>
-											<span class="check_item">
-												<input type="radio" name="div_app" id="div_app_2" checked>
-												<label for="div_app_2">아니요</label>
+											<span>
+												<em>계약기간</em>
+												<span>2021.05.31 - 2037.05.31</span>
 											</span>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">기약정금액</th>
-										<td class="txt_r pr_6">
-											<input type="text" class="tf txt_r bg_" title="대출신청금액 입력" style="width: 330px" value="0" disabled>
-											<span class="v_mid ml_1">원</span>
-										</td>
-										<th scope="row">신규약정금액</th>
-										<td class="txt_r pr_6">
-											<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 330px" value="0" disabled>
-											<span class="v_mid ml_1">원</span>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="bottom_total">
-								<p>실수령액</p>
-								<strong>490,930원</strong>
-							</div>
-						</div>
+										</span>
+									</span>
+									<a href="#;" class="list_name">예금담보대출</a>
+								</span>
+
+								<span class="right_info">
+									<span class="inline_info">
+										<span>
+											<em>계약자</em>
+											<span>나봄미</span>
+										</span>
+										<span>
+											<em>피보험자</em>
+											<span>나보미</span>
+										</span>
+									</span>
+
+									<span class="inline_info bottom">
+										<span>
+											<em>계약일</em>
+											<span>2021.06.20</span>
+										</span>
+										<span>
+											<em>최종납입월</em>
+											<span>2021.06</span>
+										</span>
+										<span>
+											<em>주보험금</em>
+											<span>36,000,000원</span>
+										</span>
+									</span>
+
+								</span>
+
+								<div class="toggle_info">
+									<div class="tbl_row2">
+										<table class="bg_lightgray">
+											<caption class="sr_only">계약정보의 총납입보험료, 해약환급금, 기대출금, 선지급경조금, 자동대출금, 대출가능금액, 대출이율, 대출신청금액,
+												대출금분할상환신청,
+												기약정금액,
+												신규약정금액에 대한 정보표 입니다.</caption>
+											<colgroup>
+												<col style="width: 17%;">
+												<col>
+												<col style="width: 17%;">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">총납입보험료</th>
+													<td class="txt_r pr_6">23,452,600원</td>
+													<th scope="row">해약환급금</th>
+													<td class="txt_r pr_6">0원</td>
+												</tr>
+												<tr>
+													<th scope="row">기대출금</th>
+													<td class="txt_r pr_6">0원</td>
+													<th scope="row">선지급경조금</th>
+													<td class="txt_r pr_6">0원</td>
+												</tr>
+												<tr>
+													<th scope="row">자동대출금</th>
+													<td class="txt_r pr_6">0원</td>
+													<th scope="row">대출가능금액</th>
+													<td class="txt_r pr_6">500,000,000원</td>
+												</tr>
+												<tr>
+													<th scope="row">대출이율</th>
+													<td class="txt_r pr_6">6.00%</td>
+													<th scope="row">대출신청금액</th>
+													<td class="txt_r pr_6">
+														<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 300px" value="500,000">
+														<span class="v_mid ml_1">원</span>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">대출금분할상환신청</th>
+													<td colspan="3">
+														<span class="check_item">
+															<input type="radio" name="div_app" id="div_app_1">
+															<label for="div_app_1">신청</label>
+														</span>
+														<span class="check_item">
+															<input type="radio" name="div_app" id="div_app_2" checked>
+															<label for="div_app_2">아니요</label>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">기약정금액</th>
+													<td class="txt_r pr_6">
+														<input type="text" class="tf txt_r bg_" title="대출신청금액 입력" style="width: 300px" value="0"
+															disabled>
+														<span class="v_mid ml_1">원</span>
+													</td>
+													<th scope="row">신규약정금액</th>
+													<td class="txt_r pr_6">
+														<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 300px" value="0"
+															disabled>
+														<span class="v_mid ml_1">원</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<a href="#;" class="btn btn_more_white">접기</a>
+								</div>
+
+								<div class="tbl_row2 mt_0">
+									<div class="bottom_total">
+										<p>실수령액</p>
+										<strong>490,930원</strong>
+									</div>
+								</div>
+
+							</li>
+							<li>
+								<span class="left_info">
+									<span class="top_info">
+										<span class="lab_status v_top type1">정상</span>
+										<span class="inline_info">
+											<span>
+												<em class="pl_0">대출번호</em>
+												<a href="#;" class="link">70332598135</a>
+												<a href="#;" class="copy">
+													<i class="ico ico_copy">
+														<span class="sr_only">대출번호 복사</span>
+													</i>
+												</a>
+											</span>
+											<span>
+												<em>계약기간</em>
+												<span>2021.05.31 - 2037.05.31</span>
+											</span>
+										</span>
+									</span>
+									<a href="#;" class="list_name">예금담보대출</a>
+								</span>
+
+								<span class="right_info">
+									<span class="inline_info">
+										<span>
+											<em>계약자</em>
+											<span>나봄미</span>
+										</span>
+										<span>
+											<em>피보험자</em>
+											<span>나보미</span>
+										</span>
+									</span>
+
+									<span class="inline_info bottom">
+										<span>
+											<em>계약일</em>
+											<span>2021.06.20</span>
+										</span>
+										<span>
+											<em>최종납입월</em>
+											<span>2021.06</span>
+										</span>
+										<span>
+											<em>주보험금</em>
+											<span>36,000,000원</span>
+										</span>
+									</span>
+
+								</span>
+
+								<div class="toggle_info">
+									<div class="tbl_row2">
+										<table class="bg_lightgray">
+											<caption class="sr_only">계약정보의 총납입보험료, 해약환급금, 기대출금, 선지급경조금, 자동대출금, 대출가능금액, 대출이율, 대출신청금액,
+												대출금분할상환신청,
+												기약정금액,
+												신규약정금액에 대한 정보표 입니다.</caption>
+											<colgroup>
+												<col style="width: 17%;">
+												<col>
+												<col style="width: 17%;">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">총납입보험료</th>
+													<td class="txt_r pr_6">23,452,600원</td>
+													<th scope="row">해약환급금</th>
+													<td class="txt_r pr_6">0원</td>
+												</tr>
+												<tr>
+													<th scope="row">기대출금</th>
+													<td class="txt_r pr_6">0원</td>
+													<th scope="row">선지급경조금</th>
+													<td class="txt_r pr_6">0원</td>
+												</tr>
+												<tr>
+													<th scope="row">자동대출금</th>
+													<td class="txt_r pr_6">0원</td>
+													<th scope="row">대출가능금액</th>
+													<td class="txt_r pr_6">500,000,000원</td>
+												</tr>
+												<tr>
+													<th scope="row">대출이율</th>
+													<td class="txt_r pr_6">6.00%</td>
+													<th scope="row">대출신청금액</th>
+													<td class="txt_r pr_6">
+														<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 300px" value="500,000">
+														<span class="v_mid ml_1">원</span>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">대출금분할상환신청</th>
+													<td colspan="3">
+														<span class="check_item">
+															<input type="radio" name="div_app" id="div_app_1">
+															<label for="div_app_1">신청</label>
+														</span>
+														<span class="check_item">
+															<input type="radio" name="div_app" id="div_app_2" checked>
+															<label for="div_app_2">아니요</label>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">기약정금액</th>
+													<td class="txt_r pr_6">
+														<input type="text" class="tf txt_r bg_" title="대출신청금액 입력" style="width: 300px" value="0"
+															disabled>
+														<span class="v_mid ml_1">원</span>
+													</td>
+													<th scope="row">신규약정금액</th>
+													<td class="txt_r pr_6">
+														<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 300px" value="0"
+															disabled>
+														<span class="v_mid ml_1">원</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<a href="#;" class="btn btn_more_white">접기</a>
+								</div>
+
+								<div class="tbl_row2 mt_0">
+									<div class="bottom_total">
+										<p>실수령액</p>
+										<strong>490,930원</strong>
+									</div>
+								</div>
+
+							</li>
+						</ul>
 					</div>
-					<!-- // 반복 부분 -->
 
 					<div class="contract_list list_chk bottom">
 						<ul class="list list1">
@@ -437,23 +491,18 @@
 						</div>
 					</div>
 
-					<div class="box bg_lightgray">
-						<ul class="add_certification">
-							<li>
-								<a href="#;" class="sms">SMS인증</a>
-							</li>
-							<li>
-								<a href="#;" class="ars">ARS인증</a>
-							</li>
-						</ul>
-					</div>
-
-					<div class="box mt_3">
-						<ul class="list list1">
-							<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
-							<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
-						</ul>
-					</div>
+					<ul class="add_certification">
+						<li>
+							<a href="#;" class="sms">SMS인증</a>
+						</li>
+						<li>
+							<a href="#;" class="ars">ARS인증</a>
+						</li>
+					</ul>
+					<ul class="list list1 mt_5">
+						<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
+						<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
+					</ul>
 				</div>
 				<!-- e 추가 인증 -->
 
