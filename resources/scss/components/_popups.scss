@@ -1,32 +1,22 @@
-$popup-title-height: 88px;
-$popup-mobile-title-height: 50px;
+$popup-title-height: 56px;
 
-$popup-size: (xs: 400px,
-	sm: 600px,
-	md: 750px,
-	lg: 800px,
-	xl: 880px,
-	xxl: 1200px,
+$popup-size: (alert: 280px,
+	full: 100%,
 );
 
 /* 모달, 윈도우 팝업 공통 */
 .popup_header {
 	font-family: $font-family-title;
 	height: $popup-title-height;
-	border-bottom: 1px solid $border-light;
-	text-align: center;
-	padding: 0 50px;
-
-	&.txt_l {
-		padding: 0 75px 0 50px;
-	}
+	display: flex;
+	align-items: center;
+	padding: 0 $spacing;
 
 	.popup_tit {
 		display: inline-flex;
 		vertical-align: middle;
-		height: $popup-title-height - 1px;
 		align-items: center;
-		font-size: $font-size-xl;
+		font-size: 16px;
 		font-weight: 500;
 	}
 
@@ -48,7 +38,6 @@ $popup-size: (xs: 400px,
 .popup_body {
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
-	padding: 40px 50px;
 
 	.btn_group {
 		margin-top: 30px;
@@ -72,19 +61,15 @@ $popup-size: (xs: 400px,
 
 .popup_footer {
 	position: relative;
-	padding: 20px 50px;
+	padding: 0 $spacing $spacing;
 	border-radius: 0 0 10px 10px;
-	background-color: $bg-lightgray;
 
 	font-size: $font-size-sm;
 	color: $gray;
 	line-height: 22px;
 
-	&.not-open-today {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		background-color: $bg-lightgray;
+	.btn_group {
+		margin: 0;
 	}
 }
 
@@ -95,7 +80,8 @@ $popup-size: (xs: 400px,
 	right: 0;
 	width: $popup-title-height;
 	height: $popup-title-height;
-	background: url(#{$url-img-common}/ico_close_lg.png) no-repeat center center;
+	background: url(#{$url-img-common}/ico_close.png) no-repeat center center;
+	background-size: 15px 15px;
 
 	@include ir;
 	text-decoration: none;
@@ -113,23 +99,6 @@ $popup-size: (xs: 400px,
 	// 	background: url(#{$url-img-common}/ico_close_sm.png) no-repeat center center;
 	// }
 }
-
-// .popup_header~.btn_close_popup {
-// 	@include ir;
-// 	right: 0;
-// 	width: $popup-title-height;
-// 	height: $popup-title-height;
-// 	background: url(#{$url-img-common}/ico_close_lg.png) no-repeat center center;
-
-// 	@if ($mode=='responsive') {
-// 		@include media-breakpoint-down(md) {
-// 			.modal_popup & {
-// 				width: 48px;
-// 				height: $popup-mobile-title-height;
-// 			}
-// 		}
-// 	}
-// }
 
 /* 모달 팝업 */
 .modal_open {
@@ -183,7 +152,7 @@ $popup-size: (xs: 400px,
 		visibility: hidden;
 
 		.popup_inner {
-			transform: translateY(-50px);
+			transform: translateY(50px);
 		}
 	}
 
@@ -206,72 +175,86 @@ $popup-size: (xs: 400px,
 		}
 	}
 
-	// 오류창 팝업
+	// 알림 팝업
 	&.modal_alert {
 		.popup_inner {
-			width: 600px;
+			overflow: hidden;
+			border-radius: 16px;
 		}
 
-		.alert_cont {
-			display: flex;
-			align-items: center;
-			line-height: 24px;
+		.popup_header {
+			justify-content: center;
 
-			.artwork {
-				text-align: center;
-				flex: 0 0 auto;
-				width: 128px;
-				margin-right: 30px;
+			~.popup_body {
+				padding-top: 0;
 			}
 
-			.cont {
-				flex: 1 1 auto;
-				font-weight: normal;
+			.popup_tit {
+				font-weight: bold;
 			}
+		}
+
+		.popup_body {
+			padding: 40px 0;
+			max-height: calc(100vh - 200px);
+		}
+
+		.desc {
+			text-align: center;
+
+			&.txt_l {
+				padding-left: 10px;
+			}
+		}
+
+		.popup_footer {
+			padding: 0;
+		}
+
+		.btn_group_flex {
+			padding: 0;
+
+			.btn {
+				margin: 0;
+				border-radius: 0;
+			}
+		}
+
+		.btn_close_popup {
+			display: none;
 		}
 	}
 
-	.popup_inner {
-		border-radius: 10px;
-		overflow: hidden;
+	// 풀 페이지 모달
+	&.modal_full {
+		.popup_inner {
+			height: 100%;
+			border-radius: 0;
+		}
 	}
 
-	.popup_body {
-		max-height: calc(100vh - 300px);
-	}
+	// 바텀시트
+	&.modal_bottom_sheet {
+		height: 100%;
+		align-items: flex-end;
 
-	@if ($mode=='responsive') {
-		@include media-breakpoint-down(md) {
-			&.modal_sm {
-				.popup_inner {
-					margin: $mobile-spacing;
-					border-radius: 10px;
-				}
-			}
+		.popup_tit {
+			font-size: 18px;
+			font-weight: 500;
+		}
 
-			&:not(.modal_sm) {
-				.popup_inner {
-					width: 100%;
-					display: flex !important;
-					flex-direction: column !important;
-					justify-content: center !important;
-					height: 100%;
-				}
+		.popup_body {
+			padding-top: 0;
+			padding-bottom: 20px;
+		}
 
-				.popup_header,
-				.popup_footer {
-					flex: 0 0 auto;
-				}
-
-				.popup_body {
-					flex: 1 1 auto;
-					max-height: 100%;
-				}
-			}
+		.popup_inner {
+			width: 100%;
+			border-radius: 16px 16px 0 0;
+			box-shadow: 0px -1px 35px 0px rgba(0, 0, 0, 0.13);
 		}
 	}
 }
-
 
 /* 윈도우 팝업 */
 .popup {
@@ -285,9 +268,9 @@ $popup-size: (xs: 400px,
 		height: 100%;
 	}
 
-	// .popup_header {
-	// 	flex: 0 0 auto;
-	// }
+	.popup_header {
+		flex: 0 0 auto;
+	}
 
 	.popup_body {
 		flex: 1 1 auto;
@@ -380,90 +363,4 @@ $popup-size: (xs: 400px,
 .dim_hide>.dimed {
 	opacity: 0;
 	transition: .3s;
-}
-
-/* 우편번호 */
-.zipcode_search {
-	display: flex;
-	border: 1px solid $black;
-	border-radius: 6px;
-
-	>input[type=text] {
-		width: calc(100% - 57px);
-		padding-left: 15px;
-		border: 0;
-		border-radius: 6px;
-		height: 44px;
-		font-weight: 200;
-		font-size: 16px;
-	}
-
-	>button {
-		width: 57px;
-		height: 44px;
-		border-radius: 0 6px 6px 0;
-		background: url(#{$url-img-common}/ico_search_bold.png) no-repeat 50% 50%;
-	}
-}
-
-.txt_info_zipcode {
-	margin-top: 23px;
-}
-
-.address_example {
-	display: flex;
-	align-items: center;
-	margin: 5px 0 0 -15px;
-	border-radius: 6px;
-	background: $primary;
-
-	>.box_l {
-		width: 97px;
-		text-align: center;
-
-		>span {
-			display: inline-block;
-			padding-top: 32px;
-			background: url(#{$url-img}/content/ico_search_zipcode.png) no-repeat 50% 0;
-			font-weight: 400;
-			color: $black;
-		}
-	}
-
-	>.box_r {
-		flex: 1 1 0;
-		padding: 17px 30px;
-		background: $bg-lightgray;
-		font-size: 14px;
-		color: $gray;
-
-		li>span {
-			display: inline-block;
-			width: 165px;
-		}
-	}
-}
-
-.zipcode_search_result {
-	margin-top: 23px;
-}
-
-.address_write {
-	margin-top: 23px;
-}
-
-.txt_last_data {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 60px;
-
-	>p {
-		padding-left: 34px;
-		background: url(#{$url-img-common}/ico_check_primary.png) no-repeat 0 50%;
-	}
-}
-
-.line_popup .popup_inner {
-	border: 1px solid $black;
 }

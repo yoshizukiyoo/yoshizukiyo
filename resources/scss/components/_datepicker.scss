@@ -1,5 +1,5 @@
 $datepicker-border-color: #111;
-$datepicker-width: 425px;
+$datepicker-width: calc(100% - $spacing * 2);
 
 .datepicker {
 	position: relative;
@@ -30,11 +30,12 @@ $datepicker-width: 425px;
 }
 
 #inseq-datepicker {
-	position: absolute;
+	// position: absolute;
 	width: $datepicker-width;
-	padding: 35px 20px 20px;
-	border: 1px solid $datepicker-border-color;
-	border-radius: 6px;
+	// padding: 25px 15px 15px;
+	padding: 0 10px;
+	// border: 1px solid $datepicker-border-color;
+	border-radius: 8px;
 	font-size: 16px;
 	line-height: 1;
 	background-color: #fff;
@@ -67,7 +68,7 @@ $datepicker-width: 425px;
 		}
 
 		td {
-			height: 45px;
+			height: 35px;
 			padding: 0 !important;
 			margin: 0;
 			text-align: center;
@@ -78,9 +79,9 @@ $datepicker-width: 425px;
 			td {
 
 				a {
-					width: 39px;
-					height: 39px;
-					line-height: 39px;
+					width: 29px;
+					height: 29px;
+					line-height: 29px;
 					border-radius: 50%;
 					display: block;
 					margin: auto;
@@ -107,8 +108,8 @@ $datepicker-width: 425px;
 		margin-bottom: 25px;
 
 		td {
-			font-size: 26px;
-			font-weight: 500;
+			font-size: 20px;
+			font-weight: 400;
 
 			a {
 				font-size: inherit;
@@ -126,29 +127,30 @@ $datepicker-width: 425px;
 			font-size: 14px;
 
 			&:first-child {
-				color: #ff883a;
+				color: $red;
 
 				a {
 					color: inherit;
 				}
 			}
 
-			// &:last-child {
-			// 	color: #0072cf;
+			&:last-child {
+				color: $blue;
 
-			// 	a {
-			// 		color: inherit;
-			// 	}
-			// }
+				a {
+					color: inherit;
+				}
+			}
 		}
 	}
 
 	.prev,
 	.next {
 		margin-top: 2px;
-		width: 36px;
-		height: 36px;
+		width: 28px;
+		height: 28px;
 		background: url(#{$url-img-common}/ico_cal_arr_left.png) no-repeat center center;
+		background-size: 15px 15px;
 		text-indent: -9999px;
 		text-align: left;
 
@@ -161,12 +163,12 @@ $datepicker-width: 425px;
 
 	.prev {
 		float: left;
-		margin-left: 50px;
+		margin-left: 60px;
 	}
 
 	.next {
 		float: right;
-		margin-right: 50px;
+		margin-right: 60px;
 		background-image: url(#{$url-img-common}/ico_cal_arr_right.png);
 	}
 
@@ -186,13 +188,14 @@ $datepicker-width: 425px;
 		}
 	}
 
-	@if ($mode=='responsive') {
-		@include media-breakpoint-down(sm) {
-			// right: $mobile-spacing !important;
-			// left: auto !important;
+	margin-top: 15px;
+	margin-left: -19px;
 
-			left: 50% !important;
-			margin-left: -$datepicker-width * 0.5 !important;
-		}
+	@include media-breakpoint-down(sm) {
+		// right: $mobile-spacing !important;
+		// left: auto !important;
+		margin-left: 0;
+		left: $spacing !important;
+		right: $spacing !important;
 	}
 }

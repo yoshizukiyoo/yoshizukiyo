@@ -22,7 +22,7 @@ $(function () {
 	var siteCode = path[path.indexOf('html') + 1];
 	console.log(siteCode);
 
-	$('.header').load('/html/' + siteCode + '/_inc-header.html .header > *', function () {
+	$('.header').load('/html/' + siteCode + '/_inc-titlebar.html .header > *', function () {
 		// if ($.isFunction(window.gnbSetting)) gnbSetting();
 	});
 	$('.breadcrumb').load('/html/' + siteCode + '/_inc-breadcrumb.html .breadcrumb > *', function () {

@@ -3,6 +3,7 @@
 // 
 
 .btn {
+	position: relative;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -25,7 +26,7 @@
 
 	.ico {
 		flex: 0 0 auto;
-		margin-top: 2px;
+		margin-top: 1px;
 
 		&:first-child {
 			margin-right: 5px;
@@ -37,8 +38,26 @@
 		}
 	}
 
+	.ico_l,
+	.ico_r {
+		position: absolute;
+	}
+
+	.ico_l {
+		left: 20px;
+	}
+
+	.ico_r {
+		right: 20px;
+	}
+
 	*+.ico {
 		margin-left: 5px;
+	}
+
+	&[disabled],
+	&.btn_disabled {
+		opacity: .3;
 	}
 }
 
@@ -49,47 +68,50 @@
 .btn_lg,
 .btn_xl {
 	border: 1px solid transparent;
-	border-radius: 6px;
+	// border-radius: 6px;
 }
 
 .btn_xs {
-	min-width: 54px;
-	height: 28px;
-	padding: 0 15px;
-	font-size: 14px;
-	font-weight: 300;
+	min-width: 40px;
+	height: 20px;
+	padding: 0 10px;
+	font-size: 10px;
+	font-weight: 500;
+	border-radius: 4px;
 }
 
 .btn_sm {
-	min-width: 54px;
-	height: 32px;
-	padding: 0 12px;
-	font-size: 14px;
-	font-weight: 300;
+	min-width: 50px;
+	height: 25px;
+	padding: 0 15px;
+	font-size: 12px;
+	font-weight: 500;
+	border-radius: 4px;
 }
 
 .btn_md {
-	min-width: 80px;
+	min-width: 75px;
 	height: $form-height;
-	padding: 0 20px;
-	font-size: 16px;
-	font-weight: 300;
+	padding: 0 18px;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 4px;
 }
 
 .btn_lg {
-	min-width: 130px;
-	height: 56px;
-	font-size: 18px;
+	height: 55px;
+	font-size: 16px;
 	font-weight: 500;
-	padding: 0 50px;
+	padding: 0 30px;
+	border-radius: 8px;
 }
 
 .btn_xl {
-	min-width: 160px;
-	height: 64px;
-	font-size: 20px;
+	height: 60px;
+	font-size: 16px;
 	font-weight: 500;
-	padding: 0 50px;
+	padding: 0 30px;
+	letter-spacing: -0.05em;
 }
 
 .btn_icon {
@@ -106,15 +128,20 @@
 // 	width: 100%;
 // }
 
-// .btn_round {
-// 	border-radius: 50px;
-// }
+.btn_round {
+	border-radius: 50px;
+}
 
 // 색상
 .btn_default {
-	color: #444;
-	background-color: #eee;
-	border-color: #ddd;
+	color: $default;
+	background-color: #e5e5e5;
+	// border-color: #ddd;
+}
+
+.btn_darkgray {
+	color: #fff;
+	background-color: #555;
 }
 
 .btn_primary {
@@ -123,157 +150,13 @@
 }
 
 .btn_outline_default {
-	color: $gray;
-	border-color: #a2a2a2;
-	background-color: #fff;
-
-	&.btn_lg,
-	&.btn_xl {
-		color: $default;
-		border-color: #555;
-	}
-}
-
-.btn_outline_gray {
-	color: $gray;
-	border-color: #a2a2a2;
-	background-color: #eee;
-}
-
-// .btn_outline_primary {
-// 	color: $btn_primary;
-// 	border-color: $btn_primary;
-// 	background-color: #fff;
-// }
-
-// 기타
-.btn_more,
-.btn_more_white {
-	justify-content: space-between;
-	width: 110px;
-	padding: 0 22px;
-	height: 32px;
-	border: 1px solid transparent;
-	font-size: 14px;
-	font-weight: 200;
-
-	border-radius: 25px;
-	color: $white;
-	background-color: $bg-gray;
-
-	&:after {
-		display: inline-block;
-		content: '';
-		width: 13px;
-		height: 7px;
-		background: url(#{$url-img-common}/ico_arr_down_sm_white.png) no-repeat;
-	}
-}
-
-.btn_more_white {
-	justify-content: center;
 	color: $default;
-	border-color: #a2a2a2;
-	background-color: $white;
-
-	&:after {
-		margin-left: 10px;
-		background-image: url(#{$url-img-common}/ico_arr_down_sm.png);
-	}
+	border-color: #bbb;
+	background-color: #fff;
 }
 
-.btn_explain {
-	height: 28px;
-	padding: 0 12px 0 15px;
-	border-radius: 25px;
-	background: $gray;
-	font-weight: 200;
-	font-size: 14px;
-	color: $white;
-
-	&::after {
-		display: inline-block;
-		content: '';
-		width: 4px;
-		height: 5px;
-		margin: 1px 0 0 8px;
-		background: url(#{$url-img-common}/bul_arrow_small_white.png) no-repeat;
-	}
-}
-
-.btn_xl {
-	&.btn_primary.btn_disabled {
-		background: $btn-xl-disable1;
-		color: #111;
-	}
-
-	&.btn_outline_default.btn_disabled {
-		border-color: $btn-xl-disable2;
-		background: #eee;
-	}
-}
-
-.btn_mouse_toggle {
-	display: inline-flex;
-	align-items: center;
-
-	>.switch {
-		display: inline-flex;
-		margin-right: 10px;
-
-		>input[type=checkbox] {
-			position: absolute;
-			width: 1px;
-			height: 1px;
-			opacity: 0;
-		}
-
-		// >input[type=checkbox]:focus+label {
-		// 	box-shadow: 0 0 1px 1px #111;
-		// }
-
-		>input[type=checkbox]:checked+label {
-			background: #fdcc34;
-
-			&::before {
-				left: 2px;
-			}
-		}
-
-		>label {
-			display: inline-block;
-			position: relative;
-			width: 50px;
-			height: 25px;
-			border-radius: 15px;
-			background: #ddd;
-			transition: .3s ease;
-
-			&::before {
-				content: '';
-				position: absolute;
-				left: 26px;
-				top: 2px;
-				width: 22px;
-				height: 21px;
-				border-radius: 50%;
-				background: #fff;
-				transition: .3s ease;
-			}
-		}
-	}
-
-	>.btn_name {
-		font-size: 14px;
-		font-weight: 200;
-		color: #001111;
-	}
-}
-
-.btn_refresh {
-	width: 21px;
-	height: 21px;
-	margin-left: 6px;
-	background: url(#{$url-img-common}/ico_refresh_round.png) no-repeat;
-	vertical-align: text-bottom;
+.btn_shadow {
+	color: $default;
+	background-color: #fff;
+	box-shadow: 1px 3px 10px 0px rgba(0, 0, 0, 0.06);
 }

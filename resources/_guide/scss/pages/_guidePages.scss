@@ -26,11 +26,22 @@
 /* UI 컴포넌트 가이드 */
 $guide_color: #222;
 
+#content {
+	// margin: auto;
+	max-width: 1280px;
+
+	@include media-breakpoint-up(lg) {
+		padding-left: 150px;
+	}
+}
+
 .cont_header {
 	text-align: center;
+	margin-top: 20px;
 
 	.tit_cont {
 		font-family: $font-family-title;
+		font-size: 30px;
 	}
 
 	@if ($mode=="responsive") {
@@ -41,7 +52,7 @@ $guide_color: #222;
 			.tit_cont {
 				font-size: 24px;
 				line-height: 29px;
-				padding: 0 $mobile-spacing;
+				padding: 0 $spacing;
 			}
 		}
 	}
@@ -78,6 +89,28 @@ $guide_color: #222;
 		padding-bottom: 0;
 	}
 
+	.horizontal {
+		.examples {
+			background: #fff;
+		}
+
+		.syntaxhighlighter {
+			margin: 0 !important;
+		}
+
+		@include media-breakpoint-up(lg) {
+			.examples {
+				flex: 0 0 auto;
+				width: 360px;
+			}
+
+			.codes {
+				// max-width: 673px;
+				flex: 1 1 auto;
+			}
+		}
+	}
+
 	.badge {
 		position: relative;
 		display: inline-block;
@@ -111,10 +144,6 @@ $guide_color: #222;
 
 	@for $i from 1 to $total {
 		@include gutter($i, $i * $gap);
-	}
-
-	#content {
-		padding: 0 180px;
 	}
 
 	.ico_list {
@@ -165,7 +194,7 @@ $guide_color: #222;
 	left: 0;
 	padding: 15px;
 	top: 0;
-	z-index: 100;
+	z-index: 200;
 	background-color: rgba(#fff, .95);
 	line-height: 1.4;
 
@@ -173,7 +202,8 @@ $guide_color: #222;
 		display: none;
 	}
 
-	// @include ico2x('xs-menu', 16px, 16px, #{$url-img-common});
+	@include ico('xs_menu', 16px, 16px, #{$url-img-guide});
+	@include ico('times_white', 18px, 18px, #{$url-img-guide});
 
 	.sidebar-tit {
 		display: flex;
@@ -343,7 +373,7 @@ $guide_color: #222;
 
 	border: 1px solid #eee;
 	border-radius: 4px;
-	padding: 30px;
+	padding: 20px;
 
 	background: linear-gradient(45deg,
 			$bg-color 25%,
@@ -431,8 +461,7 @@ $guide_color: #222;
 	// justify-content: center;
 	text-align: center;
 	flex-wrap: wrap;
-	// margin: -5px;
-	margin: -15px;
+	margin: -5px;
 
 	span {
 		flex: 0 0 auto;
