@@ -7,7 +7,7 @@
     - 인터넷뱅킹(deposit) : http://ceb.epost.inseq.co.kr:7789/html/index.html
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
     - 스마트뱅킹(smart-deposit) : http://ced.epost.inseq.co.kr:7789/html/index.html
-    - 인터넷보험(smart-insurance) : http://cee.epost.inseq.co.kr:7789/html/index.html
+    - 스마트보험(smart-insurance) : http://cee.epost.inseq.co.kr:7789/html/index.html
 - 퍼블리싱 산출물 내부망 공유용 SVN 저장소 : http://pms.inseq.co.kr:9000/svn/geistkorea/epost-html (본 PMS 계정 사용)
 
 
