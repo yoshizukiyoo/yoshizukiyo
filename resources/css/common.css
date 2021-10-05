@@ -3016,6 +3016,47 @@ textarea.tf {
   border-collapse: collapse;
 }
 
+.tbl {
+  overflow: hidden;
+}
+
+.tbl.tbl_scroll:before, .tbl.tbl_scroll:after {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  width: 23px;
+  top: 0;
+  bottom: 0;
+  -webkit-transition-duration: .1s;
+          transition-duration: .1s;
+}
+
+.tbl.tbl_scroll:before {
+  opacity: 0;
+  visibility: hidden;
+  left: -23px;
+  -webkit-box-shadow: 5px 0 15px rgba(0, 0, 0, 0.25);
+          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.tbl.tbl_scroll:after {
+  right: -23px;
+  -webkit-box-shadow: -5px 0 15px rgba(0, 0, 0, 0.25);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.tbl.tbl_scroll.scroll_ing:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tbl.tbl_scroll.scroll_end:after {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .tbl .scroll_track {
   overflow-y: hidden;
   overflow-x: auto;

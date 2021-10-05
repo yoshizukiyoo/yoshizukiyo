@@ -8,6 +8,53 @@
 }
 
 .tbl {
+	overflow: hidden;
+
+	&.tbl_scroll {
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			z-index: 10;
+			top: 0;
+			bottom: 0;
+
+			width: 23px;
+			top: 0;
+			bottom: 0;
+
+			transition-duration: .1s;
+		}
+
+		&:before {
+			opacity: 0;
+			visibility: hidden;
+
+			left: -23px;
+			box-shadow: 5px 0 15px rgba(0, 0, 0, .25);
+		}
+
+		&:after {
+			right: -23px;
+			box-shadow: -5px 0 15px rgba(0, 0, 0, .25);
+		}
+
+		&.scroll_ing {
+			&:before {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		&.scroll_end {
+			&:after {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+	}
+
 	.scroll_track {
 		overflow-y: hidden;
 		overflow-x: auto;
