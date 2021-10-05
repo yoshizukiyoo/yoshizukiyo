@@ -25,30 +25,7 @@
 		$(document).ready(function () {
 
 			$('.btn_result').click(function () {
-				if ($('#check1_1').prop('checked')) {
-					$('.result01').show();
-					$('.result02').hide();
-				} else if ($('#check1_2').prop('checked')) {
-					$('.result01').hide();
-					$('.result02').show();
-				}
-			})
-
-			$('.date_type02').hide();
-
-			$('input[name=check1]').click(function () {
-				if ($('#check1_1').prop('checked')) {
-					$('.date_type01').show();
-					$('.date_type02').hide();
-				} else if ($('#check1_2').prop('checked')) {
-					$('.date_type01').hide();
-					$('.date_type02').show();
-				}
-				$('.tf_datepicker').val(null)
-			})
-
-			$('#check2_all').on('click', function () {
-				$('input[name=check2]').prop('checked', this.checked)
+				$('.btm_result_box').show();
 			})
 		});
 	</script>
@@ -178,13 +155,18 @@
 										<span class="necessary">*</span>
 									</th>
 									<td>
-										<div class="date_type01 datepicker_box">
+										<!-- s: 구분값 그룹즉시이체조회 시 활성화 -->
+										<div class="datepicker_box">
 											<input type="text" class="tf tf_datepicker" style="width: 170px;" title="조회기간선택">
 										</div>
-										<div class="date_type02 datepicker_box">
+										<!-- e: 구분값 그룹즉시이체조회 시 활성화 -->
+
+										<!-- s: 구분값 그룹예약이체조회(이체실행일) 시 활성화 -->
+										<div class="datepicker_box">
 											<input type="text" class="tf tf_datepicker" style="width: 170px;" title="조회기간 시작날짜 선택">
 											<input type="text" class="tf tf_datepicker" style="width: 170px;" title="조회기간 종료날짜 선택">
 										</div>
+										<!-- e: 구분값 그룹예약이체조회(이체실행일) 시 활성화 -->
 									</td>
 								</tr>
 							</tbody>
@@ -198,7 +180,7 @@
 
 				<!-- s: 조회결과 -->
 				<!-- s: 조회결과01 : 조회구분 == 그룹즉시이체조회 선택 시 -->
-				<div class="btm_result_box section result01">
+				<div class="btm_result_box section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
@@ -259,8 +241,9 @@
 					</div>
 				</div>
 				<!-- e: 조회결과01 : 조회구분 == 그룹즉시이체조회 선택 시 -->
+				
 				<!-- s: 조회결과02 : 조회구분 == 그룹예약이체조회(이체실행일 기준) 선택 시 -->
-				<div class="btm_result_box section result02">
+				<div class="btm_result_box section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
