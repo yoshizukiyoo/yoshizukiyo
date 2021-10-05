@@ -23,13 +23,13 @@ function openCalendar(_obj, _mode) {
 
 	if (arrValue.length == 10) {
 		if (checkNumber(arrValue.substring(0, 4) + arrValue.substring(5, 7) + arrValue.substring(8, 10))) {
-			day = arrValue.substring(0, 4) + "-" + arrValue.substring(5, 7) + "-" + arrValue.substring(8, 10);
+			day = arrValue.substring(0, 4) + "." + arrValue.substring(5, 7) + "." + arrValue.substring(8, 10);
 
 			showCalendar(arrValue.substring(0, 4), arrValue.substring(5, 7), arrValue.substring(8, 10), ' (현재선택)');
 		}
 	} else if (arrValue.length == 7) {
 		if (checkNumber(arrValue.substring(0, 4) + arrValue.substring(5, 7))) {
-			day = arrValue.substring(0, 4) + "-" + arrValue.substring(5, 7);
+			day = arrValue.substring(0, 4) + "." + arrValue.substring(5, 7);
 
 			showCalendar(arrValue.substring(0, 4), arrValue.substring(5, 7), '01', ' (현재선택)');
 		}
@@ -42,7 +42,7 @@ function openCalendar(_obj, _mode) {
 	} else {
 		var now = new Date();
 
-		day = now.getFullYear() + "-" + ((parseInt(now.getMonth() + 1, 10) < 10) ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1)) + "-" + ((parseInt(now.getDate(), 10) < 10) ? "0" + (now.getDate()) : (now.getDate()));
+		day = now.getFullYear() + "." + ((parseInt(now.getMonth() + 1, 10) < 10) ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1)) + "." + ((parseInt(now.getDate(), 10) < 10) ? "0" + (now.getDate()) : (now.getDate()));
 
 		showCalendar(now.getFullYear(), now.getMonth() + 1, now.getDate(), ' (오늘)');
 	}
@@ -205,7 +205,7 @@ function showCalendar(_year, _month, _day, _stat) {
 
 			a.title = _yy;
 			a.onclick = new Function("clickCalendar(this, 'year');");
-			if (_year == i && _year == parseInt(day.split("-")[0], 10)) {
+			if (_year == i && _year == parseInt(day.split(".")[0], 10)) {
 				a.setAttribute("class", "today");
 				a.title += _title;
 			}
@@ -319,9 +319,9 @@ function showCalendar(_year, _month, _day, _stat) {
 			if (_mm < 10) {
 				_mm = '0' + _mm;
 			}
-			a.title = _year + "-" + _mm;
+			a.title = _year + "." + _mm;
 			a.onclick = new Function("clickCalendar(this, 'month');");
-			if (_month == i && _year == parseInt(day.split("-")[0], 10)) {
+			if (_month == i && _year == parseInt(day.split(".")[0], 10)) {
 				a.setAttribute("class", "today");
 				a.title += _title;
 			}
@@ -449,11 +449,11 @@ function showCalendar(_year, _month, _day, _stat) {
 					td = document.createElement("td");
 					a = document.createElement("a");
 					a.href = "javascript:void(0);";
-					a.title = _year + "-" + ((parseInt(_month, 10) < 10) ? "0" + parseInt(_month, 10) : _month) + "-" + ((parseInt(printDay + 1, 10) < 11) ? "0" + parseInt(printDay, 10) : printDay);
+					a.title = _year + "." + ((parseInt(_month, 10) < 10) ? "0" + parseInt(_month, 10) : _month) + "." + ((parseInt(printDay + 1, 10) < 11) ? "0" + parseInt(printDay, 10) : printDay);
 					a.onclick = new Function("clickCalendar(this);");
 					a.innerHTML = printDay;
 
-					if (_day == printDay && _month == parseInt(day.split("-")[1], 10) && _year == parseInt(day.split("-")[0], 10)) {
+					if (_day == printDay && _month == parseInt(day.split(".")[1], 10) && _year == parseInt(day.split(".")[0], 10)) {
 						a.setAttribute("class", "today");
 						a.title += _title;
 					}
