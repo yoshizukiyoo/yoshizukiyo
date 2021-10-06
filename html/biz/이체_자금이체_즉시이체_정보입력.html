@@ -37,8 +37,13 @@
 				$('[data-tab-table^="tab"]').hide();
 				$('[data-tab-table=' + tabId + ']').show();
 			});
-
 		});
+
+		// 보이스피싱 피해주의 팝업 실행
+		function voicePhishingPopup() {
+			openModal('popup04');
+			closeModal('popup03');
+		}
 	</script>
 </head>
 
@@ -582,7 +587,12 @@
 													입금계좌번호
 													<strong class="necessary">*</strong>
 												</th>
-												<td><input type="text" class="tf" placeholder="-없이 입력하세요." style="width: 355px;"></td>
+												<td>
+													<input type="text" class="tf" placeholder="-없이 입력하세요." style="width: 355px;">
+													<div class="btn_inline_box">
+														<button type="button" class="btn btn_md btn_outline_default">이체</button>
+													</div>
+												</td>
 											</tr>
 										</tbody>
 									</table>
@@ -987,6 +997,63 @@
 					</div>
 				</div>
 				<!-- e: 결재선조회 팝업 -->
+
+				<!-- s: 보이스피싱 피해예방 안내 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="popup03">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">보이스피싱 피해예방 안내</h3>
+						</div>
+						<div class="popup_body">
+							<p class="txt_c">
+								<span class="txt_invalid">검찰,경찰, 금융감독원이나 모르는 사람</span>이 전화로 출금 및 이체를 요청하였습니까?<br>
+								코로나 19 관련으로 질병관리본부, 건강보험심사평가원이나 혹은,<br> 확진자라고 하며 출금 및 이체를 요청하였습니까?<br>
+								또는 대출받기 위해서는 먼저 수수료,기존 대출금 상환 등이 필요하다며<br>
+								출금 및 이체를 요청하였습니까?
+							</p>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default fx_w150" onclick="closeModal('popup03');">아니오</button>
+								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="voicePhishingPopup();">예</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 보이스피싱 피해예방 안내 팝업 -->
+
+				<!-- s: 보이스피싱 피해 주의 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="popup04">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">보이스피싱 피해 주의</h3>
+						</div>
+						<div class="popup_body">
+							<p class="txt_c">
+								보이스피싱 예방문진에 <span class="txt_normal">"예"</span>를 <span class="txt_normal">선택</span>하여 <span class="txt_invalid">보이스피싱 피해가 의심됩니다.</span><br>
+								보이스피싱 위험 확인 후 다시 거래해 주세요.<br>
+								검찰, 경찰 등 정부기관, 공공기관은 어떠한 경우에도<br>
+								개인 계좌 등으로 돈을 이체하도록 요구하지 않습니다.<br>
+								<strong class="txt_invalid">전화로 대출 권유시 입금요구하면 100%사기 입니다.</strong>
+							</p>
+							<div class="voice_caution">
+								<p class="mb_1"><strong>보이스피싱 주요수법</strong></p>
+								<p>1. 신용등급 상향 목적의 입금 요청</p>
+								<p>2. 고금리대출을 지정해주는 계좌로 선입금 요청</p>
+								<p>3. 햇살론 등 저금리 정부지원 자금으로 대환대출 제안</p>
+							</div>
+							<p>
+								<strong>의심스러운 경우 경찰(112), 금감원(1332)에 신고하시기 바랍니다.</strong>
+							</p>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="closeModal('popup04');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 보이스피싱 피해 주의 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
