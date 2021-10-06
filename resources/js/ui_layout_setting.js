@@ -40,7 +40,7 @@ $(function () {
 		var $container = $(this);
 		var $tf = $('.input_area .tf', this);
 
-		if ($('.input_area :input', this).length > 1) {
+		if ($('.input_area .tf, .input_area .opt', this).length > 1 || $('.input_area :input').length > 1) {
 			$container.addClass('active');
 		} else if ($tf.length == 1) {
 			var text = Boolean($tf.val()) || Boolean($tf.attr('placeholder'));
@@ -254,18 +254,19 @@ $(function () {
 	});
 
 	$('.tab_menu1').each(function () {
-		var containerWidth = $(this).width();
+		var outerWidth = $(this).width();
 		var innerWidth = 0;
 		var current = $('li.on', this).index();
 		$('li', this).each(function () {
 			innerWidth += $(this).width();
 		});
-		if (containerWidth < innerWidth) {
+		if (outerWidth < innerWidth || $('li', this).length > 4) {
 			$(this).addClass('scroll_enable');
 		}
-		// $(this).addClass('scroll_enable');
-		var posL = $('li', this).eq(current - 1).position().left;
-		$(this).children().scrollLeft(posL);
+		if (current > 1) {
+			var posL = $('li', this).eq(current - 1).position().left;
+			$(this).children().scrollLeft(posL);
+		}
 	});
 });
 
