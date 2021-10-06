@@ -26,6 +26,7 @@
 - [IA구조도(기본)_채널서비스_인터넷예금_개인](https://docs.google.com/spreadsheets/d/1uxzz2jgubqmslj0PC3iqJRzoyoU7XVCzgQUno2kqg8k/edit?usp=sharing)
 - [IA구조도(기본)_채널서비스_인터넷예금_기업](https://docs.google.com/spreadsheets/d/1H0wonVMDQBIw5ZcbM_ERzL5fMy3t9w67cRzVkHSJow4/edit?usp=sharing)
 - [01. 인터넷보험_작업대장](https://docs.google.com/spreadsheets/d/1m2UaAgVRFU84DGTGrKSx76tnNcWpi5cqCBcLq-lPumQ/edit#gid=0)
+- [02. 스마트보험_작업대장](https://docs.google.com/spreadsheets/d/1HQzQ_H8SKfOaV_zDALQmqNqc94fLGKaMCY9sNWLvWpE/edit)
 
 ### 디자인 산출물
 - 디자인 공통 가이드(디자이너 협업용) : http://epost.test.ubiqos.co.kr/html/main/main01.html
