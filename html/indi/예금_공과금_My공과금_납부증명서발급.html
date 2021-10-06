@@ -26,36 +26,6 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			})
-
-			//check1 option
-			$('.select_checker > span').on('click', function(){
-				var optNum = $(this).index();
-				var _this = $('.select_option');
-
-				$('.select_option').removeClass('on');
-
-				var viewOpt = _this.eq(optNum).addClass('on');
-
-			})
-			//list_length_check currentView 10
-			$('.list_length_check').children('tr:gt(9)').hide();
-
-			$('.btn_result').click(function () {
-				if ($('.list_length_check').children('tr').length >= 11) {
-					$('.btn_more').show();
-				} else {
-					$('.btn_more').hide();
-				}
-			})
-
-			//more_list perView
-			$('.btn_more').click(function () {
-				var perView = 15;
-
-				$('.list_length_check').children('tr:not(:visible)').slice(0, perView).fadeIn(600);
-				//$(this).hide();
-
-			})
 		});
 	</script>
 </head>
@@ -87,7 +57,14 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="first_section">
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>도움말 영역</li>
+					</ul>
+				</div>
+
+				<!-- s: 조회정보 입력 -->
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
@@ -142,11 +119,16 @@
 												<label for="check1_4">납부자번호</label>
 											</span>
 										</div>
-										<div class="select_option_wrap mt_2">
-											<div class="select_option on">
+										<!-- s: 상세구분 -->
+										<div class="mt_2">
+											<!-- s: 구분값 == 전체 -->
+											<div>
 												-
 											</div>
-											<div class="select_option">
+											<!-- e: 구분값 == 전체 -->
+
+											<!-- s: 구분값 == 출금계좌번호 -->
+											<div>
 												<div class="selectbox_wrap" style="width: 360px;">
 													<dl title="출금계좌번호 선택">
 														<dt><a href="#;"><span>선택하십시오</span></a></dt>
@@ -159,19 +141,30 @@
 													</dl>
 												</div>
 											</div>
-											<div class="select_option">
+											<!-- e: 구분값 == 출금계좌번호 -->
+
+											<!-- s: 구분값 == 주민등록번호 -->
+											<div>
 												0000000000000
 											</div>
-											<div class="select_option">
+											<!-- e: 구분값 == 주민등록번호 -->
+
+											<!-- s: 구분값 == 납부자번호 -->
+											<div>
 												<input type="text" class="tf" style="width: 360px;" title="납부자번호 입력">
 											</div>
+											<!-- e: 구분값 == 납부자번호 -->
+
 										</div>
+										<!-- e: 상세구분 -->
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
+				<!-- e: 조회정보 입력 -->
+
 
 				<div class="btn_tbl_btm btn_data_search">
 					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
@@ -184,9 +177,9 @@
 							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data"><!-- [D] : 구분값 전체 table -->
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">납부증명서발급 전체 조회내역 안내(항목, 납부일자, 청구기관, 납부자 번호, 주민등록번호, 납부금액(원), 납부계좌번호, 증명서발급)</caption>
+							<caption class="sr_only">납부증명서발급 조회 목록이며 항목, 납부일자, 청구기관, 납부자 번호, 주민등록번호, 납부금액(원), 납부계좌번호 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 10%;">
@@ -218,123 +211,6 @@
 									<td>123456-*******</td>
 									<td class="txt_r">30,000</td>
 									<td></td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_list_data" style="display: none;"><!-- [D] : 구분값 출금계좌번호 table -->
-						<table>
-							<caption class="sr_only">납부증명서발급 출금계좌번호 조회내역 안내(항목, 납부일자, 청구기관, 납부자번호, 주민등록번호, 납부금액(원), 출금계좌번호, 증명서발급)</caption>
-							<colgroup>
-								<col style="width: 10%;">
-								<col style="width: 10%;">
-								<col>
-								<col>
-								<col style="width: 13%;">
-								<col style="width: 11%;">
-								<col>
-								<col style="width: 10%;">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">항목</th>
-									<th scope="col">납부일자</th>
-									<th scope="col">청구기관</th>
-									<th scope="col">납부자번호</th>
-									<th scope="col">주민등록번호</th>
-									<th scope="col">납부금액(원)</th>
-									<th scope="col">출금계좌번호</th>
-									<th scope="col">증명서발급</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>지방세</td>
-									<td class="txt_c">2017.03.02</td>
-									<td>각지방 자치단체</td>
-									<td>111111111111</td>
-									<td>123456-*******</td>
-									<td class="txt_r">30,000</td>
-									<td>111-11111111</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_list_data" style="display: none;"><!-- [D] : 구분값 주민등록번호 table -->
-						<table>
-							<caption class="sr_only">납부증명서발급 주민등록번호 조회내역 안내(항목, 납부일자, 청구기관, 주민등록번호, 납부금액(원), 출금계좌번호, 증명서발급)</caption>
-							<colgroup>
-								<col style="width: 10%;">
-								<col style="width: 10%;">
-								<col>
-								<col style="width: 15%;">
-								<col style="width: 15%;">
-								<col style="width: 15%;">
-								<col style="width: 10%;">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">항목</th>
-									<th scope="col">납부일자</th>
-									<th scope="col">청구기관</th>
-									<th scope="col">주민등록번호</th>
-									<th scope="col">납부금액(원)</th>
-									<th scope="col">출금계좌번호</th>
-									<th scope="col">증명서발급</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>지방세</td>
-									<td class="txt_c">2017.03.02</td>
-									<td>각지방 자치단체</td>
-									<td>0000000000000</td>
-									<td class="txt_r">30,000</td>
-									<td>111-11111111</td>
-									<td class="txt_c">
-										<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_list_data" style="display: none"><!-- [D] : 구분값 납부자번호 table -->
-						<table>
-							<caption class="sr_only">납부증명서발급 납부자번호 조회내역 안내(항목, 납부일자, 청구기관, 주민등록번호, 납부금액(원), 출금계좌번호, 증명서발급)</caption>
-							<colgroup>
-								<col style="width: 10%;">
-								<col style="width: 10%;">
-								<col>
-								<col style="width: 15%;">
-								<col style="width: 15%;">
-								<col style="width: 15%;">
-								<col style="width: 10%;">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">항목</th>
-									<th scope="col">납부일자</th>
-									<th scope="col">청구기관</th>
-									<th scope="col">납부자번호</th>
-									<th scope="col">납부금액(원)</th>
-									<th scope="col">출금계좌번호</th>
-									<th scope="col">증명서발급</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>지방세</td>
-									<td class="txt_c">2017.03.02</td>
-									<td>각지방 자치단체</td>
-									<td>1111111111111</td>
-									<td class="txt_r">30,000</td>
-									<td>111-11111111</td>
 									<td class="txt_c">
 										<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 									</td>
