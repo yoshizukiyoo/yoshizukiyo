@@ -27,29 +27,6 @@
 			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
-
-			// check1 option
-			$('input[name=check1]').on('change', function(){
-				$('[data-check-option]').hide();
-
-				if($('#check1_2').prop('checked')){
-					$('[data-check-option=check1_2').show();
-				} else if ($('#check1_3').prop('checked')){
-					$('[data-check-option=check1_3').show();
-				}
-			})
-
-			// check2 disable
-			$('input[name=check2]').on('change', function(){
-				$('[data-inp-active]').attr('disabled', '""').val(null);
-
-				if($('#check2_1').prop('checked')){
-					$('[data-inp-active=check2_1]').removeAttr('disabled')
-				} else {
-					$('[data-inp-active=check2_2]').removeAttr('disabled')
-				}
-			})
-
 		});
 	</script>
 </head>
@@ -146,46 +123,49 @@
 										</span>
 									</td>
 								</tr>
-								<tr data-check-option="check1_2" style="display: none;">
+								<tr>
 									<th scope="row">상세구분
 										<span class="necessary">*</span>
 									</th>
 									<td>
-										<span class="check_item">
-											<input type="radio" name="check1_2" id="check1_2_1" checked>
-											<label for="check1_2_1">전체</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1_2" id="check1_2_2">
-											<label for="check1_2_2">국세</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1_2" id="check1_2_3">
-											<label for="check1_2_3">전파사용료</label>
-										</span>
-									</td>
-								</tr>
-								<tr data-check-option="check1_3" style="display: none;">
-									<th scope="row">상세구분
-										<span class="necessary">*</span>
-									</th>
-									<td>
-										<span class="check_item">
-											<input type="radio" name="check1_3" id="check1_3_1" checked>
-											<label for="check1_3_1">전체</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1_3" id="check1_3_2">
-											<label for="check1_3_2">관세</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1_3" id="check1_3_3">
-											<label for="check1_3_3">기금</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="check1_3" id="check1_3_4">
-											<label for="check1_3_4">기타국고</label>
-										</span>
+										<!-- s: 구분값 == 국세/전파사용료 선택시 노출 -->
+										<div>
+											<span class="check_item">
+												<input type="radio" name="check1_2" id="check1_2_1" checked>
+												<label for="check1_2_1">전체</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1_2" id="check1_2_2">
+												<label for="check1_2_2">국세</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1_2" id="check1_2_3">
+												<label for="check1_2_3">전파사용료</label>
+											</span>
+										</div>
+										<!-- e: 구분값 == 국세/전파사용료 선택시 노출 -->
+
+										<!-- s: 구분값 == 관세/기금/기타국고 선택시 노출 -->
+										<div>
+											<span class="check_item">
+												<input type="radio" name="check1_3" id="check1_3_1" checked>
+												<label for="check1_3_1">전체</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1_3" id="check1_3_2">
+												<label for="check1_3_2">관세</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1_3" id="check1_3_3">
+												<label for="check1_3_3">기금</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1_3" id="check1_3_4">
+												<label for="check1_3_4">기타국고</label>
+											</span>
+										</div>
+										<!-- e: 구분값 == 관세/기금/기타국고 선택시 노출 -->
+
 									</td>
 								</tr>
 							</tbody>
@@ -220,7 +200,7 @@
 										</span>
 									</th>
 									<td>
-										<input type="text" class="tf" data-inp-active="check2_1" style="width: 350px;" title="간편납부번호 입력">
+										<input type="text" class="tf" style="width: 350px;" title="간편납부번호 입력">
 									</td>
 								</tr>
 								<tr>
@@ -231,7 +211,7 @@
 										</span>
 									</th>
 									<td>
-										<input type="text" class="tf" data-inp-active="check2_2" style="width: 350px;" title="간편납부번호 입력" disabled="">
+										<input type="text" class="tf" style="width: 350px;" title="간편납부번호 입력" disabled="">
 									</td>
 								</tr>
 							</tbody>
