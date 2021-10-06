@@ -67,12 +67,14 @@
 				<div class="tab_menu_type1 section">
 					<ul>
 						<li><a href="예금_공과금_My공과금_납부내역조회_납부내역조회_조회.html" class="current">납부내역조회</a></li>
+						<li><a href="예금_공과금_My공과금_납부내역조회_납부내역조회취소_조회.html">납부내역조회/취소</a></li>
 						<li><a href="예금_공과금_My공과금_납부내역조회_예약납부내역조회_조회.html">예약납부내역조회</a></li>
 						<li><a href="예금_공과금_My공과금_납부내역조회_자동납부내역조회_조회.html">자동납부내역조회</a></li>
 					</ul>
 				</div>
 
-				<div class="mt_6">
+				<!-- s: 조회정보입력 -->
+				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
 							<span class="necessary">*</span> 표시는 필수입력사항입니다.
@@ -80,7 +82,7 @@
 					</div>
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">납부내역조회 정보 입력표(구분, 납부구분, 출금계좌번호, 기간선택)</caption>
+							<caption class="sr_only">납부내역조회를 위한 정보입력 양식입니다.</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -108,25 +110,130 @@
 												</dd>
 											</dl>
 										</div>
-										<div class="select_option_wrap mt_2">
-											<div class="select_option on">
-												<div class="select_option_none">-</div>
+										<!-- s: 상세구분 -->
+										<div class="mt_2">
+
+											<!-- s: 구분값 == 지로, 대학등록금 선택시 노출 -->
+											<div>
+												-
 											</div>
+											<!-- e: 구분값 == 지로, 대학등록금 선택시 노출 -->
+
+											<!-- s: 구분값 == 지방세 선택시 노출 -->
 											<div>
 												<span class="check_item">
-													<input type="radio" name="check1" id="check1_1">
-													<label for="check1_1">지방세</label>
+													<input type="radio" name="check1_1" id="check1_1_1" checked>
+													<label for="check1_1_1">지방세</label>
 												</span>
 												<span class="check_item">
-													<input type="radio" name="check1" id="check1_2">
-													<label for="check1_2">환경개선부담금</label>
+													<input type="radio" name="check1_1" id="check1_1_2">
+													<label for="check1_1_2">환경개선부담금</label>
 												</span>
 												<span class="check_item">
-													<input type="radio" name="check1" id="check1_3">
-													<label for="check1_3">세외수입</label>
+													<input type="radio" name="check1_1" id="check1_1_3">
+													<label for="check1_1_3">세외수입</label>
 												</span>
 											</div>
+											<!-- e: 구분값 == 지방세 선택시 노출 -->
+
+											<!-- s: 구분값 == 국고 선택시 노출 -->
+											<div>
+												<span class="check_item">
+													<input type="radio" name="check1_2" id="check1_2_1" checked>
+													<label for="check1_2_1">국세</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_2" id="check1_2_2">
+													<label for="check1_2_2">전파사용료</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_2" id="check1_2_3">
+													<label for="check1_2_3">관세</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_2" id="check1_2_4">
+													<label for="check1_2_4">기금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_2" id="check1_2_5">
+													<label for="check1_2_5">기타국고</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_2" id="check1_2_6">
+													<label for="check1_2_6">항만수수료</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_2" id="check1_2_7">
+													<label for="check1_2_7">특허수수료</label>
+												</span>
+											</div>
+											<!-- e: 구분값 == 국고 선택시 노출 -->
+
+											<!-- s: 구분값 == 범칙/벌과금 선택시 노출 -->
+											<div>
+												<span class="check_item">
+													<input type="radio" name="check1_3" id="check1_3_1" checked>
+													<label for="check1_3_1">경찰청범칙금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_3" id="check1_3_2">
+													<label for="check1_3_2">법무부국고금</label>
+												</span>
+											</div>
+											<!-- e: 구분값 == 범칙/벌과금 선택시 노출 -->
+
+											<!-- s: 구분값 == 보험료/연금 선택시 노출 -->
+											<div>
+												<span class="check_item">
+													<input type="radio" name="check1_4" id="check1_4_1" checked>
+													<label for="check1_4_1">통합징수보험료</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_4" id="check1_4_2">
+													<label for="check1_4_2">국민연금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_4" id="check1_4_3">
+													<label for="check1_4_3">고용보험료</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_4" id="check1_4_4">
+													<label for="check1_4_4">산재보험료</label>
+												</span>
+											</div>
+											<!-- e: 구분값 == 보험료/연금 선택시 노출 -->
+
+											<!-- s: 구분값 == 생활요금 선택시 노출 -->
+											<div>
+												<span class="check_item">
+													<input type="radio" name="check1_5" id="check1_5_1" checked>
+													<label for="check1_5_1">전기요금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_5" id="check1_5_2">
+													<label for="check1_5_2">KT통신요금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_5" id="check1_5_3">
+													<label for="check1_5_3">상하수도요금</label>
+												</span>
+											</div>
+											<!-- e: 구분값 == 생활요금 선택시 노출 -->
+
+											<!-- s: 구분값 == 아파트관리비 선택시 노출 -->
+											<div>
+												<span class="check_item">
+													<input type="radio" name="check1_6" id="check1_6_1" checked>
+													<label for="check1_6_1">관리사무소</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="check1_6" id="check1_6_2">
+													<label for="check1_6_2">아파트거주자</label>
+												</span>
+											</div>
+											<!-- e: 구분값 == 아파트관리비 선택시 노출 -->
 										</div>
+										<!-- e: 상세구분 -->
 									</td>
 								</tr>
 								<tr>
@@ -140,38 +247,39 @@
 												<label for="check2_1">즉시납부</label>
 											</span>
 											<span class="check_item">
-												<input type="radio" name="check2" id="check2_2" disabled="">
+												<input type="radio" name="check2" id="check2_2" disabled=""><!-- [D]: 구분값 == 지방세 선택시에만 활성화 -->
 												<label for="check2_2">대량납부</label>
-											</span>
-										</div>
-										<div>
-											<span class="check_item">
-												<input type="radio" name="check2" id="check2_3">
-												<label for="check2_3">관리사무소계좌번호</label>
-											</span>
-											<span class="check_item">
-												<input type="radio" name="check2" id="check2_4">
-												<label for="check2_4">아파트코드/동호코드/납부월분 입력</label>
 											</span>
 										</div>
 									</td>
 								</tr>
+
+								<!-- s: 구분값 == 아파트관리비 && 상세구분 == 아파트거주자 선택시 노출 -->
+								<tr>
+									<th scope="row">조회구분
+										<span class="necessary">*</span>
+									</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="check3" id="check3_1" checked>
+											<label for="check3_1">관리사무소계좌번호</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check3" id="check3_2">
+											<label for="check3_2">아파트코드/동호코드/납부월분 입력</label>
+										</span>
+									</td>
+								</tr>
+								<!-- e: 구분값 == 아파트관리비 && 상세구분 == 아파트거주자 선택시 노출 -->
+
 								<tr>
 									<th scope="row">출금계좌번호
 										<span class="necessary">*</span>
 									</th>
 									<td>
-										<div class="selectbox_wrap" style="width: 360px;">
-											<dl title="출금계좌번호 선택">
-												<dt><a href="#;"><span>선택하십시오</span></a></dt>
-												<dd>
-													<ul>
-														<li><a href="#;"><span>123456789</span></a></li>
-														<li><a href="#;"><span>987654321</span></a></li>
-													</ul>
-												</dd>
-											</dl>
-										</div>
+										000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌
+										<button type="button" class="btn btn_xs btn_default ml_8"
+											onclick="openModal('account_popup', this);">전체계좌조회</button>
 									</td>
 								</tr>
 								<tr>
@@ -213,6 +321,8 @@
 										<input type="text" class="tf" style="width: 360px;" title="아파트 기관코드 입력">
 									</td>
 								</tr>
+
+								<!-- s: 구분값 == 아파트 관리비 && 상세구분 == 아파트거주자 선택시 노출 -->
 								<tr>
 									<th scope="row">관리사무소 계좌번호
 										<span class="necessary">*</span>
@@ -237,6 +347,9 @@
 										<input type="text" class="tf" style="width: 360px;" title="납부금액 입력">
 									</td>
 								</tr>
+								<!-- e: 구분값 == 아파트 관리비 && 상세구분 == 아파트거주자 선택시 노출 -->
+
+								<!-- s: 구분값 ==  대학등록금 선택시 노출 -->
 								<tr>
 									<th scope="row">학교
 										<span class="necessary">*</span>
@@ -271,13 +384,16 @@
 										<input type="text" class="tf" style="width: 360px;" title="학생명 입력">
 									</td>
 								</tr>
+								<!-- e: 구분값 ==  대학등록금 선택시 노출 -->
+
 							</tbody>
 						</table>
 					</div>
+				</div>
+				<!-- e: 조회정보입력 -->
 
-					<div class="btn_tbl_btm btn_data_search">
-						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
-					</div>
+				<div class="btn_tbl_btm btn_data_search">
+					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
 				</div>
 
 				<!-- s: 조회결과 -->
@@ -288,564 +404,184 @@
 							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
-					<div class="tbl_option_wrap">
-						<!-- [D] : 구분값에따라 변경 // tbl_option > display:none / class = on 을 붙여 블럭처리 가능합니다 -->
-						<div class="tbl_data tbl_row_data tbl_option on">
-							<table>
-								<caption class="sr_only">조회결과 (선택하신 조회기간)</caption>
-								<colgroup>
-									<col style="width: 15%;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">조회기간</th>
-										<td>2016.06.01 ~ 2021.06.12</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_row_data tbl_option">
-							<table>
-								<caption class="sr_only">조회결과 (출금계좌번호, 조회기간, 총건수, 데이터건수)</caption>
-								<colgroup>
-									<col style="width: 15%;">
-									<col>
-									<col style="width: 15%;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">출금계좌번호</th>
-										<td>000000000000</td>
-										<th scope="row">조회기간</th>
-										<td>2016.06.01 ~ 2021.06.12</td>
-									</tr>
-									<tr>
-										<th scope="row">총건수</th>
-										<td>79건</td>
-										<th scope="row">데이터건수</th>
-										<td>15</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_row_data tbl_option">
-							<table>
-								<caption class="sr_only">조회결과 (주민(사업자)등록번호, 조회기간, 총건수, 데이터건수)</caption>
-								<colgroup>
-									<col style="width: 15%;">
-									<col>
-									<col style="width: 15%;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">주민(사업자) 등록번호</th>
-										<td>000000000000</td>
-										<th scope="row">조회기간</th>
-										<td>2016.06.01 ~ 2021.06.12</td>
-									</tr>
-									<tr>
-										<th scope="row">총건수</th>
-										<td>79건</td>
-										<th scope="row">데이터건수</th>
-										<td>15</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_data tbl_row_data tbl_option">
-								<table>
-									<caption class="sr_only">조회결과 (주민(사업자)등록번호, 조회기간)</caption>
-									<colgroup>
-										<col style="width: 15%;">
-										<col>
-										<col style="width: 15%;">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">주민(사업자) 등록번호</th>
-											<td>000000000000</td>
-											<th scope="row">조회기간</th>
-											<td>2016.06.01 ~ 2021.06.12</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div class="tbl_data tbl_row_data tbl_option">
-								<table>
-									<caption class="sr_only">조회결과 (주민(사업자)등록번호, 조회기간, 총고지건수, 총금액)</caption>
-									<colgroup>
-										<col style="width: 15%;">
-										<col>
-										<col style="width: 15%;">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">주민(사업자) 등록번호</th>
-											<td>000000000000</td>
-											<th scope="row">조회기간</th>
-											<td>2016.06.01 ~ 2021.06.12</td>
-										</tr>
-										<tr>
-											<th scope="row">총고지건수</th>
-											<td>79건</td>
-											<th scope="row">총금액</th>
-											<td class="txt_r">4,000,000원</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div class="tbl_data tbl_row_data tbl_option">
-								<table>
-									<caption class="sr_only">조회결과 (주민(사업자)등록번호, 조회기간, 총고지건수, 총금액)</caption>
-									<colgroup>
-										<col style="width: 15%;">
-										<col>
-										<col style="width: 15%;">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">조회기간</th>
-											<td colspan="3">2016.06.01 ~ 2021.06.12</td>
-										</tr>
-										<tr>
-											<th scope="row">총건수</th>
-											<td>3건</td>
-											<th scope="row">데이터건수</th>
-											<td>3건</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+
+					<!-- s: 조회정보 -->
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">주민(사업자)등록번호, 조회기간, 총고지건수, 총금액 정보입니다.</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">주민(사업자) 등록번호</th>
+									<td>000000000000</td>
+									<th scope="row">조회기간</th>
+									<td>2016.06.01 ~ 2021.06.12</td>
+								</tr>
+								<tr>
+									<th scope="row">총고지건수</th>
+									<td>79건</td>
+									<th scope="row">총금액</th>
+									<td class="txt_r">4,000,000원</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="tbl_option_wrap mt_4">
-						<!-- [D] : 구분값에따라 변경 // .tbl_option > display:none / class = .on 을 붙여 블럭처리 가능합니다 -->
-						<div class="tbl_data tbl_list_data tbl_option on">
-							<table>
-								<caption class="sr_only">납부내역조회결과 안내(이체구분, 납부일, 청구기관, 전자납부번호, 납부금액(원), 납부기관, 상세보기)</caption>
-								<colgroup>
-									<col style="width: 10%;">
-									<col style="width: 13%;">
-									<col style="width: 17%;">
-									<col style="width: 20%;">
-									<col>
-									<col>
-									<col style="width: 11%;">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">이체구분</th>
-										<th scope="col">납부일</th>
-										<th scope="col">청구기관</th>
-										<th scope="col">전자납부번호</th>
-										<th scope="col">납부금액(원)</th>
-										<th scope="col">납부기관</th>
-										<th scope="col">상세보기</th>
-									</tr>
-								</thead>
-								<tbody class="list_length_check">
-									<tr>
-										<td class="txt_c">즉시이체</td>
-										<td class="txt_c">2017.03.02</td>
-										<td>(주)가톨릭신문사</td>
-										<td>11111111111111</td>
-										<td class="txt_r">191,820</td>
-										<td>은행인터넷뱅킹</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">즉시이체</td>
-										<td class="txt_c">2017.03.02</td>
-										<td>(주)가톨릭신문사</td>
-										<td>11111111111111</td>
-										<td class="txt_r">191,820</td>
-										<td>은행인터넷뱅킹</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">즉시이체</td>
-										<td class="txt_c">2017.03.02</td>
-										<td>(주)가톨릭신문사</td>
-										<td>11111111111111</td>
-										<td class="txt_r">191,820</td>
-										<td>은행인터넷뱅킹</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_list_data tbl_option">
-							<table>
-								<caption class="sr_only">납부내역조회결과 안내(납부일, 전자납부번호, 징수과목, 징수기관, 납부금액(원), 납부기관, 상세보기)</caption>
-								<colgroup>
-									<col style="width: 12%;">
-									<col>
-									<col style="width: 10%;">
-									<col>
-									<col style="width: 14%;">
-									<col>
-									<col style="width: 10%;">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">납부일</th>
-										<th scope="col">전자납부번호</th>
-										<th scope="col">징수과목</th>
-										<th scope="col">징수기관</th>
-										<th scope="col">납부금액(원)</th>
-										<th scope="col">납부기관</th>
-										<th scope="col">상세보기</th>
-									</tr>
-								</thead>
-								<tbody class="list_length_check">
-									<tr>
-										<td class="txt_c">2019.02.25</td>
-										<td>0126170961084575776</td>
-										<td>신고분</td>
-										<td>국세청 부산지방국세청</td>
-										<td class="txt_r">3,000,000</td>
-										<td>부천소사로우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2019.02.25</td>
-										<td>0126170961084575776</td>
-										<td>신고분</td>
-										<td>국세청 부산지방국세청</td>
-										<td class="txt_r">3,000,000</td>
-										<td>부천소사로우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2019.02.25</td>
-										<td>0126170961084575776</td>
-										<td>신고분</td>
-										<td>국세청 부산지방국세청</td>
-										<td class="txt_r">3,000,000</td>
-										<td>부천소사로우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_list_data tbl_option">
-							<table>
-								<caption class="sr_only">납부내역조회결과 안내(납부일, 징수기관, 전자납부번호, 과금종류, 납부금액(원), 상세)</caption>
-								<colgroup>
-									<col style="width: 12%">
-									<col>
-									<col>
-									<col style="width: 14%;">
-									<col>
-									<col style="width: 12%;">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">납부일</th>
-										<th scope="col">징수기관</th>
-										<th scope="col">전자납부번호</th>
-										<th scope="col">과금종류</th>
-										<th scope="col">납부금액(원)</th>
-										<th scope="col">상세</th>
-									</tr>
-								</thead>
-								<tbody class="list_length_check">
-									<tr>
-										<td class="txt_c">2019.07.18</td>
-										<td>경찰청 충청북도지방</td>
-										<td>0137201830002067590</td>
-										<td>경범죄</td>
-										<td class="txt_r">20,000</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2019.07.18</td>
-										<td>경찰청 충청북도지방</td>
-										<td>0137201830002067590</td>
-										<td>경범죄</td>
-										<td class="txt_r">20,000</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2019.07.18</td>
-										<td>경찰청 충청북도지방</td>
-										<td>0137201830002067590</td>
-										<td>경범죄</td>
-										<td class="txt_r">20,000</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_list_data tbl_option">
-							<table>
-								<caption class="sr_only">납부내역조회결과 안내(납부일, 부과년월, 고지구분, 납부금액(원), 납부기관, 상세보기)</caption>
-								<colgroup>
-									<col style="width: 15%;">
-									<col style="width: 13%;">
-									<col>
-									<col>
-									<col>
-									<col style="width: 12%;">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">납부일</th>
-										<th scope="col">부과년월</th>
-										<th scope="col">고지구분</th>
-										<th scope="col">납부금액(원)</th>
-										<th scope="col">납부기관</th>
-										<th scope="col">상세보기</th>
-									</tr>
-								</thead>
-								<tbody class="list_length_check">
-									<tr>
-										<td class="txt_c">2019.11.11</td>
-										<td class="txt_c">2019.12</td>
-										<td>체납분</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2019.11.11</td>
-										<td class="txt_c">2019.12</td>
-										<td>체납분</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2019.11.11</td>
-										<td class="txt_c">2019.12</td>
-										<td>체납분</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup', this)">상세보기</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_list_data tbl_option">
-							<table>
-								<caption class="sr_only">납부내역조회결과 안내(납부일, 전자납부번호, 청구기관, 종류, 납부금액(원), 납부기관, 상세보기)</caption>
-								<colgroup>
-									<col style="width: 10%;">
-									<col style="width: 18%;">
-									<col>
-									<col style="width: 14%;">
-									<col>
-									<col>
-									<col style="width: 10%;">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">납부일</th>
-										<th scope="col">전자납부번호</th>
-										<th scope="col">청구기관</th>
-										<th scope="col">종류</th>
-										<th scope="col">납부금액(원)</th>
-										<th scope="col">납부기관</th>
-										<th scope="col">상세보기</th>
-									</tr>
-								</thead>
-								<tbody class="list_length_check">
-									<tr>
-										<td class="txt_c">2020.02.15</td>
-										<td>0119180206975310014</td>
-										<td>고용노동부 광주지방</td>
-										<td>고용보험기금</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2020.02.15</td>
-										<td>0119180206975310014</td>
-										<td>고용노동부 광주지방</td>
-										<td>고용보험기금</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2020.02.15</td>
-										<td>0119180206975310014</td>
-										<td>고용노동부 광주지방</td>
-										<td>고용보험기금</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_list_data tbl_option">
-							<table>
-								<caption class="sr_only">납부내역조회결과 안내(납부일, 납세자, 부과년월, 납부금액(원), 납부기관, 납부확인증, 납부취소)</caption>
-								<colgroup>
-									<col style="width: 13%;">
-									<col style="width: 10%;">
-									<col style="width: 12%;">
-									<col>
-									<col>
-									<col style="width: 19%;">
-									<col style="width: 11%;">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">납부일</th>
-										<th scope="col">납세자</th>
-										<th scope="col">부과년월</th>
-										<th scope="col">납부금액(원)</th>
-										<th scope="col">납부기관</th>
-										<th scope="col">납부확인증</th>
-										<th scope="col">납부취소</th>
-									</tr>
-								</thead>
-								<tbody class="list_length_check">
-									<tr>
-										<td class="txt_c">2020.02.15</td>
-										<td>이주태</td>
-										<td class="txt_c">2015.11</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<div class="btn_inline_box">
-												<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
-												<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
-											</div>
-										</td>
-										<td class="txt_c">
-											<a href="예금_공과금_My공과금_납부내역조회_납부내역조회_납부취소.html" class="btn btn_sm btn_outline_default">납부취소</a>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2020.02.15</td>
-										<td>이주태</td>
-										<td class="txt_c">2015.11</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<div class="btn_inline_box">
-												<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
-												<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
-											</div>
-										</td>
-										<td class="txt_c">
-											<a href="예금_공과금_My공과금_납부내역조회_납부내역조회_납부취소.html" class="btn btn_sm btn_outline_default">납부취소</a>
-										</td>
-									</tr>
-									<tr>
-										<td class="txt_c">2020.02.15</td>
-										<td>이주태</td>
-										<td class="txt_c">2015.11</td>
-										<td class="txt_r">3,000,000</td>
-										<td>서울중앙우체국</td>
-										<td class="txt_c">
-											<div class="btn_inline_box">
-												<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
-												<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
-											</div>
-										</td>
-										<td class="txt_c">
-											<a href="예금_공과금_My공과금_납부내역조회_납부내역조회_납부취소.html" class="btn btn_sm btn_outline_default">납부취소</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="tbl_data tbl_list_data tbl_option">
-							<table>
-								<caption class="sr_only">납부내역조회결과 안내(납부일, 지자체, 세목, 고지구분, 납부금액(원), 납부결과)</caption>
-								<colgroup>
-									<col style="width: 14%;">
-									<col>
-									<col>
-									<col>
-									<col>
-									<col style="width: 14%;">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">납부일</th>
-										<th scope="col">지자체</th>
-										<th scope="col">세목</th>
-										<th scope="col">고지구분</th>
-										<th scope="col">납부금액(원)</th>
-										<th scope="col">납부결과</th>
-									</tr>
-								</thead>
-								<tbody class="list_length_check">
-									<tr>
-										<td class="txt_c">2020.02.15</td>
-										<td>지자체</td>
-										<td>세목</td>
-										<td>체납</td>
-										<td class="txt_r">3,000,000</td>
-										<td class="txt_c">
-											<button type="button" class="btn btn_sm btn_outline_default"
-												onclick="openModal('popup01', this)">상세보기</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					<!-- e: 조회정보 -->
+
+					<!-- s: 조회목록 -->
+					<div class="tbl_data tbl_list_data mt_4">
+						<table>
+							<caption class="sr_only">납부내역조회 목록이며 납부일, 전자납부번호, 징수과목, 징수기관, 납부금액(원), 납부기관, 상세보기 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 12%;">
+								<col>
+								<col style="width: 10%;">
+								<col>
+								<col style="width: 14%;">
+								<col>
+								<col style="width: 10%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">납부일</th>
+									<th scope="col">전자납부번호</th>
+									<th scope="col">징수과목</th>
+									<th scope="col">징수기관</th>
+									<th scope="col">납부금액(원)</th>
+									<th scope="col">납부기관</th>
+									<th scope="col">상세보기</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">2019.02.25</td>
+									<td>0126170961084575776</td>
+									<td>신고분</td>
+									<td>국세청 부산지방국세청</td>
+									<td class="txt_r">3,000,000</td>
+									<td>부천소사로우체국</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_outline_default"
+											onclick="openModal('popup01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2019.02.25</td>
+									<td>0126170961084575776</td>
+									<td>신고분</td>
+									<td>국세청 부산지방국세청</td>
+									<td class="txt_r">3,000,000</td>
+									<td>부천소사로우체국</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_outline_default"
+											onclick="openModal('popup01', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2019.02.25</td>
+									<td>0126170961084575776</td>
+									<td>신고분</td>
+									<td>국세청 부산지방국세청</td>
+									<td class="txt_r">3,000,000</td>
+									<td>부천소사로우체국</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_outline_default"
+											onclick="openModal('popup01', this)">상세보기</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
+					
+					<div class="tbl_data tbl_list_data mt_4">
+						<table>
+							<caption class="sr_only">납부내역조회 목록이며 납부일, 납세자, 부과년월, 납부금액(원), 납부기관, 납부확인증, 납부취소 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 13%;">
+								<col style="width: 10%;">
+								<col style="width: 12%;">
+								<col>
+								<col>
+								<col style="width: 19%;">
+								<col style="width: 11%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">납부일</th>
+									<th scope="col">납세자</th>
+									<th scope="col">부과년월</th>
+									<th scope="col">납부금액(원)</th>
+									<th scope="col">납부기관</th>
+									<th scope="col">납부확인증</th>
+									<th scope="col">납부취소</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">2020.02.15</td>
+									<td>이주태</td>
+									<td class="txt_c">2015.11</td>
+									<td class="txt_r">3,000,000</td>
+									<td>서울중앙우체국</td>
+									<td class="txt_c">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+											<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+										</div>
+									</td>
+									<td class="txt_c">
+										<a href="예금_공과금_My공과금_납부내역조회_납부내역조회_납부취소.html" class="btn btn_sm btn_outline_default">납부취소</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2020.02.15</td>
+									<td>이주태</td>
+									<td class="txt_c">2015.11</td>
+									<td class="txt_r">3,000,000</td>
+									<td>서울중앙우체국</td>
+									<td class="txt_c">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+											<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+										</div>
+									</td>
+									<td class="txt_c">
+										<a href="예금_공과금_My공과금_납부내역조회_납부내역조회_납부취소.html" class="btn btn_sm btn_outline_default">납부취소</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2020.02.15</td>
+									<td>이주태</td>
+									<td class="txt_c">2015.11</td>
+									<td class="txt_r">3,000,000</td>
+									<td>서울중앙우체국</td>
+									<td class="txt_c">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+											<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+										</div>
+									</td>
+									<td class="txt_c">
+										<a href="예금_공과금_My공과금_납부내역조회_납부내역조회_납부취소.html" class="btn btn_sm btn_outline_default">납부취소</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- e: 조회목록 -->
+
 					<div class="mt_4 txt_r pos_box">
 						<button type="button" class="btn btn_more pos_center">더보기</button>
+						<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print()">화면인쇄</button>
 					</div>
+
 				</div>
 				<!-- e: 조회결과 -->
 
@@ -853,6 +589,147 @@
 				<!--    :::::::::::::::: -->
 				<!-- s: :::popup area::: -->
 				<!--    :::::::::::::::: -->
+
+				<!-- s: 전체계좌목록 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="account_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.
+									</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col style="width: 23%">
+										<col style="width: 18%">
+										<col style="width: 19%">
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">대표계좌설정</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button>
+											</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('account_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌목록 팝업 -->
 
 				<!-- s: 지로 납부 상세보기 popup -->
 				<div class="modal_popup modal_xxl hide" data-popup="popup01">
@@ -864,7 +741,7 @@
 						<div class="popup_body">
 							<div class="tbl_tit">
 								<div class="tit_left">
-									<h3 class="tit1">지방세 납부 상세정보</h3>
+									<h3 class="tit1">지로 납부 상세정보</h3>
 								</div>
 								<div class="txt_right">
 									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
@@ -873,9 +750,8 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">지로 납부 상세정보 안내(지로번호, 청구기관, 전자납부번호, 납세자, 납부년월(회차), 고지구분, 납기내기한, 납기후기한, 납기내금액,
-										납기후 금액)
-									</caption>
+									<caption class="sr_only">지로 납부 상세정보 표이며 지로번호, 청구기관, 전자납부번호, 납세자, 납부년월(회차), 고지구분, 납기내기한, 납기후기한, 납기내금액,
+										납기후 금액 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -918,7 +794,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">지로 납부 상세정보 안내 이어서(납부기관, 납부계좌, 납부금액, 납부일)</caption>
+									<caption class="sr_only">납부정보 표이며 납부기관, 납부계좌, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -943,8 +819,8 @@
 							</div>
 
 							<div class="txt_r mt_4">
-								<button type="button" class="btn btn_sm btn_default">납부확인증</button>
-								<button type="button" class="btn btn_sm btn_default">증명서발급</button>
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 							</div>
 
 							<div class="btn_group">
@@ -972,7 +848,8 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">지방세 납부 상세정보 안내(청구기관, 전자납부번호, 납세자, 주민(사업자 등록번호), 납부기관, 납부계좌, 납부금액, 납부일)
+									<caption class="sr_only">지방세 납부 상세정보 표이며 청구기관, 전자납부번호, 납세자, 주민(사업자 등록번호), 납부기관, 납부계좌, 납부금액, 납부일 정보를
+										제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1010,7 +887,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">지방세 납부 상세정보 안내 이어서(납기내기한, 납기후기한, 세목, 과세대상)</caption>
+									<caption class="sr_only">지방세 납부 상세정보 표이며 납기내기한, 납기후기한, 세목, 과세대상 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1035,7 +912,7 @@
 							</div>
 							<div class="tbl_data tbl_list_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">지방세 납부금액 상세안내(상세세목, 납기내금액(원), 납기후금액(원))</caption>
+									<caption class="sr_only">납부금액 표이며 상세세목, 납기내금액(원), 납기후금액(원) 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 30%;">
 										<col>
@@ -1083,9 +960,13 @@
 								</table>
 							</div>
 
+							<div class="txt_r mt_4">
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+							</div>
+
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary"
-									onclick="closeModal('popup02_1');">확인</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup02_1');">확인</button>
 							</div>
 						</div>
 					</div>
@@ -1108,8 +989,8 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">환경개선부담금 납부 상세정보 안내(청구기관, 전자납부번호, 납세자, 주민(사업자 등록번호), 납부기관, 납부계좌, 납부금액, 납부일)
-									</caption>
+									<caption class="sr_only">환경개선부담금 납부 상세정보 표이며 청구기관, 전자납부번호, 납세자, 주민(사업자 등록번호), 납부기관, 납부계좌, 납부금액, 납부일
+										정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1146,7 +1027,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">환경개선부담금 납부 상세정보 안내 이어서(납기내기한, 납기후기한, 세목, 과세대상)</caption>
+									<caption class="sr_only">환경개선부담금 납부 상세정보 표이며 납기내기한, 납기후기한, 세목, 과세대상 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1171,7 +1052,7 @@
 							</div>
 							<div class="tbl_data tbl_list_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">환경개선부담금 납부금액 상세안내(상세세목, 납기내금액(원), 납기후금액(원))</caption>
+									<caption class="sr_only">납부금액 표이며 상세세목, 납기내금액(원), 납기후금액(원) 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 30%;">
 										<col>
@@ -1204,6 +1085,11 @@
 								</table>
 							</div>
 
+							<div class="txt_r mt_4">
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+							</div>
+
 							<div class="btn_group">
 								<button type="button" class="btn btn_lg btn_outline_default"
 									onclick="closeModal('popup02_2');">확인</button>
@@ -1234,8 +1120,8 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">세외수입 납부 상세정보 안내(청구기관, 전자납부번호, 납세자, 주민(사업자 등록번호), 납부기관, 납부계좌, 납부금액, 납부일)
-									</caption>
+									<caption class="sr_only">세외수입 납부 상세정보 표이며 청구기관, 전자납부번호, 납세자, 주민(사업자 등록번호), 납부기관, 납부계좌, 납부금액, 납부일 정보를
+										제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1272,7 +1158,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">세외수입 납부 상세정보 안내 이어서(납기내기한, 납기후기한, 세목, 과세대상)</caption>
+									<caption class="sr_only">세외수입 납부 상세정보 표이며 납기내기한, 납기후기한, 세목, 과세대상 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1297,7 +1183,7 @@
 							</div>
 							<div class="tbl_data tbl_list_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">세외수입 납부금액 상세안내(상세세목, 납기내금액(원), 납기후금액(원))</caption>
+									<caption class="sr_only">납부금액 표이며 상세세목, 납기내금액(원), 납기후금액(원) 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 30%;">
 										<col>
@@ -1345,6 +1231,11 @@
 								</table>
 							</div>
 
+							<div class="txt_r mt_4">
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+							</div>
+
 							<div class="btn_group">
 								<button type="button" class="btn btn_lg btn_outline_default"
 									onclick="closeModal('popup02_3');">확인</button>
@@ -1365,7 +1256,7 @@
 						<div class="popup_body">
 							<div class="tbl_tit">
 								<div class="tit_left">
-									<h3 class="tit1"></h3><!-- [D] : 국고팝업 공통 / 타이틀을 불러와야합니다 -->
+									<h3 class="tit1">국세 납부 상세정보</h3><!-- [D] : 국고팝업 공통 / 타이틀을 불러와야합니다 -->
 								</div>
 								<div class="txt_right">
 									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
@@ -1374,7 +1265,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">선택 국고 납부 상세정보 안내(전자납부번호, 회계연도, 납세자명, 주민(사업자)등록번호, 징수기관, 전문관리번호)
+									<caption class="sr_only">국고 납부 상세정보 표이며 전자납부번호, 회계연도, 납세자명, 주민(사업자)등록번호, 징수기관, 전문관리번호 정보를 제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1406,7 +1297,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">선택 국고 납부 상세정보 안내 이어서(납기내기한, 납기후기한, 납기내금액, 납기후금액)</caption>
+									<caption class="sr_only">국고 납부 상세정보 표이며 납기내기한, 납기후기한, 납기내금액, 납기후금액 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1431,7 +1322,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">선택 국고 납부 상세정보 안내 이어서(납부기관, 납부매체, 납부금액, 납부일)</caption>
+									<caption class="sr_only">납부금액 표이며 납부기관, 납부매체, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1454,13 +1345,15 @@
 									</tbody>
 								</table>
 							</div>
+
 							<div class="txt_r mt_4">
-								<button type="button" class="btn btn_sm btn_default">납부확인증</button>
-								<button type="button" class="btn btn_sm btn_default">증명서발급</button>
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 							</div>
 
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('popup03');">확인</button>
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup03');">확인</button>
 							</div>
 						</div>
 					</div>
@@ -1478,7 +1371,7 @@
 						<div class="popup_body">
 							<div class="tbl_tit">
 								<div class="tit_left">
-									<h3 class="tit1"></h3><!-- [D] : 범칙/벌과금 팝업 공통 / 타이틀을 불러와야합니다 -->
+									<h3 class="tit1">경찰청범칙금 납부 상세정보</h3><!-- [D] : 범칙/벌과금 팝업 공통 / 타이틀을 불러와야합니다 -->
 								</div>
 								<div class="txt_right">
 									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
@@ -1487,8 +1380,8 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">선택 범칙/벌과금 납부 상세정보 안내(전자납부번호, 청구기관, 납세자, 주민(사업자)등록번호, 징수계좌번호, 회계연도, 과금종류, 일반회계,
-										납기내기한, 납기후기한, 납기내금액, 납기후금액)
+									<caption class="sr_only">범칙/벌과금 납부 상세정보 표이며 전자납부번호, 청구기관, 납세자, 주민(사업자)등록번호, 징수계좌번호, 회계연도, 과금종류, 일반회계,
+										납기내기한, 납기후기한, 납기내금액, 납기후금액 정보를 제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1538,7 +1431,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">선택 범칙/벌과금 납부 상세정보 안내 이어서(납부기관, 납부금액, 납부일)</caption>
+									<caption class="sr_only">납부금액 표이며 납부기관, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1559,13 +1452,15 @@
 									</tbody>
 								</table>
 							</div>
+
 							<div class="txt_r mt_4">
-								<button type="button" class="btn btn_sm btn_default">납부확인증</button>
-								<button type="button" class="btn btn_sm btn_default">증명서발급</button>
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 							</div>
 
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('popup04');">확인</button>
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup04');">확인</button>
 							</div>
 						</div>
 					</div>
@@ -1592,7 +1487,8 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">통합징수보험료 납부 상세정보 안내(전자납부번호, 납부매체, 납세자, 고지구분, 납기내기한, 납기후기한, 납기내금액, 납기후금액)
+									<caption class="sr_only">통합징수보험료 납부 상세정보 표이며 전자납부번호, 납부매체, 납세자, 고지구분, 납기내기한, 납기후기한, 납기내금액, 납기후금액 정보를
+										제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1630,7 +1526,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">통합징수보험료 납부 상세정보 안내 이어서(납부기관, 납부금액, 납부일)</caption>
+									<caption class="sr_only">납부금액 표이며 납부기관, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1685,7 +1581,8 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">국민연금 납부 상세정보 안내(전자납부번호, 납세자, 납부자번호, 부과년월, 고지구분, 납기내기한, 납기후기한, 납기내금액, 납기후금액)
+									<caption class="sr_only">국민연금 납부 상세정보 표이며 전자납부번호, 납세자, 납부자번호, 부과년월, 고지구분, 납기내기한, 납기후기한, 납기내금액, 납기후금액
+										정보를 제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1727,7 +1624,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">국민연금 납부 상세정보 안내 이어서(납부기관, 납부계좌, 납부금액, 납부일)</caption>
+									<caption class="sr_only">납부금액 표이며 납부기관, 납부계좌, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1750,9 +1647,10 @@
 									</tbody>
 								</table>
 							</div>
+
 							<div class="txt_r mt_4">
-								<button type="button" class="btn btn_sm btn_default">납부확인증</button>
-								<button type="button" class="btn btn_sm btn_default">증명서발급</button>
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 							</div>
 
 							<div class="btn_group">
@@ -1784,7 +1682,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">고용보험료 납부 상세정보 안내(전자납부번호, 징수계좌번호, 납세자명, 보험관리번호)
+									<caption class="sr_only">고용보험료 납부 상세정보 표이며 전자납부번호, 징수계좌번호, 납세자명, 보험관리번호 정보를 제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1810,7 +1708,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">고용보험료 납부 상세정보 안내 이어서(우체국명, 납부매체, 납부금액, 납부일)</caption>
+									<caption class="sr_only">납부금액 표이며 우체국명, 납부매체, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1833,9 +1731,10 @@
 									</tbody>
 								</table>
 							</div>
+
 							<div class="txt_r mt_4">
-								<button type="button" class="btn btn_sm btn_default">납부확인증</button>
-								<button type="button" class="btn btn_sm btn_default">증명서발급</button>
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 							</div>
 
 							<div class="btn_group">
@@ -1867,7 +1766,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">산재보험료 납부 상세정보 안내(전자납부번호, 징수계좌번호, 납세자명, 보험관리번호)
+									<caption class="sr_only">산재보험료 납부 상세정보 표이며 전자납부번호, 징수계좌번호, 납세자명, 보험관리번호 정보를 제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1893,7 +1792,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">산재보험료 납부 상세정보 안내 이어서(우체국명, 납부매체, 납부금액, 납부일)</caption>
+									<caption class="sr_only">납부금액 표이며 우체국명, 납부매체, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1950,7 +1849,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">상하수도요금 납부 상세정보 안내(전자납부번호, 청구기관, 납세자)
+									<caption class="sr_only">상하수도요금 납부 상세정보 표이며 전자납부번호, 청구기관, 납세자 정보를 제공하고 있습니다.
 									</caption>
 									<colgroup>
 										<col style="width: 17%;">
@@ -1974,7 +1873,7 @@
 							</div>
 							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">상하수도요금 납부 상세정보 안내 이어서(납부기관, 납부계좌, 납부금액, 납부일)</caption>
+									<caption class="sr_only">상하수도요금 납부 상세정보 표이며 납부기관, 납부계좌, 납부금액, 납부일 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 17%;">
 										<col>
@@ -1997,9 +1896,34 @@
 									</tbody>
 								</table>
 							</div>
+							<div class="tbl_data tbl_list_data mt_4">
+								<table>
+									<caption class="sr_only">상하수도요금 납부 상세정보 표이며 납기내기한, 납기후기한, 세목, 과세대상 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 17%;">
+										<col>
+										<col style="width: 17%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">납기내기한</th>
+											<td>2019.11.30</td>
+											<th scope="row">납기후기한</th>
+											<td>2019.11.30</td>
+										</tr>
+										<tr>
+											<th scope="row">세목</th>
+											<td>상·하수도사용료</td>
+											<th scope="row">과세대상</th>
+											<td>09.02 - 11.06</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 							<div class="tbl_data tbl_row_data tbl_list_data mt_4">
 								<table>
-									<caption class="sr_only">상하수도요금 납부 상세정보 안내 이어서(상세세목, 납기내금액, 납기후금액)</caption>
+									<caption class="sr_only">납부금액 표이며 상세세목, 납기내금액, 납기후금액 정보를 제공하고 있습니다.</caption>
 									<colgroup>
 										<col style="width: 30%;">
 										<col>
@@ -2041,13 +1965,15 @@
 									</tbody>
 								</table>
 							</div>
+
 							<div class="txt_r mt_4">
-								<button type="button" class="btn btn_sm btn_default">납부확인증</button>
-								<button type="button" class="btn btn_sm btn_default">증명서발급</button>
+								<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+								<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 							</div>
 
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('popup06');">확인</button>
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup06');">확인</button>
 							</div>
 						</div>
 					</div>
@@ -2083,8 +2009,7 @@
 							<div class="btn_group">
 								<button type="button" class="btn btn_md btn_outline_default"
 									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_lg btn_primary"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -2124,7 +2049,7 @@
 				</div>
 				<!-- e: confirm 팝업 -->
 
-			<!-- e: 본문 -->
+				<!-- e: 본문 -->
 			</div>
 		</article>
 
