@@ -5,6 +5,7 @@
 	Back-End 개발시 이 파일을 반드시 삭제해 주세요 :)
 */
 
+// 레이아웃 공통 영역 로드
 $(function () {
 	var pageTitle = $('.header').data('page-title');
 	$('.header').load('/html/_inc-header.html .header > *', function () {
@@ -86,6 +87,8 @@ function inputStatus() {
 
 		if ($('.input_area .tf, .input_area .opt', this).length > 1 || $('.input_area :input', this).length > 1) {
 			$container.addClass('active');
+		} else if (!$('.lab:input', $container)) {
+			console.log(111);
 		} else if ($tf.length == 1) {
 			var text = Boolean($tf.val()) || Boolean($tf.attr('placeholder'));
 			$container.toggleClass('active', text);
@@ -100,11 +103,11 @@ function inputStatus() {
 	});
 }
 
+// 데이트피커
 function openDatepicker(obj) {
 	alert('데이트피커 호출(작업중)');
 }
 
-// 데이트피커
 // setTimeout(function () {
 // 	$('.tf_datepicker').each(function () {
 // 		setDatepicker($(this));

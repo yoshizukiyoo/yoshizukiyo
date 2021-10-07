@@ -2141,14 +2141,13 @@ input[type=password]::-ms-clear {
 .tf:focus,
 .opt:focus {
   outline: 0;
-  color: #333;
   position: relative;
   border-color: #111;
 }
 
 .tf::-webkit-input-placeholder,
 .opt::-webkit-input-placeholder {
-  color: #666;
+  color: #555;
   opacity: 1;
 }
 
@@ -2329,6 +2328,7 @@ textarea.tf {
 }
 
 .tf_item {
+  display: block;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
@@ -2416,7 +2416,15 @@ textarea.tf {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  color: #666;
   font-size: 16px;
+}
+
+.tf_item .lab:not(label) {
+  font-size: 13px;
+  top: 0;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .tf_item .lab .req {
@@ -2590,6 +2598,26 @@ textarea.tf {
 .input_items .check_item input:checked + .btn {
   color: #111;
   border-color: currentColor;
+}
+
+.password_masking {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 3px;
+}
+
+.password_masking i {
+  display: inline-block;
+  margin-right: 15px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.password_masking.active i {
+  background-color: #333;
 }
 
 .txt_guide {
@@ -3298,26 +3326,16 @@ textarea.tf {
 }
 
 .opt_list .btn {
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   width: 100%;
   border-radius: 8px;
-  height: 50px;
-  background-image: none;
-  padding: 0;
+  padding: 13px;
   color: #555;
   font-size: 16px;
   font-weight: normal;
   white-space: normal;
   text-align: center;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  white-space: normal;
-  max-height: 50px;
-  line-height: 25px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  background-image: none;
 }
 
 .opt_list .btn.active {
