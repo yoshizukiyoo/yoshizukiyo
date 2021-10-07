@@ -25,31 +25,31 @@ $(function () {
 
 // 테이블 스크롤 표시
 $(document).ready(function () {
-	if ($('.scroll_track').length > 0) {
-		tableScroll();
-	}
+	$('.tbl').each(function () {
+		tableScroll($(this));
+	});
 });
 
-function tableScroll() {
-	var table = $('.scroll_track');
+function tableScroll(obj) {
+	if (obj.width() < obj.children('table').width()) {
+		obj.addClass('tbl_scroll');
+		obj.wrapInner('<div class="scroll_track"></div>');
+	}
 
-	table.each(function () {
-		var $this = $(this),
-			ingClass = 'scroll_ing',
-			endClass = 'scroll_end';
-		$this.on('scroll', function (e) {
-			var wrap = $(this).closest('.tbl'),
-				currLeft = this.scrollLeft,
-				scrWidth = this.scrollWidth,
-				cliWidth = this.clientWidth;
+	var ingClass = 'scroll_ing',
+		endClass = 'scroll_end';
 
-			if (currLeft === 0) {
-				wrap.removeClass(ingClass).removeClass(endClass);
-			} else if (currLeft !== 0 && currLeft + cliWidth < scrWidth) {
-				wrap.addClass(ingClass).removeClass(endClass);
-			} else {
-				wrap.addClass(endClass);
-			}
-		});
+	obj.children('.scroll_track').on('scroll', function (e) {
+		var currLeft = this.scrollLeft,
+			scrWidth = this.scrollWidth,
+			cliWidth = this.clientWidth;
+
+		if (currLeft === 0) {
+			obj.removeClass(ingClass).removeClass(endClass);
+		} else if (currLeft !== 0 && currLeft + cliWidth < scrWidth) {
+			obj.addClass(ingClass).removeClass(endClass);
+		} else {
+			obj.addClass(endClass);
+		}
 	});
 }

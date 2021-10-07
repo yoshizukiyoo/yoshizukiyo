@@ -4,6 +4,12 @@ $(window).ready(function () {
 	SyntaxHighlighter.all();
 });
 
+$(function () {
+	$('.common_layers').load('/html/_inc_common_layers.html .common_layers > *', function () {
+		inputStatus();
+	});
+});
+
 // HTML 가이드 네비게이션 생성
 $(document).ready(function () {
 	$('.component_list').append('<ul class="guide_list"></ul>');
@@ -22,16 +28,6 @@ $(document).ready(function () {
 		$('.wrapper_html_guide').toggleClass('sidebar_open');
 	});
 });
-
-// $(document).on('click', '.btn_type', function () {
-// 	if ($('.common-css').attr('href') == '/resources/css/common.css') {
-// 		$('.common-css').attr('href', '/resources/css/common.css');
-// 		$(this).text('보험');
-// 	} else {
-// 		$('.common-css').attr('href', '/resources/css/common.css');
-// 		$(this).text('예금');
-// 	}
-// });
 
 // HTML 가이드 JumpTo
 function guideNavJumpTo() {

@@ -10,11 +10,8 @@ $(function () {
 	$('.header').load('/html/_inc-header.html .header > *', function () {
 		$('.tit_page').text(pageTitle);
 	});
-	$('.breadcrumb').load('/html/_inc-breadcrumb.html .breadcrumb > *', function () {
-		// if ($.isFunction(window.scrollbar)) scrollbar();
-	});
-	$('.footer').load('/html/_inc-footer.html .footer > *', function () {
-		// if ($.isFunction(window.toTop)) toTop();
+	$('.common_layers').load('/html/_inc_common_layers.html .common_layers > *', function () {
+		inputStatus();
 	});
 });
 
@@ -22,8 +19,55 @@ $(function () {
 // 공통 컴포넌트 UI
 //
 
-// 인풋박스 포커스 스타일
 $(function () {
+	// 인풋박스 스타일
+	inputStatus();
+});
+
+// 탭메뉴
+$(function () {
+	$('.tab_list a').on('click', function (e) {
+		var tg = $(this).attr('href');
+		$(this).parent('li').addClass('on').siblings('li').removeClass('on');
+		if (tg === '#' || tg === '' || tg === '#;') {
+			e.preventDefault();
+		} else if (tg.charAt(0) === '#') {
+			if ($(tg).hasClass('tab_cont')) {
+				$(tg).show().siblings('.tab_cont').hide();
+				e.preventDefault();
+			}
+		}
+	});
+	$('.tab_list .on a').each(function () {
+		var tg = $(this).attr('href');
+		if (tg !== '#' && tg !== '#;' && tg.charAt(0) === '#') {
+			$(tg + '.tab_cont').css('display', 'block');
+		}
+	});
+	$('.tab_menu1').each(function () {
+		var outerWidth = $(this).width();
+		var innerWidth = 0;
+		var current = $('li.on', this).index();
+		$('li', this).each(function () {
+			innerWidth += $(this).width();
+		});
+		if (outerWidth < innerWidth || $('li', this).length > 4) {
+			$(this).addClass('scroll_enable');
+		}
+		if (current > 1) {
+			var posL = $('li', this).eq(current - 1).position().left;
+			$(this).children().scrollLeft(posL);
+		}
+	});
+	$('.tab_menu2').each(function () {
+		if ($('li', this).length > 3) {
+			$(this).addClass('col_drop');
+		}
+	});
+});
+
+// 인풋박스 스타일
+function inputStatus() {
 	$('.tf_item').click(function () {
 		$('.tf_item').removeClass('focus');
 		$(this).addClass('focus');
@@ -40,7 +84,7 @@ $(function () {
 		var $container = $(this);
 		var $tf = $('.input_area .tf', this);
 
-		if ($('.input_area .tf, .input_area .opt', this).length > 1 || $('.input_area :input').length > 1) {
+		if ($('.input_area .tf, .input_area .opt', this).length > 1 || $('.input_area :input', this).length > 1) {
 			$container.addClass('active');
 		} else if ($tf.length == 1) {
 			var text = Boolean($tf.val()) || Boolean($tf.attr('placeholder'));
@@ -54,8 +98,11 @@ $(function () {
 			});
 		}
 	});
-});
+}
 
+function openDatepicker(obj) {
+	alert('데이트피커 호출(작업중)');
+}
 
 // 데이트피커
 // setTimeout(function () {
@@ -76,11 +123,6 @@ $(function () {
 // 		$('#inseq-datepicker').remove();
 // 	}
 // }
-
-// $(document).on('click', '.btn_datepicker', function (e) {
-// 	e.preventDefault();
-// 	$(this).closest('.tf_item').find('.tf_datepicker').click();
-// });
 
 // function setDatepicker(obj) {
 // 	$(obj).closest('.tf_item').append('<div class="btn_area"><button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button></div>');
@@ -183,7 +225,7 @@ function openModal(_target, _opener) {
 			$('.modal_popup').not($('.modal_popup[data-popup=' + _target + ']')).addClass('dim_hide');
 		}, 100);
 		setTimeout(function () {
-			// $('.popup_inner', tg).attr('tabindex', '0').focus();
+			$('.popup_inner', tg).attr('tabindex', '0').focus();
 			tg.scrollTop(0);
 		}, 300);
 	}
@@ -235,40 +277,6 @@ function bodyScroll(_status, _orgWidth) {
 		});
 	}
 }
-
-// 탭메뉴
-$(function () {
-	$('.tab_list a').on('click', function (e) {
-		var tg = $(this).attr('href');
-		if (!$(this).closest('.tab_menu').hasClass('tab_not_active')) {
-			$(this).parent('li').addClass('on').siblings('li').removeClass('on');
-		}
-		if (tg === '#' || tg === '' || tg === '#;') {
-			e.preventDefault();
-		} else if (tg.charAt(0) === '#') {
-			if ($(tg).hasClass('tab_cont')) {
-				$(tg).show().siblings('.tab_cont').hide();
-				e.preventDefault();
-			}
-		}
-	});
-
-	$('.tab_menu1').each(function () {
-		var outerWidth = $(this).width();
-		var innerWidth = 0;
-		var current = $('li.on', this).index();
-		$('li', this).each(function () {
-			innerWidth += $(this).width();
-		});
-		if (outerWidth < innerWidth || $('li', this).length > 4) {
-			$(this).addClass('scroll_enable');
-		}
-		if (current > 1) {
-			var posL = $('li', this).eq(current - 1).position().left;
-			$(this).children().scrollLeft(posL);
-		}
-	});
-});
 
 // 
 // 레이아웃

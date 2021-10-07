@@ -31,7 +31,7 @@
 <body>
 	<div class="wrapper">
 		<header class="header" data-page-title="입력폼 템플릿"></header>
-		<article id="content">
+		<div id="content">
 			<div class="container pt_4 pb_4">
 				<h2 class="tit1">타이틀1 .tit1</h2>
 				<h3 class="tit2">타이틀2 .tit2</h3>
@@ -39,8 +39,8 @@
 				<div class="tf_item">
 					<div class="tf_item_body">
 						<div class="input_area">
-							<label class="lab" for="lb_s">조회기간 <span class="req">필수항목</span></label>
-							<input type="text" id="lb_s" class="tf" value="2021.09.30 - 2021.09.30" readonly required>
+							<label class="lab" for="lb_peroid">조회기간 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_peroid" class="tf" value="2021.09.30 - 2021.09.30" readonly required>
 						</div>
 						<div class="btn_area">
 							<a href="#;" class="btn btn_icon" onclick="openModal('layerPeriod', this);">
@@ -51,85 +51,14 @@
 					</div>
 				</div>
 
-				<!-- s: 기간조회 Modal popup -->
-				<div class="modal_popup modal_bottom_sheet hide" data-popup="layerPeriod">
-					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_header">
-							<h2 class="popup_tit">기간조회</h2>
-						</div>
-						<div class="popup_body">
-							<div class="container">
-								<div class="input_items">
-									<span class="check_item">
-										<input type="radio" name="lb_period" id="lb_period_1" checked>
-										<label for="lb_period_1" class="btn btn_md btn_outline_default">계약기간</label>
-									</span>
-									<span class="check_item">
-										<input type="radio" name="lb_period" id="lb_period_2">
-										<label for="lb_period_2" class="btn btn_md btn_outline_default">1개월</label>
-									</span>
-									<span class="check_item">
-										<input type="radio" name="lb_period" id="lb_period_3">
-										<label for="lb_period_3" class="btn btn_md btn_outline_default">3개월</label>
-									</span>
-									<span class="check_item">
-										<input type="radio" name="lb_period" id="lb_period_4">
-										<label for="lb_period_4" class="btn btn_md btn_outline_default">1년</label>
-									</span>
-								</div>
-
-								<div class="form_row">
-									<div class="tf_item">
-										<div class="tf_item_body">
-											<div class="input_area">
-												<label class="lab" for="lb_s">시작일 <span class="req">필수항목</span></label>
-												<input type="text" id="lb_s" class="tf" value="2021.09.30" required>
-											</div>
-											<div class="btn_area">
-												<a href="#;" class="btn btn_icon">
-													<i class="ico ico_datepicker"></i>
-													<span class="sr_only">달력</span>
-												</a>
-											</div>
-										</div>
-									</div>
-									<div class="bar_item"></div>
-									<div class="tf_item">
-										<div class="tf_item_body">
-											<div class="input_area">
-												<label class="lab" for="lb_e">종료일 <span class="req">필수항목</span></label>
-												<input type="text" id="lb_e" class="tf" value="2021.09.30" required>
-											</div>
-											<div class="btn_area">
-												<a href="#;" class="btn btn_icon">
-													<i class="ico ico_datepicker"></i>
-													<span class="sr_only">달력</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="popup_footer">
-							<div class="btn_group btn_group_flex">
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSample');">확인</button>
-							</div>
-						</div>
-						<button type="button" class="btn btn_close_popup">닫기</button>
-					</div>
-				</div>
-				<!-- e: 기간조회 Modal popup -->
-
 				<div class="tf_item invaid mt_3">
 					<div class="tf_item_body">
 						<div class="input_area">
-							<label class="lab" for="lb_1">지급예상일 <span class="req">필수항목</span></label>
-							<input type="text" id="lb_1" class="tf" value="2021.09.30" required>
+							<label class="lab" for="lb_date">날짜선택 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_date" class="tf" value="2021.09.30" readonly required>
 						</div>
 						<div class="btn_area">
-							<a href="#;" class="btn btn_icon">
+							<a href="#;" class="btn btn_icon btn_datepicker" onclick="openDatepicker(this); return false;">
 								<i class="ico ico_datepicker"></i>
 								<span class="sr_only">달력</span>
 							</a>
@@ -153,23 +82,6 @@
 					</div>
 				</div>
 
-				<!-- Modal Popup : .modal_bottom_sheet -->
-				<div class="modal_popup modal_bottom_sheet hide" data-popup="layerOption">
-					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_header">
-							<h2 class="popup_tit">주소그룹선택</h2>
-						</div>
-						<div class="popup_body">
-							<div class="container">
-								<p>옵션선택</p>
-								<p>옵션선택</p>
-							</div>
-						</div>
-						<button type="button" class="btn btn_close_popup">닫기</button>
-					</div>
-				</div>
-
 				<div class="tf_item mt_3 invalid">
 					<div class="tf_item_body">
 						<div class="input_area">
@@ -183,12 +95,12 @@
 				<div class="tf_item mt_3">
 					<div class="tf_item_body">
 						<div class="input_area">
-							<label class="lab" for="lb_address">직업 <span class="req">필수항목</span></label>
-							<input type="text" id="lb_address" class="tf" required>
+							<label class="lab" for="lb_job">직업 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_job" class="tf" required>
 						</div>
 						<div class="btn_area">
-							<a href="#;" class="btn btn_md btn_round btn_darkgray">버튼1</a>
-							<a href="#;" class="btn btn_md btn_round btn_primary">버튼2</a>
+							<a href="#;" class="btn btn_md btn_round btn_darkgray"
+								onclick="openModal('layerSampleBottomSheet'); return false;">버튼</a>
 						</div>
 					</div>
 				</div>
@@ -208,7 +120,11 @@
 				</div>
 				<!-- e: 하단 고정 영역 -->
 			</div>
-		</article>
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+		</div>
 	</div>
 </body>
 
