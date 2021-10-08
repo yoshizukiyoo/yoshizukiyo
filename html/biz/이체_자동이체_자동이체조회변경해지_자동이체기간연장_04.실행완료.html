@@ -73,8 +73,11 @@
 				<!-- s: 조회정보 -->
 				<div class="section">
 					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">조회정보</h3>
+						</div>
 						<div class="txt_right">
-							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<span class="inpuiry_time">조회시간: 2021년 05월 17일 14시45분46초</span>
 							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
@@ -82,7 +85,7 @@
 						<div class="tbl_left">
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">자동이체 기간연장결과 출금정보표(계좌번호, 계좌명칭(별칭), 내 통장 표기, 자동이체일, 이체종류)</caption>
+									<caption class="sr_only">연장할 자동이체 출금정보표(계좌번호, 계좌명칭(별칭), 내 통장 표기, 자동이체일, 이체종류)</caption>
 									<colgroup>
 										<col style="width: 28%;">
 										<col style="width: 26%;">
@@ -99,7 +102,7 @@
 											<td>-</td>
 										</tr>
 										<tr>
-											<th scope="row" class="sub_th">내 통장 표기</th>
+											<th scope="row" class="sub_th">출금계좌표시</th>
 											<td>자동이체</td>
 										</tr>
 										<tr>
@@ -117,7 +120,7 @@
 						<div class="tbl_right">
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">자동이체 기간연장결과 입금정보표(계좌번호, 예금주명, 받는분 통장 표기, 입금은행, 자동이체기간)</caption>
+									<caption class="sr_only">연장할 자동이체 입금정보표(계좌번호, 예금주명, 받는분 통장 표기, 입금은행, 자동이체기간)</caption>
 									<colgroup>
 										<col style="width: 28%;">
 										<col style="width: 26%;">
@@ -130,11 +133,11 @@
 											<td>01001702191237</td>
 										</tr>
 										<tr>
-											<th scope="row" class="sub_th">예금주명</th>
+											<th scope="row" class="sub_th">입금은행 예금주</th>
 											<td>나봄미</td>
 										</tr>
 										<tr>
-											<th scope="row" class="sub_th">받는분 통장 표기</th>
+											<th scope="row" class="sub_th">입금계좌표시</th>
 											<td>자동이체-01</td>
 										</tr>
 										<tr>
@@ -152,7 +155,7 @@
 					</div>
 					<div class="tbl_data tbl_row_data mt_4">
 						<table>
-							<caption class="sr_only">이체금액 안내표</caption>
+							<caption class="sr_only">이체금액 정보입니다.</caption>
 							<colgroup>
 								<col style="width: 13.7%;">
 								<col>
@@ -166,6 +169,7 @@
 						</table>
 					</div>
 					<div class="txt_r mt_4">
+						<button type="button" class="btn btn_sm btn_default" onclick="openModal('layer01', this);">자주쓰는 입금계좌로 등록</button>
 						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 					</div>
 				</div>
@@ -175,6 +179,115 @@
 					<a href="#;" class="btn btn_xl btn_outline_default">자동이체결과조회</a>
 					<a href="이체_자동이체_자동이체조회변경해지.html" class="btn btn_xl btn_primary">확인</a>
 				</div>
+
+				<!-- s: 자주쓰는 입금계좌 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">자주쓰는 입금계좌</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>자주쓰는 입금계좌로 등록하시면 이체 시 편리하게 입금계좌번호를 입력하실 수 있습니다.<br>참고사항에는 입출금통장, 월급통장, 생활비통장 등 참고할 사항을 입력하세요.</li>
+								<li>예금주명 조회가 불가한 경우(가상계좌 또는 계좌번호 오류 등) 예금주명이 표시되지 않습니다.</li>
+							</ul>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">자주쓰는 입금계좌 관리</caption>
+									<colgroup>
+										<col style="width: 13%">
+										<col>
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">입금은행</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 100%;">
+													<dl title="조건 선택">
+														<dt><a href="#none"><span>선택하십시오</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>입금은행</span></a></li>
+																<li><a href="#none"><span>입금은행</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+											<th scope="row">입금계좌번호</th>
+											<td>
+												<input type="text" class="tf" title="입금계좌번호 입력" placeholder="-없이 입력하세요." style="width:100%;">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">그룹</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 230px;">
+													<dl title="조건 선택">
+														<dt><a href="#none"><span>그룹없음</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>그룹없음</span></a></li>
+																<li><a href="#none"><span>그룹없음</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+												<div class="btn_inline_box">
+													<button type="button" class="btn btn_md btn_outline_default">그룹등록</button>
+												</div>
+											</td>
+											<th scope="row">참고사항</th>
+											<td>
+												<input type="text" class="tf" title="참고사항 입력" placeholder="최대 한글 10자, 영/숫자 20자" style="width:100%;">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">휴대폰번호</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl title="조건 선택">
+															<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>010</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+													<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+												</div>
+											</td>
+											<th scope="row">등록위치</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_1" checked="">
+													<label for="chk3_1">처음</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_2">
+													<label for="chk3_2">마지막</label>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_tbl_btm">
+								<a href="#;" class="btn btn_xl btn_outline_default btn_result">재입력</a>
+								<a href="#;" class="btn btn_xl btn_primary" onclick="closeModal('layer01');">등록</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 자주쓰는 입금계좌 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">

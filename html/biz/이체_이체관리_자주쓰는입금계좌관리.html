@@ -57,7 +57,7 @@
 
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>자주쓰는입금계좌로 등록하시면 이체 시 편리하게 입금계좌번호를 입력하실 수 있습니다. 참고사항에는 입출금통장, 월급통장, 생활비통장 등 참고할 사항을 입력하세요.</li>
+						<li>자주쓰는입금계좌로 등록하시면 이체 시 편리하게 입금계좌번호를 입력하실 수 있습니다.<br>참고사항에는 입출금통장, 월급통장, 생활비통장 등 참고할 사항을 입력하세요.</li>
 						<li>예금주명 조회가 불가한 경우(가상계좌 또는 계좌번호 오류 등) 예금주명이 표시되지 않습니다.</li>
 					</ul>
 				</div>
@@ -71,7 +71,7 @@
 					</div>
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">자주쓰는입금계좌 등록 입력 양식으로 입금은행, 입금계좌번호, 그룹, 참고사항, 휴대폰번호, 등록위치 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">자주쓰는입금계좌 입력 양식이며 입금은행, 입금계좌번호, 그룹, 참고사항, 휴대폰번호, 등록위치를 입력하실 수 있습니다.</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -125,7 +125,7 @@
 									<td>
 										<input type="text" class="tf error" style="width: 420px;" title="입금계좌번호 입력"
 											placeholder="“-”없이 입력하세요"><!-- [D] Field error : class 속성에 error 추가 -->
-										<div class="error_info">입금계좌번호를 입력하여 주십시오</div><!-- [D] error 메세지 -->
+										<div class="error_info">입금계좌번호를 선택하여 주십시오</div><!-- [D] error 메세지 -->
 									</td>
 								</tr>
 								<tr>
@@ -144,7 +144,7 @@
 										</div>
 										<div class="btn_inline_box">
 											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="openModal('popup01', this)">그룹등록</button>
+												onclick="openModal('group_popup', this)">그룹등록</button>
 										</div>
 									</td>
 								</tr>
@@ -197,7 +197,7 @@
 					</div>
 					<div class="btn_tbl_btm">
 						<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
-						<a href="#;" class="btn btn_xl btn_primary">추가</a>
+						<a href="#;" class="btn btn_xl btn_primary">등록</a>
 					</div>
 				</div>
 				<!-- e: 자주쓰는입금계좌 등록 -->
@@ -220,7 +220,7 @@
 								<col style="width: 5%;">
 								<col style="width: 7%;">
 								<col style="width: 19.2%;">
-								<col style="width: 17%;">
+								<col style="width: 16%;">
 								<col style="width: 12.7%;">
 								<col>
 								<col style="width: 12%;">
@@ -259,7 +259,7 @@
 									</td>
 									<td>
 										<div class="phone_number">
-											<div class="selectbox_wrap" style="width: 90px;">
+											<div class="selectbox_wrap" style="width: 93px;">
 												<dl title="조건 선택">
 													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
 													<dd>
@@ -279,8 +279,8 @@
 										</div>
 									</td>
 									<td>
-										<button type="button" class="btn btn_sm btn_default">수정</button>
-										<button type="button" class="btn btn_sm btn_outline_default">삭제</button>
+										<button type="button" class="btn btn_sm btn_outline_default">수정</button>
+										<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('confirm01', this)">삭제</button>
 									</td>
 								</tr>
 								<tr>
@@ -305,7 +305,7 @@
 									</td>
 									<td>
 										<div class="phone_number">
-											<div class="selectbox_wrap" style="width: 90px;">
+											<div class="selectbox_wrap" style="width: 93px;">
 												<dl title="조건 선택">
 													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
 													<dd>
@@ -325,22 +325,22 @@
 										</div>
 									</td>
 									<td>
-										<button type="button" class="btn btn_sm btn_outline_default" disabled="">수정</button>
+										<button type="button" class="btn btn_sm btn_outline_default">수정</button>
 										<!-- [D] 수정이 일어난 행에서만 활성화 -->
-										<button type="button" class="btn btn_sm btn_outline_default">삭제</button><!-- [D] 클릭 시 해당 행 삭제 -->
+										<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('confirm01', this)">삭제</button><!-- [D] 클릭 시 해당 행 삭제 -->
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="mt_4 txt_r">
-						<button type="button" class="btn btn_sm btn_default" onclick="openModal('popup02', this)">순서변경</button>
+						<button type="button" class="btn btn_sm btn_default" onclick="openModal('order_popup', this)">순서변경</button>
 					</div>
 				</div>
 				<!-- e: 자주쓰는입금계좌 목록 -->
 
 				<!-- s: 그룹관리 팝업 -->
-				<div class="modal_popup modal_sm hide" data-popup="popup01">
+				<div class="modal_popup modal_sm hide" data-popup="group_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header">
@@ -429,8 +429,8 @@
 							</div>
 							<div class="btn_group">
 								<button type="button" class="btn btn_lg btn_outline_default"
-									onclick="closeModal('popup01');">취소</button>
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">저장</button>
+									onclick="closeModal('group_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('group_popup');">저장</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -439,7 +439,7 @@
 				<!-- e: 그룹관리 팝업 -->
 
 				<!-- s: 순서변경 팝업 -->
-				<div class="modal_popup modal_xxl hide" data-popup="popup02">
+				<div class="modal_popup modal_xxl hide" data-popup="order_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header">
@@ -537,10 +537,11 @@
 									</tbody>
 								</table>
 							</div>
+
 							<div class="btn_group">
 								<button type="button" class="btn btn_lg btn_outline_default"
-									onclick="closeModal('popup02');">취소</button>
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup02');">저장</button>
+									onclick="closeModal('order_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('order_popup');">저장</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
