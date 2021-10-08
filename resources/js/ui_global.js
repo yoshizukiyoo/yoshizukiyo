@@ -11,15 +11,38 @@ $(window).on('load scroll', function () {
 });
 
 $(function () {
-	// 하단 버튼 영역 여백 확보
+	// 하단 고정영역 여백 확보
 	if ($('.bottom_fixed_area').length) {
 		$('.wrapper').css('padding-bottom', $('.bottom_fixed_area').outerHeight());
 	}
 
+	// 하단 고정영역 내 토글 레이어
+	$('.bottom_toggle').each(function () {
+		var $btn = $('.btn_toggle', this);
+		var $cont = $('.toggle_cont_area', this);
+
+		var spacing = $('.toggle_btn_area', this).outerHeight();
+		$cont.css('bottom', spacing);
+
+		$btn.click(function () {
+			$btn.toggleClass('active');
+			$cont.toggle();
+		});
+
+		$('.dimed', this).click(function () {
+			$(this).closest('.toggle_cont_area').toggle();
+			$btn.toggleClass('active');
+		});
+	});
+
 	// 토글버튼
 	$('[data-toggle-btn]').click(function () {
 		var toggleContent = $(this).data('toggle-btn');
-		$('[data-toggle-content=' + toggleContent + ']').toggle();
+		var $cont = $('[data-toggle-content=' + toggleContent + ']');
+		$cont.toggle();
+		if ($cont.hasClass('toggle_cont_area')) {
+			$cont.prev().find('.btn_toggle').toggleClass('active');
+		};
 	});
 });
 
