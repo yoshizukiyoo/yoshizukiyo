@@ -232,6 +232,11 @@ function openModal(_target, _opener) {
 			tg.scrollTop(0);
 		}, 300);
 	}
+
+	// 하단 고정영역 내 토글 모달 호출 버튼 활성화
+	if (tg.hasClass('modal_toggle')) {
+		tg.closest('.bottom_toggle').find('.btn_toggle').addClass('active');
+	}
 }
 
 function closeModal(_target) {
@@ -251,6 +256,11 @@ function closeModal(_target) {
 		history.pushState('', document.title, window.location.pathname + window.location.search);
 	} else {
 		alert('닫을 레이어를 올바로 지정해 주세요. \n closeModal(\'#레이어아이디\')')
+	}
+
+	// 하단 고정영역 내 토글 모달 호출 버튼 비활성화
+	if (tg.hasClass('modal_toggle')) {
+		tg.closest('.bottom_toggle').find('.btn_toggle').removeClass('active');
 	}
 }
 
@@ -280,6 +290,29 @@ function bodyScroll(_status, _orgWidth) {
 		});
 	}
 }
+
+$(function () {
+	// 하단 고정영역 내 토글 모달
+	$('.bottom_toggle').each(function () {
+		var $btn = $('.btn_toggle', this);
+		var modalData = $('.modal_toggle', this).data('popup');
+		var $cont = $('.toggle_cont', this);
+		var spacing = $('.toggle_btn_area', this).outerHeight();
+
+		$cont.css('bottom', spacing);
+
+		$btn.click(function (e) {
+			e.preventDefault();
+			if ($btn.hasClass('active')) {
+				$btn.removeClass('active');
+				closeModal(modalData, $btn);
+			} else {
+				$btn.addClass('active');
+				openModal(modalData, $btn);
+			}
+		});
+	});
+});
 
 // 
 // 레이아웃
