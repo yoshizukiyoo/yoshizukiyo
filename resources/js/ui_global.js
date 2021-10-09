@@ -11,15 +11,28 @@ $(window).on('load scroll', function () {
 });
 
 $(function () {
-	// 하단 버튼 영역 여백 확보
+	// 하단 고정영역 모달 오픈 여백 확보
 	if ($('.bottom_fixed_area').length) {
 		$('.wrapper').css('padding-bottom', $('.bottom_fixed_area').outerHeight());
 	}
 
-	// 토글버튼
+	// 토글 버튼
 	$('[data-toggle-btn]').click(function () {
+		var $btn = $(this);
 		var toggleContent = $(this).data('toggle-btn');
-		$('[data-toggle-content=' + toggleContent + ']').toggle();
+		var $cont = $('[data-toggle-content=' + toggleContent + ']');
+		$cont.toggle();
+
+		// 툴팁
+		if ($cont.hasClass('tooltip')) {
+			var contTop = $btn.position().top + $btn.outerHeight();
+			$cont.css('top', contTop);
+		};
+	});
+
+	// 툴팁 닫기
+	$('.btn_close_tooltip').click(function () {
+		$(this).closest('[data-toggle-content]').toggle();
 	});
 });
 
