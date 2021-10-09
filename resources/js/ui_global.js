@@ -16,14 +16,23 @@ $(function () {
 		$('.wrapper').css('padding-bottom', $('.bottom_fixed_area').outerHeight());
 	}
 
-	// 토글버튼
+	// 토글 버튼
 	$('[data-toggle-btn]').click(function () {
+		var $btn = $(this);
 		var toggleContent = $(this).data('toggle-btn');
 		var $cont = $('[data-toggle-content=' + toggleContent + ']');
 		$cont.toggle();
-		if ($cont.hasClass('modal_toggle')) {
-			$cont.prev().find('.btn_toggle').toggleClass('active');
+
+		// 툴팁
+		if ($cont.hasClass('tooltip')) {
+			var contTop = $btn.position().top + $btn.outerHeight();
+			$cont.css('top', contTop);
 		};
+	});
+
+	// 툴팁 닫기
+	$('.btn_close_tooltip').click(function () {
+		$(this).closest('[data-toggle-content]').toggle();
 	});
 });
 
