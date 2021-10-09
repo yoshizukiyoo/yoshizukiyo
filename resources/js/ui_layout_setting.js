@@ -52,7 +52,7 @@ $(function () {
 		$('li', this).each(function () {
 			innerWidth += $(this).width();
 		});
-		if (outerWidth < innerWidth || $('li', this).length > 4) {
+		if (outerWidth < innerWidth) {
 			$(this).addClass('scroll_enable');
 		}
 		if (current > 1) {

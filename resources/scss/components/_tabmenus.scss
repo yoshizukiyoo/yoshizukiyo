@@ -3,13 +3,6 @@
 .tab_menu {
 	white-space: nowrap;
 	margin-bottom: 15px;
-
-	// 마진 겹침 현상 해결
-	// &:before,
-	// &:after {
-	// 	content: '';
-	// 	display: table;
-	// }
 }
 
 .tab_menu1 {
@@ -25,7 +18,7 @@
 			flex: 1 1 auto;
 			display: inline-block;
 			font-size: $font-size-base;
-			border-bottom: 1px solid #ddd;
+			border-bottom: 1px solid $border-base;
 
 			&.on {
 				border-bottom: 2px solid $default;
@@ -40,7 +33,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				padding: 0 25px;
+				padding: 0 15px;
 				height: 48px;
 			}
 		}
@@ -50,6 +43,12 @@
 
 		.tab_list {
 			overflow-x: auto;
+
+			a {
+				span {
+					padding: 0 25px;
+				}
+			}
 		}
 
 		&:before,
@@ -144,13 +143,12 @@
 		li {
 			flex: 1 1 25%;
 			font-size: $font-size-base;
-			// margin: -1px;
 
 			&.on {
+				position: relative;
 				color: #fff;
 				font-weight: 500;
 				background-color: #333;
-				border-color: #333;
 			}
 		}
 
@@ -167,13 +165,29 @@
 	}
 
 	&:not(.col_drop) {
-		border: 1px solid #ddd;
+		position: relative;
 		border-radius: 4px;
+		overflow: hidden;
+
+		&:before {
+			content: '';
+			border-radius: 4px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border: 1px solid $border-base;
+			background: #fff;
+			border-radius: 4px;
+		}
 
 		.tab_list {
+			position: relative;
+
 			li {
 				+li {
-					border-left: 1px solid #ddd;
+					border-left: 1px solid $border-base;
 				}
 			}
 		}
@@ -182,18 +196,43 @@
 	&.col_drop {
 		.tab_list {
 			flex-wrap: wrap;
+			border-radius: 4px;
 
 			li {
 				flex: 0 0 auto;
 				width: 50%;
+				margin-right: -1px;
+				margin-bottom: -1px;
+				border: 1px solid $border-base;
+				background-color: #fff;
 
-				// :nth-last-child(1) &:nth-child(2n+1):last-child {
-				// 	border-radius: 0 0 4px 0;
-				// }
+				&.on {
+					background-color: #333;
+					border-color: #333;
+				}
 
-				&:nth-last-child(-n+2) {
+				&:nth-child(1) {
+					border-top-left-radius: 4px;
+				}
+
+				&:nth-child(2) {
+					border-top-right-radius: 4px;
+				}
+
+				&:nth-child(2n+1):nth-last-child(-n+2) {
+					border-bottom-left-radius: 4px;
+				}
+
+				&:nth-child(2n):nth-last-child(-n+2) {
 					border-bottom-right-radius: 4px;
-					// background-color: red;
+				}
+
+				&:nth-child(2) {
+					border-top-right-radius: 4px;
+				}
+
+				&:last-child {
+					border-bottom-right-radius: 4px;
 				}
 			}
 		}
