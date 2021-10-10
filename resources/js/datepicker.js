@@ -489,12 +489,9 @@ function showCalendar(_year, _month, _day, _stat) {
 	/* 닫기버튼 추가 */
 
 	div.appendChild(span);
-	// $(obj).parent().append(div);
 	if ($('[data-popup=layerDatepicker]').length < 1) {
 		$('body').append('<div class="modal_popup modal_datepicker hide" data-popup="layerDatepicker"><div class="dimed"></div><div class="popup_inner"><div class="popup_body"></div></div></div>');
-		// $('#inseq-datepicker').appendTo('[data-popup=layerDatepicker] .popup_body');
 	}
-
 	$('[data-popup=layerDatepicker] .popup_body').append(div);
 	openModal('layerDatepicker');
 
