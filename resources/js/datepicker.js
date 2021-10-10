@@ -1,4 +1,4 @@
-var div, x, y, day, obj, mode, modal;
+var div, x, y, day, obj, mode;
 var agent = navigator.userAgent;
 
 function openCalendar(_obj, _mode) {
@@ -7,6 +7,18 @@ function openCalendar(_obj, _mode) {
 
 	div = document.createElement("div");
 	div.id = "inseq-datepicker";
+
+	if ($('.modal_popup.show').length) {
+		x = $(_obj).offsetParent().position().left;
+		y = $(_obj).offsetParent().position().top + $('.modal_popup.show .popup-body').scrollTop();
+	} else {
+		x = document.documentElement.clientLeft + GetObjectLeft(obj);
+		y = document.documentElement.clientTop + GetObjectTop(obj);
+	}
+
+	div.style.left = parseInt(x, 10) + "px";
+	div.style.top = parseInt(y + obj.offsetHeight, 10) + "px";
+
 	var arrValue = obj.value;
 
 	if (arrValue.length == 10) {
@@ -463,6 +475,41 @@ function showCalendar(_year, _month, _day, _stat) {
 
 	table.appendChild(tbody);
 	div.appendChild(table);
+
+	span = document.createElement("span");
+	span.setAttribute("class", "btn-cal-close");
+
+	a = document.createElement("a");
+	a.href = "javascript:void(0);";
+	a.title = "닫기";
+	a.onclick = new Function("clickCalendar('');");
+	a.onkeydown = new Function("if(event.keyCode == 9){clickCalendar('');}");
+	a.innerHTML = "닫기";
+	span.appendChild(a);
+	/* 닫기버튼 추가 */
+
+	div.appendChild(span);
+	// $(obj).parent().append(div);
+	if ($('[data-popup=layerDatepicker]').length < 1) {
+		$('body').append('<div class="modal_popup modal_datepicker hide" data-popup="layerDatepicker"><div class="dimed"></div><div class="popup_inner"><div class="popup_body"></div></div></div>');
+		// $('#inseq-datepicker').appendTo('[data-popup=layerDatepicker] .popup_body');
+	}
+
+	$('[data-popup=layerDatepicker] .popup_body').append(div);
+	openModal('layerDatepicker');
+
+	setTimeout(
+		function () {
+			if (mode == 'month') {
+				document.getElementById("aFirstM").focus();
+			} else if (mode == 'year') {
+				document.getElementById("aFirstY").focus();
+			} else {
+				document.getElementById("aFirst").focus();
+			}
+		},
+		100
+	);
 }
 
 function clickCalendar(_obj, _mode) {
@@ -483,13 +530,14 @@ function clickCalendar(_obj, _mode) {
 		// }
 	}
 
-	// div.parentNode.removeChild(div);
-	$('.modal_popup[data-popup=layerDatepicker]').remove();
+	div.parentNode.removeChild(div);
+	closeModal('layerDatepicker');
 
 	for (var i = document.getElementsByTagName("roundrect").length - 1; i > -1; i--) {
 		document.getElementsByTagName("roundrect")[i].parentNode.removeChild(document.getElementsByTagName("roundrect")[i]);
 	}
 	obj.focus();
+	// 
 }
 
 function showMonth(_year, _month, _day) {
@@ -500,12 +548,12 @@ function showMonth(_year, _month, _day) {
 	document.getElementById("tableMonth").style.display = "";
 	document.getElementById("tableYearTitle").style.display = "none";
 	document.getElementById("tableYear").style.display = "none";
-	// setTimeout(
-	// 	function () {
-	// 		document.getElementById("aFirstM").focus(); // 포커싱 추가
-	// 	},
-	// 	100
-	// );
+	setTimeout(
+		function () {
+			document.getElementById("aFirstM").focus(); // 포커싱 추가
+		},
+		100
+	);
 }
 
 function showYear(_year, _month, _day) {
@@ -516,12 +564,12 @@ function showYear(_year, _month, _day) {
 	document.getElementById("tableMonth").style.display = "none";
 	document.getElementById("tableYearTitle").style.display = "";
 	document.getElementById("tableYear").style.display = "";
-	// setTimeout(
-	// 	function () {
-	// 		document.getElementById("aFirstY").focus(); // 포커싱 추가
-	// 	},
-	// 	100
-	// );
+	setTimeout(
+		function () {
+			document.getElementById("aFirstY").focus(); // 포커싱 추가
+		},
+		100
+	);
 }
 
 function checkNumber(_value) {
@@ -534,24 +582,24 @@ function checkNumber(_value) {
 	return true;
 }
 
-// function GetObjectTop(_obj) {
-// 	var intTopSum = _obj.offsetTop;
+function GetObjectTop(_obj) {
+	var intTopSum = _obj.offsetTop;
 
-// 	while (_obj.nodeName.indexOf("HTML") != 0 && _obj.nodeName.indexOf("BODY") != 0) {
-// 		_obj = _obj.offsetParent;
-// 		intTopSum += _obj.offsetTop;
-// 	}
+	while (_obj.nodeName.indexOf("HTML") != 0 && _obj.nodeName.indexOf("BODY") != 0) {
+		_obj = _obj.offsetParent;
+		intTopSum += _obj.offsetTop;
+	}
 
-// 	return intTopSum;
-// }
+	return intTopSum;
+}
 
-// function GetObjectLeft(_obj) {
-// 	var intLeftSum = _obj.offsetLeft;
+function GetObjectLeft(_obj) {
+	var intLeftSum = _obj.offsetLeft;
 
-// 	while (_obj.nodeName.indexOf("HTML") != 0 && _obj.nodeName.indexOf("BODY") != 0) {
-// 		_obj = _obj.offsetParent;
-// 		intLeftSum += _obj.offsetLeft;
-// 	}
+	while (_obj.nodeName.indexOf("HTML") != 0 && _obj.nodeName.indexOf("BODY") != 0) {
+		_obj = _obj.offsetParent;
+		intLeftSum += _obj.offsetLeft;
+	}
 
-// 	return intLeftSum;
-// }
+	return intLeftSum;
+}
