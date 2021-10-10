@@ -104,34 +104,21 @@ function inputStatus() {
 }
 
 // 데이트피커
-function openDatepicker(opener) {
-	var tf = $(opener).closest('.tf_item').find('.tf').eq(0);
-	openCalendar(tf);
-	// alert('데이트피커 호출(작업중)');
+function openDatepicker(opener, target) {
+	var $target;
+	if (target == undefined) {
+		$target = $(opener).closest('.tf_item').find('.tf').eq(0);
+	} else {
+		$target = $(target);
+	}
+	openCalendar($target);
 }
-
-// setTimeout(function () {
-// 	$('.tf_datepicker').each(function () {
-// 		setDatepicker($(this));
-// 	});
-// 	$(document).on('click', '.tf_datepicker', function () {
-// 		// $('body').append('<div class="modal_popup modal_bottom_sheet hide" data-popup="layerDatepicker"><div class="dimed remove"></div><div class="popup_inner"><div class="popup_header"><h2 class="popup_tit">날짜 선택</h2></div><div class="popup_body"></div><button type="button" class="btn btn_close_popup remove">닫기</button></div></div>');
-// 		// $('body').append('<div class="modal_popup modal_bottom_sheet hide" data-popup="layerDatepicker"><div class="dimed remove"></div><div class="popup_inner"><div class="popup_body"></div></div></div>');
-// 		openCalendar($(this));
-// 		// $('#inseq-datepicker').appendTo('.modal_popup[data-popup=layerDatepicker] .popup_body');
-// 		// openModal('layerDatepicker');
-// 	});
-// }, 200);
 
 function removeDatepicker() {
-	if ($('#inseq-datepicker').length > 0) {
-		$('#inseq-datepicker').remove();
+	if ($('[data-popup=layerDatepicker]').length > 0) {
+		$('[data-popup=layerDatepicker]').remove();
 	}
 }
-
-// function setDatepicker(obj) {
-// 	$(obj).closest('.tf_item').append('<div class="btn_area"><button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button></div>');
-// }
 
 // 모달 레이어
 $(function () {
