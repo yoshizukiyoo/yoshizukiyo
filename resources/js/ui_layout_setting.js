@@ -104,8 +104,10 @@ function inputStatus() {
 }
 
 // 데이트피커
-function openDatepicker(obj) {
-	alert('데이트피커 호출(작업중)');
+function openDatepicker(opener) {
+	var tf = $(opener).closest('.tf_item').find('.tf').eq(0);
+	openCalendar(tf);
+	// alert('데이트피커 호출(작업중)');
 }
 
 // setTimeout(function () {
@@ -121,58 +123,15 @@ function openDatepicker(obj) {
 // 	});
 // }, 200);
 
-// function removeDatepicker() {
-// 	if ($('#inseq-datepicker').length > 0) {
-// 		$('#inseq-datepicker').remove();
-// 	}
-// }
+function removeDatepicker() {
+	if ($('#inseq-datepicker').length > 0) {
+		$('#inseq-datepicker').remove();
+	}
+}
 
 // function setDatepicker(obj) {
 // 	$(obj).closest('.tf_item').append('<div class="btn_area"><button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button></div>');
 // }
-
-// 일반 레이어
-// $(function () {
-// 	$('.layer_popup.show').each(function () {
-// 		openLayer($(this), null);
-// 	});
-// });
-
-// function openLayer(_target, _opener) {
-// 	if ($(_target).length > 0) {
-// 		layerOpener = _opener;
-// 		setTimeout(function () {
-// 			$(_target).addClass('show').removeClass('hide').css({
-// 				left: $(_opener).position().left,
-// 				top: $(_opener).outerHeight() + $(_opener).position().top,
-// 			});
-// 		}, 100);
-// 		setTimeout(function () {
-// 			$('.popup_inner', _target).attr('tabindex', '0').focus();
-// 			$(_target).scrollTop(0);
-// 		}, 300);
-// 	}
-// }
-
-// function closeLayer(_target, _opener) {
-// 	var tg = $(_target);
-// 	if (tg.hasClass('show')) {
-// 		if ($('.layer_popup.show').length == 1) {}
-// 		tg.addClass('hide').removeClass('show');
-// 		var modalOpener = $(_opener);
-// 		if (modalOpener.length) {
-// 			modalOpener.focus();
-// 		}
-// 	} else {
-// 		alert('닫을 레이어를 올바로 지정해 주세요. \n closeLayer(\'#레이어아이디\')')
-// 	}
-// }
-
-// var layerOpener = null;
-// $(document).on('click', '.layer_popup .btn_close_popup', function () {
-// 	var target = $(this).closest('.layer_popup').attr('id');
-// 	closeModal('#' + target, layerOpener);
-// });
 
 // 모달 레이어
 $(function () {
