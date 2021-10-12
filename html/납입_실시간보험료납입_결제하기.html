@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".total_payment a").click(function () {
+				if (!$(this).hasClass("active")) {
+					openModal('layerbottomToggle');
+					$(this).addClass("active");
+				} else {
+					$(this).removeClass("active");
+					closeModal('layerbottomToggle');
+				}
+			})
+			$(".modal_popup .dimed").click(function () {
+				$(".total_payment a").removeClass("active");
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="실시간보험료납입"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container pt_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">납입보험선택</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">결제하기</span></li>
+					<li><span class="num">3</span><span class="txt">납입보험료 확인</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<div class="clfx">
+					<h2 class="tit1 f_l">납입보험</h2>
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+							<i class="ico ico_help_sm"></i>
+							<span>알려드립니다</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="contract_list pb_0">
+					<ul>
+						<li class="box box_border">
+
+							<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</strong>
+
+							<span class="evidence_contract">
+								<span class="blit">
+									<span class="lab_status type1">정상</span>
+								</span>
+								<span class="info">
+									<span>
+										<span>70325101753</span>
+									</span>
+									<span>
+										<span>2020.09.14 - 2055.09.14</span>
+									</span>
+								</span>
+							</span>
+
+							<span class="in_detail">
+								<span>
+									<em>납입 할 횟수</em>
+									<strong>2회</strong>
+								</span>
+								<span>
+									<em>월납 보험료</em>
+									<strong>13,000원</strong>
+								</span>
+								<span>
+									<em>보험료 확인</em>
+									<strong>0원</strong>
+								</span>
+								<span>
+									<em>납입 보험료</em>
+									<strong>13,000원</strong>
+								</span>
+							</span>
+						</li>
+					</ul>
+					<div class="total_price round_color">
+						취소 보험료 <strong>27,000</strong>원
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">출금계좌</h2>
+
+					<div class="payment_way">
+
+						<ul class="tab">
+							<li class="on"><a href="#;">계좌이체</a></li>
+							<li><a href="#;">카드납부</a></li>
+							<li><a href="#;">포스트페이</a></li>
+						</ul>
+
+						<!-- s : 은행 -->
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_tf_2_2">은행<span class="req">필수항목</span></label>
+									<input type="text" id="lb_tf_2_2" class="tf" value="우체국" readonly required>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openModal('layerAccount'); return false;">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- e : 은행 -->
+
+						<!-- s : 계좌번호 -->
+						<div class="tf_item mt_3">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_tf_2_2">계좌번호<span class="req">필수항목</span></label>
+									<input type="text" id="lb_tf_2_2" class="tf" value="01012340123455123" readonly required>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openModal('layerAccount'); return false;">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- e : 계좌번호 -->
+
+						<!-- s : 계좌비밀번호 -->
+						<div class="cont_row horizontal mt_3">
+							<div class="inner">
+								<div class="col_item">
+									<a href="#;" class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<div class="lab">계좌비밀번호 <span class="req">필수항목</span></div>
+												<div class="password_masking">
+													<i></i><i></i><i></i><i></i>
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- e : 계좌비밀번호 -->
+
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary">계좌인증</button>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">추가인증</h2>
+					<div class="add_certification">
+
+						<ul class="tab">
+							<li><a href="#;">SMS인증</a></li>
+							<li><a href="#;">ARS인증</a></li>
+						</ul>
+
+						<ul class="list list1">
+							<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
+							<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+
+				<!-- s: 하단 고정영역 내 토글 모달 -->
+				<div class="bottom_toggle">
+					<div class="toggle_btn_area">
+						<!-- s: 토글 버튼 -->
+						<!-- [퍼블] 오픈시 .btn_toggle 버튼에 추가되는 active 클래스 활용해 on/off 스타일링 -->
+						<div class="total_payment">
+							<a href="#;">
+								납입 보험
+								<strong>2</strong>건
+								<em>27,000</em>원
+							</a>
+						</div>
+						<!-- e: 토글 버튼 -->
+					</div>
+					<div class="modal_popup modal_toggle hide" data-popup="layerbottomToggle">
+						<div class="dimed"></div>
+						<div class="popup_inner">
+							<div class="toggle_cont">
+								<!-- s: 토글 레이어 본문 -->
+								<div class="insurance_list">
+									<p class="empty">
+										납입하실 보험을 추가해주세요.
+									</p>
+									<ul>
+										<li>
+											<span>(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</span>
+											<strong>1,000,000원(1회)</strong>
+											<button>
+												<i class="ico ico_reset"><span class="sr_only">삭제</span></i>
+											</button>
+										</li>
+										<li>
+											<span>(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</span>
+											<strong>100,000원(1회)</strong>
+											<button>
+												<i class="ico ico_reset"><span class="sr_only">삭제</span></i>
+											</button>
+										</li>
+									</ul>
+								</div>
+								<!-- e: 토글 레이어 본문 -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 하단 고정영역 내 토글 모달 -->
+
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>납입하기</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>납입하실 보험의 보험료와 납입횟수를 확인하세요.</li>
+								<li>
+									3개월분 이상의 보험료를 미리 일시납입시 할인이 가능합니다. <br>
+									(개인연금저축 및 금리연동형 보험은 제외)
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
