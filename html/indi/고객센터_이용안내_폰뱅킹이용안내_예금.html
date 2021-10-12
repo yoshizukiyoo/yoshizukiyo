@@ -23,8 +23,16 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			//	
+			//
 		})
+
+		$(document).on('click', 'a[href^="#"]', function (event) {
+			event.preventDefault();
+
+				$('html, body').animate({
+						scrollTop: $($.attr(this, 'href')).offset().top - 154
+				}, 500);
+		});
 	</script>
 </head>
 
@@ -37,7 +45,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">인터넷상담</h2>
+				<h2 class="tit_cont">폰뱅킹서비스 안내</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -54,55 +62,51 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="first_section box">
-					<ul class="list list1">
-						<li>궁금한 사항이 있으세요? 인터넷 상담을 하실 경우 고객센터 또는 마이페이지에서 답변확인이 가능하며, 입력된 이메일로도 답변을 받아보실 수 있습니다.</li>
+				<div class="first_section">
+					<div class="tab_menu_type1">
+						<ul>
+							<li><a href="고객센터_이용안내_폰뱅킹이용안내_예금.html" class="current">예금</a></li>
+							<li><a href="고객센터_이용안내_폰뱅킹이용안내_보험.html">보험</a></li>
+							<li><a href="고객센터_이용안내_폰뱅킹이용안내_펀드.html">펀드</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="section box flex_box">
+					<div class="l">
+						<strong class="txt_lg">예금 : 1599-1900, 1588-1900</strong>
+						<p class="txt_gray">(해외 : 82-42-612-6000) ㅣ ARS : 05:00 ~ 익일04:00 ㅣ 상담원 연결 : 평일 09:00 ~ 18:00</p>
+					</div>
+					<div class="r">
+						<a href="#;" class="btn btn_xs btn_outline_gray">폰뱅킹(ARS) 서비스 자세히보기</a>
+					</div>
+				</div>
+
+				<div class="section">
+					<h3 class="tit1">예금 ARS 서비스 이용안내</h3>
+					<ul class="phone_banking_info">
+						<li>1599-1900,1588-1900<br>전화</li>
+						<li>서비스번호 입력</li>
+						<li>개인정보 입력<br>(필요시)</li>
+						<li>이체비밀번호 입력<br>(필요시)</li>
 					</ul>
 				</div>
 
 				<div class="section">
-					<div class="point_donation_txt ico_xxl">
-						<strong>문의하신 내용이 <span class="txt_medium">접수</span>되었습니다.</strong>
-						<p>고객님께서 원하시는 답변을 신속히 전해드리도록 하겠습니다.</p>
-						<p>우체국 예금보험 사이트를 이용해주셔서 감사합니다.</p>
-					</div>
+					<h3 class="tit1">예금 ARS 서비스 코드</h3>
+					<ul class="list list1">
+						<li>보이스피싱 및 사고신고는 별표 <div class="q_num mr_0 ml6">*</div> / 
+							쉬운말 서비스는 우물정자 <div class="q_num mr_0 ml6">#</div> / 
+							잔액조회는 <div class="q_num mr_0 ml6">1</div> / 
+							거래내역조회는 <div class="q_num mr_0 ml6">2</div> / 
+							우체국간 이체는 <div class="q_num mr_0 ml6">3</div> / <br>
+							다른 은행으로 이체는 <div class="q_num mr_0 ml6">4</div> / 
+							체크카드서비스는 <div class="q_num mr_0 ml6">5</div> / 
+							경조금 및 예금관련 기타서비스는 <div class="q_num mr_0 ml6">6</div> / 
+							상담사연결은 <div class="q_num mr_0 ml6">0</div> 을 눌러주십시오.</li>
+					</ul>
 				</div>
-
-				<div class="btn_tbl_btm">
-					<a href="고객센터_고객상담_인터넷상담_상담내역_목록.html" class="btn btn_xl btn_primary">확인</a>
-				</div>
-
-				<ul class="box_list section">
-					<li class="bg01">
-						<h4>고객센터</h4>
-						<p>
-							예금고객센터 : 1599-1900 / 1588-1900<br>
-							보험고객센터 : 1599-0100<br>
-							(상담원 연결 : 0번)
-						</p>
-						<a href="#;" class="btn btn_xs btn_default">바로가기</a>
-					</li>
-					<li class="bg02">
-						<h4>인터넷상담</h4>
-						<p>
-							궁금한 사항을 게시판에<br>
-							올려주시면 빠른<br>
-							답변을드리겠습니다.
-						</p>
-						<a href="#;" class="btn btn_xs btn_default">바로가기</a>
-					</li>
-					<li class="bg03">
-						<h4>전화예약상담</h4>
-						<p>
-							전화예약 게시판에 궁금한<br>
-							사항을 남겨주세요.<br>
-							상담원이신속히 연락드립니다.
-						</p>
-						<a href="#;" class="btn btn_xs btn_default">바로가기</a>
-					</li>
-				</ul>
 				
-
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
 					<div class="dimed"></div>
@@ -124,10 +128,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -156,10 +158,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('confirm_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('confirm_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
