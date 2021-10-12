@@ -23,10 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('input[name=popCheck1]').on('click', function () {
-				$('.inp_popChecker1').attr('disabled', '""').val(null);
-				$(this).parents('.b1').siblings('.b2').find('.inp_popChecker1').removeAttr('disabled')
-			})
+			
 		});
 	</script>
 </head>
@@ -73,6 +70,7 @@
 					</ul>
 				</div>
 
+				<!-- s: 출금정보 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
@@ -103,7 +101,7 @@
 										<div class="fx_lr fx_align_center">
 											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
 											<button type="button" class="btn btn_xs btn_default v_base fx_right"
-												onclick="openModal('popup03', this);">전체계좌조회</button>
+												onclick="openModal('popup01', this);">전체계좌조회</button>
 										</div>
 									</td>
 									<td class="txt_r">3,100,000</td>
@@ -123,28 +121,6 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">출금계좌번호
-										<span class="necessary">*</span>
-									</th>
-									<td>
-										<div class="selectbox_wrap" style="width: 360px;">
-											<dl title="출금계좌 선택">
-												<dt><a href="#;"><span>선택하십시오</span></a></dt>
-												<dd>
-													<ul>
-														<li><a href="#;"><span>123123123</span></a></li>
-														<li><a href="#;"><span>321321321</span></a></li>
-													</ul>
-												</dd>
-											</dl>
-										</div>
-										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="openModal('popup01', this)">출금가능금액</button>
-										</div>
-									</td>
-								</tr>
-								<tr>
 									<th scope="row">출금계좌 비밀번호
 										<span class="necessary">*</span>
 									</th>
@@ -155,22 +131,6 @@
 											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
 										</div>
 										※ 비밀번호 오류 회수는 0/5회 입니다.
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">출금계좌 비밀번호
-										<span class="necessary">*</span>
-									</th>
-									<td>
-										<div class="btn_mouse_pwd">
-											<input type="password" class="tf" title="출금계좌비밀번호 입력" style="width: 360px;"
-												placeholder="최대 5회까지 입력가능">
-											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
-										</div>
-										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="openModal('popup02', this)">비밀번호오류횟수조회</button>
-										</div>
 									</td>
 								</tr>
 								<tr>
@@ -196,7 +156,7 @@
 										<input type="text" class="tf" style="width: 360px;" title="아파트 수납기관코드 입력">
 										<div class="btn_inline_box">
 											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="openModal('popup04', this)">아파트기관조회</button>
+												onclick="openModal('popup02', this)">아파트기관조회</button>
 										</div>
 									</td>
 								</tr>
@@ -217,12 +177,12 @@
 										<input type="text" class="tf ml_2 mr_1" style="width: 170px;" title="아파트 호수 입력"> 호
 										<div class="btn_inline_box ml_2">
 											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="openModal('popup05', this)">아파트동/호조회</button>
+												onclick="openModal('popup03', this)">아파트동/호조회</button>
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">예금주 전화번호
+									<th scope="row">전화번호
 										<span class="necessary">*</span>
 									</th>
 									<td>
@@ -251,6 +211,7 @@
 						</table>
 					</div>
 				</div>
+				<!-- e: 출금정보 -->
 
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
@@ -276,84 +237,8 @@
 					</dl>
 				</div>
 
-				<!-- Modal Popup : 출금가능금액 -->
-				<div class="modal_popup modal_sm hide" data-popup="popup01">
-					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_header">
-							<h3 class="popup_tit">출금가능금액</h3>
-						</div>
-						<div class="popup_body">
-							<div class="tbl_data tbl_row_data">
-								<table>
-									<caption class="sr_only">출금가능금액</caption>
-									<colgroup>
-										<col style="width: 34%">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">현재잔액</th>
-											<td class="txt_r">100,000원</td>
-										</tr>
-										<tr>
-											<th scope="row">출금가능금액</th>
-											<td class="txt_r">100,000원</td>
-										</tr>
-										<tr>
-											<th scope="row">1일이체가능금액</th>
-											<td class="txt_r">100,000원</td>
-										</tr>
-										<tr>
-											<th scope="row">1회이체가능금액</th>
-											<td class="txt_r">100,000원</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
-							</div>
-						</div>
-						<button type="button" class="btn btn_close_popup">닫기</button>
-					</div>
-				</div>
-				<!-- e: 출금가능금액 -->
-
-				<!-- Modal Popup : 비밀번호오류횟수조회 -->
-				<div class="modal_popup modal_sm hide" data-popup="popup02">
-					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_header">
-							<h3 class="popup_tit">비밀번호오류횟수조회</h3>
-						</div>
-						<div class="popup_body">
-							<div class="tbl_data tbl_row_data">
-								<table>
-									<caption class="sr_only">비밀번호오류횟수조회</caption>
-									<colgroup>
-										<col style="width: 38%">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">계좌비밀번호오류횟수</th>
-											<td>4회</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup02');">닫기</button>
-							</div>
-						</div>
-						<button type="button" class="btn btn_close_popup">닫기</button>
-					</div>
-				</div>
-				<!-- e: 비밀번호오류횟수조회 -->
-
 				<!-- s: 전체계좌목록 팝업 -->
-				<div class="modal_popup modal_xxl hide" data-popup="popup03">
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header">
@@ -466,7 +351,7 @@
 								</table>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup03');">확인</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -475,7 +360,7 @@
 				<!-- e: 전체계좌목록 팝업 -->
 
 				<!-- s: 아파트기관조회 팝업 -->
-				<div class="modal_popup modal_xl hide" data-popup="popup04">
+				<div class="modal_popup modal_xl hide" data-popup="popup02">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
@@ -497,7 +382,7 @@
 										</span>
 									</div>
 									<div class="b2">
-										<input type="text" class="tf inp_popChecker1" style="width: 320px;" title="아파트(기관)코드 입력">
+										<input type="text" class="tf" style="width: 320px;" title="아파트(기관)코드 입력">
 									</div>
 								</div>
 								<div class="row_box">
@@ -508,7 +393,7 @@
 										</span>
 									</div>
 									<div class="b2">
-										<input type="text" class="tf inp_popChecker1" style="width: 360px;" title="아파트명 입력" disabled="">
+										<input type="text" class="tf" style="width: 360px;" title="아파트명 입력" disabled="">
 									</div>
 								</div>
 							</div>
@@ -522,7 +407,7 @@
 				<!-- e: 아파트기관조회 팝업 -->
 
 				<!-- s: 아파트동/호조회 팝업 -->
-				<div class="modal_popup modal_xl hide" data-popup="popup05">
+				<div class="modal_popup modal_xl hide" data-popup="popup03">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">

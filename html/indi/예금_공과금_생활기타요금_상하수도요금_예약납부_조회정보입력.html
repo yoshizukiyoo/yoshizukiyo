@@ -23,10 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('input[name=check1]').on('click', function(){
-				$('.tf').attr('disabled','""').val(null);
-				$(this).parents('.b1').siblings('.b2').find('.tf').removeAttr('disabled')
-			})
+			
 		});
 	</script>
 </head>
@@ -61,64 +58,75 @@
 				<div class="cont_header_right">
 					<ul class="step">
 						<li><span class="num">1</span><span class="txt">약관동의</span></li>
-						<li><span class="num">2</span><span class="txt">행정구역</span></li>
-						<li class="on"><span class="num">3</span><span class="txt">조회정보입력</span></li>
-						<li><span class="num">4</span><span class="txt">조회결과확인</span></li>
-						<li><span class="num">5</span><span class="txt">상세조회결과</span></li>
-						<li><span class="num">6</span><span class="txt">정보입력</span></li>
-						<li><span class="num">7</span><span class="txt">입력확인</span></li>
-						<li><span class="num">8</span><span class="txt">실행완료</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">조회결과확인</span></li>
+						<li><span class="num">4</span><span class="txt">상세조회결과</span></li>
+						<li><span class="num">5</span><span class="txt">정보입력</span></li>
+						<li><span class="num">6</span><span class="txt">입력확인</span></li>
+						<li><span class="num">7</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="box first_section">
+				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>고지서의 전자수용가번호/간편납부번호 혹은 전자납부번호로 조회하실 수 있습니다.(서울시는 고객번호로 가능)</li>
-						<li>타인에게 부과된 상하수도요금도 조회 후 예약납부하실 수 있습니다.</li>
+						<li>인터넷으로 편리하게 상하수도요금을 예약납부하실 수 있습니다.</li>
+						<li>납부기관 장애여부는 [장애기관]버튼을 클릭하시면 확인하실 수 있습니다. <button type="button" class="btn btn_xs btn_default"
+							onclick="openModal('popup01', this)">장애기관</button></li>
 					</ul>
 				</div>
 
+				<!-- s: 조회방식 선택 -->
 				<div class="section">
-					<div class="check_list_box">
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_1" checked="">
-									<label for="check1_1">전자납부번호</label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf" style="width: 360px;" title="전자납부번호 입력">
-							</div>
-						</div>
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_2">
-									<label for="check1_2">전자수용가번호</label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf" style="width: 360px;" title="전자수용가번호 입력" disabled="">
-							</div>
-						</div>
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_3">
-									<label for="check1_3">고객번호(서울시)</label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf" style="width: 360px;" title="고객번호 입력(서울시 전용)" disabled="">
-							</div>
-						</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">조회방식 선택 양식이며 전자납부번호, 전자수용가번호, 고객번호(서울시) 중 선택하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_1" checked="">
+											<label for="check1_1">전자납부번호</label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf" style="width: 360px;" title="전자납부번호 입력">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_2">
+											<label for="check1_2">전자수용가번호</label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf" style="width: 360px;" title="전자수용가번호 입력" disabled="">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_3">
+											<label for="check1_3">고객번호(서울시)</label>
+										</span>
+									</th>
+									<td>
+										<input type="text" class="tf" style="width: 360px;" title="고객번호 입력(서울시 전용)" disabled="">
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
+				<!-- e: 조회방식 선택 -->
 
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="예금_공과금_생활기타요금_상하수도요금_예약납부_조회결과확인.html" class="btn btn_xl btn_primary">예약납부</a>
+					<a href="예금_공과금_생활기타요금_상하수도요금_예약납부_조회결과확인.html" class="btn btn_xl btn_primary">조회</a>
 				</div>
 
 				<div class="box section">
@@ -133,6 +141,38 @@
 						</dd>
 					</dl>
 				</div>
+
+				<!-- s: 장애기관 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_body">
+							<h3 class="tit2">현재 이체(납부)거래가 불가능한 장애기관입니다.</h3>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">장애기관 목록 안내(기관코드, 기관명)</caption>
+									<thead>
+										<tr>
+											<th scope="col">기관코드</th>
+											<th scope="col">기관명</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="2" class="txt_c">현재 장애기관이 없습니다</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('popup01');">닫기</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 장애기관 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
