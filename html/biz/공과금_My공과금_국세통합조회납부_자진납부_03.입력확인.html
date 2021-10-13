@@ -64,7 +64,14 @@
 					</ul>
 				</div>
 
-				<div class="tab_menu_type1 first_section">
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>입력하신 국세 자진납부 신청내역입니다.</li>
+						<li>납부를 실행하신 뒤에는 취소가 불가능하니, 내용이 맞는지 다시 확인하시기 바랍니다.</li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 section">
 					<ul>
 						<li><a href="공과금_My공과금_국세통합조회납부_즉시납부_01.조회.html">즉시납부</a></li>
 						<li><a href="공과금_My공과금_국세통합조회납부_예약납부_01.조회.html">예약납부</a></li>
@@ -72,18 +79,12 @@
 					</ul>
 				</div>
 
-				<div class="mt_12">
-					<ul class="list list1">
-						<li>입력하신 국세 자진납부 신청내역입니다.</li>
-						<li>납부를 실행하신 뒤에는 취소가 불가능하니, 내용이 맞는지 다시 확인하시기 바랍니다.</li>
-					</ul>
-				</div>
-
-				<div class="mt_8">
+				<!-- s: 납부정보 -->
+				<div class="section">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">국세 자진납부 입력확인(구분, 납부방식, 세무서코드, 납부년월, 결정구분, 세목코드, 납세자명, 납세자번호, 징수관 계좌번호, 납부기한, 본세,
-								교육세, 농특세, 가산금, 전체납부금액)</caption>
+							<caption class="sr_only">자진납부 정보 표이며 구분, 납부방식, 세무서코드, 납부년월, 결정구분, 세목코드, 납세자명, 납세자번호, 징수관 계좌번호, 납부기한, 본세,
+								교육세, 농특세, 가산금, 전체납부금액 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -141,6 +142,7 @@
 						</table>
 					</div>
 				</div>
+				<!-- e: 납부정보 -->
 
 				<!-- s: 보안매체 인증번호 입력 -->
 				<div class="section">
@@ -194,8 +196,116 @@
 
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
 					<a href="공과금_My공과금_국세통합조회납부_자진납부_04.실행완료.html" class="btn btn_xl btn_primary">납부실행</a>
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('popup01', this); return false">결재선조회</a>
+					<a href="공과금_My공과금_국세통합조회납부_자진납부_04.실행완료.html" class="btn btn_xl btn_primary">결재요청</a>
 				</div>
+
+				<!-- s: 결재선조회 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">결재선 조회</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">업무 구분 선택을 할 수 있습니다.</caption>
+									<colgroup>
+										<col style="width: 20%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">업무 구분</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 150px;">
+													<dl title="업무구분 선택">
+														<dt><a href="#none"><span>외환</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>외환1</span></a></li>
+																<li><a href="#none"><span>외환2</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">결제선 조회 목록이며 등록자, 승인자, 전결자 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 30%">
+										<col style="width: 35%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">등록자</th>
+											<th scope="colgroup" colspan="2">김테스(testa)</th>
+										</tr>
+										<tr>
+											<th scope="col">확인(1단계)자</th>
+											<th scope="col">확인(2단계)자</th>
+											<th scope="col">확인(3단계)자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="bdr_btm_line">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_1">
+													<label for="inputCheck1_1">박확인(1st acc)</label>
+												</span>
+											</td>
+											<td class="bdr_btm_line">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_2">
+													<label for="inputCheck1_2">임확인(2st acc)</label>
+												</span>
+											</td>
+											<td class="bdr_btm_line">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_3">
+													<label for="inputCheck1_3">이확인(3st acc)</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">승인자</th>
+											<td colspan="2">
+												<span class="check_item square">
+													<input type="checkbox" name="ckbox" id="inputCheck1_4">
+													<label for="inputCheck1_4">박최종(final)</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">전결자</th>
+											<td colspan="2"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="mt_3">
+								<p>
+									※ 해당 결재자에게 본 건에 대해 SMS로 결재요청을 하실 경우, 사용자 이름 앞에 체크박스 “□”를 선택하여 보내실 수 있습니다. SMS결재알림을 원하시는 해당자만 선택하여 보내실 수도 있습니다.
+								</p>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 결재선조회 팝업 -->
 
 				<!-- s: alert01 팝업 >> 보안카드 비밀번호를 입력하지 않을 시 호출 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert01">

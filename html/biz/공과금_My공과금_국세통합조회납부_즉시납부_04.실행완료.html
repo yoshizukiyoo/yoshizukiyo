@@ -64,7 +64,13 @@
 					</ul>
 				</div>
 
-				<div class="tab_menu_type1 first_section">
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>국세/전파사용료 납부가 아래와 같이 처리되었습니다.</li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 section">
 					<ul>
 						<li><a href="공과금_My공과금_국세통합조회납부_즉시납부_01.조회.html" class="current">즉시납부</a></li>
 						<li><a href="공과금_My공과금_국세통합조회납부_예약납부_01.조회.html">예약납부</a></li>
@@ -72,16 +78,12 @@
 					</ul>
 				</div>
 
-				<div class="mt_12">
-					<ul class="list list1">
-						<li>국세/전파사용료 납부가 아래와 같이 처리되었습니다.</li>
-					</ul>
-				</div>
-
-				<div class="mt_8">
+				<!-- s: 실행결과 -->
+				<div class="section">
+					<!-- s: 납부대상자 정보 -->
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">국고납부 대상자 정보 및 납부결과 안내</caption>
+							<caption class="sr_only">납부대상자 정보이며 전자납부번호, 회계연도, 납세자, 주민(사업자)등록번호, 징수기관, 전문관리번호, 총 건수, 총 납부금액 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -116,10 +118,12 @@
 							</tbody>
 						</table>
 					</div>
+					<!-- e: 납부대상자 정보 -->
 
+					<!-- s: 출금정보 -->
 					<div class="tbl_data tbl_row_data mt_4">
 						<table>
-							<caption class="sr_only">국고납부결과 상세 안내(출금계좌번호, 예금주 전화번호, 납부금액)</caption>
+							<caption class="sr_only">출금정보이며 출금계좌번호, 예금주 전화번호, 납부금액 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -140,10 +144,12 @@
 							</tbody>
 						</table>
 					</div>
+					<!-- e: 출금정보 -->
 
+					<!-- s: 납부목록 -->
 					<div class="tbl_data tbl_list_data tbl_row_data mt_4">
 						<table>
-							<caption class="sr_only">국고납부결과 상세 안내(지자체, 세목, 고지구분, 납부기한, 납부금액)</caption>
+							<caption class="sr_only">납부하신 국고 목록이며 지자체, 세목, 고지구분, 납부기한, 납부금액(원) 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 16%;">
 								<col>
@@ -211,15 +217,92 @@
 						</table>
 					</div>
 					<div class="mt_4 txt_r">
-						<button type="button" class="btn btn_sm btn_default">납부확인증</button>
-						<button type="button" class="btn btn_sm btn_default">증명서발급</button>
-						<a href="#" class="btn btn_sm btn_default">납부내역조회</a>
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('payment_popup', this);">납부확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+						<a href="#" class="btn btn_sm btn_outline_default">납부내역조회</a>
 					</div>
+					<!-- e: 납부목록 -->
 				</div>
+				<!-- e: 실행결과 -->
 
 				<div class="btn_tbl_btm">
-					<a href="예금_공과금_My공과금_국세통합조회납부_즉시납부_조회.html" class="btn btn_xl btn_primary">확인</a>
+					<a href="공과금_My공과금_국세통합조회납부_즉시납부_01.조회.html" class="btn btn_xl btn_primary">확인</a>
 				</div>
+
+				<!-- s: 납부확인증 팝업 -->
+				<div class="modal_popup modal_xl hide" data-popup="payment_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">지방세납부확인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									<button type="button" class="btn btn_xs btn_outline_default ml_3"
+										onclick="$.print('.modal_popup[data-popup=payment_popup]');">화면인쇄</button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용,
+										이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+										<col style="width: 24%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">전자납부번호</th>
+											<td colspan="3">123456789</td>
+										</tr>
+										<tr>
+											<th scope="row">납세자</th>
+											<td>테스트</td>
+											<th scope="row">주민(사업자)등록번호</th>
+											<td>102-81-*****</td>
+										</tr>
+										<tr>
+											<th scope="row">납부기관</th>
+											<td>서울중앙우체국</td>
+											<th scope="row">납부계좌</th>
+											<td>123-4567-89123</td>
+										</tr>
+										<tr>
+											<th scope="row">납부기관</th>
+											<td>12,870원</td>
+											<th scope="row">납부일</th>
+											<td>2021.06.01</td>
+										</tr>
+										<tr>
+											<td colspan="4" class="txt_c">
+												<div class="payment_date">
+													<p><strong class="txt_xl">위금액을 정히 영수합니다.</strong></p>
+													<p class="mt_3">2021년 06월 01일</p>
+													<div class="payment_stamp">
+														<span class="">납부일</span>
+														<span>2021.06.01</span>
+														<span>서울중앙우체국</span>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary fx_w150"
+									onclick="closeModal('payment_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 납부확인증 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
