@@ -35,7 +35,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">SWIFT송금</h2>
+				<h2 class="tit_cont">인터넷SWIFT송금</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -61,14 +61,13 @@
 				</div>
 				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>해외에 있는 본인 계좌로의 인터넷 송금은 불가능합니다.</li>
+						<li>해외에 있는 본인 계좌로의 인터넷 송금은 불가능 합니다.</li>
 						<li>일본우체국으로 송금 시 송금통화는 미국달러(USD)만 가능합니다.</li>
 						<li>IBAN코드는 계좌번호에 입력하여 주시기 바랍니다.</li>
 						<li>이전에 송금한 주소로 다시 송금하는 경우는 [이전송금/사전등록조회]를 통해 송금인, 수취인 정보를 자동 입력하실 수 있습니다.</li>
 						<li>창구에서 사전등록하신 경우 [이전송금/사전등록조회]를 통해 송금인,수취인 정보를 자동 입력하실 수 있습니다.</li>
 						<li>송금인명은 보내시는 분의 영문성명과 일치해야 합니다. 다른(또는 타인의) 영문명 입력시 외국환거래법 또는 금융실명제에 따라 불이익을 받으실 수 있습니다.</li>
 						<li>송금인 영문명이 Full Name이 아니거나 잘못된 경우 송금이 되지 않거나 추가 수수료가 발생할 수 있으니 확인 후 정확히 입력해 주시기 바랍니다.</li>
-						<li>글로벌 제재 관련 거래는 취급이 불가하여 거래 거절될 수 있고, 자금세탁방지(AML) 및 테러자금 조달방지(CFT) 점검으로 인해 송금지급이 지연 또는 제한될 수 있으며, 추가 정보 제공이 요청될 수 있습니다.</li>
 					</ul>
 				</div>
 				
@@ -99,7 +98,6 @@
 					</div>
 					<div class="txt_r mt_4">
 						<button type="button" class="btn btn_xs btn_outline_gray" onclick="openModal('layer01', this);">거래외국환은행지정조회</button>
-						<button type="button" class="btn btn_xs btn_outline_gray ml6" onclick="openModal('layer02', this);">이전송금/사전등록조회</button>
 					</div>
 				</div>
 
@@ -152,7 +150,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">거주성 <strong class="necessary">*</strong></th>
+									<th scope="row">거주여부 <strong class="necessary">*</strong></th>
 									<td>
 										<div class="selectbox_wrap" style="width: 326px;">
 											<dl title="조건 선택">
@@ -183,7 +181,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">거주성 <strong class="necessary">*</strong></th>
+									<th scope="row">거주여부 <strong class="necessary">*</strong></th>
 									<td>
 										<div class="selectbox_wrap error" style="width: 326px;"><!-- [D] Field error : class 속성에 error 추가 -->
 											<dl title="조건 선택">
@@ -196,7 +194,7 @@
 												</dd>
 											</dl>
 										</div>
-										<div class="error_info">거주성을 선택해주세요.</div><!-- [D] error 메세지 -->
+										<div class="error_info">거주여부를 선택해주세요.</div><!-- [D] error 메세지 -->
 									</td>
 									<th scope="row">기업규모구분</th>
 									<td>
@@ -246,7 +244,7 @@
 								</tr>
 								<tr>
 									<th scope="row">사유코드 <strong class="necessary">*</strong></th>
-									<td>
+									<td colspan="3">
 										<div class="selectbox_wrap" style="width: 326px;">
 											<dl title="조건 선택">
 												<dt><a href="#none"><span>선택하십시오</span></a></dt>
@@ -259,8 +257,6 @@
 											</dl>
 										</div>
 									</td>
-									<th scope="row">송금목적별 코드</th>
-									<td></td>
 								</tr>
 							</tbody>
 						</table>
@@ -283,6 +279,8 @@
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
+								<col style="width: 17%;">
+								<col>
 							</colgroup>
 							<tbody>
 								<tr>
@@ -290,18 +288,58 @@
 									<td>
 										<input type="text" title="수취인 입력" class="tf" style="width: 326px;">
 									</td>
+									<th scope="row">전화번호 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" title="전화번호 입력" class="tf" style="width: 326px;">
+									</td>
 								</tr>
 								<tr>
 									<th scope="row">주소</th>
-									<td>
+									<td colspan="3">
 										<div><input type="text" title="주소 입력" class="tf" style="width: 864px;"></div>
 										<div class="mt_2"><input type="text" title="주소 입력" class="tf" style="width: 864px;"></div>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">전화번호 <strong class="necessary">*</strong></th>
+									<th scope="row">국가 <strong class="necessary">*</strong></th>
 									<td>
-										<input type="text" title="전화번호 입력" class="tf" style="width: 326px;">
+										<div class="selectbox_wrap" style="width: 326px;">
+											<dl title="국가 선택">
+												<dt><a href="#;"><span>선택하여 주십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>US-미국</span></a></li>
+														<li><a href="#none"><span>GB-영국</span></a></li>
+														<li><a href="#none"><span>DE-독일</span></a></li>
+														<li><a href="#none"><span>CA-캐나다</span></a></li>
+														<li><a href="#none"><span>FR-프랑스</span></a></li>
+														<li><a href="#none"><span>IT-이태리</span></a></li>
+														<li><a href="#none"><span>CH-스위스</span></a></li>
+														<li><a href="#none"><span>HK-홍콩</span></a></li>
+														<li><a href="#none"><span>SE-스웨덴</span></a></li>
+														<li><a href="#none"><span>DK-덴마크</span></a></li>
+														<li><a href="#none"><span>BE-벨기에</span></a></li>
+														<li><a href="#none"><span>AT-오스트리아</span></a></li>
+														<li><a href="#none"><span>NO-노르웨이</span></a></li>
+														<li><a href="#none"><span>NL-네덜란드</span></a></li>
+														<li><a href="#none"><span>SA-사우디아라비아</span></a></li>
+														<li><a href="#none"><span>KW-쿠웨이트</span></a></li>
+														<li><a href="#none"><span>BH-바레인</span></a></li>
+														<li><a href="#none"><span>AE-아랍에미리트공화국</span></a></li>
+														<li><a href="#none"><span>JP-일본</span></a></li>
+														<li><a href="#none"><span>CN-중국</span></a></li>
+														<li><a href="#none"><span>A1-기타(아시아)</span></a></li>
+														<li><a href="#none"><span>A2-기타(동남아)</span></a></li>
+														<li><a href="#none"><span>A3-기타(중동)</span></a></li>
+														<li><a href="#none"><span>AD-안도라</span></a></li>
+														<li><a href="#none"><span>AF-아프가니스탄</span></a></li>
+														<li><a href="#none"><span>AG-안티구아 바부다</span></a></li>
+														<li><a href="#none"><span>AL-알바니아</span></a></li>
+														<li><a href="#none"><span>AM-아르메니아</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
 									</td>
 								</tr>
 							</tbody>
@@ -367,48 +405,6 @@
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">국가</th>
-									<td colspan="3">
-										<div class="selectbox_wrap" style="width: 326px;">
-											<dl title="조건 선택">
-												<dt><a href="#none"><span>선택하십시오</span></a></dt>
-												<dd>
-													<ul>
-														<li><a href="#none"><span>US-미국</span></a></li>
-														<li><a href="#none"><span>GB-영국</span></a></li>
-														<li><a href="#none"><span>DE-독일</span></a></li>
-														<li><a href="#none"><span>CA-캐나다</span></a></li>
-														<li><a href="#none"><span>FR-프랑스</span></a></li>
-														<li><a href="#none"><span>IT-이태리</span></a></li>
-														<li><a href="#none"><span>CH-스위스</span></a></li>
-														<li><a href="#none"><span>HK-홍콩</span></a></li>
-														<li><a href="#none"><span>SE-스웨덴</span></a></li>
-														<li><a href="#none"><span>DK-덴마크</span></a></li>
-														<li><a href="#none"><span>BE-벨기에</span></a></li>
-														<li><a href="#none"><span>AT-오스트리아</span></a></li>
-														<li><a href="#none"><span>NO-노르웨이</span></a></li>
-														<li><a href="#none"><span>NL-네덜란드</span></a></li>
-														<li><a href="#none"><span>SA-사우디아라비아</span></a></li>
-														<li><a href="#none"><span>KW-쿠웨이트</span></a></li>
-														<li><a href="#none"><span>BH-바레인</span></a></li>
-														<li><a href="#none"><span>AE-아랍에미리트공화국</span></a></li>
-														<li><a href="#none"><span>JP-일본</span></a></li>
-														<li><a href="#none"><span>CN-중국</span></a></li>
-														<li><a href="#none"><span>A1-기타(아시아)</span></a></li>
-														<li><a href="#none"><span>A2-기타(동남아)</span></a></li>
-														<li><a href="#none"><span>A3-기타(중동)</span></a></li>
-														<li><a href="#none"><span>AD-안도라</span></a></li>
-														<li><a href="#none"><span>AF-아프가니스탄</span></a></li>
-														<li><a href="#none"><span>AG-안티구아 바부다</span></a></li>
-														<li><a href="#none"><span>AL-알바니아</span></a></li>
-														<li><a href="#none"><span>AM-아르메니아</span></a></li>
-													</ul>
-												</dd>
-											</dl>
-										</div>
-									</td>
-								</tr>
-								<tr>
 									<th scope="row">통신문</th>
 									<td colspan="3">
 										<div><input type="text" title="통신문 입력" class="tf" style="width: 864px;"></div>
@@ -431,12 +427,10 @@
 						<dt>참고사항</dt>
 						<dd>
 							<ul class="list list2">
-								<li>이용가능시간 : 00:10 ~ 23:50(토 · 일요일, 공휴일 이용 가능) 단, 23:50 ~ 00:10, 04:00 ~ 05:00 제외</li>
+								<li>이용가능시간 : 00:10 ~ 23:50(토 · 일요일, 공휴일 이용 가능)  단, 23:50 ~ 00:10, 04:00 ~ 05:00 제외</li>
 								<li>소요기간 : 영업일기준 3일~5일(단, 지급은행 사정에 의해 지연될 수 있음)</li>
-								<li>해외은행 수수료와 지급은행 수수료가 발생할 수 있으며, 이는 수취금액에서 차감되어 지급됩니다.</li>
-								<li>해외 송금 시 글로벌 경제제재 및 자금세탁방지 점검이슈와 관련하여 송금 접수 후 자금이 거절되어 환급될 수 있습니다.</li>
-								<li>이경우 송금수수료는 반환되지 않으며 송금원금은 적용환율 차이로 인해 차액이 발생할 수 있습니다.</li>
-								<li>본 SWIFT 해외송금은 신한은행과 제휴를 통해 이루어 집니다.</li>
+								<li>해외은행 수수료와 지급은행 수수료가발생할 수 있으며, 이는 수취금액에서 차감되어 지급됩니다.</li>
+								<li>본 SWIFT해외송금은 신한은행과 제휴를 통해 이루어 집니다.</li>
 							</ul>
 						</dd>
 					</dl>

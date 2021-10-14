@@ -23,12 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_primary').on('click', function () {
-				if ($('#check1_2').is(':checked')) {
-					openModal('alert01');
-					return false;
-				}
-			})
+		
 		});
 	</script>
 </head>
@@ -42,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">상하수도요금 예약납부</h2>
+				<h2 class="tit_cont">상하수도요금 납부</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -62,101 +57,116 @@
 
 				<div class="cont_header_right">
 					<ul class="step">
-						<li class="on"><span class="num">1</span><span class="txt">약관동의</span></li>
-						<li><span class="num">2</span><span class="txt">조회정보입력</span></li>
-						<li><span class="num">3</span><span class="txt">간략조회결과</span></li>
-						<li><span class="num">4</span><span class="txt">상세조회결과</span></li>
-						<li><span class="num">5</span><span class="txt">정보입력</span></li>
-						<li><span class="num">6</span><span class="txt">입력확인</span></li>
-						<li><span class="num">7</span><span class="txt">실행완료</span></li>
+						<li class="on"><span class="num">1</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">간략조회결과</span></li>
+						<li><span class="num">3</span><span class="txt">상세조회결과</span></li>
+						<li><span class="num">4</span><span class="txt">정보입력</span></li>
+						<li><span class="num">5</span><span class="txt">입력확인</span></li>
+						<li><span class="num">6</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="box first_section">
+				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>상하수도요금 예약납부 신청을 위해서는 아래의 약관에 동의하셔야 합니다.</li>
+						<li>고지서의 전자수용가번호/간편납부번호 혹은 전자납부번호로 조회하실 수 있습니다.(서울시는 고객번호로 가능)</li>
+						<li>타인에게 부과된 상하수도요금도 조회 후 납부하실 수 있습니다.</li>
+						<li>서울시 상하수도 수시분의 경우 납부자께서는 서울시 Etax에서 납부해 주시기 바랍니다.</li>
+						<li>상하수도요금이 부과된 지방자치단체를 선택한 후 납부하시기 바랍니다.(도, 광역시 선택 후 해당 지자체 선택)</li>
+						<li>납부내역은 실시간으로 해당 징수기관 앞으로 통지됩니다.</li>
+						<li>납부기관 장애여부는 [장애기관]버튼을 클릭하시면 확인하실 수 있습니다. <button type="button" class="btn btn_xs btn_default"
+								onclick="openModal('popup01', this)">장애기관</button></li>
 					</ul>
 				</div>
 
-				<!-- s: 약관동의 -->
+				<!-- s: 조회방식 선택 -->
 				<div class="section">
-					<div class="terms_wrap">
-						<div class="tbl_tit">
-							<div class="tit_left">
-								<h3 class="tit1">우체국 인터넷뱅킹 공과금 예약납부 약관</h3>
-							</div>
-							<div class="txt_right">
-								<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-								<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
-							</div>
-						</div>
-						<div class="terms_con">
-							<strong class="txt_lg">『우체국 인터넷뱅킹 공과금 예약납부』약관</strong>
-							<div class="mt_6 pl_8">
-								<ol class="txt_normal list_number">
-									<li class="mb_8">신청인이 인터넷뱅킹으로 공과금 예약납부를 신청하는 경우 지정한 우체국 예금계좌에서 납부희망일<br>
-										16:30～22:00에 해당금액을 인출하여 납부합니다. 다만, 납부희망일은 영업일로 한정합니다.<br>
-										※ 영업일 : 금융영업일(토요일, 일요일 및 공휴일 제외)<br>
-										예약납부 희망일이 임시공휴일로 지정된 경우에는 임시공휴일 이후 첫 영업일에 출금 처리합니다.
-									</li>
-									<li>공과금 납부희망일은 납부마감일 3영업일 전까지 지정 가능하고, 예약납부 신청은 납부희망일 전일까지<br>
-										가능하며, 예약납부 취소는 납부희망일 전일 24:00까지 가능합니다.
-									</li>
-								</ol>
-							</div>
-						</div>
-					</div>
 					<div class="check_list_box">
 						<div class="row_box">
-							<div class="b1">위 약관에 동의하십니까?</div>
-							<div class="b3">
+							<div class="b1">
 								<span class="check_item">
-									<input type="radio" name="check1" id="check1_1">
-									<label for="check1_1">동의합니다.</label>
+									<input type="radio" name="check1" id="check1_1" checked="">
+									<label for="check1_1">전자납부번호 <strong class="necessary">*</strong></label>
 								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf" style="width: 360px;" title="전자납부번호 입력">
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1">
 								<span class="check_item">
-									<input type="radio" name="check1" id="check1_2" checked>
-									<label for="check1_2">동의하지 않습니다.</label>
+									<input type="radio" name="check1" id="check1_2">
+									<label for="check1_2">전자수용가번호 <strong class="necessary">*</strong></label>
 								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf" style="width: 360px;" title="전자수용가번호 입력" disabled="">
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1">
+								<span class="check_item">
+									<input type="radio" name="check1" id="check1_3">
+									<label for="check1_3">고객번호(서울시) <strong class="necessary">*</strong></label>
+								</span>
+							</div>
+							<div class="b2">
+								<input type="text" class="tf" style="width: 360px;" title="고객번호 입력(서울시 전용)" disabled="">
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- e: 약관동의 -->
+				<!-- e: 조회방식 선택 -->
 
 				<div class="btn_tbl_btm">
-					<a href="공과금_생활기타요금_상하수도요금_예약납부_02.조회정보입력.html" class="btn btn_xl btn_primary">확인</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="공과금_생활기타요금_상하수도요금_납부_02.간략조회결과.html" class="btn btn_xl btn_primary">조회</a>
 				</div>
 
-				<!-- s: alert 팝업 -->
-				<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="box section">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>상하수도요금 메뉴 이외의 방법으로 납부(가상계좌 등)하신 경우 납부사실이 반영되지 않을 수있사오니 이중납부되지 않도록 반드시 확인하신 후 납부하시기 바라며, 이중납부되신 경우 해당지방자치단체로 환급신청하여 주시기 바랍니다.</li>
+								<li>상하수도요금은 지방자치단체 요청에 따라 납부취소가 허용되지 않습니다.</li>
+								<li>이용가능시간 : 07:00 ~ 23:30 (토 · 일요일, 공휴일 이용 가능)</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- s: 장애기관 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="popup01">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
-						<div class="popup_header txt_l">
-							<h2 class="popup_tit">안내</h2>
-						</div>
 						<div class="popup_body">
-							<div class="alert_cont">
-								<div class="artwork">
-									<i class="ico_alert_xxl_primary"></i>
-								</div>
-								<div class="cont">
-									<!-- s: alert 메세지 입력 영역 -->
-									<p>
-										약관에 동의하셔야 예약납부를 하실수있습니다.
-									</p>
-									<!-- e: alert 메세지 입력 영역 -->
-								</div>
+							<h3 class="tit2">현재 이체(납부)거래가 불가능한 장애기관입니다.</h3>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">장애기관 목록 안내(기관코드, 기관명)</caption>
+									<thead>
+										<tr>
+											<th scope="col">기관코드</th>
+											<th scope="col">기관명</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="2" class="txt_c">현재 장애기관이 없습니다</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 							<div class="btn_group">
 								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert01');">확인</button>
+									onclick="closeModal('popup01');">닫기</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: alert 팝업 -->
+				<!-- e: 장애기관 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">

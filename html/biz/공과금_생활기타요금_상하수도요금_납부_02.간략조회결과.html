@@ -23,10 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('input[name=check1]').on('click', function(){
-				$('.tf').attr('disabled','""').val(null);
-				$(this).parents('.b1').siblings('.b2').find('.tf').removeAttr('disabled')
-			})
+			
 		});
 	</script>
 </head>
@@ -60,67 +57,101 @@
 
 				<div class="cont_header_right">
 					<ul class="step">
-						<li><span class="num">1</span><span class="txt">행정구역</span></li>
-						<li class="on"><span class="num">2</span><span class="txt">조회정보입력</span></li>
-						<li><span class="num">3</span><span class="txt">간략조회결과</span></li>
-						<li><span class="num">4</span><span class="txt">상세조회결과</span></li>
-						<li><span class="num">5</span><span class="txt">정보입력</span></li>
-						<li><span class="num">6</span><span class="txt">입력확인</span></li>
-						<li><span class="num">7</span><span class="txt">실행완료</span></li>
+						<li><span class="num">1</span><span class="txt">조회정보입력</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">간략조회결과</span></li>
+						<li><span class="num">3</span><span class="txt">상세조회결과</span></li>
+						<li><span class="num">4</span><span class="txt">정보입력</span></li>
+						<li><span class="num">5</span><span class="txt">입력확인</span></li>
+						<li><span class="num">6</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="box box_more first_section">
+				<div class="box first_section">
 					<ul class="list list1">
-						<li>고지서의 전자수용가번호/간편납부번호 혹은 전자납부번호로 조회하실 수 있습니다.(서울시는 고객번호로 가능)</li>
-						<li>타인에게 부과된 상하수도요금도 조회 후 납부하실 수 있습니다.</li>
-						<li>서울시 상하수도 수시분의 경우 납부자께서는 서울시 Etax에서 납부해 주시기 바랍니다.</li>
+						<li>상하수도요금 고지 내역입니다.</li>
+						<li>납부할 고지내역을 선택하신 후 [확인] 버튼을 클릭하시면, 상하수도요금 상세정보 확인 후 요금을 납부하실 수 있습니다.</li>
 					</ul>
 				</div>
 
-				<!-- s: 조회방식 선택 -->
+				<!-- s: 간략조회 -->
 				<div class="section">
-					<div class="check_list_box">
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_1" checked="">
-									<label for="check1_1">전자납부번호 <strong class="necessary">*</strong></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf" style="width: 360px;" title="전자납부번호 입력">
-							</div>
-						</div>
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_2">
-									<label for="check1_2">전자수용가번호 <strong class="necessary">*</strong></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf" style="width: 360px;" title="전자수용가번호 입력" disabled="">
-							</div>
-						</div>
-						<div class="row_box">
-							<div class="b1">
-								<span class="check_item">
-									<input type="radio" name="check1" id="check1_3">
-									<label for="check1_3">고객번호(서울시) <strong class="necessary">*</strong></label>
-								</span>
-							</div>
-							<div class="b2">
-								<input type="text" class="tf" style="width: 360px;" title="고객번호 입력(서울시 전용)" disabled="">
-							</div>
-						</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">조회결과 표이며 고객번호, 총 건수, 데이터 건수 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">고객번호</th>
+									<td colspan="3">00313558</td>
+								</tr>
+								<tr>
+									<th scope="row">총 건수</th>
+									<td>50건</td>
+									<th scope="row">데이터 건수</th>
+									<td>14건</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_data tbl_list_data mt_4">
+						<table>
+							<caption class="sr_only">납부 조회결과 목록이며 부과년월, 고지구분, 납기구분, 납부금액(원), 납기기한, 자동이체등록여부 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 9%;">
+								<col style="width: 12%;">
+								<col>
+								<col>
+								<col>
+								<col style="width: 12%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">선택</th>
+									<th scope="col">부과년월</th>
+									<th scope="col">고지구분</th>
+									<th scope="col">납기구분</th>
+									<th scope="col">납부금액(원)</th>
+									<th scope="col">납기기한</th>
+									<th scope="col">자동이체등록여부</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td class="txt_c">1993년 8월</td>
+									<td>당월분</td>
+									<td>납기내 기한</td>
+									<td class="txt_r">40,000원</td>
+									<td class="txt_c">1993.09.20</td>
+									<td class="txt_c">N</td>
+								</tr>
+								<tr>
+									<td colspan="7" class="txt_c">마지막 자료입니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="txt_r mt_4 pos_box">
+						<button type="button" class="btn btn_more pos_center">더보기</button>
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 					</div>
 				</div>
-				<!-- e: 조회방식 선택 -->
-
+				<!-- e: 간략조회 -->
+				
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="공과금_생활기타요금_상하수도요금_납부_03.간략조회결과.html" class="btn btn_xl btn_primary">조회</a>
+					<a href="공과금_생활기타요금_상하수도요금_납부_03.상세조회결과.html" class="btn btn_xl btn_primary">납부</a>
 				</div>
 
 				<div class="box section">
@@ -128,13 +159,13 @@
 						<dt>참고사항</dt>
 						<dd>
 							<ul class="list list2">
-								<li>상하수도요금 메뉴 이외의 방법으로 납부(가상계좌 등)하신 경우 납부사실이 반영되지 않을 수있사오니 이중납부되지 않도록 반드시 확인하신 후 납부하시기 바라며, 이중납부되신 경우 해당지방자치단체로 환급신청하여 주시기 바랍니다.</li>
 								<li>이용가능시간 : 07:00 ~ 23:30 (토 · 일요일, 공휴일 이용 가능)</li>
 							</ul>
 						</dd>
 					</dl>
 				</div>
 
+				
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
 					<div class="dimed"></div>
