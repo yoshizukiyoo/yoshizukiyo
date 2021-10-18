@@ -22,9 +22,7 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-
-		});
+		//
 	</script>
 </head>
 
@@ -37,7 +35,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">출금계좌등록</h2>
+				<h2 class="tit_cont">카드발급 신청취소</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -56,60 +54,81 @@
 				<!-- s: 본문 -->
 				<div class="cont_header_right">
 					<ul class="step">
-						<li><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">1</span><span class="txt">정보조회</span></li>
 						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
 						<li><span class="num">3</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
-
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>고객님이 출금계좌로 등록할 계좌정보입니다. 내용이 맞는지 확인하시기 바랍니다.</li>
+						<li>발급신청 당일에 한하여 취소 가능합니다.</li>
 					</ul>
 				</div>
 
-				<!-- s: 출금계좌 정보 -->
 				<div class="section">
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_data tbl_list_data mt_4">
 						<table>
-							<caption class="sr_only">선택한 출금계좌 정보 목록으로 예금종류, 통지구분, 계좌번호, 잔액, 계좌비밀번호 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">카드발급 신청취소 표로 카드명, 카드번호, 카드상태 정보 제공</caption>
 							<colgroup>
-								<col style="width: 15%;">
 								<col>
-								<col style="width: 15%;">
-								<col>
+								<col style="width:30%">
+								<col style="width:20%">
 							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">카드명</th>
+									<th scope="col">카드번호</th>
+									<th scope="col">카드상태</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">예금종류</th>
-									<td>보통예금</td>
-									<th scope="row">통지구분</th>
-									<td>입/출금통지</td>
+									<td>우체국 포미 하이브리드 카드(VISA)</td>
+									<td>4114-****-****-****</td>
+									<td class="txt_c">미등록</td>
 								</tr>
 								<tr>
-									<th scope="row">계좌번호</th>
-									<td>010041-01-065849</td>
-									<th scope="row">잔액</th>
-									<td class="txt_r">99,999,987원</td>
-								</tr>
-								<tr>
-									<th scope="row">계좌비밀번호</th>
-									<td colspan="3">
-										<div class="btn_mouse_pwd">
-											<input type="password" class="tf" title="출금계좌비밀번호 입력" style="width: 320px;">
-											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
-										</div>
-									</td>
+									<td>우체국Go캐시백글로벌체크카드(캐릭터형)(비교통)(MASTER)</td>
+									<td>4114-****-****-****</td>
+									<td class="txt_c">정상(후발급)</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 출금계좌 정보 -->
 
 				<!-- s: 보안매체 인증번호 입력 -->
 				<div class="section">
 					<h3 class="tit1">보안매체 인증번호 입력</h3>
+					<div class="box_security_cert bg_security_card">
+						<div class="security_cert_inner">
+							<p class="txt_security">영업점에서 발급 받으신 보안카드를 확인하여 아래의 빈 칸에 보안카드 코드를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_r">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_l">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+							</div>
+							<p class="txt_security_caution">
+								<strong>보안카드 비밀번호 5회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
 					<div class="box_security_cert bg_otp">
 						<div class="security_cert_inner">
 							<p class="txt_security">OTP발생번호 <strong>숫자6자리</strong>를 입력하십시오.</p>
@@ -129,8 +148,8 @@
 				<!-- e: 보안매체 인증번호 입력 -->
 
 				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="이체_이체관리_출금계좌관리_출금계좌등록_03.실행완료.html" class="btn btn_xl btn_primary">등록실행</a>
+					<a href="카드_카드배송조회_카드발금신청취소_정보조회.html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="카드_카드배송조회_카드발금신청취소_실행완료.html" class="btn btn_xl btn_primary">실행</a>
 				</div>
 
 				<!-- s: alert 팝업 -->
@@ -154,10 +173,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -170,7 +187,7 @@
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
-							<h3 class="popup_tit">확인</h3>
+							<h2 class="popup_tit">확인</h2>
 						</div>
 						<div class="popup_body">
 							<div class="alert_cont">
@@ -198,7 +215,7 @@
 				<!-- e: 본문 -->
 			</div>
 		</article>
-		<footer class=" footer"></footer>
+		<footer class="footer"></footer>
 	</div>
 </body>
 
