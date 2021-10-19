@@ -25,8 +25,9 @@ $(function () {
 
 		// 툴팁
 		if ($cont.hasClass('tooltip')) {
-			var contTop = $btn.position().top + $btn.outerHeight();
+			var contTop = $btn.offset().top + $btn.outerHeight();
 			$cont.css('top', contTop);
+			$cont.appendTo('#content');
 		};
 	});
 
