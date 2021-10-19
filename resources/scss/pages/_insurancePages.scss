@@ -1,4 +1,9 @@
 /* 스마트 보험 */
+$emphasis: #ce4900 !default;
+
+.txt_emphasis {
+	color: $emphasis;
+}
 
 .section {
 	margin-top: 45px;
@@ -196,6 +201,10 @@
 						&.type8 {
 							background: #8e7009;
 						}
+
+						&.type9 {
+							background: #1e4a0d;
+						}
 					}
 				}
 
@@ -292,6 +301,152 @@
 
 		strong {
 			color: #ce4900;
+		}
+	}
+
+	.contract_item {
+		position: relative;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+
+		.inline_block {
+			padding: 13px 20px 8px;
+			font-size: 16px;
+
+			>* {
+				display: inline-block;
+				font-style: normal;
+			}
+
+			&.block {
+				display: block;
+			}
+
+			&:after {
+				display: block;
+				content: '';
+				clear: both;
+			}
+
+			em {
+				float: left;
+				max-width: 70%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.price {
+				float: right;
+
+				&:after {
+					content: '원';
+					display: inline-block;
+					color: $black;
+					font-weight: 200;
+				}
+			}
+		}
+
+		.list_name {
+			padding: 12px 20px 5px;
+			font-weight: 400;
+			line-height: 24px;
+		}
+
+		.evidence_contract {
+			padding: 0 20px;
+		}
+
+		.in_detail {
+			margin-top: 8px;
+			padding: 12px 20px;
+
+			&:before {
+				left: 0;
+				right: 0;
+			}
+
+
+			&.toggle {
+				height: 60px;
+				padding-bottom: 40px;
+				overflow: hidden;
+
+				&.on {
+					height: 100% !important;
+
+					.btn_more.circle {
+						&:before {
+							//	transition-duration: 1s;
+							transform: rotate(180deg);
+							background-position: center 8px;
+						}
+					}
+				}
+
+				.btn_more.circle {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					background-color: $white;
+					border-radius: 0 0 8px 8px;
+
+					&:before {
+						content: '';
+						position: absolute;
+						left: calc(50% - 25px);
+						width: 50px;
+						height: 25px;
+						//transition-duration: 1s;
+						background-image: url('#{$url-img-common}/ico_chevron_down_sm.png');
+						background-repeat: no-repeat;
+						background-size: 10px 6px;
+						background-position: center 12px;
+					}
+
+					&:after {
+						content: '';
+						width: 50px;
+						height: 25px;
+						border-radius: 25px 25px 0 0;
+						background-color: #eee;
+					}
+				}
+			}
+		}
+
+		.bg_lightgray {
+			background-color: #f8f8f8 !important;
+
+			&:before {
+				border-color: #f2f2f2;
+			}
+		}
+
+		.detail_round {
+			border-radius: 0 0 8px 8px;
+		}
+	}
+
+	&.list_chk {
+		.contract_item {
+			.list_name {
+				padding: 12px 38px 5px 20px;
+			}
+		}
+
+		.check_item {
+			position: absolute;
+			top: 15px;
+			right: 10px;
+		}
+
+		.in_detail {
+			strong {
+				font-weight: 200;
+			}
 		}
 	}
 }
@@ -415,4 +570,385 @@
 		top: 50%;
 		margin-top: -10px;
 	}
+}
+
+.empty-box {
+	padding: 60px 0;
+	text-align: center;
+
+	p {
+		font-size: 13px;
+		color: #555555;
+		font-weight: 200;
+	}
+}
+
+
+/* 보험 상세 */
+.contract_detail {
+	padding: 20px;
+	border-bottom: 12px solid #eeeeee;
+
+	.list_name {
+		display: block;
+		font-size: 18px;
+		line-height: 20px;
+		color: #111;
+		font-weight: 500;
+	}
+
+
+	.evidence_contract {
+		font-size: 0;
+		padding-top: 7px;
+		display: table;
+		width: 100%;
+
+		.blit {
+			display: table-cell;
+			vertical-align: middle;
+			font-style: normal;
+			width: 1%;
+			padding-right: 10px;
+
+			.lab_status {
+				color: #fff;
+
+				&.type1 {
+					background: #0070c0;
+				}
+
+				&.type2 {
+					background: #317c13;
+				}
+
+				&.type3 {
+					background: #304d62;
+				}
+
+				&.type4 {
+					background: #953735;
+				}
+
+				&.type5 {
+					background: #28788e;
+				}
+
+				&.type6 {
+					background: #6d6d6d;
+				}
+
+				&.type7 {
+					background: #FF883A;
+				}
+
+				&.type8 {
+					background: #8e7009;
+				}
+
+				&.type9 {
+					background: #1e4a0d;
+				}
+			}
+		}
+
+		.info {
+			padding: 4px 0;
+			display: table-cell;
+			vertical-align: middle;
+
+			>span {
+				display: block;
+				margin-top: 5px;
+
+				&:first-child {
+					margin-top: 0;
+				}
+
+				strong {
+					color: #666;
+					min-width: 55px;
+					padding-right: 15px;
+					font-size: 11px;
+					font-weight: 200;
+					line-height: 13px;
+				}
+
+				span {
+					font-size: 12px;
+					line-height: 13px;
+				}
+			}
+		}
+	}
+
+	.in_detail {
+		position: relative;
+		display: block;
+		margin-top: 10px;
+		padding-top: 13px;
+
+		span {
+			display: block;
+			overflow: hidden;
+			margin-top: 4px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			em {
+				float: left;
+				font-style: normal;
+				font-size: 14px;
+				color: #666;
+				font-weight: 200;
+			}
+
+			strong {
+				float: right;
+				font-size: 12px;
+				color: #111;
+				font-weight: 500;
+			}
+		}
+	}
+}
+
+/* 실효계약부활 팝업 */
+.step_box {
+	padding: 30px 0;
+	border-radius: 8px;
+	border: 1px solid #dddddd;
+
+	ol {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		li {
+			position: relative;
+			display: flex;
+			flex: 0 0 33.333%;
+			align-items: center;
+			flex-direction: column;
+			text-align: center;
+			margin: 15px 0;
+
+			&:first-child {
+				&:after {
+					display: none;
+				}
+			}
+
+			&:after {
+				position: absolute;
+				content: '';
+				top: 18px;
+				left: 0;
+				width: 5px;
+				height: 10px;
+				background-image: url('#{$url-img-common}/ico_chevron_right_md.png');
+				background-repeat: no-repeat;
+				background-size: 5px 10px;
+				background-position: center center;
+			}
+
+			>span {
+				font-size: 14px;
+				line-height: 1.3;
+				margin-top: 13px;
+
+				em {
+					display: block;
+					font-style: normal;
+					font-size: 11px;
+					color: $emphasis;
+				}
+			}
+		}
+	}
+}
+
+/* 완전판매 모니터링 */
+.sale_process {
+
+	counter-reset: num;
+
+	li {
+		position: relative;
+
+		&:before {
+			content: counter(num);
+			position: absolute;
+			top: 14px;
+			left: 20px;
+			counter-increment: num;
+			color: $white;
+			font-size: 10px;
+			font-weight: bold;
+			z-index: 30;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 14px;
+			left: 15px;
+			width: 16px;
+			height: 16px;
+			border-radius: 8px;
+			background-color: #333;
+		}
+
+		&:first-child {
+			dl {
+				border-top: 1px solid #eee;
+			}
+		}
+	}
+
+	dl {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+		border-bottom: 1px solid #eee;
+
+		dt {
+			display: table-cell;
+			width: 135px;
+			padding: 10px 20px 10px 35px;
+			background-color: #f6f6f6;
+			border-right: 1px solid #eee;
+			letter-spacing: -.5px;
+		}
+
+		dd {
+			display: table-cell;
+			padding: 10px 15px;
+			font-weight: 400;
+			letter-spacing: -.5px
+		}
+	}
+}
+
+.service_list {
+	margin-top: 15px;
+	padding-top: 13px;
+	border-top: 1px solid $border-light;
+
+	li {
+		font-weight: 300;
+		letter-spacing: -.5px;
+	}
+}
+
+.txt_note_gray {
+	font-size: 13px;
+	letter-spacing: -.5px;
+	font-weight: 200;
+}
+
+/* 인풋 예외 타입 */
+.tf_item_ex {
+	display: block;
+	padding: 14px 19px 15px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	overflow: hidden;
+
+	&.disabled {
+		background-color: #f2f2f2;
+
+		>* {
+			opacity: .4;
+		}
+	}
+
+	.tf_item_body {
+		display: flex;
+		align-items: center;
+		min-height: 39px;
+
+		.tf {
+			background: none;
+		}
+	}
+}
+
+.btn_more_gray {
+	justify-content: space-between;
+	width: 80px;
+	padding: 0 12px;
+	height: 24px;
+	border: 1px solid transparent;
+	font-size: 12px;
+	font-weight: 200;
+
+	border-radius: 12px;
+	color: $white;
+	background-color: $bg-gray;
+
+	&:after {
+		display: inline-block;
+		content: '';
+		width: 10px;
+		height: 5px;
+		margin-top: 1px;
+		background: url(#{$url-img-common}/ico_chevron_down_white_sm.png) no-repeat;
+		background-size: 10px 5px;
+	}
+}
+
+.bd_btm {
+	padding: 0 0 17px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.btn_block {
+	width: 100%;
+
+	justify-content: space-between;
+
+
+	&:after {
+		content: '';
+		display: block;
+		width: 6px;
+		height: 10px;
+		background:url(#{$url-img-common}/ico_chevron_right_gray_sm.png) no-repeat;
+		background-size: 6px 10px;
+		background-position: right center;
+	}
+
+	dt {
+		font-size: 12px;
+	}
+
+	dd {
+		font-size: 11px;
+		color: $gray;
+	}
+}
+
+/* 버튼 - 하단 넓이 100% */
+.btn_btm_group {
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+	.btn_outline_default {
+		width: 100%;
+		height: 35px;
+	}
+
+	.btn_outline_gray {
+		border-color: $border-base;
+		height: 50px;
+		border-radius: 8px;
+	}
+}
+
+.inline-position {
+	position: relative;
+	display: inline-block;
 }

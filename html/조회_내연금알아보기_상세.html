@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.in_detail .btn_more').click(function () {
+				const tg = $(this).closest(".in_detail");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+					$(this).children('span').text('열림');
+				} else {
+					tg.removeClass("on");
+					$(this).children('span').text('닫음');
+				}
+			});
+			$(".btn_calc").click(function () {
+				$(this).hide();
+				$(".section_calc").show();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="내연금알아보기"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 배당금내역 영역 -->
+			<div class="container pt_4">
+
+				<div class="txt_l mb_3">
+					<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+						<i class="ico ico_help_sm"></i>
+						<span>알려드립니다</span>
+					</a>
+				</div>
+				<h2 class="tit1">계약정보</h2>
+
+				<div class="contract_list p_0">
+					<ul>
+						<li class="contract_item">
+
+							<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),
+								종합형](갱신형)
+							</strong>
+
+							<span class="evidence_contract">
+								<span class="blit">
+									<span class="lab_status type1">정상</span>
+								</span>
+								<span class="info">
+									<span>
+										<span>70325101753</span>
+									</span>
+									<span>
+										<span>2020.09.14 - 2055.09.14</span>
+									</span>
+								</span>
+							</span>
+							<span class="in_detail toggle" style="height:130px">
+								<span>
+									<em>계약자 / 수익자</em>
+									<strong class="txt_light">나봄미 / 나봄미</strong>
+								</span>
+								<span>
+									<em>주보험금</em>
+									<strong class="txt_light">10,000,000원</strong>
+								</span>
+								<span>
+									<em>1회보험료</em>
+									<strong class="txt_light">25,900원</strong>
+								</span>
+								<span>
+									<em>최종납월</em>
+									<strong class="txt_light">2021.05</strong>
+								</span>
+								<span>
+									<em>최종납회</em>
+									<strong class="txt_light">30회</strong>
+								</span>
+								<span>
+									<em>총납입액</em>
+									<strong class="txt_light">1,440,000 원</strong>
+								</span>
+								<span>
+									<em>보험기간</em>
+									<strong class="txt_light">75 세</strong>
+								</span>
+								<span>
+									<em>납입기간</em>
+									<strong class="txt_light">10 년
+									</strong>
+								</span>
+								<span>
+									<em>연금개시연령</em>
+									<strong class="txt_light">65 세</strong>
+								</span>
+								<span>
+									<em>연금개시일</em>
+									<strong class="txt_light">2030-03-26</strong>
+								</span>
+								<span>
+									<em>연금형태</em>
+									<strong class="txt_light">10년확정형</strong>
+								</span>
+								<span>
+									<em>지급방법</em>
+									<strong class="txt_light">06:6월단위</strong>
+								</span>
+								<span>
+									<em>납입방법</em>
+									<strong class="txt_light">월납</strong>
+								</span>
+								<span>
+									<em>최종납일</em>
+									<strong class="txt_light">2021-06-10</strong>
+								</span>
+								<span>
+									<em>완납여부</em>
+									<strong class="txt_light">미완납</strong>
+								</span>
+								<span>
+									<em>피보험자연령</em>
+									<strong class="txt_light">55세</strong>
+								</span>
+								<span>
+									<em>종피보험자연령</em>
+									<strong class="txt_light">0세</strong>
+								</span>
+								<span>
+									<em>연금최초이자율</em>
+									<strong class="txt_light">[72]:신공시이율Ⅳ연금(2.23)</strong>
+								</span>
+								<span>
+									<em>부활일자</em>
+									<strong class="txt_light">2021.01.20</strong>
+								</span>
+								<span>
+									<em>실효일자</em>
+									<strong class="txt_light">-</strong>
+								</span>
+
+								<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+							</span>
+						</li>
+					</ul>
+				</div>
+
+
+				<!-- s: 예상연금액 조회 영역 -->
+				<div class="section">
+					<h2 class="tit1">예상연금액 조회</h2>
+
+					<!-- s: 배당적립구분 선택 영역 -->
+					<div class="tf_item mt_3">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_2_2">배당적립구분 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_tf_2_2" class="tf" value="배당적립(증액연금으로지급)" readonly required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_icon" onclick="openModal('layerOption'); return false;">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- e: 배당적립구분 선택 영역 -->
+
+					<!-- s: 지급예상일 달력 영역 -->
+					<div class="tf_item  disabled mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_date2">지급예상일 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+									required disabled>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+									<i class="ico ico_datepicker"></i>
+									<span class="sr_only">달력</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- e: 지급예상일 달력 영역 -->
+
+					<p class="txt_guide">지급개시일자 선택은 연금개시 후에만 조회 가능합니다.</p>
+
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_primary">조회</button>
+					</div>
+				</div>
+				<!-- e: 예상연금액 조회 영역 -->
+
+				<!-- s: 예상예금액 기본정보 데이터 영역 -->
+				<div class="section">
+					<h2 class="tit1">예상예금액 기본정보</h2>
+
+					<div class="tbl mt_3">
+						<table>
+							<caption class="sr_only">예상예금액 기본정보에 대한 표이며 조회일자, 총납입보험료, 최종납입횟수, 연금개시일자, 연금개시연령에 대한 정보를 제공하고 있습니다.
+							</caption>
+							<colgroup>
+								<col style="width: 40%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">조회일자</th>
+									<td>2021.07.14</td>
+								</tr>
+								<tr>
+									<th scope="row">총납입보험료</th>
+									<td>10,800,000원</td>
+								</tr>
+								<tr>
+									<th scope="row">최종납입횟수</th>
+									<td>17 - 120회</td>
+								</tr>
+								<tr>
+									<th scope="row">연금개시일자</th>
+									<td>2030.03.26</td>
+								</tr>
+								<tr>
+									<th scope="row">연금개시연령</th>
+									<td>-</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 예상예금액 기본정보 데이터 영역 -->
+
+				<!-- s: 현재이율기준 예상연금액 데이터 영역 -->
+				<div class="section">
+					<h2 class="tit1">현재이율기준 예상연금액</h2>
+
+					<div class="tbl mt_3">
+						<table>
+							<caption class="sr_only">현재이율기준 예상연금액에 대한 표이며 연금준비금, 배당원리금, 연금기금액, 연금연액, 예상소득액, 세전예상액에 대한 정보를 제공하고 있습니다.
+							</caption>
+							<colgroup>
+								<col style="width: 40%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">연금준비금</th>
+									<td>11,237,270원</td>
+								</tr>
+								<tr>
+									<th scope="row">배당원리금</th>
+									<td>0원</td>
+								</tr>
+								<tr>
+									<th scope="row">연금기금액</th>
+									<td>11,237,270원</td>
+								</tr>
+								<tr>
+									<th scope="row">연금연액</th>
+									<td>1,232,320원</td>
+								</tr>
+								<tr>
+									<th scope="row">예상소득액</th>
+									<td>0원</td>
+								</tr>
+								<tr>
+									<th scope="row">세전예상액</th>
+									<td>619,530원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 현재이율기준 예상연금액 데이터 영역 -->
+
+				<div class="btn_group btn_group_flex mt_0">
+					<button type="button" class="btn btn_lg btn_outline_default btn_calc mt_3 mb_16">최저보증 연금금액 산출</button>
+				</div>
+
+				<div class="section section_calc" style="display: none;">
+					<h2 class="tit1">최저보증이율기준 예상연금액</h2>
+
+					<div class="tbl mt_3 mb_16">
+						<table>
+							<caption class="sr_only">최저보증이율기준 예상연금액에 대한 표이며 연금준비금, 배당원리금, 연금기금액, 연금연액, 예상소득액, 세전예상액에 대한 정보를 제공하고 있습니다.
+							</caption>
+							<colgroup>
+								<col style="width: 40%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">연금준비금</th>
+									<td>11,237,270원</td>
+								</tr>
+								<tr>
+									<th scope="row">배당원리금</th>
+									<td>0원</td>
+								</tr>
+								<tr>
+									<th scope="row">연금기금액</th>
+									<td>11,237,270원</td>
+								</tr>
+								<tr>
+									<th scope="row">연금연액</th>
+									<td>1,232,320원</td>
+								</tr>
+								<tr>
+									<th scope="row">예상소득액</th>
+									<td>0원</td>
+								</tr>
+								<tr>
+									<th scope="row">세전예상액</th>
+									<td>619,530원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 배당금내역 목록 영역 -->
+
+			</div>
+			<!-- e: 배당금내역 영역 -->
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>확인</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 레이어 팝업 영역-->
+			<div class="modal_popup modal_alert hide" data-popup="layerInfo1">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">계약상세정보</h2>
+					</div>
+					<div class="popup_body">
+						<div class="bg_lightprimary">
+							가로 풀사이즈 콘텐츠 영역<br> .popup_body 하위에 정의
+						</div>
+						<div class="container">
+							<div class="bg_lightprimary">
+								양쪽 여백 콘텐츠 영역 .container 내 정의
+							</div>
+							<div class="desc">
+								<p class="txt_lg txt_bold">받는분의 실명을<br> 정확하게 입력해 주세요.</p>
+								<p class="mt_2">.desc 안내문구 (기본 가운데정렬)</p>
+							</div>
+
+							<br>
+
+							<div class="desc txt_l">
+								<p class="txt_lg txt_bold">좌측정렬 안내문구</p>
+								<p class="mt_2">
+									좌측정렬 안내문구<br>
+									안내문구
+								</p>
+							</div>
+
+							<br>
+
+							<div class="tf_item">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_name">이름</label>
+										<input type="text" id="lb_name" class="tf" value="홍길동" required>
+									</div>
+								</div>
+							</div>
+
+							<br>
+
+							<textarea class="tf" cols="50" rows="3" title="메모" placeholder="※ 최대 한글 20자, 영/숫자 40자까지 입력"></textarea>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 레이어 팝업 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2"><i class="ico ico_arr_circle_right mr_1"></i>예상 연금금액 안내</h3>
+							<ul class="list list1 ml_2">
+								<li>배당금 적립구분은 1. 현금지급식(배당금일시지급), 2. 배당적립(증액연금으로 지급) 中 선택 하여 조회 가능합니다.</li>
+								<li>연금개시일자 시점의 연금준비금, 연금기금금액, 연금예상금액입니다.</li>
+								<li>납입할 보험료가 존재하는 경우 매월 납입일자에 납입함을 가정하여 산출된 금액입니다.</li>
+								<li>현재일자 이후에 발생되는 납입보험료에 대한 적립이율은 현재이율로 적용되었습니다.</li>
+								<li>연금저축상품의 예상소득세는 소득공제를 받은 것으로 가정하고, 지급예정일자 기준으로 세율을 적용하였으므로, 실제 지급 시점과 다를 수 있습니다.</li>
+								<li>지급예정일자 선택은 연금개시 후에만 조회 가능합니다.</li>
+							</ul>
+							<h3 class="tit2 mt_6"><i class="ico ico_arr_circle_right mr_1"></i>최저보증이율 적용 예상 연금금액 안내</h3>
+							<ul class="list list1 ml_2">
+								<li>현재일자부터 최저보증이율이 적용되었습니다.</li>
+								<li>세전예상금액은 최저보증이율이 적용되었습니다.</li>
+								<li>배당원리금과 만기 후 연금이 개시된 경우의 연금준비금, 연금기금액은 최저보증이율이 미적용됩니다.</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

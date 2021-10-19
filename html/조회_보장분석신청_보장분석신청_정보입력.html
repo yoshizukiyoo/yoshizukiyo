@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="보장분석신청"></header>
+		<div id="content">
+			<div class="container pt_4 pb_4">
+
+				<nav class="tab_menu tab_menu1">
+					<ul class="tab_list">
+						<li><a href="#;"><span>신청대상보험조회</span></a></li>
+						<li class="on"><a href="#;"><span>보장분석신청</span></a></li>
+						<li><a href="#;"><span>신청내역조회</span></a></li>
+					</ul>
+				</nav>
+
+				<div class="clfx mb_3">
+					<div class="f_l">
+						<h2 class="tit1 mb_0">신청정보</h2>
+					</div>
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+							<i class="ico ico_help_sm"></i>
+							<span>알려드립니다</span>
+						</a>
+					</div>
+				</div>
+
+				<!-- s: 신청자 정보입력 영역 -->
+				<h3 class="tit2"><label for="userNm">신청자</label></h3>
+				<div class="tf_item_ex disabled mt_2">
+					<div class="tf_item_body">
+						<!-- 필요에 따라 placeholder, value, readonly, required 속성 사용 -->
+						<input type="text" id="userNm" class="tf" placeholder="나봄미" value="나봄미" disabled>
+					</div>
+				</div>
+
+				<h3 class="tit2 mt_9">신청 유지관리자</h3>
+				<div class="inline-block">
+					<span class="check_item">
+						<input type="radio" name="lb_cate1" id="lb_cate1_1" checked>
+						<label for="lb_cate1_1">최근가입한 보험의 유지관리자</label>
+					</span>
+				</div>
+
+				<div class="inline-block mt_2">
+					<span class="check_item">
+						<input type="radio" name="lb_cate1" id="lb_cate1_2">
+						<label for="lb_cate1_2">유지관리자 번호 직접입력</label>
+					</span>
+					<div class="tf_item disabled mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+
+								<label class="lab" for="adminNm">모집자(유지관리자) 번호 </label>
+								<!-- 필요에 따라 placeholder, value, readonly, required 속성 사용 -->
+								<input type="text" id="adminNm" class="tf" value="모집자번호 직접입력" disabled="">
+
+								<button type="button" class="btn btn_icon btn_reset">
+									<i class="ico ico_reset"></i>
+									<span class="sr_only">초기화</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 신청자 정보입력 영역 -->
+
+			</div>
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex btn_group_r">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>보험계약 확인</span>
+						<i class="ico ico_chevron_right_xl ml_2"></i>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>고객님께서 가입하신 우체국보험상품의 보장금액을 분석진단 &middot; 신청하는 서비스입니다.</li>
+								<li>보장분석을 신청하시면 우체국에서 고객님께 보장분석결과를 우편으로 또는 직접전달하여 드립니다.</li>
+								<li>신청대상 보험목록을 조회 후 [보장분석신청] 탭으로 이동하여 신청할 수 있습니다.</li>
+								<li>보장분석 신청시 모집자(유지관리자)번호를 입력하시면 해당 모집자(유지관리자)가, 또는 모집자(유지관리자)번호를입력하지 않으시면 최근에 가입하신 보험의 유지관리자가 분석결과를
+									신청일로부터 2~5일(우체국 영업일 기준)이내에 알려드립니다.</li>
+								<li>신청시간 : 09:00~21:00 (토,일,공휴일포함)</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 -->
+
+		</div>
+	</div>
+</body>
+
+</html>
