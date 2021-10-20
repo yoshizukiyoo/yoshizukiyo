@@ -35,7 +35,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">이용한도조회</h2>
+				<h2 class="tit_cont">카드분실재발급</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -61,28 +61,36 @@
 				</div>
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>고객님의 체크카드 이용한도 조회 및 변경신청을 하실 수 있는 서비스입니다.</li>
-						<li>이용한도는 1일 이용한도(카드단위)는 개인(1일 5,000만원 / 월 5,000만원), 법인(1일 1억원 / 월 3억원) 범위 내에서 조정 가능합니다.</li>
+						<li>카드분실 재발급시는 반드시 보안카드 및 공동인증서를 입력하셔야 발급이 가능합니다.</li>
 					</ul>
 				</div>
 
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">카드정보</h3>
+							<h3 class="tit1">재발급대상카드 목록</h3>
 						</div>
 					</div>
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_data tbl_list_data mt_4">
 						<table>
-							<caption class="sr_only">카드정보 표로 카드번호 정보 제공</caption>
+							<caption class="sr_only">재발급대상카드 목록 표로 카드명, 카드번호, 재발급신청 정보 제공</caption>
 							<colgroup>
-								<col style="width: 17%;">
+								<col>
+								<col>
 								<col>
 							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">카드명</th>
+									<th scope="col">카드번호</th>
+									<th scope="col">재발급신청</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">카드번호</th>
-									<td>4114-****-****-2216</td>
+									<td>우체국 포미 하이브리드 카드(VISA)</td>
+									<td>4114-****-****-****</td>
+									<td>나봄미</td>
 								</tr>
 							</tbody>
 						</table>
@@ -90,46 +98,35 @@
 				</div>
 
 				<div class="section">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">이용한도 변경신청</h3>
+					<h3 class="tit1">추가인증</h3>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1">휴대폰 SMS 인증</div>
+							<div class="b2">고객님의 휴대폰으로 인증번호를 발송하고, 전송받은 인증번호를 입력하여 본인 여부를 확인합니다.</div>
+							<div class="b3">
+								<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('layer01_1', this)">인증확인</a>
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1">ARS 인증</div>
+							<div class="b2">화면에 출력된 인증번호를 고객님께서 선택하신 휴대폰이나 유선전화로 ARS수신 후 인증번호를 입력하여 본인 여부를 확인합니다.</div>
+							<div class="b3">
+								<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('layer02_1', this)">인증확인</a>
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1">1회용인증번호</div>
+							<div class="b2">
+								우체국에서 발급받은 1회용인증번호 6자리를 입력하여 본인 여부를 확인합니다.
+							</div>
+							<div class="b3"><a href="#;" class="btn btn_md btn_outline_default">인증확인</a></div>
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data mt_4">
-						<table>
-							<caption class="sr_only">이용한도 변경신청 표로 구분, 변경전(원), 변경후(원) 정보 제공</caption>
-							<colgroup>
-								<col style="width: 25%">
-								<col>
-								<col>
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">구분</th>
-									<th scope="col">변경전(원)</th>
-									<th scope="col">변경후(원)</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="txt_c">일일한도</td>
-									<td class="txt_r">600만</td>
-									<td class="txt_r">
-										<input type="text" title="변경후 이용한도 입력" class="tf" style="width: 260px;">
-										<span class="ml6">만</span>
-									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">한도</td>
-									<td class="txt_r">2,000만</td>
-									<td class="txt_r">
-										<input type="text" title="변경후 이용한도 입력" class="tf" style="width: 260px;">
-										<span class="ml6">만</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<ul class="list list1 mt_2">
+						<li>고객님의 연락처가 바뀌신 경우 고객정보수정을 통하여 변경하실 수 있습니다.
+							<a href="#;" class="btn btn_xs btn_explain ml6">고객정보수정</a>
+						</li>
+					</ul>
 				</div>
 
 				<!-- s: 보안매체 인증번호 입력 -->
@@ -183,9 +180,8 @@
 				<!-- e: 보안매체 인증번호 입력 -->
 
 				<div class="btn_tbl_btm">
-					<!-- <button type="button" class="btn btn_xl btn_outline_default">재실행</button> -->
-					<a href="카드_카드정보변경_이용한도조회변경_이용한도조회_정보입력.html" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="카드_카드정보변경_이용한도조회변경_이용한도조회_실행완료.html" class="btn btn_xl btn_primary">변경실행</a>
+					<a href="카드_카드재발급_카드분실재발급_카드분실재발급_정보입력.html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="카드_카드재발급_카드분실재발급_카드분실재발급_입력확인2.html" class="btn btn_xl btn_primary">다음</a>
 				</div>
 
 				<!-- s: alert 팝업 -->

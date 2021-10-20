@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.qna_list li a').click(function(){
+				var parent = $(this).parent();
+				parent.toggleClass('active');
+				if(parent.hasClass('active')){
+					$(this).attr('title','답변 닫기');
+				}
+				else {
+					$(this).attr('title','답변 보기');
+				}
+				parent.next('.qna_a').toggleClass('on');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">카드관련 FAQ</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="first_section">
+					<h3 class="tit1">자주묻는 질문 </h3>
+					<ul class="qna_list">
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드는 어떻게 신청하나요?</a>
+							</div>
+							<div class="qna_a">개인 신분증(주민등록증)을 지참하시고 가까운 우체국에 직접 방문하시거나, 우체국 인터넷뱅킹(www.epostbank.go.kr)을 통해 신청할 수 있습니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드신청은 누구나 가능한가요?</a>
+							</div>
+							<div class="qna_a">만12세 이상의 실명 개인으로 우체국에 요구불계좌를 보유한 분이면 누구나 신청이 가능합니다.<br> 외국인, 재외국민도 신청이 가능 합니다.<br>
+								(단, 만 12세 ~만 13세 미성년자는 친권자가 반드시 우체국에 내점해야만 신청이 가능합니다 
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드를 발급받으면 바로 사용이 가능한가요?</a>
+							</div>
+							<div class="qna_a">우체국창구에서 발급 받으신 카드는 즉시 사용이 가능합니다.<br>
+								우체국 체크카드를 후발급(인터넷발급 등) 받은 경우에는 카드수령 후 회원 본인이 우제국장구, 우체국 인터넷뱅킹(www.epostbank.go.kr), ARS(1588-1900 - 5번)을 통해 사용 등록하여야 사용이 가능합니다.
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드의 이용제한 시간이 있나요?</a>
+							</div>
+							<div class="qna_a">이용제한시간은 매일 0400 ~ 05:00(전산시스템 점검)입니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드의 이용한도가 정해져 있나요?</a>
+							</div>
+							<div class="qna_a">우체국 체크카드 일, 월 한도는 회원이 지정할 수 있습니다.<br>
+								개인 체크카드는 미지정 시 일 한도 600만원, 월 한도 2,000만원으로 한도가 부여되며 회원 요청에 따라 일 한도 5,000만원, 월 한도 5,000만원이내로 변경가능합니다.<br>
+								법인 체크카드는 한도 미지정시 일 한도 600만원, 월 한도 2,000만원으로 한도가 부여되며 회원 요청에 따라 일 한도 1 억원, 월 한도 3억원 이내로 변경가능합니다.
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드 연회비는 있나요?</a>
+							</div>
+							<div class="qna_a">연회비는 전혀 없습니다.(선불 교통카드기능 추가 시에도 발급수수료가 없습니다.)</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드분실 신고는 어떻게 하나요?</a>
+							</div>
+							<div class="qna_a">우체국창구, 우체국금융고객센터(1588-1900), 우체국 인터넷뱅킹(www.epostbank.go.kr))을 통해 신고 접수하시면 됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">분실한 카드를 찾았습니다. 분실신고를 해제하려면 어떻게 하나요?</a>
+							</div>
+							<div class="qna_a">개인신분증(주민등록증)을 지참하시고 가까운 우체국에 방문하셔야 합니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드비밀번호를 변경하려면 어떻게 하나요?</a>
+							</div>
+							<div class="qna_a">개인신분증(주민등록증)과 카드를 지참하시고 가까운 우체국에 방문하셔야 합니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">분실된 카드를 재발급신청 하려면 어떻게 하나요?</a>
+							</div>
+							<div class="qna_a">개인 신분증(주민등록증)을 지참하시고 가까운 우체국에 직접 방문하시거나 우체국 금융고객센터(1588-1900) 평일09:00~18:00, 우제국 인터넷뱅킹(www.epostbank.go.kr)을 통해 신청할 수 있습니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">포인트 적립은 언제 되나요?</a>
+							</div>
+							<div class="qna_a">카드이용 후 다음달 초에 적립됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">캐시백은 언제,어디로 들어오나요?</a>
+							</div>
+							<div class="qna_a">사용하신 가맹점의 매출전표가 매입되는 다음날(개인) 또는 3영업일(법인)에 고객님의 결제계좌로 입금됩니다.</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">포인트는 어떻게 사용하나요?</a>
+							</div>
+							<div class="qna_a">개인고객의 포인트 사용은 우체국 우편창구, 인터넷우체국(우체국 쇼핑을 포함), 뚜레쥬르, CGV, 티비허브, Paybooc, SSGPAY 가맹점에서 사용 또는 캐시백 전환(1P 이상)이 가능합니다.<br>
+								※ 단, SSGPAY가맹점에서는 우체국포인트를 SSG MONEY로 전환 후 사용이 가능합니다.<br>
+								※ SSGPAY 가맹점 확인은 SSGPAY앱의 사용처 안내를 참고하시기 바랍니다.<br>
+								
+							<p class="mt_1">법인고객의 포인트 사용은 50,0000P 이상부터 우체국 창구와 인터넷뱅킹을 통해 온누리상품권(5만원, 10만원)으로 교환 또는 30,000P이상 1,000P 단위로 캐시백 전환이 가능합니다.</p>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">포인트는 유효기간은 얼마나 되나요?</a>
+							</div>
+							<div class="qna_a">우체국 포인트는 별도의 유효기간이 없습니다.<br>
+								※ 단, 우체국 체크카드 탈회 후 5년 경과 시, 고객정보 삭제 의무화에 따라 입금이 불가능한 경우를 제외하고, 보유 포인트를 일괄 캐시백 입금처리하여 드리고 있습니다.
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">우체국 우편서비스 이용요금을 포인트로 결제시 입금은 언제되나요?</a>
+							</div>
+							<div class="qna_a">우편창구 이용 시 : 3~4일 후 입금됩니다.<br>
+								우체국쇼핑 이용 시 : 전표가 매입되면 2~3일 후에 입금됩니다.<br>
+								* 전표매입일 : 18일경(1~10일 사용분), 28일경(11~20일 사용분), 익월 8일경(21~말일 사용분)</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="답변 보기">카드결제 취소 시 입금은 언제되나요?</a>
+							</div>
+							<div class="qna_a">당일 취소된 건은 당일 입금되며, 익일 취소건부터는 매줄전표가 접수되면 다음 영업일에 입금됩니다.</div>
+						</li>
+					</ul>
+				</div>
+				
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
