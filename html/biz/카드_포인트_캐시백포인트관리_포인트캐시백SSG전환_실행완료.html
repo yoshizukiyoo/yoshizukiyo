@@ -23,7 +23,9 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			$('.btn_result').click(function(){
+				$('.btm_result_box').show();
+			});
 		});
 	</script>
 </head>
@@ -37,7 +39,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">출금계좌등록</h2>
+				<h2 class="tit_cont">포인트 캐시백/SSG 전환</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -57,80 +59,55 @@
 				<div class="cont_header_right">
 					<ul class="step">
 						<li><span class="num">1</span><span class="txt">정보입력</span></li>
-						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
-						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li class="on"><span class="num">3</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
-
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>고객님이 출금계좌로 등록할 계좌정보입니다. 내용이 맞는지 확인하시기 바랍니다.</li>
+						<li>포인트 캐시백/SSG 전환이 아래와 같이 처리되었습니다.</li>
 					</ul>
 				</div>
 
-				<!-- s: 출금계좌 정보 -->
 				<div class="section">
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">우체국포인트 전환신청 내용</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data mt_4">
 						<table>
-							<caption class="sr_only">선택한 출금계좌 정보 목록으로 예금종류, 통지구분, 계좌번호, 잔액, 계좌비밀번호 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">우체국포인트 전환신청 내용 표로 구분, 신청내용 정보 제공</caption>
 							<colgroup>
-								<col style="width: 15%;">
-								<col>
-								<col style="width: 15%;">
+								<col style="width: 16%">
 								<col>
 							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">구분</th>
+									<th scope="col">신청내용</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">예금종류</th>
-									<td>보통예금</td>
-									<th scope="row">통지구분</th>
-									<td>입/출금통지</td>
+									<td class="txt_normal">전환포인트</td>
+									<td>100 POINT</td>
 								</tr>
 								<tr>
-									<th scope="row">계좌번호</th>
-									<td>010041-01-065849</td>
-									<th scope="row">잔액</th>
-									<td class="txt_r">99,999,987원</td>
+									<td class="txt_normal">카드번호</td>
+									<td>4114-****-****-2216</td>
 								</tr>
 								<tr>
-									<th scope="row">계좌비밀번호</th>
-									<td colspan="3">
-										<div class="btn_mouse_pwd">
-											<input type="password" class="tf" title="출금계좌비밀번호 입력" style="width: 320px;">
-											<button type="button"><span class="sr_only">마우스로 출금계좌비밀번호 입력</span></button>
-										</div>
-									</td>
+									<td class="txt_normal">결제계좌번호</td>
+									<td>010017-02-526768</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 출금계좌 정보 -->
-
-				<!-- s: 보안매체 인증번호 입력 -->
-				<div class="section">
-					<h3 class="tit1">보안매체 인증번호 입력</h3>
-					<div class="box_security_cert bg_otp">
-						<div class="security_cert_inner">
-							<p class="txt_security">OTP발생번호 <strong>숫자6자리</strong>를 입력하십시오.</p>
-							<div class="security_cert_wrap">
-								<div class="cert_number">
-									<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="6">
-								</div>
-								<button type="button" class="btn btn_lg btn_outline_default">OTP카드안내</button>
-							</div>
-							<p class="txt_security_caution">
-								<strong>통합OTP는 비밀번호 10회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
-								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
-							</p>
-						</div>
-					</div>
-				</div>
-				<!-- e: 보안매체 인증번호 입력 -->
 
 				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="이체_이체관리_출금계좌관리_출금계좌등록_03.실행완료.html" class="btn btn_xl btn_primary">등록실행</a>
+					<a href="카드_포인트_캐시백포인트관리_포인트캐시백SSG전환_정보입력.html" class="btn btn_xl btn_primary">확인</a>
 				</div>
 
 				<!-- s: alert 팝업 -->
@@ -154,10 +131,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -170,7 +145,7 @@
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
-							<h3 class="popup_tit">확인</h3>
+							<h2 class="popup_tit">확인</h2>
 						</div>
 						<div class="popup_body">
 							<div class="alert_cont">
@@ -198,7 +173,7 @@
 				<!-- e: 본문 -->
 			</div>
 		</article>
-		<footer class=" footer"></footer>
+		<footer class="footer"></footer>
 	</div>
 </body>
 
