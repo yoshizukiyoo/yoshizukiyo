@@ -59,6 +59,13 @@
 			});
 		});
 
+		// 자동팝업 설정을 1개 초과시 레이어팝업 호출
+		function autoPopup(obj) {
+			if($(obj).is(':checked') == true) {
+				openModal('auto_popup', obj);
+			}
+		}
+
 		// 개인 스마트인증 1단계 레이어팝업 호출
 		function smartCertPopup(obj) {
 			if($(obj).is(':checked') == true) {
@@ -183,7 +190,7 @@
 									<span>금융인증서 자동팝업</span>
 									<div class="btn_mouse_toggle">
 										<div class="switch">
-											<input type="checkbox" id="btn_indi_cert2">
+											<input type="checkbox" id="btn_indi_cert2" onchange="autoPopup(this);">
 											<label for="btn_indi_cert2"><span class="sr_only">금융인증서 자동팝업</span></label>
 										</div>
 									</div>
@@ -702,7 +709,7 @@
 							</div>
 							<div class="txt_smart_cert">
 								<h4>PASS인증 이용 안내</h4>
-								컨텐츠 추가 예정
+								컨텐츠 추후 작업 예정
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
