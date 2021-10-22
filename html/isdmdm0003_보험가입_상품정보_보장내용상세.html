@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+
+	<!-- 새창형 페이지 스타일시트 -->
+	<link rel="stylesheet" href="/resources/css/style_type2.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.tab_menu_type1 li a.current').each(function () {
+				var tg = $(this).attr('href');
+				if (tg !== '#' && tg.charAt(0) === '#') {
+					$(tg + '.tab_cont').css('display', 'block');
+				}
+			});
+			$('.tab_menu_type1 li a').click(function (e) {
+				var tg = $(this).attr('href');
+				$(this).addClass('current').parent('li').siblings('li').children('a').removeClass('current');
+				if (tg === '#' || tg === '' || tg === '#;') {
+					e.preventDefault();
+				} else if (tg.charAt(0) === '#') {
+					if ($(tg).hasClass('tab_cont')) {
+						$(tg).show().siblings('.tab_cont').hide();
+						e.preventDefault();
+					}
+				}
+			})
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper wrapper_type2">
+		<header class="header_type2">
+			<h1 class="logo">
+				<a href="#;"><img src="/resources/img/common/logo.png" alt="우체국 보험"></a>
+			</h1>
+			<div class="util_area">
+				<div class="menu_list">
+					<a href="#;" class="btn">
+						<span>로그인</span>
+						<i class="ico ico_type2_login"></i>
+					</a>
+					<a href="#;" class="btn ml_5">
+						<span>다이렉트 보험 나가기</span>
+						<i class="ico ico_type2_leave"></i>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<!-- s: 보험료 계산 -->
+		<div class="calc_area">
+			<form action="#;">
+				<fieldset class="calc_container">
+					<legend class="tit_calc">
+						<i class="ico ico_calc_black"></i>
+						<span class="v_mid">보험료 한꺼번에 <strong class="txt_white">계산하기</strong></span>
+					</legend>
+					<div class="form_controls">
+						<input type="text" value="2020.01.01" class="inp_item" title="생년월일">
+						<span class="box_shadow">
+							<span class="check_item">
+								<input type="radio" name="gender" id="chkM" checked>
+								<label for="chkM">남</label>
+							</span>
+							<span class="check_item">
+								<input type="radio" name="gender" id="chkFm">
+								<label for="chkFm">여</label>
+							</span>
+						</span>
+						<button type="submit" class="btn btn_md btn_primary txt_white ml_4">보험료 확인</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<!-- e: 보험료 계산 -->
+
+		<div id="container" class="mt_12">
+			<aside class="category">
+				<h2 class="category_tit">category</h2>
+				<ul class="category_list">
+					<li><a href="#;">추천</a></li>
+					<li><a href="#;">건강/암보험</a></li>
+					<li><a href="#;">상해보험</a></li>
+					<li><a href="#;">종신/정기보험</a></li>
+					<li><a href="#;">어린이보험</a></li>
+					<li><a href="#;">연금보험</a></li>
+					<li><a href="#;">저축보험</a></li>
+					<li><a href="#;">전체</a></li>
+				</ul>
+			</aside>
+
+			<article id="content" class="cont_product">
+				<form action="#;">
+					<div class="product_header">
+						<div class="info_area">
+							<div class="selectbox_wrap selectbox_product_type3">
+								<dl title="보험선택 선택">
+									<dt><a href="#none"><span>무배당온라인암보험</span></a></dt>
+									<dd>
+										<ul>
+											<li><a href="#none"><span>전체</span></a></li>
+											<li><a href="#none"><span>무배당온라인암보험</span></a></li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<div class="info_cont mt_3">
+								<dl>
+									<dt class="txt_normal">비갱신형으로 처음의 보험료를 끝까지~</dt>
+									<dd>
+										암 진단금은 물론 항암방사선 또는 항암약물치료까지 보장 해주고 유방암 및<br>
+										남녀생식기암을 소액암이 아닌 일반암으로 보장해주니 참 든든한 온라인 암보험
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="price_area">
+							<span class="inline-block">
+								<div class="selectbox_wrap bd_none" style="width: 93px;">
+									<dl title="나이 선택">
+										<dt><a href="#none"><span>22세</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span>선택</span></a></li>
+												<li><a href="#none"><span>22세</span></a></li>
+												<li><a href="#none"><span>23세</span></a></li>
+												<li><a href="#none"><span>24세</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="selectbox_wrap bd_none" style="width: 93px;">
+									<dl title="성별 선택">
+										<dt><a href="#none"><span>여자</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span>선택</span></a></li>
+												<li><a href="#none"><span>여자</span></a></li>
+												<li><a href="#none"><span>남자</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+							</span>
+							<dl class="price_cal pt_4">
+								<dt class="txt_normal">내보험료는?</dt>
+								<dd>월 <strong>4,300~</strong></dd>
+							</dl>
+						</div>
+					</div>
+					<div class="box_product box_round box_shadow box_flex mt_7">
+						<dl>
+							<dt>납입주기</dt>
+							<dd>
+								<div class="selectbox_wrap selectbox_product_type3">
+									<dl title="검색조건 선택">
+										<dt><a href="#none"><span>월납</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span>전체</span></a></li>
+												<li><a href="#none"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>보험기간</dt>
+							<dd>
+								<div class="selectbox_wrap selectbox_product_type3">
+									<dl title="보험기간 선택">
+										<dt><a href="#none"><span>80세</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span>전체</span></a></li>
+												<li><a href="#none"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>납입기간</dt>
+							<dd>
+								<div class="selectbox_wrap selectbox_sm selectbox_product_type3">
+									<dl title="납입기간 선택">
+										<dt><a href="#none"><span>10년</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span>전체</span></a></li>
+												<li><a href="#none"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>보험가입금액</dt>
+							<dd>
+								<div class="selectbox_wrap selectbox_sm selectbox_product_type3">
+									<dl title="보험가입금액 선택">
+										<dt><a href="#none"><span>10000만원</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span>전체</span></a></li>
+												<li><a href="#none"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</form>
+				<div class="clfx mt_4">
+					<div class="f_l">
+						<a href="#;" class="btn btn_md btn_outline_default" title="새창 열림" target="_blank">약관보기<i
+								class="ico ico_document_popup ml_2"></i></a>
+						<a href="#;" class="btn btn_md btn_outline_default ml_1" title="새창 열림" target="_blank">상품요약서<i
+								class="ico ico_document_popup ml_2"></i></a>
+					</div>
+					<div class="f_r">
+						<a href="#;" class="btn btn_md btn_outline_default">설계함 저장</a>
+						<a href="#;" class="btn btn_md btn_primary ml_1">바로가입하기</a>
+					</div>
+				</div>
+				<div class="box_product_cont box_round box_shadow mt_12">
+					<div class="tab_menu_type1">
+						<ul>
+							<li><a href="#tab_cont1" class="current">상품특징</a></li>
+							<li><a href="#tab_cont2">가입안내</a></li>
+							<li><a href="#tab_cont3">보장내역</a></li>
+							<li><a href="#tab_cont4">가입안내</a></li>
+						</ul>
+					</div>
+					<div class="tab_cont" id="tab_cont1">
+						<h3 class="sr_only">상품특징</h3>
+						<div class="tab_inner">
+							<div class="infographic_area">
+								<img src="../resources/img/content/_sample_insurance01.png" alt="샘플이미지">
+							</div>
+						</div>
+					</div>
+					<div class="tab_cont" id="tab_cont2">
+						<h3 class="sr_only">가입안내</h3>
+						<div class="tab_inner">
+							<h4 class="tit1">가입요건</h4>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">가입요건에 대한 표이며, 가입나이, 보험기간, 보험료 납입기간 , 보험료 납입주기, 가입한도에 대한 정보 제공</caption>
+									<colgroup>
+										<col style="width: 20%">
+										<col style="width: 20%">
+										<col style="width: 20%">
+										<col style="width: 20%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">가입나이</th>
+											<th scope="col">보험기간</th>
+											<th scope="col">보험료 납입기간</th>
+											<th scope="col">보험료 납입주기</th>
+											<th scope="col">가입한도</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">20세~60세</td>
+											<td class="txt_c">20년, 30년 만기</td>
+											<td class="txt_c">전기납</td>
+											<td class="txt_c">월납</td>
+											<td class="txt_c">500만원~2,000만원<br>(500만원 단위)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p class="txt_note mt_2">주) 1. 전기납 : 보험기간 동안 보험료를 납입-보험기간 20년 만기시 20년동안 보험료 납입</p>
+
+							<h4 class="tit1 mt_12">특약</h4>
+							<p>- 이륜자동차 운전 및 탑승중 재해 부담보 특약 2109, 지정대리청구서비스특약 2109, 장애인전용보험전환특약 2007</p>
+						</div>
+					</div>
+					<div class="tab_cont" id="tab_cont3">
+						<h3 class="sr_only">보장내역</h3>
+						<div class="tab_inner">
+							<h4 class="tit1">주계약</h4>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">주계약에 대한 표이며, 구분, 지급사유, 지급액에 대한 정보 제공</caption>
+									<colgroup>
+										<col style="width:20%">
+										<col>
+										<col style="width:15%">
+										<col style="width:10%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>구분</th>
+											<th>지급사유</th>
+											<th colspan="2">지급액</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">사망보험금</td>
+											<td class="txt_c">보험기간 중 사망하였을 때</td>
+											<td class="txt_c" colspan="2">1,000만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">장해보험금</td>
+											<td class="txt_c">보험기간 중 장해분류표 중 동일한 재해 또는 재해 이외의 동일한 원인으로<br>
+												여러 신체부위의 합산 장해지급률이 50% 이상인 장해상태가 되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td class="txt_c" colspan="2">500만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">당뇨병<br>
+												(당화혈색소 6.5%이상)<br>
+												진단보험금</td>
+											<td class="txt_c">보험기간 중 당뇨보장개시일 이후에<br>
+												“당뇨병(당화혈색소 6.5%이상)”으로 진단이 확정되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td colspan="2" class="txt_c">100만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">당뇨병<br>
+												(당화혈색소 7.5%이상)<br>
+												진단보험금</td>
+											<td class="txt_c">보험기간 중 당뇨보장개시일 이후에<br>
+												“당뇨병(당화혈색소 7.5%이상)”으로 진단이 확정되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td colspan="2" class="txt_c">100만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">당뇨병<br>
+												(당화혈색소 9.0%이상)<br>
+												진단보험금</td>
+											<td class="txt_c">보험기간 중 당뇨보장개시일 이후에<br>
+												“당뇨병(당화혈색소 9.0%이상)”으로 진단이 확정되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td colspan="2" class="txt_c">300만원</td>
+										</tr>
+										<tr>
+											<td rowspan="2" class="txt_c">인슐린치료보험금</td>
+											<td rowspan="2" class="txt_c">보험기간 중 “인슐린치료”를 받았을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td class="txt_c">보험계약일부터<br>
+												1년미만</td>
+											<td class="txt_c">150만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">보험계약일부터<br>
+												1년이상</td>
+											<td class="txt_c">300만원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p class="txt_note">주) 1. 당뇨보장개시일 이후에 피보험자가 “당뇨병(당화혈색소 기준)”으로 진단 확정되었을 때에는 지급사유에 해당하는 보험금을 모두 더하여 지급합니다.
+								그러나 이미 지급한 보험금이 있는 경우, 이미 지급한 보험금은 제외하고 지급합니다.<br> 이륜자동차운전 및 탑승 중 재해부담보</p>
+							<h4 class="tit1 mt_12">이륜자동차운전 및 탑승 중 재해부담보</h4>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">이륜자동차운전 및 탑승 중 재해부담보에 대한 표이며, 가입대상, 부담보 범위에 대한 정보 제공</caption>
+									<colgroup>
+										<col style="width:20%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">가입대상</th>
+											<td>이륜자동차 운전자(소유및 관리하는 경우 포함)</td>
+										</tr>
+										<tr>
+											<th scope="row">부담보 범위</th>
+											<td>이륜자동차 운전(탑승 포함) 중에 발생한 재해로 인하여 주계약에서 정한 보험금 지급사유 또는 보험료 납입면제사유가 발생한 경우에 보험금을 지급하지 않으며, 보험료 납입을
+												면제하지 않음.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab_cont" id="tab_cont4">
+						<h3 class="sr_only">가입안내</h3>
+						<div class="tab_inner">
+							<p>컨텐츠 확인 불가능</p>
+							<p>임시, 보장내역 컨텐츠 삽입</p>
+
+							<h4 class="tit1 mt_4">주계약</h4>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">주계약에 대한 표이며, 구분, 지급사유, 지급액에 대한 정보 제공</caption>
+									<colgroup>
+										<col style="width:20%">
+										<col>
+										<col style="width:15%">
+										<col style="width:10%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>구분</th>
+											<th>지급사유</th>
+											<th colspan="2">지급액</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">사망보험금</td>
+											<td class="txt_c">보험기간 중 사망하였을 때</td>
+											<td class="txt_c" colspan="2">1,000만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">장해보험금</td>
+											<td class="txt_c">보험기간 중 장해분류표 중 동일한 재해 또는 재해 이외의 동일한 원인으로<br>
+												여러 신체부위의 합산 장해지급률이 50% 이상인 장해상태가 되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td class="txt_c" colspan="2">500만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">당뇨병<br>
+												(당화혈색소 6.5%이상)<br>
+												진단보험금</td>
+											<td class="txt_c">보험기간 중 당뇨보장개시일 이후에<br>
+												“당뇨병(당화혈색소 6.5%이상)”으로 진단이 확정되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td colspan="2" class="txt_c">100만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">당뇨병<br>
+												(당화혈색소 7.5%이상)<br>
+												진단보험금</td>
+											<td class="txt_c">보험기간 중 당뇨보장개시일 이후에<br>
+												“당뇨병(당화혈색소 7.5%이상)”으로 진단이 확정되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td colspan="2" class="txt_c">100만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">당뇨병<br>
+												(당화혈색소 9.0%이상)<br>
+												진단보험금</td>
+											<td class="txt_c">보험기간 중 당뇨보장개시일 이후에<br>
+												“당뇨병(당화혈색소 9.0%이상)”으로 진단이 확정되었을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td colspan="2" class="txt_c">300만원</td>
+										</tr>
+										<tr>
+											<td rowspan="2" class="txt_c">인슐린치료보험금</td>
+											<td rowspan="2" class="txt_c">보험기간 중 “인슐린치료”를 받았을 때<br>
+												(보험기간 중 최초 1회에 한하여 지급함)</td>
+											<td class="txt_c">보험계약일부터<br>
+												1년미만</td>
+											<td class="txt_c">150만원</td>
+										</tr>
+										<tr>
+											<td class="txt_c">보험계약일부터<br>
+												1년이상</td>
+											<td class="txt_c">300만원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p class="txt_note">주) 1. 당뇨보장개시일 이후에 피보험자가 “당뇨병(당화혈색소 기준)”으로 진단 확정되었을 때에는 지급사유에 해당하는 보험금을 모두 더하여 지급합니다.
+								그러나 이미 지급한 보험금이 있는 경우, 이미 지급한 보험금은 제외하고 지급합니다.<br> 이륜자동차운전 및 탑승 중 재해부담보</p>
+							<h4 class="tit1 mt_12">이륜자동차운전 및 탑승 중 재해부담보</h4>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">이륜자동차운전 및 탑승 중 재해부담보에 대한 표이며, 가입대상, 부담보 범위에 대한 정보 제공</caption>
+									<colgroup>
+										<col style="width:20%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">가입대상</th>
+											<td>이륜자동차 운전자(소유및 관리하는 경우 포함)</td>
+										</tr>
+										<tr>
+											<th scope="row">부담보 범위</th>
+											<td>이륜자동차 운전(탑승 포함) 중에 발생한 재해로 인하여 주계약에서 정한 보험금 지급사유 또는 보험료 납입면제사유가 발생한 경우에 보험금을 지급하지 않으며, 보험료 납입을
+												면제하지 않음.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<footer class="footer_type2">
+			<p class="logo_epost">
+				<img src="/resources/img/layout/logo_epost.png" alt="우정사업정보센터">
+			</p>
+		</footer>
+	</div>
+</body>
+
+</html>

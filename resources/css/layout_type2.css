@@ -117,8 +117,9 @@ body {
 
 #content {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+      -ms-flex: 1 1 calc(100% - 260px);
+          flex: 1 1 calc(100% - 260px);
+  /* flex: 1 1 auto*/
 }
 
 .cont_header {
@@ -195,6 +196,8 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   height: 150px;
+  opacity: .8;
+  font-size: 18px;
 }
 
 .sidebar_list li.on {
@@ -203,6 +206,37 @@ body {
 
 .sidebar_list li.on a {
   background-color: #fff;
+  opacity: 1;
+}
+
+.sidebar_list li.on a span {
+  font-weight: 400;
+}
+
+.sidebar_list li.active {
+  position: relative;
+  padding: 21px 25px 22px;
+  height: 150px;
+  background-color: #2b3a55;
+  color: #fff;
+  font-size: 18px;
+}
+
+.sidebar_list li.active ul > li {
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+}
+
+.sidebar_list li.active .btn_edit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url(/resources/img/content/ico_edit_white.png) 0 0 no-repeat;
+  background-size: 24px 24px;
 }
 
 .category {
@@ -222,12 +256,35 @@ body {
 }
 
 .category .category_list {
-  margin-top: -8px;
+  margin-top: -5px;
   padding: 20px 0 15px;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   font-size: 18px;
   line-height: 40px;
+  color: #646464;
+}
+
+.category .category_list li {
+  position: relative;
+}
+
+.category .category_list li.on {
+  color: #ce4900;
+  font-weight: 300;
+}
+
+.category .category_list li.on:before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 4px);
+  left: -18px;
+  width: 10px;
+  height: 9px;
+  background-image: url(/resources/img/common/ico_asterisk_sm_primary.png);
+  background-size: 10px 9px;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .footer_type2 {
