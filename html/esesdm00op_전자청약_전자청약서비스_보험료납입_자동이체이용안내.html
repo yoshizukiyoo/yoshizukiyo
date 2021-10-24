@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+
+	<!-- 새창형 페이지 스타일시트 -->
+	<link rel="stylesheet" href="/resources/css/style_type2.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper wrapper_type2">
+		<header class="header_type2">
+			<h1 class="logo">
+				<a href="#;"><img src="/resources/img/common/logo.png" alt="우체국 보험"></a>
+				<span class="tit_page">전자청약서비스</span>
+			</h1>
+			<div class="util_area">
+				<ol class="step">
+					<li><span class="num">1</span><span class="txt">가입설계조회</span></li>
+					<li><span class="num">2</span><span class="txt">고객정보</span></li>
+					<li><span class="num">3</span><span class="txt">동의사항</span></li>
+					<li><span class="num">4</span><span class="txt">상품설명서</span></li>
+					<li class="on"><span class="num">5</span><span class="txt">계약 전 고지의무</span></li>
+					<li><span class="num">6</span><span class="txt">보험료납입</span></li>
+					<li><span class="num">7</span><span class="txt">청약완료</span></li>
+				</ol>
+			</div>
+		</header>
+
+		<div id="container">
+			<article id="content" class="cont_apply">
+				<div class="box_shadow">
+					<div class="apply_header">
+						<h2 class="tit_cont_apply">자동이체 이용안내</h2>
+					</div>
+					<div class="apply_body">
+
+						<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('layer_direct_debit', this);">자동이체
+							이용안내</a>
+
+					</div>
+
+					<!-- s: modal popup -->
+					<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+					<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+					<div class="modal_popup modal_xl show" data-popup="layer_direct_debit">
+						<div class="dimed"></div>
+						<div class="popup_inner">
+							<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+							<div class="popup_header">
+								<h2 class="popup_tit">자동이체 이용안내</h2>
+							</div>
+							<div class="popup_body">
+
+								<ol class="num_indent">
+									<li>
+										① 매월 납부를 원하시는 보험료에 대하여 별도의 통지 없이 지정된 계좌에서 우체국이 지정하는 이체일(비영업일인 경우 익영업일)에 출금되며, 예금약관이나 약정서의 규정에도 불구하고
+										예금청구서 기타 관련증서 없이 자동이체 처리절차에 의해 출금될 수 있습니다.
+									</li>
+									<li>
+										② 자동이체로 출금되는 시간은 금융기관별 업무 특성에 따라 결정되며, 인출되는 때에 잔고부족, 지급제한, 약정대출의 연체 등으로출금이 불가능한 경우에는 자동이체 되지 않습니다.
+									</li>
+									<li>
+										③ 위 ②항의 경우 보험약관의 보험료 납입최고(독촉) 기간 내에는 위 ①항의 방법에 의해 지정계좌에서 수시로 출금할 수 있습니다.(단, 납입최고 기간이 경과된 이후에는 자동이체
+										되지 않습니다.)
+									</li>
+									<li>
+										④ 이체일에 동일한 수종의 자동계좌이체 청구가 있는 경우 출금우선 순위는 해당 금융기관이 정하는 바에 따릅니다.
+									</li>
+									<li>
+										⑤ 자동이체 업무처리를 위하여 자동이체와 관련된 계좌정보(거래은행명, 계좌번호, 생년월일, 성별 등)가 관련기관(은행, 금융결제원 등)에 제공됩니다.
+									</li>
+									<li>
+										⑥ 동일 계약자의 보험계약 2건 이상이 동일 계좌에 동일한 약정일로 자동이체 등록된 경우에는 1건으로 합산하여 청구됩니다. 잔고 부족시에는 전건 출금되지 않고 다음 이체일에 다시
+										합산하여 청구되며 연체 시에는 계약별로 각각 청구됩니다.
+									</li>
+									<li>
+										⑦ 출금결과 전산반영 이전에 다른 방법으로 보험료가 입금되거나, 해약·보험료 변경·자동이체 약정 해지된 경우에는 이체일 이후 3영업일에 출금된 계좌로재입금됩니다.
+									</li>
+								</ol>
+
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="
+										closeModal('layer_direct_debit');">확인</button>
+								</div>
+							</div>
+							<button type="button" class="btn btn_close_popup">닫기</button>
+						</div>
+					</div>
+					<!-- e: modal popup -->
+
+				</div>
+				<div class="btn_group txt_c mt_10">
+					<a href="#;" class="btn btn_xl btn_outline_default">이전단계</a>
+					<a href="#;" class="btn btn_xl btn_primary">다음단계</a>
+				</div>
+
+			</article>
+
+
+		</div>
+
+		<button type="button" class="btn_close_type2">
+			<i class="ico ico_close_md"></i>
+			<span class="sr_only">창닫기</span>
+		</button>
+	</div>
+</body>
+
+</html>

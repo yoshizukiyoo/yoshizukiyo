@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+
+	<!-- 새창형 페이지 스타일시트 -->
+	<link rel="stylesheet" href="/resources/css/style_type2.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			$(".agreement_toggle .btn").click(function () {
+				if ($(this).closest("div").find("div").attr("data-toggle-content")) {
+					if ($(this).hasClass("btn_outline_default")) {
+						$(this).removeClass("btn_outline_default").addClass("btn_default");
+					} else {
+						$(this).removeClass("btn_default").addClass("btn_outline_default");
+					}
+				}
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper wrapper_type2">
+		<header class="header_type2">
+			<h1 class="logo">
+				<a href="#;"><img src="/resources/img/common/logo.png" alt="우체국 보험"></a>
+				<span class="tit_page">전자청약서비스</span>
+			</h1>
+			<div class="util_area">
+				<ol class="step">
+					<li><span class="num">1</span><span class="txt">가입설계조회</span></li>
+					<li><span class="num">2</span><span class="txt">고객정보</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">동의사항</span></li>
+					<li><span class="num">4</span><span class="txt">상품설명서</span></li>
+					<li><span class="num">5</span><span class="txt">계약 전 고지의무</span></li>
+					<li><span class="num">6</span><span class="txt">보험료납입</span></li>
+					<li><span class="num">7</span><span class="txt">청약완료</span></li>
+				</ol>
+			</div>
+		</header>
+
+		<div id="container">
+			<article id="content" class="cont_apply">
+				<div class="box_shadow">
+					<div class="apply_header">
+						<h2 class="tit_cont_apply">동의서 및 세부내용</h2>
+					</div>
+					<div class="apply_body">
+						<div class="apply_sec">
+
+							<div class="apply_chk_box">
+
+								<span class="check_item circle all_chk">
+									<input type="checkbox" name="" id="agree_all_chk">
+									<label for="agree_all_chk">전체동의</label>
+								</span>
+
+								<div class="in_list agreement_toggle">
+									<div>
+										<span class="check_item circle">
+											<input type="checkbox" name="agree_chk" id="agree_chk1">
+											<label for="agree_chk1">『계약체결 전 상품소개 및 사전조회를 위한 개인(신용)정보 수집·이용, 조회 동의서』 <span
+													class="txt_red">(필수)</span>
+											</label>
+										</span>
+
+										<a href="#;" class="btn btn_md btn_outline_default" data-toggle-btn="agree_info1">내용보기</a>
+
+									</div>
+
+									<div>
+										<span class="check_item circle">
+											<input type="checkbox" name="agree_chk" id="agree_chk2">
+											<label for="agree_chk2">『계약체결·이행을 위한 상세 동의서』
+												<span class="txt_red">(필수)</span>
+											</label>
+										</span>
+
+										<div data-toggle-content="agree_info2">
+											<p>
+												귀하는 개인(신용)정보의 수집·이용 및 조회, 제공에 관한 동의를 거부하실 수 있으며, 개인의 신용도 등을 평가하기 위한 목적 이외의 개인(신용)정보 제공 동의는 철회할 수
+												있습니다. 다만, 본 동의는 ‘보험계약 인수심사·체결·이행·유지·관리’를 위해 필수적인 사항이므로 동의를 거부하시는 경우 관련 업무수행이 불가능합니다.
+											</p>
+
+										</div>
+
+										<a href="#;" class="btn btn_md btn_outline_default" data-toggle-btn="agree_info2">내용보기</a>
+
+									</div>
+
+									<div>
+										<span class="check_item circle">
+											<input type="checkbox" name="agree_chk" id="agree_chk3">
+											<label for="agree_chk3">『상품 소개를 위한 상세 동의서』
+											</label>
+										</span>
+
+										<div data-toggle-content="agree_info3">
+											<p>
+												본 동의는 보험계약 체결에 필수적이지 않으며 동의를 거부하실 수 있습니다. 또한, 동의하시더라도 우리부 홈페이지 및 고객센터 (☎1599-0100)를 통해 철회하거나 가입
+												권유
+												목적의 연락에 대한 중단을 요청하실 수 있으며 연락중지청구 시스템(www.donotcall.or.kr)을 통해 언제든지 마케팅활동에 대한 중지를 요청할 수 있습니다.
+												동의하시는
+												경우 상품이나 서비스의 홍보 및 판매권유 등의 목적으로 개인정보를 이용하여 연락을 드릴 수 있습니다.
+											</p>
+
+											<ul class="chk_list">
+												<li>
+													<span class="check_item square">
+														<input type="checkbox" name="bottom_chk" id="bottom_chk1" disabled>
+														<label for="bottom_chk1">전체</label>
+													</span>
+												</li>
+												<li>
+													<span class="check_item square">
+														<input type="checkbox" name="bottom_chk" id="bottom_chk2" disabled>
+														<label for="bottom_chk2">문자</label>
+													</span>
+												</li>
+												<li>
+													<span class="check_item square">
+														<input type="checkbox" name="bottom_chk" id="bottom_chk3" disabled>
+														<label for="bottom_chk3">이메일</label>
+													</span>
+												</li>
+												<li>
+													<span class="check_item square">
+														<input type="checkbox" name="bottom_chk" id="bottom_chk4" disabled>
+														<label for="bottom_chk4">전화(ARS)</label>
+													</span>
+												</li>
+												<li>
+													<span class="check_item square">
+														<input type="checkbox" name="bottom_chk" id="bottom_chk5" disabled>
+														<label for="bottom_chk5">우편</label>
+													</span>
+												</li>
+											</ul>
+
+										</div>
+
+										<a href="#;" class="btn btn_md btn_outline_default" data-toggle-btn="agree_info3">내용보기</a>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="apply_sec">
+							<h3 class="tit1 ">추가인증</h3>
+
+							<ul class="add_certification">
+								<li>
+									<a href="#;" class="sms">SMS인증</a>
+								</li>
+								<li>
+									<a href="#;" class="ars">ARS인증</a>
+								</li>
+							</ul>
+							<ul class="list list1 mt_5">
+								<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
+								<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="btn_group txt_c mt_10">
+					<a href="#;" class="btn btn_xl btn_outline_default">이전단계</a>
+					<a href="#;" class="btn btn_xl btn_primary">다음단계</a>
+				</div>
+
+
+			</article>
+
+
+		</div>
+
+		<button type="button" class="btn_close_type2">
+			<i class="ico ico_close_md"></i>
+			<span class="sr_only">창닫기</span>
+		</button>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+
+	<!-- 새창형 페이지 스타일시트 -->
+	<link rel="stylesheet" href="/resources/css/style_type2.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper wrapper_type2">
+		<header class="header_type2">
+			<h1 class="logo">
+				<a href="#;"><img src="/resources/img/common/logo.png" alt="우체국 보험"></a>
+				<span class="tit_page">전자청약서비스</span>
+			</h1>
+			<div class="util_area">
+				<ol class="step">
+					<li class="on"><span class="num">1</span><span class="txt">가입설계조회</span></li>
+					<li><span class="num">2</span><span class="txt">고객정보</span></li>
+					<li><span class="num">3</span><span class="txt">동의사항</span></li>
+					<li><span class="num">4</span><span class="txt">상품설명서</span></li>
+					<li><span class="num">5</span><span class="txt">계약 전 고지의무</span></li>
+					<li><span class="num">6</span><span class="txt">보험료납입</span></li>
+					<li><span class="num">7</span><span class="txt">청약완료</span></li>
+				</ol>
+			</div>
+		</header>
+
+		<div id="container">
+			<article id="content" class="cont_apply">
+				<div class="box_shadow">
+					<div class="apply_header">
+						<h2 class="tit_cont_apply">가입사항 정보</h2>
+					</div>
+					<div class="apply_body">
+						<a href="#;" class="btn btn_xl btn_outline_default"
+							onclick="openModal('layer_agree_product_detail', this);">상품 소개를 위한 상세 동의서
+						</a>
+					</div>
+				</div>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xxl show" data-popup="layer_agree_product_detail">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">상품 소개를 위한 상세 동의서</h2>
+						</div>
+						<div class="popup_body">
+
+							<p>
+								본 동의는 보험계약 체결에 필수적이지 않으며 동의를 거부하실 수 있습니다. 또한, 동의하시더라도 우리부 홈페이지 및 고객센터(☎1599-0100)를 통해 철회하거나 가입 권유 목적의
+								연락에 대한 중단을 요청하실 수 있으며 연락중지청구 시스템(www.donotcall.or.kr)을 통해 언제든지 마케팅활동에 대한 중지를 요청할 수 있습니다. 동의하시는 경우 상품이나
+								서비스의 홍보 및 판매권유 등의 목적으로 개인정보를 이용하여 연락을 드릴 수 있습니다.
+							</p>
+
+							<ol class="mt_4">
+								<li>
+									<h3 class="txt_lg">1. 수집·이용에 관한 사항</h3>
+
+									<div class="state_info">
+										<ul>
+											<li>
+												<span>안심</span>
+											</li>
+											<li>
+												<span>양호</span>
+												<strong>해당 영역</strong>
+											</li>
+											<li>
+												<span>보통</span>
+											</li>
+											<li>
+												<span>신중</span>
+											</li>
+											<li>
+												<span>주의</span>
+											</li>
+										</ul>
+									</div>
+									<p>
+										<strong>
+											※ 위 등급은 사생활 침해 위험, 혜택, 명확성 등을 종합적으로 고려하여 동의내용의 평가등급을 제공하는 제도입니다
+										</strong>
+									</p>
+
+									<div class="tbl_data tbl_row_data mt_2">
+										<table>
+											<caption class="sr_only">수집·이용에 관한 사항의 수집·이용 목적, 보유 및 이용기간, 거부 권리 및 불이익에 대한 정보표 입니다.</caption>
+											<colgroup>
+												<col style="width: 17%">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">수집·이용 목적</th>
+													<td>
+														<ul class="list list3">
+															<li>
+																우리부의 보험·대출·예금 등 상품·서비스 소개 및 판매, 사은·판촉행사 안내, 시장조사
+															</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">보유 및 이용기간</th>
+													<td>
+														<ul class="list list3">
+															<li>
+																보험계약 체결실적이 있는 경우 : 동의일로부터 최대 5년
+															</li>
+															<li>
+																보험계약 체결실적이 없는 경우 : 동의일로부터 최대 2년 <br>
+																(단, 비대면채널은 동의일로부터 최대 3년)
+															</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">거부 권리 및 불이익</th>
+													<td>
+														<p class="txt_sm">
+															귀하는 아래 개인(신용)정보 수집·이용에 관한 동의를 거부하실 수 있습니다. <br>
+															다만, 동의하지 않으실 경우 “사은품, 할인제공 등 관련 편의제공”의 혜택을 받지 못할 수 있습니다.
+														</p>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<h4 class="txt_lg mt_6">수집·이용 항목</h4>
+									<h5 class="txt_md">개인(신용)정보</h5>
+									<ul class="list list3">
+										<li>
+											일반개인정보 <br>
+											성명, 성별, 주소, 생년월일, 이메일, 유·무선 전화번호, 직업, 음성정보 등
+										</li>
+										<li>
+											신용거래정보 <br>
+											보험계약정보(보험사명, 증권번호, 계약일자, 보험기간, 상품명, 담보내용, 보험가입금액, 보험료 등)
+										</li>
+									</ul>
+									<div class="box bg_lightgray mt_2">
+										<p>
+											위 개인신용정보 수집·이용에 동의하십니까? (양호)
+										</p>
+									</div>
+
+									<ul class="bottom_blit_txt">
+										<li>* 본 동의는 우리부와 모집·운영 위탁계약을 체결한 업무수탁자(우리부 전속 보험설계사, (재)우체국금융개발원, 우체국금융고객센터 등)가 수집·이용하는 것을 포함합니다.
+											<br>
+											(업무수탁자는 우체국예금·보험 홈페이지 [www.epostbank.go.kr] “개인정보처리방침”에서 확인 가능)</li>
+										<li>
+											* 상기 내용에 동의하시는 경우 우리부 직원 또는 업무수탁자가 상품·서비스 소개 및 판매 안내연락(TM 등)을 드릴 수 있습니다.
+										</li>
+									</ul>
+
+									<h5 class="txt_md mt_4">민감정보</h5>
+									<div class="box bg_lightgray mt_2">
+										<p>
+											피보험자의 질병·상해에 관한 정보(상병명, 진료기록, 기왕증 등) <br>
+											위 민감정보 수집·이용에 동의하십니까?
+										</p>
+									</div>
+
+									<h5 class="txt_md mt_4">개인(신용)정보</h5>
+									<div class="box bg_lightgray mt_2">
+										<ul class="list list3">
+											<li>
+												일반개인정보 성명, 주소, 생년월일, 이메일, 유·무선 전화번호, 성별, 국적, 직업, 운전여부, 국내거소신고번호
+											</li>
+											<li>
+												신용거래정보 금융거래 업무 관련 정보(납입 계좌정보, 카드정보 등), 보험계약정보(상품종류, 기간, 보험가입금액 등), 보험금정보(보험금 지급사유, 지급금액 등), 계약 전
+												고지 의무사항(취미 등)
+											</li>
+											<li>
+												위 개인신용정보 수집·이용에 동의하십니까?
+											</li>
+										</ul>
+									</div>
+
+									<p class="mt_2">
+										<strong>
+											* 업무위탁을 목적으로 개인(신용)정보를 처리하는 경우 별도의 동의 없이 업무 수탁자에게 귀하의 정보를 제공할 수 있습니다. (우체국예금·보험 홈페이지
+											[www.epostbank.go.kr] “개인정보처리방침” 에서 확인 가능)
+										</strong>
+									</p>
+								</li>
+
+								<li class="mt_6">
+									<h3 class="txt_lg">2. 제공에 관한 사항</h3>
+
+									<div class="state_info">
+										<ul>
+											<li>
+												<span>안심</span>
+											</li>
+											<li>
+												<span>양호</span>
+											</li>
+											<li>
+												<span>보통</span>
+											</li>
+											<li>
+												<span>신중</span>
+												<strong>해당 영역</strong>
+											</li>
+											<li>
+												<span>주의</span>
+											</li>
+										</ul>
+									</div>
+									<p>
+										<strong>
+											※ 위 등급은 사생활 침해 위험, 혜택, 명확성 등을 종합적으로 고려하여 동의내용의 평가등급을 제공하는 제도입니다.
+										</strong>
+									</p>
+
+									<div class="tbl_data tbl_row_data mt_2">
+										<table>
+											<caption class="sr_only">제공에 관한 사항의 제공받는 자, 제공받는자의 이용목적, 보유 및 이용기간, 거부 권리 및 불이익에 대한 정보표 입니다.
+											</caption>
+											<colgroup>
+												<col style="width: 17%">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">제공받는 자</th>
+													<td>
+														<ul class="list list3">
+															<li>
+																우체국보험 모집·운영 업무 수탁자(우리부와 보험모집 위탁계약을 체결한 자, (재)우체국금융개발원, 우체국금융고객센터 등)
+															</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">제공받는자의 이용목적</th>
+													<td>
+														<ul class="list list3">
+															<li>
+																우리부의 보험·대출·예금 등 상품·서비스 소개 및 판매, 사은·판촉행사 안내, 시장조사
+															</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">보유 및 이용기간</th>
+													<td>
+														<ul class="list list3">
+															<li>
+																보험계약 체결실적이 있는 경우 : 동의일로부터 최대 5년
+															</li>
+															<li>
+																보험계약 체결실적이 없는 경우 : 동의일로부터 최대 2년 <br>
+																(단, 비대면채널은 동의일로부터 최대 3년)
+															</li>
+														</ul>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">거부 권리 및 불이익</th>
+													<td>
+														<p class="txt_sm">
+															귀하는 아래 개인(신용)정보 제공에 관한 동의를 거부하실 수 있습니다. <br>다만, 동의하지 않으실 경우 “사은품, 할인제공 등 관련 편의제공”의 혜택을 받지
+															못할 수 있습니다.
+														</p>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<p class="mt_1">
+										* 업무수탁자는 우체국예금·보험 홈페이지 [www.epostbank.go.kr] “개인정보처리방침”에서 확인 가능
+									</p>
+
+									<h4 class="txt_lg mt_6">제공 항목</h4>
+									<h5 class="txt_md">개인(신용)정보</h5>
+									<div class="box bg_lightgray mt_2">
+										<ul class="list list3">
+											<li>
+												일반개인정보 성명, 성별, 주소, 생년월일, 이메일, 유·무선 전화번호, 직업, 음성정보 등
+											</li>
+											<li>
+												신용거래정보 보험계약정보(보험사명, 증권번호, 계약일자, 보험기간, 상품명, 담보내용, 보험가입금액, 보험료 등)
+											</li>
+											<li>
+												위 개인신용정보 수집·이용에 동의하십니까?(신중)
+											</li>
+										</ul>
+
+									</div>
+
+									<ul class="bottom_blit_txt">
+										<li>
+											※본인은 귀부가 본인의 개인(신용)정보를 상기 내용과 같이 처리하는 것에 동의함
+										</li>
+									</ul>
+
+								</li>
+
+							</ol>
+
+							<div class="btn_tbl_btm mt_6">
+								<a href="#;" class="btn btn_lg btn_primary">확인</a>
+							</div>
+
+						</div>
+						<!-- 하단 고정 푸터 (미사용시 삭제) -->
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+			</article>
+
+
+		</div>
+
+		<button type="button" class="btn_close_type2">
+			<i class="ico ico_close_md"></i>
+			<span class="sr_only">창닫기</span>
+		</button>
+	</div>
+</body>
+
+</html>

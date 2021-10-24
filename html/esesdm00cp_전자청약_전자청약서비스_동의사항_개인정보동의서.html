@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+
+	<!-- 새창형 페이지 스타일시트 -->
+	<link rel="stylesheet" href="/resources/css/style_type2.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper wrapper_type2">
+		<header class="header_type2">
+			<h1 class="logo">
+				<a href="#;"><img src="/resources/img/common/logo.png" alt="우체국 보험"></a>
+				<span class="tit_page">전자청약서비스</span>
+			</h1>
+			<div class="util_area">
+				<ol class="step">
+					<li class="on"><span class="num">1</span><span class="txt">가입설계조회</span></li>
+					<li><span class="num">2</span><span class="txt">고객정보</span></li>
+					<li><span class="num">3</span><span class="txt">동의사항</span></li>
+					<li><span class="num">4</span><span class="txt">상품설명서</span></li>
+					<li><span class="num">5</span><span class="txt">계약 전 고지의무</span></li>
+					<li><span class="num">6</span><span class="txt">보험료납입</span></li>
+					<li><span class="num">7</span><span class="txt">청약완료</span></li>
+				</ol>
+			</div>
+		</header>
+
+		<div id="container">
+			<article id="content" class="cont_apply">
+				<div class="box_shadow">
+					<div class="apply_header">
+						<h2 class="tit_cont_apply">가입사항 정보</h2>
+					</div>
+					<div class="apply_body">
+						<a href="#;" class="btn btn_xl btn_outline_default" onclick="openModal('layer_agree', this);">개인정보동의서</a>
+					</div>
+				</div>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xxl show" data-popup="layer_agree">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">계약체결 전 상품소개 및 사전조회를 위한 개인(신용)정보 수집·이용, 조회 동의서
+							</h2>
+						</div>
+						<div class="popup_body">
+
+							<h3 class="tit1">소비자 권익보호에 관한 사항</h3>
+							<p>
+								본 동의를 거부하시는 경우에는 보험계약 상담 등 정상적인 서비스제공이 불가능하며 본 동의서에 의한 개인(신용)정보 조회는 귀하의 신용등급에 영향을 주지 않습니다. 또한, 동의하시더라도
+								전화, 서면을 통해 철회하거나 보험계약상담 목적의 연락에 대한 중단을 요청하실 수 있습니다.
+							</p>
+
+							<ol class="mt_4">
+								<li>
+									1. 개인(신용)정보의 수집 · 이용에 관한 사항
+
+									<p>
+										우정사업본부 및 업무수탁자는 「개인정보보호법」, 「신용정보의 이용및 보험에 관한 법률」 및 「우체국예금·보험에 관한 법률 시행령」에 따라 귀하의 개인(신용)정보를 다음과 같이
+										수집·이용 하고자 합니다. <br>
+										이에 동의하십니까?
+									</p>
+									<div class="pl_3 mt_2">
+										<h4>개인(신용)정보의 수집·이용 목적</h4>
+										<ul class="list list1 ml_3">
+											<li>보험계약상담, 보험계약 체결 및 인수여부 결정을 위한 판단, 우체국금융 전산시스템 고객정보 등록·수정, 실손의료비보험 중복확인을 위한 타사보험 가입조회
+											</li>
+										</ul>
+
+										<h4 class="mt_2">수집·이용할 개인(신용)정보의 내용</h4>
+										<ul class="list list1 ml_3">
+											<li>
+												개인식별정보(성명, 주민등록번호, 외국인등록번호, 주소, 직업, 전화번호, 휴대전화번호, 전자우편주소, 음성정보 등)
+											</li>
+											<li>
+												질병 및 상해에 관한 정보
+											</li>
+											<li>
+												보험계약정보(보험사명, 증서번호, 보험기간, 보험계약일자, 상품명, 담보내용, 보험가입금액, 보험료, 계약유지 여부 등)
+											</li>
+										</ul>
+
+										<h4 class="mt_2">개인(신용)정보의 보유·이용 기간 </h4>
+										<ul class="list list1 ml_3">
+											<li>
+												이용기간 : 보험계약의 청약 시 까지(단, 수집·이용 동의일로부터 90일 까지)
+											</li>
+											<li>
+												보유기간 : 수집·이용 동의일로부터 1년
+											</li>
+										</ul>
+
+									</div>
+								</li>
+
+								<li class="mt_4">
+									2. 개인(신용)정보의 조회에 관한 사항
+									<p>
+										우정사업본부 및 업무수탁자는 「개인정보보호법」, 「신용정보의 이용및 보험에 관한 법률」 및 「우체국예금·보험에 관한 법률 시행령」에 따라 귀하의 개인(신용)정보를 다음과 같이
+										수집·이용 하고자 합니다. <br>
+										이에 동의하십니까?
+									</p>
+
+									<div class="pl_3 mt_2">
+										<h4>개인(신용)정보의 조회 목적 </h4>
+										<ul class="list list1 ml_3">
+											<li>
+												보험계약상담, 보험계약 체결 및 인수여부 결정을 위한 판단, 실손의료비보험 중복가입여부 확인
+											</li>
+										</ul>
+
+										<h4 class="mt_2">조회할 개인(신용)정보의 내용</h4>
+										<ul class="list list1 ml_3">
+											<li>
+												신용정보집중기관 및 보험개발원에서 수집·관리하는 정보(보험계약정보)
+											</li>
+											<li>
+												질병 및 상해에 관한 정보
+											</li>
+											<li>
+												보험계약정보(보험사명,증서번호,보험기간,보험계약일자,상품명,담보내용,보험가입금액,보험료, 계약유지여부 등)
+											</li>
+										</ul>
+
+										<h4 class="mt_2">개인(신용)정보의 보유·이용 기간 </h4>
+										<ul class="list list1 ml_3">
+											<li>
+												이용기간 : 보험계약의 청약 시 까지(단, 수집·이용 동의일로부터 90일 까지)
+											</li>
+										</ul>
+									</div>
+								</li>
+
+								<li class="mt_4">
+									3. 민감정보 및 고유식별정보의 처리에 관한 사항
+									<p>
+										우리부 및 우리부 업무수탁자는「개인정보보호법」및「신용정보의 이용 및 보호에 관한 법률」, 「우체국예금·보험에 관한 법률」에 따라 상기의 개인(신용)정보 등에 대한 개별동의 사항에
+										대하여 다음과 같이 귀하의 민감정보(질병·상해정보) 및 고유식별정보 (주민등록번호·외국인등록번호 등)를 처리(수집·이용, 조회, 제공 등) 하고자 합니다. <br>
+										이에 대하여 동의하십니까?
+
+									</p>
+								</li>
+							</ol>
+
+							<div class="btn_tbl_btm mt_6">
+								<a href="#;" class="btn btn_lg btn_primary">확인</a>
+							</div>
+
+						</div>
+						<!-- 하단 고정 푸터 (미사용시 삭제) -->
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+			</article>
+
+
+		</div>
+
+		<button type="button" class="btn_close_type2">
+			<i class="ico ico_close_md"></i>
+			<span class="sr_only">창닫기</span>
+		</button>
+	</div>
+</body>
+
+</html>
