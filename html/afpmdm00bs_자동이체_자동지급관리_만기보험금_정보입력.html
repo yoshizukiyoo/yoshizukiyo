@@ -23,7 +23,9 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			// 이곳에 정의
+			$(".tooltip.tooltip_md > button").click(function () {
+				$(this).closest(".tooltip").hide();
+			})
 		});
 	</script>
 </head>
@@ -88,7 +90,7 @@
 						</div>
 					</div>
 
-					<div class="contract_list bottom_add">
+					<div class="contract_list">
 						<ul>
 							<li>
 								<span class="left_info">
@@ -121,53 +123,13 @@
 									</span>
 								</span>
 
-								<div class="tbl_row2">
-									<table>
-										<caption class="sr_only">계약정보의 이체종류, 이체금액, 예금주 연락처에 대한 정보표 입니다.</caption>
-										<colgroup>
-											<col style="width: 17%;">
-											<col style="width: 30%;">
-											<col style="width: 17%;">
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row">이체종류</th>
-												<td>보험료</td>
-												<th scope="row">예금주 연락처 <strong class="necessary">*</strong></th>
-												<td>
-													<div class="phone_number">
-														<div class="selectbox_wrap" style="width: 93px;">
-															<dl title="조건 선택">
-																<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
-																<dd>
-																	<ul>
-																		<li><a href="#none"><span>010</span></a></li>
-																		<li><a href="#none"><span>011</span></a></li>
-																		<li><a href="#none"><span>016</span></a></li>
-																		<li><a href="#none"><span>017</span></a></li>
-																		<li><a href="#none"><span>018</span></a></li>
-																		<li><a href="#none"><span>019</span></a></li>
-																	</ul>
-																</dd>
-															</dl>
-														</div>
-														<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
-														<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-
 							</li>
 						</ul>
 					</div>
 				</div>
 				<!-- e 계약정보 -->
 
-				<!-- s 자동지급 정보 -->
+				<!-- s 자동이체 정보 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
@@ -175,19 +137,61 @@
 						</div>
 					</div>
 
-					<div class="tbl_row2 transfer_info_box">
-						<div class="top_radio">
-							<span class="check_item">
-								<input type="radio" name="transfer_info" id="transfer_info_1" checked="">
-								<label for="transfer_info_1">계좌이체</label>
-							</span>
-							<span class="check_item">
-								<input type="radio" name="transfer_info" id="transfer_info_2">
-								<label for="transfer_info_2">카드납부</label>
-							</span>
+					<div class="contract_info">
+						<div class="tbl_row2">
+							<table>
+								<caption class="sr_only">자동지급 정보의 이체종류, 이체금액, 예금주 연락처에 대한 정보표 입니다.</caption>
+								<colgroup>
+									<col style="width: 17%;">
+									<col>
+									<col style="width: 17%;">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row"><label for="variant">지급종류</label></th>
+										<td>만기보험금</td>
+										<th scope="row">예금주 연락처 <strong class="necessary">*</strong></th>
+										<td>
+											<div class="phone_number">
+												<div class="selectbox_wrap" style="width: 93px;">
+													<dl title="조건 선택">
+														<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>010</span></a></li>
+																<li><a href="#none"><span>011</span></a></li>
+																<li><a href="#none"><span>016</span></a></li>
+																<li><a href="#none"><span>017</span></a></li>
+																<li><a href="#none"><span>018</span></a></li>
+																<li><a href="#none"><span>019</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+												<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+												<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
+					</div>
+				</div>
+				<!-- e 자동이체 정보 -->
+
+				<!-- s 계좌정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">계좌정보</h3>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">계좌번호, 약정일자 정보</caption>
+							<caption class="sr_only">계좌정보</caption>
 							<colgroup>
 								<col style="width: 16%">
 								<col>
@@ -211,31 +215,18 @@
 										<input type="text" class="tf" placeholder="" title="그룹명 입력" style="width:350px;">
 										<div class="btn_inline_box">
 											<button type="button" class="btn btn_md btn_outline_default">계좌확인</button>
+
+											<!-- 계좌 확인 후 변경 
+													<button type="button" class="btn btn_md btn_default">계좌확인완료</button>
+													-->
 										</div>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">약정일자</th>
-									<td>
-										<span class="check_item">
-											<input type="radio" name="transfer_time" id="transfer_1" checked="">
-											<label for="transfer_1">5일</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="transfer_time" id="transfer_2">
-											<label for="transfer_2">15일</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="transfer_time" id="transfer_3">
-											<label for="transfer_3">25일</label>
-										</span>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e 자동지급 정보 -->
+				<!-- e 계좌정보 -->
 
 				<!-- s 추가 인증 -->
 				<div class="section">
