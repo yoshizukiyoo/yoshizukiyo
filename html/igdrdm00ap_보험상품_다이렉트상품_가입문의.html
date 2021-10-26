@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">상담하기</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#agreement_pop" class="btn btn_sm btn_outline_default ml_2"
+					onclick="openModal('agreement_pop', this);">
+					<span>보험가입문의</span>
+				</a>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xl show" data-popup="agreement_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">상담하기</h2>
+						</div>
+						<div class="popup_body agreement_pop">
+
+							<h3 class="tit1 txt_c">보험가입문의</h3>
+							<h4>상담신청 등을 위한 개인정보 수집이용 및 제공 동의</h4>
+							<div class="tb_scrolls_box">
+								<strong>
+									1. 개인정보의 수집ㆍ이용에 관한 사항
+								</strong>
+								<ul class="list list1">
+									<li>
+										개인정보의 수집ㆍ이용 목적
+										<ul class="list list3">
+											<li>
+												보험계약상담, 보험계약 체결 및 인수 가능여부 결정을 위한 판단, 우체국금융 전산시스템 고객정보 등록ㆍ수정 등
+											</li>
+										</ul>
+									</li>
+									<li>
+										수집ㆍ이용할 개인정보의 내용
+									</li>
+								</ul>
+							</div>
+							<div class="txt_c">
+								<span class="check_item circle">
+									<input type="checkbox" name="agree_chk" id="agree_chk1">
+									<label for="agree_chk1">동의합니다.</label>
+								</span>
+							</div>
+
+							<div class="tbl_tit mt_16">
+								<div class="txt_right">
+									<strong class="necessary">*</strong>
+									표시는 필수입력사항입니다.
+								</div>
+							</div>
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">보험가입문의 정보 입력표 입니다.</caption>
+									<colgroup>
+										<col style="width: 19%;">
+										<col>
+										<col style="width: 19%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">
+												상담유형
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 93%;">
+													<dl title="상담유형 선택">
+														<dt><a href="#none"><span>선택하세요.</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>상담유형1</span></a></li>
+																<li><a href="#none"><span>상담유형2</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+											<th scope="row">
+												상담분류
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 93%;">
+													<dl title="상담분류 선택">
+														<dt><a href="#none"><span>선택하세요.</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>상담유형1</span></a></li>
+																<li><a href="#none"><span>상담유형2</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												이름
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<input type="text" class="tf" style="width:93%;">
+											</td>
+											<th scope="row">
+												생년월일
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 93%;">
+													<dl title="생년월일 선택">
+														<dt><a href="#none"><span>예:19801215</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>19801215</span></a></li>
+																<li><a href="#none"><span>19801215</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												이메일
+												<strong class="necessary">*</strong>
+											</th>
+											<td colspan="3">
+												<input type="text" class="tf" title="이메일 입력" style="width:150px;">
+												<span class="v_mid ml_2 mr_2">
+													@
+												</span>
+												<div class="selectbox_wrap" style="width: 170px;">
+													<dl title="조건 선택">
+														<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>naver.com</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												휴대폰번호
+												<strong class="necessary">*</strong>
+											</th>
+											<td colspan="3">
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl title="조건 선택">
+															<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>011</span></a></li>
+																	<li><a href="#none"><span>016</span></a></li>
+																	<li><a href="#none"><span>017</span></a></li>
+																	<li><a href="#none"><span>018</span></a></li>
+																	<li><a href="#none"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+													<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												희망상담시간
+												<strong class="necessary">*</strong>
+											</th>
+											<td colspan="3">
+												<input type="text" class="tf tf_datepicker" title="희망상담시간 날짜 선택" style="width:170px;"
+													placeholder="YYYY.MM.DD">
+												<div class="selectbox_wrap ml_1" style="width:100px;">
+													<dl title="희망상담시간 선택">
+														<dt><a href="#none" title="전화번호 식별번호 선택"><span>10시</span></a></dt>
+														<dd>
+															<ul>
+																<li>
+																	<a href="#none"><span>naver.com</span></a>
+																</li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+												<span class="v_mid ml_1">
+													영업일만 선택 가능합니다.
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												제목
+												<strong class="necessary">*</strong>
+											</th>
+											<td colspan="3">
+												<input type="text" class="tf" title="제목 입력" style="width:600px;" placeholder="제목">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row" class="v_top">
+												내용
+												<strong class="necessary">*</strong>
+											</th>
+											<td colspan="3">
+												<textarea class="tf" title="제목 입력" placeholder="내용입력" style="width:600px;"></textarea>
+												<ul class="list list1 mt_1">
+													<li>
+														단, 우체국보험 다이렉트 가입상담 요청에 한해 전화상담이 가능합니다.
+													</li>
+													<li>
+														내용은 한글 2000자, 영문 4000자까지 입력 가능합니다.
+													</li>
+													<li>
+														특수문자( " ' & / )는 입력할 수 없습니다.
+													</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="btn_tbl_btm mt_6">
+								<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+								<a href="#;" class="btn btn_xl btn_primary">등록</a>
+							</div>
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+
+			$(".direct_detail .review_list li").click(function () {
+				if (!$(this).hasClass("on")) {
+					$(".direct_detail .review_list li").removeClass("on");
+					$(this).addClass("on");
+					$(".direct_detail .review_list li").find(".cont").css({
+						height: 28
+					});
+					$(this).find(".cont").css({
+						height: "auto"
+					});
+				} else {
+					$(this).removeClass("on");
+					$(".direct_detail .review_list li").find(".cont").css({
+						height: 28
+					});
+				}
+			})
+
+			$(".review_write .star_controll li").click(function () {
+				var idx = $(this).index() + 1;
+				$(".review_write .star_controll").removeClass().addClass("star_controll");
+				$(this).closest(".star_controll").addClass("star" + idx + "");
+
+				$(".review_write .star_controll li").each(function (i) {
+					$(".review_write .star_controll li").eq(i).text("별점 " + (i + 1) + "");
+				})
+				$(this).text("별점 " + idx + " 선택");
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">보험상품</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="direct_detail first_section">
+					<strong class="tit">
+						무배당온라인보험
+						<img src="../resources/img/content/ico_new.png" alt="new">
+					</strong>
+
+					<a href="#;" class="simple_set">간편설계설정</a>
+
+					<div class="info">
+						<ul class="ins_txt_list">
+							<li>암보험</li>
+							<li>갱신형</li>
+							<li>전기납</li>
+							<li>월납</li>
+						</ul>
+
+						<div class="review_star">
+							<span class="star">5</span>
+						</div>
+
+						<ul class="ins_txt_list round">
+							<li>인터넷보험</li>
+							<li>스마트보험</li>
+							<li>우체국창구</li>
+						</ul>
+					</div>
+
+					<div class="box">
+						<div class="left">
+							<strong>
+								비갱신형으로 처음의 보험료를 끝까지~
+							</strong>
+							<ul>
+								<li>#전기납</li>
+								<li>#암보험</li>
+								<li>#고액암</li>
+								<li>#일반암</li>
+								<li>#남여생식기암</li>
+								<li>#항암방사선</li>
+								<li>#약물치료비</li>
+							</ul>
+						</div>
+						<div class="right">
+							<div class="top">
+								<span>20세(여)</span>
+								<em>10년만기</em>
+								<span>10년납</span>
+							</div>
+
+							<ul>
+								<li>
+									<em>월납</em>
+									<strong>1,800원</strong>
+								</li>
+								<li>
+									<em>보장금액</em>
+									<strong>1,800만원</strong>
+								</li>
+							</ul>
+						</div>
+
+						<div class="bg_lightgray">
+							<ul>
+								<li>
+									<em>가입나이</em>
+									<strong>만 19세 ~ 60세</strong>
+								</li>
+								<li>
+									<em>보험기간</em>
+									<strong>20년, 30년 만기</strong>
+								</li>
+								<li>
+									<em>가입한도</em>
+									<strong>1000만원(고정)</strong>
+								</li>
+								<li>
+									<em>납입기간/주기</em>
+									<strong>전기납/연납</strong>
+								</li>
+							</ul>
+						</div>
+
+						<div class="btn_tbl_btm">
+
+							<div class="f_l">
+								<a href="#;" class="btn btn_xl btn_outline_default">약관보기 <i class="ico ico_document_popup ml_2"></i></a>
+								<a href="#;" class="btn btn_xl btn_outline_default">상품요약서 <i
+										class="ico ico_document_popup ml_2"></i></a>
+							</div>
+
+							<div class="f_r">
+								<a href="#;" class="btn btn_xl btn_outline_default">가입문의</a>
+								<a href="#;" class="btn btn_xl btn_primary">바로 가입 하기</a>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="tab_menu_type3">
+						<ul>
+							<li><a href="#;"><span>상품특징</span></a></li>
+							<li><a href="#;"><span>가입안내</span></a></li>
+							<li><a href="#;"><span>보장내용</span></a></li>
+							<li><a href="#;" class="current"><span>가입후기</span></a></li>
+						</ul>
+					</div>
+
+					<div class="direct_cont review">
+						<div class="txt_r">
+							<a href="#;" class="btn btn_xl btn_outline_default">가입후기작성</a>
+						</div>
+						<ul class="review_list">
+							<li>
+								<span class="user">
+									53세(여)
+								</span>
+								<span class="star star4">
+									별점 4
+								</span>
+								<strong class="cont">
+									가입후기 내용 입니다.
+								</strong>
+								<span class="day">2021-06-01</span>
+								<a href="" class="btn btn_sm btn_outline_default">삭제</a>
+							</li>
+							<li>
+								<span class="user">
+									53세(여)
+								</span>
+								<span class="star star5">
+									별점 5
+								</span>
+								<strong class="cont">
+									보험가입을 정말 잘한거같아요.. 이렇게 좋은 보험이 있을수가!!! <br>
+									든든한 우체국보험 <br>
+									가성비 최고, 우리가족 전부 우체국 보험으로 갈아타는중
+								</strong>
+								<span class="day">2021-06-01</span>
+
+								<a href="" class="btn btn_sm btn_outline_default">삭제</a>
+							</li>
+							<li>
+								<span class="user">
+									53세(여)
+								</span>
+								<span class="star star3">
+									별점 3
+								</span>
+								<strong class="cont">
+									가입후기 내용 입니다.
+								</strong>
+								<span class="day">2021-06-01</span>
+							</li>
+							<li>
+								<span class="user">
+									53세(여)
+								</span>
+								<span class="star star1">
+									별점 1
+								</span>
+								<strong class="cont">
+									가입후기 내용 입니다.
+								</strong>
+								<span class="day">2021-06-01</span>
+							</li>
+						</ul>
+
+						<div class="review_write ">
+
+							<div class="tbl_row1 type2">
+								<table>
+									<caption class="sr_only">${표제목}</caption>
+									<colgroup>
+										<col style="width: 160px">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">별점 <strong class="necessary">*</strong></th>
+											<td class="pt_5 pb_5">
+												<ul class="star_controll star1">
+													<li>별점1 선택</li>
+													<li>별점2</li>
+													<li>별점3</li>
+													<li>별점4</li>
+													<li>별점5</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">내용 <strong class="necessary">*</strong></th>
+											<td class="pt_4 pb_4">
+												<textarea title="내용 입력" placeholder="내용" class="tf"></textarea>
+												<ul class="list list1 mt_2">
+													<li>
+														내용은 한글 200자, 영문 400자까지 입력 가능합니다.
+													</li>
+													<li>
+														특수문자( " ' & / )는 입력할 수 없습니다.
+													</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="btn_tbl_btm mt_6">
+								<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+								<a href="#;" class="btn btn_xl btn_primary">저장</a>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

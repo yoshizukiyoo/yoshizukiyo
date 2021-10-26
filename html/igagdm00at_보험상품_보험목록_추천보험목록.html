@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<style>
+		#content {
+			overflow: hidden;
+		}
+
+		.cont_body {
+			padding-bottom: 0;
+		}
+	</style>
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+
+			// 페이지 개별 스크립트
+			var nums = 0;
+			var $mainRollingArea = $('.section.event .in_rolling');
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 3,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".section.event .rolling_info .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_info .nums .bar span").css({
+						width: (100 / nums) + "%"
+					})
+					nums = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".section.event .rolling_info .nums strong").text("0" + (slick + 1));
+				$(".rolling_info .nums .bar span").css({
+					width: ((100 / nums) * (slick + 1)) + "%"
+				})
+			});;
+
+			$(".rolling_info").append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_info .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+
+				}
+			});
+			if ($(".section.event .in_rolling .slick-track > div").length < 4) {
+				$(".rolling_info").hide();
+			}
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">보험상품</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="first_section">
+					<div class="tab_menu_type1">
+						<ul>
+							<li><a href="#;" class="current">추천</a></li>
+							<li><a href="#;">유형별</a></li>
+							<li><a href="#;">다이렉트</a></li>
+							<li><a href="#;">전체</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="insurance_type">
+					<ul>
+						<li>
+							<a href="#;">
+								<strong>
+									<span>한달 1만원</span>
+									으로 30세까지
+								</strong>
+								<em>
+									(무)온라인어린이보험
+								</em>
+								<span>
+									자녀생활맞춤 종합보험
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<strong>
+									<span>한달 2만원</span>
+									으로 30세까지
+								</strong>
+								<em>
+									(무)온라인어린이보험
+								</em>
+								<span>
+									자녀생활맞춤 종합보험
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<strong>
+									<span>한달 3만원</span>
+									으로 30세까지
+								</strong>
+								<em>
+									(무)온라인어린이보험
+								</em>
+								<span>
+									자녀생활맞춤 종합보험
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<!-- s : 내 보험료 간편계산하기 ( 로그인 후 )-->
+				<div class="premium_calculate">
+					<div class="left_txt">
+						<strong>내 보험료 간편계산하기</strong>
+						<em>간편계산 정보를 한번 입력하시면, 보험 마다 자동으로 계산됩니다.</em>
+						<p>
+							보험료를 계산해보셔도 전화로 가입을 권하지 않습니다. <br>
+							안심하고 편하게 우체국보험을 간편 설계해보세요.
+						</p>
+					</div>
+
+					<div class="calculate_box">
+						<div class="btn_box">
+							<a href="#;" class="default">기본</a>
+							<a href="#;" class="active">태아</a>
+							<a href="#;">어린이</a>
+							<a href="#;">연금/저축</a>
+						</div>
+						<input type="text" class="tf" title="생년월일 입력" placeholder="생년월일(예:19780224)" style="width:200px;">
+						<span class="gender_chk">
+							<span>
+								<input type="radio" name="gender" id="gender_man">
+								<label for="gender_man">남자</label>
+							</span>
+							<span>
+								<input type="radio" name="gender" id="gender_woman" checked>
+								<label for="gender_woman">여자</label>
+							</span>
+						</span>
+						<a href="#;" class="btn_calculate">
+							간편계산하기
+						</a>
+
+					</div>
+				</div>
+				<!-- e : 내 보험료 간편계산하기 ( 로그인 후 )-->
+
+				<!-- s : 보험 판매량 -->
+				<div class="first_section">
+
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1 ico_tit type1">보험 판매량 <span class="txt_darkprimary">Top 2</span></h3>
+						</div>
+					</div>
+
+					<div class="n_insureance_style">
+						<div>
+							<div class="left">
+								<ul class="ins_txt_list">
+									<li>암보험</li>
+									<li>갱신형</li>
+									<li>전기납</li>
+									<li>월납</li>
+								</ul>
+
+								<ul class="ins_txt_list round">
+									<li>인터넷보험</li>
+									<li>스마트보험</li>
+									<li>우체국창구</li>
+								</ul>
+
+								<div class="review_star">
+									<span class="star">5</span>
+								</div>
+
+								<span class="info">
+									<strong class="ins_tit">
+										무배당온라인보험
+										<img src="../resources/img/content/ico_new.png" alt="new">
+									</strong>
+									<em class="txt">단 한 번의 가입으로 평생 보장(종신갱신형)</em>
+									<span class="hash">
+										<span>#전기납</span>
+										<span>#암보험</span>
+										<span>#고액암</span>
+										<span>#일반암</span>
+										<span>#남여생식기암</span>
+										<span>#항암방사선</span>
+										<span>#약물치료비</span>
+									</span>
+								</span>
+							</div>
+							<div class="right">
+								<div class="btn_box">
+									<a href="#;" class="btn btn_sm btn_outline_default">상세보기</a>
+									<a href="#;" class="btn btn_sm btn_outline_default">가입하기</a>
+									<a href="#;" class="favorit_blit">좋아요</a>
+								</div>
+								<ul class="price_info">
+									<li>
+										<em class="first">20세(여)</em>
+										<span>
+											<span>10년 만기</span>
+											<span>10년납</span>
+										</span>
+									</li>
+									<li>
+										<em>월납</em>
+										<strong>1,800원</strong>
+									</li>
+									<li>
+										<em>보장금액</em>
+										<strong>1,800만원</strong>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div>
+							<div class="left">
+								<ul class="ins_txt_list">
+									<li>암보험</li>
+									<li>갱신형</li>
+									<li>전기납</li>
+									<li>월납</li>
+								</ul>
+
+								<ul class="ins_txt_list round">
+									<li>인터넷보험</li>
+									<li>스마트보험</li>
+									<li>우체국창구</li>
+								</ul>
+
+								<div class="review_star">
+									<span class="star">5</span>
+								</div>
+
+								<span class="info">
+									<strong class="ins_tit">
+										무배당온라인보험
+									</strong>
+									<em class="txt">단 한 번의 가입으로 평생 보장(종신갱신형)</em>
+									<span class="hash">
+										<span>#전기납</span>
+										<span>#암보험</span>
+										<span>#고액암</span>
+										<span>#일반암</span>
+										<span>#남여생식기암</span>
+										<span>#항암방사선</span>
+										<span>#약물치료비</span>
+									</span>
+								</span>
+							</div>
+							<div class="right">
+								<div class="btn_box">
+									<a href="#;" class="btn btn_sm btn_outline_default">상세보기</a>
+									<a href="#;" class="btn btn_sm btn_outline_default">가입하기</a>
+									<a href="#;" class="favorit_blit">좋아요</a>
+								</div>
+								<ul class="price_info">
+									<li>
+										<em class="first">20세(여)</em>
+										<span>
+											<span>10년 만기</span>
+											<span>10년납</span>
+										</span>
+									</li>
+									<li>
+										<em>월납</em>
+										<strong>1,800원</strong>
+									</li>
+									<li>
+										<em>보장금액</em>
+										<strong>1,800만원</strong>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- e : 보험 판매량 -->
+
+				<!-- s : 연령대 pick -->
+				<div class="section">
+
+					<div class="tbl_tit mb_1">
+						<div class="tit_left">
+							<h3 class="tit1 ico_tit type2">연령대<span class="txt_darkprimary">PICK</span></h3>
+						</div>
+					</div>
+
+					<div class="controll_age">
+						<p>
+							<span>20대(여)</span>
+							가 많이 가입했어요.
+						</p>
+						<div class="controll">
+							<a href="#;" class="prev">이전</a>
+							<strong>20대(남)</strong>
+							<a href="#;" class="next active">다음</a>
+						</div>
+					</div>
+
+					<div class="n_insureance_style">
+						<div>
+							<div class="left">
+								<ul class="ins_txt_list">
+									<li>암보험</li>
+									<li>갱신형</li>
+									<li>전기납</li>
+									<li>월납</li>
+								</ul>
+
+								<ul class="ins_txt_list round">
+									<li>인터넷보험</li>
+									<li>스마트보험</li>
+									<li>우체국창구</li>
+								</ul>
+
+								<div class="review_star">
+									<span class="star">5</span>
+								</div>
+
+								<span class="info">
+									<strong class="ins_tit">
+										무배당온라인보험
+										<img src="../resources/img/content/ico_new.png" alt="new">
+									</strong>
+									<em class="txt">단 한 번의 가입으로 평생 보장(종신갱신형)</em>
+									<span class="hash">
+										<span>#전기납</span>
+										<span>#암보험</span>
+										<span>#고액암</span>
+										<span>#일반암</span>
+										<span>#남여생식기암</span>
+										<span>#항암방사선</span>
+										<span>#약물치료비</span>
+									</span>
+								</span>
+							</div>
+							<div class="right">
+								<div class="btn_box">
+									<a href="#;" class="btn btn_sm btn_outline_default">상세보기</a>
+									<a href="#;" class="btn btn_sm btn_outline_default">가입하기</a>
+									<a href="#;" class="favorit_blit">좋아요</a>
+								</div>
+								<ul class="price_info">
+									<li>
+										<em class="first">20세(여)</em>
+										<span>
+											<span>10년 만기</span>
+											<span>10년납</span>
+										</span>
+									</li>
+									<li>
+										<em>월납</em>
+										<strong>1,800원</strong>
+									</li>
+									<li>
+										<em>보장금액</em>
+										<strong>1,800만원</strong>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div>
+							<div class="left">
+								<ul class="ins_txt_list">
+									<li>암보험</li>
+									<li>갱신형</li>
+									<li>전기납</li>
+									<li>월납</li>
+								</ul>
+
+								<ul class="ins_txt_list round">
+									<li>인터넷보험</li>
+									<li>스마트보험</li>
+									<li>우체국창구</li>
+								</ul>
+
+								<div class="review_star">
+									<span class="star">5</span>
+								</div>
+
+								<span class="info">
+									<strong class="ins_tit">
+										무배당온라인보험
+									</strong>
+									<em class="txt">단 한 번의 가입으로 평생 보장(종신갱신형)</em>
+									<span class="hash">
+										<span>#전기납</span>
+										<span>#암보험</span>
+										<span>#고액암</span>
+										<span>#일반암</span>
+										<span>#남여생식기암</span>
+										<span>#항암방사선</span>
+										<span>#약물치료비</span>
+									</span>
+								</span>
+							</div>
+							<div class="right">
+								<div class="btn_box">
+									<a href="#;" class="btn btn_sm btn_outline_default">상세보기</a>
+									<a href="#;" class="btn btn_sm btn_outline_default">가입하기</a>
+									<a href="#;" class="favorit_blit">좋아요</a>
+								</div>
+								<ul class="price_info">
+									<li>
+										<em class="first">20세(여)</em>
+										<span>
+											<span>10년 만기</span>
+											<span>10년납</span>
+										</span>
+									</li>
+									<li>
+										<em>월납</em>
+										<strong>1,800원</strong>
+									</li>
+									<li>
+										<em>보장금액</em>
+										<strong>1,800만원</strong>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- e : 연령대 pick -->
+
+				<!-- s : 우체국다이렉트보험 솔직후기 -->
+				<div class="section direct_review">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1 ico_tit type3">우체국다이렉트보험 솔직후기</h3>
+						</div>
+					</div>
+
+					<ul>
+						<li>
+							<a href="#">
+								<div class="profile">
+									<span class="img">
+										<img src="../resources/img/content/fund_tendency01.png" alt="">
+									</span>
+									<em>여자 58세</em>
+								</div>
+								<dl>
+									<dt>
+										(무)우체국온라인어린이보험2007
+										<div class="review_star">
+											<span class="star">5</span>
+										</div>
+									</dt>
+									<dd>
+										<p>
+											복잡한 절차없이 간편하게 가입되서 좋았어요. 복잡한 절차없이 간편하게 가입되서 좋았어요.
+										</p>
+									</dd>
+								</dl>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="profile">
+									<span class="img">
+										<img src="../resources/img/content/fund_tendency01.png" alt="">
+									</span>
+									<em>여자 58세</em>
+								</div>
+								<dl>
+									<dt>
+										(무)우체국온라인어린이보험2007
+										<div class="review_star">
+											<span class="star">5</span>
+										</div>
+									</dt>
+									<dd>
+										<p>
+											복잡한 절차없이 간편하게 가입되서 좋았어요. 복잡한 절차없이 간편하게 가입되서 좋았어요.복잡한 절차없이 간편하게 가입되서 좋았어요. 복잡한 절차없이 간편하게 가입되서 좋았어요.
+										</p>
+									</dd>
+								</dl>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="profile">
+									<span class="img">
+										<img src="../resources/img/content/fund_tendency01.png" alt="">
+									</span>
+									<em>여자 58세</em>
+								</div>
+								<dl>
+									<dt>
+										(무)우체국온라인어린이보험2007
+										<div class="review_star">
+											<span class="star">5</span>
+										</div>
+									</dt>
+									<dd>
+										<p>
+											복잡한 절차없이 간편하게 가입되서 좋았어요. 복잡한 절차없이 간편하게 가입되서 좋았어요.
+										</p>
+									</dd>
+								</dl>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="profile">
+									<span class="img">
+										<img src="../resources/img/content/fund_tendency01.png" alt="">
+									</span>
+									<em>여자 58세</em>
+								</div>
+								<dl>
+									<dt>
+										(무)우체국온라인어린이보험2007
+										<div class="review_star">
+											<span class="star">5</span>
+										</div>
+									</dt>
+									<dd>
+										<p>
+											복잡한 절차없이 간편하게 가입되서 좋았어요. 복잡한 절차없이 간편하게 가입되서 좋았어요.
+										</p>
+									</dd>
+								</dl>
+							</a>
+						</li>
+					</ul>
+
+					<a href="#;" class="more">더보기</a>
+				</div>
+				<!-- e : 우체국다이렉트보험 솔직후기 -->
+
+				<!-- s : 이벤트 혜택을 놓치지 마세요 -->
+				<div class="section event">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1 ico_tit type4">이벤트 혜택을 놓치지 마세요</h3>
+						</div>
+					</div>
+					<div class="rolling_box">
+						<div class="in_rolling">
+							<div>
+								<a href="#;">
+									<span class="img">
+										<img src="../resources/img/content/img_event1.jpg" alt="">
+									</span>
+									<span class="info">
+										<em class="top">우체국 보험 청구 이벤트</em>
+										<strong>
+											모바일에서
+											<span>보험금 청구하면 <span class="color1">행운 팡팡</span></span>
+										</strong>
+										<span class="day">2021.05.13~08.12</span>
+										<em>우체국쇼핑상품권 증정</em>
+									</span>
+								</a>
+								<a href="#;" class="share">공유</a>
+							</div>
+							<div>
+								<a href="#;">
+									<span class="img">
+										<img src="../resources/img/content/img_event2.jpg" alt="">
+									</span>
+
+									<span class="info">
+										<em class="top">우체국 보험 간편청구</em>
+										<strong>
+											우체국모험 모바일로
+											<span><span class="color2">간편청구 이벤트</span></span>
+										</strong>
+										<span class="day">2021.05.13~08.12</span>
+										<em>우체국쇼핑상품권 증정</em>
+									</span>
+
+								</a>
+								<a href="#;" class="share">공유</a>
+							</div>
+							<div class="no_event">
+								<p>
+									현재 진행중인 <br>
+									이벤트가 없습니다.
+								</p>
+							</div>
+							<div>
+								<a href="#;">
+									<span class="img">
+										<img src="../resources/img/content/img_event1.jpg" alt="">
+									</span>
+									<span class="info">
+										<em class="top">우체국 보험 청구 이벤트</em>
+										<strong>
+											모바일에서
+											<span>보험금 청구하면 <span class="color1">행운 팡팡</span></span>
+										</strong>
+										<span class="day">2021.05.13~08.12</span>
+										<em>우체국쇼핑상품권 증정</em>
+									</span>
+								</a>
+								<a href="#;" class="share">공유</a>
+							</div>
+						</div>
+						<div class="rolling_info">
+							<div class="nums">
+								<strong>01</strong><span>2</span>
+								<em class="bar">
+									<span></span>
+								</em>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- e : 이벤트 혜택을 놓치지 마세요 -->
+
+				<div class="section bottom_cs_center">
+					<ul>
+						<li>
+							<em>우체국보험 고객센터</em>
+							<strong>1599.0100</strong>
+							<span>평일 09시 ~ 18시 / 점심시간 12시 ~ 13시</span>
+						</li>
+						<li>
+							<em>다이렉트 보험가입상담</em>
+							<strong>070-5074-4560~1</strong>
+							<span>평일 09시 ~ 18시 / 점심시간 12시 ~ 13시</span>
+							<a href="#;">보험가입상담</a>
+						</li>
+					</ul>
+				</div>
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
