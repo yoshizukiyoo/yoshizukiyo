@@ -52,7 +52,7 @@
 					</ul>
 				</div>
 				
-				<div class="box first_section">
+				<div class="box box_more first_section">
 					<ul class="list list1">
 						<li>다계좌이체 결제요청이 아래와 같이 처리되었습니다.</li>
 					</ul>
@@ -186,8 +186,8 @@
 				</div>
 				<div class="mt_4 txt_r">
 					<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('layer01', this);">자주쓰는입금계좌관리</button>
-					<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('layer02', this);">SMS전송(카카오톡 알림)</button>
-					<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('layer03', this);">이체확인증</button>
+					<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('sms_popup', this);">SMS전송(카카오톡 알림)</button>
+					<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('transfer_popup', this);">이체확인증</button>
 					<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 					<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 				</div>
@@ -438,7 +438,7 @@
 				<!-- e: 자주쓰는 입금계좌 관리 -->
 
 				<!-- s: SMS전송(카카오톡 알림) 팝업 -->
-				<div class="modal_popup modal_md hide" data-popup="layer02">
+				<div class="modal_popup modal_md hide" data-popup="sms_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_c">
@@ -498,8 +498,8 @@
 												<!-- s: 우체국 대표전화 -->
 												<div class="mt_4" data-sms-phone="phone1">
 													<div class="phone_number corded_phone">
-														<div><input type="text" class="tf" title="전화번호 앞자리 입력" style="width: 93px"></div>
-														<div><input type="text" class="tf" title="전화번호 뒷자리입력" style="width: 93px"></div>
+														<div><input type="text" class="tf disabled" title="전화번호 앞자리 입력" style="width: 93px" value="1599" disabled></div>
+														<div><input type="text" class="tf" title="전화번호 뒷자리입력" style="width: 93px" value="1900" disabled></div>
 													</div>
 													<div class="mt_3">
 														받는 분 휴대전화에 표시되는 전화번호가<br>
@@ -546,7 +546,7 @@
 							</div>
 							<div class="btn_group">
 								<button type="button" class="btn btn_lg btn_outline_default fx_w150">재입력</button>
-								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="closeModal('layer02');">확인</button>
+								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="closeModal('sms_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -555,7 +555,7 @@
 				<!-- e: SMS전송(카카오톡 알림) 팝업 -->
 
 				<!-- s: 이체확인증 팝업 -->
-				<div class="modal_popup modal_xl hide" data-popup="layer03">
+				<div class="modal_popup modal_xl hide" data-popup="transfer_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
@@ -564,14 +564,14 @@
 						<div class="popup_body">
 							<div class="tbl_tit">
 								<div class="txt_right">
-									<span class="inpuiry_time">현재시간: 2021년 05월 17일 14시45분46초</span>
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
 									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
-									<button type="button" class="btn btn_xs btn_outline_default ml_3" onclick="$.print('.modal_popup[data-popup=layer03]');">화면인쇄</button>
+									<button type="button" class="btn btn_xs btn_outline_default ml_3" onclick="$.print('.modal_popup[data-popup=transfer_popup]');">화면인쇄</button>
 								</div>
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">이체확인증 내용 안내(이체일시, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용,
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 출금은행, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용,
 										이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
 									<colgroup>
 										<col style="width: 20%;">
@@ -582,45 +582,49 @@
 									<tbody>
 										<tr>
 											<th scope="row">이체일시</th>
-											<td class="txt_c">2020.12.29 10:44:08</td>
+											<td colspan="3">2020.12.29 10:44:08</td>
+										</tr>
+										<tr>
+											<th scope="row">출금은행</th>
+											<td>우체국</td>
 											<th scope="row">입금은행</th>
-											<td class="txt_c">우체국</td>
+											<td>토스뱅크</td>
 										</tr>
 										<tr>
 											<th scope="row">출금계좌번호</th>
-											<td class="txt_c">010017-02-526***</td>
+											<td>010017-02-526***</td>
 											<th scope="row">입금계좌번호</th>
-											<td class="txt_c">010017-02-691911</td>
+											<td>010017-02-691911</td>
 										</tr>
 										<tr>
 											<th scope="row">보내는 분</th>
-											<td class="txt_c">나봄미</td>
+											<td>나봄미</td>
 											<th scope="row">받는분</th>
-											<td class="txt_c">이덕용</td>
+											<td>이덕용</td>
 										</tr>
 										<tr>
 											<th scope="row">출금통장 표시내용</th>
-											<td class="txt_c">이덕용</td>
+											<td>이덕용</td>
 											<th scope="row">입금통장 표시내용</th>
-											<td class="txt_c">나봄미</td>
+											<td>나봄미</td>
 										</tr>
 										<tr>
 											<th scope="row">이체금액</th>
 											<td class="txt_r">10,000원</td>
 											<th scope="row">매체구분</th>
-											<td class="txt_c">인터넷</td>
+											<td>인터넷</td>
 										</tr>
 										<tr>
 											<th scope="row">수수료</th>
 											<td class="txt_r">0원</td>
 											<th scope="row">이체결과</th>
-											<td class="txt_c">정상</td>
+											<td>정상</td>
 										</tr>
 										<tr>
 											<th scope="row">CMS번호/통신문</th>
-											<td class="txt_c"></td>
+											<td></td>
 											<th scope="row">전문번호</th>
-											<td class="txt_c">0710D4E0C3710</td>
+											<td>0710D4E0C3710</td>
 										</tr>
 									</tbody>
 								</table>
