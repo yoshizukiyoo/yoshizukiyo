@@ -23,7 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			
+
 		});
 	</script>
 </head>
@@ -37,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">관리비 납부</h2>
+				<h2 class="tit_cont">관리비 자동이체등록</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -57,9 +57,9 @@
 
 				<div class="cont_header_right">
 					<ul class="step">
-						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">1</span><span class="txt">정보입력</span></li>
 						<li><span class="num">2</span><span class="txt">조회결과</span></li>
-						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li class="on"><span class="num">3</span><span class="txt">입력확인</span></li>
 						<li><span class="num">4</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
@@ -70,48 +70,53 @@
 					</ul>
 				</div>
 
-				<!-- s: 정보입력 -->
+				<!-- s: 정보입력 결과 -->
 				<div class="section">
-					<div class="tbl_row2">
+					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">납부정보 입력양식이며 관리소 계좌번호, 동번, 호수, 납부금액 정보를 입력하실 수 있습니다.</caption>
+							<caption class="sr_only">관리비 납부 정보입력 결과이며 출금계좌번호, 관리소 계좌번호, 관리소 예금주명, 납부자 동호수, 납부금액, 연락처 정보를 제공하고 있습니다.
+							</caption>
 							<colgroup>
-								<col style="width: 17%;">
+								<col style="width: 16%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td>100073-01-004137</td>
+								</tr>
+								<tr>
 									<th scope="row">관리소 계좌번호</th>
-									<td>
-										<input type="text" class="tf" style="width: 420px;" title="관리소 계좌번호 입력">
-									</td>
+									<td>100073-01-004137</td>
 								</tr>
 								<tr>
-									<th scope="row">동</th>
-									<td>
-										<input type="text" class="tf mr_1" style="width: 320px;" title="아파트 동 정보 입력"> 동
-									</td>
+									<th scope="row">관리소 예금주명</th>
+									<td>예금주명</td>
 								</tr>
 								<tr>
-									<th scope="row">호</th>
-									<td>
-										<input type="text" class="tf mr_1" style="width: 320px;" title="아파트 호수 정보 입력"> 호
-									</td>
+									<th scope="row">납부자 동호수</th>
+									<td>0101동 0101호</td>
 								</tr>
 								<tr>
 									<th scope="row">납부금액</th>
-									<td>
-										<input type="text" class="tf mr_1" style="width: 420px;" title="납부금액 입력"> 원
-									</td>
+									<td class="txt_r">100,000 원</td>
+								</tr>
+								<tr>
+									<th scope="row">연락처</th>
+									<td>000-0000-0000</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<div class="mt_4 txt_r">
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('payment_popup', this)">납부확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+					</div>
 				</div>
-				<!-- e: 정보입력 -->
+				<!-- e: 정보입력 결과 -->
 
 				<div class="btn_tbl_btm">
-					<a href="icpilf04bs_공과금_생활기타요금_아파트관리비_관리비납부_02.조회결과.html" class="btn btn_xl btn_primary">조회</a>
+					<a href="#;" class="btn btn_xl btn_primary">확인</a>
 				</div>
 
 				<div class="box section">
@@ -124,6 +129,81 @@
 						</dd>
 					</dl>
 				</div>
+
+				<!-- s: 납부확인증 팝업 -->
+				<div class="modal_popup modal_xl hide" data-popup="payment_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">지방세납부확인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									<button type="button" class="btn btn_xs btn_outline_default ml_3"
+										onclick="$.print('.modal_popup[data-popup=payment_popup]');">화면인쇄</button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용,
+										이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+										<col style="width: 24%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">전자납부번호</th>
+											<td colspan="3">123456789</td>
+										</tr>
+										<tr>
+											<th scope="row">납세자</th>
+											<td>테스트</td>
+											<th scope="row">주민(사업자)등록번호</th>
+											<td>102-81-*****</td>
+										</tr>
+										<tr>
+											<th scope="row">납부기관</th>
+											<td>서울중앙우체국</td>
+											<th scope="row">납부계좌</th>
+											<td>123-4567-89123</td>
+										</tr>
+										<tr>
+											<th scope="row">납부기관</th>
+											<td>12,870원</td>
+											<th scope="row">납부일</th>
+											<td>2021.06.01</td>
+										</tr>
+										<tr>
+											<td colspan="4" class="txt_c">
+												<div class="payment_date">
+													<p><strong class="txt_xl">위금액을 정히 영수합니다.</strong></p>
+													<p class="mt_3">2021년 06월 01일</p>
+													<div class="payment_stamp">
+														<span class="">납부일</span>
+														<span>2021.06.01</span>
+														<span>서울중앙우체국</span>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary fx_w150"
+									onclick="closeModal('payment_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 납부확인증 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">

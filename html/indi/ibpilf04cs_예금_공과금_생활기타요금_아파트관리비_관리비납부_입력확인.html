@@ -37,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">관리비 납부</h2>
+				<h2 class="tit_cont">관리비 자동이체등록</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -57,9 +57,9 @@
 
 				<div class="cont_header_right">
 					<ul class="step">
-						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">1</span><span class="txt">정보입력</span></li>
 						<li><span class="num">2</span><span class="txt">조회결과</span></li>
-						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li class="on"><span class="num">3</span><span class="txt">입력확인</span></li>
 						<li><span class="num">4</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
@@ -70,48 +70,115 @@
 					</ul>
 				</div>
 
-				<!-- s: 정보입력 -->
+				<!-- s: 정보입력 결과 -->
 				<div class="section">
-					<div class="tbl_row2">
+					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">납부정보 입력양식이며 관리소 계좌번호, 동번, 호수, 납부금액 정보를 입력하실 수 있습니다.</caption>
+							<caption class="sr_only">관리비 납부 정보입력 결과이며 관리소 계좌번호, 관리소 예금주명, 동호수, 관리소 납부금액 정보를 제공하고 있습니다.</caption>
 							<colgroup>
-								<col style="width: 17%;">
+								<col style="width: 16%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
 									<th scope="row">관리소 계좌번호</th>
-									<td>
-										<input type="text" class="tf" style="width: 420px;" title="관리소 계좌번호 입력">
-									</td>
+									<td>100073-01-004137</td>
 								</tr>
 								<tr>
-									<th scope="row">동</th>
-									<td>
-										<input type="text" class="tf mr_1" style="width: 320px;" title="아파트 동 정보 입력"> 동
-									</td>
+									<th scope="row">관리소 예금주명</th>
+									<td>예금주명</td>
 								</tr>
 								<tr>
-									<th scope="row">호</th>
-									<td>
-										<input type="text" class="tf mr_1" style="width: 320px;" title="아파트 호수 정보 입력"> 호
-									</td>
+									<th scope="row">동호수</th>
+									<td>0101동 0101호</td>
+								</tr>
+								<tr>
+									<th scope="row">관리소 납부금액</th>
+									<td class="txt_r">100,000 원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="mt_4 tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">출금정보 표이며 출금계좌번호, 예금주 전화번호, 납부금액 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 16%;">
+								<col>
+								<col style="width: 16%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td>000000000000</td>
+									<th scope="row">예금주 전화번호</th>
+									<td>000-0000-0000</td>
 								</tr>
 								<tr>
 									<th scope="row">납부금액</th>
-									<td>
-										<input type="text" class="tf mr_1" style="width: 420px;" title="납부금액 입력"> 원
-									</td>
+									<td colspan="3" class="txt_r">100,000 원</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 정보입력 -->
+				<!-- e: 정보입력 결과 -->
+
+				<!-- s: 보안매체 인증번호입력 -->
+				<div class="section">
+					<h3 class="tit1">보안매체 인증번호 입력</h3>
+					<div class="box_security_cert bg_security_card">
+						<div class="security_cert_inner">
+							<p class="txt_security">영업점에서 발급 받으신 보안카드를 확인하여 아래의 빈 칸에 보안카드 코드를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_r">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
+									<span class="security_masking mas_l">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+							</div>
+							<p class="txt_security_caution">
+								<strong>보안카드 비밀번호 5회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
+					<div class="box_security_cert bg_otp">
+						<div class="security_cert_inner">
+							<p class="txt_security">OTP발생번호 <strong>숫자6자리</strong>를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="6">
+								</div>
+								<button type="button" class="btn btn_lg btn_outline_default">OTP카드안내</button>
+							</div>
+							<p class="txt_security_caution">
+								<strong>통합OTP는 비밀번호 10회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- e: 보안매체 인증번호입력 -->
 
 				<div class="btn_tbl_btm">
-					<a href="icpilf04bs_공과금_생활기타요금_아파트관리비_관리비납부_02.조회결과.html" class="btn btn_xl btn_primary">조회</a>
+					<a href="ibpilf04as_예금_공과금_생활기타요금_아파트관리비_관리비납부_정보입력.html" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="ibpilf04ds_예금_공과금_생활기타요금_아파트관리비_관리비납부_실행완료.html" class="btn btn_xl btn_primary">납부실행</a>
 				</div>
 
 				<div class="box section">
