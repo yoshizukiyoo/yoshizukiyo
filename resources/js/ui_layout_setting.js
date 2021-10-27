@@ -58,28 +58,32 @@ $(function () {
 setTimeout(function () {
 	$('.tf_datepicker').each(function () {
 		setDatepicker($(this));
-	}).on('click', function () {
-		openCalendar($(this));
 	});
 }, 200);
 
-function removeDatepicker() {
-	if ($('#inseq-datepicker').length > 0) {
-		$('#inseq-datepicker').remove();
-	}
-}
-
-$(document).on('click', '.btn_datepicker', function (e) {
-	e.preventDefault();
-	openCalendar($(this).prev());
-});
-
 function setDatepicker(obj) {
-	$(obj).wrap('<span class="datepicker"></span>');
+	$(obj)
+		.wrap('<span class="datepicker"></span>')
+		.datepicker({
+			dateFormat: 'yy.mm.dd',
+			showOn: "button",
+			buttonImage: "/resources/img/common/ico_datepicker.png",
+			changeMonth: true,
+			changeYear: true,
+			buttonImageOnly: false,
+			showMonthAfterYear: true,
+			prevText: '이전 달',
+			nextText: '다음 달',
+			monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+			monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+			dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+			dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+			dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+			yearSuffix: '년',
+		});
 	if ($(obj).hasClass('full')) {
 		$(obj).parent('.datepicker').addClass('full');
 	}
-	$(obj).after('<button type="button" class="btn btn_icon btn_datepicker"><i class="ico ico_datepicker"></i><span class="sr_only">달력</span></button>');
 }
 
 // 일반 레이어
