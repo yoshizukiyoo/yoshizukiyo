@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="popup_tit">핸드폰 본인인증</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body">
+			<div class="container pt_4">
+				<h2 class="tit1">이용약관 안내 및 동의</h2>
+				<ul class="login_list mb_6">
+					<li>
+						<div class="tf_item pt_3 pb_3">
+							<div class="tf_item_body">
+								<span class="check_item txt_lg">
+									<input type="checkbox" id="lb_agreement" checked="">
+									<label for="lb_agreement" class="txt_default txt_medium">아래 서비스 이용약관을 모두 동의합니다.</label>
+								</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="tf_item pt_4 pb_0">
+							<span class="check_item simple_primary">
+								<input type="checkbox" id="inputCheck6_1" checked="">
+								<label for="inputCheck6_1">본인확인서비스 이용약관</label>
+							</span>
+							<a href="#" class="btn txt_red">
+								<span class="d_i_b ">내용보기</span>
+								<i class="ico ico_chevron_right_primary_sm"></i>
+							</a>
+						</div>
+						<div class="tf_item pt_2 pb_0">
+							<span class="check_item simple_primary">
+								<input type="checkbox" id="inputCheck6_2" checked="">
+								<label for="inputCheck6_2">본인확인서비스 이용약관</label>
+							</span>
+							<a href="#" class="btn txt_red">
+								<span class="d_i_b ">내용보기</span>
+								<i class="ico ico_chevron_right_primary_sm"></i>
+							</a>
+						</div>
+						<div class="tf_item pt_2 pb_0">
+							<span class="check_item simple_primary">
+								<input type="checkbox" id="inputCheck6_3" checked="">
+								<label for="inputCheck6_3">본인확인서비스 이용약관</label>
+							</span>
+							<a href="#" class="btn txt_red">
+								<span class="d_i_b ">내용보기</span>
+								<i class="ico ico_chevron_right_primary_sm"></i>
+							</a>
+						</div>
+						<div class="tf_item pt_2 pb_4">
+							<span class="check_item simple_primary">
+								<input type="checkbox" id="inputCheck6_4" checked="">
+								<label for="inputCheck6_4">본인확인서비스 이용약관</label>
+							</span>
+							<a href="#" class="btn txt_red">
+								<span class="d_i_b ">내용보기</span>
+								<i class="ico ico_chevron_right_primary_sm"></i>
+							</a>
+						</div>
+					</li>
+				</ul>
+				<h2 class="tit1">개인정보 입력 및 본인인증 확인</h2>
+				<div class="tf_item mt_3 disabled active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_5">이름</label>
+							<input type="text" id="lb_tf_1_5" class="tf" placeholder="placeholder" value="홍길동" disabled="">
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_3 disabled active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_5">생년월일</label>
+							<input type="text" id="lb_tf_1_5" class="tf" placeholder="placeholder" value="1987.04.02 " disabled="">
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_3 active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_2_2">성별 </label>
+							<input type="text" id="lb_tf_2_2" class="tf" value="남성" readonly="">
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_icon" onclick="openModal('layerOption'); return false;">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_3 active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_2_2">이동통신사 </label>
+							<input type="text" id="lb_tf_2_2" class="tf" value="KT" readonly="">
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_icon" onclick="openModal('layerOption'); return false;">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_3 mb_3 active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tel">휴대폰 번호</label>
+							<div class="input_items">
+								<a href="#;" class="opt opt_free_type" title="전화번호 통신번호 선택" onclick="openModal('layerOption');">010</a>
+								<input type="text" id="lb_tel" class="tf" title="통신번호를 제외한 전화번호">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="popup_footer">
+			<div class="btn_group btn_group_flex">
+				<!-- <button type="button" class="btn btn_lg btn_default">취소</button> -->
+				<button type="button" class="btn btn_lg btn_primary">인증번호 요청</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>
