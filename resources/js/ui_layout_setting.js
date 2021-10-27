@@ -103,7 +103,28 @@ function inputStatus() {
 	});
 }
 
-// 데이트피커
+// 데이트피커 기본설정
+$(function () {
+	$.datepicker.setDefaults({
+		showOn: 'button',
+		buttonImageOnly: true,
+		dateFormat: 'yy.mm.dd',
+		changeMonth: true,
+		changeYear: true,
+		buttonImageOnly: false,
+		showMonthAfterYear: true,
+		prevText: '이전 달',
+		nextText: '다음 달',
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		yearSuffix: '년',
+	});
+});
+
+// 데이트피커 + 모달레이어
 function openDatepicker(opener, target) {
 	var $target;
 	if (target == undefined) {
@@ -111,13 +132,17 @@ function openDatepicker(opener, target) {
 	} else {
 		$target = $(target);
 	}
-	openCalendar($target);
-}
-
-function removeDatepicker() {
-	if ($('[data-popup=layerDatepicker]').length > 0) {
-		$('[data-popup=layerDatepicker]').remove();
-	}
+	$target.datepicker({
+		beforeShow: function () {
+			$('body').append('<div class="modal_popup modal_datepicker hide" data-popup="layerDatepicker"><div class="dimed"></div><div class="popup_inner"><div class="popup_body"></div><button type="button" class="btn btn_close_popup">닫기</button></div></div>');
+			$('#ui-datepicker-div').appendTo('[data-popup=layerDatepicker] .popup_body');
+			openModal('layerDatepicker');
+		},
+		onClose: function () {
+			$('[data-popup=layerDatepicker]').remove();
+			this.focus();
+		}
+	}).datepicker('show');
 }
 
 // 모달 레이어
