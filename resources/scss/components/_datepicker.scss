@@ -10,6 +10,7 @@ $datepicker-width: 425px;
 		padding-right: 45px;
 	}
 
+	.ui-datepicker-trigger,
 	.btn {
 		position: absolute;
 		right: 0;
@@ -29,7 +30,7 @@ $datepicker-width: 425px;
 	}
 }
 
-#inseq-datepicker {
+#ui-datepicker-div {
 	position: absolute;
 	width: $datepicker-width;
 	padding: 35px 20px 20px;
@@ -77,6 +78,12 @@ $datepicker-width: 425px;
 		tbody {
 			td {
 
+				a.ui-state-active {
+					background-color: $primary;
+					color: $default !important;
+					font-weight: bold;
+				}
+
 				a {
 					width: 39px;
 					height: 39px;
@@ -91,61 +98,87 @@ $datepicker-width: 425px;
 						background-color: $bg-lightgray;
 					}
 
-					&.today {
-						background-color: $primary;
+					&.ui-state-active {
+						background-color: $primary !important;
 						color: $default !important;
 						font-weight: bold;
+					}
+				}
+
+				&.ui-datepicker-today {
+					a {
+						background-color: #666;
+						color: #fff;
 					}
 				}
 			}
 		}
 	}
 
-	#tableCalendarTitle,
-	#tableMonthTitle,
-	#tableYearTitle {
+	.ui-datepicker-title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		margin-bottom: 25px;
+		font-size: 26px;
+		line-height: 45px;
+		font-weight: 500;
+		text-align: center;
 
-		td {
-			font-size: 26px;
-			font-weight: 500;
+		a {
+			font-size: inherit;
+		}
 
-			a {
-				font-size: inherit;
+		select {
+			font-size: inherit;
+			font-weight: inherit;
+			appearance: none;
+			border: 0;
+
+			&::-ms-expand {
+				display: none;
 			}
+
+			option {
+				font-size: 16px;
+			}
+		}
+
+		.ui-datepicker-month {
+			margin-left: 10px;
 		}
 	}
 
-	#tableCalendar {
+	.ui-datepicker-calendar {
+		table-layout: fixed;
+
 		th {
 			font-size: 16px;
 		}
 
-		// th,
+		td {
+			color: #999;
+
+			a {
+				color: $default;
+			}
+		}
+
+		th,
 		td {
 			font-size: 14px;
 
 			&:first-child {
-				color: #ff883a;
-
 				a {
-					color: inherit;
+					color: #ff883a;
 				}
 			}
-
-			// &:last-child {
-			// 	color: #0072cf;
-
-			// 	a {
-			// 		color: inherit;
-			// 	}
-			// }
 		}
 	}
 
-	.prev,
-	.next {
-		margin-top: 2px;
+	.ui-datepicker-prev,
+	.ui-datepicker-next {
+		margin-top: 6px;
 		width: 36px;
 		height: 36px;
 		background: url(#{$url-img-common}/ico_cal_arr_left.png) no-repeat center center;
@@ -159,31 +192,15 @@ $datepicker-width: 425px;
 		// }
 	}
 
-	.prev {
+	.ui-datepicker-prev {
 		float: left;
 		margin-left: 50px;
 	}
 
-	.next {
+	.ui-datepicker-next {
 		float: right;
 		margin-right: 50px;
 		background-image: url(#{$url-img-common}/ico_cal_arr_right.png);
-	}
-
-	.btn-cal-close {
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 5px;
-
-		a {
-			display: block;
-			width: 20px;
-			height: 20px;
-			// opacity: .5;
-			color: transparent;
-			background: url(#{$url-img-common}/ico_close_sm.png) no-repeat center center;
-		}
 	}
 
 	@if ($mode=='responsive') {
