@@ -139,6 +139,7 @@ function openDatepicker(opener, target) {
 			openModal('layerDatepicker');
 		},
 		onClose: function () {
+			closeModal('layerDatepicker');
 			$('[data-popup=layerDatepicker]').remove();
 			this.focus();
 		}
