@@ -431,16 +431,44 @@ $emphasis: #ce4900 !default;
 	}
 
 	&.list_chk {
-		.contract_item {
-			.list_name {
-				padding: 12px 38px 5px 20px;
-			}
-		}
-
 		.check_item {
-			position: absolute;
-			top: 15px;
-			right: 10px;
+			position: relative;
+
+			input[type=checkbox] {
+				+label {
+					width: 100%;
+					height: auto;
+					padding-right: 30px;
+					font-size: 16px;
+					line-height: 19px;
+					background: none;
+
+					&:after {
+						content: '';
+						position: absolute;
+						top: 3px;
+						right: 0;
+						width: 20px;
+						height: 20px;
+						background-image: url(#{$url-img-common}/ico_checkbox_default.png);
+						background-size: 20px auto;
+					}
+				}
+
+				&:checked {
+					+label {
+						&:after {
+							background-image: url(#{$url-img-common}/ico_checkbox_checked.png);
+						}
+					}
+				}
+			}
+
+
+
+			.list_name {
+				padding: 0;
+			}
 		}
 
 		.in_detail {
@@ -452,6 +480,14 @@ $emphasis: #ce4900 !default;
 }
 
 .btn_group {
+	&.length {
+		margin-top: 15px;
+
+		a {
+			width: 100%;
+		}
+	}
+
 	&.length2 {
 		font-size: 0;
 		margin-top: 15px;
