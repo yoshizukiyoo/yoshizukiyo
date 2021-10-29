@@ -2,7 +2,7 @@
 $emphasis: #ce4900 !default;
 
 .txt_emphasis {
-	color: $emphasis;
+	color: $emphasis !important;
 }
 
 .section {
@@ -306,11 +306,12 @@ $emphasis: #ce4900 !default;
 
 	.contract_item {
 		position: relative;
+		padding: 10px 19px 17px;
 		border: 1px solid #ddd;
 		border-radius: 8px;
 
 		.inline_block {
-			padding: 13px 20px 8px;
+			//padding: 13px 20px 8px;
 			font-size: 16px;
 
 			>* {
@@ -349,24 +350,41 @@ $emphasis: #ce4900 !default;
 		}
 
 		.list_name {
-			padding: 12px 20px 5px;
+			//	padding: 12px 0 5px;
 			font-weight: 400;
 			line-height: 24px;
 		}
 
 		.evidence_contract {
-			padding: 0 20px;
+			padding-top: 1px;
+
+			.info {
+				padding-top: 2px;
+
+				span {
+					margin-top: 0;
+					font-size: 10px;
+					line-height: 15px;
+				}
+			}
 		}
 
 		.in_detail {
-			margin-top: 8px;
-			padding: 12px 20px;
+			margin: 12px -19px -17px;
+			padding: 12px 20px 13px;
 
 			&:before {
 				left: 0;
 				right: 0;
 			}
 
+			span {
+				margin-top: 2px;
+
+				strong {
+					font-weight: 300;
+				}
+			}
 
 			&.toggle {
 				height: 60px;
@@ -428,6 +446,49 @@ $emphasis: #ce4900 !default;
 		.detail_round {
 			border-radius: 0 0 8px 8px;
 		}
+
+		.list_line {
+			margin: -11px -20px -9px;
+
+
+			>li {
+				padding: 13px 20px 11px;
+
+
+				span {
+					em {
+						color: #111;
+						font-size: 13px;
+					}
+
+					strong {
+						font-weight: 400;
+						font-size: 13px;
+
+						span {
+							display: inline;
+							color: #111;
+							font-weight: 400;
+						}
+					}
+
+					.lab_status {
+						margin-bottom: 7px;
+						color: #666;
+
+						&.btn_outline_gray {
+							border-color: #eee;
+							background-color: #fff;
+						}
+					}
+				}
+
+				+li {
+					border-top: 1px solid #ddd;
+				}
+
+			}
+		}
 	}
 
 	&.list_chk {
@@ -481,7 +542,7 @@ $emphasis: #ce4900 !default;
 
 .btn_group {
 	&.length {
-		margin-top: 15px;
+		margin-top: 13px;
 
 		a {
 			width: 100%;
@@ -695,7 +756,6 @@ $emphasis: #ce4900 !default;
 
 			>span {
 				display: block;
-				margin-top: 5px;
 
 				&:first-child {
 					margin-top: 0;
@@ -712,7 +772,7 @@ $emphasis: #ce4900 !default;
 
 				span {
 					font-size: 12px;
-					line-height: 13px;
+					line-height: 18px;
 				}
 			}
 		}
@@ -721,7 +781,7 @@ $emphasis: #ce4900 !default;
 	.in_detail {
 		position: relative;
 		display: block;
-		margin-top: 10px;
+		margin-top: 8px;
 		padding-top: 13px;
 
 		span {
@@ -737,15 +797,20 @@ $emphasis: #ce4900 !default;
 				float: left;
 				font-style: normal;
 				font-size: 14px;
-				color: #666;
+				color: #555;
 				font-weight: 200;
 			}
 
 			strong {
 				float: right;
-				font-size: 12px;
+				font-size: 14px;
 				color: #111;
 				font-weight: 500;
+
+				span {
+					display: inline;
+					font-weight: 200;
+				}
 			}
 		}
 	}
@@ -1008,6 +1073,10 @@ $emphasis: #ce4900 !default;
 		border-color: $border-base;
 		height: 50px;
 		border-radius: 8px;
+
+		&:after {
+			background-image: url(#{$url-img-common}/ico_chevron_right_sm.png);
+		}
 	}
 }
 
