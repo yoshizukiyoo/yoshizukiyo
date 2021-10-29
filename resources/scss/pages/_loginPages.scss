@@ -172,50 +172,66 @@
 }
 
 .row_fingerprint_list {
-	display: flex;
-	flex-direction: column;
+	>li {
+		+li {
+			margin-top: 10px;
+		}
+	}
 
-	.tf_item_body {
+	a {
+		display: flex;
+		align-items: center;
 		justify-content: space-between;
 
-		.content {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		border: 1px solid $border-base;
+		border-radius: 8px;
+		overflow: hidden;
 
-			.image {
-				max-width: 48px;
-			}
+		padding: 14px 19px 15px;
+		background: #fff;
 
-			.privacy {
-				.privacy_list {
-					display: flex;
+		&:active {
+			border-color: $default;
+		}
+	}
 
-					li {
-						margin-right: 10px;
-						position: relative;
+	.content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-						&+li {
-							margin-left: 10px;
-						}
+		.image {
+			max-width: 48px;
+		}
+
+		.privacy {
+			.privacy_list {
+				display: flex;
+
+				li {
+					margin-right: 10px;
+					position: relative;
+
+					&+li {
+						margin-left: 10px;
+					}
+
+					&:after {
+						content: '';
+						width: 1px;
+						height: 10px;
+						position: absolute;
+						right: -10px;
+						top: 50%;
+						transform: translateY(-50%);
+						background-color: #dddddd;
+					}
+
+					&:last-child {
+						margin-right: 0;
 
 						&:after {
-							content: '';
-							width: 1px;
-							height: 10px;
-							position: absolute;
-							right: -10px;
-							top: 50%;
-							transform: translateY(-50%);
-							background-color: #dddddd;
-						}
-
-						&:last-child {
-							margin-right: 0;
-
-							&:after {
-								content: none;
-							}
+							content: none;
 						}
 					}
 				}
