@@ -36,6 +36,16 @@
 			$('.btn_view').click(function(){
 				$(this).parents('li').toggleClass('active');
 			});
+
+			// 우체국/다른은행 탭메뉴 활성화
+			$('.account_tab a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
 		});
 	</script>
 </head>
@@ -67,7 +77,7 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="tab_menu_type1 first_section tab_ico tab_btn">
+				<div class="tab_menu_type1 first_section tab_ico account_tab">
 					<ul>
 						<li><a href="#;" class="current" data-tab-tg="sub_tab1">우체국</a></li>
 						<li><a href="#;" data-tab-tg="sub_tab2">다른은행</a></li>

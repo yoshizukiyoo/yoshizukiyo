@@ -23,7 +23,14 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			// 이곳에 정의
+			// 탭메뉴 활성화
+			$('.service_tab a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
 		});
 	</script>
 </head>
@@ -61,7 +68,7 @@
 					</p>
 				</div>
 
-				<div class="tab_btn tab_menu_type1 mt_12">
+				<div class="tab_menu_type1 service_tab mt_12">
 					<ul>
 						<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>SKT이용고객</span></a></li>
 						<li><a href="#;" data-tab-tg="sub_tab2"><span>KT이용고객</span></a></li>
