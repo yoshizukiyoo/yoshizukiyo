@@ -29,7 +29,7 @@ $(function () {
 $(function () {
 	$('.tab_list a').on('click', function (e) {
 		var tg = $(this).attr('href');
-		$(this).parent('li').addClass('on').siblings('li').removeClass('on');
+		$(this).attr('title', '선택됨').parent('li').addClass('on').siblings('li').removeClass('on').children('a').removeAttr('title');
 		if (tg === '#' || tg === '' || tg === '#;') {
 			e.preventDefault();
 		} else if (tg.charAt(0) === '#') {
@@ -40,6 +40,7 @@ $(function () {
 		}
 	});
 	$('.tab_list .on a').each(function () {
+		$(this).attr('title', '선택됨');
 		var tg = $(this).attr('href');
 		if (tg !== '#' && tg !== '#;' && tg.charAt(0) === '#') {
 			$(tg + '.tab_cont').css('display', 'block');
