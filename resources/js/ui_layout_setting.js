@@ -58,12 +58,19 @@ $(function () {
 $(function () {
 	$('.tf_datepicker').wrap('<span class="datepicker"></span>').datepicker({
 		dateFormat: 'yy.mm.dd',
-		showOn: "button",
-		buttonImage: "/resources/img/common/ico_datepicker.png",
 		changeMonth: true,
 		changeYear: true,
-		buttonImageOnly: false,
 		showMonthAfterYear: true,
+		showOn: "button",
+		buttonText: "날짜 선택",
+		buttonImage: "/resources/img/common/ico_datepicker.png",
+		buttonImageOnly: false,
+
+		// 추가 옵션
+		showButtonPanel: false,
+		closeText: "닫기",
+
+		// 한글화
 		prevText: '이전 달',
 		nextText: '다음 달',
 		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
