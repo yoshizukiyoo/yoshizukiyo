@@ -23,6 +23,16 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+
+			// 탭메뉴 활성화
+			$('.question_tab a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
 			$('.qna_list li a').click(function(){
 				var parent = $(this).parent();
 				parent.toggleClass('active');
@@ -71,7 +81,7 @@
 					</p>
 				</div>
 
-				<div class="tab_btn tab_menu_type1 mt_12">
+				<div class="tab_menu_type1 question_tab mt_12">
 					<ul>
 						<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>PC관련</span></a></li>
 						<li><a href="#;" data-tab-tg="sub_tab2"><span>단말기 관련</span></a></li>

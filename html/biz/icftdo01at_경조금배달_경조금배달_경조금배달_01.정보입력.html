@@ -23,7 +23,32 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+			// 레이팝업 경조인사문선택 탭메뉴 활성화
+			$('.card_select a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="card_select_"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
 
+			// 레이팝업 경조인사문 직접입력 탭메뉴 활성화
+			$('.card_write a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="card_write"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
+			// 레이팝업 경조카드 탭메뉴 활성화
+			$('.card_type a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="card_type"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
 		});
 
 		// 자주쓰는주소 등록폼 활성화
@@ -943,15 +968,63 @@
 									<li>경조카드는 선택하신 인사문에 따라 자동 선택되어 배달됩니다.</li>
 								</ul>
 							</div>
-							<div class="tab_menu_type3 sm mt_6">
+							<div class="tab_menu_type3 sm mt_6 card_select">
 								<ul>
-									<li><a href="#;" class="current"><span>결혼</span></a></li>
-									<li><a href="#;"><span>축하</span></a></li>
-									<li><a href="#;"><span>위로</span></a></li>
-									<li><a href="#;"><span>조위</span></a></li>
+									<li><a href="#;" class="current" data-tab-tg="card_select_tab1"><span>결혼</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab2"><span>축하</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab3"><span>위로</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab4"><span>조위</span></a></li>
 								</ul>
 							</div>
-							<div class="mt_4 tab_sub">
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab1">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="greeting_list mt_4">
+									<ul>
+										<li><a href="#;">결혼을 축하하며 복된 가정 이루기 바랍니다.</a></li>
+										<li><a href="#;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</a></li>
+										<li><a href="#;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되는길...</a></li>
+										<li><a href="#;">결혼을 진심으로 축하합니다.</a></li>
+										<li><a href="#;">댁내에 경사 맞으심을 축하하며 해복한 가정 이루시기 바랍니다.</a></li>
+										<li><a href="#;">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab2" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="greeting_list mt_4">
+									<ul>
+										<li><a href="#;">결혼을 축하하며 복된 가정 이루기 바랍니다.</a></li>
+										<li><a href="#;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</a></li>
+										<li><a href="#;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되는길...</a></li>
+										<li><a href="#;">결혼을 진심으로 축하합니다.</a></li>
+										<li><a href="#;">댁내에 경사 맞으심을 축하하며 해복한 가정 이루시기 바랍니다.</a></li>
+										<li><a href="#;">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab3" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="greeting_list mt_4">
+									<ul>
+										<li><a href="#;">결혼을 축하하며 복된 가정 이루기 바랍니다.</a></li>
+										<li><a href="#;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</a></li>
+										<li><a href="#;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되는길...</a></li>
+										<li><a href="#;">결혼을 진심으로 축하합니다.</a></li>
+										<li><a href="#;">댁내에 경사 맞으심을 축하하며 해복한 가정 이루시기 바랍니다.</a></li>
+										<li><a href="#;">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab4" style="display:none;">
 								<div class="popup_search_box">
 									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
 									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
@@ -981,13 +1054,13 @@
 							<h3 class="popup_tit">경조인사문</h3>
 						</div>
 						<div class="popup_body">
-							<div class="tab_menu_type3 sm">
+							<div class="tab_menu_type3 sm card_write">
 								<ul>
-									<li><a href="#;" class="current" data-tab-tg="sub_tab5"><span>직접 입력</span></a></li>
-									<li><a href="#;" data-tab-tg="sub_tab6"><span>경조문구 관리</span></a></li>
+									<li><a href="#;" class="current" data-tab-tg="card_write_tab1"><span>직접 입력</span></a></li>
+									<li><a href="#;" data-tab-tg="card_write_tab2"><span>경조문구 관리</span></a></li>
 								</ul>
 							</div>
-							<div class="tab_sub" data-sub-tab="sub_tab5">
+							<div class="tab_sub" data-sub-tab="card_write_tab1">
 								<div class="popup_box_gray mt_4">
 									<ul class="list list1">
 										<li>경조인사문 입력시 첫 라인의 첫 칸을 띄우지 말고 입력하여 주시기 바랍니다.</li>
@@ -1029,7 +1102,7 @@
 										onclick="closeModal('layer06');">확인</button>
 								</div>
 							</div>
-							<div class="tab_sub" data-sub-tab="sub_tab6" style="display:none;">
+							<div class="tab_sub" data-sub-tab="card_write_tab2" style="display:none;">
 								<div class="tbl_row2 bdr_top_none">
 									<table>
 										<caption class="sr_only">경조문구 관리</caption>
@@ -1158,33 +1231,33 @@
 							<h3 class="popup_tit">경조카드</h3>
 						</div>
 						<div class="popup_body">
-							<div class="tab_menu_type3 sm">
+							<div class="tab_menu_type3 sm card_type">
 								<ul>
-									<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>결혼</span></a></li>
-									<li><a href="#;" data-tab-tg="sub_tab2"><span>축하</span></a></li>
-									<li><a href="#;" data-tab-tg="sub_tab3"><span>위로</span></a></li>
-									<li><a href="#;" data-tab-tg="sub_tab4"><span>조위</span></a></li>
+									<li><a href="#;" class="current" data-tab-tg="card_type_tab1"><span>결혼</span></a></li>
+									<li><a href="#;" data-tab-tg="card_type_tab2"><span>축하</span></a></li>
+									<li><a href="#;" data-tab-tg="card_type_tab3"><span>위로</span></a></li>
+									<li><a href="#;" data-tab-tg="card_type_tab4"><span>조위</span></a></li>
 								</ul>
 							</div>
-							<div class="mt_4 tab_sub" data-sub-tab="sub_tab1">
+							<div class="mt_4 tab_sub" data-sub-tab="card_type_tab1">
 								<div class="greeting_card bg01">
 									<strong>결혼축하카드</strong>
 									<p>새 식구 맞으심을 축하하며 화목한 가정<br> 이루시기를 기원합니다.</p>
 								</div>
 							</div>
-							<div class="mt_4 tab_sub" data-sub-tab="sub_tab2" style="display:none;">
+							<div class="mt_4 tab_sub" data-sub-tab="card_type_tab2" style="display:none;">
 								<div class="greeting_card bg02">
 									<strong>축하카드</strong>
 									<p>두 사람의 소중한 결합을 축하하며 더없이<br>행복한 부부 되시기 바랍니다.</p>
 								</div>
 							</div>
-							<div class="mt_4 tab_sub" data-sub-tab="sub_tab3" style="display:none;">
+							<div class="mt_4 tab_sub" data-sub-tab="card_type_tab3" style="display:none;">
 								<div class="greeting_card bg03">
 									<strong>위로카드</strong>
 									<p>두 사람의 소중한 결합을 축하하며 더없이<br>행복한 부부 되시기 바랍니다.</p>
 								</div>
 							</div>
-							<div class="mt_4 tab_sub" data-sub-tab="sub_tab4" style="display:none;">
+							<div class="mt_4 tab_sub" data-sub-tab="card_type_tab4" style="display:none;">
 								<div class="greeting_card bg04">
 									<strong>조의카드</strong>
 									<p>두 사람의 소중한 결합을 축하하며 더없이<br>행복한 부부 되시기 바랍니다.</p>
@@ -1481,7 +1554,7 @@
 							<div class="paging">
 								<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
 								<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
-								<strong>1</strong>
+								<strong title="현재 페이지">1</strong>
 								<a href="#">2</a>
 								<a href="#">3</a>
 								<a href="#">4</a>

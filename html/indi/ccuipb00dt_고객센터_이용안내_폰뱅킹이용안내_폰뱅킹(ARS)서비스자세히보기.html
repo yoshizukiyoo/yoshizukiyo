@@ -23,7 +23,14 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			//
+			// 탭메뉴 활성화
+			$('.ars_service_tab a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
 		})
 
 	</script>
@@ -223,7 +230,7 @@
 
 				<div class="section">
 					<h3 class="tit1">제공서비스</h3>
-					<div class="tab_menu_type1 tab_btn">
+					<div class="tab_menu_type1 ars_service_tab">
 						<ul>
 							<li><a href="#;" class="current" data-tab-tg="sub_tab1">예금서비스</a></li>
 							<li><a href="#;" data-tab-tg="sub_tab2">보험서비스</a></li>
