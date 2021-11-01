@@ -24,14 +24,19 @@
 	<script>
 		$(document).ready(function () {
 			// 이곳에 정의
-			$('.faq_list .btn').click(function () {
-				var tit = $(this).attr('title');
-				$(this).parents('.faq_list li').toggleClass('active');
-				if (tit == '그룹 접기') {
-					$(this).attr('title', '그룹 펼치기');
-				} else if (tit == '그룹 펼치기') {
-					$(this).attr('title', '그룹 접기');
+			$('.faq_list .box_list').click(function () {
+				var idx = $(this).closest("li").index();
+
+				if (!$(this).closest("li").hasClass("active")) {
+					$(".faq_list li").removeClass('active');
+					$(".faq_list li").eq(idx).addClass('active');
+					$(this).find(".btn").attr('title', '그룹 펼치기');
+
+				} else {
+					$(".faq_list li").removeClass('active');
+					$(this).find(".btn").attr('title', '그룹 접기');
 				}
+
 			});
 		});
 	</script>
