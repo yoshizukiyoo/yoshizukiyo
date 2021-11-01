@@ -1,0 +1,168 @@
+//var
+$orange: #ff883a;
+
+//버튼
+.btn{
+	&.btn_full{
+		width: 100%;
+	}
+}
+
+//박스
+.box{
+	position: relative;
+	.score_mark{
+		display: flex;
+		width: 45px;
+		height: 45px;
+		padding: 13px;
+		border-radius: 100%;
+		background-color: $primary;
+
+		justify-content: center;
+		align-items: flex-end;
+
+		line-height: 1;
+		font-size: 12px;
+
+		position: absolute;
+		right: 19px;
+		top: 20px;
+		strong{
+			font-size: 20px;
+			font-weight: bold;
+		}
+	}
+}
+
+.box_item{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	text-align: center;
+	flex-grow: 0;
+
+	>li{
+		display: flex;
+		padding: 13px;
+		border-style: solid;
+		border-width: 2px;
+		border-color: #f2f2f2;
+		border-radius: 14px;
+		background-color: #f2f2f2;
+		position: relative;
+
+		>span{
+			width: 100%;
+			height: 22px;
+			align-self: flex-end;
+
+			font-size: 14px;
+			font-weight: 500;
+		}
+
+		&.active {
+			background-color: #fff;
+			border-color: $primary;
+		}
+		&::before{
+			content: "";
+			position: absolute;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+	
+	&.item_col_3{
+		>li{
+			width: calc(100% / 3 - 20px / 3);
+			padding-top: calc(100% / 3 - 20px / 3 - 39px);
+			&:nth-child(n+4){
+				margin-top: calc(20px / 3);
+			}
+		}
+	}
+}
+//etc
+.security_level{
+	display: flex;
+
+	>span{
+		width: 100%;
+		padding-top: 30px;
+		text-align: center;
+		font-size: 13px;
+		font-weight: normal;
+		position: relative;
+		&::before{
+			content: "";
+			width: 100%;
+			height: 6px;
+			position: absolute;
+			left: 0;
+			top: 20px;
+		}
+		&.current{
+			&::after{
+				content: "";
+				width: 25px;
+				height: 32px;
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				background-size: cover;
+				position: absolute;
+				left: 50%;
+				top: 0;
+				transform: translateX(-50%);
+			}
+		}
+		&:not(:first-child){
+			margin-left: 1px;
+		}
+		&:first-child{
+			&::before{
+				border-radius: 2px 0 0 2px;
+				background-color: $valid;
+			}
+			&::after{
+				background-image: url('/resources/img/common/ico_round_marker_valid.png');
+			}
+		}
+		&:nth-child(2){
+			&::before{
+				background-color: $blue;
+			}
+			&::after{
+				background-image: url('/resources/img/common/ico_round_marker_blue.png');
+			}
+		}
+		&:last-child{
+			&::before{
+				border-radius: 0 2px 2px 0;
+				background-color: $orange;
+			}
+			&::after{
+				background-image: url('/resources/img/common/ico_round_marker_secondary.png');
+			}
+		}
+	}
+}
+
+.security_score{
+	display: flex;
+	justify-content: center;
+	>span{
+		width: 100%;
+		font-size: 16px;
+		>em{
+			font-style: normal;
+			font-size: 18px;
+		}
+	}
+}
+
+.security_service{
+	>li{
+
+	}
+}
