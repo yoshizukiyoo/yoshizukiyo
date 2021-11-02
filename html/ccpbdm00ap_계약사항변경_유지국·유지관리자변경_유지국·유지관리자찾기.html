@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.tf_search_txt.areas button').click(function () {
+				$(".search_result").addClass("on").children('.area').show();
+			});
+
+			$('.search_result a').click(function () {
+				$('.area').hide();
+				$('.manage').siblings('.pop_tit2').css('display', 'block');
+				$('.manage').show().siblings('h3').text('유지관리자 선택');
+			});
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="popup_tit">유지국&middot;유지관리자 찾기</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body">
+			<div class="container search_wrap pt_1 pb_4">
+				<!-- s: 우체국 지역명 검색 -->
+				<h2 class="pop_tit2 mt_0"><label for="areaSearch">우체국/지역명</h2>
+				<div class="tf_search_txt areas">
+					<input type="text" id="areaSearch" placeholder="우체국/지역명을 입력하세요.">
+					<button type="submit"><span class="sr_only">검색</span></button>
+				</div>
+				<!-- e: 우체국 지역명 검색 -->
+
+				<!-- s: 유지관리자명 -->
+				<h2 class="pop_tit2"><label for="areaSearch">유지관리자명</h2>
+				<div class="tf_search_txt manage">
+					<input type="text" placeholder="유지관리자명을 입력하세요">
+					<button type="submit"><span class="sr_only">검색</span></button>
+				</div>
+				<!-- e: 유지관리자명 -->
+				<p class="mt_3">
+					유지국으로 변경할 우체국을 선택하시면 해당 우체국의
+					유지관리 목록을 확인 할 수 있습니다.
+				</p>
+
+				<!-- s: 유지국 -->
+				<div class="search_result">
+					<h3 class="pop_tit3">유지국 선택</h3>
+					<ul class="area">
+						<li>
+							<a href="#">
+								<dl>
+									<dt>나주금천우체국</dt>
+									<dd>
+										전라남도 나주시 금천면 금영로 923 <br>
+										(금천면, 나주금천우체국)
+									</dd>
+								</dl>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<dl>
+									<dt>나주성북동우체국</dt>
+									<dd>
+										전라남도 나주시 금천면 금영로 923 <br>
+										(금천면, 나주금천우체국)
+									</dd>
+								</dl>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<dl>
+									<dt>나주우체국</dt>
+									<dd>
+										전라남도 나주시 금천면 금영로 923 <br>
+										(금천면, 나주금천우체국)
+									</dd>
+								</dl>
+							</a>
+						</li>
+					</ul>
+
+					<ul class="manage">
+						<li>
+							<a href="#">
+								<em>01006152</em>
+								<strong>영눈면</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<em>01006152</em>
+								<strong>무아말</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<em>01006152</em>
+								<strong>장나조</strong>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<!-- e: 유지국 -->
+
+			</div>
+
+		</div>
+		<div class="popup_footer">
+			<div class="btn_group btn_group_flex">
+				<!-- <button type="button" class="btn btn_lg btn_default">취소</button> -->
+				<button type="button" class="btn btn_lg btn_primary">확인</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>
