@@ -14,6 +14,18 @@
 	&.bg02 {
 		background-image:url(#{$url-img}/content/bg_easy_certi02.png);
 	}
+
+	&.bg03 {
+		background-image:url(#{$url-img}/content/bg_easy_certi03.png);
+	}
+
+	&.bg04 {
+		background-image:url(#{$url-img}/content/bg_easy_certi04.png);
+	}
+
+	&.bg05 {
+		background-image:url(#{$url-img}/content/bg_certi_issued01.png);
+	}
 }
 
 .section {
@@ -46,6 +58,10 @@
 
 			&.on {
 				background-image:url(#{$url-img}/content/ico_pass01_on.png);
+			}
+
+			&.primary {
+				background-image:url(#{$url-img}/content/ico_pass01_primary.png);
 			}
 		}
 
@@ -117,6 +133,10 @@
 .add_certi_box {
 	.add_list {
 		display: flex;
+
+		a {
+			flex: 1 1 auto;
+		}
 	}
 
 	.box {
@@ -131,6 +151,381 @@
 			background:url(#{$url-img}/content/ico_check.png) 0 0 no-repeat;
 			background-size: 18px;
 			margin-right: 1px;
+		}
+	}
+}
+
+.password_masking.gray {
+	i {
+		background: #999;
+	}
+}
+
+.caution_box {
+	background:url(#{$url-img}/content/ico_caution.png) 50% 0 no-repeat;
+	background-size: 48px;
+	padding-top: 60px;
+
+	strong {
+		display: block;
+		line-height: 1;
+		text-align: center;
+		font-size: 22px;
+		font-weight: 500;
+	}
+}
+
+.num_list {
+	>li {
+		position: relative;
+		padding-left: 13px;
+		counter-increment: list;
+
+		&:before {
+			content: counter(list) ".";
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&:nth-child(n+10) {
+			padding-left: 25px;
+		}
+	}
+}
+
+.double_box {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+
+	.top {
+		padding: 20px;
+		font-weight: 400;
+		font-size: 16px;
+
+		&+.btm {
+			border-top: 1px solid #ddd;
+		}
+	}
+
+	.btm {
+		padding: 20px;
+
+		>div {
+			display: flex;
+
+			&+div {
+				margin-top: 5px;
+			}
+
+			.l {
+				margin-right: auto;
+				color: #555;
+			}
+
+			.r {
+				margin-left: auto;
+			}
+		}
+	}
+
+	&.terms_box {
+		.top {
+			padding: 24px 16px;
+
+			.check_item>input[type=checkbox]+label {
+				background-position: 0 3px;
+			}
+		}
+
+		.btm {
+			padding: 22px 20px 22px 24px;
+
+			>div {
+				&+div {
+					margin-top: 6px;
+				}
+
+				.r {
+					.btn_more {
+						display: block;
+						padding-right: 13px;
+						background:url(#{$url-img}/content/ico_arr_primary.png) 100% 50% no-repeat;
+						background-size: 6px;
+					}
+				}
+			}
+		}
+	}
+
+	&.toggle {
+		.top {
+			padding: 0;
+
+			a {
+				display: block;
+				padding: 20px 50px 20px 20px;
+				background-repeat: no-repeat;
+				background-position: calc(100% - 19px) 50%;
+				background-image:url(#{$url-img}/content/ico_toggle_down.png);
+				background-size: 21px;
+			}
+
+			&.active {
+				a {
+					background-image:url(#{$url-img}/content/ico_toggle_up.png);
+				}
+
+				+.btm {
+					display: block;
+				}
+			}
+		}
+
+		.btm {
+			display: none;
+		}
+	}
+}
+
+.modal_full {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+
+	.popup_inner {
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		height: 100%;
+	}
+
+	.popup_header {
+		flex: 0 0 auto;
+	}
+
+	.popup_body {
+		flex: 1 1 auto;
+		max-height: 100%;
+		overflow-y: auto;
+	}
+
+	.popup_footer {
+		flex: 0 0 auto;
+	}
+
+}
+
+.modal_popup.popup {
+	flex-direction: column;
+	align-items: normal;
+
+	.popup_footer {
+		padding-top: 20px;
+	}
+}
+
+.tf_double {
+	display: flex;
+
+	>div {
+		position: relative;
+		overflow: visible;
+		flex: 1 1 auto;
+
+		&:not(:first-child):before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: -15px;
+			width: 8px;
+			height: 1px;
+			background: #ddd;
+		}
+
+		&+div {
+			margin-left: 20px;
+		}
+	}
+}
+
+.security_box {
+	display: flex;
+
+	>div {
+		border-radius: 8px;
+		overflow: hidden;
+		text-align: center;
+
+		&:not(:first-child) {
+			margin-left: 10px;
+		}
+
+		flex: 1 1 auto;
+
+		>strong {
+			display: block;
+			background: #fdc61c;
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 35px;
+		}
+
+		&:first-child {
+			.con:after {
+				content: '';
+				margin-left: 7px;
+			}
+		}
+
+		&:last-child {
+			.con:before {
+				content: '';
+				margin-right: 7px;
+			}
+		}
+
+		.con {
+			background: #f6f6f6;
+			border: 1px solid #ddd;
+			border-radius: 0 0 8px 8px;
+			padding: 10px 10px 14px;
+
+			&:before,
+			&:after {
+				display: inline-block;
+				width: 30px;
+				height: 10px;
+				background:url(#{$url-img}/content/ico_dot.png) 0 0 no-repeat;
+				background-size: 30px;
+			}
+
+			>* {
+				&:not(:first-child) {
+					margin-left: 10px;
+				}
+			}
+
+			input {
+				width: 50px;
+				height: 30px;
+				font-size: 20px;
+				font-weight: 600;
+				border: 0;
+				vertical-align: middle;
+				text-align: center;
+			}
+
+			i {
+				display: inline-block;
+				vertical-align: middle;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: #333;
+			}
+		}
+	}
+}
+
+.otp_box {
+	border: 2px solid #fdc61c;
+	border-radius: 8px;
+	background: #f6f6f6;
+	text-align: center;
+
+	a {
+		display: block;
+		padding: 20px;
+	}
+
+	i {
+		display: inline-block;
+		vertical-align: middle;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background: #ddd;
+
+		&:not(:first-child) {
+			margin-left: 15px;
+		}
+
+		&.on {
+			background: #333;
+		}
+	}
+}
+
+.certi_info_box {
+	padding-top: 39vw;
+	background-repeat: no-repeat;
+	background-size: 100% 33.5vw;
+	background-position: 0 0;
+
+	&.bg01 {
+		background-image:url(#{$url-img}/content/img_certi01.png);
+	}
+}
+
+.certi_list {
+	>li {
+		border: 1px solid #ddd;
+		border-radius: 8px;
+
+		&:not(:first-child) {
+			margin-top: 10px;
+		}
+
+		a {
+			position: relative;
+			display: block;
+			padding: 20px 25px 20px 84px;
+			background:url(#{$url-img}/content/bg_certi_list.png) 19px 22px no-repeat;
+			background-size: 48px;
+
+			&:before {
+				content: '';
+				position: absolute;
+				right: 19px;
+				top: 50%;
+				margin-top: -5px;
+				width: 5px;
+				height: 10px;
+				background:url(#{$url-img}/content/ico_arr_black.png) 0 0 no-repeat;
+				background-size: 5px;
+			}
+
+			strong {
+				display: block;
+				line-height: 1;
+				font-size: 16px;
+				font-weight: 500;
+				margin-bottom: 5px;
+			}
+
+			>div {
+
+				span {
+					position: relative;
+					font-size: 13px;
+					color: #555;
+
+					&:not(:first-child) {
+						margin-left: 22px;
+
+						&:before {
+							content: '';
+							position: absolute;
+							left: -11px;
+							top: 6px;
+							width: 1px;
+							height: 10px;
+							background: #ddd;
+						}
+					}
+				}
+			}
 		}
 	}
 }
