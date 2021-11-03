@@ -1,6 +1,14 @@
 //var
 $orange: #ff883a;
 
+@mixin box_default($p_h : 17px, $p_v : 19px) {
+	border: 1px solid transparent;
+	border-radius: 8px;
+	padding: $p_h $p_v;
+	background-color: #fff;
+
+	border-color: $border-base;
+}
 
 //아이콘
 @include ico('check_on', 20px, 20px);
@@ -71,6 +79,12 @@ $orange: #ff883a;
 			background-size: cover;
 		}
 	}
+	&.list_number{
+		>li{
+			list-style: decimal;
+			list-style-position: inside;
+		}	
+	}
 }
 
 //타이틀
@@ -107,6 +121,14 @@ h3.tit2{
 		}
 		&+*{
 			@include clearfix;
+		}
+	}
+}
+
+.double_box{
+	.btm{
+		>p{
+			color:#555;
 		}
 	}
 }
@@ -162,6 +184,7 @@ h3.tit2{
 		flex-basis: 50% !important;
 	}
 }
+
 //etc
 .security_level{
 	display: flex;
