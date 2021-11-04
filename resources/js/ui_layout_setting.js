@@ -7,10 +7,17 @@
 
 // 레이아웃 공통 영역 로드
 $(function () {
+	var headerInc = $('.header').data('inc');
 	var pageTitle = $('.header').data('page-title');
-	$('.header').load('/html/_inc-header.html .header > *', function () {
-		$('.tit_page').text(pageTitle);
-	});
+	if (headerInc == undefined) {
+		$('.header').load('/html/_inc_header.html .header > *', function () {
+			$('.tit_page').text(pageTitle);
+		});
+	} else {
+		$('.header').load(headerInc + ' .header > *', function () {
+			$('.tit_page').text(pageTitle);
+		});
+	}
 	$('.common_layers').load('/html/_inc_common_layers.html .common_layers > *', function () {
 		inputStatus();
 	});

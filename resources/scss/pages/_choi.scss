@@ -13,6 +13,12 @@ $orange: #ff883a;
 //아이콘
 @include ico('check_on', 20px, 20px);
 
+.ico{
+	&.ico_notice{
+		margin-top: -2px;
+	}
+}
+
 //버튼
 .btn{
 	&.btn_full{
@@ -22,16 +28,18 @@ $orange: #ff883a;
 
 //리스트
 .list{
-	&.spacing_mt_2{
-		>li:not(:first-child){
-			margin-top: 10px;
+	//리스트 간격 프리셋
+	$end : 5;
+	@for $i from 1 to $end + 1{
+
+		&.spacing_mt_#{$i}{
+			>li:not(:first-child){
+				margin-top: $i * 5px;
+			}
 		}
 	}
-	&.spacing_mt_5{
-		>li:not(:first-child){
-			margin-top: 25px;
-		}
-	}
+
+	//리스트 타입
 	&.list_reference{
 		>li{
 			padding-left: 16px;
@@ -44,45 +52,10 @@ $orange: #ff883a;
 			}
 		}
 	}
-	&.list_status{
-		display: inline-flex;
-		width: 100%;
-		flex-direction: column;
-		>li{
-			display: flex;
-			justify-content: space-between;
-			>span{
-				line-height: 2;
-			}
-			.cate{
-				text-align: left;
-				margin-right: auto;
-				color:#555;
-			}
-			.val{
-				text-align: right;
-				margin-left: auto;
-			}
-		}
-		&+.list_status_btn{
-			display: inline-flex;
-			width: 5px;
-			height: 9px;
-			margin-left: 15px;
-			text-indent: -9999px;
-			justify-content: center;
-			align-self: center;
-
-			background-image: url(#{$url-img}/common/ico_chevron_right_sm.png);
-			background-position: center center;
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-	}
 	&.list_number{
+		padding-left: 14px;
 		>li{
 			list-style: decimal;
-			list-style-position: inside;
 		}	
 	}
 }
@@ -129,6 +102,21 @@ h3.tit2{
 	.btm{
 		>p{
 			color:#555;
+		}
+		>div{
+			>div{
+				display: inline-flex;
+				align-content: center;
+			}
+		}
+		&.btm_link{
+			display: block;
+			padding-right: 40px;
+
+			background-image: url(#{$url-img}/common/ico_chevron_right_sm.png);
+			background-position: right 20px center;
+			background-repeat: no-repeat;
+			background-size: 5px 9px;
 		}
 	}
 }
@@ -312,14 +300,6 @@ h3.tit2{
 			&.on{
 				background-image: url(#{$url-img}/content/bg_security_serv06_on.png);
 			}
-		}
-	}
-}
-
-.txt_guide{
-	.ico{
-		&.ico_notice{
-			margin-top: -2px;
 		}
 	}
 }
