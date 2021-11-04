@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="자동이체관리"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container">
+
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">개인정보처리동의</span></li>
+					<li><span class="num">2</span><span class="txt">보험금청구서작성</span></li>
+					<li><span class="num">3</span><span class="txt">청구신청 완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<div class="clfx">
+
+					<h2 class="f_l tit1">
+						개인정보처리동의
+					</h2>
+
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+							<i class="ico ico_help_sm"></i>
+							<span>알려드립니다</span>
+						</a>
+					</div>
+				</div>
+
+				<!-- s : 약관 전체동의 하기 -->
+				<div class="tf_item">
+					<div class="tf_item_body">
+						<span class="check_item txt_lg">
+							<input type="checkbox" id="lb_agreement">
+							<label for="lb_agreement">
+								<strong class="txt_lg">
+									약관 전체동의 하기
+								</strong>
+							</label>
+						</span>
+					</div>
+
+					<ul class="chk_list">
+						<li>
+							<span class="check_item simple">
+								<input type="checkbox" id="agree_chk1_1">
+								<label for="agree_chk1_1">수집이용에 관한 사용 동의하기[필수]</label>
+							</span>
+						</li>
+						<li>
+							<span class="check_item simple">
+								<input type="checkbox" id="agree_chk1_2">
+								<label for="agree_chk1_2">제공에 관한 사항[필수]</label>
+							</span>
+						</li>
+						<li>
+							<span class="check_item simple">
+								<input type="checkbox" id="agree_chk1_3">
+								<label for="agree_chk1_3">조회에 관한 사항[필수]</label>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<!-- e : 약관 전체동의 하기 -->
+
+				<!-- s : 신청 전 확인사항 -->
+				<div class="tf_item mt_4">
+
+					<div class="tf_item_body">
+						<strong class="txt_lg">
+							신청 전 확인사항
+						</strong>
+					</div>
+
+					<ul class="chk_list blit_none">
+						<li>
+							<span class="check_item simple">
+								<input type="checkbox" id="agree_chk2_1">
+								<label for="agree_chk2_1">청구서 합산금액이 300만원 이하입니까? “300만원 이상”일 경우 우체국 방문해주시기 바랍니다.
+								</label>
+							</span>
+						</li>
+						<li>
+							<span class="check_item simple">
+								<input type="checkbox" id="agree_chk2_2">
+								<label for="agree_chk2_2">본인이 피보험자와 수익자 모두 해당하십니까?
+								</label>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<!-- e : 신청 전 확인사항 -->
+
+			</div>
+
+		</div>
+
+		<!-- s: 하단 고정 영역 -->
+		<div class="bottom_fixed_area">
+			<div class="btn_group btn_group_flex btn_group_r">
+				<!-- 비활성화시 .btn_disabled 추가 -->
+				<a href="#;" class="btn btn_xl btn_primary">
+					<span>동의하기</span>
+				</a>
+			</div>
+		</div>
+		<!-- e: 하단 고정 영역 -->
+
+		<!-- s: 알려드립니다 레이어 팝업 -->
+		<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="popup_tit">알려드립니다.</h2>
+				</div>
+				<div class="popup_body">
+					<div class="container">
+						<ul class="list list1">
+							<li>
+								보험금청구는 300만원 이하에 대해서만 청구 하실 수 있습니다. 300만원이 초과된 경우에는 전국 우체국금융 창구로 방문해주시기 바랍니다.
+							</li>
+							<li>
+								보험금청구는 고객이 피보험자이면서 수익자인 경우만 청구하실 수 있습니다. 다른 경우에는 보험금청구가 불가능합니다.
+							</li>
+							<li>
+								청구사유가 사망인 경우 우체국금융창구로 방문해주시기 바랍니다.
+							</li>
+							<li>
+								보험금 청구에 관한 서류에 고의로 사실과 다른 것을 기재하거나 그 서류 또는 증거를 위·변조하는 행위는 명백한 보험사기이며, 보험금 지급이 거절됩니다.
+							</li>
+							<li>
+								보험사기(허위입원, 고의사고, 사고조작, 피해과장 등)는 범죄이며, 보험사기방지특별법에 의거 10년 이하의 징역이나 5천만원 이하의 벌금에 처해질 수 있습니다.
+							</li>
+							<li>
+								보험금 청구와 관련하여 아래의 설명을 듣고, [별지]보험금 청구를 위한 개인(신용) 정보처리 동의서에 대한 내용을 확인 후 이에 동의합니다.
+
+								<ul class="list list3">
+									<li>
+										청구하신 보험금은 지급사유가 인정될 경우 보험금청구서류를 접수한 날로부터 3영업일 이내(단, 지급사유의 조사나 확인이 필요한 경우에는 10영업일 이내)에 보험금을 지급하여
+										드리며, 보험금 심사·지급이 지연되는 경우에는 해당 상품의 약관에 따라 지연이자를 더하여 지급합니다.
+									</li>
+									<li>
+										보험금 심사과정에서 필요한 경우 추가서류를 보완 요청할 수 있습니다.
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: 알려드립니다 레이어 팝업 -->
+
+		<!-- s: 공통 레이어 로딩 -->
+		<div class="common_layers"></div>
+		<!-- e: 공통 레이어 로딩 -->
+
+		<!-- e: 본문 -->
+	</div>
+	</div>
+</body>
+
+</html>
