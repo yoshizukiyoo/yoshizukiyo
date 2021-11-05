@@ -44,10 +44,15 @@
 					}
 				});
 
-				// PASS 이용약관 아코디언
+				// PASS 이용약관 아코디언 박스
 				$('.agree_check a').on('click', function(){
-						$(this).parent().toggleClass('agree_open');
-					});
+					$(this).parent().toggleClass('agree_open');
+				});
+
+				// 휴대폰인증 약관 아코디언 박스
+				$('.agree_box2 .ag_list a').on('click', function(){
+					$(this).toggleClass('open');
+				});
 		});
 
 		// 안내 탭버튼 선택시 인증안내 bottom sheet 실행
@@ -113,7 +118,7 @@
 							<a href="#;" class="btn_number" onclick="openModal('indi_keypad', this);">개인인증번호</a>
 						</li>
 						<li>
-							<a href="#;" class="btn_pass">PASS 인증</a>
+							<a href="#;" class="btn_pass" onclick="openModal('pass_certi_step1', this);">PASS 인증</a>
 						</li>
 						<li>
 							<a href="#;" class="btn_kakao btn_disabled">카카오 인증</a>
@@ -205,7 +210,7 @@
 									</p>
 								</div>
 								<div class="btn_group btn_group_flex">
-									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleFull');">확인</button>
+									<a href="#;" class="btn btn_lg btn_primary">앱인증</a>
 								</div>
 							</div>
 							<!-- e: 앱 인증안내 -->
@@ -487,8 +492,8 @@
 								</div>
 							</div>
 							<p class="mt_5"><strong class="txt_medium">PASS 인증은 이용약관 동의가 필요합니다.</strong></p>
-							<div class="agree_wrap mt_3">
-								<div class="agree_box">
+							<div class="agree_box1 mt_3">
+								<div class="agree_list">
 									<div class="agree_check agree_open">
 										<span class="check_item txt_lg">
 											<input type="checkbox" id="lb_agreement" checked>
@@ -510,7 +515,7 @@
 								</p>
 							</div>
 							<div class="btn_group mt_10">
-								<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('indi_keypad');">
+								<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('pass_certi_step1');">
 									<span>다른 인증 방법 선택</span>
 								</a>
 							</div>
@@ -554,7 +559,7 @@
 								</p>
 							</div>
 							<div class="btn_group mt_10">
-								<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('indi_keypad');">
+								<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('pass_certi_step2');">
 									<span>다른 인증 방법 선택</span>
 								</a>
 							</div>
@@ -606,6 +611,108 @@
 				</div>
 			</div>
 			<!-- e: PASS 인증 로그인 추가인증 bottom sheet -->
+
+			<!-- s: 휴대폰인증 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="phone_certi">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<strong class="txt_xl txt_c d_b">휴대폰인증을 진행해 주세요.</strong>
+							<div class="agree_box2 mt_6">
+								<div class="ag_top">
+									<div class="tf_item_body">
+										<span class="check_item txt_lg">
+											<input type="checkbox" id="lb_agreement_y">
+											<label for="lb_agreement_y">통신사 약관에 모두 동의[필수]</label>
+										</span>
+									</div>
+								</div>
+								<div class="ag_cnt">
+									<ul class="ag_list">
+										<li>
+											<a href="#n">개인정보이용동의</a>
+											<div>
+												<p><strong>개인정보이용동의</strong></p>
+												<p>
+													개인정보이용동의 내용입니다. 
+												</p>
+											</div>
+										</li>
+										<li>
+											<a href="#n">고유식별정보 처리 동의</a>
+											<div>
+												<p><strong>고유식별정보 처리 동의</strong></p>
+												<p>
+													고유식별정보 처리 동의 내용입니다. 
+												</p>
+											</div>
+										</li>
+										<li>
+											<a href="#n">서비스이용약관 동의</a>
+											<div>
+												<p><strong>나이스신용평가정보</strong></p>
+												<p>
+													서비스이용약관 동의 내용입니다. 
+												</p>
+											</div>
+										</li>
+										<li>
+											<a href="#n">통신사 이용약관 동의</a>
+											<div>
+												<p><strong>나이스신용평가정보</strong></p>
+												<p>
+													통신사 이용약관 동의 내용입니다. 
+												</p>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="tf_item mt_2 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">이름 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_tf_1_2" class="tf" value="홍길동" placeholder="이름 입력" required>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">생년월일 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_tf_1_2" class="tf" value="1987.04.02" placeholder="생년월일 입력" required>
+									</div>
+								</div>
+							</div>
+							<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">이동통신사 <span class="req">필수항목</span></span>
+										<p class="tf">통신사선택</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('phone_certi');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 휴대폰인증 bottom sheet -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
 
 			<!-- e: 본문 -->
 		</div>
