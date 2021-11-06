@@ -9,11 +9,11 @@
 $(function () {
 	var headerInc = $('.header').data('inc');
 	var pageTitle = $('.header').data('page-title');
-	if (headerInc == undefined && headerInc != undefined) {
+	if (headerInc == undefined && pageTitle != undefined) {
 		$('.header').load('/html/_inc_header.html .header > *', function () {
 			$('.tit_page').html(pageTitle);
 		});
-	} else if (headerInc != undefined) {
+	} else if (pageTitle != undefined) {
 		$('.header').load(headerInc + ' .header > *', function () {
 			$('.tit_page').html(pageTitle);
 		});
