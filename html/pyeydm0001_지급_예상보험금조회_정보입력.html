@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".billing_list > div h3").click(function () {
+				$(this).toggleClass("on");
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="예상보험금조회"></header>
+		<div id="content">
+
+			<div class="container">
+
+				<div class="clfx">
+					<h2 class="tit1 f_l ">대상자 선택</h2>
+
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+							<i class="ico ico_help_sm"></i>
+							<span>알려드립니다</span>
+						</a>
+					</div>
+				</div>
+				<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">조회자 선택</span>
+							<p class="tf">단차차(피보험자) 1987. 05. 05</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+
+				<div class="section">
+					<h2 class="tit1">청구 유형</h2>
+
+					<div class="billing_type">
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type1" checked>
+							<label for="billing_type1">골절</label>
+						</span>
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type2" checked>
+							<label for="billing_type2">깁스</label>
+						</span>
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type3">
+							<label for="billing_type3">입원</label>
+						</span>
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type4">
+							<label for="billing_type4">통원</label>
+						</span>
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type5">
+							<label for="billing_type5">수술</label>
+						</span>
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type6">
+							<label for="billing_type6">진단</label>
+						</span>
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type7">
+							<label for="billing_type7">장해</label>
+						</span>
+						<span class="check_item">
+							<input type="checkbox" name="billing_type" id="billing_type8">
+							<label for="billing_type8">사망</label>
+						</span>
+					</div>
+
+					<div class="billing_list">
+						<div>
+							<h3 class="tit2" data-toggle-btn="billing1">골절</h3>
+
+							<div class="content" data-toggle-content="billing1">
+
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">사고일시 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="예)20210809" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="tf_item ">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">지급사유 발생일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="예)20210809" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+
+								<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body search">
+										<div class="input_area">
+											<span class="lab">질병코드 <span class="req">필수항목</span></span>
+											<p class="tf">질병코드를 선택해 주세요.</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_search_gray"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_1">특정사고원인</label>
+											<input type="text" id="lb_tf_1_1" class="tf" value="해당없음">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<h3 class="tit2" data-toggle-btn="billing2">깁스</h3>
+
+							<div class="content" data-toggle-content="billing2">
+
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">사고일시 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="예)20210809" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="tf_item ">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">지급사유 발생일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="예)20210809" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+
+								<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body search">
+										<div class="input_area">
+											<span class="lab">질병코드 <span class="req">필수항목</span></span>
+											<p class="tf">질병코드를 선택해 주세요.</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_search_gray"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_1">특정사고원인</label>
+											<input type="text" id="lb_tf_1_1" class="tf" value="해당없음">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>예상보험금 조회</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 영역 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>
+									단체 계약을 제외한 계약이 현재 유지중일 경우 계약자/피보험자/수익자에 한해서 이용이 가능합니다
+								<li>
+									현재 유지중인 정액보험 계약건에 대해 사망/장해/진단/입원/수술/통원/골절/깁스에 한해서 확인 가능합니다
+								</li>
+								<li>
+									제휴/단체계약 및 일부보험(치아보험, 요양보험, 치매진단, 항앙방사선 및 약물치료)등에 대해서는 본 서비스가 불가능할 수 있습니다.
+								</li>
+								<li>
+									실제 지급되는 보험금은 청구 후 심사과정을 거쳐 최종 결정되며 조회되는 예상보험금과 다를 수 있습니다.
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 영역 -->
+
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+		</div>
+	</div>
+</body>
+
+</html>
