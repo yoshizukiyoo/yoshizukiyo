@@ -32,23 +32,47 @@
 			visibility: hidden;
 
 			left: -23px;
-			box-shadow: 5px 0 15px rgba(0, 0, 0, .25);
+			box-shadow: 5px 0 15px 5px rgba(255, 255, 255, 1);
 		}
 
 		&:after {
 			right: -23px;
-			box-shadow: -5px 0 15px rgba(0, 0, 0, .25);
+			box-shadow: -5px 0 15px 5px rgba(255, 255, 255, 1);
+		}
+
+		>.ico {
+			content: '';
+			position: absolute;
+			z-index: 11;
+			top: 50%;
+			margin-top: -9px;
+			transition-duration: .3s;
+		}
+
+		.ico_chevron_primary_bold_left {
+			opacity: 0;
+			visibility: hidden;
+			left: 10px;
+		}
+
+		.ico_chevron_primary_bold_right {
+			right: 10px;
+			background-image: url(#{$url-img-common}/ico_chevron_primary_bold_right.png);
 		}
 
 		&.scroll_ing {
-			&:before {
+
+			&:before,
+			.ico_chevron_primary_bold_left {
 				opacity: 1;
 				visibility: visible;
 			}
 		}
 
 		&.scroll_end {
-			&:after {
+
+			&:after,
+			.ico_chevron_primary_bold_right {
 				opacity: 0;
 				visibility: hidden;
 			}
@@ -56,6 +80,7 @@
 	}
 
 	.scroll_track {
+		position: relative;
 		overflow-y: hidden;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
