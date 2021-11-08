@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="환전내역 조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<div class="input_items mt_2">
+					<span class="check_item type_btn">
+						<input type="radio" name="lb_period" id="lb_period_1" checked>
+						<label for="lb_period_1">1개월</label>
+					</span>
+					<span class="check_item type_btn">
+						<input type="radio" name="lb_period" id="lb_period_2">
+						<label for="lb_period_2">3개월</label>
+					</span>
+					<span class="check_item type_btn">
+						<input type="radio" name="lb_period" id="lb_period_3">
+						<label for="lb_period_3">6개월</label>
+					</span>
+					<a href="#;" class="btn btn_md btn_outline_default btn_search" onclick="openModal('layer_bottom',this)">상세조회</a>
+				</div>
+				<div class="double_box mt_4 bg_lightgray border0">
+					<div class="btm">
+						<div>
+							<div class="l">조회기간</div>
+							<div class="r">2021.02.17 ~ 2021.07.12</div>
+						</div>
+						<div>
+							<div class="l">총건수</div>
+							<div class="r">3건</div>
+						</div>
+					</div>
+				</div>
+				<div class="double_box mt_2">
+					<a href="#;" class="btm btm_link" onclick="openModal('layer01',this)">
+						<div>
+							<div class="l">이름</div>
+							<div class="r">나봄미</div>
+						</div>
+						<div>
+							<div class="l">거래일</div>
+							<div class="r">2021.02.17</div>
+						</div>
+						<div>
+							<div class="l">구분</div>
+							<div class="r">환전</div>
+						</div>
+						<div>
+							<div class="l">대상통화</div>
+							<div class="r">USD</div>
+						</div>
+						<div>
+							<div class="l">환전금액</div>
+							<div class="r">USD 100</div>
+						</div>
+						<div>
+							<div class="l">적용환율</div>
+							<div class="r"><strong>1,174.7</strong></div>
+						</div>
+						<div>
+							<div class="l">원화금액</div>
+							<div class="r"><strong>116,076</strong>원</div>
+						</div>
+					</a>
+				</div>
+				
+			</div>
+
+			<!-- s: Modal popup 환전내역조회 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">환전내역조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period2" id="lb_period2_1" checked>
+									<label for="lb_period2_1">당일</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period2" id="lb_period2_2">
+									<label for="lb_period2_2">1주</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period2" id="lb_period2_3">
+									<label for="lb_period2_3">1개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period2" id="lb_period2_4">
+									<label for="lb_period2_4">3개월</label>
+								</span>
+							</div>
+							<div class="tf_double mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area pt_0">
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area pt_0">
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">정렬</h3>
+								<div class="tf_item mt_3">
+									<div class="tf_item_body">
+										<div class="input_area pt_0">
+											<div class="input_items">
+												<span class="check_item">
+													<input type="radio" name="lb_cate2" id="lb_cate2_1" checked>
+													<label for="lb_cate2_1">주민등록번호</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="lb_cate2" id="lb_cate2_2">
+													<label for="lb_cate2_2">납부기관번호</label>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom');">조회</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 환전내역조회 -->
+
+			<!-- s: Modal Popup : 상세정보 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="double_box">
+								<div class="btm">
+									<div>
+										<div class="l">환전인 구분</div>
+										<div class="r">내국인</div>
+									</div>
+									<div>
+										<div class="l">이름</div>
+										<div class="r">나봄미</div>
+									</div>
+									<div>
+										<div class="l">주민등록번호</div>
+										<div class="r">650529-*******</div>
+									</div>
+									<div>
+										<div class="l">국적</div>
+										<div class="r">한국</div>
+									</div>
+									<div>
+										<div class="l">거주구분</div>
+										<div class="r">거주자</div>
+									</div>
+									<div>
+										<div class="l">연락처</div>
+										<div class="r">010-1111-2222</div>
+									</div>
+									<div>
+										<div class="l">우편번호</div>
+										<div class="r">58217</div>
+									</div>
+									<div>
+										<div class="l">주소</div>
+										<div class="r">전라남도 나주시 빛가람동<br>635 1비전123-11</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r d_i_b">[우체국]<strong>10057-02-00010</strong><br>우체국 매일모아 e적금</div>
+									</div>
+									<div>
+										<div class="l">대상통화</div>
+										<div class="r">USD</div>
+									</div>
+									<div>
+										<div class="l">수령예정일</div>
+										<div class="r">2021.02.19</div>
+									</div>
+									<div>
+										<div class="l">사용대상국</div>
+										<div class="r">미국</div>
+									</div>
+									<div>
+										<div class="l">사유</div>
+										<div class="r">관광/친지방문 등 기타 일반여행</div>
+									</div>
+									<div>
+										<div class="l">지급국</div>
+										<div class="r">우체국 서울중앙</div>
+									</div>
+									<div>
+										<div class="l">지급국 주소</div>
+										<div class="r">서울특별시 중구 소공로70 <br>서울중앙우체국</div>
+									</div>
+									<div>
+										<div class="l">적용환율</div>
+										<div class="r"><strong>1,174.7</strong></div>
+									</div>
+									<div>
+										<div class="l">원화금액</div>
+										<div class="r"><strong>116,076</strong>원</div>
+									</div>
+									<div>
+										<div class="l">우대금액</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">지출금액</div>
+										<div class="r">-</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">완료</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup : 상세정보 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

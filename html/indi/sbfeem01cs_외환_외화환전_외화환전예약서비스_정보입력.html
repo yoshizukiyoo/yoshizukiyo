@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="환전신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">환전금액 입력</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">정보입력</span></li>
+					<li><span class="num">3</span><span class="txt">입력확인</span></li>
+					<li><span class="num">4</span><span class="txt">내용확인</span></li>
+					<li><span class="num">5</span><span class="txt">신청완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<h3 class="tit1">환전정보</h3>
+				<div class="tf_item">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_date">수령예정일</label>
+							<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly>
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+								<i class="ico ico_datepicker"></i>
+								<span class="sr_only">달력</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">수령시간</span>
+							<p class="tf">영업시간내</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<ul class="list mt_1">
+					<li class="bul_notice">영업시간내
+						<ul class="list list2">
+							<li>우체국 : 09:00 ~ 16:30(평일)</li>
+							<li>KEB하나은행 수령점 : 09:00 ~ 16:00(평일)</li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">사용대상국</span>
+							<p class="tf">US-미국</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">사유</span>
+							<p class="tf">관광/천지방문 등 기타 일</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">지급국지역</span>
+							<p class="tf">서울지역</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">지급국</span>
+							<p class="tf">선택</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<div class="mt_1">
+					<p class="bul_notice">비영업일(주말, 공휴일)수령은 ‘경영지역 KEB하나은행 인천국제공항지점’에서 09시~21시에만 가능합니다.</p>
+					<p class="bul_notice">비영업일 수령을 원하시면 KEB하나은행 인천국제공항지점을 지급국으로 선택하시기 바랍니다.</p>
+				</div>
+				<div class="mt_2">
+					<a href="#;" class="btn btn_md btn_default btn_round btn_full" onclick="openModal('layer01',this)">환전수령장소 조회</a>
+				</div>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="input2_1">연락처 <span class="req">필수항목</span></label>
+							<div class="input_items">
+								<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;"
+									onclick="openModal('layerOption')">010</a>
+								<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mt_1">
+					<p class="bul_notice">최소 신청 금액 : USD(1), JPY(1,000), EUR(5), CNY(1,174.7), CAD(10), AUD(10), HKD(20), THB(1,174.7), SGD(5), GBP(5)</p>
+					<p class="bul_notice">신청 완료 후 취소가 불가능하며, 거래내용의 변경도 불가능합니다.</p>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="sbfeem01ds_외환_외화환전_외화환전예약서비스_입력확인.html" class="btn btn_xl btn_primary">
+						<span>환전신청</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+				<!-- s: Modal Popup : 환전수령장소 조회 -->
+				<div class="modal_popup popup hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h2 class="popup_tit">환전안내</h2>
+							<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+						</div>
+						<div class="popup_body">
+							<div class="container">
+								<h3 class="tit1">환전 정보</h3>
+								<h4 class="tit2">
+									<i class="ico ico_arr_circle_right"></i>
+									지정 우체국 : 09:00 ~ 16:30(평일)
+								</h4>
+								<ul class="border_list">
+									<li>
+										<strong>광화문우체국</strong>
+										울특별시 종로구 종로 6 (서린동,광화문우체국) 02-3703-9052
+									</li>
+									<li>
+										<strong>서울강남우체국</strong>
+										서울특별시 강남구 개포로 619 (개포동 14-4) 02-2040-4021
+									</li>
+									<li>
+										<strong>성남분당우체국</strong>
+										경기도 성남시 분당구 황새울로 347 (서현동, 성남분당우체국) 031-725-8021
+									</li>
+									<li>
+										<strong>부산우체국</strong>
+										부산광역시 중구 중앙대로 63 (중앙동3가,부산우체국보험회관) 051-600-3160
+									</li>
+									<li>
+										<strong>창원우체국</strong>
+										경상남도 창원시 성산구 상남로 57 (창원우체국) 055-260-9882
+									</li>
+									<li>
+										<strong>대전둔산우체국</strong>
+										대전광역시 서구 둔산로 111 (둔산동,둔산우체국) 042-611-1640
+									</li>
+									<li>
+										<strong>세종우체국</strong>
+										세종특별자치시 시청대로 180 (보람동,세종우체국) 044-410-1021
+									</li>
+									<li>
+										<strong>대전유성우체국</strong>
+										대전광역시 유성구 온천로 51(봉명동, 대전유성우체국) 042-828-8182
+									</li>
+									<li>
+										<strong>광주우체국</strong>
+										광주광역시 동구 제봉로 211 (대인동28-2,광주우체국 영업과) 062-231-0280
+									</li>
+									<li>
+										<strong>서광주우체국</strong>
+										광주광역시 서구 월드컵4강로 109(화정동,서광주우체국) 062-603-7140
+									</li>
+									<li>
+										<strong>대구달서우체국</strong>
+										대구광역시 달서구 학산로 65 (월성동,대구달서우체국) 053-640-4622
+									</li>
+									<li>
+										<strong>전주우체국</strong>
+										전라북도 전주시 완산구 서원로 99 (효자동2가,전주우체국) 063-230-2635
+									</li>
+									<li>
+										<strong>춘천우체국</strong>
+										강원도 춘천시 방송길 108 (온의동) 033-259-6500
+									</li>
+									<li>
+										<strong>제주우체국</strong>
+										제주특별자치도 제주시 관덕로 33 (삼도이동,제주우체국) 064-752-0205
+									</li>
+								</ul>
+								<div class="section">
+									<h4 class="tit2">
+										<i class="ico ico_arr_circle_right"></i>
+										하나은행 수령점 : 09:00 ~ 16:00(평일)<br>
+										하나은행 인천국제공항지점-제1터미널 : 09:00~21:00(연중)
+									</h4>
+									<ul class="border_list">
+										<li>
+											<strong>하나은행-충무로지점</strong>
+											서울 중구 퇴계로 97 하나은행 충무로지점 (충무로1가) 02-775-0350
+										</li>
+										<li>
+											<strong>하나은행-영업부</strong>
+											서울특별시 중구 을지로 66 (을지로2가) 본점1층 02-729-8283
+										</li>
+										<li>
+											<strong>하나은행-여의도지점</strong>
+											서울시 영등포구 국제금융로 72(여의도동) 02-707-1111
+										</li>
+										<li>
+											<strong>하나은행-구로디지털단지지점</strong>
+											서울시 구로구 디지털로 292 (구로동) 02-839-0811
+										</li>
+										<li>
+											<strong>하나은행-홍대역지점</strong>
+											서울시 마포구 양화로 151(동교동) 02-337-5041
+										</li>
+										<li>
+											<strong>하나은행-용산역지점</strong>
+											서울시 용산구 한강대로 21 나길 7(한강로 3가) 02-2012-1111
+										</li>
+										<li>
+											<strong>하나은행-안암동지점</strong>
+											서울시 성북구 안암로 75(안암동 5가) 02-953-1111
+										</li>
+										<li>
+											<strong>하나은행-가락금융센터지점</strong>
+											서울시 송파구 중대로 135(가락동) 02-403-1111
+										</li>
+										<li>
+											<strong>하나은행-선릉역지점</strong>
+											서울시 강남구 테헤란로 401(삼성동) 02-3429-0121
+										</li>
+										<li>
+											<strong>하나은행-서울대입구</strong>
+											서울특별시관악구남부순환로 1836 (봉천동, 남경도빌딩)남경도빌딩 1F 02-883-1111
+										</li>
+										<li>
+											<strong>하나은행-노원역지점</strong>
+											서울특별시노원구동일로 1398 (상계동) 02-935-1900
+										</li>
+										<li>
+											<strong>하나은행-방배동지점</strong>
+											서울특별시서초구방배로 131 (방배동) 02-584-4766
+										</li>
+										<li>
+											<strong>하나은행-인천국제공항지점 인천공항제1터미널</strong>
+											인천광역시 중구 공항동로 295번길 124 (운서동) 032-743-2220
+										</li>
+										<li>
+											<strong>하나은행-화정역지점</strong>
+											경기도고양시 덕양구화정로 47 (화정동, 동원텔) 동원텔 2F 031-969-1111
+										</li>
+										<li>
+											<strong>하나은행-삼산지점</strong>
+											울산광역시남구삼산로 283 (삼산동)소망빌딩 052-268-0090
+										</li>
+										<li>
+											<strong>하나은행-파주지점</strong>
+											경기도파주시새꽃로 13 (금촌동)파르테논빌딩 2F 031-957-3741
+										</li>
+										<li>
+											<strong>하나은행-부천시청역지점</strong>
+											경기도부천시 원미구길주로 189 (중동) 032-321-1111
+										</li>
+										<li>
+											<strong>하나은행-평촌범계역지점</strong>
+											경기도안양시 동안구시민대로 210 (호계동)한화생명빌딩 031-383-0838
+										</li>
+										<li>
+											<strong>하나은행-수원금융센터</strong>
+											경기도수원시 팔달구권광로 170 (인계동) 031-238-1574
+										</li>
+										<li>
+											<strong>하나은행-구월동지점</strong>
+											인천광역시남동구인하로 497-5 (구월동) 032-438-1466
+										</li>
+										<li>
+											<strong>하나은행-오산중앙지점</strong>
+											경기도오산시경기대로 178 (원동)비전탑 031-378-0462
+										</li>
+										<li>
+											<strong>하나은행-부산지점</strong>
+											부산광역시중구중앙대로 94 (중앙동4가) 051-602-9000
+										</li>
+										<li>
+											<strong>하나은행-창원지점</strong>
+											경상남도창원시 성산구중앙대로 38 (상남동) 055-282-2111
+										</li>
+										<li>
+											<strong>하나은행-사상지점</strong>
+											경기도오산시경기대로 178 (원동)비전탑 031-378-0462
+										</li>
+										<li>
+											<strong>하나은행-화명동지점</strong>
+											부산광역시북구화명신도시로 129 (화명동) 골든프라자 1F 051-333-1111
+										</li>
+										<li>
+											<strong>하나은행-거제지점</strong>
+											경상남도거제시서문로6길1 (고현동) 055-632-1111
+										</li>
+										<li>
+											<strong>하나은행-센텀시티지점</strong>
+											부산광역시해운대구센텀서로 30 (우동)KNN방송국 051-664-8989
+										</li>
+										<li>
+											<strong>하나은행-마산금융센터</strong>
+											경상남도창원시 마산회원구삼호로 42 (양덕동) 055-244-1111
+										</li>
+										<li>
+											<strong>하나은행-초량지점</strong>
+											부산광역시동구중앙대로 233 (초량동) 해정빌딩 1F 051-468-1111
+										</li>
+										<li>
+											<strong>하나은행-구영지점</strong>
+											울산광역시울주군구영로 100 (범서읍)구영프라자 052-211-6031
+										</li>
+										<li>
+											<strong>하나은행-울산중앙지점</strong>
+											울산광역시중구번영로 485 (약사동) 052-244-1111
+										</li>
+										<li>
+											<strong>하나은행-둔산지점</strong>
+											대전광역시서구대덕대로 235 (둔산동) 042-635-1111
+										</li>
+										<li>
+											<strong>하나은행-천안중앙지점</strong>
+											충청남도천안시 동남구청수14로 96(청당동) 041-563-1111
+										</li>
+										<li>
+											<strong>하나은행-대전지점</strong>
+											대전광역시중구대종로 481 (대흥동) 042-252-7800
+										</li>
+										<li>
+											<strong>하나은행-온양지점</strong>
+											충청남도아산시충무로 22 (온천동) 041-544-1111
+										</li>
+										<li>
+											<strong>하나은행-충주지점</strong>
+											충청북도충주시번영대로 109 (연수동) 대훈빌딩 043-845-1111
+										</li>
+										<li>
+											<strong>하나은행-광주금융센터지점</strong>
+											광주광역시동구금남로 190 (금남로5가) 062-232-1111
+										</li>
+										<li>
+											<strong>하나은행-봉선동지점</strong>
+											광주광역시남구봉선로 163 (봉선동) 파르마메디컬빌딩1F 062-655-1111
+										</li>
+										<li>
+											<strong>하나은행-수완지점</strong>
+											광주광역시광산구장신로 144 (수완동) 062-955-1111
+										</li>
+										<li>
+											<strong>하나은행-순천지점</strong>
+											전라남도순천시연향중앙상가길 9 (연향동) LG빌딩 1F 061-725-1111
+										</li>
+										<li>
+											<strong>하나은행-여수지점</strong>
+											전라남도여수시통제영4길 3 (교동) 061-663-8000
+										</li>
+										<li>
+											<strong>하나은행-상인동지점</strong>
+											대구광역시달서구월배로 219 (상인동) 센트로타워 1F 053-631-1111
+										</li>
+										<li>
+											<strong>하나은행-시지지점</strong>
+											대구광역시수성구달구벌대로 3188 (신매동) 아레나스포츠빌딩 1F 053-651-1111
+										</li>
+										<li>
+											<strong>하나은행-성서지점</strong>
+											대구광역시달서구성서로 399 (이곡동) 053-580-9000
+										</li>
+										<li>
+											<strong>하나은행-동성로지점</strong>
+											대구광역시중구중앙대로 394 (남일동) 제일빌딩 053-622-1111
+										</li>
+										<li>
+											<strong>하나은행-구미지점</strong>
+											경상북도구미시수출대로 134 (공단동) 054-461-8931
+										</li>
+										<li>
+											<strong>하나은행-전주금융센터지점</strong>
+											전라북도전주시 완산구충경로 63 (경원동1가) 063-288-1111
+										</li>
+										<li>
+											<strong>하나은행-춘천광장지점</strong>
+											강원도춘천시춘천로 180 (효자동) 033-252-2407
+										</li>
+										<li>
+											<strong>하나은행-제주지점</strong>
+											제주특별자치도제주시관덕로44 064-757-2171
+										</li>
+										<li>
+											<strong>하나은행-신제주지점</strong>
+											제주특별자치도제주시1100로 3308 (노형동) 064-752-1111
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="popup_footer">
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: Modal Popup : 환전수령장소 조회 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
