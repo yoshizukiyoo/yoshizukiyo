@@ -1811,6 +1811,38 @@ caption.sr_only {
   background-size: cover;
 }
 
+.ico_chevron_primary_bold_left {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  width: 10px;
+  height: 18px;
+  line-height: 18px;
+  background-image: url("/resources/img/common/ico_chevron_primary_bold_left.png");
+  background-size: cover;
+}
+
+.ico_chevron_primary_bold_right {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  width: 10px;
+  height: 18px;
+  line-height: 18px;
+  background-image: url("/resources/img/common/ico_chevron_primary_bold_right.png");
+  background-size: cover;
+}
+
 .ico_close_sm {
   display: inline-block;
   background-repeat: no-repeat;
@@ -1872,22 +1904,6 @@ caption.sr_only {
   height: 15px;
   line-height: 15px;
   background-image: url("/resources/img/common/ico_notice_red.png");
-  background-size: cover;
-}
-
-.ico_help {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: center center;
-  vertical-align: middle;
-  overflow: hidden;
-  text-indent: -9999px;
-  overflow: hidden;
-  text-align: left;
-  width: 15px;
-  height: 15px;
-  line-height: 15px;
-  background-image: url("/resources/img/common/ico_help.png");
   background-size: cover;
 }
 
@@ -3733,27 +3749,51 @@ textarea.tf {
   opacity: 0;
   visibility: hidden;
   left: -23px;
-  -webkit-box-shadow: 5px 0 15px rgba(0, 0, 0, 0.25);
-          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 5px 0 15px 5px white;
+          box-shadow: 5px 0 15px 5px white;
 }
 
 .tbl.tbl_scroll:after {
   right: -23px;
-  -webkit-box-shadow: -5px 0 15px rgba(0, 0, 0, 0.25);
-          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: -5px 0 15px 5px white;
+          box-shadow: -5px 0 15px 5px white;
 }
 
-.tbl.tbl_scroll.scroll_ing:before {
+.tbl.tbl_scroll > .ico {
+  content: '';
+  position: absolute;
+  z-index: 11;
+  top: 50%;
+  margin-top: -9px;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+}
+
+.tbl.tbl_scroll .ico_chevron_primary_bold_left {
+  opacity: 0;
+  visibility: hidden;
+  left: 10px;
+}
+
+.tbl.tbl_scroll .ico_chevron_primary_bold_right {
+  right: 10px;
+  background-image: url(/resources/img/common/ico_chevron_primary_bold_right.png);
+}
+
+.tbl.tbl_scroll.scroll_ing:before,
+.tbl.tbl_scroll.scroll_ing .ico_chevron_primary_bold_left {
   opacity: 1;
   visibility: visible;
 }
 
-.tbl.tbl_scroll.scroll_end:after {
+.tbl.tbl_scroll.scroll_end:after,
+.tbl.tbl_scroll.scroll_end .ico_chevron_primary_bold_right {
   opacity: 0;
   visibility: hidden;
 }
 
 .tbl .scroll_track {
+  position: relative;
   overflow-y: hidden;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

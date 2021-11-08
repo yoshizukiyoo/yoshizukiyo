@@ -47,7 +47,7 @@ $(document).ready(function () {
 function tableScroll(obj) {
 	if (obj.width() < obj.children('table').width()) {
 		obj.addClass('tbl_scroll');
-		obj.wrapInner('<div class="scroll_track"></div>');
+		obj.wrapInner('<div class="scroll_track"></div>').append('<i class="ico ico_chevron_primary_bold_left"></i><i class="ico ico_chevron_primary_bold_right"></i>');
 	}
 
 	var ingClass = 'scroll_ing',
