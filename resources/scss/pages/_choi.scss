@@ -10,6 +10,16 @@ $orange: #ff883a;
 	border-color: $border-base;
 }
 
+@mixin fx_lr {
+	display: flex;
+	>.l{
+		margin-right: auto;
+	}
+	.r{
+		margin-left: auto;
+	}
+}
+
 //아이콘
 @include ico('check_on', 20px, 20px);
 @include ico('mailbox', 30px, 30px);
@@ -31,10 +41,33 @@ $orange: #ff883a;
 	}
 }
 
+//폰트
+.txt_xxl{
+	font-size: 23px !important;
+}
 //버튼
 .btn{
 	&.btn_full{
 		width: 100% !important;
+	}
+	&.btn_submenu{
+		width: 3px;
+		height: 15px;
+		padding: 10px;
+		background-image: url(#{$url-img}/common/ico_submenu.png);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 3px 15px;
+
+		text-indent: -9999px;
+
+		position: absolute;
+		right: 4px;
+		top: 10px;
+		&+.tooltip{
+			background-color: #f6f6f6;
+			padding: 16px 20px;
+		}
 	}
 }
 
@@ -69,6 +102,67 @@ $orange: #ff883a;
 		>li{
 			list-style: decimal;
 		}	
+	}
+	&.list_box{
+		>li{
+			@include box_default();
+		}
+	}
+	&.list_card{
+		>li{
+			position: relative;
+			padding-right: 35px !important;
+			>div{
+				&+div{
+					margin-top: 10px;
+				}
+			}
+			.status{
+				display: flex;
+				.l{
+					margin-right: auto;
+					>span{
+						background-color: #e5e5e5;
+					}
+				}
+				.r{
+					margin-left: auto;
+					>span{
+						background-color: $primary;
+					}
+				}
+				span{
+					display: inline-flex;
+					height: 20px;
+					padding: 0 10px;
+					border-radius: 3px;
+					
+					font-size: 10px;
+					line-height: 1;
+					font-weight: 500;
+					color: #111;
+
+					justify-content: center;
+					align-items: center;
+				}
+			}
+			.card_detail{
+				display: table;
+				>div{
+					display: table-row;
+					font-size: 12px;
+					.l{
+						display: table-cell;
+						padding-right: 10px;
+						color:#666;
+					}
+					.r{
+						display: table-cell;
+						color:#111;
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -361,6 +455,71 @@ h3.tit2{
 			background-size: 55px 55px;
 			&.on{
 				background-image: url(#{$url-img}/content/bg_security_serv06_on.png);
+			}
+		}
+	}
+}
+
+.price_total{
+	text-align: center;
+}
+
+.account_type{
+	background-color: $primary;
+	padding: 15px 0;
+	>ul{
+		display: flex;
+		width: 100%;
+		>li{
+			width: 100%;
+			color: $gray;
+			font-size: 12px;
+			text-align: center;
+			line-height: 1;
+			>span{
+				display: block;
+				margin-top: 2px;
+				color: $black;
+				font-size: 13px;
+				>strong{
+					font-size: 16px;
+				}
+			}
+			&:not(:first-child){
+				border-left: 1px solid #fff;
+			}
+		}
+	}
+}
+
+.account_list{
+	>li{
+		border-bottom: 1px solid #eee;
+		.detail{
+			>li{
+				position: relative;
+				padding: 12px 0;
+				border-top: 1px solid #eee;
+				>p{
+					font-size: 14px;
+
+					>strong{
+						display: block;
+						font-size: 16px;
+						font-weight: 400;
+					}
+				}
+				.fx_lr{
+					@include fx_lr;
+					margin-top: 5px;
+					.r{
+						font-size: 16px;
+						font-weight: 500;
+						>span{
+							font-size: 23px;
+						}
+					}
+				}
 			}
 		}
 	}
