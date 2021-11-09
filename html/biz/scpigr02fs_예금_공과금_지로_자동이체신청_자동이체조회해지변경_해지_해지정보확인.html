@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="자동이체조회/변경/해지"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<h2 class="tit1">정보입력</h2>
+				<div class="double_box">
+					<a href="#;" class="btm btm_link" onclick="openModal('layer01',this)">
+						<div>
+							<div class="l">지로번호</div>
+							<div class="r">4000077</div>
+						</div>
+						<div>
+							<div class="l">청구기관</div>
+							<div class="r">지로번호</div>
+						</div>
+						<div>
+							<div class="l">등록일</div>
+							<div class="r">2012.10.13</div>
+						</div>
+					</a>
+				</div>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">출금계좌번호 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" value="[우체국] 100057-02-000010 [스마트 e-Postbank 예금" required>
+						</div>
+					</div>
+				</div>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('pwd_full_popup');return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<div class="lab">출금계좌비밀번호 <span class="req">필수항목</span></div>
+							<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+							<div class="password_masking gray">
+								<!-- 자릿수에 맞춰 <i></i> 추가 -->
+								<i></i><i></i><i></i><i></i>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="scpigr02gs_예금_공과금_지로_자동이체신청_자동이체조회해지변경_해지_해지완료.html" class="btn btn_xl btn_primary">
+						<span>해지</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">비밀번호 입력</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">4자리 숫자를 입력해 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								4자리 숫자를 입력해 주세요.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 비밀번호 입력 팝업 -->
+
+			<!-- s: Modal Popup 상세정보 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">지로번호</div>
+										<div class="r">4000077</div>
+									</div>
+									<div>
+										<div class="l">청구기관</div>
+										<div class="r">지로번호</div>
+									</div>
+									<div>
+										<div class="l">납부자번호</div>
+										<div class="r">00000000</div>
+									</div>
+									<div>
+										<div class="l">주민(사업자)등록번호</div>
+										<div class="r">00000000</div>
+									</div>
+									<div>
+										<div class="l">신청구분</div>
+										<div class="r">해지</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">닫기</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 상세정보 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
