@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="유로지로송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<h2 class="tit1">정보입력</h2>
+				<ul class="list list1 mt_2">
+					<li>해외송금(유로지로송금)의 경우 과거내역 정보를 이용하거나 신규 송금이 가능합니다.</li>
+					<li>“확인”버튼을 누르시면 과거 송금한 내역을 확 할 수 있습니다.</li>
+					<li>신규송금을 원하시는 경우 다음 화면 우측 상단 “유로지로송금보내기”를 누르시기 바랍니다.</li>
+				</ul>
+				
+				<div class="mt_6">
+					<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">증별구분</span>
+								<p class="tf">계좌</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">국가코드</span>
+								<p class="tf">US – 미국 우체국</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<div class="tf_item_wrap mt_2">
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="l">송금외화</div>
+								<div class="r">
+									<a href="#;" onclick="openModal('layer01',this)">100</a>
+									<span class="txt_lg txt_normal">USD</span>
+									<button type="button" class="btn btn_icon btn_reset ml_2">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mt_1">
+						<ul>
+							<li class="bul_notice txt_gray">
+								<span class="txt_normal">송금목적</span><br>
+								증여 및 기타(5,000달러 이하) 소액거래
+							</li>
+							<li class="bul_notice txt_gray">
+								<span class="txt_normal">수수료 및 송금가능시간</span>
+								<ul class="list list2">
+									<li>송금건당 5,000원. 24시간(토·일요일 및 공휴일 포함)</li>
+									<li>은행점심시간(23:50~00:10 / 04:00~05:00)에는 거래가 제한됩니다.</li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="list list1 mt_2">
+							<li>송금가능국가 : 스리랑카, 태국, 필리핀, 베트남, 몽골</li>
+							<li>해외에 있는 본인 계좌로의 인터넷 송금은 불가능합니다.</li>
+							<li>소요시간 : 영업일기준 3일 ~ 5일<br>단, 지급은행 사정에 의해 지연될 수 있음</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="sbfeor04bs_외환_해외송금_유로지로송금_목록.html" class="btn btn_xl btn_primary">
+						<span>확인</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal popup 송금외화 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_1" checked>
+									<label for="lb_period1_1">1만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_2">
+									<label for="lb_period1_2">5만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_3">
+									<label for="lb_period1_3">10만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_4">
+									<label for="lb_period1_4">50만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_5">
+									<label for="lb_period1_5">100만</label>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 송금외화 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
