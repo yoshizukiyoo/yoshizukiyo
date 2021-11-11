@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".billing_list > div h3").click(function () {
+				$(this).toggleClass("on");
+			})
+
+			$(".chk_controll .single input").click(function () {
+				if ($(this).prop('checked') == true) {
+					$(this).closest(".chk_controll").removeClass("disabled");
+					$(this).closest(".chk_controll").find("input[type='text']").attr("disabled", false)
+				} else {
+					$(this).closest(".chk_controll").addClass("disabled");
+					$(this).closest(".chk_controll").find("input[type='text']").attr("disabled", true)
+				}
+			})
+
+			$(".accident_chk li button").click(function () {
+
+				if (!$(this).hasClass("on")) {
+					$(this).addClass("on");
+					$(this).text("예")
+				} else {
+					$(this).removeClass("on");
+					$(this).text("아니오")
+				}
+			})
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="휴면보험금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">개인정보처리동의</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">보험금청구서 작성</span></li>
+					<li><span class="num">3</span><span class="txt">청구신청 완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+			</div>
+
+			<div class="container">
+
+				<h2 class="tit1">개인정보</h2>
+				<div class="tbl">
+					<table>
+						<caption class="sr_only">개인정보 이름, 주소 정보</caption>
+						<colgroup>
+							<col style="width:70px">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">이름</th>
+								<td>나보미(123456-*******)</td>
+							</tr>
+							<tr>
+								<th scope="row">주소</th>
+								<td>
+									[12345]전라도 나주시 정보화길 1 <br>
+									313호(빛가람동, 우정사업정보센터)
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tf_item mt_3">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tel">전화번호 <span class="req">필수항목</span></label>
+							<div class="input_items">
+								<a href="#;" class="opt" title="전화번호 국번 선택" onclick="openModal('layerOption');">010</a>
+								<input type="text" id="lb_tel" class="tf" value="1234-1234" title="국번을 제외한 전화번호">
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<span class="check_item mt_2">
+					<input type="checkbox" name="inputCheck2" id="inputCheck2_1">
+					<label for="inputCheck2_1">알림 수신동의</label>
+				</span>
+
+				<div class="section">
+					<div class="billing_list">
+						<div>
+							<h3 class="tit2" data-toggle-btn="billing1">청구내용</h3>
+
+							<div class="content" data-toggle-content="billing1">
+
+								<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">청구유형<span class="req">필수항목</span></span>
+											<p class="tf">선택해주세요</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">발생원인<span class="req">필수항목</span></span>
+											<p class="tf">선택해주세요</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+
+								<div class="section">
+									<h4>청구사유 (중복가능) <span class="req">필수항목</span></h4>
+									<div class="billing_type mt_0">
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type1" checked>
+											<label for="billing_type1">통원</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type2" checked>
+											<label for="billing_type2">입원</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type3">
+											<label for="billing_type3">골절</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type4">
+											<label for="billing_type4">수술</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type5">
+											<label for="billing_type5">진단</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type6">
+											<label for="billing_type6">장해</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type7">
+											<label for="billing_type7">요양</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type8">
+											<label for="billing_type8">치아</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="billing_type" id="billing_type9">
+											<label for="billing_type9">기타</label>
+										</span>
+									</div>
+								</div>
+
+								<div class="section">
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf_2_1">진단명 <span class="req">필수항목</span></label>
+												<input type="text" id="lb_tf_2_1" class="tf" placeholder="진단명을 간략하게 적어주세요" title="진단명 입력">
+											</div>
+										</div>
+									</div>
+
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf_2_2">사고일지 </label>
+												<input type="text" id="lb_tf_2_2" class="tf" placeholder="예)20210809 05:27" title="사고일지 입력">
+											</div>
+										</div>
+									</div>
+
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf_2_2">사고장소 </label>
+												<input type="text" id="lb_tf_2_2" class="tf" placeholder="사고장소를 구체적으로 적어주세요" title="사고장소 입력">
+											</div>
+										</div>
+									</div>
+
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_content">기타</label>
+												<textarea class="tf" id="lb_content" rows="4" placeholder="예) 신호대기 중 뒷차량 추돌함"
+													title="사고경위 입력"></textarea>
+											</div>
+										</div>
+									</div>
+									<p class="txt_guide">0/200자</p>
+
+								</div>
+
+							</div>
+						</div>
+
+						<div>
+							<h3 class="tit2" data-toggle-btn="billing2">사고처리여부</h3>
+
+							<div class="content" data-toggle-content="billing2">
+
+								<div class="tf_item disabled chk_controll">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_3_1">자동차보험 </label>
+											<input type="text" id="lb_tf_3_1" class="tf" placeholder="보험사명을 입력해주세요" title="자동차보험 입력" disabled>
+
+											<span class="check_item single">
+												<input type="checkbox" id="chk1">
+												<label for="chk1">선택하기</label>
+											</span>
+
+										</div>
+									</div>
+								</div>
+
+								<ul class="accident_chk">
+									<li>
+										<span>산업재해보험</span>
+
+										<button class="on">예</button>
+									</li>
+									<li>
+										<span>경찰서신고</span>
+
+										<button>아니오</button>
+									</li>
+								</ul>
+
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_content">사고경위</label>
+											<textarea class="tf" id="lb_content" rows="4" placeholder="예) 신호대기 중 뒷차량 추돌함"
+												title="사고경위 입력"></textarea>
+										</div>
+									</div>
+								</div>
+								<p class="txt_guide">0/200자</p>
+
+							</div>
+						</div>
+
+						<div>
+							<h3 class="tit2" data-toggle-btn="billing3">타보험 가입내용</h3>
+							<div class="content" data-toggle-content="billing3">
+
+							</div>
+						</div>
+
+						<div>
+							<h3 class="tit2" data-toggle-btn="billing4">구비서류첨부</h3>
+							<div class="content" data-toggle-content="billing4">
+
+								<p class="txt_guide">다중파일 선택이 가능합니다.(최대 15개)</p>
+								<div class="btn_group btn_group_flex mt_1">
+									<a href="#;" class="btn btn_md btn_round btn_darkgray">파일선택</a>
+									<a href="#;" class="btn btn_md btn_round btn_outline_default"> 촬영</a>
+								</div>
+
+								<p class="txt_guide mt_4">
+									<strong>3</strong>/15장
+								</p>
+
+								<ul class="photo_list">
+									<li>
+										<span class="img">
+											<img src="../resources/img/content/_sample.jpg" alt="">
+										</span>
+
+										<button class="delete">삭제</button>
+									</li>
+									<li>
+										<span class="img">
+											<img src="../resources/img/content/ico_account.png" alt="">
+										</span>
+
+										<button class="delete">삭제</button>
+									</li>
+									<li>
+										<span class="img">
+											<img src="../resources/img/content/img_financial_certificate.png" alt="">
+										</span>
+
+										<button class="delete">삭제</button>
+									</li>
+									<li>
+										<span class="img">
+											<img src="../resources/img/content/_sample.jpg" alt="">
+										</span>
+
+										<button class="delete">삭제</button>
+									</li>
+								</ul>
+								<div class="btn_group btn_btm_group mt_3 mb_0">
+									<a href="#;" class="btn btn_sm btn_outline_default" onclick="openModal('layerNotice', this);">
+										<i class="ico ico_tip_sm"></i>
+										<span>참고사항입니다</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<h3 class="tit2" data-toggle-btn="billing5">추천국/추천인</h3>
+
+							<div class="content" data-toggle-content="billing5">
+
+								<div class="tf_item mt_3 disabled active">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_5">추천국</label>
+											<input type="text" id="lb_tf_1_5" class="tf" placeholder="placeholder" value="나주금천우체국"
+												disabled="">
+										</div>
+									</div>
+								</div>
+
+								<div class="tf_item ">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_job">추천국/추천인 </label>
+											<input type="text" id="lb_job" class="tf" placeholder="추천국/추천인을 선택해주세요" title="추천국/추천인 검색">
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_md btn_round btn_darkgray">검색</a>
+										</div>
+									</div>
+								</div>
+
+								<h4 class="mt_4">추천인</h4>
+								<ul class="suggestion_list">
+									<li>영눈면(01234123)</li>
+									<li>영눈면(01234123)</li>
+									<li>영눈면(01234123)</li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="section">
+					<h2 class="tit1">계좌정보</h2>
+
+					<div class="payment_way">
+
+						<ul class="tab">
+							<li class="on"><a href="#;" title="선택됨">계좌이체</a></li>
+							<li><a href="#;">카드납부</a></li>
+							<li><a href="#;">포스트페이</a></li>
+						</ul>
+
+						<!-- s : 은행 -->
+						<a href="#;" class="tf_item mt_3" onclick="openModal('layerAccount'); return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">은행 <span class="req">필수항목</span></span>
+									<p class="tf">우체국</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
+							</div>
+						</a>
+						<!-- e : 은행 -->
+
+						<!-- s : 계좌번호 -->
+						<a href="#;" class="tf_item mt_3" onclick="openModal('layerAccount'); return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">계좌번호 <span class="req">필수항목</span></span>
+									<p class="tf">01012340123455123</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
+							</div>
+						</a>
+						<!-- e : 계좌번호 -->
+
+						<!-- s : 계좌비밀번호 -->
+						<div class="cont_row horizontal mt_3">
+							<div class="inner">
+								<div class="col_item">
+									<a href="#;" class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<div class="lab">계좌비밀번호 <span class="req">필수항목</span></div>
+												<div class="password_masking">
+													<i></i><i></i><i></i><i></i>
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- e : 계좌비밀번호 -->
+
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary">계좌인증</button>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">추가인증</h2>
+					<div class="add_certification">
+
+						<ul class="tab">
+							<li><a href="#;">SMS인증</a></li>
+							<li><a href="#;">ARS인증</a></li>
+						</ul>
+
+						<ul class="list list1">
+							<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
+							<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>홈</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>로그인</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+
+			<!-- s: 레이어 팝업 영역-->
+			<div class="modal_popup modal_alert hide" data-popup="layerInfo1">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">계약상세정보</h2>
+					</div>
+					<div class="popup_body">
+						<div class="bg_lightprimary">
+							가로 풀사이즈 콘텐츠 영역<br> .popup_body 하위에 정의
+						</div>
+						<div class="container">
+							<div class="bg_lightprimary">
+								양쪽 여백 콘텐츠 영역 .container 내 정의
+							</div>
+							<div class="desc">
+								<p class="txt_lg txt_bold">받는분의 실명을<br> 정확하게 입력해 주세요.</p>
+								<p class="mt_2">.desc 안내문구 (기본 가운데정렬)</p>
+							</div>
+
+							<br>
+
+							<div class="desc txt_l">
+								<p class="txt_lg txt_bold">좌측정렬 안내문구</p>
+								<p class="mt_2">
+									좌측정렬 안내문구<br>
+									안내문구
+								</p>
+							</div>
+
+							<br>
+
+							<div class="tf_item">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_name">이름</label>
+										<input type="text" id="lb_name" class="tf" value="홍길동" required>
+									</div>
+								</div>
+							</div>
+
+							<br>
+
+							<textarea class="tf" cols="50" rows="3" title="메모" placeholder="※ 최대 한글 20자, 영/숫자 40자까지 입력"></textarea>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 레이어 팝업 영역 -->
+
+			<!-- s: 참고사항입니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">참고사항 입니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>
+									보험금 청구에 관한 서류에 고의로 사실과 다른 것을 기재하거나 그 서류 또는 증거를 위·변조하는 행위는 명백한 보험사기이며, 보험금 지급이 거절됩니다.
+								</li>
+								<li>
+									글자 판독이 불가한 이미지, PDF 서류가 첨부된 경우 사고보험금 심사 시 반송될 수 있으니 유의하시기 바랍니다.
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 참고사항입니다 레이어 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
