@@ -1396,6 +1396,11 @@ h3.tit2.score_tit {
   padding: 0;
 }
 
+.double_box.toggle .top .date {
+  font-size: 13px;
+  color: #666;
+}
+
 .double_box.toggle .top a {
   display: block;
   padding: 20px 50px 20px 20px;
@@ -1411,6 +1416,22 @@ h3.tit2.score_tit {
 
 .double_box.toggle .top.active + .btm {
   display: block;
+}
+
+.double_box.toggle .top.active .price > .r {
+  display: none;
+}
+
+.double_box.toggle .top .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .double_box.toggle .btm {
@@ -1468,51 +1489,44 @@ h3.tit2.score_tit {
   letter-spacing: 0;
 }
 
+.double_box.btm_toggle {
+  position: relative;
+  max-height: 325px;
+  overflow: hidden;
+}
+
+.double_box.btm_toggle.active {
+  max-height: none;
+  padding-bottom: 30px;
+}
+
+.double_box.btm_toggle:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: #fff;
+}
+
+.double_box.btm_toggle .btn_toggle_more {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px;
+  height: 26px;
+  background: url(/resources/img/content/ico_btm_toggle.png) 0 0 no-repeat;
+  background-size: 50px;
+  z-index: 1;
+}
+
 .btn_more {
   display: block;
   padding-right: 13px;
   background: url(/resources/img/content/ico_arr_primary.png) 100% 50% no-repeat;
   background-size: 6px;
-}
-
-.modal_full {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
-
-.modal_full .popup_inner {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-box-direction: normal !important;
-      -ms-flex-direction: column !important;
-          flex-direction: column !important;
-  -webkit-box-pack: center !important;
-      -ms-flex-pack: center !important;
-          justify-content: center !important;
-  height: 100%;
-}
-
-.modal_full .popup_header {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-
-.modal_full .popup_body {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  max-height: 100%;
-  overflow-y: auto;
-}
-
-.modal_full .popup_footer {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
 }
 
 .modal_popup.popup {
@@ -1876,7 +1890,7 @@ h3.tit2.score_tit {
   font-weight: 500;
 }
 
-.account_list > li a {
+.account_list > li > a {
   display: block;
   padding: 22px 30px 22px 0;
   background-image: url(/resources/img/content/ico_toggle_down.png);
@@ -1885,7 +1899,7 @@ h3.tit2.score_tit {
   background-size: 21px;
 }
 
-.account_list > li a.active {
+.account_list > li > a.active {
   background-image: url(/resources/img/content/ico_toggle_up.png);
 }
 
@@ -2262,12 +2276,29 @@ h3.tit2.score_tit {
   border-top: 1px solid #ddd;
 }
 
-.border_list > li strong {
+.border_list > li > strong {
   display: block;
   line-height: 1;
   font-weight: 400;
   color: #000011;
   margin-bottom: 10px;
+}
+
+.border_list.link_more > li {
+  padding: 0;
+}
+
+.border_list.link_more > li > a {
+  display: block;
+  padding: 18px 20px 20px 0;
+  background: url(/resources/img/content/ico_arr_black.png) 100% 50% no-repeat;
+  background-size: 5px;
+}
+
+.border_list.link_more > li > a .tit {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
 }
 
 .border0 {
@@ -2308,6 +2339,151 @@ h3.tit2.score_tit {
   background: #ffedb5;
   color: #c3ba9a;
   cursor: default;
+}
+
+.card_info_list > li {
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 17px 35px 20px 19px;
+  border-radius: 8px;
+}
+
+.card_info_list > li:not(:first-child) {
+  margin-top: 10px;
+}
+
+.card_info_list > li .btn_submenu {
+  top: 19px;
+  right: 11px;
+}
+
+.card_info_list > li .sub_toggle {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 33px;
+  background: #f6f6f6;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 10;
+  font-size: 0;
+  -webkit-box-shadow: 2px 1px 17px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 1px 17px 0px rgba(0, 0, 0, 0.3);
+}
+
+.card_info_list > li .sub_toggle:after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 20px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 0 6px 8px;
+  border-color: transparent #f6f6f6 transparent #f6f6f6;
+}
+
+.card_info_list > li .sub_toggle > div > a {
+  display: block;
+  padding: 9px 5px;
+  font-size: 13px;
+  font-weight: 400;
+  border-top: 1px solid #ddd;
+}
+
+.card_info_list > li .sub_toggle > div > a:first-child {
+  border-top: 0;
+}
+
+.card_info_list > li .sub_toggle .btn_close_tooltip {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.card_info_list > li .btn_layer {
+  position: absolute;
+  top: 67px;
+  right: 15px;
+  width: 20px;
+  height: 21px;
+  background: url(/resources/img/content/ico_link_arr.png) 50% 0 no-repeat;
+  background-size: 12px;
+}
+
+.card_info_list > li .tit strong {
+  display: block;
+  line-height: 1;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.card_info_list > li dl dt,
+.card_info_list > li dl dd {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.card_info_list > li dl dt {
+  color: #666;
+  margin-right: 5px;
+}
+
+.flex_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex_btn > a.btn {
+  width: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40%;
+          flex: 1 1 40%;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+.flex_btn > a.btn:nth-child(-n+2) {
+  margin-top: 0;
+}
+
+.flex_btn > a.btn:nth-child(2n) {
+  margin-left: 10px;
+}
+
+.flex_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex_box .l {
+  margin-right: auto;
+}
+
+.flex_box .r {
+  margin-left: auto;
+  text-align: right;
+}
+
+.txt_gray02 {
+  color: #666;
+}
+
+.txt_size18 {
+  font-size: 18px;
+}
+
+.txt_size0 {
+  font-size: 0;
 }
 
 .btn_toggle {
