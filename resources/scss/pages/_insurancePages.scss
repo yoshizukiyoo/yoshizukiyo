@@ -2141,11 +2141,12 @@ h4 {
 
 .login_certificate {
 	position: relative;
-	margin-top: 30px;
-	padding: 30px 57px 0;
+	margin-top: 17px;
+	padding: 30px 40px 0;
 	border-radius: 10px 10px 10px 35px;
-	box-shadow: 0 6px 17px 9px #e6e6e6;
+	box-shadow: 0 11px 17px 7px #e6e6e6;
 	background: #fff;
+	font-size: 14px;
 
 	>ul {
 		display: flex;
@@ -2176,13 +2177,13 @@ h4 {
 
 		>a {
 			display: block;
-			height: 60px;
+			height: 50px;
 			border: 2px solid #555;
 			border-radius: 13px;
-			line-height: 56px;
+			line-height: 46px;
 			text-align: center;
 			font-weight: 500;
-			font-size: 18px;
+			font-size: 16px;
 			color: #111;
 		}
 	}
@@ -2190,7 +2191,7 @@ h4 {
 	.btn_cert_popup {
 		display: flex;
 		align-items: center;
-		margin-bottom: 20px;
+		margin-bottom: 13px;
 
 		>span {
 			margin-right: auto;
@@ -2217,10 +2218,10 @@ h4 {
 
 				>a {
 					display: block;
-					height: 52px;
+					height: 40px;
 					border-radius: 6px;
 					background: #f7f7f7;
-					line-height: 52px;
+					line-height: 40px;
 					text-align: center;
 				}
 			}
@@ -2243,6 +2244,11 @@ h4 {
 		&.on::after {
 			transform: rotate(180deg);
 		}
+	}
+
+	.txt {
+		display: inline-block;
+		margin-top: -6px;
 	}
 }
 
@@ -2904,8 +2910,15 @@ h4 {
 	}
 
 	h3 {
+		display: inline-block;
+		padding-right: 5px;
 		font-size: 26px;
 		line-height: 28px;
+		font-weight: 400;
+
+		+p {
+			display: inline-block;
+		}
 	}
 
 	p {
@@ -2916,57 +2929,79 @@ h4 {
 	}
 
 	.left-normal-login {
-		width: 370px;
+		width: calc(100% - 510px);
 		float: left;
-
-		.login_certificate {
-			min-height: 380px;
-		}
-	}
-
-	.right-simple-login {
-		float: right;
-		width: calc(100% - 430px);
 
 		.login_certificate {
 			min-height: 380px;
 
 			.top {
-				position: relative;
-				margin-bottom: 30px;
+				>div {
+					width: 33.333%;
+				}
+			}
+		}
+	}
 
-				&:before {
+	.right-simple-login {
+		float: right;
+		width: 490px;
+
+		.login_certificate {
+			.top {
+				>div {
+					&:after {
+						height: 105px;
+					}
+				}
+			}
+		}
+
+	}
+
+	.login_certificate {
+		min-height: 380px;
+
+		.top {
+
+			margin-bottom: 30px;
+			margin: 0 -20px;
+
+			&:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+
+			>div {
+				position: relative;
+				width: 50%;
+				float: left;
+				padding: 0 20px;
+
+				//&:first-child {
+				//	padding-right: 30px;
+				//	padding-left: 0;
+				//}
+				&:after {
 					content: "";
 					display: block;
 					border-left: 1px solid #eee;
 					position: absolute;
-					left: 50%;
+					right: 0;
 					top: 0;
 					bottom: 0;
-					height: 105px;
+					height: 100%;
 				}
 
-				&:after {
-					content: "";
-					display: block;
-					clear: both;
-				}
-
-				>div {
-					width: 50%;
-					float: left;
-					padding-left: 30px;
-
-					&:first-child {
-						padding-right: 30px;
-						padding-left: 0;
+				&:last-child {
+					&:after {
+						display: none;
 					}
 				}
 			}
-
 		}
 	}
-
 }
 
 
