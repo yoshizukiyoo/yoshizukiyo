@@ -1,5 +1,6 @@
 //var
-$orange: #ff883a;
+$orange: #ff883a !default;
+$url-img-content: "/resources/img/content" !default;
 
 @mixin box_default($p_h : 17px, $p_v : 19px) {
 	border: 1px solid transparent;
@@ -39,9 +40,16 @@ $orange: #ff883a;
 @include ico('stamp', 30px, 30px);
 @include ico('clover', 30px, 30px);
 @include ico('bi_shinhan', 15px, 15px);
+
+@include ico('chevron_down_sm_bold', 10px, 6px, #{$url-img-content});
+@include ico('floppy', 15px, 14px, #{$url-img-content});
+
 .ico{
 	&.ico_notice{
 		margin-top: -2px;
+	}
+	&.ico_chevron_down_sm_bold{
+		margin-top: 2px;
 	}
 }
 
@@ -53,6 +61,19 @@ $orange: #ff883a;
 .txt_xxl{
 	font-size: 23px !important;
 }
+
+.txt_blue{
+	color: $blue !important;
+}
+
+.txt_black{
+	color: $black !important;
+}
+
+.txt_demigray{
+	color: $demigray !important;
+}
+
 //버튼
 .btn{
 	&.btn_full{
@@ -431,6 +452,9 @@ h3.tit2{
 	}
 }
 
+.fx_align_end{
+	align-self: flex-end;
+}
 //etc
 .security_level{
 	display: flex;
@@ -710,12 +734,84 @@ h3.tit2{
 	border-color: #ddd;
 }
 
-.inquriy_box{
+.inquiry_box{
 	.inquiry_time{
+		margin-bottom: 10px;
 		font-size: 13px;
 		color: #333;
 		>span{
-			font-weight: 500;
+			font-weight: 400;
+			color: #111;
+		}
+	}
+	.inquiry_result{
+		>ul{
+			>li{
+				padding: 19px 0;
+				border-width: 1px;	
+				border-color: #ddd;
+				border-top-style: solid;
+				>div{
+					@include fx_lr();
+					font-size: 13px;
+					color:#555;
+					line-height: 1;
+					strong{
+						font-size: 16px;
+						color:#111;
+					}
+					em{
+						font-size: 18px;
+						font-weight: bold;
+						font-style: normal;
+					}
+					&:not(:first-child){
+						margin-top: 10px;
+					}
+				}
+				>a{
+					display: block;
+					padding-right: 20px;
+					background-position: right center;
+					background-repeat: no-repeat;
+					background-size: 5px 10px;
+					background-image: url(#{$url-img}/content/ico_arr_black.png);
+					>div{
+						@include fx_lr();
+						font-size: 13px;
+						color:#555;
+						line-height: 1.5;
+						>.r{
+							text-align: right;
+						}
+						strong{
+							font-size: 16px;
+							color:#111;
+						}
+						em{
+							font-size: 18px;
+							font-weight: bold;
+							font-style: normal;
+						}
+					}
+				}
+				&:last-child{
+					border-bottom-style: solid;
+				}
+			}
+		}
+	}
+}
+
+.input_items{
+	&.col_3{
+		flex-wrap: wrap;
+		align-content: space-between;
+		>.check_item{
+			flex-basis: 30%;
+			&:nth-child(n+4){
+				margin-top: 10px;
+			}
 		}
 	}
 }
