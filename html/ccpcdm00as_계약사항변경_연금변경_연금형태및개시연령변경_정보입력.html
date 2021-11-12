@@ -12,7 +12,7 @@
 	<!-- JavaScript -->
 	<script src="/resources/js/jquery-3.3.1.js"></script>
 	<script src="/resources/js/slick.js"></script>
-	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
 
 	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
 	<script src="/resources/js/ui_global.js"></script>
@@ -30,10 +30,19 @@
 
 <body>
 	<div class="wrapper">
-		<header class="header" data-page-title="보험금감액"></header>
+		<header class="header" data-page-title="연금변경"></header>
 		<div id="content">
-			<div class="container pt_4">
 
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#tab_cont1"><span>연금형태 및 개시연령 변경</span></a></li>
+					<li><a href="#tab_cont2"><span>연금주기 변경</span></a></li>
+				</ul>
+			</nav>
+
+			<h2 class="sr_only">연금형태 및 개시연령 변경</h2>
+
+			<div class="container">
 				<!-- s: 현재 단계 표시 -->
 				<ul class="input_step">
 					<li><span class="num">1</span><span class="txt">보험선택</span></li>
@@ -43,20 +52,14 @@
 				</ul>
 				<!-- e: 현재 단계 표시 -->
 
-				<div class="clfx">
-					<div class="f_l">
-						<h2 class="tit1">계약정보</h2>
-					</div>
-					<div class="f_r">
-						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
-							<i class="ico ico_help_sm"></i>
-							<span>알려드립니다</span>
-						</a>
-					</div>
+				<div class="txt_r mb_3">
+					<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+						<i class="ico ico_help_sm"></i>
+						<span>알려드립니다</span>
+					</a>
 				</div>
 			</div>
-
-			<!-- s: 계약정보 영역 -->
+			<!-- s: 계약사항 상세 영역 -->
 			<div class="contract_detail pt_0">
 
 				<strong class="list_name">무배당 우체국통합건강보험 2007</strong>
@@ -82,16 +85,21 @@
 				</div>
 
 			</div>
-			<!-- e: 계약정보 영역 -->
-
-			<!-- s: 감액내역 영역 -->
-			<div class="container pt_3 pb_16">
-				<h2 class="tit1">감액내역 입력</h2>
+			<!-- e: 계약사항 상세 영역 -->
+			<div class="container pt_4 pb_4">
+				<h3 class="tit1">변경정보 입력</h3>
 				<div class="contract_list p_0">
 					<ul>
 						<li class="contract_item">
 							<em class="txt_sm txt_gray">주보험</em>
-							<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</strong>
+							<strong class="list_name txt_normal">(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</strong>
+
+							<span class="in_detail in_mid_detail">
+								<span>
+									<em>지급구분</em>
+									<strong>지급전생존</strong>
+								</span>
+							</span>
 
 							<div class="in_detail detail_round bg_lightgray">
 								<ul class="list_line">
@@ -100,12 +108,12 @@
 											<span class="lab_status btn_outline_gray">변경전</span>
 										</span>
 										<span>
-											<em>가입금액</em>
-											<strong>10,000,000원</strong>
+											<em>보험기간</em>
+											<strong>90세</strong>
 										</span>
 										<span>
-											<em>보험료</em>
-											<strong>20,000원</strong>
+											<em>납입기간</em>
+											<strong>10년</strong>
 										</span>
 									</li>
 									<li>
@@ -116,8 +124,8 @@
 										<a href="#;" class="tf_item mt_1" onclick="openModal('layerOption'); return false;">
 											<div class="tf_item_body">
 												<div class="input_area">
-													<span class="lab">가입금액 <span class="req">필수항목</span></span>
-													<p class="tf">10,000,000원</p>
+													<span class="lab">지급형태 <span class="req">필수항목</span></span>
+													<p class="tf">10년 확정형</p>
 												</div>
 												<div class="btn_area">
 													<i class="ico ico_chevron_down_md"></i>
@@ -129,8 +137,8 @@
 										<a href="#;" class="tf_item mt_2 mb_2" onclick="openModal('layerOption'); return false;">
 											<div class="tf_item_body">
 												<div class="input_area">
-													<span class="lab">보험료 <span class="req">필수항목</span></span>
-													<p class="tf">29,300원</p>
+													<span class="lab">개시연령 <span class="req">필수항목</span></span>
+													<p class="tf">65세</p>
 												</div>
 												<div class="btn_area">
 													<i class="ico ico_chevron_down_md"></i>
@@ -145,8 +153,8 @@
 							</div>
 						</li>
 						<li class="contract_item">
-							<em class="txt_sm txt_gray">주보험</em>
-							<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</strong>
+							<em class="txt_sm txt_gray">특약</em>
+							<strong class="list_name txt_normal">(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</strong>
 
 							<div class="in_detail detail_round bg_lightgray">
 								<ul class="list_line">
@@ -155,12 +163,12 @@
 											<span class="lab_status btn_outline_gray">변경전</span>
 										</span>
 										<span>
-											<em>가입금액</em>
-											<strong>10,000,000원</strong>
+											<em>보험기간</em>
+											<strong>90세</strong>
 										</span>
 										<span>
-											<em>보험료</em>
-											<strong>20,000원</strong>
+											<em>납입기간</em>
+											<strong>10년</strong>
 										</span>
 									</li>
 									<li>
@@ -171,8 +179,8 @@
 										<a href="#;" class="tf_item mt_1" onclick="openModal('layerOption'); return false;">
 											<div class="tf_item_body">
 												<div class="input_area">
-													<span class="lab">가입금액 <span class="req">필수항목</span></span>
-													<p class="tf">10,000,000원</p>
+													<span class="lab">지급형태 <span class="req">필수항목</span></span>
+													<p class="tf">10년 확정형</p>
 												</div>
 												<div class="btn_area">
 													<i class="ico ico_chevron_down_md"></i>
@@ -184,8 +192,8 @@
 										<a href="#;" class="tf_item mt_2 mb_2" onclick="openModal('layerOption'); return false;">
 											<div class="tf_item_body">
 												<div class="input_area">
-													<span class="lab">보험료 <span class="req">필수항목</span></span>
-													<p class="tf">29,300원</p>
+													<span class="lab">개시연령 <span class="req">필수항목</span></span>
+													<p class="tf">65세</p>
 												</div>
 												<div class="btn_area">
 													<i class="ico ico_chevron_down_md"></i>
@@ -202,14 +210,13 @@
 					</ul>
 				</div>
 			</div>
-			<!-- e: 감액내역 영역 -->
 
 			<!-- s: 하단 고정 영역 -->
 			<div class="bottom_fixed_area">
 				<div class="btn_group btn_group_flex btn_group_r">
 					<!-- 비활성화시 .btn_disabled 추가 -->
 					<a href="#;" class="btn btn_xl btn_primary">
-						<span>감액내역 확인</span>
+						<span>변경내역 확인</span>
 						<i class="ico ico_chevron_right_xl ml_2"></i>
 					</a>
 				</div>
@@ -227,10 +234,9 @@
 					<div class="popup_body">
 						<div class="container">
 							<ul class="list list1">
-								<li>감액처리 계약의 금액 입력 후 [감액내역 확인] 버튼을 선택하시면 감액된 보험료를 확인할 수 있습니다.
+								<li>
+									변경사항 선택 후 [변경내역 확인] 버튼을 클릭하시면 연금형태 및 개시연령 변경내역을 확인할 수 있습니다.
 								</li>
-								<li>특약의 가입금액은 주계약의 가입금액보다 높을 수 없습니다.</li>
-								<li>보험금 감액사항 입력 후 [감액내역 확인] 버튼을 클릭하시면 감액내역을 확인할 수 있습니다.</li>
 							</ul>
 						</div>
 					</div>
