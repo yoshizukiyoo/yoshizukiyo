@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">가격공시실</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="btn_group mt_4">
+					<a href="#layerSampleAlert" class="btn btn_sm btn_primary" onclick="openModal('layer_calculator', this);">보험료
+						계산</a>
+				</div>
+
+				<div class="modal_popup modal_xxl modal_calculator show" data-popup="layer_calculator">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">보험료 계산</h2>
+						</div>
+						<div class="popup_body">
+							<span class="tit_type">보험료 계산 상품</span>
+							<strong class="ins_tit">
+								(무)우체국든든한종신보험2007
+								<img src="../resources/img/content/ico_new.png" alt="new">
+							</strong>
+							<div class="cont_header_right">
+								<ul class="step">
+									<li class="on"><span class="num">1</span><span class="txt">기본정보 입력</span></li>
+									<li><span class="num"></span><span class="txt"></span></li>
+									<li><span class="num"></span><span class="txt"></span></li>
+								</ul>
+							</div>
+
+							<div class="tbl_tit mt_10">
+								<div class="tit_left">
+									<h3 class="tit1">기본정보 입력</h3>
+								</div>
+							</div>
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">기본정보 입력</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">보험종류</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 650px;">
+													<dl>
+														<dt><a href="#none" title="${조건} 선택"><span>무배당 우체국든든한종신보험 2109 1종(해약환급금 50% 지급형)</span></a>
+														</dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>...</span></a></li>
+																<li><a href="#none"><span>...</span></a></li>
+																<li><a href="#none"><span>...</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												<label for="input_name">
+													피보험자이름
+												</label>
+											</th>
+											<td>
+												<input id="input_name" type="text" class="tf txt_l" placeholder="이름을 입력해 주세요"
+													title="이름을 입력해 주세요">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												피보험자 생년월일
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<div class="datepicker_box">
+													<input type="text" class="tf tf_datepicker" placeholder="YYYY.MM.DD" title="시작 날짜 선택">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												피보험자 성별
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="gender" id="gender_1" checked="">
+													<label for="gender_1">남자</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="gender" id="gender_2">
+													<label for="gender_2">여자</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												휴대폰번호
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl>
+															<dt><a href="#none" title="${조건} 선택"><span>선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>011</span></a></li>
+																	<li><a href="#none"><span>016</span></a></li>
+																	<li><a href="#none"><span>017</span></a></li>
+																	<li><a href="#none"><span>018</span></a></li>
+																	<li><a href="#none"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+													<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												기준일자
+												<strong class="necessary">*</strong>
+											</th>
+											<td>
+												<div class="datepicker_box">
+													<input type="text" class="tf tf_datepicker" placeholder="YYYY.MM.DD" title="시작 날짜 선택">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">납입주기</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 170px;">
+													<dl>
+														<dt><a href="#none" title="${조건} 선택"><span>월납</span></a>
+														</dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>...</span></a></li>
+																<li><a href="#none"><span>...</span></a></li>
+																<li><a href="#none"><span>...</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary">상세정보 입력</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
