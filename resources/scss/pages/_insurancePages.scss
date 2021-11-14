@@ -138,6 +138,8 @@ $emphasis: #ce4900 !default;
 
 	>ul {
 		>li {
+			position: relative;
+
 			>a {
 				display: block;
 			}
@@ -155,6 +157,9 @@ $emphasis: #ce4900 !default;
 				line-height: 20px;
 				color: #111;
 				font-weight: 500;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
 			}
 
 
@@ -573,6 +578,32 @@ $emphasis: #ce4900 !default;
 
 			.list_name {
 				padding: 0;
+			}
+		}
+	}
+
+	&.right_blit {
+		>ul {
+			>li {
+				.list_name {
+					padding-right: 15px;
+				}
+
+				.evidence_contract {
+					position: relative;
+
+					&:before {
+						content: "";
+						display: block;
+						width: 6px;
+						height: 10px;
+						background:url(#{$url-img}/common/ico_chevron_right_gray_sm.png ) 0 0 no-repeat;
+						background-size: 6px 10px;
+						right: 0px;
+						top: 0px;
+						position: absolute;
+					}
+				}
 			}
 		}
 	}
@@ -1757,5 +1788,126 @@ $emphasis: #ce4900 !default;
 	li {
 		border-bottom: 1px solid #eee;
 		padding: 10px 0;
+	}
+}
+
+.first_section {
+	.search_box {
+		margin: 0 -20px;
+		background: #f6f6f6;
+		padding: 0 50px 0 20px;
+		position: relative;
+
+		input {
+			height: 50px;
+			border: 0;
+			line-height: 50px;
+			padding: 0;
+			background: none;
+			width: 100%;
+		}
+
+		button {
+			width: 50px;
+			height: 50px;
+			background:url(#{$url-img}/content/ico_search_gray.png) center center no-repeat;
+			background-size: 15px 15px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			line-height: 1000px;
+			overflow: hidden;
+			display: block;
+		}
+	}
+}
+
+.search_complete {
+	ul {
+		li {
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			margin-top: 10px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			a {
+				display: block;
+				padding: 20px;
+				padding-right: 30px;
+				background:url(#{$url-img}/common/ico_chevron_right_md.png ) right 25px center no-repeat;
+				background-size: 6px 10px;
+			}
+		}
+
+		&.style1 {
+
+			dl {
+				dt {
+					color: #111;
+					font-size: 16px;
+					line-height: 20px;
+					font-weight: 400;
+				}
+
+				dd {
+					color: #666;
+					font-size: 13px;
+					margin-top: 5px;
+				}
+			}
+		}
+
+		&.style2 {
+			em {
+				font-style: normal;
+				display: block;
+				color: #666;
+				font-size: 13px;
+				margin-bottom: 5px;
+				line-height: 15px;
+			}
+
+			strong {
+				font-size: 16px;
+				line-height: 20px;
+				color: #111;
+				display: block;
+			}
+		}
+	}
+}
+
+.resident_num {
+	margin-top: 10px;
+	position: relative;
+
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	&:before {
+		content: "";
+		display: block;
+		width: 10px;
+		border-top: 1px solid #ddd;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -5px;
+	}
+
+	.tf_item {
+		width: calc(50% - 10px);
+		float: right;
+		margin-top: 0 !important;
+
+		&:first-child {
+			float: left;
+		}
 	}
 }
