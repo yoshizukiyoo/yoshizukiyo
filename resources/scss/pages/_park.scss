@@ -630,15 +630,33 @@
 	}
 }
 
-.check_item.check {
-	>input[type=radio] {
-		+label {
-			background-image: url(#{$url-img}/common/ico_checkbox_default.png);
-		}
+.check_item {
+	&.check {
+		>input[type=radio] {
+			+label {
+				background-image: url(#{$url-img}/common/ico_checkbox_default.png);
+			}
 
-		&:checked+label {
-			background-image: url(#{$url-img}/common/ico_checkbox_checked.png);
+			&:checked+label {
+				background-image: url(#{$url-img}/common/ico_checkbox_checked.png);
+			}
 		}
+	}
+
+	&.simple_primary {
+		>input[type=radio] {
+			+label {
+				background-image: url(#{$url-img}/common/ico_check_off.png);
+			}
+
+			&:checked+label {
+				background-image: url(#{$url-img}/common/ico_check_primary.png);
+			}
+		}
+	}
+
+	>input[type=checkbox]+label.d_i_b {
+		background-position: 0 3px;
 	}
 }
 
@@ -836,6 +854,17 @@
 			background-repeat: no-repeat;
 			font-size: 18px;
 			font-weight: 500;
+		}
+	}
+
+	&.sm {
+		>li {
+			a {
+				font-size: 16px;
+				font-weight: 400;
+				background-image:url(#{$url-img}/content/ico_arr_black.png);
+				background-size: 5px;
+			}
 		}
 	}
 }
@@ -1242,6 +1271,7 @@
 		}
 
 		.btn_submenu {
+			position: absolute;
 			top: 19px;
 			right: 11px;
 		}
@@ -1292,7 +1322,8 @@
 
 		.btn_layer {
 			position: absolute;
-			top: 67px;
+			top: 50%;
+			margin-top: -10px;
 			right: 15px;
 			width: 20px;
 			height: 21px;
