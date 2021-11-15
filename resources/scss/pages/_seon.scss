@@ -24,7 +24,7 @@
 		>label {
 			display: inline-block;
 			position: relative;
-			width: 60px;
+			//width: 60px;
 			height: 23px;
 			padding-left: 9px;
 			border-radius: 15px;
@@ -68,6 +68,7 @@
 		}
 
 		>label {
+			width: 60px;
 			padding-left: 26px;
 			background: #ddd;
 
@@ -707,5 +708,131 @@
 
 	.btn_group {
 		padding: 0 20px 20px;
+	}
+}
+
+.btn_switch {
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle;
+
+	>.switch {
+		display: inline-flex;
+
+		>input[type=checkbox] {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+		}
+
+		>input[type=checkbox]:checked+label {
+			background: #ffcb18;
+			color: #111;
+
+			&::before {
+				left: calc((100% - 5px) - 13px);
+			}
+		}
+
+		>label {
+			display: inline-block;
+			position: relative;
+			width: 100%;
+			padding-left: 9px;
+			border-radius: 15px;
+			background: #eee;
+			transition: .3s ease;
+			line-height: 23px;
+			font-size: 12px;
+			font-weight: 400;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 5px;
+				top: 50%;
+				width: 13px;
+				height: 13px;
+				transform: translateY(-50%);
+				border-radius: 50%;
+				background: #fff;
+				transition: .3s ease;
+			}
+		}
+	}
+}
+
+.switc_style1 {
+	>.switch {
+		>input[type=checkbox]:checked+label {
+			padding: 0 26px 0 15px;
+			text-align: left;
+
+			>.check_y {
+				display: inline-block;
+			}
+
+			>.check_n {
+				display: none;
+			}
+		}
+
+		>label {
+			height: 23px;
+			padding: 0 15px 0 26px;
+			text-align: right;
+		}
+	}
+
+	.check_y {
+		display: none;
+	}
+}
+
+.switc_style2 {
+	>.switch {
+		>input[type=checkbox]:checked+label {
+			padding: 0 26px 0 15px;
+		}
+
+		>label {
+			width: 45px;
+			height: 20px;
+			padding: 0 15px 0 26px;
+		}
+	}
+}
+
+.account_amount {
+	display: flex;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #ddd;
+
+	>.amount_label {
+		flex: none;
+
+		>span {
+			display: inline-block;
+			line-height: 1;
+		}
+
+		.req {
+			display: inline-block;
+			margin-left: 4px;
+			width: 5px;
+			height: 5px;
+			border-radius: 50%;
+			background-color: currentColor;
+			vertical-align: top;
+			text-indent: -9999px;
+		}
+	}
+
+	>.amount_area {
+		display: flex;
+		position: relative;
+		align-items: flex-start;
+		margin-left: auto;
 	}
 }
