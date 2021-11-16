@@ -1820,6 +1820,18 @@ h3.tit2.score_tit {
   background-image: url(/resources/img/common/ico_checkbox_checked.png);
 }
 
+.check_item.simple_primary > input[type=radio] + label {
+  background-image: url(/resources/img/common/ico_check_off.png);
+}
+
+.check_item.simple_primary > input[type=radio]:checked + label {
+  background-image: url(/resources/img/common/ico_check_primary.png);
+}
+
+.check_item > input[type=checkbox] + label.d_i_b {
+  background-position: 0 3px;
+}
+
 .password_dot {
   text-align: center;
   margin-top: 42px;
@@ -2010,6 +2022,13 @@ h3.tit2.score_tit {
   background-repeat: no-repeat;
   font-size: 18px;
   font-weight: 500;
+}
+
+.link_list.sm > li a {
+  font-size: 16px;
+  font-weight: 400;
+  background-image: url(/resources/img/content/ico_arr_black.png);
+  background-size: 5px;
 }
 
 .account_info_box {
@@ -2399,19 +2418,26 @@ h3.tit2.score_tit {
 }
 
 .card_info_list > li {
-  position: relative;
   border: 1px solid #ddd;
-  padding: 17px 35px 20px 19px;
   border-radius: 8px;
+}
+
+.card_info_list > li .con {
+  padding: 17px 20px 20px;
+  background-image: url(/resources/img/content/ico_link_arr.png);
+  background-position: calc(100% - 20px) 50%;
+  background-repeat: no-repeat;
+  background-size: 12px;
+}
+
+.card_info_list > li .con a {
+  position: relative;
+  display: block;
+  padding-right: 20px;
 }
 
 .card_info_list > li:not(:first-child) {
   margin-top: 10px;
-}
-
-.card_info_list > li .btn_submenu {
-  top: 19px;
-  right: 11px;
 }
 
 .card_info_list > li .sub_toggle {
@@ -2461,7 +2487,8 @@ h3.tit2.score_tit {
 
 .card_info_list > li .btn_layer {
   position: absolute;
-  top: 67px;
+  top: 50%;
+  margin-top: -10px;
   right: 15px;
   width: 20px;
   height: 21px;
@@ -2486,6 +2513,42 @@ h3.tit2.score_tit {
 .card_info_list > li dl dt {
   color: #666;
   margin-right: 5px;
+}
+
+.card_info_list > li .link_btn {
+  display: table;
+  width: 100%;
+  background: #f2f2f2;
+  border-radius: 0 0 8px 8px;
+}
+
+.card_info_list > li .link_btn a {
+  position: relative;
+  display: table-cell;
+  line-height: 45px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.card_info_list > li .link_btn a:not(:first-child):after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  margin-top: -10px;
+  width: 1px;
+  height: 20px;
+  background: #e6e6e6;
+}
+
+.card_info_list.banking li > a {
+  display: block;
+  padding: 20px;
+  background-image: url(/resources/img/content/ico_link_arr.png);
+  background-position: calc(100% - 20px) 50%;
+  background-repeat: no-repeat;
+  background-size: 12px;
 }
 
 .flex_btn {
@@ -2543,6 +2606,36 @@ h3.tit2.score_tit {
   font-size: 0;
 }
 
+.ico_sms {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  width: 11px;
+  height: 7px;
+  line-height: 7px;
+  background-image: url(/resources/img/content/ico_sms.png);
+  background-size: cover;
+}
+
+.ico_push {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  width: 12px;
+  height: 11px;
+  line-height: 11px;
+  background-image: url(/resources/img/content/ico_push.png);
+  background-size: cover;
+}
+
 .btn_toggle {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -2577,7 +2670,6 @@ h3.tit2.score_tit {
 .btn_toggle > .switch > label {
   display: inline-block;
   position: relative;
-  width: 60px;
   height: 23px;
   padding-left: 9px;
   border-radius: 15px;
@@ -2619,6 +2711,7 @@ h3.tit2.score_tit {
 }
 
 .login_toggle > .switch > label {
+  width: 60px;
   padding-left: 26px;
   background: #ddd;
 }
@@ -3307,4 +3400,139 @@ h3.tit2.score_tit {
 
 .keypad .btn_group {
   padding: 0 20px 20px;
+}
+
+.btn_switch {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  vertical-align: middle;
+}
+
+.btn_switch > .switch {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.btn_switch > .switch > input[type=checkbox] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.btn_switch > .switch > input[type=checkbox]:checked + label {
+  background: #ffcb18;
+  color: #111;
+}
+
+.btn_switch > .switch > input[type=checkbox]:checked + label::before {
+  left: calc((100% - 5px) - 13px);
+}
+
+.btn_switch > .switch > label {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-left: 9px;
+  border-radius: 15px;
+  background: #eee;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  line-height: 23px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.btn_switch > .switch > label::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 50%;
+  background: #fff;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.switc_style1 > .switch > input[type=checkbox]:checked + label {
+  padding: 0 26px 0 15px;
+  text-align: left;
+}
+
+.switc_style1 > .switch > input[type=checkbox]:checked + label > .check_y {
+  display: inline-block;
+}
+
+.switc_style1 > .switch > input[type=checkbox]:checked + label > .check_n {
+  display: none;
+}
+
+.switc_style1 > .switch > label {
+  height: 23px;
+  padding: 0 15px 0 26px;
+  text-align: right;
+}
+
+.switc_style1 .check_y {
+  display: none;
+}
+
+.switc_style2 > .switch > input[type=checkbox]:checked + label {
+  padding: 0 26px 0 15px;
+}
+
+.switc_style2 > .switch > label {
+  width: 45px;
+  height: 20px;
+  padding: 0 15px 0 26px;
+}
+
+.account_amount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.account_amount > .amount_label {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+}
+
+.account_amount > .amount_label > span {
+  display: inline-block;
+  line-height: 1;
+}
+
+.account_amount > .amount_label .req {
+  display: inline-block;
+  margin-left: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: currentColor;
+  vertical-align: top;
+  text-indent: -9999px;
+}
+
+.account_amount > .amount_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-left: auto;
 }
