@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">대월계좌조회</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>홍길동 고객님이 보유하고 계신 우체국 대월계좌입니다.</li>
+						<li>상세보기버튼을 클릭하면 대월계좌상세내역을 알 수 있습니다.</li>
+					</ul>
+				</div>
+				
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">대월계좌조회 표로 순서, 대월종류명, 계좌번호, 대월상태, 대월약정일, 대월약정금액, 잔액, 상세보기 정보 제공</caption>
+							<colgroup>
+								<col style="width: 6%">
+								<col style="width: 13%">
+								<col style="width: 15%">
+								<col style="width: 11%">
+								<col style="width: 11%">
+								<col>
+								<col>
+								<col style="width: 10%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">순서</th>
+									<th scope="col">대월종류명</th>
+									<th scope="col">계좌번호</th>
+									<th scope="col">대월상태</th>
+									<th scope="col">대월약정일</th>
+									<th scope="col">대월약정금액(원)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">상세보기</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td>예금담보계좌대월</td>
+									<td>010017-02-191237</td>
+									<td>대월약정</td>
+									<td class="txt_c">2021.03.23</td>
+									<td class="txt_r">4,000,000</td>
+									<td class="txt_r">150,315,862</td>
+									<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default" onclick="openModal('layer01', this);">상세내역</button></td>
+									</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="mt_4 txt_r">
+					<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
+				</div>
+
+				<!-- Modal Popup : 대월계좌상세정보 -->
+				<div class="modal_popup modal_xl show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">대월계좌상세정보</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">대월계좌상세정보 표로 고객명, 계좌번호, 대월상태, 약정해제일, 대월약정일, 대월만기일, 대월약정금액, 예금잔액 정보 제공</caption>
+									<colgroup>
+										<col style="width: 25%">
+										<col>
+										<col style="width: 25%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">고객명</th>
+											<td>홍길동</td>
+											<th scope="row">계좌번호</th>
+											<td>010017-02-191237</td>
+										</tr>
+										<tr>
+											<th scope="row">대월상태</th>
+											<td>대월약정</td>
+											<th scope="row">약정해제일</th>
+											<td></td>
+										</tr>
+										<tr>
+											<th scope="row">대월약정일</th>
+											<td>2021.03.23</td>
+											<th scope="row">대월만기일</th>
+											<td>2022.03.23</td>
+										</tr>
+										<tr>
+											<th scope="row">대월약정금액</th>
+											<td class="txt_r">4,000,000원</td>
+											<th scope="row">예금잔액</th>
+											<td class="txt_r">100,000,000,000원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">대월계좌상세정보 표로 대월약정국, 대월종류, 대월이자, 연체이자, 연체시작/예정일, 직권일시정지, 대월이율, 연체이율, SMS통지여부, 안내장통지여부, 대월이자총액, 연체횟수, 대월이자납입기준일, 대월우대이율 정보 제공</caption>
+									<colgroup>
+										<col style="width: 25%">
+										<col>
+										<col style="width: 25%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">대월약정국</th>
+											<td>010017</td>
+											<th scope="row">대월종류</th>
+											<td>예금담보계좌대월</td>
+										</tr>
+										<tr>
+											<th scope="row">대월이자</th>
+											<td class="txt_r">0원</td>
+											<th scope="row">연체이자</th>
+											<td class="txt_r">0원</td>
+										</tr>
+										<tr>
+											<th scope="row">연체시작/예정일</th>
+											<td>2021-03-23</td>
+											<th scope="row">직권일시정지</th>
+											<td>해당없음</td>
+										</tr>
+										<tr>
+											<th scope="row">대월이율</th>
+											<td>1.879%</td>
+											<th scope="row">연체이율</th>
+											<td>0.000%</td>
+										</tr>
+										<tr>
+											<th scope="row">SMS통지여부</th>
+											<td>통보설정</td>
+											<th scope="row">안내장통지여부</th>
+											<td>통보설정</td>
+										</tr>
+										<tr>
+											<th scope="row">대월이자총액</th>
+											<td class="txt_r">0원</td>
+											<th scope="row">연체횟수</th>
+											<td class="txt_r">0</td>
+										</tr>
+										<tr>
+											<th scope="row">대월이자납입기준일</th>
+											<td>매월 26일</td>
+											<th scope="row">대월우대이율</th>
+											<td>0.000%</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="mt_4 txt_r">
+								<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('layer02')">우대이율</button>
+								<button type="button" class="btn btn_sm btn_outline_default" onclick="$.print('.modal_popup[data-popup=layer01]');">화면인쇄</button>
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 대월계좌상세정보 -->
+
+				<!-- Modal Popup : 대월우대이율 세부내역 -->
+				<div class="modal_popup modal_xl hide" data-popup="layer02">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">대월우대이율 세부내역</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">대월우대이율 세부내역 표로 고객명, 계좌번호, 대월종류명, 총우대이율 정보 제공</caption>
+									<colgroup>
+										<col style="width: 25%">
+										<col>
+										<col style="width: 25%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">고객명</th>
+											<td>홍길동</td>
+											<th scope="row">계좌번호</th>
+											<td>010017-02-191237</td>
+										</tr>
+										<tr>
+											<th scope="row">대월종류명</th>
+											<td>일반계좌대월</td>
+											<th scope="row">총우대이율</th>
+											<td>0.60%</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="tbl_data tbl_list_data mt_4">
+								<table>
+									<caption class="sr_only">대월우대이율 세부내역 표로 이율우대항목, 계좌적용내역, 우대이율 정보 제공</caption>
+									<colgroup>
+										<col style="width: 50%;">
+										<col>
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">이율우대항목</th>
+											<th scope="col">계좌적용내역</th>
+											<th scope="col">우대이율</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>급여우대서비스 대상자</td>
+											<td>면제 %</td>
+											<td>0.20%</td>
+										</tr>
+										<tr>
+											<td>대월 3년이상 사용자</td>
+											<td>204개월 %</td>
+											<td>0.10%</td>
+										</tr>
+										<tr>
+											<td>예금우수고객 선정자(VIP 이상)</td>
+											<td>GREEN %</td>
+											<td>0.00%</td>
+										</tr>
+										<tr>
+											<td>전자금융 약정자(인터넷/모바일/폰뱅킹)</td>
+											<td>해당 %</td>
+											<td>0.10%</td>
+										</tr>
+										<tr>
+											<td>전자통장 가입자</td>
+											<td>해당없음 %</td>
+											<td>0.00%</td>
+										</tr>
+										<tr>
+											<td>아파트관리비 자동이체 약정자</td>
+											<td>해당없음 %</td>
+											<td>0.00%</td>
+										</tr>
+										<tr>
+											<td>우체국 적금 10만원 이상 이체약정자</td>
+											<td>면제 %</td>
+											<td>0.00%</td>
+										</tr>
+										<tr>
+											<td>기타 자동이체 5건 이상 출금 약정자</td>
+											<td>5건 이상 약정 %</td>
+											<td>0.10%</td>
+										</tr>
+										<tr>
+											<td>예금/보험 동시 가입자</td>
+											<td>해당 %</td>
+											<td>0.10%</td>
+										</tr>
+										<tr>
+											<td>우체국 체크카드 10만원 이상 이용실적</td>
+											<td>해당없음 %</td>
+											<td>0.00%</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('layer02');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 대월우대이율 세부내역 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			// 보내는 분 휴대전화 번호 박스
+			$('.sms_phone_check input[type=radio]').change(function(){
+				if($(this).val() == 'sms_phone1'){
+					$('[data-sms-phone=phone1]').show();
+					$('[data-sms-phone=phone2]').hide();
+				} else {
+					$('[data-sms-phone=phone1]').hide();
+					$('[data-sms-phone=phone2]').show();
+				}
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">CMS계좌이체</h2>
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li class="on"><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>CMS계좌이체가 아래와 같이 처리되었습니다</li>
+					</ul>
+				</div>
+
+				<!-- s: 실행결과 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">출금계좌번호, 출금은행 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 19%;">
+								<col>
+								<col style="width: 19%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td>000000-00-000000</td>
+									<th scope="row">출금은행</th>
+									<td>우체국</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_data tbl_list_data mt_4">
+						<table>
+							<caption class="sr_only">입금계좌번호, 입금기관, 출금계좌표시, 입금계좌표시, 처리결과 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 21%;">
+								<col>
+								<col>
+								<col>
+								<col style="width: 9%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">입금계좌번호</th>
+									<th scope="col">입금기관</th>
+									<th scope="col">출금계좌표시</th>
+									<th scope="col">입금계좌표시</th>
+									<th scope="col">처리결과</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>XXXXXXXXXXXXXX</td>
+									<td>삼성화재 나봄미</td>
+									<td>삼성화재 나봄미</td>
+									<td>나봄미</td>
+									<td class="txt_c">정상</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_data tbl_row_data mt_4">
+						<table>
+							<caption class="sr_only">이체금액, 수수료 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">이체금액</th>
+									<td class="txt_r">100,000원</td>
+									<th scope="row">수수료</th>
+									<td class="txt_r">0원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="txt_r mt_4">
+						<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('confirm01', this)">자주쓰는입금계좌로등록</button>
+						<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('sms_popup', this);">SMS전송(카카오톡 알림)</button>
+						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('transfer_popup', this);">이체확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+					</div>
+				</div>
+				<!-- e: 실행결과 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">이체계속</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">이체결과조회</a>
+				</div>
+
+				<!-- s: SMS전송(카카오톡 알림) 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="sms_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_c">
+							<h2 class="popup_tit">SMS전송(카카오톡 알림)</h2>
+						</div>
+						<div class="popup_body">
+							<p class="txt_c txt_sms">
+								이체 처리 결과를 휴대전화 문자메세지 또는 카카오톡 알림으로<br>
+								알려 드리는 서비스입니다(무료)
+							</p>
+							<div class="tbl_data tbl_row_data mt_5">
+								<table>
+									<caption class="sr_only">SMS전송(카카오톡 알림) 입력양식 표이며 받는 분 휴대전화 번호, 보내는 분 휴대전화 번호, 메시지 정보를 제고하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 200px">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">받는 분 휴대전화 번호</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl title="조건 선택">
+															<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>011</span></a></li>
+																	<li><a href="#none"><span>016</span></a></li>
+																	<li><a href="#none"><span>017</span></a></li>
+																	<li><a href="#none"><span>018</span></a></li>
+																	<li><a href="#none"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+													<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">보내는 분 휴대전화 번호</th>
+											<td>
+												<div class="sms_phone_check">
+													<span class="check_item">
+														<input type="radio" name="inputCheck1" value="sms_phone1" id="inputCheck1_1" checked>
+														<label for="inputCheck1_1">우체국 대표전화</label>
+													</span>
+													<span class="check_item">
+														<input type="radio" name="inputCheck1" value="sms_phone2" id="inputCheck1_2">
+														<label for="inputCheck1_2">전화번호 직접입력</label>
+													</span>
+												</div>
+
+												<!-- s: 우체국 대표전화 -->
+												<div class="mt_4" data-sms-phone="phone1">
+													<div class="phone_number corded_phone">
+														<div><input type="text" class="tf disabled" title="전화번호 앞자리 입력" style="width: 93px" value="1599" disabled></div>
+														<div><input type="text" class="tf" title="전화번호 뒷자리입력" style="width: 93px" value="1900" disabled></div>
+													</div>
+													<div class="mt_3">
+														받는 분 휴대전화에 표시되는 전화번호가<br>
+														우체국 대표전화 1599-1900으로 표시됩니다.
+													</div>
+												</div>
+												<!-- e: 우체국 대표전화 -->
+
+												<!-- s: 전화번호 직접입력 -->
+												<div class="mt_4" data-sms-phone="phone2" style="display: none;">
+													<div class="phone_number">
+														<div class="selectbox_wrap" style="width: 93px;">
+															<dl title="조건 선택">
+																<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+																<dd>
+																	<ul>
+																		<li><a href="#none"><span>010</span></a></li>
+																		<li><a href="#none"><span>011</span></a></li>
+																		<li><a href="#none"><span>016</span></a></li>
+																		<li><a href="#none"><span>017</span></a></li>
+																		<li><a href="#none"><span>018</span></a></li>
+																		<li><a href="#none"><span>019</span></a></li>
+																	</ul>
+																</dd>
+															</dl>
+														</div>
+														<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+														<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+													</div>
+													<div class="mt_3">
+														받는 분 휴대전화에 표시할 전화번호를 입력하시기 바랍니다. 발신이 불가한 번호 입력 시 전송이 제한될 수 있습니다.<br>
+														(예 : 010-0000-0000)
+													</div>
+												</div>
+												<!-- e: 전화번호 직접입력 -->
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">메시지</th>
+											<td><textarea name="" id="" class="tf" title="메세지 입력" style="height: 100px;"></textarea></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default fx_w150">재입력</button>
+								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="closeModal('sms_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: SMS전송(카카오톡 알림) 팝업 -->
+
+				<!-- s: 이체확인증 팝업 -->
+				<div class="modal_popup modal_xl hide" data-popup="transfer_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">이체확인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									<button type="button" class="btn btn_xs btn_outline_default ml_3" onclick="$.print('.modal_popup[data-popup=transfer_popup]');">화면인쇄</button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 출금은행, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용,
+										이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+										<col style="width: 20%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">이체일시</th>
+											<td colspan="3">2020.12.29 10:44:08</td>
+										</tr>
+										<tr>
+											<th scope="row">출금은행</th>
+											<td>우체국</td>
+											<th scope="row">입금은행</th>
+											<td>토스뱅크</td>
+										</tr>
+										<tr>
+											<th scope="row">출금계좌번호</th>
+											<td>010017-02-526***</td>
+											<th scope="row">입금계좌번호</th>
+											<td>010017-02-691911</td>
+										</tr>
+										<tr>
+											<th scope="row">보내는 분</th>
+											<td>나봄미</td>
+											<th scope="row">받는분</th>
+											<td>이덕용</td>
+										</tr>
+										<tr>
+											<th scope="row">출금통장 표시내용</th>
+											<td>이덕용</td>
+											<th scope="row">입금통장 표시내용</th>
+											<td>나봄미</td>
+										</tr>
+										<tr>
+											<th scope="row">이체금액</th>
+											<td class="txt_r">10,000원</td>
+											<th scope="row">매체구분</th>
+											<td>인터넷</td>
+										</tr>
+										<tr>
+											<th scope="row">수수료</th>
+											<td class="txt_r">0원</td>
+											<th scope="row">이체결과</th>
+											<td>정상</td>
+										</tr>
+										<tr>
+											<th scope="row">CMS번호/통신문</th>
+											<td></td>
+											<th scope="row">전문번호</th>
+											<td>0710D4E0C3710</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<ul class="list list1 mt_4">
+								<li>본 확인증은 영수증으로 사용할 수 없으며, 거래의 참고용으로만 사용할 수 있습니다.</li>
+							</ul>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 이체확인증 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">안내</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										페이지를 벗어나게됩니다. 이동하시겠습니까?
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">취소</button>
+								<a href="#;" class="btn btn_md btn_outline_default">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>

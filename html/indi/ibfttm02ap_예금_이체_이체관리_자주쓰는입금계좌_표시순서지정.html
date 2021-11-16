@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">자주쓰는입금계좌</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>자주쓰는입금계좌로 등록하시면 이체 시 편리하게 입금계좌번호를 입력하실 수 있습니다. 참고사항에는 입출금통장, 월급통장, 생활비통장 등 참고할 사항을 입력하세요.</li>
+						<li>예금주명 조회가 불가한 경우(가상계좌 또는 계좌번호 오류 등) 예금주명이 표시되지 않습니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 자주쓰는입금계좌 등록 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">자주쓰는입금계좌 등록</h3>
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">자주쓰는입금계좌 입력 양식이며 입금은행, 입금계좌번호, 그룹, 참고사항, 휴대폰번호, 등록위치를 입력하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">입금은행</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="입금은행 선택">
+												<dt><a href="#;"><span>선택하여 주십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>우체국</span></a></li>
+														<li><a href="#;"><span>신한</span></a></li>
+														<li><a href="#;"><span>기업</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">입금계좌번호</th>
+									<td>
+										<input type="text" class="tf" style="width: 420px;" title="입금계좌번호 입력" placeholder="“-”없이 입력하세요">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">그룹</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="그룹선택">
+												<dt><a href="#;"><span>선택하여 주십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>그룹1</span></a></li>
+														<li><a href="#;"><span>그룹2</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default"
+												onclick="openModal('group_popup', this)">그룹등록</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">참고사항</th>
+									<td>
+										<input type="text" class="tf" style="width: 264px;" title="참고사항 입력"
+											placeholder="최대 한글 10자, 영/숫자 20자">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">휴대폰번호</th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 111px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>011</span></a></li>
+															<li><a href="#none"><span>016</span></a></li>
+															<li><a href="#none"><span>017</span></a></li>
+															<li><a href="#none"><span>018</span></a></li>
+															<li><a href="#none"><span>019</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 111px"></div>
+											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 111px"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">등록위치</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_1" checked>
+											<label for="check1_1">처음</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="check1" id="check1_2">
+											<label for="check1_2">마지막</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn_tbl_btm">
+						<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+						<a href="#;" class="btn btn_xl btn_primary">등록</a>
+					</div>
+				</div>
+				<!-- e: 자주쓰는입금계좌 등록 -->
+
+				<!-- s: 자주쓰는입금계좌 목록 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">자주쓰는입금계좌 목록</h3>
+						</div>
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">자주쓰는입금계좌 목록이며 입금은행, 입금계좌번호(예금주), 그룹, 참고사항, 휴대폰번호, 수정/삭제 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 5%;">
+								<col style="width: 7%;">
+								<col style="width: 19.2%;">
+								<col style="width: 16%;">
+								<col style="width: 12.7%;">
+								<col>
+								<col style="width: 12%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">입금은행</th>
+									<th scope="col">입금계좌번호(예금주)</th>
+									<th scope="col">그룹</th>
+									<th scope="col">참고사항</th>
+									<th scope="col">휴대폰번호</th>
+									<th scope="col">수정/삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td>농협</td>
+									<td>010017-01-023296(예금주)</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 170px;">
+											<dl title="그룹 선택">
+												<dt><a href="#;"><span class="txt_sm">선택하여 주십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>그룹1</span></a></li>
+														<li><a href="#;"><span>그룹2</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td>
+										<input type="text" class="tf" style="width: 130px;" title="참고사항 입력">
+									</td>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>011</span></a></li>
+															<li><a href="#none"><span>016</span></a></li>
+															<li><a href="#none"><span>017</span></a></li>
+															<li><a href="#none"><span>018</span></a></li>
+															<li><a href="#none"><span>019</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 70px"></div>
+											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 70px"></div>
+										</div>
+									</td>
+									<td>
+										<button type="button" class="btn btn_sm btn_outline_default">수정</button>
+										<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('confirm01', this)">삭제</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2</td>
+									<td>우리</td>
+									<td>010017-01-023296(예금주)</td>
+									<td>
+										<div class="selectbox_wrap" style="width: 170px;">
+											<dl title="그룹 선택">
+												<dt><a href="#;"><span class="txt_sm">선택하여 주십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>그룹1</span></a></li>
+														<li><a href="#;"><span>그룹2</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<td>
+										<input type="text" class="tf" style="width: 130px;" title="참고사항 입력">
+									</td>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>011</span></a></li>
+															<li><a href="#none"><span>016</span></a></li>
+															<li><a href="#none"><span>017</span></a></li>
+															<li><a href="#none"><span>018</span></a></li>
+															<li><a href="#none"><span>019</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 70px"></div>
+											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 70px"></div>
+										</div>
+									</td>
+									<td>
+										<button type="button" class="btn btn_sm btn_outline_default">수정</button>
+										<!-- [D] 수정이 일어난 행에서만 활성화 -->
+										<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('confirm01', this)">삭제</button><!-- [D] 클릭 시 해당 행 삭제 -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mt_4 txt_r">
+						<button type="button" class="btn btn_sm btn_default" onclick="openModal('order_popup', this)">순서변경</button>
+					</div>
+				</div>
+				<!-- e: 자주쓰는입금계좌 목록 -->
+
+				<!-- s: 그룹관리 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="group_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">그룹관리</h3>
+						</div>
+						<div class="popup_body">
+							<div class="pl_2 mb_4">
+								<ul class="list list1">
+									<li>자주쓰는입금계좌에 지정할 그룹을 등록/수정/삭제 할 수 있습니다.</li>
+									<li>등록한 그룹은 자주쓰는입금계좌 등록/수정 시 지정 할 수 있습니다.</li>
+									<li>그룹 등록은 30개 까지 등록 할 수 있습니다.</li>
+								</ul>
+							</div>
+							<div class="tbl_row2 mb_8">
+								<table>
+									<caption class="sr_only">그룹등록</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">그룹명</th>
+											<td>
+												<input type="text" class="tf" style="width: 272px;" title="그룹명 입력">
+												<div class="btn_inline_box">
+													<button type="button" class="btn btn_md btn_outline_default">등록</button>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tbl_tit">
+								<div class="tit_left">
+									<h4 class="tit1">입금계좌그룹</h3>
+								</div>
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">입금계좌그룹 목록(그룹명, 삭제여부)</caption>
+									<colgroup>
+										<col>
+										<col style="width: 26%;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">그룹명</th>
+											<th scope="col">삭제</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">
+												<input type="text" class="tf" style="width: 100%;" title="그룹명 입력">
+											</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_md btn_outline_default"
+													onclick="openModal('confirm01', this)">삭제</button>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">
+												<input type="text" class="tf" style="width: 100%;" title="그룹명 입력">
+											</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_md btn_outline_default"
+													onclick="openModal('confirm01', this)">삭제</button>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">
+												<input type="text" class="tf" style="width: 100%;" title="그룹명 입력">
+											</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_md btn_outline_default"
+													onclick="openModal('confirm01', this)">삭제</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('group_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('group_popup');">저장</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 그룹관리 팝업 -->
+
+				<!-- s: 순서변경 팝업 -->
+				<div class="modal_popup modal_xxl show" data-popup="order_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">순서 지정</h3>
+						</div>
+						<div class="popup_body">
+							<div class="mb_4">
+								<ul class="list list1">
+									<li>자주쓰는 입금계좌 목록 표시 순서를 변경하실 수 있습니다.</li>
+									<li>순서 변경 후 페이지 하단의 저장 버튼을 눌러야 적용됩니다.</li>
+								</ul>
+							</div>
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">그룹관리 순서지정</caption>
+									<colgroup>
+										<col style="width: 7%;">
+										<col style="width: 12%;">
+										<col style="width: 12%;">
+										<col style="width: 23%;">
+										<col style="width: 16%;">
+										<col style="width: 17%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">번호</th>
+											<th scope="col">그룹</th>
+											<th scope="col">입금은행</th>
+											<th scope="col">입금계좌번호</th>
+											<th scope="col">참고사항</th>
+											<th scope="col">휴대폰번호</th>
+											<th scope="col">순서변경</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">1</td>
+											<td>그룹1</td>
+											<td>농협</td>
+											<td>3020812333462 (예금주명)</td>
+											<td>테스트입니다</td>
+											<td>010-1234-4321</td>
+											<td class="txt_c">
+												<button type="button" class="btn" title="목록순서 내리기"><i class="ico ico_arr_round_down"></i><span
+														class="sr_only">목록순서 내리기</span></button>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">2</td>
+											<td>그룹1</td>
+											<td>농협</td>
+											<td>3020812333462 (예금주명)</td>
+											<td>테스트입니다</td>
+											<td>010-1234-4321</td>
+											<td class="txt_c">
+												<button type="button" class="btn" title="목록순서 내리기"><i class="ico ico_arr_round_down"></i><span
+														class="sr_only">목록순서 내리기</span></button>
+												<button type="button" class="btn" title="목록순서 올리기"><i class="ico ico_arr_round_up"></i><span
+														class="sr_only">목록순서 올리기</span></button>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">3</td>
+											<td>그룹1</td>
+											<td>농협</td>
+											<td>3020812333462 (예금주명)</td>
+											<td>테스트입니다</td>
+											<td>010-1234-4321</td>
+											<td class="txt_c">
+												<button type="button" class="btn" title="목록순서 내리기"><i class="ico ico_arr_round_down"></i><span
+														class="sr_only">목록순서 내리기</span></button>
+												<button type="button" class="btn" title="목록순서 올리기"><i class="ico ico_arr_round_up"></i><span
+														class="sr_only">목록순서 올리기</span></button>
+											</td>
+										</tr>
+										<tr>
+											<td class="txt_c">4</td>
+											<td>그룹1</td>
+											<td>농협</td>
+											<td>3020812333462 (예금주명)</td>
+											<td>테스트입니다</td>
+											<td>010-1234-4321</td>
+											<td class="txt_c">
+												<button type="button" class="btn" title="목록순서 올리기"><i class="ico ico_arr_round_up"></i><span
+														class="sr_only">목록순서 올리기</span></button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('order_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('order_popup');">저장</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 순서변경 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										삭제하시겠습니까?
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>

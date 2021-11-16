@@ -37,6 +37,15 @@
 				$(this).parents('li').toggleClass('active');
 			});
 
+			// 우체국/다른은행 탭메뉴 활성화
+			$('.account_tab a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
 		});
 	</script>
 </head>
@@ -70,8 +79,8 @@
 
 				<div class="tab_menu_type1 first_section tab_ico account_tab">
 					<ul>
-						<li><a href="#;" class="current">우체국</a></li>
-						<li><a href="#;">다른은행</a></li>
+						<li><a href="#;" class="current" data-tab-tg="sub_tab1">우체국</a></li>
+						<li><a href="#;" data-tab-tg="sub_tab2">다른은행</a></li>
 					</ul>
 				</div>
 
@@ -203,6 +212,66 @@
 				</div>
 				<!-- e: 우체국 보유계좌 -->
 
+				<!-- s: 다른은행 보유계좌 -->
+				<div data-sub-tab="sub_tab2" style="display:none;">
+					<div class="mt_20 total_account active">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_normal">다른은행</h3>
+								<span class="num_circle">2</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 펼치기" class="total_price">잔액 <strong>1000,000</strong>원</button>
+							</div>
+						</div>
+						<ul class="account_con">
+							<li class="active">
+								<div class="top">
+									<div class="l">
+										<h4 class="tit2 mt_2 mb_2 txt_normal">Young利한 통장</h4>
+										<span>100057-02-000010</span>
+									</div>
+									<div class="r">
+										<span class="price"><strong>500,000</strong>원</span>
+										<div class="mt_4">
+											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
+										</div>
+									</div>
+								</div>
+								<div class="btm">
+									<button type="button" onclick="openModal('layer04', this);">계좌별칭관리</button>
+									<button type="button" onclick="openModal('layer05', this);">등록해지</button>
+									<button type="button" onclick="openModal('layer06', this);">순서변경</button>
+								</div>
+							</li>
+							<li>
+								<div class="top">
+									<div class="l">
+										<h4 class="tit2 mt_2 mb_2 txt_normal">Young利한 통장</h4>
+										<span>100057-02-000010</span>
+									</div>
+									<div class="r">
+										<span class="price"><strong>500,000</strong>원</span>
+										<div class="mt_6">
+											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
+										</div>
+									</div>
+								</div>
+								<div class="btm">
+									<button type="button" onclick="openModal('layer04', this);">계좌별칭관리</button>
+									<button type="button" onclick="openModal('layer05', this);">등록해지</button>
+									<button type="button" onclick="openModal('layer06', this);">순서변경</button>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- e: 다른은행 보유계좌 -->
+
 				<div class="txt_r mt_4">
 					<button type="button" class="btn btn_sm btn_outline_gray">인터넷예금 가입/조회/예약</button>
 					<button type="button" class="btn btn_sm btn_outline_gray">입출금예금계좌해약</button>
@@ -212,7 +281,7 @@
 				</div>
 
 				<!-- Modal Popup : 계좌상세정보 -->
-				<div class="modal_popup modal_xl hide" data-popup="layer01">
+				<div class="modal_popup modal_xl show" data-popup="layer01">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
