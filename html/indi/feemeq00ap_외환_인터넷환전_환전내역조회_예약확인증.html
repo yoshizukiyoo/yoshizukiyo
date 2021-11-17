@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_result').click(function(){
+				$('.btm_result_box').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">환전내역조회</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>고객님의 환전내역을 조회하실 수 있습니다.</li>
+					</ul>
+				</div>
+				
+				<div class="section">
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">환율조회</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">조회기간</th>
+									<td>
+										<div class="mulit_date_box">
+											<div class="btn_date">
+												<button type="button" class="btn btn_sm btn_default">당일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
+												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+											</div>
+											<div class="datepicker_box">
+												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn_data_search">
+						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
+					</div>
+				</div>
+
+				<!-- s: 조회 결과 -->
+				<div class="section btm_result_box">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">환전내역조회 조회 결과 표로 거래일, 구분, 통화코드, 외화금액, 적용환율, 원화금액, 배송료(원), 예약확인증 정보 제공</caption>
+							<colgroup>
+								<col style="width: 12%">
+								<col>
+								<col style="width: 10%">
+								<col style="width: 10%">
+								<col>
+								<col style="width: 10%">
+								<col>
+								<col style="width: 12%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">거래일</th>
+									<th scope="col">구분</th>
+									<th scope="col">통화코드</th>
+									<th scope="col">외화금액</th>
+									<th scope="col">적용환율</th>
+									<th scope="col">원화금액</th>
+									<th scope="col">배송료(원)</th>
+									<th scope="col">예약확인증</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">2021.05.31</td>
+									<td class="txt_c">환전</td>
+									<td>USD</td>
+									<td>1</td>
+									<td class="txt_r">1133.49</td>
+									<td class="txt_r">1,130</td>
+									<td class="txt_r">0</td>
+									<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default" onclick="openModal('layer01', this);">예약확인증</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 조회 결과 -->
+
+				<!-- Modal Popup : 예약확인증 -->
+				<div class="modal_popup modal_lg show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">예약확인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="tit_left">
+									<h3 class="tit1">환전신청인</h3>
+								</div>
+							</div>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">환전신청인 표로 환전인구분, 이름, 주민등록번호 정보 제공</caption>
+									<colgroup>
+										<col style="width: 20%">
+										<col>
+										<col style="width: 20%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">환전인구분</th>
+											<td colspan="3">내국인</td>
+										</tr>
+										<tr>
+											<th scope="row">이름</th>
+											<td>나봄미</td>
+											<th scope="row">주민등록번호</th>
+											<td>650529-2*******</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="section">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h3 class="tit1">환전정보</h3>
+									</div>
+								</div>
+								<div class="tbl_data tbl_row_data">
+									<table>
+										<caption class="sr_only">환전정보 표로 거래일자, 수령예정일자, 우체국 전화번호, 하나은행 전화번호, 외화금액, 적용환율, 원화금액, 수령처 정보 제공</caption>
+										<colgroup>
+											<col style="width: 20%">
+											<col>
+											<col style="width: 20%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">거래일자</th>
+												<td>2021.05.31</td>
+												<th scope="row">수령예정일자</th>
+												<td>2021.06.01</td>
+											</tr>
+											<tr>
+												<th scope="row">우체국<br>전화번호</th>
+												<td>999300-F10-53160874939</td>
+												<th scope="row">하나은행<br>전화번호</th>
+												<td>0948-FPS-210500007</td>
+											</tr>
+											<tr>
+												<th scope="row">외화금액</th>
+												<td>USD 1.000</td>
+												<th scope="row">적용환율</th>
+												<td class="txt_r">1133.49 원</td>
+											</tr>
+											<tr>
+												<th scope="row">원화금액</th>
+												<td colspan="3" class="txt_r">1,130 원</td>
+											</tr>
+											<tr>
+												<th scope="row">수령처</th>
+												<td colspan="3">
+													서울중앙우체국(02-6450-1221)<br>
+													서울특별시 종구 소공로 70 서울중앙우체국<br>
+													수령시간 (09:00 ~ 16:30)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="mt_4 txt_r">
+								<button type="button" class="btn btn_sm btn_outline_default" onclick="$.print('.modal_popup[data-popup=layer01]');">화면인쇄</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 예약확인증 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
