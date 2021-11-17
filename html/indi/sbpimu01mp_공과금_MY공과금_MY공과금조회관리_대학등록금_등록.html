@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box a').click(function(){
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="MY공과금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">통합공과금</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="box box_border clfx">
+							<div class="f_l">
+								<span class="check_item">
+									<input type="radio" name="chk1" id="chk1-1">
+									<label for="chk1-1">400000000000000</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<a href="#;">5건 미납<i class="arr"></i></a>
+							</div>
+						</div>
+						<div class="txt_c mt_2">
+							<button type="button" class="btn btn_md btn_round btn_primary">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">국민연금</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="box box_border clfx">
+							<div class="f_l">
+								<span class="check_item">
+									<input type="radio" name="chk2" id="chk2-1" checked>
+									<label for="chk2-1">09031000001531</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<a href="#;" onclick="openModal('layer01-2',this)">2건 미납<i class="arr"></i></a>
+							</div>
+						</div>
+						<div class="box box_border clfx mt_2">
+							<div class="f_l">
+								<span class="check_item">
+									<input type="radio" name="chk2" id="chk2-2">
+									<label for="chk2-2">09031000001531</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<a href="#;" onclick="openModal('layer01-2',this)">2건 미납<i class="arr"></i></a>
+							</div>
+						</div>
+						<div class="txt_c mt_2">
+							<button type="button" class="btn btn_md btn_round btn_primary" onclick="openModal('layer01-1',this)">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">통신요금</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="box box_border clfx">
+							<div class="f_l">
+								<span class="check_item">
+									<input type="radio" name="chk3" id="chk3-1">
+									<label for="chk3-1">09031000001531</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<a href="#;" onclick="openModal('layer02-2',this)">5건 미납<i class="arr"></i></a>
+							</div>
+						</div>
+						<div class="txt_c mt_2">
+							<button type="button" class="btn btn_md btn_round btn_primary" onclick="openModal('layer02-1',this)">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">전기요금</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="box box_border clfx">
+							<div class="f_l">
+								<span class="check_item">
+									<input type="radio" name="chk4" id="chk4-1">
+									<label for="chk4-1">00000000000</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<a href="#;" onclick="openModal('layer03-2',this)">5건 미납<i class="arr"></i></a>
+							</div>
+						</div>
+						<div class="txt_c mt_2">
+							<button type="button" class="btn btn_md btn_round btn_primary" onclick="openModal('layer03-1',this)">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">사회보험료</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="box box_border clfx">
+							<div class="f_l">
+								<span class="check_item">
+									<input type="radio" name="chk5" id="chk5-1">
+									<label for="chk5-1">00000000000</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<a href="#;" onclick="openModal('layer05-2',this)">5건 미납<i class="arr"></i></a>
+							</div>
+						</div>
+						<div class="txt_c mt_2">
+							<button type="button" class="btn btn_md btn_round btn_primary" onclick="openModal('layer05-1',this)">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">일반OCR</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="box box_border clfx">
+							<div class="f_l">
+								<span class="check_item">
+									<input type="radio" name="chk6" id="chk6-1">
+									<label for="chk6-1">00000000000</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<a href="#;" onclick="openModal('layer06-2',this)">5건 미납<i class="arr"></i></a>
+							</div>
+						</div>
+						<div class="txt_c mt_2">
+							<button type="button" class="btn btn_md btn_round btn_primary" onclick="openModal('layer06-1',this)">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">상하수도요금</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="txt_c">
+							<button type="button" class="btn btn_md btn_round btn_primary" onclick="openModal('layer04-1',this)">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="toggle_box">
+					<a href="#;">
+						<h2 class="tit1 mb_0">대학등록금</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="txt_c">
+							<button type="button" class="btn btn_md btn_round btn_primary" onclick="openModal('layer07-1',this)">
+								<i class="ico ico_plus_md"></i>
+								<span>추가</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="mt_2">
+					<ul class="list list1">
+						<li>공과금을 등록하시면 편리하게 조회, 납부가 가능합니다.</li>
+						<li>공과금을 등록후 변경/삭제가 가능합니다.</li>
+						<li>등록 또는 변경/삭제를 원하시면 해당 버튼을 클릭하십시오.</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>납부</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal Popup 국민연금 상세정보 등록 -->
+			<div class="modal_popup popup hide" data-popup="layer01-1" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01-1',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">국민연금</h3>
+							<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">연금보험료 선택</span>
+										<p class="tf txt_gray">보험료를 선택하세요</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_cate1_1">납부구분</label>
+										<span class="check_item">
+											<input type="radio" name="pop_chk1" id="pop_chk1-1" checked>
+											<label for="pop_chk1-1">납부자 번호</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="pop_chk1" id="pop_chk1-2">
+											<label for="pop_chk1-2">전자납부번호</label>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">납부자번호(주민등록번호)</label>
+										<input type="text" id="lb_tf_1_2" class="tf" value="7001000-*******">
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2 disabled">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">전자납부번호(14자리)</label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="14자리를 입력하세요" disabled>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01-1');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01-1');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 국민연금 상세정보 등록 -->
+
+			<!-- s: Modal Popup 국민연금 상세정보 해지  -->
+			<div class="modal_popup popup hide" data-popup="layer01-2" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01-2',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">국민연금</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">국민연금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">청구기관</span>
+								<p class="txt_normal txt_lg">국민연금관리공단</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">납부자번호(주민등록번호)</span>
+								<p class="txt_normal txt_lg">001231321321</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">이름</span>
+								<p class="txt_normal txt_lg">김우정</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01-2');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01-2');">해제</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 국민연금 상세정보 해지 -->
+
+			<!-- s: Modal Popup 통신요금 상세정보 등록 -->
+			<div class="modal_popup popup hide" data-popup="layer02-1" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01-1',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">전화요금</h3>
+							<div class="tf_item">
+								<span class="txt_sm txt_gray">공과금구분</span>
+								<p class="txt_normal txt_lg">전화요금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_cate1_1">납부구분</label>
+										<span class="check_item">
+											<input type="radio" name="pop_chk2" id="pop_chk2-1" checked>
+											<label for="pop_chk2-1">납부자 번호</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="pop_chk2" id="pop_chk2-2">
+											<label for="pop_chk2-2">전자납부번호</label>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_sm txt_gray">전자납부번호</span>
+								<p class="txt_normal txt_lg">00000</p>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="input2_1">전화번호 <span class="req">필수항목</span></label>
+										<div class="input_items">
+											<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;" onclick="openModal('layerOption')">010</a>
+											<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="0000-0000" required>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer02-1');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02-1');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 통신요금 상세정보 등록 -->
+
+			<!-- s: Modal Popup 통신요금 상세정보 해지 -->
+			<div class="modal_popup popup hide" data-popup="layer02-2" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer02-2',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">전화요금</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">전화요금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">청구기관</span>
+								<p class="txt_normal txt_lg">㈜KT</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">전자납부번호(전화번호)</span>
+								<p class="txt_normal txt_lg">001231321321</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">이름</span>
+								<p class="txt_normal txt_lg">김우정</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer02-2');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02-2');">해제</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 통신요금 상세정보 해지 -->
+
+			<!-- s: Modal Popup 전기요금 상세정보 등록 -->
+			<div class="modal_popup popup hide" data-popup="layer03-1" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer03-1',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">전기요금</h3>
+							<div class="tf_item">
+								<span class="txt_sm txt_gray">공과금구분</span>
+								<p class="txt_normal txt_lg">전기요금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">전자납부번호(14자리)</label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="14자리를 입력하세요">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer03-1');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03-1');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 전기요금 상세정보 등록 -->
+
+			<!-- s: Modal Popup 전기요금 상세정보 해지 -->
+			<div class="modal_popup popup hide" data-popup="layer03-2" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer03-2',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">전기요금</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">전기요금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">청구기관</span>
+								<p class="txt_normal txt_lg">한국전력공사</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">전자납부번호</span>
+								<p class="txt_normal txt_lg">001231321321</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">이름</span>
+								<p class="txt_normal txt_lg">김우정</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer03-2');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03-2');">해제</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 전기요금 상세정보 해지 -->
+
+			<!-- s: Modal Popup 상하수도요금 상세정보 등록 -->
+			<div class="modal_popup popup hide" data-popup="layer04-1" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer04-1',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">상하수도요금</h3>
+							<div class="tf_item">
+								<span class="txt_sm txt_gray">공과금구분</span>
+								<p class="txt_normal txt_lg">상하수도요금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_sm txt_gray">행정구역</span>
+								<p class="txt_normal txt_lg">전국</p>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">전자납부번호</label>
+										<span class="check_item">
+											<input type="radio" name="pop_chk4" id="pop_chk4-1" checked>
+											<label for="pop_chk4-1"><input type="text" id="lb_tf_1_2" class="tf" placeholder="전자납부번호 입력"></label>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">전자수용가번호</label>
+										<span class="check_item">
+											<input type="radio" name="pop_chk4" id="pop_chk4-2">
+											<label for="pop_chk4-2"><input type="text" id="lb_tf_1_2" class="tf" placeholder="전자수용가번호 입력"></label>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">고객번호(서울시)</label>
+										<span class="check_item">
+											<input type="radio" name="pop_chk4" id="pop_chk4-3">
+											<label for="pop_chk4-3"><input type="text" id="lb_tf_1_2" class="tf" placeholder="고객번호(서울시) 입력"></label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer04-1');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer04-1');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 상하수도요금 상세정보 등록 -->
+
+			<!-- s: Modal Popup 상하수도요금 상세정보 해지 -->
+			<div class="modal_popup popup hide" data-popup="layer04-2" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer04-2',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">상하수도요금</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">상하수도요금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">행정구역</span>
+								<p class="txt_normal txt_lg">전국</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">전자납부번호(수용가번호)</span>
+								<p class="txt_normal txt_lg">001231321321</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">이름</span>
+								<p class="txt_normal txt_lg">김우정</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer04-2');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer04-2');">해제</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 상하수도요금 상세정보 해지 -->
+
+			<!-- s: Modal Popup 사회보험료 상세정보 등록 -->
+			<div class="modal_popup popup hide" data-popup="layer05-1" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer05-1',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">사회보험료</h3>
+							<div class="tf_item">
+								<span class="txt_sm txt_gray">공과금구분</span>
+								<p class="txt_normal txt_lg">사회보험료</p>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">전자납부번호</label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="전자납부번호 입력">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer05-1');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05-1');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 사회보험료 상세정보 등록 -->
+
+			<!-- s: Modal Popup 사회보험료 상세정보 해지 -->
+			<div class="modal_popup popup hide" data-popup="layer05-2" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer05-2',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">사회보험료</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">사회보험료</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">전자납부번호(수용가번호)</span>
+								<p class="txt_normal txt_lg">001231321321</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">이름</span>
+								<p class="txt_normal txt_lg">김우정</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer05-2');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05-2');">해제</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 사회보험료 상세정보 해지 -->
+
+			<!-- s: Modal Popup 일반OCR 상세정보 등록 -->
+			<div class="modal_popup popup hide" data-popup="layer06-1" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer06-1',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">일반OCR</h3>
+							<div class="tf_item">
+								<span class="txt_sm txt_gray">공과금구분</span>
+								<p class="txt_normal txt_lg">일반OCR</p>
+							</div>
+							<div class="mt_4">
+								<div class="txt_r">
+									<a href="#;" class="btn btn_sm btn_round btn_default">QR코드촬영</a>
+								</div>
+								<div class="img_wrap mt_2">
+									<img src="../../resources/img/content/img_ocr.png" alt="지로 통지서">
+								</div>
+								<p class="mt_1 txt_sm txt_gray">① 지로번호 ② 고객번호조회 ③ 금액 ④ 검증번호</p>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">지로번호</label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="지로번호 입력">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer06-1');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer06-1');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 일반OCR 상세정보 등록 -->
+
+			<!-- s: Modal Popup 일반OCR 상세정보 해지 -->
+			<div class="modal_popup popup hide" data-popup="layer06-2" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer06-2',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">일반OCR</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">일반OCR</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">전자납부번호</span>
+								<p class="txt_normal txt_lg">001231321321</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">이름</span>
+								<p class="txt_normal txt_lg">김우정</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer06-2');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer06-2');">해제</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 일반OCR 상세정보 해지 -->
+
+			<!-- s: Modal Popup 대학등록금 상세정보 등록 -->
+			<div class="modal_popup popup show" data-popup="layer07-1" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer07-1',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">대학등록금</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">대학등록금</p>
+							</div>
+							<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">학교</span>
+										<p class="tf txt_gray">선택하여주십시오</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">학생번호</label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="학생번호 입력">
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">학생명</label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="학생명 입력">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer07-1');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer07-1');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 대학등록금 상세정보 등록 -->
+
+			<!-- s: Modal Popup 대학등록금 상세정보 해지 -->
+			<div class="modal_popup popup hide" data-popup="layer07-2" >
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer07-2',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">대학등록금</h3>
+							<div class="tf_item">
+								<span class="txt_gray txt_sm">공과금 구분</span>
+								<p class="txt_normal txt_lg">대학등록금</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">학교</span>
+								<p class="txt_normal txt_lg">한국방송통신대학교</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">학생번호</span>
+								<p class="txt_normal txt_lg">001231321321</p>
+							</div>
+							<div class="tf_item mt_2">
+								<span class="txt_gray txt_sm">학생명</span>
+								<p class="txt_normal txt_lg">김우정</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer07-2');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer07-2');">해제</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 대학등록금 상세정보 해지 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

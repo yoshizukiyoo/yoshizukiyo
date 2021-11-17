@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="Swift송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<a href="#;" class="btn btn_md btn_default btn_round btn_full" onclick="openModal('layer02',this)">거래외국환은행지정조회</a>
+				<ul class="list list1 mt_2">
+					<li>해외송금 시 미화 5천달러 상당액을 초과하는 경우에는 거래외국환은행지정을 해주시기 바랍니다.</li>
+					<li>확인 버튼을 누르시면 과거 송금한 내역을 확인할 수 있습니다.</li>
+					<li>신규송금을 원하시는 경우 다음 화면 우측 상단 “Swift송금 보내기”를 누르시기 바랍니다.</li>
+				</ul>
+				
+				<div class="section">
+					<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">송금통화</span>
+								<p class="tf">USD : 미국</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<div class="tf_item_wrap mt_2">
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="l">송금금액</div>
+								<div class="r">
+									<a href="#;" onclick="openModal('layer01',this)">100</a>
+									<span class="txt_lg txt_normal">USD</span>
+									<button type="button" class="btn btn_icon btn_reset ml_2">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="tf_item">
+							<div class="tf_item_body align_top">
+								<div class="l pt_1">원화예상금액</div>
+								<div class="r column">
+									<div><strong class="txt_bold">119,530</strong><span class="txt_lg txt_normal ml_2">원</span></div>
+									<p class="txt_sm">일십일만 구천오백삼십 원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mt_1">
+						<ul>
+							<li class="bul_notice txt_gray">수수료 및 송금가능시간
+								<ul class="list list2">
+									<li>송금건당 5,000원. 24시간(토일요일 및 공휴일 포함)</li>
+									<li>은행점심시간(23:50~00:10 / 04:00~05:00)에는 거래가 제한됩니다.</li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="list list1 mt_2">
+							<li>우체국 SWIFT송금은 증빙서류가 필요 없는 개인의 이전거래와 외국인 보수송금만 가능합니다.</li>
+							<li>일본우체국으로 송금 시 송금통화는 미국달러(USD)만 가능합니다.</li>
+							<li>해외은행 수수료와 지급은행 수수료가 발생할 수 있으며, 이는 수취금액에서 차감되어 지급됩니다.</li>
+							<li>외국인(재외국민 포함) 및 국내 비거주자는 우체국에서 여권 번호로 송금 가능합니다.</li>
+							<li>IBAN코드는 계좌번호에 입력하여 주시기 바랍니다.</li>
+							<li>해외에 있는 본인계좌로의 송금은 불가합니다.</li>
+							<li>송금금액에서 중개은행 수수료 및 수취은행 수수료가 차감되어 수취인에게 지급됩니다.</li>
+							<li>소요시간 : 영업일 기준 3일 ~ 5일</li>
+							<li>단, 지급은행 사정에 의해 지연될 수 있음</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="sbfeor03bs_외환_해외송금_스위프트송금_목록.html" class="btn btn_xl btn_primary">
+						<span>확인</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal popup 송금금액 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_1" checked>
+									<label for="lb_period1_1">1만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_2">
+									<label for="lb_period1_2">5만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_3">
+									<label for="lb_period1_3">10만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_4">
+									<label for="lb_period1_4">50만</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="lb_period1" id="lb_period1_5">
+									<label for="lb_period1_5">100만</label>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 송금금액 -->
+
+			<!-- s: Modal popup 바텀시트 샘플 -->
+		<div class="modal_popup modal_bottom_sheet show" data-popup="layer02">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="popup_tit">거래외국환은행 조회</h2>
+				</div>
+				<div class="popup_body pb_16">
+					<div class="container">
+						<div class="double_box mt_2">
+							<div class="btm">
+								<div>
+									<div class="l">지정여부</div>
+									<div class="r">지정</div>
+								</div>
+								<div>
+									<div class="l">지정항목</div>
+									<div class="r">해외체제비</div>
+								</div>
+								<div>
+									<div class="l">지로번호</div>
+									<div class="r">0880466</div>
+								</div>
+								<div>
+									<div class="l">지정일련번호</div>
+									<div class="r">193829</div>
+								</div>
+								<div>
+									<div class="l">지점번호</div>
+									<div class="r">0084</div>
+								</div>
+								<div>
+									<div class="l">지정구분</div>
+									<div class="r">신규지정</div>
+								</div>
+								<div>
+									<div class="l">지정일자</div>
+									<div class="r">2019.12.04</div>
+								</div>
+								<div>
+									<div class="l">지정취소일자</div>
+									<div class="r">-</div>
+								</div>
+								<div>
+									<div class="l">송금금액(USD)</div>
+									<div class="r"><strong>0</strong></div>
+								</div>
+								<div>
+									<div class="l">잔여금액(USD)</div>
+									<div class="r">-</div>
+								</div>
+								<div>
+									<div class="l">총한도금액(USD)</div>
+									<div class="r"><strong>0</strong></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="popup_footer">
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">확인</button>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: Modal popup 바텀시트 샘플 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
