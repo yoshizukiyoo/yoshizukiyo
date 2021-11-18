@@ -138,20 +138,25 @@
 			flex: 1 1 auto;
 		}
 	}
+}
 
-	.box {
-		font-weight: 500;
-		text-align: center;
+.certi_box {
+	font-weight: 500;
+	text-align: center;
+	border: 1px solid #ddd;
 
-		&:before {
-			content: '';
-			display: inline-block;
-			width: 18px;
-			height: 12px;
-			background:url(#{$url-img}/content/ico_check.png) 0 0 no-repeat;
-			background-size: 18px;
-			margin-right: 1px;
-		}
+	&.border_b {
+		border-color: #bbb;
+	}
+
+	&:before {
+		content: '';
+		display: inline-block;
+		width: 18px;
+		height: 12px;
+		background:url(#{$url-img}/content/ico_check.png) 0 0 no-repeat;
+		background-size: 18px;
+		margin-right: 1px;
 	}
 }
 
@@ -228,6 +233,15 @@
 			background-repeat: no-repeat;
 			background-position: calc(100% - 19px) 50%;
 			background-size: 5px;
+		}
+
+		&.top_link02 {
+			display: block;
+			padding: 20px 30px 20px 20px;
+			background-image:url(#{$url-img}/common/ico_chevron_down_md.png);
+			background-repeat: no-repeat;
+			background-position: calc(100% - 19px) 50%;
+			background-size: 12px;
 		}
 	}
 
@@ -657,6 +671,47 @@
 
 	>input[type=checkbox]+label.d_i_b {
 		background-position: 0 3px;
+	}
+
+	&.type_btn.simple_chk {
+		input {
+			+label {
+				position: relative;
+				justify-content: normal;
+				padding: 0 10px !important;
+				height: 40px;
+
+				&:before {
+					content: '';
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					background-image: url(#{$url-img}/common/ico_check_off.png);
+					background-size: 20px auto;
+					background-repeat: no-repeat;
+					background-position: 0 0;
+					margin-right: 5px;
+				}
+			}
+
+			&:checked+label {
+				&:before {
+					background-image: url(#{$url-img}/common/ico_check_on.png);
+				}
+			}
+		}
+
+		&.sm {
+			input+label {
+				font-size: 12px;
+				height: 25px;
+				padding: 0 6px !important;
+
+				&:before {
+					margin: 0;
+				}
+			}
+		}
 	}
 }
 
@@ -1284,49 +1339,7 @@
 
 
 
-		.sub_toggle {
-			display: none;
-			position: absolute;
-			top: 6px;
-			right: 33px;
-			background: #f6f6f6;
-			border-radius: 8px;
-			padding: 20px;
-			z-index: 10;
-			font-size: 0;
-			box-shadow: 2px 1px 17px 0px rgba(0, 0, 0, 0.3);
 
-			&:after {
-				content: '';
-				position: absolute;
-				right: -5px;
-				top: 20px;
-				display: inline-block;
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-width: 7px 0 6px 8px;
-				border-color: transparent #f6f6f6 transparent #f6f6f6;
-			}
-
-			>div>a {
-				display: block;
-				padding: 9px 5px;
-				font-size: 13px;
-				font-weight: 400;
-				border-top: 1px solid #ddd;
-
-				&:first-child {
-					border-top: 0;
-				}
-			}
-
-			.btn_close_tooltip {
-				position: absolute;
-				right: 15px;
-				top: 15px;
-			}
-		}
 
 		.btn_layer {
 			position: absolute;
@@ -1402,6 +1415,70 @@
 			background-size: 12px;
 		}
 	}
+
+	&.user_list {
+		&.chk li {
+			padding-left: 50px;
+		}
+
+		li {
+			position: relative;
+			padding: 20px;
+
+			>.check_item {
+				position: absolute;
+				left: 19px;
+				top: 50%;
+				margin-top: -11px;
+			}
+		}
+	}
+}
+
+.sub_toggle {
+	display: none;
+	position: absolute;
+	text-align: left;
+	top: 6px;
+	right: 33px;
+	background: #f6f6f6;
+	border-radius: 8px;
+	padding: 20px;
+	z-index: 10;
+	font-size: 0;
+	box-shadow: 2px 1px 17px 0px rgba(0, 0, 0, 0.3);
+
+	&:after {
+		content: '';
+		position: absolute;
+		right: -5px;
+		top: 20px;
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 7px 0 6px 8px;
+		border-color: transparent #f6f6f6 transparent #f6f6f6;
+	}
+
+	>div>a {
+		display: block;
+		min-width: 100px;
+		padding: 9px 5px;
+		font-size: 13px;
+		font-weight: 400;
+		border-top: 1px solid #ddd;
+
+		&:first-child {
+			border-top: 0;
+		}
+	}
+
+	.btn_close_tooltip {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+	}
 }
 
 .flex_btn {
@@ -1427,6 +1504,14 @@
 .flex_box {
 	display: flex;
 	align-items: center;
+
+	&.align_start {
+		align-items: flex-start;
+	}
+
+	&.align_end {
+		align-items: flex-end;
+	}
 
 	.l {
 		margin-right: auto;
@@ -1478,4 +1563,8 @@
 	line-height: 11px;
 	background-image:url(#{$url-img}/content/ico_push.png);
 	background-size: cover;
+}
+
+.p_r {
+	position: relative;
 }

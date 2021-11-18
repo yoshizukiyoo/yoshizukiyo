@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_toggle_more').click(function(){
+				$(this).parent().toggleClass('active');
+			})
+
+			$('.btn_submenu').click(function(){
+				$('.sub_toggle').hide();
+				$(this).parent().find('.sub_toggle').show();
+			})
+
+			$('.btn_close_tooltip').click(function(){
+				$(this).parent().hide();
+			});
+
+			$('.toggle_box a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="사용자등록/권한설정"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4 pb_20">
+				<ul class="list list1">
+					<li>신규 사용자 등록 및 등록된 사용자를 수정/삭제할 수 있는 서비스 입니다.</li>
+					<li>사용자별로 계좌 사용자 이용권한, 메뉴 접근권한을 부여하실 수 있습니다.</li>
+					<li>계좌 사용자 이용권한 및 메뉴 접근권한을 설정하지 않을 경우 계좌 및 메뉴 이용기능이 제한 될 수 있습니다.</li>
+					<li>사용자 등록 후 결재단계설정에서 결재자(등록자, 확인자, 승인자, 전결자)로 지정하실 수 있습니다.</li>
+					<li>본 서비스는 우체국에서 다단계결재에 대한 사전 서면동의를 하신 고객님만 이용하실 수 있습니다.</li>
+				</ul>
+				<div class="section">
+					<h2 class="tit1"></h2>
+					<ul class="card_info_list user_chk mt_4">
+						<li>
+							<span class="check_item check single">
+								<input type="radio" name="chk" id="chk-1" checked>
+								<label for="chk-1">분류1</label>
+							</span>
+							<div class="clfx">
+								<div class="f_l">
+									<p class="txt_normal">[HK00001]</p>
+								</div>
+								<div class="f_r">
+									<button type="button" class="btn btn_submenu"><span class="sr_only">세부 메뉴</span></button>
+									<div class="sub_toggle">
+										<button type="button" class="btn btn_icon btn_close_tooltip">
+											<i class="ico ico_close_sm"></i>
+											<span class="sr_only">닫기</span>
+										</button>
+										<div>
+											<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
+											<a href="#;" onclick="openModal('layer04',this)">사용자정보수정</a>
+											<a href="#;" onclick="openModal('layer05',this)">계좌권한수정</a>
+											<a href="#;" onclick="openModal('layer06',this)">메뉴접근권한</a>
+											<a href="#;" onclick="openModal('layer07',this)">로그인설정</a>
+											<a href="#;" onclick="openModal('layer08',this)">1일이체한도</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tit mt_1">
+								<p class="txt_normal">고길동 | 사업부 | 과장 | test@msn.co.kr</p>
+								<p class="txt_gray02">010-1234-1234</p>
+							</div>
+						</li>
+						<li>
+							<span class="check_item check single">
+								<input type="radio" name="chk" id="chk-2">
+								<label for="chk-2">분류1</label>
+							</span>
+							<div class="clfx">
+								<div class="f_l">
+									<p class="txt_normal">[HK00001]</p>
+								</div>
+								<div class="f_r">
+									<button type="button" class="btn btn_submenu"><span class="sr_only">세부 메뉴</span></button>
+									<div class="sub_toggle">
+										<button type="button" class="btn btn_icon btn_close_tooltip">
+											<i class="ico ico_close_sm"></i>
+											<span class="sr_only">닫기</span>
+										</button>
+										<div>
+											<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
+											<a href="#;" onclick="openModal('layer04',this)">사용자정보수정</a>
+											<a href="#;" onclick="openModal('layer05',this)">계좌권한수정</a>
+											<a href="#;" onclick="openModal('layer06',this)">메뉴접근권한</a>
+											<a href="#;" onclick="openModal('layer07',this)">로그인설정</a>
+											<a href="#;" onclick="openModal('layer08',this)">1일이체한도</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tit mt_1">
+								<p class="txt_normal">고길동 | 사업부 | 과장 | test@msn.co.kr</p>
+								<p class="txt_gray02">010-1234-1234</p>
+							</div>
+						</li>
+						<li>
+							<span class="check_item check single">
+								<input type="radio" name="chk" id="chk-3">
+								<label for="chk-3">분류1</label>
+							</span>
+							<div class="clfx">
+								<div class="f_l">
+									<p class="txt_normal">[HK00001]</p>
+								</div>
+								<div class="f_r">
+									<button type="button" class="btn btn_submenu"><span class="sr_only">세부 메뉴</span></button>
+									<div class="sub_toggle">
+										<button type="button" class="btn btn_icon btn_close_tooltip">
+											<i class="ico ico_close_sm"></i>
+											<span class="sr_only">닫기</span>
+										</button>
+										<div>
+											<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
+											<a href="#;" onclick="openModal('layer04',this)">사용자정보수정</a>
+											<a href="#;" onclick="openModal('layer05',this)">계좌권한수정</a>
+											<a href="#;" onclick="openModal('layer06',this)">메뉴접근권한</a>
+											<a href="#;" onclick="openModal('layer07',this)">로그인설정</a>
+											<a href="#;" onclick="openModal('layer08',this)">1일이체한도</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tit mt_1">
+								<p class="txt_normal">고길동 | 사업부 | 과장 | test@msn.co.kr</p>
+								<p class="txt_gray02">010-1234-1234</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>삭제</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('layer02',this)">
+						<span>등록</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal Popup 상세정보 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">사용자정보</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf1-1">사용자ID</label>
+												<input type="text" id="lb_tf1-1" class="tf" value="tset1">
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf1-2">이름</label>
+												<input type="text" id="lb_tf1-2" class="tf" value="김우정">
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf1-3">부서</label>
+												<input type="text" id="lb_tf1-3" class="tf" value="회계">
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf1-4">직급</label>
+												<input type="text" id="lb_tf1-4" class="tf" value="차장">
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf1-5">이메일</label>
+												<input type="text" id="lb_tf1-5" class="tf" value="test1@epost.go.kr">
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf1-6">휴대폰</label>
+												<input type="text" id="lb_tf1-6" class="tf" value="010-1234-1234">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">계좌 사용자 이용 권한 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<ul class="border_list">
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk1" id="pop1_chk1-1" checked>
+													<label for="pop1_chk1-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk1" id="pop1_chk1-2" checked>
+													<label for="pop1_chk1-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk1" id="pop1_chk1-3" checked>
+													<label for="pop1_chk1-3">조회</label>
+												</span>
+											</div>
+										</li>
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk2" id="pop1_chk2-1">
+													<label for="pop1_chk2-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk2" id="pop1_chk2-2">
+													<label for="pop1_chk2-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk2" id="pop1_chk2-3" checked>
+													<label for="pop1_chk2-3">조회</label>
+												</span>
+											</div>
+										</li>
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk3" id="pop1_chk3-1">
+													<label for="pop1_chk3-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk3" id="pop1_chk3-2" checked>
+													<label for="pop1_chk3-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop1_chk3" id="pop1_chk3-3">
+													<label for="pop1_chk3-3">조회</label>
+												</span>
+											</div>
+										</li>
+									</ul>
+									
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">메뉴 접근권한 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<ul class="border_list">
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">조회</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop1_chk1" id="pop1_chk1" checked>
+														<label for="pop1_chk1">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">이체</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop1_chk2" id="pop1_chk2" checked>
+														<label for="pop1_chk2">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">예금</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop1_chkk3" id="pop1_chkk3" checked>
+														<label for="pop1_chkk3">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">외환</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop1_chkk4" id="pop1_chkk4">
+														<label for="pop1_chkk4">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">공과금</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop1_chkk5" id="pop1_chkk5" checked>
+														<label for="pop1_chkk5">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">뱅킹정보관리</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop1_chkk6" id="pop1_chkk6" checked>
+														<label for="pop1_chkk6">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">경조금배달</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop1_chkk7" id="pop1_chkk7" checked>
+														<label for="pop1_chkk7">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">이체한도 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<h4 class="tit2">1회 이체한도</h4>
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf2-1">1회 이체한도금액</label>
+												<div class="flex_box pr_6">
+													<div class="l">
+														<input type="text" id="lb_tf2-1" class="tf" value="1,000,000원">
+														<button type="button" class="btn btn_icon btn_reset">
+															<i class="ico ico_reset"></i>
+															<span class="sr_only">초기화</span>
+														</button>
+													</div>
+													<div class="r txt_gray txt_sm">일백만원</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">로그인 가능 시간 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<h4 class="tit2">업무가능요일 설정</h4>
+									<div class="input_items">
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop3_chk1" id="pop3_chk1-1" checked>
+											<label for="pop3_chk1-1">월</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop3_chk1" id="pop3_chk1-2">
+											<label for="pop3_chk1-2">화</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop3_chk1" id="pop3_chk1-3">
+											<label for="pop3_chk1-3">수</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop3_chk1" id="pop3_chk1-4">
+											<label for="pop3_chk1-4">목</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop3_chk1" id="pop3_chk1-5">
+											<label for="pop3_chk1-5">금</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop3_chk1" id="pop3_chk1-6">
+											<label for="pop3_chk1-6">토</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop3_chk1" id="pop3_chk1-7">
+											<label for="pop3_chk1-7">일</label>
+										</span>
+									</div>
+									<div class="mt_6">
+										<h4 class="tit2">업무가능시간</h4>
+										<div class="tf_double">
+											<div>
+												<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<span class="lab">시작시간</span>
+															<p class="tf">0시</p>
+														</div>
+														<div class="btn_area">
+															<i class="ico ico_chevron_down_md"></i>
+															<span class="sr_only">선택</span>
+														</div>
+													</div>
+												</a>
+											</div>
+											<div>
+												<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<span class="lab">종료시간</span>
+															<p class="tf">1시</p>
+														</div>
+														<div class="btn_area">
+															<i class="ico ico_chevron_down_md"></i>
+															<span class="sr_only">선택</span>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">닫기</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 상세정보 -->
+
+			<!-- s: Modal Popup 사용자등록 -->
+			<div class="modal_popup popup hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">사용자등록</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer02',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">사용자정보</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf3-1">사용자ID <span class="req">필수항목</span></label>
+												<input type="text" id="lb_tf3-1" class="tf" placeholder="(영문,숫자조합 6~13자리)" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf3-2">이름 <span class="req">필수항목</span></label>
+												<input type="text" id="lb_tf3-2" class="tf" placeholder="최대 20자 입력가능" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf3-3">비밀번호 <span class="req">필수항목</span></label>
+												<input type="text" id="lb_tf3-3" class="tf" placeholder="(영문,숫자,특수문자 조합 9~15자리)" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf3-4">비밀번호확인 <span class="req">필수항목</span></label>
+												<input type="text" id="lb_tf3-4" class="tf" placeholder="(영문,숫자,특수문자 조합 9~15자리)" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf3-5">부서 <span class="req">필수항목</span></label>
+												<input type="text" id="lb_tf3-5" class="tf" placeholder="부서 입력" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf3-6">직급 <span class="req">필수항목</span></label>
+												<input type="text" id="lb_tf3-6" class="tf" placeholder="직급 입력" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_email">이메일 <span class="req">필수항목</span></label>
+												<div class="input_items">
+													<input type="email" id="lb_email" class="tf tf_email_id" placeholder="이메일 아이디"
+														value="test1234" title="이메일 아이디" required>
+													<span class="text">@</span>
+													<a href="#;" class="opt tf_email_domain" title="이메일 도메인"
+														onclick="openModal('layerOption');">hanmail.net</a>
+												</div>
+											</div>
+										</div>
+										<div class=" tf_item_footer mt_3">
+											<input type="text" class="tf" title="메일주소 직접입력" placeholder="메일주소 직접입력">
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="input2_1">휴대폰 <span class="req">필수항목</span></label>
+												<div class="input_items">
+													<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;"
+														onclick="openModal('layerOption')">010</a>
+													<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력" required>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">계좌 사용자 이용 권한 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<ul class="border_list">
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk1" id="pop02_chk1-1" checked>
+													<label for="pop02_chk1-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk1" id="pop02_chk1-2" checked>
+													<label for="pop02_chk1-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk1" id="pop02_chk1-3" checked>
+													<label for="pop02_chk1-3">조회</label>
+												</span>
+											</div>
+										</li>
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk2" id="pop02_chk2-1">
+													<label for="pop02_chk2-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk2" id="pop02_chk2-2">
+													<label for="pop02_chk2-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk2" id="pop02_chk2-3" checked>
+													<label for="pop02_chk2-3">조회</label>
+												</span>
+											</div>
+										</li>
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk3" id="pop02_chk3-1">
+													<label for="pop02_chk3-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk3" id="pop02_chk3-2" checked>
+													<label for="pop02_chk3-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop02_chk3" id="pop02_chk3-3">
+													<label for="pop02_chk3-3">조회</label>
+												</span>
+											</div>
+										</li>
+									</ul>
+									
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">메뉴 접근권한 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<ul class="border_list">
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">조회</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop2_chk1" id="pop2_chk1" checked>
+														<label for="pop2_chk1">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">이체</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop2_chk2" id="pop2_chk2" checked>
+														<label for="pop2_chk2">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">예금</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop2_chkk3" id="pop2_chkk3" checked>
+														<label for="pop2_chkk3">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">외환</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop2_chkk4" id="pop2_chkk4">
+														<label for="pop2_chkk4">미설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">공과금</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop2_chkk5" id="pop2_chkk5" checked>
+														<label for="pop2_chkk5">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">뱅킹정보관리</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop2_chkk6" id="pop2_chkk6" checked>
+														<label for="pop2_chkk6">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">경조금배달</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop2_chkk7" id="pop2_chkk7" checked>
+														<label for="pop2_chkk7">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">이체한도 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="clfx">
+										<div class="f_l">
+											<h4 class="tit2">1회 이체한도</h4>
+										</div>
+										<div class="f_r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="layer02_btn_toggle1" checked>
+													<label for="layer02_btn_toggle1">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf4-1">1회 이체한도금액</label>
+												<div class="flex_box pr_6">
+													<div class="l">
+														<input type="text" id="lb_tf4-1" class="tf" value="1,000,000원">
+														<button type="button" class="btn btn_icon btn_reset">
+															<i class="ico ico_reset"></i>
+															<span class="sr_only">초기화</span>
+														</button>
+													</div>
+													<div class="r txt_gray txt_sm">일백만원</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">로그인 가능 시간 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="clfx">
+										<div class="f_l">
+											<h4 class="tit2">업무가능요일 설정</h4>
+										</div>
+										<div class="f_r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="layer02_btn_toggle2">
+													<label for="layer02_btn_toggle2">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="input_items">
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop2_chk1" id="pop2_chk1-1" checked>
+											<label for="pop2_chk1-1">월</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop2_chk1" id="pop2_chk1-2">
+											<label for="pop2_chk1-2">화</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop2_chk1" id="pop2_chk1-3">
+											<label for="pop2_chk1-3">수</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop2_chk1" id="pop2_chk1-4">
+											<label for="pop2_chk1-4">목</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop2_chk1" id="pop2_chk1-5">
+											<label for="pop2_chk1-5">금</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop2_chk1" id="pop2_chk1-6">
+											<label for="pop2_chk1-6">토</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop2_chk1" id="pop2_chk1-7">
+											<label for="pop2_chk1-7">일</label>
+										</span>
+									</div>
+									<div class="mt_6">
+										<h4 class="tit2">업무가능시간</h4>
+										<div class="tf_double">
+											<div>
+												<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<span class="lab">시작시간</span>
+															<p class="tf">0시</p>
+														</div>
+														<div class="btn_area">
+															<i class="ico ico_chevron_down_md"></i>
+															<span class="sr_only">선택</span>
+														</div>
+													</div>
+												</a>
+											</div>
+											<div>
+												<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<span class="lab">종료시간</span>
+															<p class="tf">1시</p>
+														</div>
+														<div class="btn_area">
+															<i class="ico ico_chevron_down_md"></i>
+															<span class="sr_only">선택</span>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer02');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 사용자등록 -->
+
+			<!-- s: Modal Popup 세부권한등록 -->
+			<div class="modal_popup popup hide" data-popup="layer03">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">세부권한등록</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer03',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<!-- s: 조회 상세권한 설정-->
+							<div class="clfx">
+								<div class="f_l">
+									<h3 class="tit1">조회</h3>
+								</div>
+								<div class="f_r">
+									<div class="btn_switch switc_style1">
+										<div class="switch" style="width: 85px;">
+											<input type="checkbox" id="btn_toggle3-1" checked>
+											<label for="btn_toggle3-1">
+												<span class="check_y">전체설정</span>
+												<span class="check_n">미설정</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box">
+								<div class="btm">
+									<div>
+										<div class="l txt_gray">약정계좌조회</div>
+										<div class="r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="toggle1-1" checked>
+													<label for="toggle1-1">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mt_3">
+										<div class="l txt_gray">전계좌조회</div>
+										<div class="r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="toggle1-2">
+													<label for="toggle1-2">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mt_3">
+										<div class="l txt_gray">거래내역조회</div>
+										<div class="r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="toggle1-3">
+													<label for="toggle1-3">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mt_3">
+										<div class="l txt_gray">거래내역조회</div>
+										<div class="r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="toggle1-4">
+													<label for="toggle1-4">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mt_3">
+										<div class="l txt_gray">수표조회</div>
+										<div class="r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="toggle1-5">
+													<label for="toggle1-5">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mt_3">
+										<div class="l txt_gray">인터넷예금수령계좌변경</div>
+										<div class="r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="toggle1-6">
+													<label for="toggle1-6">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 조회 상세권한 설정-->
+
+							<!-- s: 이체 상세권한 설정-->
+							<div class="mt_6">
+								<div class="clfx">
+									<div class="f_l">
+										<h3 class="tit1">이체</h3>
+									</div>
+									<div class="f_r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 85px;">
+												<input type="checkbox" id="btn_toggle3-2" checked>
+												<label for="btn_toggle3-2">
+													<span class="check_y">전체설정</span>
+													<span class="check_n">미설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="double_box">
+									<div class="btm">
+										<div>
+											<div class="l txt_gray">즉시이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-1" checked>
+														<label for="toggle2-1">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">다계좌이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-2">
+														<label for="toggle2-2">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">예약이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-3">
+														<label for="toggle2-3">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">자동이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-4">
+														<label for="toggle2-4">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">CMS계좌이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-5">
+														<label for="toggle2-5">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">그룹이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-6">
+														<label for="toggle2-6">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">급여이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-7">
+														<label for="toggle2-7">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">대량이체</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-8">
+														<label for="toggle2-8">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">이체결과조회</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle2-9">
+														<label for="toggle2-9">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 이체 상세권한 설정-->
+
+							<!-- s: 외환 상세권한 설정-->
+							<div class="mt_6">
+								<div class="clfx">
+									<div class="f_l">
+										<h3 class="tit1">외환</h3>
+									</div>
+									<div class="f_r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 85px;">
+												<input type="checkbox" id="btn_toggle3-3" checked>
+												<label for="btn_toggle3-3">
+													<span class="check_y">전체설정</span>
+													<span class="check_n">미설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="double_box">
+									<div class="btm">
+										<div>
+											<div class="l txt_gray">환율조회</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle3-1" checked>
+														<label for="toggle3-1">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">해외송금</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle3-2">
+														<label for="toggle3-2">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 외환 상세권한 설정-->
+
+							<!-- s: 공과금 상세권한 설정-->
+							<div class="mt_6">
+								<div class="clfx">
+									<div class="f_l">
+										<h3 class="tit1">공과금</h3>
+									</div>
+									<div class="f_r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 85px;">
+												<input type="checkbox" id="btn_toggle3-4" checked>
+												<label for="btn_toggle3-4">
+													<span class="check_y">전체설정</span>
+													<span class="check_n">미설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="double_box">
+									<div class="btm">
+										<div>
+											<div class="l txt_gray">My공과금</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-1" checked>
+														<label for="toggle4-1">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">지로</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-2">
+														<label for="toggle4-2">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">지로</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-3">
+														<label for="toggle4-3">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">국고</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-4">
+														<label for="toggle4-4">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">범칙/벌과금</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-5">
+														<label for="toggle4-5">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">보험료/연금</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-6">
+														<label for="toggle4-6">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">생활요금</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-7">
+														<label for="toggle4-7">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">아파트관리비</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-8">
+														<label for="toggle4-8">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">대학등록금</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-9">
+														<label for="toggle4-9">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">예약납부조회/취소</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle4-10">
+														<label for="toggle4-10">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 공과금 상세권한 설정-->
+
+							<!-- s: 뱅킹정보관리 상세권한 설정-->
+							<div class="mt_6">
+								<div class="clfx">
+									<div class="f_l">
+										<h3 class="tit1">뱅킹정보관리</h3>
+									</div>
+									<div class="f_r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 85px;">
+												<input type="checkbox" id="btn_toggle3-5" checked>
+												<label for="btn_toggle3-5">
+													<span class="check_y">전체설정</span>
+													<span class="check_n">미설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="double_box">
+									<div class="btm">
+										<div>
+											<div class="l txt_gray">사용자관리(총괄관리자 전용) </div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle5-1" checked>
+														<label for="toggle5-1">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">결재/승인관리 </div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle5-2">
+														<label for="toggle5-2">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">계좌정보관리</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle5-3">
+														<label for="toggle5-3">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">뱅킹설정관리</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle5-4">
+														<label for="toggle5-4">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 뱅킹정보관리 상세권한 설정-->
+
+							<!-- s: 경조금 배달 상세권한 설정-->
+							<div class="mt_6">
+								<div class="clfx">
+									<div class="f_l">
+										<h3 class="tit1">경조금 배달</h3>
+									</div>
+									<div class="f_r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 85px;">
+												<input type="checkbox" id="btn_toggle3-6" checked>
+												<label for="btn_toggle3-6">
+													<span class="check_y">전체설정</span>
+													<span class="check_n">미설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="double_box">
+									<div class="btm">
+										<div>
+											<div class="l txt_gray">경조금배달 </div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle6-1" checked>
+														<label for="toggle6-1">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">경조금다량배달 </div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle6-2">
+														<label for="toggle6-2">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">경조금배달예약</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle6-3">
+														<label for="toggle6-3">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">온라인환송금</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle6-4">
+														<label for="toggle6-4">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">송금·배달취소</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle6-5">
+														<label for="toggle6-5">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">송금·배달결과조회</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle6-6">
+														<label for="toggle6-6">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt_3">
+											<div class="l txt_gray">자주쓰는주소관리</div>
+											<div class="r">
+												<div class="btn_switch switc_style1">
+													<div class="switch">
+														<input type="checkbox" id="toggle6-7">
+														<label for="toggle6-7">
+															<span class="check_y">설정</span>
+															<span class="check_n">해제</span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 경조금 배달 상세권한 설정-->
+
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer03');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 세부권한등록 -->
+
+			<!-- s: Modal Popup 사용자정보수정 -->
+			<div class="modal_popup popup show" data-popup="layer04">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">사용자정보수정</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer04',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">사용자정보</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="pop4_input-1">사용자ID <span class="req">필수항목</span></label>
+												<input type="text" id="pop4_input-1" class="tf" placeholder="(영문,숫자조합 6~13자리)" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="pop4_input-2">이름 <span class="req">필수항목</span></label>
+												<input type="text" id="pop4_input-2" class="tf" placeholder="최대 20자 입력가능" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="pop4_input-3">비밀번호 <span class="req">필수항목</span></label>
+												<input type="text" id="pop4_input-3" class="tf" placeholder="(영문,숫자,특수문자 조합 9~15자리)" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="pop4_input-4">비밀번호확인 <span class="req">필수항목</span></label>
+												<input type="text" id="pop4_input-4" class="tf" placeholder="(영문,숫자,특수문자 조합 9~15자리)" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="pop4_input-5">부서 <span class="req">필수항목</span></label>
+												<input type="text" id="pop4_input-5" class="tf" placeholder="부서 입력" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="pop4_input-6">직급 <span class="req">필수항목</span></label>
+												<input type="text" id="pop4_input-6" class="tf" placeholder="직급 입력" required>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_email2">이메일 <span class="req">필수항목</span></label>
+												<div class="input_items">
+													<input type="email" id="lb_email2" class="tf tf_email_id" placeholder="이메일 아이디"
+														value="test1234" title="이메일 아이디" required>
+													<span class="text">@</span>
+													<a href="#;" class="opt tf_email_domain" title="이메일 도메인"
+														onclick="openModal('layerOption');">hanmail.net</a>
+												</div>
+											</div>
+										</div>
+										<div class=" tf_item_footer mt_3">
+											<input type="text" class="tf" title="메일주소 직접입력" placeholder="메일주소 직접입력">
+										</div>
+									</div>
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="input2_2">휴대폰 <span class="req">필수항목</span></label>
+												<div class="input_items">
+													<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;"
+														onclick="openModal('layerOption')">010</a>
+													<input type="text" id="input2_2" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력" required>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer04');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer04');">수정</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 사용자정보수정 -->
+
+			<!-- s: Modal Popup 계좌권한수정 -->
+			<div class="modal_popup popup hide" data-popup="layer05">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">계좌권한수정</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer05',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">계좌 사용자 이용 권한 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<ul class="border_list">
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk1" id="pop04_chk1-1" checked>
+													<label for="pop04_chk1-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk1" id="pop04_chk1-2" checked>
+													<label for="pop04_chk1-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk1" id="pop04_chk1-3" checked>
+													<label for="pop04_chk1-3">조회</label>
+												</span>
+											</div>
+										</li>
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk2" id="pop04_chk2-1">
+													<label for="pop04_chk2-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk2" id="pop04_chk2-2">
+													<label for="pop04_chk2-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk2" id="pop04_chk2-3" checked>
+													<label for="pop04_chk2-3">조회</label>
+												</span>
+											</div>
+										</li>
+										<li>
+											<p>[보통예금]</p>
+											<p class="txt_lg txt_normal">010017-01-023681</p>
+											<p class="txt_gray">2014-05-15~2028-05-14</p>
+											<div class="input_items mt_3">
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk3" id="pop04_chk3-1">
+													<label for="pop04_chk3-1">전체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk3" id="pop04_chk3-2" checked>
+													<label for="pop04_chk3-2">이체</label>
+												</span>
+												<span class="check_item type_btn simple_chk">
+													<input type="checkbox" name="pop04_chk3" id="pop04_chk3-3">
+													<label for="pop04_chk3-3">조회</label>
+												</span>
+											</div>
+										</li>
+									</ul>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer05');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">수정</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 계좌권한수정 -->
+
+			<!-- s: Modal Popup 메뉴접근권한 -->
+			<div class="modal_popup popup hide" data-popup="layer06">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">메뉴접근권한</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer06',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">메뉴 접근권한 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<ul class="border_list">
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">조회</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop04_1_chk1" id="pop04_1_chk1" checked>
+														<label for="pop04_1_chk1">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">이체</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop04_1_chk2" id="pop04_1_chk2" checked>
+														<label for="pop04_1_chk2">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">예금</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop04_1_chk3" id="pop04_1_chk3" checked>
+														<label for="pop04_1_chk3">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">외환</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop04_1_chk4" id="pop04_1_chk4">
+														<label for="pop04_1_chk4">미설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">공과금</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop04_1_chk5" id="pop04_1_chk5" checked>
+														<label for="pop04_1_chk5">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">뱅킹정보관리</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop04_1_chk6" id="pop04_1_chk6" checked>
+														<label for="pop04_1_chk6">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="flex_box">
+												<div class="l">
+													<p class="txt_lg txt_normal">경조금배달</p>
+												</div>
+												<div class="r p_r">
+													<span class="check_item type_btn simple_chk sm">
+														<input type="checkbox" name="pop04_1_chk7" id="pop04_1_chk7" checked>
+														<label for="pop04_1_chk7">전체설정</label>
+													</span>
+													<button type="button" class="btn btn_submenu ml_2"><span class="sr_only">세부 메뉴</span></button>
+													<div class="sub_toggle">
+														<button type="button" class="btn btn_icon btn_close_tooltip">
+															<i class="ico ico_close_sm"></i>
+															<span class="sr_only">닫기</span>
+														</button>
+														<div>
+															<a href="#;" onclick="openModal('layer03',this)">상세권한설정</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer06');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer06');">수정</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 메뉴접근권한 -->
+
+			<!-- s: Modal Popup 로그인설정 -->
+			<div class="modal_popup popup hide" data-popup="layer07">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">로그인설정</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer07',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">로그인 가능 시간 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="clfx">
+										<div class="f_l">
+											<h4 class="tit2">업무가능요일 설정</h4>
+										</div>
+										<div class="f_r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="pop07_toggle">
+													<label for="pop07_toggle">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="input_items">
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop7_chk1" id="pop7_chk1-1" checked>
+											<label for="pop7_chk1-1">월</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop7_chk1" id="pop7_chk1-2">
+											<label for="pop7_chk1-2">화</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop7_chk1" id="pop7_chk1-3">
+											<label for="pop7_chk1-3">수</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop7_chk1" id="pop7_chk1-4">
+											<label for="pop7_chk1-4">목</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop7_chk1" id="pop7_chk1-5">
+											<label for="pop7_chk1-5">금</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop7_chk1" id="pop7_chk1-6">
+											<label for="pop7_chk1-6">토</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="checkbox" name="pop7_chk1" id="pop7_chk1-7">
+											<label for="pop7_chk1-7">일</label>
+										</span>
+									</div>
+									<div class="mt_6">
+										<h4 class="tit2">업무가능시간</h4>
+										<div class="tf_double">
+											<div>
+												<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<span class="lab">시작시간</span>
+															<p class="tf">0시</p>
+														</div>
+														<div class="btn_area">
+															<i class="ico ico_chevron_down_md"></i>
+															<span class="sr_only">선택</span>
+														</div>
+													</div>
+												</a>
+											</div>
+											<div>
+												<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<span class="lab">종료시간</span>
+															<p class="tf">1시</p>
+														</div>
+														<div class="btn_area">
+															<i class="ico ico_chevron_down_md"></i>
+															<span class="sr_only">선택</span>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer07');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer07');">등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 로그인설정 -->
+
+			<!-- s: Modal Popup 1일이체한도 -->
+			<div class="modal_popup popup hide" data-popup="layer08">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">1일이체한도</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer08',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">이체한도 설정</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="clfx">
+										<div class="f_l">
+											<h4 class="tit2">1회 이체한도</h4>
+										</div>
+										<div class="f_r">
+											<div class="btn_switch switc_style1">
+												<div class="switch">
+													<input type="checkbox" id="pop08_toggle" checked>
+													<label for="pop08_toggle">
+														<span class="check_y">설정</span>
+														<span class="check_n">해제</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="lb_tf4-1">1회 이체한도금액</label>
+												<div class="flex_box pr_6">
+													<div class="l">
+														<input type="text" id="lb_tf4-1" class="tf" value="1,000,000원">
+														<button type="button" class="btn btn_icon btn_reset">
+															<i class="ico ico_reset"></i>
+															<span class="sr_only">초기화</span>
+														</button>
+													</div>
+													<div class="r txt_gray txt_sm">일백만원</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer08');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer08');">수정</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 사용자정보수정 -->
+
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
