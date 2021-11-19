@@ -136,6 +136,7 @@ textarea.tf {
 	}
 }
 
+// 체크박스, 라디오버튼
 .check_item {
 	display: inline-block;
 	position: relative;
@@ -266,6 +267,105 @@ textarea.tf {
 
 	+.check_item {
 		margin-left: 15px;
+	}
+}
+
+// 토글형 체크박스
+.check_switch {
+	display: inline-flex;
+	vertical-align: middle;
+	align-items: center;
+	font-size: 10px;
+
+	label {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		min-width: 60px;
+		border-radius: 13px;
+		min-height: 18px;
+		text-align: center;
+		background-color: #eee;
+		padding-right: 13px;
+		padding-left: 28px;
+
+		color: #555;
+		white-space: nowrap;
+
+		transition-duration: .3s;
+		transition-property: background-color;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 13px;
+			height: 13px;
+			border-radius: 50%;
+			background-color: #fff;
+			transition-duration: .3s;
+		}
+
+		span {
+			display: block;
+			line-height: 23px;
+		}
+
+		.txt_checked {
+			display: none;
+			opacity: 0;
+			transition-duration: .3s;
+			transition-timing-function: ease-in;
+		}
+	}
+
+	input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+
+		&:checked+label {
+			color: #111;
+			background-color: $primary;
+			padding-left: 13px;
+			padding-right: 28px;
+
+			&:after {
+				left: calc(100% - 18px);
+			}
+
+			.txt_uncheck {
+				display: none;
+				opacity: 0;
+			}
+
+			.txt_checked {
+				display: inline;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.check_switch_sm {
+	label {
+		min-width: 45px;
+		height: 19px;
+
+		&:after {
+			left: 3px;
+			top: 3px;
+		}
+	}
+
+	input {
+		&:checked+label {
+			&:after {
+				left: calc(100% - 16px);
+			}
+		}
 	}
 }
 
