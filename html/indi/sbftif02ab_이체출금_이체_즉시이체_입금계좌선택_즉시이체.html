@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="즉시이체"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<h2 class="tit1">출금계좌정보</h2>
+				<div class="account_info_box">
+					<a href="#;" onclick="openModal('layerAccount'),this">
+						<span class="bank">
+							<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+						</span>
+						<div class="info">
+							<strong>스마트 e-Postbank 예금</strong>
+							<p>100057-02-000010</p>
+							<div class="price">
+								<span>출금가능금액</span>
+								<strong>2,345,900 원</strong>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- s: 이체금액 입력 -->
+				<div class="account_amount mt_8">
+					<div class=inner>
+						<a href="#n" onclick="openModal('amount_keypad', this); return false;">
+							<div class="amount_label">
+								<span>금액 <strong class="req">필수항목</strong></span>
+							</div>
+							<div class="amount_area">
+								<span class="txt_amt1">4,123,000</span>
+								<span class="txt_amt2">원</span>
+								<span class="txt_amt3">사백일십이만삼천원</span>
+							</div>
+						</a>
+						<button type="button" class="btn btn_icon btn_reset">
+							<i class="ico ico_reset"></i>
+							<span class="sr_only">초기화</span>
+						</button>
+					</div>
+					<p class="mt_1">나의 이체한도 : 1회 3,000,000원 / 1일 3,000,000원</p>
+					<!-- Validation Check 문구 -->
+					<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
+				</div>
+				<!-- e: 이체금액 입력 -->
+
+				<!-- s: 입금계좌정보 -->
+				<div class="section">
+					<h2 class="tit1">입금계좌정보</h2>
+					<div class="account_select">
+						<div class="bank_select">
+							<a href="#n">
+								<img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고">
+								<span>우체국</span>
+							</a>
+						</div>
+						<div class="account_number">
+							<span class="acc_inp"><input type="text" title="입금계좌번호 입력" value="12345678912345" placeholder="입금계좌번호 입력"></span>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+					</div>
+					<div class="tf_item mt_2 active">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">내 통장 표기</label>
+								<input type="text" id="lb_tf_1_2" class="tf" placeholder="(선택) 최대 10글자" required>
+							</div>
+						</div>
+					</div>
+					<div class="tf_item mt_2 active">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_3">받는분 통장 표기</label>
+								<input type="text" id="lb_tf_1_3" class="tf" placeholder="" value="나봄미" required>
+							</div>
+						</div>
+					</div>
+					<p class="bul_notice mt_2">
+						최대 한글 10자 입력 가능<br>
+						단 신한, 대구, 제주는 7자, 부산, 씨티는 9자만 입금계좌에 표시됩니다.
+					</p>
+					<div class="mt_4">
+						<span class="check_item">
+							<input type="checkbox" name="inputCheck2" id="inputCheck2_2">
+							<label for="inputCheck2_2">예약이체</label>
+						</span>
+					</div>
+				</div>
+				<!-- e: 입금계좌정보 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary"><span>다음</span></a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 계좌정보 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="account_bottom_sheet">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">계좌정보</h2>
+					</div>
+					<div class="tab_menu tab_menu1 width_fix">
+						<ul class="tab_list">
+							<li class="on"><a href="#" title="선택됨"><span>최근이체계좌</span></a></li>
+							<li><a href="#"><span>자주쓰는등록계좌</span></a></li>
+							<li><a href="#"><span>본인계좌</span></a></li>
+						</ul>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="account_tab_list">
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('account_bottom_sheet');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 계좌정보 bottom sheet -->
+
+			<!-- s: 입금계좌 예금주 확인 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="account_alert_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc txt_l">
+								<p class="txt_lg txt_c">
+									<span class="txt_bold">강하나</span><br>
+									받는 사람이 맞습니까?
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('account_alert_popup');">아니오</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('account_alert_popup');">예</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 입금계좌 예금주 확인 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
