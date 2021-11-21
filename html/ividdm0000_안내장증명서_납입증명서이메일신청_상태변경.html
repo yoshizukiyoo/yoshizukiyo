@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="납입증명서 이메일 신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container">
+
+				<div class="txt_r ">
+					<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+						<i class="ico ico_help_sm"></i>
+						<span>알려드립니다</span>
+					</a>
+				</div>
+
+				<div class="complete_txt pt_10 pb_10">
+					<strong class="txt_info">
+						현재 고객님은 소득&middot;세액 공제용 보험료
+						납입증명서 이메일 서비스를 <span>신청</span> 중입니다.
+					</strong>
+				</div>
+
+				<!-- s: case2 미신청
+				<div class="complete_txt pt_10 pb_10">
+					<strong class="txt_info">
+						현재 고객님은 소득&middot;세액 공제용 보험료
+						납입증명서 이메일 서비스를 <span class="txt_primary">미신청</span> 중입니다.
+					</strong>
+				</div>
+				e: case2 미신청-->
+				<div class="txt_r mb_2">
+					<span class="check_switch">
+						<input type="checkbox" id="inputCheckSwitch2" checked>
+						<label for="inputCheckSwitch2">
+							<span class="txt_uncheck">해제</span>
+							<span class="txt_checked">신청</span>
+						</label>
+					</span>
+				</div>
+
+				<!-- s: 계약사항 목록 영역 -->
+				<h2 class="tit1 mb_0">납입증명서 이메일 신청 이력</h2>
+				<div class="contract_list list_pst">
+					<ul>
+						<li class="contract_item pb_2">
+
+							<span>
+								<span class="txt_lg">거래국</span>
+								<strong class="txt_lg">서울중앙우체국</strong>
+							</span>
+
+							<span class="evidence_contract  mt_0">
+								<span class="info">
+									<span>
+										<span>2016.02.23 13:38:35</span>
+									</span>
+									<span>
+										<span>채널</span>
+										<strong class="txt_light txt_black">단말</strong>
+									</span>
+								</span>
+							</span>
+
+							<span class="ins_status">
+								<span class="ins_status_txt">신청</span>
+							</span>
+						</li>
+
+						<li class="contract_item pb_2">
+
+							<span>
+								<span class="txt_lg">거래국</span>
+								<strong class="txt_lg">광화문우체국</strong>
+							</span>
+
+							<span class="evidence_contract mt_0">
+								<span class="info">
+									<span>
+										<span>2016.02.23 13:38:35</span>
+									</span>
+									<span>
+										<span>채널</span>
+										<strong class="txt_light txt_black">스마트폰뱅킹</strong>
+									</span>
+								</span>
+							</span>
+
+							<span class="ins_status">
+								<span class="ins_status_txt txt_red">해지</span>
+							</span>
+						</li>
+
+					</ul>
+					<!-- s : 데이터 없음 -->
+					<div class="empty-box">
+						<i class="ico ico_alert_primary"></i>
+						<p>이메일 신청이력이 없습니다.</p>
+					</div>
+					<!-- e : 데이터 없음 -->
+				</div>
+				<!-- e: 계약사항 목록 영역 -->
+
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex btn_group_r">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>변경</span>
+						<i class="ico ico_chevron_right_xl ml_2"></i>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>본 거래는 소득 · 세액 공제용 보험료 납입증명서를 e-mail로 수신을 위해 신청하고자 하는 고객을 위한 거래입니다.
+								</li>
+								<li>
+									기존에 등록된 e-mail 주소를 변경하고자 하는 경우 마이페이지 &gt; 고객정보 에서 변경이 가능합니다.
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
