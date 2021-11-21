@@ -54,12 +54,13 @@ $(function () {
 		}
 	});
 	$('.tab_menu1').each(function () {
-		var outerWidth = $(this).width();
+		var outerWidth = Math.floor($(this).width());
 		var innerWidth = 0;
 		var current = $('li.on', this).index();
 		$('li', this).each(function () {
-			innerWidth += $(this).width();
+			innerWidth += Math.floor($(this).width());
 		});
+
 		if (outerWidth < innerWidth) {
 			$(this).addClass('scroll_enable');
 		}
