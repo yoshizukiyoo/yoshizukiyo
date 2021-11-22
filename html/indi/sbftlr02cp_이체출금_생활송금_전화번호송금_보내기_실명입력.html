@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="전화번호 송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#"><span>보내기</span></a></li>
+					<li><a href="#"><span>조회/취소</span></a></li>
+					<li><a href="#"><span>받은내역</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container p_4">
+				<h2 class="tit1">출금계좌정보</h2>
+				<div class="account_info_box">
+					<a href="#;" onclick="openModal('layerAccount'),this">
+						<span class="bank">
+							<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+						</span>
+						<div class="info">
+							<strong>스마트 e-Postbank 예금</strong>
+							<p>100057-02-000010</p>
+							<div class="price">
+								<span>출금가능금액</span>
+								<strong>2,345,900 원</strong>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- s: 비밀번호 입력 -->
+				<a href="#;" class="tf_item mt_2" onclick="openModal('pwd_full_popup');return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<div class="lab">비밀번호 <span class="req">필수항목</span></div>
+							<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+							<div class="password_masking gray">
+								<!-- 자릿수에 맞춰 <i></i> 추가 -->
+								<i></i><i></i><i></i><i></i>
+							</div>
+						</div>
+					</div>
+				</a>
+				<p class="bul_notice mt_2">비밀번호 5회이상 오류시 거래 제한</p>
+				<!-- e: 비밀번호 입력 -->
+
+				<!-- s: 이체금액 입력 -->
+				<div class="account_amount mt_8">
+					<div class=inner>
+						<a href="#n" onclick="openModal('amount_keypad', this); return false;">
+							<div class="amount_label">
+								<span>금액 <strong class="req">필수항목</strong></span>
+							</div>
+							<div class="amount_area">
+								<span class="txt_amt1">4,123,000</span>
+								<span class="txt_amt2">원</span>
+								<span class="txt_amt3">사백일십이만삼천원</span>
+							</div>
+						</a>
+						<button type="button" class="btn btn_icon btn_reset">
+							<i class="ico ico_reset"></i>
+							<span class="sr_only">초기화</span>
+						</button>
+					</div>
+					<p class="mt_1">나의 이체한도 : 1회 3,000,000원 / 1일 3,000,000원</p>
+					<!-- Validation Check 문구 -->
+					<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
+				</div>
+				<!-- e: 이체금액 입력 -->
+
+			</div>
+
+
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">비밀번호 입력</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">4자리 숫자를 입력해 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								4자리 숫자를 입력해 주세요.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 비밀번호 입력 팝업 -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 전화번호검색 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="phone_search">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">전화번호검색</h2>
+					</div>
+					<div class="popup_body">
+						<nav class="tab_menu tab_menu1 mb_0">
+							<ul class="tab_list">
+								<li class="on"><a href="#;"><span>전화번호부</span></a></li>
+								<li><a href="#;"><span>이전내역</span></a></li>
+							</ul>
+						</nav>
+						<div class="tf_item bg_lightgray border0">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" id="phone_search_inp1_1" class="tf" placeholder="초성, 이름 검색">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_search"><span class="sr_only">검색</span></a>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<ul class="list list_phone_book">
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 전화번호검색 bottom sheet -->
+
+			<!-- s: Modal popup 실명입력 -->
+			<div class="modal_popup modal_alert show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_body">
+						<div class="container">
+							<div class="txt_c txt_lg"><strong>받는분의 실명을<br> 정확하게 입력해 주세요.</strong></div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="pop_inp1_1" class="lab">이름</label>
+										<input type="text" id="pop_inp1_1" class="tf" value="강순이">
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('layer01')">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('layer01')">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 실명입력 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

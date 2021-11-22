@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="거래내역조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+
+			<div class="container pb_2">
+
+				<!-- s: 조회계좌 정보 -->
+				<div class="toggle_box clear">
+					<div class="toggle_con account inquiry">
+						<ul class="toggle_list">
+							<li>
+								<div class="account_tit">
+									<div class="l">
+										<span>
+											<strong>나의 신한 통장</strong>
+											100057-02-000010
+										</span>
+									</div>
+								</div>
+								<div class="fx_lr">
+									<div class="l">
+										<a href="#;" class="btn btn_md btn_round btn_outline_default">즉시이체</a>
+									</div>
+									<div class="r">
+										<strong>1,000,000</strong> 원
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- e: 조회계좌 정보 -->
+
+				<!-- s: 추가메뉴 -->
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_md btn_download" onclick="openModal('layer01', this); return false;">엑셀다운로드</a>
+					<a href="#;" class="btn btn_md btn_search" onclick="openModal('inquiry_detail', this); return false;">상세조회</a>
+				</div>
+				<!-- e: 추가메뉴 -->
+
+				<!-- s: 거래내역 -->
+				<div class="mt_8">
+					<div class="inquiry_box">
+						<div class="inquiry_time">조회기간 <span>2021.07.03 - 2021.08.04</span></div>
+						<div class="inquiry_result">
+							<ul>
+								<li>
+									<div>
+										<div class="l"><span class="sr_only">거래발생일시</span>2021.08.03 18:01:15</div>
+										<div class="r"><span class="sr_only">내역</span>스마트이체</div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">적요</span><strong>홍길동</strong></div>
+										<div class="r"><span class="sr_only">입금 혹은 출금액</span><em class="txt_invalid">-5,000원</em></div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">송금, 입금기관</span>타행송금(신한은행) 111111-11-111111</div>
+										<div class="r"><span class="sr_only">입금 혹은 출금 후 잔액</span><span class="txt_normal">5,000,000원</span>
+										</div>
+									</div>
+									<div>
+										<div class="l"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('memo_write', this); return false;">메모작성</a></div>
+									</div>
+								</li>
+								<li>
+									<div>
+										<div class="l"><span class="sr_only">거래발생일시</span>2021.08.03 18:01:15</div>
+										<div class="r"><span class="sr_only">내역</span>이체</div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">적요</span><strong>김현수</strong></div>
+										<div class="r"><span class="sr_only">입금 혹은 출금액</span><em class="txt_blue">+5,000원</em></div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">송금, 입금기관</span>당행입금</div>
+										<div class="r"><span class="sr_only">입금 혹은 출금 후 잔액</span><span class="txt_normal">5,000,000원</span>
+										</div>
+									</div>
+									<div>
+										<div class="l"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('memo_change', this); return false;">메모확인</a></div>
+									</div>
+								</li>
+								<li>
+									<div>
+										<div class="l"><span class="sr_only">거래발생일시</span>2021.08.03 18:01:15</div>
+										<div class="r"><span class="sr_only">내역</span>스마트이체</div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">적요</span><strong>박철수</strong></div>
+										<div class="r"><span class="sr_only">입금 혹은 출금액</span><em class="txt_blue">+100,000원</em></div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">송금, 입금기관</span>타행입금(신한은행)</div>
+										<div class="r"><span class="sr_only">입금 혹은 출금 후 잔액</span><span class="txt_normal">5,000,000원</span>
+										</div>
+									</div>
+									<div>
+										<div class="l"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('memo_write', this); return false;">메모작성</a></div>
+									</div>
+								</li>
+								<li>
+									<div>
+										<div class="l"><span class="sr_only">거래발생일시</span>2021.08.03 18:01:15</div>
+										<div class="r"><span class="sr_only">내역</span>스마트이체</div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">적요</span><strong>신은수</strong></div>
+										<div class="r"><span class="sr_only">입금 혹은 출금액</span><em class="txt_invalid">-5,000원</em></div>
+									</div>
+									<div>
+										<div class="l"><span class="sr_only">송금, 입금기관</span>당행송금 111111-11-111111</div>
+										<div class="r"><span class="sr_only">입금 혹은 출금 후 잔액</span><span class="txt_normal">5,000,000원</span>
+										</div>
+									</div>
+									<div>
+										<div class="l"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('memo_write', this); return false;">메모작성</a></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="btn_group txt_c mt_3">
+						<a href="#;" class="btn btn_sm btn_round btn_default"><i class="ico ico_chevron_down_sm_bold mr_1"></i> 1주일
+							더보기</a>
+						<a href="#;" class="btn btn_sm btn_round btn_default"><i class="ico ico_chevron_down_sm_bold mr_1"></i> 1개월
+							더보기</a>
+					</div>
+				</div>
+				<!-- e: 거래내역 -->
+			</div>
+
+			<!-- s: 거래내역 다운로드 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">거래내역 다운로드</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="box bg_lightgray txt_c d_b pt_6 pb_6 txt_normal">
+								<i class="ico ico_floppy"></i> 스마트e-post예금_20211104.slsx
+							</div>
+							<div class="mt_6">
+								<h3 class="tit1">저장장소</h3>
+								<div class="directory_box">
+									저장장소 영역
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01')">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary">저장</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 거래내역 다운로드 팝업 -->
+
+			<!-- s: Modal popup 상세조회 -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="inquiry_detail">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">거래내역조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2 mb_14">
+							<h3 class="tit1">조회기간</h3>
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-1">
+									<label for="chk1-1">1주일</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-2">
+									<label for="chk1-2">1개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-3">
+									<label for="chk1-3">3개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-4">
+									<label for="chk1-4">1년</label>
+								</span>
+							</div>
+
+							<div class="tf_double mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="section">
+								<h3 class="tit1">조회구분</h3>
+								<div class="input_items col_3">
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-1">
+										<label for="chk2-1">입출금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-2">
+										<label for="chk2-2">입금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-3">
+										<label for="chk2-3">출금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-4">
+										<label for="chk2-4">무통장입출금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-5">
+										<label for="chk2-5">무통장입금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-6">
+										<label for="chk2-6">무통장출금</label>
+									</span>
+								</div>
+								<div class="tf_item search_item mt_2">
+									<input type="text" class="tf" title="받으시는 분 입력" placeholder="받으시는 분을 검색해 보세요">
+									<a href="#;"><span class="sr_only">검색</span></a>
+								</div>
+							</div>
+
+							<div class="section">
+								<h3 class="tit1">정렬</h3>
+								<div class="tf_item">
+									<div class="input_items">
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-1">
+											<label for="chk3-1">최근 거래 위로</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-2">
+											<label for="chk3-2">과거 거래 위로</label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('inquiry_detail');">닫기</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('inquiry_detail');">검색</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세조회 -->
+
+			<!-- s: 메모작성 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="memo_write">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<div class="popup_tit">
+							<h3 class="tit1">메모 작성</h3>
+						</div>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<textarea class="tf" id="lb_content_1" rows="4" style="white-space: inherit;" placeholder="※ 최대 한글 20자, 영/숫자 40자까지 입력"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('memo_write');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('memo_write');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 메모작성 팝업 -->
+
+			<!-- s: 메모확인 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="memo_change">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<div class="popup_tit">
+							<h3 class="tit1">메모 확인</h3>
+						</div>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<textarea class="tf" id="lb_content_2" rows="4" style="white-space: inherit;" placeholder="※ 최대 한글 20자, 영/숫자 40자까지 입력">5월 관리비</textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('memo_change');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('memo_change');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 메모확인 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
