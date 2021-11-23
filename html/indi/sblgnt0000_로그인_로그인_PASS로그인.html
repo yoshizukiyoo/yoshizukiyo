@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			// 인증안내 bottom sheet 탭메뉴
+			$('.login_info_popup .tab_login_info a').on('click', function () {
+				var index = $(this).parent().index();
+				var data = $(this).attr('data-mode');
+				$(this).addClass('on').parent().siblings().find('> a').removeClass();
+				$(this).attr('data-mode', 'on').parent().siblings().find('> a').attr('data-mode', 'off');
+
+				if (data == 'off') {
+					if (index == 0) {
+						$('[data-tab-box=tab_box1]').show();
+						$('[data-tab-box=tab_box2]').hide();
+					} else {
+						$('[data-tab-box=tab_box1]').hide();
+						$('[data-tab-box=tab_box2]').show();
+					}
+				} else {
+					closeModal('login_info');
+				}
+			});
+
+			// PASS 이용약관 아코디언 박스
+			$('.agree_check a').on('click', function () {
+				$(this).parent().toggleClass('agree_open');
+			});
+
+			// 휴대폰인증 약관 아코디언 박스
+			$('.agree_box2 .ag_list a').on('click', function () {
+				$(this).toggleClass('open');
+			});
+		});
+
+		// 안내 탭버튼 선택시 인증안내 bottom sheet 실행
+		function infoLayerPopup(id) {
+			openModal('login_info');
+			$('[data-tab-box=tab_box1]', '[data-tab-box=tab_box2]').hide();
+			$("[data-tab-box=" + id + "]").show();
+			if (id == 'tab_box1') {
+				$('.login_info_popup .tab_login_info > ul > li').eq(0).find('> a').addClass('on').attr('data-mode', 'on');
+			} else {
+				$('.login_info_popup .tab_login_info > ul > li').eq(1).find('> a').addClass('on').attr('data-mode', 'on');
+			}
+		}
+
+		// 공동인증서 목록 선택시 인증서 비밀번호 영역 활성화
+		function nextStep() {
+			$('[data-certi-step=step1]').hide();
+			$('[data-certi-step=step2]').show();
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="로그인"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 로그인 -->
+			<div class="login_cnt">
+
+				<!-- s: 로그인 방법 선택 -->
+				<div class="login_top">
+					<span>로그인 방법을 선택하세요</span>
+					<div class="btn_toggle login_toggle">
+						<div class="switch">
+							<input type="checkbox" id="btn_toggle">
+							<label for="btn_toggle">
+								<span class="btn_name_indi">개인</span>
+								<span class="btn_name_biz">기업</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- e: 로그인 방법 선택 -->
+
+				<!-- s: 개인 인증 목록 -->
+				<div class="list_certi">
+					<ul>
+						<li>
+							<a href="#;" class="btn_finan" onclick="openModal('bottom_number_keypad', this);">금융인증서</a>
+						</li>
+						<li>
+							<a href="#;" class="btn_common" onclick="openModal('common_certi_keypad', this);">공동인증서</a>
+						</li>
+						<li>
+							<a href="#;" class="btn_finger" onclick="openModal('fingerprint_certi', this);">지문인증</a>
+						</li>
+						<li>
+							<a href="#;" class="btn_pattern" onclick="openModal('pattern_certi', this);">패턴인증</a>
+						</li>
+						<li>
+							<a href="#;" class="btn_number" onclick="openModal('indi_keypad', this);">개인인증번호</a>
+						</li>
+						<li>
+							<a href="#;" class="btn_pass" onclick="openModal('pass_certi_step1', this);">PASS 인증</a>
+						</li>
+						<li>
+							<a href="#;" class="btn_kakao btn_disabled">카카오 인증</a>
+						</li>
+						<li>
+							<a href="#;" class="btn_pcode btn_disabled">P코드 인증</a>
+						</li>
+					</ul>
+				</div>
+				<!-- e: 개인 인증 목록 -->
+
+				<div class="certi_link">
+					<ul>
+						<li><a href="#;">금융인증서 등록</a></li>
+						<li><a href="#;">간편인증등록</a></li>
+						<li><a href="#;">인증센터</a></li>
+					</ul>
+				</div>
+
+				<!-- s: 인증안내 탭메뉴 -->
+				<div class="tab_login_info login_info_off">
+					<ul>
+						<li><a href="#;" onclick="infoLayerPopup('tab_box1');return false;"><span>처음 오셨나요?</span></a></li>
+						<li><a href="#;" onclick="infoLayerPopup('tab_box2');return false;"><span>앱 인증 안내</span></a></li>
+					</ul>
+				</div>
+				<!-- e: 인증안내 탭메뉴 -->
+
+			</div>
+			<!-- e: 로그인 -->
+
+			<!-- s: 안내 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet login_info_popup hide" data-popup="login_info">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="max-height: calc(100vh - 102px);">
+					<div class="popup_body pt_5">
+						<div class="tab_login_info">
+							<ul>
+								<li><a href="#;" data-mode="off"><span>처음 오셨나요?</span></a></li>
+								<li><a href="#;" data-mode="off"><span>앱 인증 안내</span></a></li>
+							</ul>
+						</div>
+						<div class="container">
+							<!-- s: 처음 오셨나요? -->
+							<div data-tab-box="tab_box1">
+								<ul class="first_visit">
+									<li>
+										<a href="#n">
+											<p class="txt_visit1">우체국계좌가<br>없어요.</p>
+											<p class="txt_visit2">우체국<br>계좌만들기</p>
+										</a>
+									</li>
+									<li>
+										<a href="#n">
+											<p class="txt_visit1">우체국계좌는 있지만,<br>스마트뱅킹은 처음이예요.</p>
+											<p class="txt_visit2">전자금융<br>약정하기</p>
+										</a>
+									</li>
+									<li>
+										<a href="#n">
+											<p class="txt_visit1">그냥, 금융상품만<br>둘러볼께요.</p>
+											<p class="txt_visit2">금융상품몰<br>바로가기</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- e: 처음 오셨나요? -->
+
+							<!-- s: 앱 인증안내 -->
+							<div data-tab-box="tab_box2" style="display: none;">
+								<h2 class="tit1">앱인증이란?</h2>
+								<p>앱인증은 우체국스마트뱅킹 이용할 스마트폰을 인증하는 서비스입니다.</p>
+								<p>인증 완료한 스마트폰에서 공동인증서 없이 지문, 개인인증 번호 등으로 간편하고 안전한 뱅킹서비스를 이용할 수 있습니다.</p>
+								<div class="cert_error">
+									<p><strong>앱 미인증</strong> 간편인증 사용 불가</p>
+								</div>
+								<div class="section">
+									<h2 class="tit1">앱인증 절차</h2>
+									<ul class="app_cert_step">
+										<li>
+											<span>STEP 01</span>
+											우체국서비스<br>이용 확인
+										</li>
+										<li>
+											<span>STEP 02</span>
+											휴대폰<br>본인확인
+										</li>
+										<li>
+											<span>STEP 03</span>
+											앱인증<br>완료
+										</li>
+									</ul>
+									<p class="bul_notice mt_4">
+										앱인증을 하지 않을 경우, 간편로그인(지문, 패턴, 개인인 증번호 등)을 이용하실 수 없으며, 공동/금융 인증서로만 우체국스마트뱅킹을 이용할 수 있습니다.
+									</p>
+								</div>
+							</div>
+							<!-- e: 앱 인증안내 -->
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary">앱인증</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 안내 레이어 팝업 -->
+
+			<!-- s: 지문 재등록 안내 레이어 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="fingerprint_info">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">지문 재등록 안내</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc txt_l">
+								<p class="txt_lg txt_bold">스마트폰의 지문 정보가 변경(추가)되었습니다.</p>
+								<p class="mt_2">
+									※ 지문을 재등록하셔야 지문 인증 사용이 가능합니다.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('fingerprint_info');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('fingerprint_info');">지문
+								재등록</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- s: 지문 재등록 안내 레이어 팝업 -->
+
+			<!-- s: 금융인증서 비밀번호 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="bottom_number_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<strong class="txt_xl d_b txt_c">공동인증서<br>비밀번호를 입력해주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i><i class="bg_gray"></i><i class="bg_gray"></i><i class="bg_gray"></i><i
+												class="bg_gray"></i><i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								비밀번호 총 5회 오류 시 처음부터 다시 시작하셔야 합니다.
+							</p>
+							<div class="btn_group">
+								<a href="#;" class="btn">
+									<u>비밀번호를 잊으셨나요?</u>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 금융인증서 비밀번호 bottom sheet -->
+
+			<!-- s: 인증서 선택/비밀번호 입력 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="common_certi_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<!-- s: 인증서 선택 -->
+							<div data-certi-step="step1">
+								<strong class="txt_xl d_b txt_c">인증서를 선택하세요</strong>
+								<ul class="certi_list mt_4">
+									<li>
+										<a href="#;" onclick="nextStep();return false;">
+											<strong>홍길동</strong>
+											<div>
+												<span>은행개인</span>
+												<span>금융결제원</span>
+											</div>
+											<div>
+												<span>발급일 2020.08.30</span>
+											</div>
+											<div>
+												<span>만료일 2021.09.12</span>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#;" onclick="nextStep();return false;">
+											<strong>홍길동</strong>
+											<div>
+												<span>은행개인</span>
+												<span>금융결제원</span>
+											</div>
+											<div>
+												<span>발급일 2020.08.30</span>
+											</div>
+											<div>
+												<span>만료일 2021.09.12</span>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- e: 인증서 선택 -->
+
+							<!-- s: 인증서 비밀번호 입력 -->
+							<div data-certi-step="step2" style="display: none;">
+								<strong class="txt_xl d_b txt_c">인증서 비밀번호를 입력하세요</strong>
+								<div class="tf_item mt_3 btm_sheet_pwd">
+									<div class="tf_item_body">
+										<div class="input_area pt_0">
+											<div class="password_masking">
+												<i></i><i></i><i></i><i></i><i></i><i></i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<p class="txt_sm txt_c mt_4 txt_gray">
+									<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+									비밀번호 총 5회 오류 시 처음부터 다시 시작하셔야 합니다.
+								</p>
+								<div class="btn_group">
+									<a href="#;" class="btn">
+										<u>비밀번호를 잊으셨나요?</u>
+									</a>
+								</div>
+							</div>
+							<!-- e: 인증서 비밀번호 입력 -->
+						</div>
+					</div>
+					<div class="popup_footer keypad" data-certi-step="step2" style="display: none;">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 인증서 선택/비밀번호 입력 bottom sheet -->
+
+			<!-- s: 지문인증 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="fingerprint_certi">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<strong class="txt_xl txt_c d_b">손가락을<br>지문인식 센서에 올려주세요.</strong>
+							<p class="txt_sm txt_c mt_4">
+								<span class="txt_red d_b txt_normal">일치하지 않습니다.</span>
+								지문 전체가 인식되도록 손가락을 센서 중앙에 올려주세요.
+							</p>
+							<div class="fingerprint-area">
+								<img src="/resources/img/content/img_fingerprint.png" alt="지문">
+								<!-- 지문성공 -->
+								<!-- <img src="/resources/img/content/img_fingerprint_success.png" alt="지문성공"> -->
+								<!-- 지문실패 -->
+								<!-- <img src="/resources/img/content/img_fingerprint_failure.png" alt="지문실패"> -->
+							</div>
+
+						</div>
+					</div>
+					<div class="popup_footer txt_c">
+						<div class="btn_group btn_bottom_fixed">
+							<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('fingerprint_certi');">
+								<span>다른 인증 방법 선택</span>
+							</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 지문인증 bottom sheet -->
+
+			<!-- s: 패턴인증 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="pattern_certi">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<strong class="txt_xl d_b txt_c">패턴 인증을 해주세요.</strong>
+							<p class="txt_sm txt_c mt_4">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								패턴을 바르게 그려주세요.
+							</p>
+							<div class="pattern_area">
+								<img src="/resources/img/content/img_pattern.gif" alt="패턴형식">
+							</div>
+							<div class="btn_group">
+								<a href="#;" class="btn">
+									<u>패턴을 잊으셨나요?</u>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer txt_c">
+						<div class="btn_group btn_bottom_fixed">
+							<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('pattern_certi');">
+								<span>다른 인증 방법 선택</span>
+							</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 패턴인증 bottom sheet -->
+
+			<!-- s: 개인인증번호 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="indi_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<strong class="txt_xl d_b txt_c">개인인증번호를 입력해주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i><i class="bg_gray"></i><i class="bg_gray"></i><i class="bg_gray"></i><i
+												class="bg_gray"></i><i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								비밀번호 총 5회 오류 시 처음부터 다시 시작하셔야 합니다.
+							</p>
+							<div class="btn_group">
+								<a href="#;" class="btn">
+									<u>비밀번호를 잊으셨나요?</u>
+								</a>
+							</div>
+							<div class="btn_group btn_bottom_fixed">
+								<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('indi_keypad');">
+									<span>다른 인증 방법 선택</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 개인인증번호 bottom sheet -->
+
+			<!-- s: PASS 인증서 1단계 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="pass_certi_step1">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<h2 class="tit1">PASS인증서</h2>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">성명</div>
+										<div class="r">홍길동</div>
+									</div>
+									<div>
+										<div class="l">휴대폰</div>
+										<div class="r">010-1236-1236</div>
+									</div>
+								</div>
+							</div>
+							<p class="mt_5"><strong class="txt_medium">PASS 인증은 이용약관 동의가 필요합니다.</strong></p>
+							<div class="agree_box1 mt_3">
+								<div class="agree_list">
+									<div class="agree_check agree_open">
+										<span class="check_item txt_lg">
+											<input type="checkbox" id="lb_agreement" checked>
+											<label for="lb_agreement">[필수] 개인정보 제3자 제공동의</label>
+										</span>
+										<a href="#;"><span class="sr_only">내용보기</span></a>
+									</div>
+									<div class="agree_txt">
+										개인정보 제3자 제공동의 내용입니다. 개인정보 제3자 제공동의 내용입니다. 개인정보 제3자 제공동의 내용입니다. 개인정보 제3자 제공동의 내용입니다. 개인정보 제3자 제공동의
+										내용입니다.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary">PASS 인증 요청</a>
+						</div>
+						<p class="txt_sm txt_c mt_2">
+							<span class="txt_red d_b txt_normal">PASS인증 이용 약관은 필수 동의입니다.</span>
+						</p>
+						<div class="btn_group mt_2 txt_c">
+							<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('pass_certi_step1');">
+								<span>다른 인증 방법 선택</span>
+							</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: PASS 인증서 1단계 bottom sheet -->
+
+			<!-- s: PASS 인증서 2단계 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="pass_certi_step2">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<h2 class="tit1">PASS인증서</h2>
+							<p><strong class="txt_medium">휴대폰 PASS앱에서 인증을 완료해주세요.</strong></p>
+							<ul class="pass_step">
+								<li>
+									<p class="step">STEP<span>01</span></p>
+									<p class="txt">PASS앱에서 발송된 PUSH 알림을 선택하세요.</p>
+								</li>
+								<li>
+									<p class="step">STEP<span>02</span></p>
+									<p class="txt">실행된 PASS앱에서 비밀번호 또는생체 인증을 진행해주세요.</p>
+								</li>
+								<li>
+									<p class="step">STEP<span>03</span></p>
+									<p class="txt">정상 인증 완료 후 우체국스마트뱅킹으로 돌아와 [PASS 인증 완료 확인] 버튼을 눌러주세요.</p>
+								</li>
+							</ul>
+							<p class="bul_notice mt_3">PUSH 알림이 오지 않을 경우 PASS앱 설치 및 가입 후 다시 이용해주세요.</p>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<!-- <a href="#;" class="btn btn_lg btn_primary btn_disabled">PASS 인증 오류</a> -->
+							<!-- <a href="#;" class="btn btn_lg btn_primary">PASS 인증 요청 만료(재요청)</a> -->
+							<a href="#;" class="btn btn_lg btn_primary">PASS 인증 완료 확인</a>
+						</div>
+						<p class="txt_sm txt_c mt_2">
+							<span class="txt_red d_b txt_normal">일시적인 오류로 서비스에 접속할 수 없습니다.</span>
+						</p>
+						<div class="btn_group mt_2 txt_c">
+							<a href="#;" class="btn btn_md btn_round btn_default" onclick="closeModal('pass_certi_step2');">
+								<span>다른 인증 방법 선택</span>
+							</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: PASS 인증서 2단계 bottom sheet -->
+
+			<!-- s: PASS 인증 로그인 추가인증 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="pass_login">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<h2 class="tit1">PASS인증 로그인이란?</h2>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<ul class="list list1">
+										<li>본인확인기관인 통신사 PASS앱을 이용해 보다 안전하고 간편하게 본인확인 및 전자서명을 할 수 있는 인증서비스입니다.</li>
+										<li>PASS인증 사용을 위해서는 PASS앱 설치 및 PASS인증서 등록이 필요합니다.</li>
+									</ul>
+								</div>
+							</div>
+							<div class="section">
+								<h2 class="tit1">추가인증</h2>
+								<div class="add_certi_box">
+									<div class="add_list">
+										<a href="#;" class="btn btn_lg btn_default">SMS 인증</a>
+										<a href="#;" class="btn btn_lg btn_default">ARS 인증</a>
+										<a href="#;" class="btn btn_lg btn_default">해외체류</a>
+									</div>
+									<div class="box box_border mt_2">
+										인증되었습니다.
+									</div>
+								</div>
+								<p class="bul_notice mt_3">추가인증은 고객정보에 등록된 휴대전화만 가능합니다. 고객정보는 우체국 창구, 고객센터, 인터넷뱅킹 및 스마트뱅킹에서 등록, 변경
+									가능합니다.</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary">다음</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: PASS 인증 로그인 추가인증 bottom sheet -->
+
+			<!-- s: 휴대폰인증 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="phone_certi">
+				<div class="dimed"></div>
+				<div class="popup_inner" style="height:calc(100% - 50px);">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<strong class="txt_xl txt_c d_b">휴대폰인증을 진행해 주세요.</strong>
+							<div class="agree_box2 mt_6">
+								<div class="ag_top">
+									<div class="tf_item_body">
+										<span class="check_item txt_lg">
+											<input type="checkbox" id="lb_agreement_y">
+											<label for="lb_agreement_y">통신사 약관에 모두 동의[필수]</label>
+										</span>
+									</div>
+								</div>
+								<div class="ag_cnt">
+									<ul class="ag_list">
+										<li>
+											<a href="#n">개인정보이용동의</a>
+											<div>
+												<p><strong>개인정보이용동의</strong></p>
+												<p>
+													개인정보이용동의 내용입니다.
+												</p>
+											</div>
+										</li>
+										<li>
+											<a href="#n">고유식별정보 처리 동의</a>
+											<div>
+												<p><strong>고유식별정보 처리 동의</strong></p>
+												<p>
+													고유식별정보 처리 동의 내용입니다.
+												</p>
+											</div>
+										</li>
+										<li>
+											<a href="#n">서비스이용약관 동의</a>
+											<div>
+												<p><strong>나이스신용평가정보</strong></p>
+												<p>
+													서비스이용약관 동의 내용입니다.
+												</p>
+											</div>
+										</li>
+										<li>
+											<a href="#n">통신사 이용약관 동의</a>
+											<div>
+												<p><strong>나이스신용평가정보</strong></p>
+												<p>
+													통신사 이용약관 동의 내용입니다.
+												</p>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="tf_item mt_2 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">이름 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_tf_1_2" class="tf" value="홍길동" placeholder="이름 입력" required>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">생년월일 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_tf_1_2" class="tf" value="1987.04.02" placeholder="생년월일 입력" required>
+									</div>
+								</div>
+							</div>
+							<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">이동통신사 <span class="req">필수항목</span></span>
+										<p class="tf">통신사선택</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('phone_certi');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 휴대폰인증 bottom sheet -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

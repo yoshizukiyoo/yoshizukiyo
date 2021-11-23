@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="지연이체조회/취소"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+
+			<div class="container p_4">
+				<h2 class="tit1">조회기간 
+					<a href="#;" data-toggle-btn="tooltip1">
+						<i class="ico ico_help"></i>
+						<span class="sr_only">도움말</span>
+					</a>
+				</h2>
+
+				<!-- s: 도움말 영역 -->
+				<div class="tooltip" data-toggle-content="tooltip1" style="width: 270px; left: 43px;">
+					<div class="tooltip_body">
+						<ul class="list list1">
+							<li><span class="txt_medium">등록시간</span>을 <span class="txt_medium">기준</span>으로 <span class="txt_medium">조회</span>합니다.</li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn_icon btn_close_tooltip">
+						<i class="ico ico_close_sm"></i>
+						<span class="sr_only">닫기</span>
+					</button>
+				</div>
+				<!-- e: 도움말 영역 -->
+
+				<!-- s: 조회옵션 -->
+				<div class="mt_2">
+					<div class="input_items">
+						<span class="check_item type_btn">
+							<input type="radio" name="period_chk1" id="period_chk1-2">
+							<label for="period_chk1-2">1주</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="period_chk1" id="period_chk1-3">
+							<label for="period_chk1-3">1개월</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="period_chk1" id="period_chk1-4">
+							<label for="period_chk1-4">3개월</label>
+						</span>
+						<a href="#:" class="btn btn_md btn_outline_default btn_search"
+							onclick="openModal('inquiry_detail', this); return false;">상세조회</a>
+					</div>
+				</div>
+				<!-- e: 조회옵션 -->
+
+				<!-- s: 지연이체 정보 -->
+				<div class="mt_2">
+					<div class="double_box">
+						<div class="btm">
+							<div>
+								<div class="l">지연이체 대상금액</div>
+								<div class="r"><span class="txt_bold">500,000</span>원</div>
+							</div>
+							<div>
+								<div class="l">지연이체 시간</div>
+								<div class="r">3시간</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 지연이체 정보 -->
+
+				<!-- s: 거래내역 -->
+				<div class="section">
+					<div class="inquiry_box">
+						<div class="inquiry_time">조회기간 <span>2021.07.03 - 2021.08.04</span></div>
+						<div class="inquiry_result">
+							<ul>
+								<li>
+									<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+										<div>
+											<div class="l">이체일시</div>
+											<div class="r">2021.06.29 20:01</div>
+										</div>
+										<div>
+											<div class="l fx_align_end">출금계좌</div>
+											<div class="r txt_md txt_black">우체국 010017-02-191237</div>
+										</div>
+										<div>
+											<div class="l fx_align_end">입금계좌</div>
+											<div class="r txt_md txt_black">우체국 222222-22-222222</div>
+										</div>
+										<div>
+											<div class="l txt_medium txt_md txt_black fx_align_end"><span class="sr_only">상태</span>처리완료(정상)</div>
+											<div class="r txt_medium txt_md txt_invalid"><span class="sr_only">이체금액</span><span class="txt_bold txt_lg">500,000</span>원</div>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+										<div>
+											<div class="l">이체일시</div>
+											<div class="r">2021.06.29 20:01</div>
+										</div>
+										<div>
+											<div class="l fx_align_end">출금계좌</div>
+											<div class="r txt_md txt_black">우체국 010017-02-191237</div>
+										</div>
+										<div>
+											<div class="l fx_align_end">입금계좌</div>
+											<div class="r txt_md txt_black">우체국 222222-22-222222</div>
+										</div>
+										<div>
+											<div class="l txt_medium txt_md txt_black fx_align_end"><span class="sr_only">상태</span>취소(철회)</div>
+											<div class="r txt_medium txt_md txt_invalid"><span class="sr_only">이체금액</span><span class="txt_bold txt_lg">500,000</span>원</div>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+										<div>
+											<div class="l">이체일시</div>
+											<div class="r">2021.06.29 20:01</div>
+										</div>
+										<div>
+											<div class="l fx_align_end">출금계좌</div>
+											<div class="r txt_md txt_black">우체국 010017-02-191237</div>
+										</div>
+										<div>
+											<div class="l fx_align_end">입금계좌</div>
+											<div class="r txt_md txt_black">우체국 222222-22-222222</div>
+										</div>
+										<div>
+											<div class="l txt_medium txt_md txt_black fx_align_end"><span class="sr_only">상태</span>처리완료(정상)</div>
+											<div class="r txt_medium txt_md txt_invalid"><span class="sr_only">이체금액</span><span class="txt_bold txt_lg">500,000</span>원</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- e: 거래내역 -->
+			</div>
+
+			<!-- s: Modal popup 상세조회 -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="inquiry_detail">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">거래내역조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2 mb_14">
+							<h3 class="tit1">조회기간</h3>
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-1">
+									<label for="chk1-1">1주일</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-2">
+									<label for="chk1-2">1개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-3">
+									<label for="chk1-3">3개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-4">
+									<label for="chk1-4">1년</label>
+								</span>
+							</div>
+
+							<div class="tf_double mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="section">
+								<h3 class="tit1">조회구분</h3>
+								<div class="input_items col_3">
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-1">
+										<label for="chk2-1">전체</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-2">
+										<label for="chk2-2">예약상태</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-3">
+										<label for="chk2-3">이체처리중</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-4">
+										<label for="chk2-4">처리완료(정상)</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-5">
+										<label for="chk2-5">취소(철회)</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-6">
+										<label for="chk2-6">처리완료(오류)</label>
+									</span>
+								</div>
+							</div>
+
+							<div class="section">
+								<h3 class="tit1">정렬</h3>
+								<div class="tf_item">
+									<div class="input_items">
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-1">
+											<label for="chk3-1">최근 거래 위로</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-2">
+											<label for="chk3-2">과거 거래 위로</label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('inquiry_detail');">닫기</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('inquiry_detail');">검색</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세조회 -->
+
+			<!-- s: 조회결과 상세 팝업 -->
+			<div class="modal_popup popup hide" data-popup="inquiry_result_detail">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">지연이체조회/취소</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('inquiry_result_detail');">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit1">결과 상세</h3>
+							<div class="double_box">
+								<div class="btm">
+									<div>
+										<div class="l">출금계좌</div>
+										<div class="r">우체국 010017-02-191237</div>
+									</div>
+									<div>
+										<div class="l">입금은행</div>
+										<div class="r">우체국</div>
+									</div>
+									<div>
+										<div class="l">입금계좌번호</div>
+										<div class="r">333333-33-333333</div>
+									</div>
+									<div>
+										<div class="l">입금계좌예금주명</div>
+										<div class="r">한지민</div>
+									</div>
+									<div>
+										<div class="l">이체금액</div>
+										<div class="r"><span class="txt_bold">300,000</span>원</div>
+									</div>
+									<div>
+										<div class="l">등록일시</div>
+										<div class="r">2021.07.13 09:20</div>
+									</div>
+									<div>
+										<div class="l">이체일시</div>
+										<div class="r">2021.07.13 12:20</div>
+									</div>
+									<div>
+										<div class="l">내 통장 표기</div>
+										<div class="r">빌린돈</div>
+									</div>
+									<div>
+										<div class="l">상태</div>
+										<div class="r">예약상태</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_outline_default">이체취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('inquiry_result_detail'); return false;">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 조회결과 상세 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
