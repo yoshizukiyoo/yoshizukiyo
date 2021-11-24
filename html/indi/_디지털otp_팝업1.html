@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">자기앞수표 사고신고</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				
+
+				<!-- Modal Popup : 디지털OTP 안내 팝업 -->
+				<div class="modal_popup modal_md show" data-popup="otp1">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header txt_c">
+							<h3 class="popup_tit">스마트인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="smart_otp_info">
+								<div class="smart_otp_inner">
+									<div class="txt_smart_step">
+										<ul class="list_bul_arrow">
+											<li>
+												디지털OTP 이용방법
+												<ol class="list_number mt_1">
+													<li>핸드폰 번호 입력 후 '스마트인증 로그인' 선택</li>
+													<li>우체국 스마트뱅킹 푸시알림 선택</li>
+													<li>인터넷뱅킹 PC화면에 생성된 QR코드촬영 또는 인증요청번호 입력</li>
+													<li>본인인증(패턴, 지문, 핀번호 등)</li>
+													<li>인터넷뱅킹 '인증확인' 선택</li>
+												</ol>
+											</li>
+										</ul>
+										<div class="mt_2 pl_5"><a href="#;" class="btn_cert_arrow">이용방법 안내 보기</a></div>
+									</div>
+								</div>
+								<div class="dig_otp">
+									<span>디지털OTP 인증번호</span>
+									<div class="btn_mouse_pwd">
+										<input type="password" class="tf" title="디지털OTP 인증번호 입력" style="width: 200px;" required="">
+										<button type="button"><span class="sr_only">디지털OTP 인증번호 입력</span></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 디지털OTP 안내 팝업 -->
+
+				<!-- Modal Popup : 디지털OTP 인증 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="otp2">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header txt_c">
+							<h3 class="popup_tit">스마트인증</h3>
+						</div>
+						<div class="popup_body">
+							<div class="smart_cert_step2">
+								<div class="smart_cert_time">
+									<span>03:00</span>
+									<button type="button" class="btn btn_sm btn_outline_default">시간연장</button>
+								</div>
+								<div class="smart_certi_info">
+									<h4>전자서명 정보</h4>
+									<ul class="list list1">
+										<li>출금계좌번호: 000000-02-000000</li>
+										<li>입금은행 : 국민</li>
+										<li>입금계좌번호: XXXXXXXXXXX0</li>
+									</ul>
+								</div>
+								<div class="smart_cert_way">
+									<div class="smart_cert_number">
+										<span>2156-2231</span>
+									</div>
+									<div class="smart_cert_qr"><img src="/resources/img/content/img_qrcode.gif" alt="스마트인증 QR코드"></div>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_outline_default btn_w168" onclick="closeModal('smart_step2_popup');">취소</button>
+									<button type="button" class="btn btn_lg btn_primary btn_w168" onclick="smartCertError();">인증확인</button>
+								</div>
+								<div class="txt_push_info">
+									<div class="txt_push_way smart_step_info">
+										<strong>스마트인증 이용 절차 안내</strong>
+										<ol class="list_number">
+											<li>우체국 스마트뱅킹 앱을 실행하여 [PC로그인/인증] 메뉴 선택
+												자동로그인설정 고객은 취소버튼을 눌러 앱 홈화면으로 이동
+												홈화면 오른쪽 상단의 전체메뉴 버튼으로 메뉴를 펼침
+												보안인증센터&gt;PC로그인/인증 메뉴 실행</li>
+												<li>스마트뱅킹에서 QR코드 촬영 또는 인증요청번호(8자리) 입력</li>
+												<li>본인인증(간편인증번호) 진행</li>
+												<li>인증완료 후 PC화면의 [인증확인] 버튼 클릭</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 디지털OTP 인증 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
