@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="자기앞수표신고"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<nav class="tab_menu tab_menu1 mb_0">
+				<ul class="tab_list">
+					<li class="on"><a href="fmntld02at_공통_고객센터_사고신고_자기앞수표신고_신고_정보입력.html"><span>신고</span></a></li>
+					<li><a href="fmntld02bt_공통_고객센터_사고신고_자기앞수표신고_신고조회.html"><span>신고조회</span></a></li>
+				</ul>
+			</nav>
+			<div class="container p_4">
+				<h2 class="tit1">정보 입력</h2>
+				<div class="img_box">
+					<img src="../../resources/img/content/img_check_sample.jpg" alt="임시 이미지 자기앞수표">
+				</div>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_3">➀ 수표번호</label>
+							<input type="text" id="lb_tf_1_3" class="tf" placeholder="‘-’ 없이 입력">
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_3">➁ 발행우체국기호</label>
+							<input type="text" id="lb_tf_1_3" class="tf" placeholder="숫자입력">
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_md btn_round btn_darkgray" onclick="openModal('layer01',this)">조회</a>
+						</div>
+					</div>
+				</div>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">신고구분</span>
+							<p class="tf">분실</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">자기앞수표종류</span>
+							<p class="tf">10만원권정액</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="input2_1">연락처</label>
+							<div class="input_items">
+								<a href="#;" class="opt" title="연락처 국번 선택" style="width: 73px;"
+									onclick="openModal('layerOption')">010</a>
+								<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력">
+							</div>
+						</div>
+					</div>
+				</div>
+				<p class="mt_1 bul_notice txt_gray">우체국을 방문하셔서 서면 신고 등 법적 절차에 따른 제반 조치를 취하지 않을 경우 사고신고 접수의 효력이 상실됩니다.</p>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="fmntld02as_공통_고객센터_사고신고_자기앞수표신고_신고_신고완료.html" class="btn btn_xl btn_primary">
+						<span>신고</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal Popup 자기앞수표조회 -->
+			<div class="modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">자기앞수표조회</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<h3 class="tit1">우체국 조회 정보 입력</h3>
+							<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">지역</span>
+										<p class="tf">서울</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+							<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">검색구분</span>
+										<p class="tf">우체국명</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_3">우체국명</label>
+										<input type="text" id="lb_tf_1_3" class="tf" placeholder="우체국명 입력">
+										<button type="button" class="btn btn_icon btn_reset">
+											<i class="ico ico_reset"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- s: 국기호로 선택했을 때-->
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_3">국기호</label>
+										<input type="text" id="lb_tf_1_3" class="tf" placeholder="국기호를 입력">
+										<button type="button" class="btn btn_icon btn_reset">
+											<i class="ico ico_reset"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- e: 국기호로 선택했을 때-->
+							<div class="section">
+								<h3 class="tit1">조회목록</h3>
+								<ul class="border_list">
+									<li class="flex_container flex_align_center">
+										<div class="flex_item">
+											<div class="flex_box">
+												<div class="l txt_gray">기호</div>
+												<div class="r">0711441</div>
+											</div>
+											<div class="flex_box">
+												<div class="l txt_gray">우체국명</div>
+												<div class="r">서울서초3동우체국</div>
+											</div>
+										</div>
+										<div class="flex_item-fit ml_2">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</li>
+									<li class="flex_container flex_align_center">
+										<div class="flex_item">
+											<div class="flex_box">
+												<div class="l txt_gray">기호</div>
+												<div class="r">0711441</div>
+											</div>
+											<div class="flex_box">
+												<div class="l txt_gray">우체국명</div>
+												<div class="r">서울서초3동우체국</div>
+											</div>
+										</div>
+										<div class="flex_item-fit ml_2">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</li>
+									<li class="flex_container flex_align_center">
+										<div class="flex_item">
+											<div class="flex_box">
+												<div class="l txt_gray">기호</div>
+												<div class="r">0711441</div>
+											</div>
+											<div class="flex_box">
+												<div class="l txt_gray">우체국명</div>
+												<div class="r">서울서초3동우체국</div>
+											</div>
+										</div>
+										<div class="flex_item-fit ml_2">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01');">닫기</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">조회</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 자기앞수표조회 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
