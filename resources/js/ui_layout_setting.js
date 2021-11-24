@@ -14,7 +14,7 @@ $(function () {
 			$('.tit_page').html(pageTitle);
 		});
 	} else if (pageTitle != undefined) {
-		$('.header').load(headerInc + ' .header > *', function () {
+		$('.header').load('/html/' + headerInc + ' .header > *', function () {
 			$('.tit_page').html(pageTitle);
 		});
 	}
