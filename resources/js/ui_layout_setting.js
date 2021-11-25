@@ -317,3 +317,38 @@ $(document).on('click', '.direct_ongoing_list dt a', function (e) {
 	$(this).parent('dt').next('dd').slideToggle('fast').siblings('dd').slideUp('fast');
 	$(this).parent('dt').toggleClass('on').siblings('dt').removeClass('on');
 });
+
+// 상하 스크롤 블러영역
+$(document).ready(function () {
+	$('.scroll_container').each(function () {
+		scrVertical($(this));
+	});
+});
+
+function scrVertical(_obj) {
+	if (_obj.height() < _obj.children('.scroll_track').children('.scroll_content').height()) {
+		_obj.addClass('scroll_start');
+	}
+
+	_obj.children('.scroll_track').on('scroll', function (e) {
+		var currTop = this.scrollTop,
+			scrHeight = this.scrollHeight,
+			trackHeight = $(this).height();
+
+		// 하단 블러
+		if (currTop === 0 || currTop + trackHeight < scrHeight) {
+			_obj.removeClass('scroll_end').addClass('scroll_start')
+		} else if (currTop + trackHeight === scrHeight) {
+			_obj.removeClass('scroll_start')
+		}
+
+		// 상단, 하단 블러 
+		// if (currTop === 0) {
+		// 	_obj.removeClass('scrolling').removeClass('scroll_end').addClass('scroll_start')
+		// } else if (currTop + trackHeight < scrHeight) {
+		// 	_obj.removeClass('scroll_start').removeClass('scroll_end').addClass('scrolling')
+		// } else if (currTop + trackHeight === scrHeight) {
+		// 	_obj.removeClass('scrolling').removeClass('scroll_start').addClass('scroll_end')
+		// }
+	})
+}
