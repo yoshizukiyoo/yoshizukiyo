@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.scroll_container').each(function () {
+				scrVertical($(this));
+			});
+		});
+
+		function scrVertical(_obj) {
+			if (_obj.height() < _obj.children('.scroll_track').children('.scroll_content').height()) {
+				_obj.addClass('scroll_start');
+			}
+
+			_obj.children('.scroll_track').on('scroll', function (e) {
+				var currTop = this.scrollTop,
+					scrHeight = this.scrollHeight,
+					trackHeight = $(this).height();
+
+				if (currTop === 0) {
+					_obj.removeClass('scrolling').removeClass('scroll_end').addClass('scroll_start')
+				} else if (currTop + trackHeight < scrHeight) {
+					_obj.removeClass('scroll_start').removeClass('scroll_end').addClass('scrolling')
+				} else if (currTop + trackHeight === scrHeight) {
+					_obj.removeClass('scrolling').removeClass('scroll_start').addClass('scroll_end')
+				}
+
+				// if(currTop + trackHeight === scrHeight){
+				// 	_obj.removeClass('scrolling');
+				// } else {
+				// 	_obj.addClass('scrolling');
+				// }
+			})
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-page-title="비대면계좌 개설"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4 pb_20">
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">본인확인</span></li>
+					<li><span class="num">2</span><span class="txt">신분증인증</span></li>
+					<li><span class="num">3</span><span class="txt">계좌인증</span></li>
+					<li class="on"><span class="num">4</span><span class="txt">약관동의</span></li>
+					<li><span class="num">5</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">6</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">7</span><span class="txt">개설완료</span></li>
+				</ul>
+
+				<!-- s: 필수 및 선택 약관 -->
+				<div class="double_box terms_box">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk1" id="all_chk1">
+							<label for="all_chk1">전체 동의</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_1" checked>
+									<label for="chk1_1">[필수] 입출금이 자유로운 예금약관</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_2">
+									<label for="chk1_2">[필수] 개인정보수집 및 이용동의</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_3">
+									<label for="chk1_3" class="d_i_b">[필수] 다드림(多Dream) 통장-베이직 특약</label>
+								</span>
+							</div>
+							<div class="r fx_align_start">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_4">
+									<label for="chk1_4">[필수] 우체국 예금거래 기본약관</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_5">
+									<label for="chk1_5">[선택] 우체국 통합멤버십 이용약관</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div class="box bg_lightgray mt_2">
+							<div class="fx_lr fx_align_center">
+								<div class="l"><i class="ico ico_epost03"></i></div>
+								<div class="r txt_l txt_xs pl_2">
+									<strong class="txt_normal">우체국 우편&amp;금융 통합 멤버십!</strong>
+									<p>우체국 멤버십 서비스로 매일 특별한 혜택을 누려보세요.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 필수 및 선택 약관 -->
+
+				<!-- s: 가입 전 중요 사항 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk2" id="all_chk2">
+							<label for="all_chk2">가입 전 중요 사항 확인</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_1" checked>
+									<label for="chk2_1">금융거래 한도 계좌로 개설 안내</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_2">
+									<label for="chk2_2">불법 탈법 차명거래 금지 설명 확인서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_3">
+									<label for="chk2_3">예금상품의 중요한 사항</label>
+								</span>
+							</div>
+							<div class="r fx_align_start">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 가입 전 중요 사항 -->
+
+				<!-- s: 약관확인 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium txt_break txt_black">
+							<input type="checkbox" name="chk3" id="chk3">
+							<label for="chk3">본인은 약관 및 상품설명서를 제공받고 예금상품의 중요한 사항을 충분히 이해하며 본 상품에 가입함을 확인합니다.</label>
+						</span>
+					</div>
+				</div>
+				<!-- e: 약관확인 -->
+
+				<!-- s: 약관 및 상품설명서 받기 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk4" id="all_chk4">
+							<label for="all_chk4">약관 및 상품설명서 받기</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_1" checked>
+									<label for="chk4_1">이메일</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_1" class="tf" value="abcd@naver.com">
+								</div>
+							</div>
+						</div>
+						<p class="txt_guide">이메일주소가 맞는지 확인하시기 바랍니다.</p>
+						<div class="mt_2">
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_2">
+									<label for="chk4_2">문자(SMS)</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md disabled mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_2" class="tf" value="010-1234-5678" disabled readonly>
+								</div>
+							</div>
+						</div>
+						<p class="bul_notice mt_2">이메일, 문자 중 하나를 필수 선택하여 약관 및 상품설명서를 교부받으셔야 합니다.</p>
+					</div>
+				</div>
+				<!-- e: 약관 및 상품설명서 받기 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary btn_disabled">동의 후 개설</a>
+					<!-- 약관 동의시 btn_disabled 제거 -->
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 계좌개설중단 알림 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">비대면계좌개설을 중단하시겠습니까?</h2>
+					</div>
+					<div class="popup_body pt_4">
+						<div class="container">
+							<p class="txt_normal txt_c">입력하신 정보는 저장되지 않습니다.</p>
+							<p class="bul_notice mt_2 txt_spacing_sm">1시간 이내 개설 프로세스를 다시 시작하시는 경우 신분증 및 계좌 인증 없이 현재 단계부터 진행할 수 있습니다.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('alert01');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 계좌개설중단 알림 팝업 -->
+
+			<!-- s: 약관 및 설명서 확인 팝업 -->
+			<div class="modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">약관 및 설명서 확인</h2>
+					</div>
+					<div class="popup_body">
+						<nav class="tab_menu tab_menu1">
+							<ul class="tab_list flex_eq">
+								<li class="on"><a href="#tab_cont1"><span>다드림(多Dream) 통장...</span></a></li>
+								<li><a href="#tab_cont2"><span>우체국멤버십</span></a></li>
+							</ul>
+						</nav>
+
+						<!-- s: tab_cont1 상품1 -->
+						<div class="tab_cont" id="tab_cont1">
+							<div class="container scroll_container mb_10">
+								<div class="scroll_track">
+									<div class="scroll_content">
+										<div class="fx_lr">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_1">
+													<label for="pop_chk1_1">[필수] 입출금이 자유로운 예금약관</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_2">
+													<label for="pop_chk1_2">[필수] 개인정보 수집 이용동의</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_3">
+													<label for="pop_chk1_3">[필수] 다드림(多Dream) 통장-베이직 특약</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_3">
+													<label for="pop_chk1_3">[필수] 다드림(多Dream) 통장-베이직 특약</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- s: 약관 및 상품설명서 확인 -->
+							<div class="container pb_4">
+								<div class="box box_border box_narrow bg_lightgray">
+									<div class="txt_c">
+										<i class="ico ico_notice_lg"></i>
+										<p class=mt_2><strong class="txt_normal">금융소비자보호법에 따라<br>약관 및 설명서 확인이 필요해요.</strong></p>
+									</div>
+
+									<div class="mt_4">
+										<ul class="list list2 spacing_mt_4">
+											<li>약관 및 상품설명서의 내용 중 반드시 확인하셔 야 할 중요한 사항은 가입 전 확인사항에서 다시 한번 알려드려요.</li>
+											<li>확인 방법은 아래 두가지 중 한가지를 선택할 수 있어요.
+												<ul>
+													<li>
+														① 약관명 앞 체크박스를 선택<br>
+														→ 약관 파일 표시되며 바로 확인
+													</li>
+													<li>
+														② 약관명 옆 [저장하기] 버튼, 하단 [전체 저장] 버튼 선택<br>
+														→ 선택한 약관 파일 또는 전체 약관 파일을 고객님의 스마트폰에 내려받아 확인
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: 약관 및 상품설명서 확인 -->
+
+							<!-- s: PDF 뷰어 -->
+							<div class="pt_4">
+								<div class="slide_sheet box box_gradient_gray">
+									<button type="button" class="btn btn_slide">접기</button>
+									<div class="pdf_viewer mt_6">
+										<div style="height: 600px;">PDF 뷰어 영역</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: PDF 뷰어 -->
+						</div>
+						<!-- e: tab_cont1 상품1 -->
+
+						<!-- s: tab_cont2 상품2 -->
+						<div class="tab_cont" id="tab_cont2">
+							<div class="container scroll_container pt_3">
+								<div class="scroll_track" style="max-height: auto">
+									<div class="scroll_content">
+										<div class="fx_lr">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk2" id="pop_chk2_1">
+													<label for="pop_chk2_1">우체국 멤버십 핵심 설명서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk2" id="pop_chk2_2">
+													<label for="pop_chk2_2">우체국 멤버십 이용 약관</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk2" id="pop_chk2_3">
+													<label for="pop_chk2_3">개인정보제공동의</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- s: PDF 뷰어 -->
+							<div class="pt_4">
+								<div class="slide_sheet box box_gradient_gray">
+									<button type="button" class="btn btn_slide">접기</button>
+									<div class="pdf_viewer mt_6">
+										<div style="height: 600px;">PDF 뷰어 영역</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: PDF 뷰어 -->
+						</div>
+						<!-- e: tab_cont2 상품2 -->
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer01');">전체 저장</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">모두 확인했어요</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 약관 및 설명서 확인 팝업 -->
+
+			<!-- s: 가입 전 중요 사항 확인 팝업 -->
+			<div class="modal_popup popup hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">가입 전 중요 사항 확인</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_6">
+							<div>
+								<div class="fx_lr">
+									<div class="l">
+										<span class="check_item">
+											<input type="checkbox" name="pop_chk3" id="pop_chk3_1">
+											<label for="pop_chk3_1">금융거래 한도 계좌로 개설 안내 </label>
+										</span>
+									</div>
+								</div>
+								<div class="fx_lr mt_3">
+									<div class="l">
+										<span class="check_item">
+											<input type="checkbox" name="pop_chk3" id="pop_chk3_2">
+											<label for="pop_chk3_2">예금상품의 중요한 사항</label>
+										</span>
+									</div>
+								</div>
+								<div class="fx_lr mt_3">
+									<div class="l">
+										<span class="check_item">
+											<input type="checkbox" name="pop_chk3" id="pop_chk3_3">
+											<label for="pop_chk3_3">불법 탈법 차명거래 금지 설명 확인서</label>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- s: iframe 영역 -->
+						<div class="mt_8">
+							<div class="slide_sheet box box_gradient_gray">
+								<button type="button" class="btn btn_slide">접기</button>
+								<div class="iframe_wrap mt_5">
+									<iframe src="" frameborder="0"></iframe>
+								</div>
+							</div>
+						</div>
+						<!-- e: iframe 영역 -->
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 가입 전 중요 사항 확인 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
