@@ -9,21 +9,12 @@
 $(function () {
 	var headerInc = $('.header').data('inc');
 	var pageTitle = $('.header').data('page-title');
-	var url = $(location).attr('href');
-	var decode = decodeURI(url);
-	var urlSplit = decode.split('_');
 	if (headerInc == undefined && pageTitle != undefined) {
-		if(urlSplit[3] == '비대면창구' && urlSplit[4] == '계좌개설') { // 비대면계좌 > 계좌개설 전용 header 스타일
-			$('.header').load('/html/_inc_header_untact.html .header > *', function () {
-				$('.tit_page').html(pageTitle);
-			});
-		} else { // 기본 header 스타일
-			$('.header').load('/html/_inc_header.html .header > *', function () {
-				$('.tit_page').html(pageTitle);
-			});
-		}
+		$('.header').load('/html/_inc_header.html .header > *', function () {
+			$('.tit_page').html(pageTitle);
+		});
 	} else if (pageTitle != undefined) {
-		$('.header').load(headerInc + ' .header > *', function () {
+		$('.header').load('/html/' + headerInc + ' .header > *', function () {
 			$('.tit_page').html(pageTitle);
 		});
 	}
