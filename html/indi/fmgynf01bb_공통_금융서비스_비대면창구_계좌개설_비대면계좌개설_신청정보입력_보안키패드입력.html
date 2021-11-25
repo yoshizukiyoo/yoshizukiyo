@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box').not('.disabled').children('a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-page-title="비대면계좌 개설" data-inc="_inc_header_untact.html"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">본인확인</span></li>
+					<li><span class="num">2</span><span class="txt">신분증인증</span></li>
+					<li><span class="num">3</span><span class="txt">계좌인증</span></li>
+					<li><span class="num">4</span><span class="txt">약관동의</span></li>
+					<li class="on"><span class="num">5</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">6</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">7</span><span class="txt">개설완료</span></li>
+				</ul>
+
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">기본정보</h2>
+					</a>
+					<div class="toggle_con">
+
+						<!-- s: 이름 입력 -->
+						<div class="tf_item disabled">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="inp1_1" class="lab">이름 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_1" class="tf" value="홍길동" readonly>
+								</div>
+							</div>
+						</div>
+						<!-- e: 이름 입력 -->
+
+						<!-- s: 휴대폰 번호 입력 -->
+						<div class="tf_item mt_2 disabled">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="inp1_2" class="lab">휴대폰 번호 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_2" class="tf" value="010-2222-3456" readonly>
+								</div>
+							</div>
+						</div>
+						<!-- e: 휴대폰 번호 입력 -->
+
+						<!-- s: 자택주소 입력 -->
+						<div class="tf_item mt_2">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="inp1_3">자택주소 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_3" class="tf" value="58217">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_md btn_round btn_darkgray d_i_f">우편번호</a>
+								</div>
+							</div>
+							<div class="tf_item_footer">
+								<p>전라남도 나주시 상야 3길8</p>
+								<p>A동 626호(빛가람동, 중흥s클래스메가티움 2차)</p>
+							</div>
+						</div>
+						<!-- e: 자택주소 입력 -->
+
+						<!-- s: 직장주소 입력 -->
+						<div class="tf_item mt_2">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="inp1_4">직장주소 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_4" class="tf" placeholder="주소 검색으로 주소 입력">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_md btn_round btn_darkgray d_i_f">주소검색</a>
+								</div>
+							</div>
+						</div>
+						<!-- e: 직장주소 입력 -->
+
+						<!-- s: 이메일주소 입력 -->
+						<div class="tf_item mt_2">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="inp1_5">E-mail</label>
+									<div class="input_items">
+										<input type="email" id="inp1_5" class="tf tf_email_id" placeholder="이메일 아이디" value="test1234"
+											title="이메일 아이디">
+										<span class="text">@</span>
+										<a href="#;" class="opt tf_email_domain" title="이메일 도메인"
+											onclick="openModal('layerOption');">hanmail.net</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- e: 이메일주소 입력 -->
+
+						<div class="mt_6">
+							<h3 class="tit2">우편물수령지<span class="req">필수항목</span></h3>
+							<div class="input_items">
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="chk1" id="chk1_1" checked>
+									<label for="chk1_1">자택</label>
+								</span>
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="chk1" id="chk1_2">
+									<label for="chk1_2">직장</label>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="toggle_box disabled">
+					<a href="#;">
+						<h2 class="tit1 mb_0">통장설정</h2>
+					</a>
+					<div class="toggle_con">
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="inp2_1">계좌 비밀번호 <span class="req">필수항목</span></label>
+									<input type="text" id="inp2_1" class="tf" placeholder="4자리 숫자 입력">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="toggle_box checked">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">기타정보</h2>
+					</a>
+					<div class="toggle_con">
+						<h3 class="tit2">[선택] 마케팅 정보 수신 설정</h3>
+						<div class="container">
+							<ul class="list list2 list_flex txt_normal spacing_mt_1">
+								<li>
+									<div class="l">앱 PUSH</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle1" checked>
+												<label for="btn_toggle1">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">문자(SMS)</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle2">
+												<label for="btn_toggle2">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">VMS(음성)</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle3">
+												<label for="btn_toggle3">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">이메일</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle4" checked>
+												<label for="btn_toggle4">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">우편(DM)</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle5">
+												<label for="btn_toggle5">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">이전</a>
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('layer01', this); return false;">입력 확인</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 신청 정보 확인 팝업 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">신청 정보 확인</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<nav class="input_step">
+								<li><span class="num">1</span><span class="txt">본인확인</span></li>
+								<li><span class="num">2</span><span class="txt">신분증인증</span></li>
+								<li><span class="num">3</span><span class="txt">계좌인증</span></li>
+								<li><span class="num">4</span><span class="txt">약관동의</span></li>
+								<li><span class="num">5</span><span class="txt">신청정보입력</span></li>
+								<li class="on"><span class="num">6</span><span class="txt">신청정보확인</span></li>
+								<li><span class="num">7</span><span class="txt">개설완료</span></li>
+							</nav>
+							<p class="txt_normal">신청 정보가 정확한 지 확인해주세요.<br>
+								잘못 등록한 정보는 수정 버튼을 눌러 수정할 수 있습니다.
+								</p>
+							<div class="double_box mt_4">
+								<div class="btm">
+									<div>
+										<div class="l">이름</div>
+										<div class="r"><strong>강하나</strong></div>
+									</div>
+									<div>
+										<div class="l">휴대폰번호</div>
+										<div class="r"><strong>010-1234-5678</strong></div>
+									</div>
+								</div>
+								<div class="btm">
+									<div>
+										<div class="l">자택주소</div>
+										<div class="r">인천광역시 서구 승학로 123,<br>101동 101호</div>
+									</div>
+									<div>
+										<div class="l">직장주소</div>
+										<div class="r">미입력</div>
+									</div>
+									<div>
+										<div class="l">이메일주소</div>
+										<div class="r">abcd@email.com</div>
+									</div>
+									<div>
+										<div class="l">우편물수령지</div>
+										<div class="r">자택</div>
+									</div>
+								</div>
+								<div class="btm">
+									<div>
+										<div class="l">통합멤버십</div>
+										<div class="r">신청하지 않음</div>
+									</div>
+								</div>
+								<div class="btm">
+									<div>
+										<div class="l">통장비밀번호</div>
+										<div class="r">****</div>
+									</div>
+								</div>
+								<div class="btm">
+									<div>
+										<div class="l">마케팅정보 수신동의</div>
+										<div class="r"><strong>앱PUSH, 이메일</strong></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="openModal('alert01'); return false;">수정</a>
+							<a href="fmgynf01gs_공통_금융서비스_비대면창구_계좌개설_비대면계좌개설_계좌개설완료.html" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">가입 실행</a> <!-- 선택 약관 미동의 -->
+							<!-- <a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">개설 실행</a> --> <!-- 선택 약관 동의 -->
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 신청 정보 확인 팝업 -->
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">계좌 비밀번호를 입력해 주세요.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_6 pb_6">
+							<a href="#;" class="tf_item invalid">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+										<div class="password_masking gray fx_justify_center">
+											<!-- 자릿수에 맞춰 <i></i> 추가 -->
+											<i></i><i></i><i></i><i></i>
+										</div>
+									</div>
+								</div>
+							</a>
+							<p class="bul_notice_red txt_invalid mt_1">재입력 비밀번호가 일치하지 않습니다.</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- s: 비밀번호 입력 팝업 -->
+
+			<!-- s: 신청 정보 수정 안내 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">신청 정보 수정 안내</h2>
+					</div>
+					<div class="popup_body pt_4">
+						<div class="container">
+							<p>기본정보, 설정 등이 아닌,</p>
+							<p class="mt_2">통합멤버십 신청 등은 약관 동의 단계에서 신청을 철회하셔야 합니다.</p>
+							<p class="mt_2">수정할 항목에 맞게 버튼을 눌러주세요.</p>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('alert01'); return false;">약관 동의 수정</a>
+							<a href="fmgynf01es_공통_금융서비스_비대면창구_계좌개설_비대면계좌개설_약관동의.html" class="btn btn_lg btn_primary" onclick="closeModal('alert01');">신청정보 수정</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 신청 정보 수정 안내 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

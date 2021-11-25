@@ -2,6 +2,7 @@
 $orange: #ff883a !default;
 $demigray: #666 !default;
 $url-img-content: "/resources/img/content" !default;
+$demiprimary: #fbe59b !default;
 
 @mixin box_default($p_v : 17px, $p_h : 19px) {
 	border: 1px solid transparent;
@@ -11,6 +12,7 @@ $url-img-content: "/resources/img/content" !default;
 
 	border-color: $border-base;
 }
+
 
 @mixin fx_lr {
 	display: flex;
@@ -28,6 +30,10 @@ $url-img-content: "/resources/img/content" !default;
 	@include fx_lr;
 }
 
+.bg_demiprimary{
+	background-color: $demiprimary;
+}
+
 //아이콘
 @include ico('check_on', 20px, 20px);
 @include ico('mailbox', 30px, 30px);
@@ -43,11 +49,13 @@ $url-img-content: "/resources/img/content" !default;
 @include ico('stamp', 30px, 30px);
 @include ico('clover', 30px, 30px);
 @include ico('bi_shinhan', 15px, 15px);
+@include ico('chevron_up_circle', 13px, 13px);
 
 @include ico('chevron_down_sm_bold', 10px, 6px, #{$url-img-content});
 @include ico('floppy', 15px, 14px, #{$url-img-content});
 @include ico('epost03', 57px, 39px, #{$url-img-content});
 @include ico('notice_lg', 40px, 40px, #{$url-img-content});
+@include ico('check_lg_primary', 45px, 45px, #{$url-img-content});
 
 .ico {
 	&.ico_notice {
@@ -63,6 +71,9 @@ $url-img-content: "/resources/img/content" !default;
 .txt_break{
 	word-break: break-all;
 }
+.txt_xs_ex{
+	font-size: 11px !important;
+}
 
 .txt_xs{
 	font-size: 12px !important;
@@ -77,6 +88,9 @@ $url-img-content: "/resources/img/content" !default;
 }
 .txt_xxl_ex{
 	font-size: 28px !important;
+}
+.txt_size30{
+	font-size: 30px !important;
 }
 .txt_blue {
 	color: $blue !important;
@@ -146,6 +160,12 @@ $url-img-content: "/resources/img/content" !default;
 			margin-right: 5px;
 			flex: 0 0 auto;
 		}
+	}
+
+	&.btm_slide{
+		border-radius: 15px 15px 0 0;
+
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, .12);
 	}
 }
 
@@ -390,65 +410,7 @@ $url-img-content: "/resources/img/content" !default;
 				font-size: 18px;
 				font-weight: 500;
 				color:#111;
-				.bubble{
-					display: inline-block;
-					height: 20px;
-					margin-left: 3px;
-					>span{
-						position: relative;
-						display: inline-flex;
-						justify-content: space-between;
-						align-self: center;
-
-						padding: 0 6px;
-						height: 16px;
-						border-radius: 16px;
-
-						line-height: 16px;
-						font-weight: 500;
-						font-size: 9px;
-						color:#fff;
-						background-color: transparent;
-
-						transform: translateY(-2px);
-						&::after{
-							content: "";
-							position: absolute;
-							left: -2px;
-							top: 4px;
-							width: 0;
-							height: 1px;
-							border-right: 4px solid transparent;
-							border-top: 3px solid transparent;
-							border-bottom: 3px solid transparent;
-						}
-						&+span{
-							margin-left: 6px;
-						}
-
-						&.bg_primary{
-							background-color: $primary;
-							color:#111;
-							&::after{
-								border-right-color: $primary;
-							}
-						}
-
-						&.bg_invalid{
-							background-color: $invalid;
-							&::after{
-								border-right-color: $invalid;
-							}
-						}
-
-						&.bg_valid{
-							background-color: $valid;
-							&::after{
-								border-right-color: $valid;
-							}
-						}
-					}
-				}
+				
 			}
 			.share{
 				display: inline-flex;
@@ -461,15 +423,61 @@ $url-img-content: "/resources/img/content" !default;
 				background-position: center center;
 			}
 		}
-		.list_hashtag{
-			display: flex;
-			flex-wrap: wrap;
-			>li{
-				margin-right: 10px;
+	}
+	&.list_hashtag{
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 10px;
+		>li{
+			margin-right: 10px;
+			
+			word-break: keep-all;
+			white-space: nowrap;
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+	}
+	&.list_flex{
+		>li{
+			@include fx_lr();
+		}
+	}
+	&.list_check_circle{
+		>li{
+			position: relative;
+			>a{
+				padding-left: 30px;
 
-				font-size: 10px;
-				word-break: keep-all;
-				white-space: nowrap;
+				font-size: 14px;
+				font-weight: 400;
+				color:#111;
+
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				background-size: 20px 20px;
+				background-image: url(#{$url-img}/common/ico_checkbox_default.png);
+
+				&.confirm{
+					background-image: url(#{$url-img}/common/ico_checkbox_black.png);
+				}
+				
+				&.checked{
+					background-image: url(#{$url-img}/common/ico_checkbox_checked.png);
+				}
+			}
+			&:not(:last-child){
+				margin-bottom: 20px;
+				&::before{
+					content: "";
+					position: absolute;
+					left: 10px;
+					top: 21px;
+
+					width: 1px;
+					height: 100%;
+					background-color: #bbb;
+				}
 			}
 		}
 	}
@@ -598,6 +606,9 @@ h3.tit2 {
 			background-position: right 20px center;
 			background-repeat: no-repeat;
 			background-size: 5px 9px;
+		}
+		&+.btm{
+			border-top: 1px solid $border-base;
 		}
 	}
 }
@@ -753,6 +764,15 @@ h3.tit2 {
 	label{
 		display: inline-block;
 	}
+	.sub_check_item{
+		display: none;
+	}
+	input[type=checkbox]:checked{
+		&~.sub_check_item{
+			display: block;
+			width: 100%;
+		}
+	}
 }
 
 //플렉스
@@ -771,7 +791,9 @@ h3.tit2 {
 .fx_align_center{
 	align-items: center;
 }
-
+.fx_justify_center{
+	justify-content: center;
+}
 //etc
 .security_level {
 	display: flex;
@@ -1033,6 +1055,16 @@ h3.tit2 {
 
 		.toggle_con {
 			padding-bottom: 0;
+		}
+	}
+	&.disabled {
+		>a{
+			background-image: url(#{$url-img}/content/ico_toggle_down_disabled.png);
+		}
+	}
+	&.checked {
+		>a{
+			background-image: url(#{$url-img}/content/ico_toggle_down_primary.png);
 		}
 	}
 }
@@ -1363,6 +1395,121 @@ h3.tit2 {
 		&::after{
 			opacity: 1;
 			visibility: visible;
+		}
+	}
+}
+
+.d_i_f{
+	display: inline-flex !important;
+}
+
+.tit2 {
+	.req {
+		display: inline-block;
+
+		vertical-align: -7px;
+		color: #f46e16;
+		
+		margin-left: 4px;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background-color: currentColor;
+		text-indent: -9999px;
+	}
+}
+
+.bubble{
+	display: inline-block;
+	height: 20px;
+	margin-left: 3px;
+	>span{
+		position: relative;
+		display: inline-flex;
+		justify-content: space-between;
+		align-self: center;
+
+		padding: 0 6px;
+		height: 16px;
+		border-radius: 16px;
+
+		line-height: 16px;
+		font-weight: 500;
+		font-size: 9px;
+		color:#fff;
+		background-color: transparent;
+
+		transform: translateY(-2px);
+		&::after{
+			content: "";
+			position: absolute;
+			left: -2px;
+			top: 4px;
+			width: 0;
+			height: 1px;
+			border-right: 4px solid transparent;
+			border-top: 3px solid transparent;
+			border-bottom: 3px solid transparent;
+		}
+		&+span{
+			margin-left: 6px;
+		}
+
+		&.bg_primary{
+			background-color: $primary;
+			color:#111;
+			&::after{
+				border-right-color: $primary;
+			}
+		}
+
+		&.bg_invalid{
+			background-color: $invalid;
+			&::after{
+				border-right-color: $invalid;
+			}
+		}
+
+		&.bg_valid{
+			background-color: $valid;
+			&::after{
+				border-right-color: $valid;
+			}
+		}
+	}
+}
+
+//비대면 메뉴
+.untact_menu{
+	>li{
+		>a{
+			display: block;
+			height: 56px;
+
+			line-height: 56px;
+			font-size: 16px;
+			font-weight: 500;
+			color:#111;
+			text-indent: 4px;
+
+			background-repeat: no-repeat;
+			background-position: right 5px center;
+
+			background-image: url(#{$url-img}/common/ico_chevron_down_sm.png);
+			background-size: 10px 6px;
+			.detail{
+				display: none;
+				padding: 16px 20px;
+				
+				background-color: #f6f6f6;
+
+			}
+			&.active{
+
+				.detail{
+					display: block;
+				}
+			}
 		}
 	}
 }
