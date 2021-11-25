@@ -87,9 +87,9 @@
 							</a>
 						</div>
 						<div class="account_number">
-							<a href="#n" class="acc_inp">
-								<!-- <span>123456789012345</span> -->
-								<input type="text" value="123456789012345">
+							<a href="#n" class="acc_inp" onclick="openModal('deposit_bottom_sheet', this);return false;">
+								<span>123456789012345</span>
+								<!-- <input type="text" value="123456789012345"> -->
 							</a>
 							<button type="button" class="btn btn_icon btn_reset">
 								<i class="ico ico_reset"></i>
@@ -131,13 +131,16 @@
 			<div class="bottom_fixed_area">
 				<div class="btn_group btn_group_flex">
 					<!-- 비활성화시 .btn_disabled 추가 -->
-					<a href="#;" class="btn btn_xl btn_primary"><span>다음</span></a>
+					<a href="#;" class="btn btn_xl btn_primary btn_ico_next">
+						<span class="first_sp">다음</span>
+						<span class="icon_area"><i class="ico ico_chevron_right_xl"></i></span>
+					</a>
 				</div>
 			</div>
 			<!-- e: 하단 고정 영역 -->
 
 			<!-- s: 이체금액 bottom sheet -->
-			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+			<div class="modal_popup modal_bottom_sheet show" data-popup="amount_keypad">
 				<div class="dimed"></div>
 				<div class="popup_inner" tabindex="0">
 					<div class="popup_header">
@@ -258,6 +261,29 @@
 				</div>
 			</div>
 			<!-- e: 계좌정보 bottom sheet -->
+
+			<!-- s: 계좌번호입력 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="deposit_bottom_sheet">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="btn_group btn_group_flex mt_0">
+								<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layerSampleFull');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleFull');">확인</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 계좌번호입력 bottom sheet -->
 
 			<!-- s: 입금계좌 예금주 확인 팝업 -->
 			<div class="modal_popup modal_alert hide" data-popup="account_alert_popup">
