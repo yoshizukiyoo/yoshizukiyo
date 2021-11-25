@@ -81,13 +81,16 @@
 					<h2 class="tit1">입금계좌정보</h2>
 					<div class="account_select">
 						<div class="bank_select">
-							<a href="#n">
+							<a href="#n" onclick="openModal('bank_select_popup', this);return false;">
 								<img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고">
 								<span>우체국</span>
 							</a>
 						</div>
 						<div class="account_number">
-							<span class="acc_inp"><input type="text" title="입금계좌번호 입력" value="12345678912345" placeholder="입금계좌번호 입력"></span>
+							<a href="#n" class="acc_inp" onclick="openModal('deposit_bottom_sheet', this);return false;">
+								<!-- <span>입금계좌번호 입력</span> 플레이스홀더 텍스트 -->
+								<span>123456789012345</span>
+							</a>
 							<button type="button" class="btn btn_icon btn_reset">
 								<i class="ico ico_reset"></i>
 								<span class="sr_only">초기화</span>
@@ -128,7 +131,10 @@
 			<div class="bottom_fixed_area">
 				<div class="btn_group btn_group_flex">
 					<!-- 비활성화시 .btn_disabled 추가 -->
-					<a href="#;" class="btn btn_xl btn_primary"><span>다음</span></a>
+					<a href="#;" class="btn btn_xl btn_primary btn_ico_next">
+						<span class="first_sp">다음</span>
+						<span class="icon_area"><i class="ico ico_chevron_right_xl"></i></span>
+					</a>
 				</div>
 			</div>
 			<!-- e: 하단 고정 영역 -->
@@ -256,8 +262,31 @@
 			</div>
 			<!-- e: 계좌정보 bottom sheet -->
 
+			<!-- s: 계좌번호입력 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="deposit_bottom_sheet">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="btn_group btn_group_flex mt_0">
+								<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layerSampleFull');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleFull');">확인</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 계좌번호입력 bottom sheet -->
+
 			<!-- s: 입금계좌 예금주 확인 팝업 -->
-			<div class="modal_popup modal_alert show" data-popup="account_alert_popup">
+			<div class="modal_popup modal_alert hide" data-popup="account_alert_popup">
 				<div class="dimed"></div>
 				<div class="popup_inner" tabindex="0">
 					<div class="popup_header"></div>
@@ -281,6 +310,274 @@
 				</div>
 			</div>
 			<!-- e: 입금계좌 예금주 확인 팝업 -->
+
+			<!-- s: 은행/증권사선택 팝업 -->
+			<div class="modal_popup popup hide" data-popup="bank_select_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">은행/증권사선택</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="tab_menu tab_menu1 width_fix mb_0">
+							<ul class="tab_list">
+								<li class="on"><a href="#" title="선택됨"><span>은행</span></a></li>
+								<li><a href="#"><span>증권</span></a></li>
+							</ul>
+						</div>
+						<div class="bank_search">
+							<div class="srh_txt">
+								<span>은행(증권사)명을 입력하세요.</span>
+							</div>
+							<a href="#n" class="btn_srh"><span class="sr_only">검색</span></a>
+						</div>
+						<div class="bank_list">
+							<ul>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_post.png" alt="우체국 로고">
+										우체국
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_bnk.png" alt="경남은행 로고">
+										경남
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_jb.png" alt="광주 로고">
+										광주
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_kb.png" alt="국민 로고">
+										국민
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_dgb.png" alt="대구 로고">
+										대구
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_deutsch.png" alt="도이치 로고">
+										도이치
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_boa.png" alt="뱅크오브아메리카 로고">
+										뱅크오브아메리카
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_bnk.png" alt="부산 로고">
+										부산
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_sj.png" alt="산림조합중앙회 로고">
+										산림조합중앙회
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_kdb.png" alt="산업 로고">
+										산업
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_mg.png" alt="새마을 로고">
+										새마을
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_sh.png" alt="수협 로고">
+										수협
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_shi.png" alt="신한 로고">
+										신한
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_cu.png" alt="신협 로고">
+										신협
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_woo.png" alt="신한 로고">
+										우리
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_sb.png" alt="저축은행 로고">
+										저축은행
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_jb.png" alt="전북 로고">
+										전북
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_jp.png" alt="JP모간체이스은행 로고">
+										JP모간체이스은행
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_jeju.png" alt="제주 로고">
+										제주
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_keb.png" alt="하나 로고">
+										하나
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_citi.png" alt="한국씨티(구 한미씨티) 로고">
+										한국씨티<br>(구 한미씨티)
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_hsbc.png" alt="HSBC 로고">
+										HSBC
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_sc.png" alt="SC제일은행 로고">
+										SC제일은행
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_bnp.png" alt="비엔피라리바은행 로고">
+										비엔피라리바은행
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_icbc.png" alt="중국공상은행 로고">
+										중국공상은행
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_ccb.png" alt="중국건설은행 로고">
+										중국건설은행
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_kbk.png" alt="케이뱅크 로고">
+										케이뱅크
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_kakao.png" alt="카카오뱅크 로고">
+										카카오뱅크
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_chi.png" alt="중국은행 로고">
+										중국은행
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_ntx.png" alt="국세 로고">
+										국세
+									</a>
+								</li>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_tax.png" alt="지방세입 로고">
+										지방세입
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 은행/증권사선택 팝업 -->
+
+			<!-- s: 은행/증권사 검색결과 팝업 -->
+			<div class="modal_popup popup hide" data-popup="bank_search_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">은행/증권사선택</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="tab_menu tab_menu1 width_fix mb_0">
+							<ul class="tab_list">
+								<li class="on"><a href="#" title="선택됨"><span>은행</span></a></li>
+								<li><a href="#"><span>증권</span></a></li>
+							</ul>
+						</div>
+						<div class="bank_search">
+							<div class="srh_txt">
+								<ul class="bank_searck_list">
+									<li>
+										우리
+										<button type="button" class="btn btn_icon btn_reset">
+											<i class="ico ico_reset"></i>
+											<span class="sr_only">삭제</span>
+										</button>
+									</li>
+									<li>
+										우리
+										<button type="button" class="btn btn_icon btn_reset">
+											<i class="ico ico_reset"></i>
+											<span class="sr_only">삭제</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+							<a href="#n" class="btn_srh"><span class="sr_only">검색</span></a>
+						</div>
+						<div class="bank_search_result">
+							<h3>검색결과</h3>
+							<ul>
+								<li>
+									<a href="#n">
+										<img src="/resources/img/common/ico_bank_post.png" alt="우체국 로고">
+										우체국
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 은행/증권사 검색결과 팝업 -->
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
