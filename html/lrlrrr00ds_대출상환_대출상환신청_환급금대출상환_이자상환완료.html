@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".total_payment a").click(function () {
+				if (!$(this).hasClass("active")) {
+					openModal('layerbottomToggle');
+					$(this).addClass("active");
+				} else {
+					$(this).removeClass("active");
+					closeModal('layerbottomToggle');
+				}
+			})
+			$(".modal_popup .dimed").click(function () {
+				$(".total_payment a").removeClass("active");
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="환급금대출안내"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container">
+
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">증서번호선택</span></li>
+					<li><span class="num">2</span><span class="txt">환급금대출 약정동의</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">상환완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<dl class="box txt_c">
+					<dt class="txt_xl txt_light">이자상환이 정상 <span class="txt_medium">처리</span>되었습니다.</dt>
+					<dd class="pt_2 txt_sm">
+						환급금대출 원금상환 내역서 인쇄 및 파일저장을 원하시면 [상환영수증],[증명서발급]을 클릭해주세요.
+					</dd>
+				</dl>
+
+				<h3 class="tit1 mt_6">이자상환 정보</h3>
+				<div class="contract_list pb_0">
+					<ul>
+						<li class="box box_border">
+							<div class="clfx">
+								<strong class="list_name f_l">(무)우체국실손의료비보험[1종(선택형),<br>종합형](갱신형)
+								</strong>
+							</div>
+
+							<span class="evidence_contract">
+								<span class="info">
+									<span>
+										<span>70325101753</span>
+									</span>
+								</span>
+							</span>
+
+							<span class="in_detail">
+								<span>
+									<em>대출원금</em>
+									<strong>23,000,000원</strong>
+								</span>
+								<span>
+									<em>대출이율</em>
+									<strong>3.4%</strong>
+								</span>
+								<span>
+									<em>상환이자</em>
+									<strong class="txt_blue">10,540원</strong>
+								</span>
+							</span>
+							<div class="btn_group length2">
+								<!-- 비활성화시 .btn_disabled 추가 -->
+								<a href="#;" class="btn btn_md btn_round btn_darkgray">상환영수증</a>
+								<a href="#;" class="btn btn_md btn_round btn_darkgray">증명서발급</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<h3 class="tit1 mt_6">인출계좌</h3>
+				<div class="tbl mt_6">
+					<table>
+						<caption class="sr_only">인출계좌</caption>
+						<colgroup>
+							<col style="width: 40%;">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">은행</th>
+								<td>우체국</td>
+							</tr>
+							<tr>
+								<th scope="row">계좌번호</th>
+								<td>
+									01001702191237
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									나봄미
+								</th>
+								<td>
+									나봄미
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn_group btn_group_flex mt_4 mb_10">
+					<button type="button" class="btn btn_lg btn_primary">상환내역조회</button>
+				</div>
+			</div>
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- s: modal popup -->
+			<!-- 유형별 클래스 .modal_alert, .modal_bottom_sheet 교체 사용 -->
+			<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_reference">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<!-- 헤더 미사용시 .popup_header 제거" -->
+					<div class="popup_header">
+						<h2 class="popup_tit">참고사항 입니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1 txt_sm">
+								<li>대출 한도액은 건당(1회) 1천만원, 1일 5천만원 이하입니다.</li>
+								<li>OTP 사용고객은 약정 1개월이후부터 건당(1회) 5천만원, 1일 1억원 이하 한도로 대출이 가능합니다.</li>
+								<li>(단 1일 한도액은 인터넷 뱅킹, 폰뱅킹, 모바일, 스마트폰 뱅킹 합산하여 산정합니다.)</li>
+								<li>환급금대출이자를 납부일에 미납하였을 경우 미납이자는 다음 이자계산시 대출원금에 합산된 금액을 기준으로 환급금 대출 이율을 적용하여 부과합니다.(대출금은 변동없음)</li>
+								<li>환급금대출 이자율은 금융시장 금리의 변동에 따라 수시로 변경될 수 있습니다.(변동금리)</li>
+								<li>추가대출시 기존대출금과 추가대출금을 합산하여 이자율을 적용하오니 신청시 적용이율을 확인하시기 바랍니다.</li>
+								<li>보험료 납입 연체로 대상 보험계약이 해지(실효)되는 때에는 해약환급금과 환급금대출원리금을 상계할 수 있으며, 부활가능기간 내 해약 또는 부활요청이 없는 경우 실효 시효완성일에
+									상계처리 됩니다.</li>
+								<li>※ 실효일 이후부터는 대출이자 계산이 중지되며 추가대출 및 대출원리금 상환이 불가합니다.</li>
+								<li>부활신청시에는 대출이자를 납입하셔야 부활청약이 가능합니다.</li>
+								<li>연금보험의 경우 대출금을 상환하셔야 연금을 받으실 수 있습니다.</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: modal popup -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

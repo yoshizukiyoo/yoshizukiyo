@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/datepicker.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".total_payment a").click(function () {
+				if (!$(this).hasClass("active")) {
+					openModal('layerbottomToggle');
+					$(this).addClass("active");
+				} else {
+					$(this).removeClass("active");
+					closeModal('layerbottomToggle');
+				}
+			})
+			$(".modal_popup .dimed").click(function () {
+				$(".total_payment a").removeClass("active");
+			})
+			$('.in_detail .btn_more').click(function () {
+				const tg = $(this).closest(".in_detail");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+					$(this).children('span').text('열림');
+				} else {
+					tg.removeClass("on");
+					$(this).children('span').text('닫음');
+				}
+			});
+			$(".btn_calc").click(function () {
+				$(this).hide();
+				$(".section_calc").show();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="자동대출상환"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container">
+
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">증서번호선택</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">상환정보 입력</span></li>
+					<li><span class="num">3</span><span class="txt">대출신청정보 입력</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<div class="clfx">
+					<h2 class="tit1 f_l">자동대출이자상환</h2>
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+							<i class="ico ico_help_sm"></i>
+							<span>알려드립니다</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="contract_list">
+					<ul>
+						<li class="box box_border">
+
+							<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),<br>종합형](갱신형)</strong>
+
+							<span class="evidence_contract">
+								<span class="blit">
+									<span class="lab_status type1">정상</span>
+								</span>
+								<span class="info">
+									<span>
+										<span>70325101753</span>
+									</span>
+									<span>
+										<span>2020.09.14-2055.09.14</span>
+									</span>
+								</span>
+							</span>
+
+							<span class="in_detail">
+								<span>
+									<em>대출원금</em>
+									<strong>24,000원</strong>
+								</span>
+								<span>
+									<em>상환원금</em>
+									<strong>0원</strong>
+								</span>
+								<span>
+									<em>대출이율</em>
+									<strong>3.4%</strong>
+								</span>
+								<span>
+									<em>상환이자</em>
+									<strong>10,540원</strong>
+								</span>
+							</span>
+
+						</li>
+					</ul>
+
+					<div class="total_price bg_lightprimary_total mt_4">
+						<span class="txt_sm txt_gray">
+							총 상환금액 <strong class="ml_2">27,200</strong>원
+					</div>
+				</div>
+
+				<div class="section mt_4">
+					<h2 class="tit1">계좌정보</h2>
+
+					<div class="payment_way">
+
+						<!-- s : 은행 -->
+						<a href="#;" class="tf_item mt_3" onclick="openModal('layerAccount'); return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">은행 <span class="req">필수항목</span></span>
+									<p class="tf">우체국</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
+							</div>
+						</a>
+						<!-- e : 은행 -->
+
+						<!-- s : 계좌번호 -->
+						<a href="#;" class="tf_item mt_3" onclick="openModal('layerAccount'); return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">계좌번호 <span class="req">필수항목</span></span>
+									<p class="tf">01012340123455123</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
+							</div>
+						</a>
+						<!-- e : 계좌번호 -->
+
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary">계좌인증</button>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">추가인증</h2>
+					<div class="add_certification">
+
+						<ul class="tab">
+							<li><a href="#;">SMS인증</a></li>
+							<li><a href="#;">ARS인증</a></li>
+						</ul>
+
+						<ul class="list list1">
+							<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
+							<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex btn_group_r">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>상환하기</span>
+						<i class="ico ico_chevron_right_xl ml_2"></i>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li><span class="txt_invalid">2021년 7월 13일</span> 기준 대출가능 금액이며, 실대출가능 금액과 차이가 있을 수 있습니다.</li>
+								<li>실대출가능금액을 조회하신 후 증서를 선택해 주시기 바랍니다.(최대 5개까지)</li>
+								<li>증서가 많을 경우 [목록 더보기]를 통해 추가 조회하시기 바랍니다.(기본 5개)</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+
+			<!-- s: 공통 레이어 로딩 -->
+			<!-- <div class="common_layers"></div> -->
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- s: modal popup -->
+			<!-- 유형별 클래스 .modal_alert, .modal_bottom_sheet 교체 사용 -->
+			<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_reference">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<!-- 헤더 미사용시 .popup_header 제거" -->
+					<div class="popup_header">
+						<h2 class="popup_tit">참고사항 입니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1 txt_sm">
+								<li>대출 한도액은 건당(1회) 1천만원, 1일 5천만원 이하입니다.</li>
+								<li>OTP 사용고객은 약정 1개월이후부터 건당(1회) 5천만원, 1일 1억원 이하 한도로 대출이 가능합니다.</li>
+								<li>(단 1일 한도액은 인터넷 뱅킹, 폰뱅킹, 모바일, 스마트폰 뱅킹 합산하여 산정합니다.)</li>
+								<li>환급금대출이자를 납부일에 미납하였을 경우 미납이자는 다음 이자계산시 대출원금에 합산된 금액을 기준으로 환급금 대출 이율을 적용하여 부과합니다.(대출금은 변동없음)</li>
+								<li>환급금대출 이자율은 금융시장 금리의 변동에 따라 수시로 변경될 수 있습니다.(변동금리)</li>
+								<li>추가대출시 기존대출금과 추가대출금을 합산하여 이자율을 적용하오니 신청시 적용이율을 확인하시기 바랍니다.</li>
+								<li>보험료 납입 연체로 대상 보험계약이 해지(실효)되는 때에는 해약환급금과 환급금대출원리금을 상계할 수 있으며, 부활가능기간 내 해약 또는 부활요청이 없는 경우 실효 시효완성일에
+									상계처리 됩니다.</li>
+								<li>※ 실효일 이후부터는 대출이자 계산이 중지되며 추가대출 및 대출원리금 상환이 불가합니다.</li>
+								<li>부활신청시에는 대출이자를 납입하셔야 부활청약이 가능합니다.</li>
+								<li>연금보험의 경우 대출금을 상환하셔야 연금을 받으실 수 있습니다.</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: modal popup -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
