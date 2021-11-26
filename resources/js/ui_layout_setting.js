@@ -352,3 +352,9 @@ function scrVertical(_obj) {
 		// }
 	})
 }
+
+$(document).on('click', '.untact_menu > li > a', function(e){
+	e.preventDefault();
+	$('.untact_menu > li > a').not($(this)).removeClass('active').siblings('.detail').slideUp('fast');
+	$(this).toggleClass('active').siblings('.detail').slideToggle('fast');
+})

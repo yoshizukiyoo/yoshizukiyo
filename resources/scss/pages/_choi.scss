@@ -536,6 +536,53 @@ h3.tit2 {
 		border-radius: 19px;
 	}
 }
+.tel_box{
+	background-color: $primary;
+	border-radius: 6px;
+
+	border: 2px solid $primary;
+	>strong{
+		display: block;
+		height: 35px;
+
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 35px;
+		color:#111;
+		text-align: center;
+	}
+	.inner{
+		display: flex;
+		padding: 18px 6px;
+		border-radius: 5px;
+		background-color: #fff;
+		>div{
+			position: relative;
+			padding: 0 9px;
+			text-align: center;
+			>strong{
+				display: block;
+
+				font-size: 18px;
+				font-weight: bold;
+				+.btn{
+					margin-top: 8px;
+				}
+			}
+			+div{
+				&::before{
+					content: "";
+					position: absolute;
+					width: 1px;
+					height: calc(100% - 5px);
+					left: 0;
+					top: 0;
+					background-color: #ddd;
+				}
+			}
+		}
+	}
+}
 
 .confirm_box{
 	border: 1px solid #ccc;
@@ -1481,6 +1528,7 @@ h3.tit2 {
 
 //비대면 메뉴
 .untact_menu{
+	padding-bottom: 20px;
 	>li{
 		>a{
 			display: block;
@@ -1492,23 +1540,50 @@ h3.tit2 {
 			color:#111;
 			text-indent: 4px;
 
-			background-repeat: no-repeat;
-			background-position: right 5px center;
+			padding: 0 20px;
 
-			background-image: url(#{$url-img}/common/ico_chevron_down_sm.png);
+			background-repeat: no-repeat;
+			background-position: right 25px center;
+
+			background-image: url(#{$url-img}/common/ico_chevron_down_sm_bold.png);
 			background-size: 10px 6px;
-			.detail{
+
+			border-bottom: 1px solid #ddd;
+			&+.detail{
 				display: none;
-				padding: 16px 20px;
+				padding: 16px 20px 25px;
 				
 				background-color: #f6f6f6;
 
+				.list2 {
+					>li {
+						font-size: 16px;
+						color: #111;
+						&::before{
+							width: 4px;
+							height: 6px;
+							top: 10px;
+							background-image: url(#{$url-img-common}/ico_chevron_right_xs_bold.png);
+						}
+						+li{
+							margin-top: 12px;
+						}
+						.btn{
+							vertical-align: middle;
+						}
+					}
+				}
 			}
 			&.active{
-
-				.detail{
-					display: block;
-				}
+				background-image: url(#{$url-img}/common/ico_chevron_up_sm_bold.png);
+			}
+			&.disabled{
+				background-image: none !important;
+			}
+			.num_circle{
+				text-indent: 0;
+				vertical-align: middle;
+				margin-top: -3px;
 			}
 		}
 	}
