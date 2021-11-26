@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="전화번호 송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li><a href="#"><span>보내기</span></a></li>
+					<li><a href="#"><span>조회/취소</span></a></li>
+					<li class="on"><a href="#"><span>받은내역</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container pt_1 pb_4">
+				<div>
+					<h2 class="tit1">조회기간</h2>
+
+					<!-- s: 조회옵션 -->
+					<div class="mt_2">
+						<div class="input_items">
+							<span class="check_item type_btn">
+								<input type="radio" name="period_chk1" id="period_chk1-1">
+								<label for="period_chk1-1">1주</label>
+							</span>
+							<span class="check_item type_btn">
+								<input type="radio" name="period_chk1" id="period_chk1-2">
+								<label for="period_chk1-2">3개월</label>
+							</span>
+							<span class="check_item type_btn">
+								<input type="radio" name="period_chk1" id="period_chk1-3">
+								<label for="period_chk1-3">1년</label>
+							</span>
+							<a href="#:" class="btn btn_md btn_outline_default btn_search"
+								onclick="openModal('inquiry_detail', this); return false;">상세조회</a>
+						</div>
+					</div>
+					<!-- e: 조회옵션 -->
+				</div>
+				<!-- e: 조회기간 -->
+
+				<div class="section">
+					<div class="inquiry_box">
+						<div class="inquiry_time">조회기간 <span>2021.07.03 - 2021.08.04</span></div>
+						<div class="box bg_lightgray fx_lr flex_eq txt_sm txt_lh_default">
+							<div class="l">수신상태</div>
+							<div class="r">
+								<a href="#;" class="fx_lr" onclick="openModal('layerOption', this); return false;">
+									<div class="l pl_4">전체</div>
+									<div class="r">
+										<i class="ico ico_chevron_down_sm_bold"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="inquiry_result">
+							<ul>
+								<li class="border_t0">
+									<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+										<div>
+											<div class="l txt_md txt_black"><span class="sr_only">수신상태</span>[계좌입금(타행)]</div>
+											<div class="r txt_gray"><span class="sr_only">송금일자</span>2021.07.02</div>
+										</div>
+										<div>
+											<div class="l"><span class="sr_only">송신자이름</span><strong>강하나</strong></div>
+											<div class="r"><span class="sr_only">송금액</span><em class="txt_invalid">5,000원</em></div>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+										<div>
+											<div class="l txt_md txt_black"><span class="sr_only">수신상태</span>[수신대기]</div>
+											<div class="r txt_gray"><span class="sr_only">송금일자</span>2021.07.02</div>
+										</div>
+										<div>
+											<div class="l"><span class="sr_only">송신자이름</span><strong>김철수</strong></div>
+											<div class="r"><span class="sr_only">송금액</span><em class="txt_invalid">3,000원</em></div>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+										<div>
+											<div class="l txt_md txt_black"><span class="sr_only">수신상태</span>[실명불일치]</div>
+											<div class="r txt_gray"><span class="sr_only">송금일자</span>2021.07.02</div>
+										</div>
+										<div>
+											<div class="l"><span class="sr_only">송신자이름</span><strong>홍길동</strong></div>
+											<div class="r"><span class="sr_only">송금액</span><em class="txt_invalid">1,000원</em></div>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+										<div>
+											<div class="l txt_md txt_black"><span class="sr_only">수신상태</span>[취소(송금취소)]</div>
+											<div class="r txt_gray"><span class="sr_only">송금일자</span>2021.07.02</div>
+										</div>
+										<div>
+											<div class="l"><span class="sr_only">송신자이름</span><strong>이미나</strong></div>
+											<div class="r"><span class="sr_only">송금액</span><em class="txt_invalid">10,000원</em></div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- s: Modal popup 상세조회 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="inquiry_detail">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">거래내역조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2 mb_14">
+							<h3 class="tit1">조회기간</h3>
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-1">
+									<label for="chk1-1">1주일</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-2">
+									<label for="chk1-2">1개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-3">
+									<label for="chk1-3">3개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-4">
+									<label for="chk1-4">1년</label>
+								</span>
+							</div>
+
+							<div class="tf_double mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="section">
+								<h3 class="tit1">조회구분</h3>
+								<div class="input_items col_3">
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-1">
+										<label for="chk2-1">입출금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-2">
+										<label for="chk2-2">입금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-3">
+										<label for="chk2-3">출금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-4">
+										<label for="chk2-4">무통장입출금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-5">
+										<label for="chk2-5">무통장입금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="chk2" id="chk2-6">
+										<label for="chk2-6">무통장출금</label>
+									</span>
+								</div>
+								<div class="tf_item search_item mt_2">
+									<input type="text" class="tf" title="받으시는 분 입력" placeholder="받으시는 분을 검색해 보세요">
+									<a href="#;"><span class="sr_only">검색</span></a>
+								</div>
+							</div>
+
+							<div class="section">
+								<h3 class="tit1">정렬</h3>
+								<div class="tf_item">
+									<div class="input_items">
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-1">
+											<label for="chk3-1">최근 거래 위로</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-2">
+											<label for="chk3-2">과거 거래 위로</label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('inquiry_detail');">닫기</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('inquiry_detail');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세조회 -->
+
+			<!-- s: 상세화면 팝업 -->
+			<div class="modal_popup popup show" data-popup="inquiry_result_detail">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">전화번호 송금</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('inquiry_result_detail',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit1">상세조회</h3>
+							<div class="double_box">
+								<div class="btm">
+									<div>
+										<div class="l">원부번호</div>
+										<div class="r">2021070270008180</div>
+									</div>
+									<div>
+										<div class="l">보내는분</div>
+										<div class="r">강하나</div>
+									</div>
+									<div>
+										<div class="l">받는분</div>
+										<div class="r">나봄미</div>
+									</div>
+									<div>
+										<div class="l">송금액</div>
+										<div class="r"><span class="txt_bold">1,000</span>원</div>
+									</div>
+									<div>
+										<div class="l">송금상태</div>
+										<div class="r txt_bold">계좌입금(타행)</div>
+									</div>
+									<div>
+										<div class="l">송금일자</div>
+										<div class="r">2021.07.02</div>
+									</div>
+									<div>
+										<div class="l">전화번호</div>
+										<div class="r">010-1234-5678</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('inquiry_result_detail');">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 상세화면 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
