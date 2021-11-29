@@ -21,7 +21,7 @@ $demiprimary: #fbe59b !default;
 		margin-right: auto;
 	}
 
-	.r {
+	>.r {
 		margin-left: auto;
 	}
 }
@@ -32,6 +32,16 @@ $demiprimary: #fbe59b !default;
 
 .bg_demiprimary{
 	background-color: $demiprimary;
+}
+
+.fl_lr {
+	@include clearfix();
+	>.l{
+		float: left;
+	}
+	>.r{
+		float: right
+	}
 }
 
 //아이콘
@@ -166,6 +176,15 @@ $demiprimary: #fbe59b !default;
 		}
 	}
 
+	&.btn_xl{
+		&.btn_arr_right{
+			background-repeat: no-repeat;
+			background-position: right 20px center;
+			background-image: url(#{$url-img-common}/ico_chevron_right_xl.png);
+			background-size: 9px 15px;
+		}
+	}
+
 	&.btm_slide{
 		border-radius: 15px 15px 0 0;
 
@@ -273,6 +292,16 @@ $demiprimary: #fbe59b !default;
 	&.list_box {
 		>li {
 			@include box_default();
+		}
+		&.lightgray_box{
+			>li{
+				background-color: $bg-lightgray !important;
+			}
+		}
+		&.list_box_md{
+			>li{
+				@include box_default(19px, 19px);
+			}
 		}
 	}
 
@@ -490,9 +519,9 @@ $demiprimary: #fbe59b !default;
 			@include box_default(12px, 19px);
 			@include fx_lr();
 			align-content: center;
-
 			>.l{
 				display: inline-flex;
+				width: 50%;
 				.num{
 					display: inline-flex;
 					width: 25px;
@@ -509,10 +538,16 @@ $demiprimary: #fbe59b !default;
 
 					justify-content: center;
 					align-self: center;
+					flex-shrink: 0;
 				}
 				.info{
 					display: inline-flex;
 					flex-direction: column;
+					.name{
+						font-size: 16px;
+						font-weight: 400;
+						color:#111;
+					}
 					.phone{
 						margin-top: 4px;
 						font-size: 13px;
@@ -525,17 +560,19 @@ $demiprimary: #fbe59b !default;
 			}
 			>.r{
 				display: inline-flex;
+				width: 50%;
 				align-items: center;
 
 				text-align: right;
 				.bill{
 					display: inline-block;
+
 					font-weight: normal;
 					font-size: 16px;
 					color:#111;
 					.price{
 						display: inline-block;
-						width: 100%;
+						width: calc(100% - 20px);
 
 						text-align: right;
 						font-weight: 500;
@@ -545,12 +582,16 @@ $demiprimary: #fbe59b !default;
 				}
 				>a{
 					margin-left: 15px;
+					height: 20px;
+					.ico_reset{
+						vertical-align: top;
+					}
 				}
 			}
-		}
-		.tf{
-			display: inline-block;
-			width: auto;
+			.tf{
+				display: inline-block;
+				width: 100%;
+			}
 		}
 	}
 }
@@ -912,6 +953,9 @@ h3.tit2 {
 }
 .fx_justify_center{
 	justify-content: center;
+}
+.fx_justify_right{
+	justify-content: right;
 }
 //etc
 .security_level {
