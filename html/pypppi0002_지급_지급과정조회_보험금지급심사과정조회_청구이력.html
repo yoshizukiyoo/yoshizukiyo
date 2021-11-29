@@ -23,15 +23,14 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			// 이곳에 정의
-
-			$(".fc_faq_box > ul > li strong").click(function () {
-				if (!$(this).closest("li").hasClass("on")) {
-					$(this).closest("li").addClass("on");
-					$(this).next().slideDown();
+			$('.blit_history .toggle-btn').click(function () {
+				const tg = $(this).closest(".toggle-btn");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+					// $(this).children('span').text('열림');
 				} else {
-					$(this).closest("li").removeClass("on");
-					$(this).next().slideUp();
+					tg.removeClass("on");
+					// $(this).children('span').text('닫음');
 				}
 			})
 		});
@@ -66,119 +65,120 @@
 			<!-- s: 청구이력 영역 -->
 			<div class="container">
 
-				<h2 class="tit1 mt_3 mb_1">청구이력</h2>
-				<div class="_contract_list pt_1">
-					<span class="txt_note_gray mb_0">&#42; 청구번호를 클릭하시면 청구상세 정보를 확인하실 수 있습니다</span>
-					<div class="fc_faq_box contract_list">
-						<ul>
-							<li class="contract_item p_0">
-								<strong class="clfx p_3">
-									<span class="list_name f_l">
-										<em class="txt_normal mr_1">00001</em>
-										<span class="btn_area">
-											<a href="#;" class="btn btn_sm btn_round btn_darkgray">상세정보</a>
-										</span>
-									</span>
-									<span class="blit f_r mr_9">
-										<span class="lab_status box_border mt_1">부지급종결</span>
-									</span>
-								</strong>
-
-								<div class="in_mid_detail con pt_3">
-									<span class="clfx">
-										<em class="f_l">사고유형</em>
-										<span class="f_r">통원</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">청구등록일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">심사접수번호</em>
-										<span class="f_r">546432132654</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">심사접수일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">심사완료일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">조사접수일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">조사완료일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">약정보험금</em>
-										<span class="f_r">50,000,000원</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">확정보험금</em>
-										<span class="f_r"><span class="txt_bold">0</span>원</span>
+				<h2 class="tit1 mt_3 mb_2">청구이력</h2>
+				<div class="contract_list">
+					<ul>
+						<li class="contract_item blit_history">
+							<div class="clfx pt_2">
+								<div class="list_name f_l">
+									<em class="txt_normal mr_1">00001</em>
+									<span class="btn_area">
+										<a href="#;" class="btn btn_sm btn_round btn_darkgray">상세정보</a>
 									</span>
 								</div>
-							</li>
 
-							<li class="contract_item p_0">
-								<strong class="_inline_block clfx p_3">
-									<span class="list_name f_l">
-										<em class="txt_normal mr_1">00002</em>
-										<span class="btn_area">
-											<a href="#;" class="btn btn_sm btn_round btn_darkgray">상세정보</a>
-										</span>
-									</span>
-									<span class="blit f_r mr_2 mr_9">
-										<span class="lab_status box_border mt_1 txt_blue">결재완료</span>
-									</span>
-								</strong>
+								<div class="blit f_r">
+									<span class="lab_status box_border mr_4">부지급종결</span>
+									<button type="button" class="toggle-btn on" data-toggle-btn="billing1"></button>
+								</div>
+							</div>
 
-								<div class="in_mid_detail con pt_3">
-									<span class="clfx">
-										<em class="f_l">사고유형</em>
-										<span class="f_r">통원</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">청구등록일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">심사접수번호</em>
-										<span class="f_r">546432132654</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">심사접수일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">심사완료일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">조사접수일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">조사완료일</em>
-										<span class="f_r">2021.08.15</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">약정보험금</em>
-										<span class="f_r">50,000,000원</span>
-									</span>
-									<span class="clfx">
-										<em class="f_l">확정보험금</em>
-										<span class="f_r"><span class="txt_bold">0</span>원</span>
+							<div class="content in_mid_detail mt_4" data-toggle-content="billing1">
+								<span class="clfx">
+									<em class="f_l">사고유형</em>
+									<strong class="txt_normal f_r">통원</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">청구등록일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">심사접수번호</em>
+									<strong class="txt_normal f_r">546432132654</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">심사접수일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">심사완료일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">조사접수일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">조사완료일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">약정보험금</em>
+									<strong class="txt_normal f_r">50,000,000원</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">확정보험금</em>
+									<strong class="txt_normal f_r"><span class="txt_bold">0</span>원</strong>
+								</span>
+							</div>
+						</li>
+
+						<li class="contract_item blit_history">
+							<div class="clfx pt_2">
+								<div class="list_name f_l">
+									<em class="txt_normal mr_1">00002</em>
+									<span class="btn_area">
+										<a href="#;" class="btn btn_sm btn_round btn_darkgray">상세정보</a>
 									</span>
 								</div>
-							</li>
 
-						</ul>
-					</div>
+								<div class="blit f_r">
+									<span class="lab_status box_border mr_4 txt_blue">결재완료</span>
+									<button type="button" class="toggle-btn on" data-toggle-btn="billing2"></button>
+								</div>
+							</div>
+
+							<div class="content in_mid_detail mt_4" data-toggle-content="billing2">
+								<span class="clfx">
+									<em class="f_l">사고유형</em>
+									<strong class="txt_normal f_r">통원</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">청구등록일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">심사접수번호</em>
+									<strong class="txt_normal f_r">546432132654</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">심사접수일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">심사완료일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">조사접수일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">조사완료일</em>
+									<strong class="txt_normal f_r">2021.08.15</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">약정보험금</em>
+									<strong class="txt_normal f_r">50,000,000원</strong>
+								</span>
+								<span class="clfx">
+									<em class="f_l">확정보험금</em>
+									<strong class="txt_normal f_r"><span class="txt_bold">0</span>원</strong>
+								</span>
+							</div>
+						</li>
+
+					</ul>
 				</div>
 			</div>
 
