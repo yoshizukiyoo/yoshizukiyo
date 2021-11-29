@@ -38,7 +38,7 @@ $(function () {
 });
 
 // 테이블 스크롤 표시
-$(document).ready(function () {
+$(function () {
 	$('.tbl').each(function () {
 		tableScroll($(this));
 	});
@@ -67,3 +67,9 @@ function tableScroll(obj) {
 		}
 	});
 }
+
+// 기간조회 버튼 클릭 활성화
+$(document).on('click', '.btn_period', function () {
+	$(this).addClass('active').attr('title', '선택됨')
+		.siblings('.btn_period').removeClass('active').removeAttr('title');
+});
