@@ -13,6 +13,7 @@
 	<script src="/resources/js/jquery-3.3.1.js"></script>
 	<script src="/resources/js/slick.js"></script>
 	<script src="/resources/js/datepicker.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
 
 	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
 	<script src="/resources/js/ui_global.js"></script>
@@ -55,29 +56,19 @@
 
 <body>
 	<div class="wrapper">
-		<header class="header" data-page-title="환급금대출상환"></header>
+		<header class="header" data-page-title="환급금대출내역"></header>
 		<div id="content">
 			<!-- s: 본문 -->
 
 			<div class="container">
 
-				<!-- s: 현재 단계 표시 -->
-				<ul class="input_step">
-					<li><span class="num">1</span><span class="txt">증서번호선택</span></li>
-					<li class="on"><span class="num">2</span><span class="txt">상환정보 입력</span></li>
-					<li><span class="num">3</span><span class="txt">대출신청정보 입력</span></li>
-				</ul>
-				<!-- e: 현재 단계 표시 -->
-
 				<div class="clfx">
-					<h2 class="tit1 f_l">자동대출원금상환</h2>
+					<h2 class="tit1 f_l mb_0">(무)우체국실손의료보험비[1종(선택형),<br>종합형](갱신형)</h2>
 				</div>
 
-				<div class="contract_list">
+				<div class="contract_list contract_list_type">
 					<ul>
-						<li class="box box_border">
-
-							<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),<br>종합형](갱신형)</strong>
+						<li class="contract_item">
 
 							<span class="evidence_contract">
 								<span class="blit">
@@ -87,118 +78,120 @@
 									<span>
 										<span>70325101753</span>
 									</span>
+									<span>
+										<span>2020.09.14-2055.09.14</span>
+									</span>
 								</span>
 							</span>
+						</li>
+					</ul>
+				</div>
 
-							<span class="in_detail">
-								<span>
-									<em>대출원금</em>
-									<strong>24,000원</strong>
-								</span>
-								<span>
-									<em>대출이율</em>
-									<strong>3.4%</strong>
-								</span>
-								<span>
-									<em>상환이자</em>
-									<strong>540원</strong>
-								</span>
-							</span>
+				<div class="tab_area">
+					<nav class="tab_menu tab_menu1">
+						<ul class="tab_list">
+							<li><a href="#;"><span>대출정보</span></a></li>
+							<li class="on"><a href="#;" title="선택됨"><span>대출상환내역</span></a></li>
+						</ul>
+					</nav>
+				</div>
 
-							<div class="tf_item mt_3">
-								<div class="tf_item_body">
-									<div class="input_area">
-										<label class="lab" for="lb_tf_1_3">상환원금 <span class="req">필수항목</span></label>
-										<input type="text" id="lb_tf_1_3" class="tf" placeholder="placeholder" value="24,000" required>
-										<button type="button" class="btn btn_icon btn_reset">
-											<i class="ico ico_reset"></i>
-											<span class="sr_only">초기화</span>
-										</button>
+				<div class="tf_item">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_date2">조회기간 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04 - 2021.07.13"
+								required>
+						</div>
+						<div class="btn_area">
+							<!-- 데이트피커 호출 함수 openDatepicker(this) -->
+							<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+								<i class="ico ico_datepicker"></i>
+								<span class="sr_only">달력</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="clfx">
+					<h2 class="tit1 f_l mt_4">대출내역</h2>
+				</div>
+
+				<div class="contract_list">
+					<ul>
+						<li class="contract_item">
+							<div class="clfx">
+								<div class="list_name f_l">
+									대출취소
+								</div>
+								<div class="f_r">
+									<div class="total_price pt_0 pb_0">
+										<strong>131,160</strong>원
 									</div>
 								</div>
 							</div>
+							<span class="in_detail toggle" style="height:auto">
+								<span>
+									<em>일자</em>
+									<strong class="txt_light">2021.04</strong>
+								</span>
+								<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+							</span>
+						</li>
 
+						<li class="contract_item">
+							<div class="clfx">
+								<div class="list_name f_l">
+									대출지급
+								</div>
+								<div class="f_r">
+									<div class="total_price pt_0 pb_0">
+										<strong>500,000</strong>원
+									</div>
+								</div>
+							</div>
+							<span class="in_detail toggle" style="height:120px">
+								<span>
+									<em>일자</em>
+									<strong class="txt_light">2021.04</strong>
+								</span>
+								<span>
+									<em>대출금</em>
+									<strong class="txt_light">131,160원</strong>
+								</span>
+								<span>
+									<em>상환원금</em>
+									<strong class="txt_light">100,000원</strong>
+								</span>
+								<span>
+									<em>대출잔액</em>
+									<strong class="txt_light">31,160원</strong>
+								</span>
+								<span>
+									<em>이자계산기간</em>
+									<strong class="txt_light">2021.06.01~2021.06.31</strong>
+								</span>
+								<span>
+									<em>이자합계</em>
+									<strong class="txt_light">0원</strong>
+								</span>
+								<span>
+									<em>채널구분</em>
+									<strong class="txt_light">모바일앱</strong>
+								</span>
+								<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+							</span>
 						</li>
 					</ul>
-
-					<div class="total_price bg_lightprimary_total mt_4">
-						<span class="txt_sm txt_gray">
-							<span>상환원금(<span class="txt_medium">500,000</span>)+상환이자(<span class="txt_medium">930</span>)</span>
-						</span><br>
-						총 상환금액 <strong class="ml_2">510,540</strong>원
-					</div>
-				</div>
-
-				<div class="section mt_4">
-					<h2 class="tit1">계좌정보</h2>
-
-					<div class="payment_way">
-
-						<!-- s : 은행 -->
-						<a href="#;" class="tf_item mt_3" onclick="openModal('layerAccount'); return false;">
-							<div class="tf_item_body">
-								<div class="input_area">
-									<span class="lab">은행 <span class="req">필수항목</span></span>
-									<p class="tf">우체국</p>
-								</div>
-								<div class="btn_area">
-									<i class="ico ico_chevron_down_md"></i>
-									<span class="sr_only">선택</span>
-								</div>
-							</div>
-						</a>
-						<!-- e : 은행 -->
-
-						<!-- s : 계좌번호 -->
-						<a href="#;" class="tf_item mt_3" onclick="openModal('layerAccount'); return false;">
-							<div class="tf_item_body">
-								<div class="input_area">
-									<span class="lab">계좌번호 <span class="req">필수항목</span></span>
-									<p class="tf">01012340123455123</p>
-								</div>
-								<div class="btn_area">
-									<i class="ico ico_chevron_down_md"></i>
-									<span class="sr_only">선택</span>
-								</div>
-							</div>
-						</a>
-						<!-- e : 계좌번호 -->
-
-						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_primary">계좌인증</button>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="section">
-					<h2 class="tit1">추가인증</h2>
-					<div class="add_certification">
-
-						<ul class="tab">
-							<li><a href="#;">SMS인증</a></li>
-							<li><a href="#;">ARS인증</a></li>
-						</ul>
-
-						<ul class="list list1">
-							<li>추가인증은 고객정보에 등록된 휴대전화로 SMS 또는 ARS를 이용하여 본인 확인을 합니다.</li>
-							<li>휴대전화번호 등록/변경은 우체국창구, 고객센터에서 가능합니다.</li>
-						</ul>
-					</div>
-
 				</div>
 			</div>
 
 			<!-- s: 하단 고정 영역 -->
 			<div class="bottom_fixed_area">
-				<div class="btn_group btn_group_flex btn_group_r">
+				<div class="btn_group btn_group_flex">
 					<!-- 비활성화시 .btn_disabled 추가 -->
-					<a href="#;" class="btn btn_xl btn_default">
-						<span>취소</span>
-					</a>
 					<a href="#;" class="btn btn_xl btn_primary">
-						<span>상환하기</span>
-						<i class="ico ico_chevron_right_xl ml_2"></i>
+						<span>확인</span>
 					</a>
 				</div>
 			</div>
