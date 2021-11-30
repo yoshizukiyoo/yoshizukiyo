@@ -2284,6 +2284,18 @@ div {
 				padding-left: 65px;
 			}
 		}
+
+		&.phone {
+			background:url(#{$url-img}/content/ico_subscription3.png) left 20px center no-repeat;
+		}
+
+		&.card {
+			background:url(#{$url-img}/content/ico_subscription4.png) left 20px center no-repeat;
+		}
+	}
+
+	&+p {
+		color: #555;
 	}
 }
 
@@ -2416,6 +2428,10 @@ div {
 				&:before {
 					transform: rotate(-90deg);
 				}
+
+				+dd {
+					border-bottom: 0;
+				}
 			}
 
 		}
@@ -2432,6 +2448,7 @@ div {
 	}
 }
 
+.btn_group_flex,
 .bottom_fixed_area {
 	&.dark {
 		.btn_primary {
@@ -2624,37 +2641,37 @@ div {
 		}
 	}
 
-	.day_set {
+}
 
-		.in_day {
-			margin-top: 10px;
-			position: relative;
 
-			&:before {
-				content: "";
-				display: block;
-				width: 10px;
-				border-top: 1px solid #ddd;
-				position: absolute;
-				left: 50%;
-				margin-left: -5px;
-				top: 50%;
-			}
 
-			&:after {
-				content: "";
-				display: block;
-				clear: both;
-			}
+.middle_bar {
+	margin-top: 10px;
+	position: relative;
 
-			.tf_item {
-				width: calc(50% - 10px);
-				float: right;
+	&:before {
+		content: "";
+		display: block;
+		width: 10px;
+		border-top: 1px solid #ddd;
+		position: absolute;
+		left: 50%;
+		margin-left: -5px;
+		top: 50%;
+	}
 
-				&:first-child {
-					float: left;
-				}
-			}
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	.tf_item {
+		width: calc(50% - 10px);
+		float: right;
+
+		&:first-child {
+			float: left;
 		}
 	}
 }
@@ -2859,6 +2876,30 @@ div {
 			color: #333;
 		}
 	}
+
+	&.bd_none {
+		border: 0;
+		padding-bottom: 20px;
+
+		strong {
+			background: none;
+			padding-left: 0;
+			margin-top: 30px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+		p {
+			color: #555;
+			margin-bottom: 5px;
+
+			&.txt_sm {
+				font-size: 12px !important;
+			}
+		}
+	}
 }
 
 .list_add_area {
@@ -2955,5 +2996,250 @@ div {
 .txt_necessary {
 	span {
 		color: $primary;
+	}
+}
+
+.box_border {
+	&.join_info {
+		ul {
+			font-size: 0;
+			text-align: center;
+			padding: 20px 0;
+
+			li {
+				width: 33.33%;
+				display: inline-block;
+				vertical-align: top;
+
+				img {
+					width: 45px;
+				}
+
+				strong {
+					color: #0d63ce;
+					font-size: 14px;
+					display: block;
+					margin-top: 15px;
+				}
+
+				p {
+					font-size: 12px;
+					color: #555;
+				}
+			}
+		}
+
+		.ing_info {
+			font-size: 0;
+			text-align: center;
+			padding: 20px 0;
+			margin-top: -30px;
+
+			li {
+
+				display: inline-block;
+				vertical-align: top;
+				width: 33.33%;
+				margin-top: 30px;
+				position: relative;
+
+				&:before {
+					content: "";
+					display: block;
+					width: 7px;
+					height: 12px;
+					position: absolute;
+					left: 0;
+					top: 17px;
+					background:url(#{$url-img}/content/ico_chevron_right_md.png) 0 0 no-repeat;
+					background-size: 100%;
+				}
+
+				&:first-child {
+					&:before {
+						display: none;
+					}
+				}
+
+				img {
+					width: 45px;
+				}
+
+				strong {
+					display: block;
+					font-size: 14px;
+					color: #555;
+					margin-top: 15px;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+}
+
+.tit1 {
+	&.big {
+		font-size: 20px;
+		font-weight: 400;
+		text-align: center;
+	}
+}
+
+.blue_chk_list {
+	font-size: 0;
+	text-align: center;
+	background: #f6f6f6;
+	border-radius: 5px;
+
+	>div {
+		display: inline-block;
+		vertical-align: top;
+		width: 20%;
+		position: relative;
+
+		input {
+			opacity: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		label {
+			display: block;
+			padding: 8px 0;
+
+			&:after {
+				content: "";
+				display: block;
+				border-left: 1px solid #eee;
+				height: 20px;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				margin-top: -10px;
+			}
+
+			span {
+				font-size: 14px;
+				color: #555;
+				position: relative;
+				z-index: 1;
+				font-weight: 400;
+			}
+		}
+
+		input:checked+label {
+			&:before {
+				content: "";
+				display: block;
+				background: #2e71e8;
+				border-radius: 5px;
+				position: absolute;
+				left: -2px;
+				top: -2px;
+				right: -2px;
+				bottom: -2px;
+				z-index: 1;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4)
+			}
+
+			span {
+				color: #fff;
+				z-index: 2;
+			}
+		}
+	}
+
+	&.length3 {
+		>div {
+			width: 33.33%;
+		}
+	}
+}
+
+.right_etc {
+	position: absolute;
+	right: 0;
+	bottom: 5px;
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.special_toggle {
+	div {
+		&.tf_item {
+
+			&.on {
+				border-radius: 8px 8px 0 0;
+
+				&+.box_border {
+					display: block;
+				}
+
+				.toggle {
+					transform: rotate(0deg);
+				}
+			}
+
+			.toggle {
+				width: 22px;
+				height: 22px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				background:url(#{$url-img-common}/ico_chevron_down_sm.png) center center no-repeat;
+				background-size: 10px 6px;
+				transform: rotate(180deg);
+				position: absolute;
+				right: 0;
+				top: 50%;
+				margin-top: -11px;
+				line-height: 1000px;
+				overflow: hidden;
+			}
+		}
+	}
+
+	.box_border {
+		border-radius: 0 0 5px 5px;
+		border-top: 0;
+		padding: 20px;
+		display: none;
+	}
+}
+
+.bottom_fixed_area {
+	.total_price {
+		padding: 20px;
+		border-radius: 15px 15px 0 0;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+		&:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		span {
+			float: left;
+			height: 30px;
+			line-height: 30px;
+			font-size: 18px;
+			font-weight: 400;
+		}
+
+		strong {
+			float: right;
+			font-size: 27px;
+			font-weight: 400;
+			height: 30px;
+			line-height: 30px;
+
+			em {
+				font-size: 27px;
+				font-style: normal;
+				color: #e12547;
+				font-weight: bold;
+			}
+		}
 	}
 }
