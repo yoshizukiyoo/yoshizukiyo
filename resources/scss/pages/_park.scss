@@ -657,6 +657,12 @@
 		}
 	}
 
+	&.block {
+		display: block;
+		margin-left: 0;
+		margin-top: 11px;
+	}
+
 	&.simple_primary {
 		>input[type=radio] {
 			+label {
@@ -1361,10 +1367,6 @@
 			margin-top: 10px;
 		}
 
-
-
-
-
 		.btn_layer {
 			position: absolute;
 			top: 50%;
@@ -1457,14 +1459,42 @@
 			}
 		}
 	}
+
+	&.fund {
+		>li {
+			.con {
+				background-image: none;
+
+				.flex_box {
+					position: relative;
+				}
+
+				>a {
+					background-repeat: no-repeat;
+					background-image:url(#{$url-img}/content/ico_link_arr.png);
+					background-position: 100% 50%;
+					background-size: 12px;
+					padding-right: 34px;
+
+					.txt_invalid {
+						strong {
+							display: block;
+							line-height: 1;
+							font-size: 24px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 .sub_toggle {
 	display: none;
 	position: absolute;
 	text-align: left;
-	top: 6px;
-	right: 33px;
+	top: -12px;
+	right: 20px;
 	background: #f6f6f6;
 	border-radius: 8px;
 	padding: 20px;
@@ -1502,6 +1532,7 @@
 		position: absolute;
 		right: 15px;
 		top: 15px;
+		z-index: 10;
 	}
 }
 
@@ -1535,6 +1566,12 @@
 
 	&.align_end {
 		align-items: flex-end;
+	}
+
+	&.txt_overflow {
+		.l {
+			max-width: 80%;
+		}
 	}
 
 	.l {
@@ -2139,5 +2176,384 @@
 
 	&+.list_delete {
 		margin-top: 15px;
+	}
+}
+
+.txt_ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.fund_bg_txt {
+	background-repeat: no-repeat;
+	background-size: 200px;
+	background-position: 50% 0;
+	padding-top: 246px;
+	text-align: center;
+
+	p {
+		letter-spacing: -0.3px;
+	}
+
+	&.bg01 {
+		background-image:url(#{$url-img}/content/bg_fund_investor.png);
+	}
+}
+
+.investor_type {
+	padding-bottom: 194px;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: 50% 100%;
+	background-size: 167px;
+
+	.tit {
+		font-size: 16px;
+
+		strong {
+			position: relative;
+			display: inline-block;
+			font-size: 23px;
+			font-weight: 500;
+			line-height: 1;
+			padding-bottom: 7px;
+
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+			}
+		}
+	}
+
+	&.type01 {
+		background-image:url(#{$url-img}/content/fund_animal04.png);
+
+		strong {
+			color: #d70000;
+
+			&:after {
+				background: #d70000;
+			}
+		}
+	}
+
+	&.type02 {
+		background-image:url(#{$url-img}/content/fund_animal04.png);
+
+		strong {
+			color: #5628c2;
+
+			&:after {
+				background: #5628c2;
+			}
+		}
+	}
+
+	&.type03 {
+		background-image:url(#{$url-img}/content/fund_animal04.png);
+
+		strong {
+			color: #0069e1;
+
+			&:after {
+				background: #0069e1;
+			}
+		}
+	}
+
+	&.type04 {
+		background-image:url(#{$url-img}/content/fund_animal04.png);
+
+		strong {
+			color: #007c5d;
+
+			&:after {
+				background: #007c5d;
+			}
+		}
+	}
+
+	&.type05 {
+		background-image:url(#{$url-img}/content/fund_animal04.png);
+
+		strong {
+			color: #986800;
+
+			&:after {
+				background: #986800;
+			}
+		}
+	}
+
+	&.bg_none {
+		background-image: none;
+		padding-bottom: 0;
+	}
+}
+
+.survey_tit {
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	padding: 0 5px 15px 25px;
+	color: #333;
+	font-weight: 500;
+
+	span {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+.survey_list {
+	li {
+		&:not(:first-child) {
+			margin-top: 41px;
+		}
+
+		.q {
+			position: relative;
+			padding-left: 33px;
+			color: #555;
+			font-weight: 400;
+			line-height: 25px;
+
+			strong {
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background: #555;
+				font-size: 13px;
+				font-weight: 500;
+				color: #fff;
+				text-align: center;
+
+				&:before {
+					content: '';
+					position: absolute;
+					right: -3px;
+					top: 50%;
+					margin-top: -4px;
+					display: inline-block;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 3px 0 3px 4px;
+					border-color: transparent #555 transparent #555;
+				}
+			}
+		}
+	}
+}
+
+.chk_wrap {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+
+	&.half {
+		display: block;
+
+		.check_item {
+			width: 49%;
+			margin-left: 0;
+			margin-top: 16px;
+			vertical-align: top;
+
+			&:nth-child(-n+2) {
+				margin-top: 0;
+			}
+		}
+	}
+
+	input[type=radio],
+	input[type=checkbox] {
+		+label {
+			font-weight: 100;
+		}
+
+		&:checked+label {
+			font-weight: 500;
+		}
+	}
+
+	.check_item.check {
+		display: table-cell;
+		text-align: center;
+		vertical-align: top;
+
+		&:not(:last-child):after {
+			content: '';
+			position: absolute;
+			top: 9px;
+			right: -50%;
+			width: 100%;
+			height: 2px;
+			background: #ddd;
+			z-index: -1;
+		}
+
+		>input[type=radio] {
+			+label {
+				padding: 30px 0 0;
+				background-image: url(#{$url-img}/content/ico_checkbox_gray.png);
+				background-position: 50% 0;
+			}
+
+			&:checked+label {
+				background-image: url(#{$url-img}/common/ico_checkbox_checked.png);
+			}
+		}
+	}
+}
+
+.fund_type_status {
+	font-size: 0;
+
+	span {
+		display: inline-block;
+		width: calc(50% - 3px);
+		margin-right: 5px;
+		margin-top: 10px;
+		line-height: 24px;
+		font-size: 12px;
+		text-align: center;
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 15px;
+
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+
+		&:nth-child(-n+2) {
+			margin-top: 0;
+		}
+
+		&.type01 {
+			border-color: #d70000;
+		}
+
+		&.type02 {
+			border-color: #5628c2;
+		}
+
+		&.type03 {
+			border-color: #0069e1;
+		}
+
+		&.type04 {
+			border-color: #007c5d;
+		}
+
+		&.type05 {
+			border-color: #986800;
+		}
+
+	}
+}
+
+.tbl_list {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+
+	>li {
+		display: table-row;
+
+		&:not(:first-child) {
+			border-top: 1px solid #eee;
+		}
+
+		>div {
+			position: relative;
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+			padding-top: 45px;
+			height: 130px;
+
+			&:not(:last-child) {
+				border-right: 1px solid #eee;
+			}
+
+			.div_th {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				line-height: 45px;
+				background: #f6f6f6;
+				padding: 0 10px;
+				font-size: 13px;
+
+			}
+
+			.div_td {
+				padding: 10px 2px 10px;
+				font-weight: 400;
+
+				.grade_img {
+					height: 47px;
+				}
+			}
+		}
+	}
+}
+
+.price_num {
+	font-size: 13px;
+	font-weight: 400;
+
+	&:before {
+		content: '';
+		display: inline-block;
+		margin-right: 8px;
+		border-style: solid;
+	}
+
+	&.up {
+		color: #d70000;
+
+		&:before {
+			border-width: 0 5px 9px 5px;
+			border-color: transparent transparent #ff3131 transparent;
+		}
+	}
+
+	&.down {
+		color: #0069e1;
+
+		&:before {
+			border-width: 9px 5px 0 5px;
+			border-color: #0069e1 transparent transparent transparent;
+		}
+	}
+}
+
+.fund_star_grade {
+	i {
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-image: url(#{$url-img}/content/ico_star.png);
+		background-size: 15px;
+
+		&.active {
+			background-image: url(#{$url-img}/content/ico_star_primary.png);
+		}
 	}
 }
