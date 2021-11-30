@@ -142,10 +142,19 @@ $popup-size: (xs: 400px,
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 1100;
+	z-index: 950; // 2021-11-29 z-index 값 수정
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	// 2021-11-29 개발자 요청 추가
+	&.modal_confirm {
+		z-index: 960
+	}
+
+	&.modal_alert {
+		z-index: 970
+	}
 
 	.dimed {
 		position: fixed;
@@ -207,7 +216,8 @@ $popup-size: (xs: 400px,
 	}
 
 	// 오류창 팝업
-	&.modal_alert {
+	&.modal_alert,
+	&.modal_confirm {
 		.popup_inner {
 			width: 600px;
 		}
