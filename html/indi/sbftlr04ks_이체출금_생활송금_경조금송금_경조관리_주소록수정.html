@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="경조관리"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<div>
+					<h2 class="tit1">주소록 등록</h2>
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_1" class="lab">이름 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_1" class="tf" placeholder="성명 입력" value="박지수" required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray" onclick="openModal('phone_search', this); return false;">연락처</a>
+							</div>
+						</div>	
+					</div>
+
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="inp1_2">전화번호 <span class="req">필수항목</span></label>
+								<div class="input_items">
+									<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;"
+										onclick="openModal('layerOption')">010</a>
+									<input type="text" id="inp1_2" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력" value="1111 - 2222" required>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_3" class="lab">주소 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_3" class="tf" placeholder="받는분 주소 입력" value="58217" required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray" onclick="openModal('address_search', this); return false;">우편번호</a>
+							</div>
+						</div>
+						<div class="tf_item_footer txt_normal">
+							<p>전라남도 나주시 빛가람동38</p>
+							<p>A동 626호 (빛가람동, 중흥s클래스메가티움 2차)</p>
+						</div>
+					</div>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption', this); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">그룹 <span class="req">필수항목</span></span>
+								<p class="tf">가족</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_6" class="lab">메모</label>
+								<input type="text" id="inp1_6" class="tf" placeholder="15자 이내" value="메모없음">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="sbftlr04gt_이체출금_생활송금_경조금송금_경조관리_주소록조회.html" class="btn btn_xl btn_default">목록</a>
+					<a href="sbftlr04gt_이체출금_생활송금_경조금송금_경조관리_주소록조회.html" class="btn btn_xl btn_primary">수정</a>
+				</div>
+			</div>
+
+			<!-- s: 전화번호검색 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="phone_search">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">전화번호검색</h2>
+					</div>
+					<div class="popup_body">
+						<nav class="tab_menu tab_menu1 mb_0">
+							<ul class="tab_list">
+								<li class="on"><a href="#;"><span>전화번호부</span></a></li>
+								<li><a href="#;"><span>이전내역</span></a></li>
+							</ul>
+						</nav>
+						<div class="tf_item tf_item_md bg_lightgray border0">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" id="phone_search_inp1_1" class="tf txt_light" placeholder="초성, 이름 검색">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_search"><span class="sr_only">검색</span></a>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<ul class="list list_phone_book">
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_darkgray">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default" onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_darkgray">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('phone_search')">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('phone_search')">추가</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 전화번호검색 bottom sheet -->
+
+			<!-- s: Modal popup 실명입력 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_body">
+						<div class="container">
+							<div class="txt_c txt_lg"><strong>받는분의 실명을<br> 정확하게 입력해 주세요.</strong></div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="pop_inp1_1" class="lab">이름</label>
+										<input type="text" id="pop_inp1_1" class="tf" value="강순이">
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('alert01')">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('alert01')">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 실명입력 -->
+			
+			<!-- s: 주소검색 팝업 -->
+			<div class="modal_popup popup hide" data-popup="address_search">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">주소검색</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pb_4">
+							<h3 class="tit1">주소검색</h3>
+							<div class="tf_item tf_item_md">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<input type="text" id="inp_address_search" class="tf" placeholder="도로명+건물명">
+									</div>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_search single"><span class="sr_only">검색</span></a>
+									</div>
+								</div>
+							</div>
+							<p class="txt_guide">도로명, 건물명, 지번에 대해 통합검색이 가능합니다.</p>
+							<ul class="list list1 mt_1">
+								<li>도로명+건물번호 : 예)도움5로 19, 정보화길</li>
+								<li>건물명 : 예)논현동 아파트, 서울시 우체국, 어등하이빌</li>
+								<li>읍/면/동/리+지번 : 예)어진동 307-19</li>
+								<li>상세번지의 경우 검색이 제한될 수 있습니다.<br>대표번지로 검색 후 상세주소에 번지를 표기해주시기 바랍니다.</li>
+							</ul>
+
+							<ul class="border_list link_more mt_4">
+								<li>
+									<a href="#;" onclick="openModal('address_search_detail'); return false;">
+										<div class="tit">[58127]</div>
+										<div class="mt_1">전남 나주시 빛가람동<br>2동 708호</div>
+									</a>
+								</li>
+								<li>
+									<a href="#;" onclick="openModal('address_search_detail'); return false;">
+										<div class="tit">[58127]</div>
+										<div class="mt_1">전남 나주시 빛가람동<br>2동 708호</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 주소검색 팝업 -->
+
+			<!-- s: 주소검색 - 상세주소입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="address_search_detail">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">주소검색</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pb_4">
+							<h3 class="tit1">상세주소입력</h3>
+							<p>새주소(도로명주소)의 표기법</p>
+							<ul class="list list1 mt_2">
+								<li>기본주소(시·도+시·군·구+읍·면+도로명+지하여부+건물번호)</li>
+								<li>상세주소(동·호수 등)</li>
+								<li>참고항목(법정동, 건물/아파트/상호 명칭 등)</li>
+							</ul>
+
+							<div class="tf_item disabled mt_4">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="address_inp1_1" class="lab">우편번호</label>
+										<input type="text" id="address_inp1_1" class="tf" value="58217" readonly>
+									</div>
+								</div>
+							</div>
+
+							<div class="tf_item disabled mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="address_inp1_2" class="lab">기본주소</label>
+										<input type="text" id="address_inp1_2" class="tf" value="전라남도 나주시 상야 3길 8" readonly>
+									</div>
+								</div>
+							</div>
+
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="address_inp1_3" class="lab">상세주소</label>
+										<input type="text" id="address_inp1_3" class="tf" value="A동 626호">
+									</div>
+								</div>
+							</div>
+
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="address_inp1_4" class="lab">참고사항</label>
+										<input type="text" id="address_inp1_4" class="tf" value="(빛가람동, 중흥s클래스메가티움 2차)">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('address_search_detail'); return false;">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('address_search_detail'); return false;">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 주소검색 - 상세주소입력 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

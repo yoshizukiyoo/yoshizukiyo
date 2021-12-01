@@ -13,6 +13,15 @@ $demiprimary: #fbe59b !default;
 	border-color: $border-base;
 }
 
+@mixin bg_src($name, $h, $type : 'jpg', $url: #{$url-img}){
+	.bg_#{$name} {
+		min-height: $h;
+		background-image: url('#{$url}/content/bg_#{$name}.#{$type}');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 0 center;
+	}
+}
 
 @mixin fx_lr {
 	display: flex;
@@ -44,6 +53,9 @@ $demiprimary: #fbe59b !default;
 	}
 }
 
+//배경
+@include bg_src('donate01', 200px);
+
 //아이콘
 @include ico('check_on', 20px, 20px);
 @include ico('mailbox', 30px, 30px);
@@ -61,6 +73,7 @@ $demiprimary: #fbe59b !default;
 @include ico('bi_shinhan', 15px, 15px);
 @include ico('chevron_up_circle', 13px, 13px);
 @include ico('plus_sm_white', 9px, 9px);
+@include ico('ico_chevron_right_sm', 5px, 9px);
 
 @include ico('chevron_down_sm_bold', 10px, 6px, #{$url-img-content});
 @include ico('floppy', 15px, 14px, #{$url-img-content});
@@ -602,6 +615,51 @@ $demiprimary: #fbe59b !default;
 			}
 		}
 	}
+	&.list_donate{
+		>li{
+			@include box_default(0, 0);
+			>a{
+				display: flex;
+				width: 100%;
+				padding: 21px 40px 21px 20px;
+				
+				align-items: center;
+
+				background-repeat: no-repeat;
+				background-position: right 20px center;
+				background-image: url(#{$url-img-common}/ico_chevron_right_xl.png);
+				background-size: 9px 15px;
+				>.l{
+					display: inline-flex;
+					min-width: 90px;
+					padding-right: 10px;
+					justify-content: center;
+					img{
+						width: auto;
+					}
+				}
+				>.r{
+					display: inline-flex;
+					position: relative;
+					padding-left: 20px;
+					font-size: 18px;
+					font-weight: 500;
+					color:#111;
+					&::before{
+						content: "";
+						position: absolute;
+						width: 1px;
+						height: 20px;
+						background-color: #ddd;
+
+						left: 0;
+						top: 50%;
+						transform: translateY(-50%);
+					}
+				}
+			}
+		}
+	}
 }
 
 //타이틀
@@ -778,6 +836,37 @@ h3.tit2 {
 		&+.btm{
 			border-top: 1px solid $border-base;
 		}
+	}
+}
+
+.memo_box{
+	display: flex;
+	width: 100%;
+	padding: 5px 14px;	
+	background: $bg-lightgray;
+
+	font-size: 13px;
+	font-weight: 200;
+
+	align-items: center;
+	>.l{
+		position: relative;
+		margin-right: 10px;
+		color:#555;
+		&::after{
+			content: "";
+			width: 1px;
+			height: 10px;
+			background-color: #ddd;
+
+			position: absolute;
+			right: -10px;
+			top: 5px;
+		}
+	}
+	>.r{
+		display: inline-flex;
+		margin-left: 10px;
 	}
 }
 
