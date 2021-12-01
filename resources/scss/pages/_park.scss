@@ -383,6 +383,10 @@
 		&.active {
 			max-height: none;
 			padding-bottom: 30px;
+
+			.btn_toggle_more {
+				background-image:url(#{$url-img}/content/ico_btm_toggle_on.png);
+			}
 		}
 
 		&:after {
@@ -402,9 +406,21 @@
 			margin-left: -25px;
 			width: 50px;
 			height: 26px;
-			background:url(#{$url-img}/content/ico_btm_toggle.png) 0 0 no-repeat;
+			background-image:url(#{$url-img}/content/ico_btm_toggle.png);
+			background-repeat: no-repeat;
+			background-position: 0 0;
 			background-size: 50px;
 			z-index: 1;
+		}
+	}
+
+	&.passbook {
+		background:url(#{$url-img}/content/bg_passbook.png) 50%;
+		background-size: 320px;
+
+		img {
+			height: 27px;
+			vertical-align: middle;
 		}
 	}
 }
@@ -1298,6 +1314,45 @@
 			}
 		}
 	}
+
+	.btm_more {
+		position: relative;
+		padding-bottom: 45px;
+		max-height: 167px;
+		overflow: hidden;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 45px;
+			background: #fff;
+		}
+
+		.btn_toggle_more {
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			margin-left: -25px;
+			width: 50px;
+			height: 26px;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-image:url(#{$url-img}/content/ico_btm_toggle.png);
+			background-size: 50px;
+			z-index: 1;
+		}
+
+		&.active {
+			max-height: none;
+
+			.btn_toggle_more {
+				background-image:url(#{$url-img}/content/ico_btm_toggle_on.png);
+			}
+		}
+	}
 }
 
 .border0 {
@@ -1482,6 +1537,26 @@
 							line-height: 1;
 							font-size: 24px;
 						}
+					}
+				}
+
+				&.more_link {
+					position: relative;
+					padding: 17px 40px 20px 20px;
+
+					.flex_box {
+						position: static;
+					}
+
+					.btn_submenu {
+						position: absolute;
+						right: 11px;
+						top: 17px;
+					}
+
+					.sub_toggle {
+						top: 5px;
+						right: 34px;
 					}
 				}
 			}
@@ -2485,6 +2560,7 @@
 			height: 130px;
 
 			&:not(:last-child) {
+
 				border-right: 1px solid #eee;
 			}
 
@@ -2493,11 +2569,9 @@
 				top: 0;
 				left: 0;
 				width: 100%;
-				line-height: 45px;
 				background: #f6f6f6;
-				padding: 0 10px;
+				padding: 12px 0;
 				font-size: 13px;
-
 			}
 
 			.div_td {
@@ -2555,5 +2629,159 @@
 		&.active {
 			background-image: url(#{$url-img}/content/ico_star_primary.png);
 		}
+	}
+}
+
+.fund_report {
+	>div {
+		position: relative;
+		font-size: 13px;
+
+		&:not(:last-child) {
+			margin-bottom: 23px;
+
+			&:after {
+				content: '';
+				position: absolute;
+				left: 68px;
+				bottom: -14px;
+				width: 19px;
+				height: 14px;
+				background:url(#{$url-img}/content/ico_fund_arr.png) 0 0 no-repeat;
+				background-size: 19px;
+			}
+		}
+
+		&:not(:first-child) {
+			border: 1px solid #ddd;
+			border-radius: 4px;
+		}
+	}
+
+
+	.report_step {
+		display: flex;
+		background: #f6f6f6;
+
+		.tit {
+			font-size: 13px;
+			padding: 10px;
+
+			.num {
+				display: inline-block;
+				width: 13px;
+				height: 13px;
+				border-radius: 50%;
+				background: #555;
+				color: #fff;
+				font-size: 10px;
+				text-align: center;
+				line-height: 12px;
+				margin-right: 10px;
+			}
+		}
+
+		.l {
+			flex: 1 1 50%;
+		}
+
+		.r {
+			padding: 10px 20px;
+			flex: 1 1 20%;
+			text-align: right;
+			background: #fff;
+			border-left: 1px solid #ddd;
+			border-radius: 0 4px 4px 0;
+		}
+
+		&.half {
+			background: #fff;
+
+			.l,
+			.r {
+				padding: 0;
+
+				p {
+					padding: 10px;
+
+					span {
+						font-size: 10px;
+					}
+
+					&:not(:first-child) {
+						border-top: 1px solid #ddd;
+					}
+				}
+			}
+
+			.l {
+				display: table;
+				width: 100%;
+				background: #f6f6f6;
+				border-right: 1px solid #ddd;
+
+				>div {
+					display: table-cell;
+					vertical-align: middle;
+				}
+
+				.txt {
+					border-left: 1px solid #ddd;
+					width: 45%;
+				}
+			}
+
+			.r {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				border-left: 0;
+
+				.flex_item {
+					flex: 1;
+					display: table;
+
+					p {
+						display: table-cell;
+						vertical-align: middle;
+					}
+				}
+			}
+		}
+
+		&.box {
+			border: 0;
+			padding: 0;
+			background: none;
+			display: table;
+			width: calc(100% + 20px);
+			border-spacing: 10px 0;
+			margin-left: -10px;
+
+			.l,
+			.r {
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			.l {
+				background: #f6f6f6;
+			}
+		}
+	}
+}
+
+.bg_fund_service {
+	&:after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 0;
+		padding-bottom: 58.2%;
+		margin-top: 15px;
+		background:url(#{$url-img}/content/img_fund_service.jpg) 0 0 no-repeat;
+		background-size: 100%;
 	}
 }
