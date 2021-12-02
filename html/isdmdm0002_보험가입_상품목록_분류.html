@@ -23,7 +23,24 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+			$(".bottom_fixed_area .calculate").click(function () {
 
+				if (!$(this).hasClass("on")) {
+					$(".user_controll_box").slideDown();
+					$("body , html").css({
+						overflow: "hidden"
+					})
+					$(".bottom_fixed_area").addClass("active");
+					$(this).addClass("on");
+				} else {
+					$(this).removeClass("on");
+					$(".user_controll_box").slideUp();
+					$("body , html").css({
+						overflow: "visible"
+					})
+					$(".bottom_fixed_area").removeClass("active");
+				}
+			})
 		});
 	</script>
 </head>
@@ -183,42 +200,47 @@
 
 			<!-- s: 하단 고정 영역 -->
 			<div class="bottom_fixed_area">
+				<div class="dim2"></div>
 				<div class="total_price">
 					<a href="#;" class="calculate">
-						내 보혐료 한꺼번에 계산하기
+						내 보험료 한꺼번에 계산하기
 					</a>
 
-					<div class="user_controll_box mt_3">
-						<div class="tf_item">
-							<div class="tf_item_body">
-								<div class="input_area">
-									<label class="lab" for="lb_tf_1_2">가입자 생년월일/성별 <span class="req">필수항목</span></label>
-									<input type="text" id="lb_tf_1_2" class="tf" placeholder="예: 19850101" required="">
+					<div class="user_controll_box">
+
+						<!-- s : 기본 -->
+						<div class="default_set">
+							<div class="tf_item mb_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="user_gend">가입자 생년월일/성별 <span class="req">필수항목</span></label>
+										<input type="text" id="user_gend" class="tf" placeholder="예: 19850101" required="">
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="input_items mt_2">
-							<span class="check_item type_btn_round">
-								<input type="radio" name="lb_gender" id="lb_man" checked="">
-								<label for="lb_man">남자</label>
-							</span>
-							<span class="check_item type_btn_round">
-								<input type="radio" name="lb_gender" id="lb_woman">
-								<label for="lb_woman">여자</label>
-							</span>
-						</div>
+							<div class="input_items mb_5">
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender1" id="lb_man1_1" checked="">
+									<label for="lb_man1_1">남자</label>
+								</span>
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender1" id="lb_woman1_1">
+									<label for="lb_woman1_1">여자</label>
+								</span>
+							</div>
 
+						</div>
+						<!-- e : 기본 -->
+
+						<!-- s : 태아 -->
 					</div>
 				</div>
-
 				<div class="btn_group btn_group_flex">
-					<!-- 비활성화시 .btn_disabled 추가 -->
 					<a href="#;" class="btn btn_xl btn_primary">
 						<span>확인</span>
 					</a>
 				</div>
-
 			</div>
 			<!-- e: 하단 고정 영역 -->
 
