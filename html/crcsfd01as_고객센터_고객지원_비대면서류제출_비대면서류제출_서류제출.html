@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="상담하기"></header>
+		<div id="content">
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li><a href="#"><span>1. 서비스 안내</span></a></li>
+					<li class="on"><a href="#"><span>2. 서류제출</span></a></li>
+					<li><a href="#"><span>3. 실행완료</span></a></li>
+				</ul>
+			</nav>
+			<h3 class="sr_only">2. 서류제출</h3>
+
+			<div class="container mb_4">
+				<!-- s: 제출정보 영역 -->
+
+				<div class="clfx">
+					<h4 class="tit1 f_l ">제출 정보</h4>
+
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+							<i class="ico ico_help_sm"></i>
+							<span>알려드립니다</span>
+						</a>
+					</div>
+				</div>
+
+				<!-- s : 요청서비스 영역 -->
+				<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">요청하는 서비스(요약)
+								<span class="req">필수항목</span>
+							</span>
+							<p class="tf">선택하세요</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<!-- e : 요청서비스 영역 -->
+
+				<!-- s : 요청내용 영역 -->
+				<div class="tf_item mt_3">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_content">요청내용<span class="req">필수항목</span></label>
+							<textarea class="tf" id="lb_content" cols="50" rows="4" placeholder="50자 이내로 입력하세요."
+								title="요청내용 입력"></textarea>
+						</div>
+					</div>
+					<span class="txt_guide f_r">0/50자</span>
+				</div>
+
+				<!-- e : 요청내용 영역 -->
+
+
+				<!-- s : 제출하실 우체국 영역 -->
+				<div class="tf_item mt_3">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">제출하실 우체국<span class="req">필수항목</span></span>
+							<!-- <p class="tf">우체국</p> -->
+							<a href="#;" class="opt" title="우체국 선택" onclick="openModal('layerAccount');">우체국</a>
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_md btn_round btn_darkgray">변경</a>
+						</div>
+					</div>
+				</div>
+				<!-- e : 제출하실 우체국 영역 -->
+
+				<!-- s: 전화번호 영역 -->
+				<div class="tf_item mt_3 disabled_tf">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_post">연락받을 전화번호<span class="req">필수항목</span>
+							</label>
+							<input type="text" id="lb_post" class="tf" value="010-****-1234" required>
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_md btn_round btn_darkgray">고객정보 수정</a>
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide">&#8251; 고객님의 연락처가 바뀌신 경우 고객정보수정을 통하여 변경할 수 있으며, 고객정보수정 버튼 클릭시 입력값은 모두 초기화 됩니다.
+				</p>
+				<!-- e: 전화번호 영역 -->
+
+				<!-- s: 첨부파일 영역 -->
+				<div class="section">
+					<h4 class="tit1">첨부파일</h4>
+
+					<div class="submit_documents">
+						<p class="txt_lightgray txt_md">&#8251; 첨부 가능한 파일은 jpg,png,pdf파일 등이며, 파일1개당 3Mb이내로 최대5개까지입니다.</p>
+						<div class="btn_group length2 mt_1">
+							<a href="#;" class="btn btn_md btn_round btn_darkgray">파일선택</a>
+							<a href="#;" class="btn btn_md btn_round btn_outline_darkgray">
+								<i class="ico ico_camera_sm"></i>
+								<span>촬영</span>
+							</a>
+						</div>
+					</div>
+
+					<p class="txt_lightgray txt_md mt_3"><strong>3</strong>/5장</p>
+					<div class="file_add_area">
+						<ul class="img_container">
+							<li>
+								<span><img src="../resources/img/content/_sample.jpg" alt="샘플 이미지"></span>
+								<button type="button" class="btn btn_icon">
+									<i class="ico ico_reset"></i>
+									<span class="sr_only">삭제</span>
+								</button>
+							</li>
+							<li>
+								<span><img src="../resources/img/content/_sample.jpg" alt="샘플 이미지"></span>
+								<button type="button" class="btn btn_icon">
+									<i class="ico ico_reset"></i>
+									<span class="sr_only">삭제</span>
+								</button>
+							</li>
+							<li>
+								<span><img src="../resources/img/content/_sample.jpg" alt="샘플 이미지"></span>
+								<button type="button" class="btn btn_icon">
+									<i class="ico ico_reset"></i>
+									<span class="sr_only">삭제</span>
+								</button>
+							</li>
+						</ul>
+					</div>
+
+					<div class="btn_group btn_btm_group btn_btm_group2">
+						<a href="#;" class="btn btn_sm btn_outline_default" onclick="openModal('layerEtcNotice', this);">
+							<i class="ico ico_tip_sm"></i>
+							<span>참고사항입니다</span>
+						</a>
+					</div>
+				</div>
+				<!-- e: 첨부파일 영역 -->
+
+			</div>
+			<!-- e: 제출정보 영역 -->
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>서류제출</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 영역 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>
+									고객님께서 비대면으로 제출하신 서류에 대하여 우체국 심사과정에서 이미지 파일의 해상도, 필수제출서류 누락, 타인 신청대행, 연락불가, 기타 사유로 추가(보완) 서류 제출 요구 또는
+									처리가 거절 될 수 있습니다.
+								</li>
+								<li>
+									다른 (공공)기관에서 발급한 서류의 경우 유효기간이 명시되어 있지 않은 서류는 90일 이내 발급분만 인정합니다.
+								</li>
+								<li>
+									파일업로드 시 업무와 무관한 이미지 파일 업로드 시 별도 사전 통보없이 해당 파일은 삭제 될 수 있습니다.
+								</li>
+								<li>
+									모니터 촬영한 이미지는 인정하지 않습니다. 반드시 출력원본, 자필작성본 촬영 파일을 업로드 하세요.
+								</li>
+								<li>
+									제출서류에 개인실명번호(주민등록번호)가 표시된 경우에는 뒷번호 7자리를 종이로 가리거나 지우고 제출바랍니다.
+								</li>
+								<li>
+									연락받으실 전화번호가 없을 경우 비대면 제출 서류의 처리 진행상황 및 수정/보완요청을 받지 못하여 처리가 거절 될 수 있습니다.
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 영역 -->
+
+
+			<!-- s: 참고사항입니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerEtcNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">참고사항 입니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>
+									신분증 촬영 이미지가 빛반사 등으로 인식하기 어려울 경우 우체국/접수 심사 단계에서 신청이 거부 될 수 있습니다.
+								</li>
+								<li>
+									신청서 등은 본인이 직접 작성한 원본을 촬영하여 탑재(업로드)하시기 바랍니다.
+								</li>
+								<li>
+									제출서류에 대한 접수여부, 심사/처리 결과 등은 제출하신 우체국에서 확인하시기 바랍니다.
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 참고사항입니다 레이어 팝업 -->
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+		</div>
+	</div>
+</body>
+
+</html>
