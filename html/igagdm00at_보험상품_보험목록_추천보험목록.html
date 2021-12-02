@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $mainRollingArea = $('.insurance_list .insurance_slick');
+			var $eventRollingArea = $('.event_area .event_slick');
+			$mainRollingArea.on('init reInit afterChange ', function (event, slick, currentSlide, index) {
+				//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+				var i = (currentSlide ? currentSlide : 0) + 1;
+				$('.insurance_list .rolling_info').find('.nums').html('<strong>' + i + '</strong> ' + '/' + slick
+					.slideCount);
+			});
+
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+
+			});
+
+
+			$eventRollingArea.on('init reInit afterChange ', function (event, slick, currentSlide, index) {
+				//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+				var i = (currentSlide ? currentSlide : 0) + 1;
+				$('.event_area .rolling_info').find('.nums').html('<strong>' + i + '</strong> ' + '/' + slick
+					.slideCount);
+			});
+
+			$eventRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+			});
+
+			$(".rolling_info").prepend(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_info .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$eventRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$eventRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+			if ($(".insurance_list .insurance_slick .slick-track  .slide_item").length < 2) {
+				$(".insurance_list .rolling_info").hide();
+			}
+
+			if ($(".event_area .event_slick .slick-track  .slide_item").length < 2) {
+				$(".event_area .rolling_info").hide();
+			}
+
+			$(".fc_faq_box > ul > li strong").click(function () {
+				if (!$(this).closest("li").hasClass("on")) {
+					$(this).closest("li").addClass("on");
+					$(this).next().slideDown();
+				} else {
+					$(this).closest("li").removeClass("on");
+					$(this).next().slideUp();
+				}
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="보험상품"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1 mb_0">
+				<ul class="tab_list">
+					<li class="on"><a href="#;"><span>추천/해지</span></a></li>
+					<li><a href="#;"><span>유형별</span></a></li>
+					<li><a href="#;"><span>다이렉트</span></a></li>
+					<li><a href="#;"><span>전체</span></a></li>
+				</ul>
+			</nav>
+
+			<h2 class="sr_only">추천</h2>
+
+			<!-- s: 보험 상품  -->
+			<div class="insurance_list slider_area">
+				<div class="insurance_slick">
+					<div class="slide_item">
+						<a href="#">
+							<span class="img_area">
+								<img src="../resources/img/content/img_product01.jpg" alt="">
+							</span>
+							<div class="slogan">
+								<span>한달 1만원으로 30세까지</span>
+								<strong>(무) 온라인어린이보험</strong>
+								<em>자녀생활맟춤 종합보험</em>
+							</div>
+						</a>
+					</div>
+					<div class="slide_item">
+						<a href="#">
+							<span class="img_area">
+								<img src="../resources/img/content/img_product01.jpg" alt="">
+							</span>
+							<div class="slogan">
+								<span>한달 1만원으로 30세까지</span>
+								<strong>(무) 온라인어린이보험</strong>
+								<em>자녀생활맟춤 종합보험</em>
+							</div>
+						</a>
+					</div>
+					<div class="slide_item">
+						<a href="#">
+							<span class="img_area">
+								<img src="../resources/img/content/img_product01.jpg" alt="">
+							</span>
+							<div class="slogan">
+								<span>한달 1만원으로 30세까지</span>
+								<strong>(무) 온라인어린이보험</strong>
+								<em>자녀생활맟춤 종합보험</em>
+							</div>
+						</a>
+					</div>
+
+				</div>
+				<div class="rolling_info">
+					<div class="nums"></div>
+				</div>
+			</div>
+			<!-- e: 보험 상품  -->
+
+			<div class="container pb_16">
+
+				<!-- s: 보험판매량 -->
+				<h3 class="tit1 mt_7">보험판매량<strong class="pl_1">TOP 2</strong></h3>
+				<div class="ins_product_list">
+					<ul>
+						<li class="product_item">
+
+							<strong class="ins_name">무배당온라인암보험<i class="ico ico_new_red ml_1"></i></strong>
+
+							<span class="price_info">
+								<span>월
+									<strong>7,800</strong>
+									원부터
+								</span>
+							</span>
+
+							<span class="tag_group">
+								<span class="tag">전기납</span>
+								<span class="tag">암보험</span>
+								<span class="tag">고액암</span>
+								<span class="tag">일반암</span>
+								<span class="tag">남여생식기암</span>
+								<span class="tag">항암방선선</span>
+								<span class="tag">약물치료비</span>
+							</span>
+
+							<div class="product_share">
+								<span class="review_star">5</span>
+								<a href="#" class="btn btn_share"><i class="ico ico_share"></i><span class="sr_only">공유하기</span></a>
+							</div>
+						</li>
+						<li class="product_item">
+
+							<strong class="ins_name">우체국 나르미 안전 보험
+								2010<i class="ico ico_new_red ml_1"></i></strong>
+
+							<span class="price_info">
+								월 <strong>7,800</strong>원부터
+							</span>
+
+							<span class="tag_group">
+								<span class="tag">전기납</span>
+								<span class="tag">암보험</span>
+								<span class="tag">고액암</span>
+								<span class="tag">일반암</span>
+								<span class="tag">남여생식기암</span>
+								<span class="tag">항암방선선</span>
+								<span class="tag">약물치료비</span>
+							</span>
+
+							<div class="product_share">
+								<span class="review_star">5</span>
+								<a href="#" class="btn btn_share"><i class="ico ico_share"></i><span class="sr_only">공유하기</span></a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- e: 보험판매량 -->
+
+				<!-- s: 연령대 pick -->
+				<div class="section">
+
+					<h3 class="tit1">연령대<strong class="pl_1">PICK</strong></h3>
+					<div class="header_controll">
+						<span><strong>20대(여)</strong>가 많이 가입했어요.</span>
+						<div class="control">
+							<a href="#;" class="prev"><span class="sr_only">이전</span></a>
+							<strong>20대(남)</strong>
+							<a href="#;" class="next active"><span class="sr_only">다음</span></a>
+						</div>
+					</div>
+					<div class="product_detail">
+						<div class="product_item">
+
+							<ul class="category_list">
+								<li class="active">암보험 </li>
+								<li>비갱신형 </li>
+								<li>전기납 </li>
+								<li>월납</li>
+								<li>인터넷보험 </li>
+								<li>스마트보험 </li>
+								<li>우체국창구</li>
+							</ul>
+
+							<strong class="ins_name">무배당온라인암보험<i class="ico ico_new_red ml_1"></i></strong>
+
+							<ul class="ins_info">
+								<li>
+									<em class="txt_black">20대(여)</em>
+									<span>10년 만기</span> / <span>10년납</span>
+								</li>
+								<li>
+									<em>월납</em>
+									<strong>1,800원</strong>
+								</li>
+								<li>
+									<em>보장금액</em>
+									<strong>1,000만원</strong>
+								</li>
+							</ul>
+
+							<div class="btn_group length2 mt_2">
+								<!-- 비활성화시 .btn_disabled 추가 -->
+								<a href="#;" class="btn btn_md btn_round btn_gray">상세보기</a>
+								<a href="#;" class="btn btn_md btn_round btn_gray">가입하기</a>
+							</div>
+
+							<span class="tag_group">
+								<span class="tag">전기납</span>
+								<span class="tag">암보험</span>
+								<span class="tag">고액암</span>
+								<span class="tag">일반암</span>
+								<span class="tag">남여생식기암</span>
+								<span class="tag">항암방선선</span>
+								<span class="tag">약물치료비</span>
+							</span>
+
+							<div class="product_share">
+								<span class="review_star">5</span>
+								<a href="#" class="btn btn_share"><i class="ico ico_share"></i><span class="sr_only">공유하기</span></a>
+							</div>
+
+						</div>
+						<div class="product_item">
+
+							<ul class="category_list">
+								<li class="active">암보험 </li>
+								<li>비갱신형 </li>
+								<li>전기납 </li>
+								<li>월납</li>
+								<li>인터넷보험 </li>
+								<li>스마트보험 </li>
+								<li>우체국창구</li>
+							</ul>
+
+							<strong class="ins_name">무배당온라인암보험<i class="ico ico_new_red ml_1"></i></strong>
+
+							<ul class="ins_info">
+								<li>
+									<em class="txt_black">20대(여)</em>
+									<span>10년 만기</span> / <span>10년납</span>
+								</li>
+								<li>
+									<em>월납</em>
+									<strong>1,800원</strong>
+								</li>
+								<li>
+									<em>보장금액</em>
+									<strong>1,000만원</strong>
+								</li>
+							</ul>
+
+							<div class="btn_group length2 mt_2">
+								<!-- 비활성화시 .btn_disabled 추가 -->
+								<a href="#;" class="btn btn_md btn_round btn_gray">상세보기</a>
+								<a href="#;" class="btn btn_md btn_round btn_gray">가입하기</a>
+							</div>
+
+							<span class="tag_group">
+								<span class="tag">전기납</span>
+								<span class="tag">암보험</span>
+								<span class="tag">고액암</span>
+								<span class="tag">일반암</span>
+								<span class="tag">남여생식기암</span>
+								<span class="tag">항암방선선</span>
+								<span class="tag">약물치료비</span>
+							</span>
+
+							<div class="product_share">
+								<span class="review_star">5</span>
+								<a href="#" class="btn btn_share"><i class="ico ico_share"></i><span class="sr_only">공유하기</span></a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- e:  연령대 pick -->
+
+				<!-- s: 이벤트 -->
+				<div class="section">
+					<h3 class="tit1">이벤트 혜택 놓치지 마세요</h3>
+
+					<div class="event_area slider_area">
+						<div class="event_slick">
+							<div class="slide_item">
+								<a href="#">
+									<span class="img_area">
+										<img src="../resources/img/content/img_event01.jpg" alt="">
+									</span>
+									<div class="slogan">
+										<em class="sup">우체국 보험 청구 이벤트</em>
+										<strong class="event_tit"><span class="txt_light">모바일에서</span> <br>
+											보험금 청구하면 행운이 팡팡</strong>
+										<span class="date">2021.05.13 - 8.12</span>
+										<em class="event_desc">우체국쇼핑상품권 증정</em>
+									</div>
+								</a>
+							</div>
+							<div class="slide_item">
+								<a href="#">
+									<span class="img_area">
+										<img src="../resources/img/content/img_event01.jpg" alt="">
+									</span>
+									<div class="slogan">
+										<em class="sup">우체국 보험 청구 이벤트</em>
+										<strong class="event_tit"><span class="txt_light">모바일에서</span> <br>
+											보험금 청구하면 행운이 팡팡</strong>
+										<span class="date">2021.05.13 - 8.12</span>
+										<em class="event_desc">우체국쇼핑상품권 증정</em>
+									</div>
+								</a>
+							</div>
+							<div class="slide_item">
+								<a href="#">
+									<span class="img_area">
+										<img src="../resources/img/content/img_event01.jpg" alt="">
+									</span>
+									<div class="slogan">
+										<em class="sup">우체국 보험 청구 이벤트</em>
+										<strong class="event_tit"><span class="txt_light">모바일에서</span> <br>
+											보험금 청구하면 행운이 팡팡</strong>
+										<span class="date">2021.05.13 - 8.12</span>
+										<em class="event_desc">우체국쇼핑상품권 증정</em>
+									</div>
+								</a>
+							</div>
+
+						</div>
+						<div class="rolling_info">
+							<div class="nums"></div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 이벤트 -->
+
+				<div class="fc_faq_box pb_4">
+					<ul>
+						<li>
+							<strong class="txt_lg txt_light">
+								보험가입 유의사항
+							</strong>
+							<div class="con">
+								<ul>
+									<li>
+										다이렉트 보험 가입 전 상품설명서와 약관을 반드시
+										확인해 주시기 바랍니다.
+									</li>
+									<li>
+										다이렉트보험 가입은 계약자와 피보험자는 동일해야
+										합니다.
+									</li>
+									<li>
+										다이렉트 보험은 내국인만 가입 가능합니다.
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<ul>
+					<li class="box box_border box_flex_type02">
+						<span>
+							<em class="txt_lg">우체국보험 고객센터</em>
+							<strong>1599 - 0100</strong>
+						</span>
+						<span class="btn_group">
+							<a href="#" class="btn btn_sm btn_round btn_darkgray">전화연결</a>
+						</span>
+					</li>
+					<li class="box box_border box_flex_type02 mt_2">
+						<span>
+							<em class="txt_lg">다이렉트 보험가입상담</em>
+							<strong>070 - 5074-4560 ~ 1</strong>
+						</span>
+						<span class="btn_group">
+							<a href="#" class="btn btn_sm btn_round btn_darkgray">전화연결</a>
+							<a href="#" class="btn btn_sm btn_round btn_darkgray">보험상담</a>
+						</span>
+					</li>
+				</ul>
+
+				<ul class="mt_2">
+					<li><i class="ico ico_notice_red mr_1"></i><strong class="txt_light">상담가능시간:</strong>
+						평일 09시~18시</li>
+					<li class="ml_4">- 점심시간 : 12 ~ 13시</li>
+					<li class="ml_4">- 은행휴무일 제외</li>
+				</ul>
+			</div>
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex btn_group_r">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>간편설계설정</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerProductFilter">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>보험안내장의 우편발송 신청 / 해지 내역을 볼 수 있습니다. </li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
