@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="모바일 번호표 발급"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container pt_4">
+				<div class="search_area">
+					<form action="#">
+						<fieldset>
+							<legend class="sr_only">전체</legend>
+							<div class="form_integrated_search">
+								<input type="text" class="tf" title="검색어" placeholder="검색명을 입력하세요">
+								<button type="submit" class="btn btn_sm">
+									<i class="ico ico_search_gray_sm"></i>
+									<span class="sr_only">검색</span>
+								</button>
+							</div>
+						</fieldset>
+					</form>
+					<!-- s: 검색창 -->
+					<div class="row_recommend mt_4">
+						<strong class="tag_tit">자주찾는 우체국</strong>
+						<ul class="tag_list">
+							<li>
+								<a href="#">
+									<span class="item_tag">
+										#나주우체국짱
+										<button type="button" class="btn btn_icon btn_close">
+											<i class="ico ico_close"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="item_tag">
+										#나주우체국
+										<button type="button" class="btn btn_icon btn_close">
+											<i class="ico ico_close"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="item_tag">
+										#우체국
+										<button type="button" class="btn btn_icon btn_close">
+											<i class="ico ico_close"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- e: 검색창 -->
+
+					<!-- s: 지도영역 -->
+					<div class="map_area">
+						<p>지도영역</p>
+						<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layermapBottomSheet'); return false;">
+							지도 버튼
+						</a>
+					</div>
+					<!-- e: 지도영역 -->
+				</div>
+
+			</div>
+
+			<!-- s: Modal popup 바텀시트 샘플 -->
+			<div class="modal_popup modal_bottom_sheet modal_map hide" data-popup="layermapBottomSheet">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit"></h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="address_area bg_lightgray">
+								<strong>서울 성동 우체국 <span class="distance">230m</span></strong>
+								<p>서울특별시 성동구 왕십리로 303</p>
+								<a href="#" class="btn btn_xs btn_outline_default">주소복사</a>
+								<span class="phonenumber">02-3333-1234</span>
+
+								<!-- 텍스트 노출형 -->
+								<span class="check_switch">
+									<input type="checkbox" id="inputCheckSwitch2" checked>
+									<label for="inputCheckSwitch2">
+										<span class="txt_uncheck">즐겨찾기</span>
+										<span class="txt_checked">즐겨찾기</span>
+									</label>
+								</span>
+							</div>
+							<ul class="list list1 mt_4">
+								<li>우편 업무시간 <span class="ml_1 txt_medium">09:00 - 18:00</span> </li>
+								<li>금융 업무시간 <span class="ml_1 txt_medium">08:00 - 16:30</span> </li>
+							</ul>
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_outline_default">전화연결</button>
+								<button type="button" class="btn btn_lg btn_outline_default">지도로 보기</button>
+							</div>
+							<div class="waiting_list">
+								<p class="item">
+									금융대기 <strong>5</strong> <span>명</span>
+								</p>
+								<p class="item">
+									우편대기 <strong>2</strong> <span>명</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleFull');">번호표
+								발급</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 바텀시트 샘플 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>계약상태를 선택 후 조회 버튼을 클릭하시면 계약상태별 보험 내역을 확인할 수 있습니다.</li>
+								<li>상품을 선택하시면 해당 상품의 상세 계약사항, 보장내용, 납입·지급내역 등 보험계약정보를 조회할 수 있습니다.</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
