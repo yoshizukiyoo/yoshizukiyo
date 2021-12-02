@@ -23,7 +23,24 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+			$(".bottom_fixed_area .calculate").click(function () {
 
+				if (!$(this).hasClass("on")) {
+					$(".user_controll_box").slideDown();
+					$("body , html").css({
+						overflow: "hidden"
+					})
+					$(".bottom_fixed_area").addClass("active");
+					$(this).addClass("on");
+				} else {
+					$(this).removeClass("on");
+					$(".user_controll_box").slideUp();
+					$("body , html").css({
+						overflow: "visible"
+					})
+					$(".bottom_fixed_area").removeClass("active");
+				}
+			})
 		});
 	</script>
 </head>
@@ -183,17 +200,175 @@
 
 			<!-- s: 하단 고정 영역 -->
 			<div class="bottom_fixed_area">
+				<div class="dim2"></div>
 				<div class="total_price">
 					<a href="#;" class="calculate">
-						내 보혐료 한꺼번에 계산하기
+						보험료 간편 설계 설정
 					</a>
+
+					<div class="user_controll_box">
+						<div class="user_chk_area">
+							<p>
+								간편계산 정보를 한번 입력하시면, 보험 마다 따로 계산할 필요가 없어요.
+							</p>
+							<ul class="tab">
+								<li class="on">
+									<input type="checkbox" name="user_chk" id="user_chk1_1">
+									<label for="user_chk1_1">기본</label>
+								</li>
+								<li>
+									<input type="checkbox" name="user_chk" id="user_chk1_2" checked>
+									<label for="user_chk1_2">태아</label>
+								</li>
+								<li>
+									<input type="checkbox" name="user_chk" id="user_chk1_3">
+									<label for="user_chk1_3">어린이</label>
+								</li>
+								<li>
+									<input type="checkbox" name="user_chk" id="user_chk1_4">
+									<label for="user_chk1_4">연금/저축</label>
+								</li>
+							</ul>
+						</div>
+
+						<!-- s : 기본 -->
+						<div class="default_set">
+							<div class="tf_item mb_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="user_gend">가입자 생년월일/성별 <span class="req">필수항목</span></label>
+										<input type="text" id="user_gend" class="tf" placeholder="예: 19850101" required="">
+									</div>
+								</div>
+							</div>
+
+							<div class="input_items mb_5">
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender1" id="lb_man1_1" checked="">
+									<label for="lb_man1_1">남자</label>
+								</span>
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender1" id="lb_woman1_1">
+									<label for="lb_woman1_1">여자</label>
+								</span>
+							</div>
+
+							<div class="box bg_lightgray mb_5">
+								<p class="txt_sm">
+									보험료를 계산해보셔도 전화로 가입을 권하지 않습니다. <br>안심하고 편하게 우체국보험을 간편 설계해보세요.
+								</p>
+							</div>
+						</div>
+						<!-- e : 기본 -->
+
+						<!-- s : 태아 -->
+						<div class="baby_set">
+							<div class="tf_item mb_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="birth_day">출산 예정일 <span class="req">필수항목</span></label>
+										<input type="text" id="birth_day" class="tf" placeholder="예: 19850101" required="">
+									</div>
+								</div>
+							</div>
+
+							<div class="tf_item mb_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="woman_birth_day">산모 생년월일 <span class="req">필수항목</span></label>
+										<input type="text" id="woman_birth_day" class="tf" placeholder="예: 19850101" required="">
+									</div>
+								</div>
+							</div>
+
+							<div class="input_items mb_5">
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender2" id="lb_man2_1">
+									<label for="lb_man2_1">남자</label>
+								</span>
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender2" id="lb_woman2_1" checked>
+									<label for="lb_woman2_1">여자</label>
+								</span>
+							</div>
+						</div>
+						<!-- e : 태아 -->
+
+						<!-- s : 어린이 -->
+						<div class="child_set">
+							<div class="tf_item mb_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="child_birth_day">자녀 생년월일/성별 <span class="req">필수항목</span></label>
+										<input type="text" id="child_birth_day" class="tf" placeholder="예: 19850101" required="">
+									</div>
+								</div>
+							</div>
+
+							<div class="input_items mb_5">
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender3" id="lb_man3_1">
+									<label for="lb_man3_1">남아</label>
+								</span>
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender3" id="lb_woman3_1" checked>
+									<label for="lb_woman3_1">여아</label>
+								</span>
+							</div>
+
+							<div class="tf_item mb_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="parent_birth_day">보호자 생년월일/성별 <span class="req">필수항목</span></label>
+										<input type="text" id="parent_birth_day" class="tf" placeholder="예: 19850101" required="">
+									</div>
+								</div>
+							</div>
+
+							<div class="input_items mb_5">
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender4" id="lb_man4_1">
+									<label for="lb_man4_1">남자</label>
+								</span>
+								<span class="check_item type_btn_round">
+									<input type="radio" name="lb_gender4" id="lb_woman4_1" checked>
+									<label for="lb_woman4_1">여자</label>
+								</span>
+							</div>
+						</div>
+						<!-- e : 어린이 -->
+
+						<!-- s : 월 납입 보험료 -->
+						<div class="pension_set">
+							<h3 class="tit2">월 납입 보험료</h3>
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_1" checked="">
+									<label for="month_price1_1">10만원</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_2">
+									<label for="month_price1_2">20만원</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_3">
+									<label for="month_price1_3">30만원</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_4">
+									<label for="month_price1_4">50만원</label>
+								</span>
+							</div>
+						</div>
+						<!-- e : 월 납입 보험료 -->
+					</div>
 				</div>
 				<div class="btn_group btn_group_flex">
 					<!-- 비활성화시 .btn_disabled 추가 -->
 					<a href="#;" class="btn btn_xl btn_primary">
 						<span>상품비교하기</span>
 					</a>
-					<button type="button" class="btn btn_xl btn_primary" disabled="">간편설계하기</button>
+					<a href="#;" class="btn btn_xl btn_primary" disabled="">간편설계하기</a>
 				</div>
 			</div>
 			<!-- e: 하단 고정 영역 -->
