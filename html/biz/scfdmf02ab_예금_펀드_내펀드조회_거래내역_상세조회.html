@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_toggle_more').click(function(){
+				$(this).parent().toggleClass('active');
+			})
+
+			$('.btn_submenu').click(function(){
+				$(this).parent().find('.sub_toggle').show();
+			})
+
+			$('.btn_close_tooltip').click(function(){
+				$(this).parent().hide();
+			});
+
+			$('.tab_list a').click(function(){
+				var tab = $(this).data('tab-tg');
+				$('.tab_con').hide();
+				$(".tab_con[data-sub-tab=" + tab + "]").show();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="펀드계좌조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<div class="account_info_box bg_lightgray">
+					<a href="#;" onclick="openModal('layerAccount'),this">
+						<div class="info">
+							<span class="txt_normal">키움단기국공채증권자투자신탁제1호[채권]Ce</span>
+							<p class="txt_bold mt_0">500000-00-000000</p>
+						</div>
+					</a>
+				</div>
+				<div class="input_items mt_2">
+					<span class="check_item type_btn">
+						<input type="radio" name="radio_chk" id="radio_chk_1" checked>
+						<label for="radio_chk_1">1주</label>
+					</span>
+					<span class="check_item type_btn">
+						<input type="radio" name="radio_chk" id="radio_chk_2">
+						<label for="radio_chk_2">3개월</label>
+					</span>
+					<span class="check_item type_btn">
+						<input type="radio" name="radio_chk" id="radio_chk_3">
+						<label for="radio_chk_3">1년</label>
+					</span>
+					<a href="#;" class="btn btn_md btn_outline_default btn_search" onclick="openModal('layer_bottom',this)">상세조회</a>
+				</div>
+				<ul class="card_info_list fund mt_2">
+					<li>
+						<div class="con more_link">
+							<button type="button" class="btn btn_submenu v_top"><span class="sr_only">세부 메뉴</span></button>
+							<div class="sub_toggle">
+								<button type="button" class="btn btn_icon btn_close_tooltip">
+									<i class="ico ico_close_sm"></i>
+									<span class="sr_only">닫기</span>
+								</button>
+								<div>
+									<a href="#;">추가매수</a>
+									<a href="#;">환매신청</a>
+									<a href="#;">자동이체신청</a>
+									<a href="#;" onclick="openModal('layer04',this)">통장사본</a>
+								</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_lg txt_normal">평가금액</div>
+								<div class="r">
+									<div class="tit">
+										<strong>50,478 <span class="txt_lg">원</span></strong>
+									</div>
+								</div>
+							</div>
+							<div class="flex_box mt_3">
+								<div class="l txt_lg txt_normal">수익률</div>
+								<div class="r">
+									<div class="tit txt_invalid">
+										<strong>0.95%</strong>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="link_btn">
+							<a href="#;" onclick="openModal('layer01',this)">계좌상세정보</a>
+							<a href="#;" onclick="openModal('layer02',this)">펀드상품정보</a>
+							<a href="#;" onclick="openModal('layer03',this)">수익률보고서</a>
+						</div>
+					</li>
+				</ul>
+				<div class="section">
+					<h2 class="tit1 mb_4">거래내역</h2>
+					<p class="txt_darkgray">조회기간 : <strong class="txt_normal">2021.07.15~2021.07.15</strong></p>
+					<ul class="border_list mt_1">
+						<li class="btm_more">
+							<span class="txt_gray02 txt_sm">2021.07.15 09:50:15</span>
+							<p class="txt_lg txt_medium">매수신청</p>
+							<div class="flex_box mt_2">
+								<div class="l txt_gray02 txt_sm">거래금액</div>
+								<div class="r">10,000 원</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">잔고좌수</div>
+								<div class="r">45,592 좌</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">기준가</div>
+								<div class="r">0 원</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">과표가</div>
+								<div class="r">0 원</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">평가금액</div>
+								<div class="r">50,749 원</div>
+							</div>
+							<a href="#;" class="btn_toggle_more"><span class="sr_only">더보기</span></a>
+						</li>
+						<li class="btm_more active">
+							<span class="txt_gray02 txt_sm">2021.07.15 09:50:15</span>
+							<p class="txt_lg txt_medium">매수신청취소</p>
+							<div class="flex_box mt_2">
+								<div class="l txt_gray02 txt_sm">거래금액</div>
+								<div class="r">10,000 원</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">잔고좌수</div>
+								<div class="r">45,592 좌</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">기준가</div>
+								<div class="r">0 원</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">과표가</div>
+								<div class="r">0 원</div>
+							</div>
+							<div class="flex_box">
+								<div class="l txt_gray02 txt_sm">평가금액</div>
+								<div class="r">50,749 원</div>
+							</div>
+							<a href="#;" class="btn_toggle_more"><span class="sr_only">더보기</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- s: Modal popup 상세조회 -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="layer_bottom">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<h3 class="tit1">조회기간</h3>
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-1" checked>
+									<label for="chk1-1">1주일</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-2">
+									<label for="chk1-2">1개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-3">
+									<label for="chk1-3">3개월</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="chk1" id="chk1-4">
+									<label for="chk1-4">1년</label>
+								</span>
+							</div>
+
+							<div class="tf_double mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit1">정렬</h3>
+								<a href="#;" class="tf_item flex_box flex_justify_between pt_1 pb_1 pl_3" onclick="openModal('layerOption'); return false;">
+									<p class="txt_md">전체</p>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer_bottom');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세조회 -->
+
+			<!-- s: Modal Popup 계좌상세정보 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">계좌상세정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div class="box bg_lightgray">
+								<p class="txt_normal txt_lg">키움단기국공채증권자투자신탁제1호[채권]Ce</p>
+								<p class="txt_bold txt_lg mt_1">500000-00-000000</p>
+							</div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">평가금액</div>
+										<div class="r">50,478 좌</div>
+									</div>
+									<div>
+										<div class="l">수익률</div>
+										<div class="r">0.95 %</div>
+									</div>
+									<div>
+										<div class="l">잔고좌수</div>
+										<div class="r">45,592 좌</div>
+									</div>
+									<div>
+										<div class="l">기준가</div>
+										<div class="r">1,106.43 원</div>
+									</div>
+									<div>
+										<div class="l">세전평가액</div>
+										<div class="r">50,444 원</div>
+									</div>
+									<div>
+										<div class="l">환매수수료</div>
+										<div class="r">133 원</div>
+									</div>
+									<div>
+										<div class="l">과표가</div>
+										<div class="r">1,041.46 원</div>
+									</div>
+									<div>
+										<div class="l">세금</div>
+										<div class="r">0 원</div>
+									</div>
+									<div>
+										<div class="l">환매예상금액</div>
+										<div class="r">50,311 원</div>
+									</div>
+									<div>
+										<div class="l">투자원금</div>
+										<div class="r">50,000 원</div>
+									</div>
+									<div>
+										<div class="l">잔고수익률</div>
+										<div class="r">0.88%</div>
+									</div>
+									<div>
+										<div class="l">매수신청금액</div>
+										<div class="r">10,000 원</div>
+									</div>
+									<div>
+										<div class="l">펀드번호</div>
+										<div class="r">21008</div>
+									</div>
+									<div>
+										<div class="l">연결계좌번호</div>
+										<div class="r"><strong>500000-00-000000</strong></div>
+									</div>
+									<div>
+										<div class="l">계좌가입일</div>
+										<div class="r">2021-05-11</div>
+									</div>
+									<div>
+										<div class="l">계좌만기일</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">저축유형</div>
+										<div class="r">임의식</div>
+									</div>
+									<div>
+										<div class="l">환매수수료면제일</div>
+										<div class="r">2021-08-09</div>
+									</div>
+									<div>
+										<div class="l">기준가적용일(현재)</div>
+										<div class="r">2021-07-02</div>
+									</div>
+									<div>
+										<div class="l">환매신청기준일</div>
+										<div class="r">2021-07-02</div>
+									</div>
+									<div>
+										<div class="l">환매기준가적용일</div>
+										<div class="r">2021-07-07</div>
+									</div>
+									<div>
+										<div class="l">환매대금지급일</div>
+										<div class="r">2021-07-08</div>
+									</div>
+									<div>
+										<div class="l">환매제한여부</div>
+										<div class="r">해당사항없음</div>
+									</div>
+									<div>
+										<div class="l">세제혜택</div>
+										<div class="r">일반</div>
+									</div>
+									<div>
+										<div class="l">적립식월납입액</div>
+										<div class="r">해당사항없음</div>
+									</div>
+									<div>
+										<div class="l">적립식납입회수</div>
+										<div class="r">해당사항없음</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 계좌상세정보 -->
+
+			<!-- s: Modal Popup 펀드상품 -->
+			<div class="modal_popup popup hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">펀드상품</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer02',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4 pb_10">
+							<div class="box bg_lightgray">
+								<p class="txt_medium txt_lg">우리중소형고배당30증권투자신탁1호(채권혼합)Ae</p>
+								<p class="mt_1">수수료선취-온라인</p>
+							</div>
+							<p class="mt_3 txt_gray">이 투자신탁은 채권을 법 시행령 제94조 제2항 제4호 에서 규정하는 주된 투자대상자산으로 하여 수익을 추구하는 것을 목적으로 합니다.그러나, 상기의 투자목적이 반드시 달성된다는 보장은 없으며, 집합투자업자, 신탁업자, 판매회사 등 이 투자신탁과 관련된 그 어떤 당사자도 투자원금의 보장 또는 투자목적의 달성을 보장하지 아니합니다.</p>
+							<div class="mt_8">
+								<div class="txt_r txt_sm">기준일 : 2021.08.23</div>
+								<ul class="tbl_list mt_2">
+									<li>
+										<div>
+											<div class="div_th">유형</div>
+											<div class="div_td">채권혼합형<br>(일반채권혼합)</div>
+										</div>
+										<div>
+											<div class="div_th">위험등급</div>
+											<div class="div_td">
+												<img src="../../resources/img/content/fund_grade03.png" alt="보통위험" class="grade_img">
+												<p class="txt_light">보통위험</p>
+											</div>
+										</div>
+										<div>
+											<div class="div_th">유형</div>
+											<div class="div_td">
+												<div class="zero_grade">
+													<i class="active"></i>
+													<i class="active"></i>
+													<i class="active"></i>
+													<i class="active"></i>
+													<i></i>
+												</div>
+											</div>
+										</div>
+										<div>
+											<div class="div_th">기준가</div>
+											<div class="div_td">
+												<p class="txt_sm txt_normal">1.206.91</p>
+												<p class="price_num up">6.42</p>
+												<p class="txt_sm txt_normal">(0.53%)</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<div class="div_th">수익률(3M)</div>
+											<div class="div_td">2.9992%</div>
+										</div>
+										<div>
+											<div class="div_th">규모</div>
+											<div class="div_td">15억원</div>
+										</div>
+										<div>
+											<div class="div_th">판매액</div>
+											<div class="div_td">-0.2억원</div>
+										</div>
+										<div>
+											<div class="div_th">총보수</div>
+											<div class="div_td">0.7420%</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<nav class="tab_menu tab_menu1 mb_0">
+							<ul class="tab_list">
+								<li class="on"><a href="#" data-tab-tg="sub_tab01"><span>기준가변동정보</span></a></li>
+								<li><a href="#" data-tab-tg="sub_tab02"><span>운용성과</span></a></li>
+								<li><a href="#" data-tab-tg="sub_tab03"><span>포트폴리오정보</span></a></li>
+								<li><a href="#" data-tab-tg="sub_tab04"><span>비용비교</span></a></li>
+							</ul>
+						</nav>
+						<div class="container p_4">
+							<!-- s: 기준가변동정보 -->
+							<div class="tab_con" data-sub-tab="sub_tab01">
+								<div class="tbl">
+									<table>
+										<caption class="sr_only">기준가변동정보 표로 운용사, 설정일, 설정금액 정보 제공</caption>
+										<colgroup>
+											<col>
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">운용사</th>
+												<th scope="col">설정일</th>
+												<th scope="col">설정금액</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>우리운용</td>
+												<td>2015.03.16</td>
+												<td>15억원</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tbl mt_4">
+									<table>
+										<caption class="sr_only">기준가변동정보 표로 기준가, 과표기준가, 평가등급 정보 제공</caption>
+										<colgroup>
+											<col>
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">기준가</th>
+												<th scope="col">과표기준가</th>
+												<th scope="col">평가등급</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1,206.91원</td>
+												<td>996.97원</td>
+												<td>
+													<div class="fund_star_grade">
+														<i class="active"></i>
+														<i class="active"></i>
+														<i class="active"></i>
+														<i class="active"></i>
+														<i></i>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="mt_6">
+									<p class="txt_sm">조회기간 : 2021.07.15 - 2021.07.15</p>
+									<div class="mt_2 txt_c">
+										<img src="../../resources/img/content/fund_chart01.jpg" alt="chart">
+									</div>
+								</div>
+							</div>
+							<!-- e: 기준가변동정보 -->
+
+							<!-- s: 운용성과 -->
+							<div class="tab_con" data-sub-tab="sub_tab02" style="display:none;">
+								<h3 class="tit1 mb_0">기간별수익률</h3>
+								<p class="txt_r txt_sm">기준일 : 2021.08.23</p>
+								<div class="tbl mt_2">
+									<table style="min-width: 500px;">
+										<caption class="sr_only">운용성과 표로 구분, 1개월, 3개월, 6개월 정보 제공</caption>
+										<colgroup>
+											<col style="width: 25%;">
+											<col style="width: 25%;">
+											<col style="width: 25%;">
+											<col style="width: 25%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">구분</th>
+												<th scope="col">1개월</th>
+												<th scope="col">3개월</th>
+												<th scope="col">6개월</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">수익률</th>
+												<td>-1.2139%</td>
+												<td>2.9992%</td>
+												<td>5.1792%</td>
+											</tr>
+											<tr>
+												<th scope="row">벤치마크</th>
+												<td>-1.4172%</td>
+												<td>-1.0092%</td>
+												<td>-0.6212%</td>
+											</tr>
+											<tr>
+												<th scope="row">%순위</th>
+												<td>55/100</td>
+												<td>4/100</td>
+												<td>4/100</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tbl">
+									<table class="border_t0" style="min-width: 500px;">
+										<caption class="sr_only">운용성과 표로 수익률(3M), 1년, 3년, 연초대비 정보 제공</caption>
+										<colgroup>
+											<col style="width: 25%;">
+											<col style="width: 25%;">
+											<col style="width: 25%;">
+											<col style="width: 25%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col" class="border_t0">수익률(3M)</th>
+												<th scope="col" class="border_t0">1년</th>
+												<th scope="col" class="border_t0">3년</th>
+												<th scope="col" class="border_t0">연초대비</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">수익률</th>
+												<td>13.6272%</td>
+												<td>21.2808%</td>
+												<td>7.2854%</td>
+											</tr>
+											<tr>
+												<th scope="row">벤치마크</th>
+												<td>7.3648%</td>
+												<td>13.6051%</td>
+												<td>1.5807%</td>
+											</tr>
+											<tr>
+												<th scope="row">%순위</th>
+												<td>9/100</td>
+												<td>16/100</td>
+												<td>6/100</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p class="bul_notice mt_1 txt_gray">유형평균은 펀드평가사(제로인) 기준으로 제공됩니다.</p>
+								<div class="section">
+									<h3 class="tit1">기간별수익조회</h3>
+									<h4 class="tit2">조회기간</h4>
+									<div class="input_items">
+										<span class="check_item type_btn">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">1개월</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="radio" name="chk1" id="chk1-2">
+											<label for="chk1-2">3개월</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="radio" name="chk1" id="chk1-3">
+											<label for="chk1-3">6개월</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="radio" name="chk1" id="chk1-4">
+											<label for="chk1-4">1년</label>
+										</span>
+										<span class="check_item type_btn">
+											<input type="radio" name="chk1" id="chk1-5">
+											<label for="chk1-5">3년</label>
+										</span>
+									</div>
+									<div class="mt_2 txt_c">
+										<img src="../../resources/img/content/fund_chart01.jpg" alt="chart">
+									</div>
+								</div>
+							</div>
+							<!-- e: 운용성과 -->
+
+							<!-- s: 포트폴리오정보 -->
+							<div class="tab_con" data-sub-tab="sub_tab03" style="display:none;">
+								<h3 class="tit1 mb_0">자산구성</h3>
+								<p class="txt_sm txt_r">기준일 : 2021.06.01</p>
+								<div class="tbl mt_2">
+									<table>
+										<caption class="sr_only">포트폴리오정보 표로 구분, 평가액(억원), 펀드내비중 정보 제공</caption>
+										<colgroup>
+											<col style="width: 30%;">
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">구분</th>
+												<th scope="col">평가액(억원)</th>
+												<th scope="col">펀드내비중</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>국내주식</td>
+												<td>3</td>
+												<td>24.17%</td>
+											</tr>
+											<tr>
+												<td>해외주식</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>국내채권</td>
+												<td>8</td>
+												<td>71.65%</td>
+											</tr>
+											<tr>
+												<td>해외채권</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>유동성</td>
+												<td>0.5</td>
+												<td>4.18%</td>
+											</tr>
+											<tr>
+												<td>수익증권</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>주식선물<br>순포지션</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>채권선물<br>순포지션</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="mt_6 txt_c pl_3 pr_3">
+									<img src="../../resources/img/content/fund_chart02.jpg" alt="주식, 유동성, 채권, 기차">
+								</div>
+								<div class="section">
+									<h3 class="tit1">보유주식TOP10</h3>
+									<div class="tbl">
+										<table>
+											<caption class="sr_only">보유주식TOP10 표로 순위, 종목명, 펀드내비중 정보 제공</caption>
+											<colgroup>
+												<col style="width: 20%;">
+												<col>
+												<col>
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">순위</th>
+													<th scope="col">종목명</th>
+													<th scope="col">펀드내비중</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>5</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>6</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>7</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>8</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>9</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+												<tr>
+													<td>10</td>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="section">
+									<h3 class="tit1">보유채권TOP10</h3>
+									<div class="tbl">
+										<table>
+											<caption class="sr_only">보유채권TOP10 표로 순위, 종목명, 펀드내비중 정보 제공</caption>
+											<colgroup>
+												<col style="width: 20%;">
+												<col>
+												<col>
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">순위</th>
+													<th scope="col">종목명</th>
+													<th scope="col">펀드내비중</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>한국철도공사885</td>
+													<td>4.47%</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>에스케이인천석유화학20-1</td>
+													<td>4.34%</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>SK건설167</td>
+													<td>2.90% </td>
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>신한투자2(후)</td>
+													<td>2.51%</td>
+												</tr>
+												<tr>
+													<td>5</td>
+													<td>엠캐피탈277-1</td>
+													<td>2.18%</td>
+												</tr>
+												<tr>
+													<td>6</td>
+													<td>롯데글로벌로지스45-2</td>
+													<td>1.83%</td>
+												</tr>
+												<tr>
+													<td>7</td>
+													<td>물가01750-2806(물가18-5)</td>
+													<td>1.86%</td>
+												</tr>
+												<tr>
+													<td>8</td>
+													<td>SK건설158</td>
+													<td>1.62%</td>
+												</tr>
+												<tr>
+													<td>9</td>
+													<td>대신증권18-1</td>
+													<td>1.53%</td>
+												</tr>
+												<tr>
+													<td>10</td>
+													<td>미래에셋증권50</td>
+													<td>1.50 %</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="section">
+									<h3 class="tit1">주식 투자스타일</h3>
+									<div class="txt_c">
+										<img src="../../resources/img/content/fund_style.jpg" alt="주식 투자스타일">
+									</div>
+								</div>
+								<div class="section">
+									<h3 class="tit1">채권 투자스타일</h3>
+									<div class="txt_c">
+										<img src="../../resources/img/content/fund_style.jpg" alt="채권 투자스타일">
+									</div>
+								</div>
+							</div>
+							<!-- e: 포트폴리오정보 -->
+
+							<!-- s: 비용비교 -->
+							<div class="tab_con" data-sub-tab="sub_tab04" style="display:none;">
+								<h3 class="tit1">판매수수료</h3>
+								<div class="tbl">
+									<table style="min-width: 500px;">
+										<caption class="sr_only">판매수수료 표로 클래스 펀드명, 선취, 후취 정보 제공</caption>
+										<colgroup>
+											<col>
+											<col style="width: 25%;">
+											<col style="width: 25%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">클래스 펀드명</th>
+												<th scope="col">선취</th>
+												<th scope="col">후취</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>우리중소형고배당30증권투자신탁1호(채권혼합)C</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>우리중소형고배당30증권투자신탁1호(채권혼합)A</td>
+												<td>투자금액의 0.50%이내</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ae</td>
+												<td>투자금액의 0.25%이내</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>부과시기</td>
+												<td>매입시</td>
+												<td>환매시</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="section">
+									<h3 class="tit1">보수(연간, %)</h3>
+									<div class="tbl">
+										<table style="min-width: 500px;">
+											<caption class="sr_only">보수 표로 클래스 펀드명, 총 보수, 판매보수, 운용등 정보 제공</caption>
+											<colgroup>
+												<col>
+												<col style="width: 20%;">
+												<col style="width: 20%;">
+												<col style="width: 20%;">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">클래스 펀드명</th>
+													<th scope="col">총 보수</th>
+													<th scope="col">판매보수</th>
+													<th scope="col">운용등</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)C</td>
+													<td>1.3920</td>
+													<td>0.9000</td>
+													<td rowspan="4">운용 0.4500<br>수탁 0.0300<br>사무 0.0120</td>
+												</tr>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
+													<td>0.9920</td>
+													<td>0.5000</td>
+												</tr>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)A</td>
+													<td>0.9920</td>
+													<td>0.5000</td>
+												</tr>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ae</td>
+													<td>0.7420</td>
+													<td>0.2500</td>
+												</tr>
+												<tr>
+													<td>부과시기</td>
+													<td colspan="3">최초 보수계산일로부터 매 3개월</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="section">
+									<h3 class="tit1">환매수수료</h3>
+									<div class="tbl">
+										<table style="min-width: 500px;">
+											<caption class="sr_only">환매수수료 표로 클래스 펀드명, 환매수수료 정보 제공</caption>
+											<colgroup>
+												<col style="width: 50%;">
+												<col style="width: 50%;">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">클래스 펀드명</th>
+													<th scope="col">환매수수료</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)C</td>
+													<td>없음</td>
+												</tr>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ce</td>
+													<td>없음</td>
+												</tr>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)A</td>
+													<td>없음</td>
+												</tr>
+												<tr>
+													<td>우리중소형고배당30증권투자신탁1호(채권혼합)Ae</td>
+													<td>없음</td>
+												</tr>
+												<tr>
+													<td>부과시기</td>
+													<td>환매시</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- e: 비용비교 -->
+							<div class="section">
+								<h3 class="tit1">투자시 유의사항</h3>
+								<p class="txt_gray">우정사업본부 준법감시인 심사필 제20-12호(2020.10.25.)</p>
+								<ul class="list txt_gray mt_2">
+									<li class="bul_notice">집합투자증권은 운용결과에따라 투자원금의 손실이 발생할 수 있으며, 그 손실은 투자자에게 귀속됩니다.</li>
+									<li class="bul_notice mt_1">집합투자증권을 취득하시기 전에 투자대상, 보수·수수료 및 환매방법 등에 관하여 (간이)투자설명서를 반드시 읽어보시기 바랍니다.</li>
+									<li class="bul_notice mt_1">집합투자증권은 예금자보호법에 따라 예금보험공사가 보호하지 않습니다.</li>
+									<li class="bul_notice mt_1">증권거래비용, 기타비용이 추가로 발생할 수 있습니다.과거의 운용실적이 미래의 수익률을 보장하는 것은 아닙니다.</li>
+									<li class="bul_notice mt_1">종류형 펀드의 경우, 종류별 집합투자증권에 부과되는 보수·수수료 차이로 운용실적이 달라질 수 있습니다.</li>
+									<li class="bul_notice mt_1">MMF는 시가와 장부가의 차이가 ±0.5%를 초과하거나 초과할 우려가 있는 경우 시가로 전환됩니다.</li>
+									<li class="bul_notice mt_1">제로인 평가등급(태극마크)은 펀드평가사인 제로인이 운용기간이 3년 이상인 펀드를 대상으로 수익률과 변동성(위험)을 동시에 고려하여 산출한 것입니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 펀드상품 -->
+
+			<!-- s: Modal Popup 수익률보고서 -->
+			<div class="modal_popup popup hide" data-popup="layer03">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">수익률보고서</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer03',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div class="box bg_lightgray">
+								<p class="txt_normal txt_lg">키움단기국공채증권자투자신탁제1호[채권]Ce</p>
+								<p class="txt_bold txt_lg mt_1">500000-00-000000</p>
+							</div>
+							<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<p class="tf">6월/2021년</p>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+
+							<!-- s: 내역 있을 때-->
+							<div class="section">
+								<h3 class="tit1">1. 기본정보</h3>
+								<div class="double_box">
+									<div class="btm">
+										<div>
+											<div class="l">펀드계좌번호</div>
+											<div class="r"><strong>500000-00-000000</strong></div>
+										</div>
+										<div>
+											<div class="l">펀드명</div>
+											<div class="r">키움단기국공채증권자투자신탁제1호[채권]Ce</div>
+										</div>
+										<div>
+											<div class="l">잔고좌수</div>
+											<div class="r">196,976 좌</div>
+										</div>
+										<div>
+											<div class="l">최초투자일자</div>
+											<div class="r">2021.06.12</div>
+										</div>
+										<div>
+											<div class="l">투자기간</div>
+											<div class="r">20일</div>
+										</div>
+										<div>
+											<div class="l">정보제공기준시점</div>
+											<div class="r">2021.06.30</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="section">
+								<h3 class="tit1">2. 주요정보</h3>
+								<div class="fund_report">
+									<div class="box bg_lightgray txt_normal">
+										“정보제공 시점인 (2021.05.31)기주으로 고객님께서 투자하신 흥국공모주로우불채움1(채혼)Ce의 평가금액은 (④ 50,272), 누적 수익률은 (⑥ 0.16%)입니다.”
+									</div>
+									<div class="report_step">
+										<div class="l tit">
+											<span class="num">1</span>투자원금
+										</div>
+										<div class="r">
+											50,000 원
+										</div>
+									</div>
+									<div class="report_step half">
+										<div class="l">
+											<div class="tit">
+												<span class="num">2</span>중간환매대금
+											</div>
+											<div class="txt">
+												<p>비용차감 전</p>
+												<p>비용차감 후</p>
+											</div>
+										</div>
+										<div class="r">
+											<p>0 원</p>
+											<p>0 원</p>
+										</div>
+									</div>
+									<div class="report_step box">
+										<div class="l tit">
+											<span class="num">3</span>수수료·보수
+										</div>
+										<div class="r">
+											(-) 17원<br>(판매수수료율: 0.00%, <br>총보수율: 0.6300%)
+										</div>
+									</div>
+								</div>
+								<div class="fund_report mt_4">
+									<div class="box bg_lightgray txt_normal">
+										“총 투자원금(①)에서 중간환매대금(②) 및 수수료〮보수(③)를 차감하고 자산운용사가 운용한 결과가 평가금액(④)입니다.<br>(보다 자세한 운용내용은 자산운용보고서 참조)
+									</div>
+									<div class="report_step">
+										<div class="l tit">
+											<span class="num">4</span>평가금액
+										</div>
+										<div class="r">
+											50,272 원
+										</div>
+									</div>
+									<div class="report_step half">
+										<div class="l">
+											<div class="tit">
+												<span class="num">5</span>환매예상금액
+											</div>
+											<div class="txt">
+												<p>차감예상액<br>
+													<span>(환매수수료, 세금 등)</span>
+												</p>
+												<p>환매예상금액</p>
+											</div>
+										</div>
+										<div class="r">
+											<div class="flex_item">
+												<p>(-) 189원</p>
+											</div>
+											<p>50,083 원</p>
+										</div>
+									</div>
+									<div class="report_step half">
+										<div class="l">
+											<div class="tit">
+												<span class="num">6</span>누적수익률
+											</div>
+											<div class="txt">
+												<p>비용차감 전</p>
+												<p>비용차감 후</p>
+											</div>
+										</div>
+										<div class="r">
+											<p>0.54%</p>
+											<p>0.16%</p>
+										</div>
+									</div>
+									<div class="report_step half">
+										<div class="l">
+											<div class="tit">
+												<span class="num">7</span>연환산수익률
+											</div>
+											<div class="txt">
+												<p>비용차감 전</p>
+												<p>비용차감 후</p>
+											</div>
+										</div>
+										<div class="r">
+											<p>0.00%</p>
+											<p>0.00%</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 내역 있을 때-->
+
+							<!-- s: 내역 없을 때-->
+							<!-- <div class="section">
+								<div class="txt_size18 txt_c">해당<strong class="txt_medium">내역이</strong> 존재하지 않습니다.</div>
+							</div> -->
+							<!-- e: 내역 없을 때-->
+
+							<div class="section">
+								<h3 class="tit1">check 유의사항</h3>
+								<ul class="list list1">
+									<li>“투자원금”: 해당 집합투자증권을 매수하기 위해 투자자가 투자매매·중개업자에게 납입한 금액의 누계.<br>(선취 판매수수료로 납부한 금액 포함)</li>
+									<li>“중간환매대금”: 투자기간 중 해당 집합투자증권을 환매한 금액의 누계<br>“비용 차감 후 중간환매대금”: 환매수수료 및 세금 등 제반비용을 차감하고 투자자에게 실제 지급한 금액</li>
+									<li>“수수료·보수”: 투자기간 중 발생한 판매수수료 등 각종 수수료 및 총보수(판매보수, 운용보수, 신탁보수, 사무관리보수)</li>
+									<li>“평가금액”: 정보제공 기준시점의 집합투자기구의 기준가격과 투자자가 보유한 집합투자증권의 좌수를 곱하여 계산</li>
+									<li>“차감 예상액”: 정보제공 기준시점의 평가금액으로 전액 환매했을 경우 발생할 것으로 예상되는 환매수수료, 후취판매수수료, 세금 등 제반비용을 합산</li>
+									<li>“누적수익률(비용 차감 전)”= [(평가금액 + 비용차감전중간환매대금) ÷ 투자원금 - 1]</li>
+									<li>“누적수익률(비용 차감 후)”= [(환매예상금액 + 비용차감후중간환매대금) ÷ 투자원금 - 1]</li>
+									<li>“연환산수익률”<br>= (1 + 가입이후누적수익률)(1/가입년수) - 1<br>(다만, 투자기간이 1년 미만일 경우 표시하지 않음)</li>
+									<li>MMF의 경우 좌당 발생비용 미제공(사무관리사)으로 인해 ③보수 금액은 제외됩니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 수익률보고서 -->
+
+			<!-- s: Modal Popup 통장사본 -->
+			<div class="modal_popup popup hide" data-popup="layer04">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">통장사본</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer04',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div class="double_box passbook">
+								<div class="btm">
+									<div>
+										<div class="l">고객명</div>
+										<div class="r">나봄미</div>
+									</div>
+									<div>
+										<div class="l">펀드명</div>
+										<div class="r txt_normal">키움단기국공채증권자투자신탁제1호[채권]Ce</div>
+									</div>
+									<div>
+										<div class="l">저축유형</div>
+										<div class="r">임의식</div>
+									</div>
+									<div>
+										<div class="l">계좌번호</div>
+										<div class="r"><strong>000000-00-000000</strong></div>
+									</div>
+									<div>
+										<div class="l">계좌가입국</div>
+										<div class="r">서울중앙우체국</div>
+									</div>
+									<div>
+										<div class="l">가입일자</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">조회일자</div>
+										<div class="r">2021.08.31</div>
+									</div>
+									<div>
+										<div class="l">고객센터</div>
+										<div class="r">1599-1900, 1588-1900</div>
+									</div>
+								</div>
+								<div class="txt_c pb_4">
+									<span class="txt_sm txt_normal txt_blue v_mid mr_1">과학기술정보통신부장관</span>
+									<img src="../../resources/img/content/ico_passbook.png" alt="과학기술정보통신부장판인">
+								</div>
+							</div>
+							<div class="mt_1 txt_gray">
+								<p class="bul_notice">이 통장사본은 본인 계좌번호 참고를 위한 이미지 출력물로서 어떠한 용도의 증명서로도 사용하실 수 없습니다.</p>
+								<p class="bul_notice mt_1">우체국은 이 통장 이미지(또는 출력물)를 근거로 한 거래에 대하여 책임을 지지 않습니다.</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer04');">공유하기</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 통장사본 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
