@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="자동이체조회/변경/해지"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<div>
+					<h2 class="tit1">정보입력</h2>
+					<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">조회구분</span>
+								<p class="tf">전체</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="mt_6">
+					<h2 class="tit1">출금계좌정보</h2>
+					<div class="account_info_box">
+						<a href="#;" onclick="openModal('layerAccount'),this">
+							<span class="bank">
+								<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+							</span>
+							<div class="info">
+								<strong>스마트 e-Postbank 예금</strong>
+								<p>100057-02-000010</p>
+								<div class="price">
+									<span>출금가능금액</span>
+									<strong>2,345,900 원</strong>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="section">
+					<ul class="border_list link_more">
+						<li>
+							<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+								<div class="flex_box">
+									<div class="l txt_gray"><span class="sr_only">이체기간</span>1999.05.12 - 2000.05.11</div>
+									<div class="r txt_medium"><span class="sr_only">조회구분</span>해약</div>
+								</div>
+								<div class="flex_box">
+									<div class="l txt_gray"><span class="sr_only">이체일</span>12일</div>
+									<div class="r txt_invalid txt_medium txt_size18"><span class="sr_only">이체금액</span><span
+											class="txt_bold">50,000</span>원</div>
+								</div>
+								<div class="flex_box">
+									<div class="l txt_gray"><span class="sr_only">입금은행</span>우체국</div>
+									<div class="r txt_gray txt_lg"><span class="sr_only">입금은행 계좌번호</span>222222-22-222222</div>
+								</div>
+								<div class="flex_box">
+									<div class="l txt_medium txt_lg"><span class="sr_only">내 통장 표기</span>곗돈</div>
+									<div class="r"><span class="sr_only">입금은행 예금주</span>한지민</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#;" onclick="openModal('inquiry_result_detail', this); return false;">
+								<div class="flex_box">
+									<div class="l txt_gray"><span class="sr_only">이체기간</span>1999.05.12 - 2000.05.11</div>
+									<div class="r txt_medium"><span class="sr_only">조회구분</span>정상</div>
+								</div>
+								<div class="flex_box">
+									<div class="l txt_gray"><span class="sr_only">이체일</span>12일</div>
+									<div class="r txt_invalid txt_medium txt_size18"><span class="sr_only">이체금액</span><span
+											class="txt_bold">50,000</span>원</div>
+								</div>
+								<div class="flex_box">
+									<div class="l txt_gray"><span class="sr_only">입금은행</span>우체국</div>
+									<div class="r txt_lg"><span class="sr_only">입금은행 계좌번호</span>222222-22-222222</div>
+								</div>
+								<div class="flex_box">
+									<div class="l txt_medium txt_lg"><span class="sr_only">내 통장 표기</span>월세</div>
+									<div class="r"><span class="sr_only">입금은행 예금주</span>나봄미</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary">신규등록</a>
+				</div>
+			</div>
+
+			<!-- s: 조회상세 팝업 -->
+			<div class="modal_popup popup hide" data-popup="inquiry_result_detail">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">자동이체조회/변경/해지</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div>
+								<h3 class="tit1">상세정보</h3>
+								<div class="double_box">
+									<div class="btm">
+										<div>
+											<div class="l">출금계좌</div>
+											<div class="r">010017-02-526768</div>
+										</div>
+										<div>
+											<div class="l">자동이체일</div>
+											<div class="r">12일</div>
+										</div>
+										<div>
+											<div class="l">자동이체기간</div>
+											<div class="r">2021.05.12 ~ 2022.05.11</div>
+										</div>
+										<div>
+											<div class="l">이체종류</div>
+											<div class="r">일반(입출식예금)</div>
+										</div>
+										<div>
+											<div class="l">입금은행</div>
+											<div class="r">우체국</div>
+										</div>
+										<div>
+											<div class="l">입금계좌번호</div>
+											<div class="r">999999-99-999999</div>
+										</div>
+										<div>
+											<div class="l">입금계좌예금주명</div>
+											<div class="r">나봄미</div>
+										</div>
+										<div>
+											<div class="l">이체금액</div>
+											<div class="r"><span class="txt_bold">350,000</span>원</div>
+										</div>
+										<div>
+											<div class="l">내 통장 표기</div>
+											<div class="r">용돈</div>
+										</div>
+										<div>
+											<div class="l">입금계좌명칭(별칭)</div>
+											<div class="r">비밀통장</div>
+										</div>
+										<div>
+											<div class="l">받는분 통장 표기</div>
+											<div class="r">나봄미</div>
+										</div>
+										<div>
+											<div class="l">등록일</div>
+											<div class="r">2021.05.11</div>
+										</div>
+										<div>
+											<div class="l">상태</div>
+											<div class="r"><span class="txt_medium">정상</span></div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="sbftaf02bs_이체출금_자동이체_자동이체조회변경해지_자동이체해지_정보입력.html" class="btn btn_lg btn_outline_default" onclick="closeModal('inquiry_result_detail')">해지</a>
+							<a href="sbftaf02es_이체출금_자동이체_자동이체조회변경해지_자동이체변경_정보입력.html" class="btn btn_lg btn_primary" onclick="closeModal('inquiry_result_detail')">변경</a>
+							<a href="#;" class="btn btn_lg btn_outline_default" onclick="closeModal('inquiry_result_detail'); return false;">확인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 조회상세 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
