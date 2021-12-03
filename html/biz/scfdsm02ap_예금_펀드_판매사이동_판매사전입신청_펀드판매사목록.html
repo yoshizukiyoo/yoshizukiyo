@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.double_box.toggle .top').click(function () {
+				$(this).toggleClass('active');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="판매사전출신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">원판매사계좌확인</span></li>
+					<li><span class="num">2</span><span class="txt">신규계좌생성</span></li>
+					<li><span class="num">3</span><span class="txt">입력정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">신청완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+				<ul class="list list1">
+					<li>고객님의 원판매사 계좌를 확인하고 판매사전입을 신청할 수 있습니다.</li>
+					<li>원판매사 펀드계좌 번호 및 이동대상 펀드코드를 입력 한 후 펀드계좌확인을 클릭하시면 전입신청 가능여부가 확인됩니다.</li>
+					<li>필히 전출하시려고 하시는 판매사에서 전출신청을 하셔야 전입신청을 완료할 수 있습니다.</li>
+					<li>신청일 익영업일에 이동신청 완료됩니다.</li>
+				</ul>
+				
+				<div class="section">
+					<h2 class="tit1">원판매사계좌확인</h2>
+					<div class="tf_item">
+						<div class="tf_item_body flex_justify_between">
+							<p class="txt_lg txt_gray02">판매사검색</p>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray" onclick="openModal('layer01'); return false;">검색</a>
+							</div>
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body flex_justify_between">
+							<p class="txt_lg txt_gray02">이동대상펀드코드검색</p>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray" onclick="openModal('layer02'); return false;">검색</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">원판매사 펀드계좌번호 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="계좌를 입력하여 주십시오." required>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="sbfdsm02bs_펀드_판매사이동_판매사전입신청_신규계좌생성.html" class="btn btn_xl btn_primary">
+						<span>펀드계좌확인</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal Popup 펀드판매사목록 -->
+			<div class="modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">펀드판매사목록</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="board_search bg_lightgray fund_search">
+							<input type="text" class="tf" title="검색 입력" placeholder="판매사명을 입력하세요.">
+							<a href="#;" class="btn_search">
+								<span class="sr_only">검색</span>
+							</a>
+						</div>
+						<div class="container p_4 pt_6 seller_list">
+							<div class="flex_box">
+								<div class="l txt_lg txt_normal">흥국증권</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">우리은행(펀드판매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">신한은행(펀드판매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default bg_lightgray btn_round btn_disabled">이동불가능</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">하나은행(위탁판매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">대구은행(펀드판매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default bg_lightgray btn_round btn_disabled">이동불가능</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">한국스탠다드차티드은행</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default bg_lightgray btn_round btn_disabled">이동불가능</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">경남은행(위탁매매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">신한은행(펀드판매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">하나은행(위탁판매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+								</div>
+							</div>
+							<div class="flex_box mt_5">
+								<div class="l txt_lg txt_normal">대구은행(펀드판매)</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 펀드판매사목록 -->
+
+			<!-- s: Modal Popup 펀드검색 -->
+			<div class="modal_popup popup hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">펀드검색</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer02',this);">닫기</button>
+					</div>
+					<div class="popup_body pb_4">
+						<div class="container p_4">
+							<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">펀드유형</span>
+										<p class="tf">전체</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="input_items">
+											<span class="check_item">
+												<input type="radio" name="chk1" id="chk1-1" checked>
+												<label for="chk1-1">펀드명</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="chk1" id="chk1-2">
+												<label for="chk1-2">예탁원종목코드</label>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="board_search bg_lightgray fund_search">
+							<input type="text" class="tf" title="검색 입력" placeholder="은행(증권사)명을 입력하세요.">
+							<a href="#;" class="btn_search">
+								<span class="sr_only">검색</span>
+							</a>
+						</div>
+						<div class="container">
+							<ul class="border_list">
+								<li class="flex_box border_t0 txt_overflow">
+									<div class="l">
+										<p class="txt_lg txt_normal txt_ellipsis">AB글로벌고수익증권투자</p>
+										<p class="txt_gray02 txt_normal">KR5370956264</p>
+										<p class="txt_gray02 txt_normal">해외채권형</p>
+									</div>
+									<div class="r pr_4">
+										<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+									</div>
+								</li>
+								<li class="flex_box txt_overflow">
+									<div class="l">
+										<p class="txt_lg txt_normal txt_ellipsis">AB글로벌고수익증권투자</p>
+										<p class="txt_gray02 txt_normal">KR5370956264</p>
+										<p class="txt_gray02 txt_normal">해외채권형</p>
+									</div>
+									<div class="r pr_4">
+										<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+									</div>
+								</li>
+								<li class="flex_box txt_overflow">
+									<div class="l">
+										<p class="txt_lg txt_normal txt_ellipsis">AB글로벌고수익증권투자</p>
+										<p class="txt_gray02 txt_normal">KR5370956264</p>
+										<p class="txt_gray02 txt_normal">해외채권형</p>
+									</div>
+									<div class="r pr_4">
+										<a href="#;" class="btn btn_sm btn_outline_default btn_round">선택</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 펀드검색 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

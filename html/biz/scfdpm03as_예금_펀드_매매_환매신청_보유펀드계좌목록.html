@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="환매신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">보유펀드계좌목록</span></li>
+					<li><span class="num">2</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">3</span><span class="txt">입력정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">환매신청완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+				<ul class="num_list">
+					<li>인터넷 환매 가능시간 : 09:00 ~ 16:00 (영업일만 가능)</li>
+					<li>환매시 적용기준가격 및 지급일자(신청일 기준으로 일자를 계산합니다.)
+						<div class="tbl mt_4">
+							<table style="min-width: 400px;">
+								<caption class="sr_only">환매시 적용기준가격 및 지급일자 표로 예탁결재원 기준시간, 당일 (T), 제2영업일 (T+1), 제3 영업일 (T+2), 제4 영업일 (T+3), 제5 영업일 (T+4) 정보 제공 </caption>
+								<colgroup>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" colspan="2">예탁결재원 기준시간</th>
+										<th scope="col">당일 (T)</th>
+										<th scope="col">제2 영업일 (T+1)</th>
+										<th scope="col">제3 영업일 (T+2)</th>
+										<th scope="col">제4 영업일 (T+3)</th>
+										<th scope="col">제5 영업일 (T+4)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="7">주식형/주식혼합형</th>
+									</tr>
+									<tr>
+										<td rowspan="2">15:30</td>
+										<td>이전</td>
+										<td>신청</td>
+										<td>기준가 적용</td>
+										<td></td>
+										<td>지급</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>이후</td>
+										<td>신청</td>
+										<td></td>
+										<td>기준가 적용</td>
+										<td>지급</td>
+										<td></td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="7">채권혼합형</th>
+									</tr>
+									<tr>
+										<td rowspan="2">17:00</td>
+										<td>이전</td>
+										<td>신청</td>
+										<td></td>
+										<td>기준가 적용</td>
+										<td>지급</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>이후</td>
+										<td>신청</td>
+										<td></td>
+										<td></td>
+										<td>기준가 적용</td>
+										<td>지급</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="7">채권형</th>
+									</tr>
+									<tr>
+										<td rowspan="2">17:00</td>
+										<td>이전</td>
+										<td>신청</td>
+										<td></td>
+										<td>기준가 적용 /지급</td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>이후</td>
+										<td>신청</td>
+										<td></td>
+										<td></td>
+										<td>기준가 적용 /지급</td>
+										<td></td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="7">MMF</th>
+									</tr>
+									<tr>
+										<td rowspan="2">17:00</td>
+										<td>이전</td>
+										<td>신청</td>
+										<td>기준가 적용 /지급</td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>이후</td>
+										<td>신청</td>
+										<td></td>
+										<td>기준가 적용 /지급</td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+					<li class="mt_1">개별 펀드별로 환매시 기준가격 적용일 및 환매대금 지급일이 다를 수 있으니 해당 약관 또는 투자설명서를 참고하시거나 창구직원에게 문의하여 확인하시기 바랍니다.</li>
+				</ul>
+			
+				<div class="section">
+					<h2 class="tit1">펀드계좌목록(신청가능)</h2>
+					<div class="double_box">
+						<a href="scfdpm03bs_예금_펀드_매매_환매신청_신청정보입력.html" class="btm btm_link">
+							<div>
+								<div class="l">펀드계좌번호</div>
+								<div class="r"><strong>500000-00-000000</strong></div>
+							</div>
+							<div>
+								<div class="l">펀드명</div>
+								<div class="r">흥국공공주로우불채움플러스증권투자신탁1호(채권혼합)Ce</div>
+							</div>
+							<div>
+								<div class="l">저축유형</div>
+								<div class="r">임의식</div>
+							</div>
+							<div>
+								<div class="l">잔고좌수</div>
+								<div class="r">45,592 좌</div>
+							</div>
+							<div>
+								<div class="l">평가액</div>
+								<div class="r">50,444 원</div>
+							</div>
+							<div>
+								<div class="l">매수 신청액</div>
+								<div class="r">0 원</div>
+							</div>
+						</a>
+					</div>
+					<div class="double_box mt_2">
+						<a href="scfdpm03bs_예금_펀드_매매_환매신청_신청정보입력.html" class="btm btm_link">
+							<div>
+								<div class="l">펀드계좌번호</div>
+								<div class="r"><strong>500000-00-000000</strong></div>
+							</div>
+							<div>
+								<div class="l">펀드명</div>
+								<div class="r">흥국공공주로우불채움플러스증권투자신탁1호(채권혼합)Ce</div>
+							</div>
+							<div>
+								<div class="l">저축유형</div>
+								<div class="r">임의식</div>
+							</div>
+							<div>
+								<div class="l">잔고좌수</div>
+								<div class="r">45,592 좌</div>
+							</div>
+							<div>
+								<div class="l">평가액</div>
+								<div class="r">50,444 원</div>
+							</div>
+							<div>
+								<div class="l">매수 신청액</div>
+								<div class="r">0 원</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

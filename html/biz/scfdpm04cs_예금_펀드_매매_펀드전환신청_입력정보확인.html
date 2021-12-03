@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="펀드전환신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">펀드계좌조회</span></li>
+					<li><span class="num">2</span><span class="txt">신청정보입력</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">입력정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">전환신청완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+				<h2 class="tit1">보유계좌정보</h2>
+				<div class="double_box">
+					<div class="btm">
+						<div>
+							<div class="l">펀드계좌번호</div>
+							<div class="r"><strong>500000-00-000000</strong></div>
+						</div>
+						<div>
+							<div class="l pr_4">펀드명</div>
+							<div class="r word_break_all">흥국공공주로우불채움플러스증권투자신탁1호(채권혼합)Ce</div>
+						</div>
+						<div>
+							<div class="l">연결계좌</div>
+							<div class="r"><strong>500000-00-000000</strong></div>
+						</div>
+						<div>
+							<div class="l">저축유형</div>
+							<div class="r">임의식</div>
+						</div>
+						<div>
+							<div class="l">좌수</div>
+							<div class="r">45,592 좌</div>
+						</div>
+						<div>
+							<div class="l">평가금액</div>
+							<div class="r">50,444 원</div>
+						</div>
+					</div>
+				</div>
+				<div class="section">
+					<h2 class="tit1">전환계좌</h2>
+					<div class="double_box">
+						<div class="btm">
+							<div>
+								<div class="l">출금계좌번호</div>
+								<div class="r"><strong>500000-00-000000</strong></div>
+							</div>
+							<div>
+								<div class="l pr_4">펀드명</div>
+								<div class="r word_break_all">흥국공공주로우불채움플러스증권투자신탁1호(채권혼합)Ce</div>
+							</div>
+							<div>
+								<div class="l">연결계좌</div>
+								<div class="r"><strong>500000-00-000000</strong></div>
+							</div>
+							<div>
+								<div class="l">신규사유</div>
+								<div class="r">펀드전환신규</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section">
+					<h2 class="tit1">비밀번호확인</h2>
+					<a href="#;" class="tf_item" onclick="openModal('pwd_full_popup');return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<div class="lab">보유계좌비밀번호 <span class="req">필수항목</span></div>
+								<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+								<div class="password_masking gray">
+									<!-- 자릿수에 맞춰 <i></i> 추가 -->
+									<i></i><i></i><i></i><i></i>
+								</div>
+							</div>
+						</div>
+					</a>
+					<P class="txt_guide">비밀번호 5회이상 오류시 거래 제한</P>
+				</div>
+
+				<!-- s: 보안카드 입력 -->
+				<div class="section">
+					<h2 class="tit1">보안카드 입력</h2>
+					<div class="security_box">
+						<div>
+							<strong>[55] 앞 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 앞 2자리">
+							</div>
+						</div>
+						<div>
+							<strong>[55] 뒤 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 뒤 2자리">
+							</div>
+						</div>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: 보안카드 입력 -->
+
+				<!-- s: OTP 입력 -->
+				<div class="section">
+					<h2 class="tit1">OTP 입력</h2>
+					<div class="otp_box">
+						<a href="#;" onclick="openModal('otp_pwd_popup', this);return false;">
+							<i class="on"></i><i></i><i></i><i></i><i></i><i></i>
+						</a>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: OTP 입력 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="scfdpm04ds_예금_펀드_매매_펀드전환신청_전환신청완료.html" class="btn btn_xl btn_primary">
+						<span>전환신청완료</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal Popup 신규계좌생성 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">신규계좌생성</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">펀드명</div>
+										<div class="r">흥국멀티플레이 30공모주증권자투자신탁(채권혼합)C1</div>
+									</div>
+									<div>
+										<div class="l">연결계좌번호</div>
+										<div class="r"><strong>500000-00-000000</strong></div>
+									</div>
+									<div>
+										<div class="l">신규사유</div>
+										<div class="r">펀드전환신규</div>
+									</div>
+								</div>
+							</div>
+							<div class="section">
+								<h3 class="tit1">보유계좌비밀번호로 신규계좌비밀번호 설정</h3>
+								<div class="input_items">
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk1" id="pop_chk1-1" checked>
+										<label for="pop_chk1-1">예</label>
+									</span>
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk1" id="pop_chk1-2">
+										<label for="pop_chk1-2">아니오</label>
+									</span>
+								</div>
+							</div>
+							<div class="section">
+								<h3 class="tit1">펀드운용(수탁)보고서</h3>
+								<div class="input_items fund">
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk2" id="pop_chk2-1" checked>
+										<label for="pop_chk2-1">수령거절</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk2" id="pop_chk2-2">
+										<label for="pop_chk2-2">이메일</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk2" id="pop_chk2-3">
+										<label for="pop_chk2-3">우편(자택)</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk2" id="pop_chk2-4">
+										<label for="pop_chk2-4">우편(직장)</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk2" id="pop_chk2-5">
+										<label for="pop_chk2-5">영업점수령</label>
+									</span>
+								</div>
+							</div>
+							<div class="section">
+								<h3 class="tit1">펀드실질투자수익률보고서</h3>
+								<div class="input_items fund">
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk3" id="pop_chk3-1" checked>
+										<label for="pop_chk3-1">통보생략</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk3" id="pop_chk3-2">
+										<label for="pop_chk3-2">문자메시지</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="pop_chk3" id="pop_chk3-3">
+										<label for="pop_chk3-3">이메일</label>
+									</span>
+								</div>
+							</div>
+							<div class="section">
+								<h3 class="tit1">상하한수익률 알림서비스</h3>
+								<div class="input_items">
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk4" id="pop_chk4-1" checked>
+										<label for="pop_chk4-1">예</label>
+									</span>
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk4" id="pop_chk4-2">
+										<label for="pop_chk4-2">아니오</label>
+									</span>
+								</div>
+								<p class="bul_notice mt_1 txt_gray">서비스 신청 시 단계별 해당수익률 최초 도달 시 각1회에 한하여 문자메시지 발송합니다.</p>
+							</div>
+							<div class="section">
+								<h3 class="tit1">월말수익률 알림서비스(문자메시지)</h3>
+								<div class="input_items">
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk5" id="pop_chk5-1" checked>
+										<label for="pop_chk5-1">예</label>
+									</span>
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk5" id="pop_chk5-2">
+										<label for="pop_chk5-2">아니오</label>
+									</span>
+								</div>
+							</div>
+							<div class="section">
+								<h3 class="tit1">거래알림 서비스</h3>
+								<div class="input_items">
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk6" id="pop_chk6-1" checked>
+										<label for="pop_chk6-1">예</label>
+									</span>
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk6" id="pop_chk6-2">
+										<label for="pop_chk6-2">아니오</label>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">신규계좌 생성완료</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 신규계좌생성 -->
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">비밀번호 입력</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">4자리 숫자를 입력해 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								4자리 숫자를 입력해 주세요.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 비밀번호 입력 팝업 -->
+
+			<!-- s: OTP 암호입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="otp_pwd_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">디지털 OTP</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">디지털 OTP 보안인증을 진행합니다.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+									<span class="certi_time">02:59</span>
+								</div>
+							</div>
+							<div class="btn_group btn_bottom_fixed mt_0">
+								<a href="#;" class="btn btn_md btn_round btn_default">
+									<span>인증번호 재입력</span>
+								</a>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								디지털 OTP앱에서 생성한 6자리 번호를 입력해 주세요
+							</p>
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary">인증요청</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('otp_pwd_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('otp_pwd_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: OTP 암호입력 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
