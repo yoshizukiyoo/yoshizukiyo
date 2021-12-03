@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_dropdown').each(function () {
+				dropDown($(this), 2)
+			})
+		});
+
+		function dropDown(obj, currList) {
+			obj.not('.active').siblings().slice(currList).hide();
+
+			obj.on('click', function (e) {
+				e.preventDefault();
+				if (obj.hasClass('active')) {
+					obj.siblings().slice(currList).hide();
+					obj.html('펼치기').removeClass('active');
+				} else {
+					obj.siblings().not(':visible').show();
+					obj.html('접기').addClass('active');
+				}
+			})
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="정기기부내역조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<div class="double_box">
+					<div class="top">
+						<span class="check_item">
+							<input type="radio" name="chk1" id="chk1_1">
+							<label for="chk1_1">사회복지공동모금회 정기기부내역</label>
+						</span>
+					</div>
+					<div class="btm dropdown">
+						<div>
+							<div class="l">기부일자</div>
+							<div class="r">매월 01일</div>
+						</div>
+						<div>
+							<div class="l">기부금액</div>
+							<div class="r"><span class="txt_bold">10,000</span>원</div>
+						</div>
+						<div>
+							<div class="l">시작일자</div>
+							<div class="r">2021.07.27</div>
+						</div>
+						<div>
+							<div class="l">종료일자</div>
+							<div class="r">2021.07.27</div>
+						</div>
+						<div>
+							<div class="l">출금게좌</div>
+							<div class="r">우체국 503375-02-691648</div>
+						</div>
+						<div>
+							<div class="l">소득공제</div>
+							<div class="r">연말소득공제 정보제공 동의</div>
+						</div>
+						<a href="#;" class="btn btn_dropdown active">접기</a>
+					</div>
+				</div>
+
+				<div class="double_box mt_2">
+					<div class="top">
+						<span class="check_item">
+							<input type="radio" name="chk1" id="chk1_2">
+							<label for="chk1_2">사회복지공동모금회 정기기부내역</label>
+						</span>
+					</div>
+					<div class="btm dropdown">
+						<div>
+							<div class="l">기부일자</div>
+							<div class="r">매월 01일</div>
+						</div>
+						<div>
+							<div class="l">기부금액</div>
+							<div class="r"><span class="txt_bold">10,000</span>원</div>
+						</div>
+						<div>
+							<div class="l">시작일자</div>
+							<div class="r">2021.07.27</div>
+						</div>
+						<div>
+							<div class="l">종료일자</div>
+							<div class="r">2021.07.27</div>
+						</div>
+						<div>
+							<div class="l">출금게좌</div>
+							<div class="r">우체국 503375-02-691648</div>
+						</div>
+						<div>
+							<div class="l">소득공제</div>
+							<div class="r">연말소득공제 정보제공 동의</div>
+						</div>
+						<a href="#;" class="btn btn_dropdown">펼치기</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default" onclick="openModal('alert02', this); return false;">해지</a>
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('alert01', this); return false;">변경</a>
+				</div>
+			</div>
+
+			<!-- s: 변경페이지 진입 확인 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc">
+								<p>정기기부 내용을 변경하시겟습니까?</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('alert01'); return false;">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 변경페이지 진입 확인 팝업 -->
+
+			<!-- s: 해지페이지 진입 확인 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc">
+								<p>정기기부를 해지하시겠습니까?</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('alert02'); return false;">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 해지페이지 진입 확인 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

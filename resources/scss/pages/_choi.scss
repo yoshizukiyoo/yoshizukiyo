@@ -211,6 +211,28 @@ $demiprimary: #fbe59b !default;
 
 		box-shadow: 0 0 20px 0 rgba(0, 0, 0, .12);
 	}
+
+	&.btn_dropdown{
+		position: absolute;
+		width: 50px;
+		height: 25px;
+		border-radius: 25px 25px 0 0;
+
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
+
+		background-color: #ddd;
+		background-repeat: no-repeat;
+		background-size: 10px 6px;
+		background-position: center 12px;
+		background-image: url(#{$url-img}/content/ico_chevron_down_sm_bold.png);
+
+		text-indent: -9999px;
+		&.active{
+			background-image: url(#{$url-img}/content/ico_chevron_up_sm_bold.png);
+		}
+	}
 }
 
 .submenu_area {
@@ -662,6 +684,15 @@ $demiprimary: #fbe59b !default;
 	}
 }
 
+.border_list{
+	&.dropdown{
+		>li{
+			position: relative;
+			padding-bottom: 35px;
+			overflow-y: hidden;
+		}
+	}
+}
 //타이틀
 h3.tit2 {
 	&.score_tit {
@@ -812,6 +843,15 @@ h3.tit2 {
 }
 
 .double_box {
+	.top{
+		.check_item{
+			input[type=radio]{
+				&+label{
+					background-position: 0 3px;
+				}
+			}
+		}
+	}
 	.btm {
 		>p {
 			color: #555;
@@ -835,6 +875,10 @@ h3.tit2 {
 		}
 		&+.btm{
 			border-top: 1px solid $border-base;
+		}
+		&.dropdown{
+			position: relative;
+			padding-bottom: 35px;
 		}
 	}
 }
@@ -1028,6 +1072,11 @@ h3.tit2 {
 		&~.sub_check_item{
 			display: block;
 			width: 100%;
+		}
+	}
+	input[type=checkbox]{
+		&+label{
+			background-position-y: 1px;
 		}
 	}
 }
