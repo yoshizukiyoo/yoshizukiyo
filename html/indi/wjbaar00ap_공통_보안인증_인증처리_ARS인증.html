@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		//
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">공동인증서 갱신</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				
+				<!-- s: ARS 인증 팝업 -->
+				<div class="modal_popup modal_md show" data-popup="ars-cert-popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">ARS 인증</h3>
+						</div>
+						<div class="popup_body">
+							<!-- s: ARS 인증요청 폼 -->
+							<div>
+								<ul class="list list1">
+									<li>받으실 전화번호를 선택하신 후 인증번호 요청 버튼을 Click해 주세요.</li>
+									<li>전화번호 변경이 필요하시면 “마이페이지 &gt; 개인정보관리 &gt; 고객정보조회/수정” 메뉴에서 정보를 변경해 주시기 바랍니다.</li>
+								</ul>
+								<div class="tbl_row2 mt_4">
+									<table>
+										<caption class="sr_only">ARS 인증 전화번호 선택 폼이며 전화번호를 선택하실 수 있습니다.</caption>
+										<colgroup>
+											<col style="width: 23%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">전화번호</th>
+												<td>
+													<span class="check_item">
+														<input type="radio" name="ars_number" id="ars_number_1" checked="">
+														<label for="ars_number_1">010-XXXX-1111</label>
+													</span>
+													<span class="check_item">
+														<input type="radio" name="ars_number" id="ars_number_2">
+														<label for="ars_number_2">02-XXXX-1111</label>
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- e: ARS 인증요청 폼 -->
+
+							<!-- s: ARS 인증확인 폼 -->
+							<div>
+								<ul class="list list1">
+									<li>전화번호 010-XXXX-1111 으로 전화를 걸고 있습니다.</li>
+									<li>아래 인증 번호를 전화기에 입력해 주시기 바랍니다.</li>
+									<li>인증 번호 입력횟수는 총 3회 이므로 신중히 입력하시기 바랍니다.</li>
+								</ul>
+								<div class="tbl_row2 mt_4">
+									<table>
+										<caption class="sr_only">ARS 인증번호 확인</caption>
+										<colgroup>
+											<col style="width: 23%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">인증번호</th>
+												<td>123456</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- e: ARS 인증확인 폼 -->
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('ars-cert-popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary">인증번호요청</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="arsCompleted();">인증확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: ARS 인증 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
