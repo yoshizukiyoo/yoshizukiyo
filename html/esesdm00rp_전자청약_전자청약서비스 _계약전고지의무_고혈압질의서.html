@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="popup_tit">고혈압질의서</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body product_popup">
+			<div class="container pt_4 pb_4">
+				<ul class="list list1">
+					<li>
+						고혈압질의서는 안전벨트보험, 에버리치 상해보험, 착한안전보험인 경우에만 해당됩니다.
+					</li>
+					<li>
+						과거나 현재 고혈압으로 진단, 치료, 정기검진 받은 경우 아래 질문에 답하여 주십시오.
+					</li>
+				</ul>
+
+				<div class="count_gray_box none mt_10">
+					<ol>
+						<li>
+							고혈압 진단받게 된 경위가 어떻게 되십니까?
+							<ul class="mt_2">
+								<li>
+									<span class="check_item">
+										<input type="radio" name="lb_cate1" id="lb_cate1_1">
+										<label for="lb_cate1_1">건강검진 중 우연히 발견</label>
+									</span>
+								</li>
+								<li class="mt_2">
+									<span class="check_item">
+										<input type="radio" name="lb_cate1" id="lb_cate1_2" checked>
+										<label for="lb_cate1_2">다른 질환 치료 중 발견</label>
+									</span>
+								</li>
+								<li class="mt_2">
+									<span class="check_item">
+										<input type="radio" name="lb_cate1" id="lb_cate1_3">
+										<label for="lb_cate1_3">기타</label>
+									</span>
+								</li>
+							</ul>
+							<div class="tf_item mt_3 disabled">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tel">기타 선택시 작성</label>
+										<input type="text" id="lb_tel" class="tf" placeholder="입력해주세요" required disabled>
+									</div>
+								</div>
+							</div>
+
+						</li>
+						<li>
+							고혈압으로 최초진단 및 치료를 시작한 시기는 언제입니까?
+
+							<div class="tf_item mt_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tel">년, 월, 일</label>
+										<input type="text" id="lb_tel" class="tf" placeholder="예시)1987.04.02" required>
+									</div>
+								</div>
+							</div>
+
+						</li>
+						<li>
+							고혈압이 생기게 된 원인은 무엇이라고 들으셨습니까?
+
+							<ul class="mt_2">
+								<li>
+									<span class="check_item">
+										<input type="radio" name="lb_cate3" id="lb_cate3_1">
+										<label for="lb_cate3_1">본태성 고혈압(원인 모름)
+										</label>
+									</span>
+								</li>
+								<li class="mt_2">
+									<span class="check_item">
+										<input type="radio" name="lb_cate3" id="lb_cate3_2" checked>
+										<label for="lb_cate3_2">신성 고혈압(신장질환)</label>
+									</span>
+								</li>
+								<li class="mt_2">
+									<span class="check_item">
+										<input type="radio" name="lb_cate3" id="lb_cate3_3">
+										<label for="lb_cate3_3">심장성 고혈압(심장질환)</label>
+									</span>
+								</li>
+								<li class="mt_2">
+									<span class="check_item">
+										<input type="radio" name="lb_cate3" id="lb_cate3_4">
+										<label for="lb_cate3_4">기타</label>
+									</span>
+								</li>
+							</ul>
+
+						</li>
+
+						<li>
+							치료하신 사항에 대하여 구체적으로 알려 주십시오.
+
+							<p class="txt_guide">
+								① 고혈압 진료를 위해 정기적으로 병원을 방문하십니까?
+							</p>
+							<div class="visit_hos">
+								<div class="tf_item first">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_month1">회/월</label>
+											<input type="text" id="lb_month1" class="tf" value="0" required>
+
+											<span class="right_txt">회</span>
+										</div>
+									</div>
+								</div>
+								<span class="middle">또는</span>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_years1">회/년</label>
+											<input type="text" id="lb_years1" class="tf" value="0" required>
+
+											<span class="right_txt">회</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<p class="txt_guide mt_4">
+								② 드시는 약은 하루에 몇 번, 몇 알씩 드십니까?
+							</p>
+							<div class="visit_hos">
+								<div class="tf_item first">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_part1">번/1회</label>
+											<input type="text" id="lb_part1" class="tf" value="0" required>
+
+											<span class="right_txt">번</span>
+										</div>
+									</div>
+								</div>
+								<span class="middle left">,</span>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_al1">알/1회</label>
+											<input type="text" id="lb_al1" class="tf" value="0" required>
+
+											<span class="right_txt">알</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<p class="txt_guide mt_4">
+								③ 최근 1년 이내에 혈압 조절이 안 되어 치료법을 변경한 적이 있습니까?
+							</p>
+
+							<div class="input_items">
+								<span class="check_item type_btn_round">
+									<input type="radio" name="chk5" id="chk5_Y" checked>
+									<label for="chk5_Y">예</label>
+								</span>
+								<span class="check_item type_btn_round">
+									<input type="radio" name="chk5" id="chk5_N">
+									<label for="chk5_N">아니오</label>
+								</span>
+							</div>
+
+							<div class="tf_item mt_3">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_chk1">예 선택 시 변경내용 기재</label>
+										<input type="text" id="lb_chk1" class="tf" placeholder="입력해주세요" required>
+									</div>
+								</div>
+							</div>
+							<p class="txt_guide">
+								(내용: 시기,내용-약제 또는 용량 변경 등 기재)
+							</p>
+
+							<p class="txt_guide mt_4">
+								④ 고혈압 진단 후 어떤 치료를 받으셨는지 알려 주십시오.
+							</p>
+
+							<ul class="check_list mt_0">
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list" id="check_list1">
+										<label for="check_list1">약물복용</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list" id="check_list2">
+										<label for="check_list2">식이요법</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list" id="check_list3">
+										<label for="check_list3">운동요법</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list" id="check_list4">
+										<label for="check_list4">입원</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list" id="check_list5">
+										<label for="check_list5">기타</label>
+									</span>
+								</li>
+							</ul>
+
+							<div class="tf_item mt_3 disabled active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_4_1">기타 선택시 작성</label>
+										<input type="text" id="lb_4_1" class="tf" placeholder="입력해주세요" required disabled>
+									</div>
+								</div>
+							</div>
+
+							<div class="visit_hos length1">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_drug1">약물복용기간</label>
+											<input type="text" id="lb_drug1" class="tf" value="0" required>
+											<span class="right_txt">년</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="middle_bar day">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date_start1">입원일자</label>
+											<input type="text" id="lb_date_start1" class="tf" placeholder="YYYY.MM.DD" value="2021.05.05"
+												required>
+										</div>
+									</div>
+								</div>
+
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date_last1">퇴원일자</label>
+											<input type="text" id="lb_date_last1" class="tf" placeholder="YYYY.MM.DD" value="2021.08.15"
+												required>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="visit_hos length1">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_all_day">총입원일</label>
+											<input type="text" id="lb_all_day" class="tf" value="0" required>
+											<span class="right_txt">일</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<p class="txt_guide mt_4">
+								⑤ 고혈압으로 가장 최근 병원 진료하신 시기와 검사 결과를 알려 주십시오.
+							</p>
+
+							<div class="visit_hos length1">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_drug1">최근 내원일</label>
+											<input type="text" id="lb_drug1" class="tf" value="2021.05.05" required>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="middle_bar day">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date_start1">혈압 최저</label>
+											<input type="text" id="lb_date_start1" class="tf" value="000" required>
+										</div>
+									</div>
+								</div>
+
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date_last1">혈압 최고</label>
+											<input type="text" id="lb_date_last1" class="tf" value="000" required>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</li>
+						<li>
+							고혈압으로 인해 다음과 같은 합병증이 있으십니까?
+							<ul class="check_list mt_0">
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list5" id="check_list5_1">
+										<label for="check_list5_1">심장</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list5" id="check_list5_2">
+										<label for="check_list5_2">뇌질환(뇌졸증)</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list5" id="check_list5_3">
+										<label for="check_list5_3">신장(콩팥, 혈뇨ㆍ단백뇨)</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list5" id="check_list5_4">
+										<label for="check_list5_4">눈</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list5" id="check_list5_5">
+										<label for="check_list5_5">혈관(동맥경화증 등)</label>
+									</span>
+								</li>
+								<li>
+									<span class="check_item">
+										<input type="checkbox" name="check_list5" id="check_list5_6">
+										<label for="check_list5_6">기타(당뇨 또는 고지혈증 치료 등)
+										</label>
+									</span>
+								</li>
+							</ul>
+						</li>
+					</ol>
+				</div>
+
+				<div class="btn_group btn_btm_group">
+					<a href="#;" class="btn btn_sm btn_outline_default" onclick="openModal('layerEtcNotice', this);">
+						<i class="ico ico_tip_sm"></i>
+						<span>참고사항입니다</span>
+					</a>
+				</div>
+
+				<div class="btn_group btn_group_flex">
+					<!-- <button type="button" class="btn btn_lg btn_default">취소</button> -->
+					<button type="button" class="btn btn_lg btn_primary">확인</button>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<!-- s: 참고사항입니다 레이어 팝업 -->
+	<div class="modal_popup modal_bottom_sheet hide" data-popup="layerEtcNotice">
+		<div class="dimed"></div>
+		<div class="popup_inner" style="height:20%;">
+			<div class="popup_header">
+				<h2 class="popup_tit">참고사항</h2>
+			</div>
+			<div class="popup_body">
+				<div class="container">
+					<ul class="list list1">
+						<li>
+							청약심사 시 "담당의 소견서" 나 "병원진료기록" 등의 서류를 추가 요구할 수 있습니다.
+						</li>
+					</ul>
+				</div>
+			</div>
+			<button type="button" class="btn btn_close_popup">닫기</button>
+		</div>
+	</div>
+	<!-- e: 참고사항입니다 레이어 팝업 -->
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>
