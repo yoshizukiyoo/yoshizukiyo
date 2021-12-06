@@ -80,6 +80,7 @@ $demiprimary: #fbe59b !default;
 @include ico('epost03', 57px, 39px, #{$url-img-content});
 @include ico('notice_lg', 40px, 40px, #{$url-img-content});
 @include ico('check_lg_primary', 45px, 45px, #{$url-img-content});
+@include ico('timer', 15px, 15px, #{$url-img-content});
 
 .ico {
 	&.ico_notice {
@@ -115,6 +116,9 @@ $demiprimary: #fbe59b !default;
 }
 .txt_size30{
 	font-size: 30px !important;
+}
+.txt_size50{
+	font-size: 50px !important;
 }
 .txt_blue {
 	color: $blue !important;
@@ -236,6 +240,31 @@ $demiprimary: #fbe59b !default;
 			background-image: url(#{$url-img}/content/ico_chevron_up_sm_bold.png);
 		}
 	}
+	&.btn_orderchange{
+		display: block;
+		width: 20px;
+		height: 20px;
+
+		border: 1px solid $border-base;
+
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 10px 6px;
+
+		text-indent: -9999px;
+		&.top{
+			background-image: url(#{$url-img-common}/ico_chevron_up_sm.png);
+			border-radius: 8px 8px 0 0;
+			+.btm{
+				margin-left: 0;
+				transform: translateY(-1px);
+			}
+		}
+		&.btm{
+			background-image: url(#{$url-img-common}/ico_chevron_down_sm.png);
+			border-radius: 0 0 8px 8px;
+		}
+	}
 }
 
 .submenu_area {
@@ -304,7 +333,7 @@ $demiprimary: #fbe59b !default;
 	//리스트 간격 프리셋
 	$end: 6;
 
-	@for $i from 1 to $end+1 {
+	@for $i from 0 to $end+1 {
 
 		&.spacing_mt_#{$i} {
 			>li:not(:first-child) {
@@ -685,6 +714,20 @@ $demiprimary: #fbe59b !default;
 			}
 		}
 	}
+	&.list_arr_circle{
+		>li{
+			padding-left: 20px;
+			
+			&:before {
+				width: 13px;
+				height: 13px;
+				top: 5px;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-image: url(#{$url-img-common}/ico_arr_circle_right.png);
+			}
+		}
+	}
 }
 
 .border_list{
@@ -894,6 +937,9 @@ h3.tit2 {
 			background-position: right 20px center;
 			background-repeat: no-repeat;
 			background-size: 5px 9px;
+			&.disabled {
+				background-image: none;
+			}
 		}
 		&+.btm{
 			border-top: 1px solid $border-base;
@@ -901,6 +947,9 @@ h3.tit2 {
 		&.dropdown{
 			position: relative;
 			padding-bottom: 35px;
+		}
+		&.btm_sm{
+			padding: 18px 19px;
 		}
 	}
 }
@@ -1901,5 +1950,24 @@ h3.tit2 {
     linear-gradient(#fff 15px, transparent 15px, transparent calc(100% - 15px), #fff calc(100% - 15px)) right/3px 100% no-repeat, /* right */
     linear-gradient(to right, #fff 15px, transparent 15px, transparent calc(100% - 15px), #fff calc(100% - 15px)) bottom/100% 3px no-repeat, /* bottom */
     linear-gradient(#fff 15px, transparent 15px, transparent calc(100% - 15px), #fff calc(100% - 15px)) left/3px 100% no-repeat; /* left */
+	}
+}
+
+.bottom_fixed_area{
+	&.bottom_sheet{
+		.inner {
+			box-shadow: 0 -1px 35px rgba(0, 0, 0, 0.13);
+			border-radius: 14px 14px 0 0;
+			.sheet_tit{
+				padding-left: 20px;
+				padding-right: 60px;
+				.tit{
+					font-size: 18px;
+					font-weight: 500;
+					color: #111;
+					line-height: 56px;
+				}
+			}
+		}
 	}
 }
