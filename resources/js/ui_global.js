@@ -21,10 +21,11 @@ $(function () {
 
 	// table scroll event 추가 (2021-12-01)
 	$(".tbl_scroll_end").scroll(function () {
-		var el = $(this);
-		if ((el[0].scrollHeight - el.scrollTop()) == el.outerHeight()) {
+		// var addTd = '<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>';
+		if ($(this)[0].scrollHeight - Math.round($(this).scrollTop()) == $(this).outerHeight()) {
 			// 스크롤 마지막 체크
 			alert("event");
+			// $(this).children("table").find("tbody").append(addTd);
 		}
 	})
 });
