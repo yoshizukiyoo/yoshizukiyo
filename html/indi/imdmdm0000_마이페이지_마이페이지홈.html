@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function(){
+			// 대표설정 팝업 탭메뉴
+			$('.mypage01 a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="mypage01_"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
+			// 알림함 팝업 탭메뉴
+			$('.mypage05 a').on('click', function(){
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="mypage05_"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
+			$('.account_arr').click(function () {
+				var tit = $(this).attr('title');
+				$(this).parents('.account_tab').toggleClass('active');
+				if (tit == '그룹 접기') {
+					$(this).attr('title', '그룹 펼치기');
+				} else if (tit == '그룹 펼치기') {
+					$(this).attr('title', '그룹 접기');
+				}
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">마이페이지</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				
+
+				<!-- Modal Popup : 대표설정 -->
+				<div class="modal_popup modal_sm hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">대표 설정</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>메인 표시, 조회 서비스를 이용할 때, 표시되는 순서를 지정할 수 있어요.</li>
+								<li>설정된 순서는 스마트뱅킹을 이용할 때도 같이 적용됩니다.</li>
+							</ul>
+							<div class="tab_menu_type3 sm full mt_4 mypage01">
+								<ul>
+									<li><a href="#;" class="current" title="선택됨" data-tab-tg="mypage01_tab1"><span>예금</span></a></li>
+									<li><a href="#;" data-tab-tg="mypage01_tab2"><span>보험</span></a></li>
+									<li><a href="#;" data-tab-tg="mypage01_tab3"><span>카드</span></a></li>
+									<li><a href="#;" data-tab-tg="mypage01_tab4"><span>펀드</span></a></li>
+									<li><a href="#;" data-tab-tg="mypage01_tab5"><span>오픈</span></a></li>
+								</ul>
+							</div>
+							<div class="tab_sub" data-sub-tab="mypage01_tab1">
+								<div class="mypage_account_list">
+									<ul>
+										<li>
+											<strong>대표</strong>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="mt_4 txt_c">
+									<a href="#;" class="btn btn_more">더보기</a>
+								</div>
+							</div>
+							<div class="tab_sub" data-sub-tab="mypage01_tab2" style="display:none;">
+								<div class="mypage_account_list">
+									<ul>
+										<li>
+											<strong>대표</strong>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="mt_4 txt_c">
+									<a href="#;" class="btn btn_more">더보기</a>
+								</div>
+							</div>
+							<div class="tab_sub" data-sub-tab="mypage01_tab3" style="display:none;">
+								<div class="mypage_account_list">
+									<ul>
+										<li>
+											<strong>대표</strong>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="mt_4 txt_c">
+									<a href="#;" class="btn btn_more">더보기</a>
+								</div>
+							</div>
+							<div class="tab_sub" data-sub-tab="mypage01_tab4" style="display:none;">
+								<div class="mypage_account_list">
+									<ul>
+										<li>
+											<strong>대표</strong>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												주거래입출금통장
+												<p class="txt_lg txt_normal">100081-02-101010</p>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="mt_4 txt_c">
+									<a href="#;" class="btn btn_more">더보기</a>
+								</div>
+							</div>
+							<div class="tab_sub" data-sub-tab="mypage01_tab5" style="display:none;">
+								<div class="account_tab">
+									<div class="tbl_tit">
+										<div class="tit_left">
+											<h4 class="txt_lg txt_normal">예금</h4>
+											<span class="num_circle v_mid ml_1">4</span>
+										</div>
+										<div class="txt_right">
+											<button type="button" title="그룹 접기" class="account_arr"></button>
+										</div>
+									</div>
+									<div class="mypage_account_list">
+										<ul>
+											<li>
+												<strong>대표</strong>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+											<li>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+											<li>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+											<li>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="account_tab">
+									<div class="tbl_tit">
+										<div class="tit_left">
+											<h4 class="txt_lg txt_normal">카드</h4>
+											<span class="num_circle v_mid ml_1">4</span>
+										</div>
+										<div class="txt_right">
+											<button type="button" title="그룹 접기" class="account_arr"></button>
+										</div>
+									</div>
+									<div class="mypage_account_list">
+										<ul>
+											<li>
+												<strong>대표</strong>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+											<li>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+											<li>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+											<li>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="account_tab">
+									<div class="tbl_tit">
+										<div class="tit_left">
+											<h4 class="txt_lg txt_normal">핀테크</h4>
+											<span class="num_circle v_mid ml_1">2</span>
+										</div>
+										<div class="txt_right">
+											<button type="button" title="그룹 접기" class="account_arr"></button>
+										</div>
+									</div>
+									<div class="mypage_account_list">
+										<ul>
+											<li>
+												<strong>대표</strong>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+											<li>
+												<div class="txt">
+													주거래입출금통장
+													<p class="txt_lg txt_normal">100081-02-101010</p>
+												</div>
+												<div class="arr">
+													<button type="button">
+														<i class="ico ico_circle_down"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+													<button type="button">
+														<i class="ico ico_circle_up"></i>
+														<span class="sr_only">순서 올리기</span>
+													</button>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"onclick="closeModal('layer01');">설정 저장</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 대표설정 -->
+
+				<!-- Modal Popup : 추천받기설정 -->
+				<div class="modal_popup modal_500 hide" data-popup="layer02">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">추천받기설정</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>추천 받을 조건을 선택하세요. 연령대, 빅데이터, 판매량, 고객 추천 등 다양한 조건으로 고객님 맞춤 상품을 추천해드려요.</li>
+							</ul>
+							<ul class="border_list mt_3">
+								<li class="flex_box">
+									<div class="l">
+										<div class="txt_size18 txt_normal">같은 #20대(여) 많이 가입했어요.</div>
+										<p class="txt_sm txt_gray02">#같은나이 #연령대 통계</p>
+									</div>
+									<div class="r pr_3">
+										<div class="btn_mouse_toggle txt_toggle">
+											<div class="switch mr_0">
+												<input type="checkbox" id="btn_indi_cert1" checked>
+												<label for="btn_indi_cert1">
+													<span class="first">미설정</span>
+													<span class="last">설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="flex_box">
+									<div class="l">
+										<div class="txt_size18 txt_normal">내게 맞춘 자동 추천!</div>
+										<p class="txt_sm txt_gray02">#빅데이터기반 #맞춤추천</p>
+									</div>
+									<div class="r pr_3">
+										<div class="btn_mouse_toggle txt_toggle">
+											<div class="switch mr_0">
+												<input type="checkbox" id="btn_indi_cert2">
+												<label for="btn_indi_cert2">
+													<span class="first">미설정</span>
+													<span class="last">설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="flex_box">
+									<div class="l">
+										<div class="txt_size18 txt_normal">100만 고객이 선택했어요.</div>
+										<p class="txt_sm txt_gray02">#우체국 베스트셀러</p>
+									</div>
+									<div class="r pr_3">
+										<div class="btn_mouse_toggle txt_toggle">
+											<div class="switch mr_0">
+												<input type="checkbox" id="btn_indi_cert3">
+												<label for="btn_indi_cert3">
+													<span class="first">미설정</span>
+													<span class="last">설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="flex_box">
+									<div class="l">
+										<div class="txt_size18 txt_normal">가입 고객의 리얼 추천!</div>
+										<p class="txt_sm txt_gray02">#별점 #고객평가</p>
+									</div>
+									<div class="r pr_3">
+										<div class="btn_mouse_toggle txt_toggle">
+											<div class="switch mr_0">
+												<input type="checkbox" id="btn_indi_cert4">
+												<label for="btn_indi_cert4">
+													<span class="first">미설정</span>
+													<span class="last">설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="flex_box">
+									<div class="l">
+										<div class="txt_size18 txt_normal">가입 이벤트 진행중</div>	
+									</div>
+									<div class="r pr_3">
+										<div class="btn_mouse_toggle txt_toggle">
+											<div class="switch mr_0">
+												<input type="checkbox" id="btn_indi_cert5">
+												<label for="btn_indi_cert5">
+													<span class="first">미설정</span>
+													<span class="last">설정</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 추천받기설정 -->
+
+				<!-- Modal Popup : 이어서 진행 안내 -->
+				<div class="modal_popup modal_xxl hide" data-popup="layer03">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">이어서 진행 안내</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="tit_left">
+									<h4 class="tit1">우체국 다드림 하이브리드 체크카드</h4>
+									<a href="#;" class="btn btn_sm btn_outline_default ml6">진행정보삭제</a>
+								</div>
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+								</div>
+							</div>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">이어서 진행하기 안내 표로 진행 일시, 처리 구분, 내용, 처리자, 상태 정보 제공</caption>
+									<colgroup>
+										<col style="width: 18%">
+										<col style="width: 13%">
+										<col>
+										<col style="width: 15%">
+										<col style="width: 11%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">진행 일시</th>
+											<th scope="col">처리 구분</th>
+											<th scope="col">내용</th>
+											<th scope="col">처리자</th>
+											<th scope="col">상태</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">2021-06-12 12:45:55</td>
+											<td class="txt_c">카드 신청</td>
+											<td>비대면 체크카드 신청(4단계)</td>
+											<td>비대면(스마트뱅킹)</td>
+											<td class="txt_c">진행중</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="mt_4 txt_r">
+								<a href="#;" class="btn btn_xs btn_outline_default">더보기</a>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"onclick="closeModal('layer03');">처음부터 다시 신청</button>
+								<button type="button" class="btn btn_lg btn_primary"onclick="closeModal('layer03');">4단계부터 이어서 신청</button>
+							</div>
+							<div class="mt_2 txt_c txt_gray">
+								※ 처음부터 다시 신청하시면, 기존 입력 저장된 정보가 모두 초기화 되며 복원이 불가능합니다.
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 이어서 진행 안내 -->
+
+				<!-- Modal Popup : 접속 정보 -->
+				<div class="modal_popup modal_500 hide" data-popup="layer04">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">접속 정보</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">접속 정보 표로 진행 일시, 처리 구분, 내용, 처리자, 상태 정보 제공</caption>
+									<colgroup>
+										<col style="width: 40%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">최근 접속일시</th>
+											<td>2021.07.19 11:42:40</td>
+										</tr>
+										<tr>
+											<th scope="row">최근 거래일시</th>
+											<td>2021.07.19 22:12:23</td>
+										</tr>
+										<tr>
+											<th scope="row">현재 접속 IP</th>
+											<td>223.33.184.235</td>
+										</tr>
+										<tr>
+											<th scope="row">인증서 만료일</th>
+											<td>2024.03.22</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="security_con mt_6">
+								<div class="security_level">
+									<span class="level01">안전</span><!-- [D] class 속성에 on 추가 -->
+									<span class="level02">보통</span>
+									<span class="level03 on">주의</span>
+								</div>
+								<div class="total mt_4 txt_gray txt_normal">
+									<div class="inline_block">
+										보안점수 <strong class="txt_lg txt_normal"><span class="txt_default">8</span>/14점</strong>
+									</div>
+									<div class="inline_block ml_6">
+										보안수준 <strong class="txt_lg txt_normal txt_default">주의</strong>
+									</div>
+								</div>
+								<div class="btn btn_explain mt_6">보안 수준 자세히 보기</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"onclick="closeModal('layer04');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 접속 정보 -->
+
+				<!-- Modal Popup : 알림함 -->
+				<div class="modal_popup modal_500 show" data-popup="layer05">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">알림함</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tab_menu_type3 sm full mt_4 mypage05">
+								<ul>
+									<li><a href="#;" class="current" title="선택됨" data-tab-tg="mypage05_tab1"><span>알림</span></a></li>
+									<li><a href="#;" data-tab-tg="mypage05_tab2"><span>이벤트</span></a></li>
+									<li><a href="#;" data-tab-tg="mypage05_tab3"><span>공지사항</span></a></li>
+								</ul>
+							</div>
+							<div class="tab_sub" data-sub-tab="mypage05_tab1">
+								
+								
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"onclick="closeModal('layer05');">알림 종류 설정</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 알림함 -->
+
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
