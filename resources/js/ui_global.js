@@ -13,11 +13,20 @@ $(document).on('click', '.skip_nav', function (e) {
 	$(tg).attr('tabindex', '0').focus();
 });
 
-// 더보기 박스
 $(function () {
+	// 더보기 박스
 	$('.box_more').each(function () {
 		$(this).wrapInner('<div class="inner"></div>').append('<button type="button" class="btn btn_more_white">더보기</button>');
 	});
+
+	// table scroll event 추가 (2021-12-01)
+	$(".tbl_scroll_end").scroll(function () {
+		var el = $(this);
+		if ((el[0].scrollHeight - el.scrollTop()) == el.outerHeight()) {
+			// 스크롤 마지막 체크
+			alert("event");
+		}
+	})
 });
 
 $(document).on('click', '.box_more .btn_more_white', function () {
