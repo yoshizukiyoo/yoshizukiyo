@@ -3,6 +3,7 @@
 - 퍼블리싱팀 업무현황표 : https://docs.google.com/spreadsheets/d/1FP6ksttEi-J0CVUV3ORCr9w4CEy-aE2efMCpqV8xJzc/edit?usp=sharing
 > 사용법 : http://pms.inseq.co.kr:9000/geistkorea/epost/post/5
 - 퍼블리싱팀 파일 공유용 구글드라이브 : https://drive.google.com/drive/folders/1e5NJ5CQ3C1jNKhGjJTVgU2kg1lJrNol2?usp=sharing
+수정사항 스토리보드 업로드 폴더 : https://drive.google.com/drive/folders/1oz2IWU8Fuiw0W-2Zt2MTM3kmZ4DhV3ki?usp=sharing
 - 퍼블리싱팀 공통 컴포넌트 가이드 
     - 인터넷뱅킹(deposit) : http://ceb.epost.inseq.co.kr:7789/html/index.html
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
