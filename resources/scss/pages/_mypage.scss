@@ -80,13 +80,17 @@
 		margin-bottom: 0;
 	}
 
-	.mypage_account_list {
+	.mypage_toggle_con {
 		display: none;
 	}
 
 	&.active {
-		.mypage_account_list {
+		.mypage_toggle_con {
 			display: block;
+		}
+
+		.account_arr {
+			background-image: url(#{$url-img}/content/mypage_arr_up.png);
 		}
 	}
 
@@ -111,11 +115,199 @@
 
 .border_list {
 	border-top: 1px solid #111;
+	border-bottom: 1px solid #ddd;
 
 	li {
-		padding: 27px 0;
+		padding: 20px 0;
+
+		&:not(:first-child) {
+			border-top: 1px solid #eee;
+		}
+	}
+
+	&.noti {
+		li {
+			padding: 30px 10px 30px 85px;
+			background-position: 14px 29px;
+			background-repeat: no-repeat;
+
+			>a {
+				display: block;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+				line-height: 1;
+			}
+
+			>span {
+				display: block;
+			}
+
+			&.bg01 {
+				background-image: url(#{$url-img}/content/bg_mypage_noti01.png);
+			}
+
+			&.bg02 {
+				background-image: url(#{$url-img}/content/bg_mypage_noti02.png);
+			}
+
+			&.bg03 {
+				background-image: url(#{$url-img}/content/bg_mypage_noti03.png);
+			}
+
+			&.bg04 {
+				background-image: url(#{$url-img}/content/bg_mypage_noti04.png);
+			}
+
+		}
+	}
+
+	&.event {
+		li {
+			padding: 0;
+
+			a {
+				position: relative;
+				display: block;
+				padding: 26px 15px 26px 85px;
+
+				.txt {
+					position: relative;
+					margin-top: 5px;
+
+					p {
+						line-height: 1;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+					}
+
+					&:before {
+						content: '';
+						position: absolute;
+						top: 6px;
+						left: -58px;
+						width: 31px;
+						height: 32px;
+						background-repeat: no-repeat;
+						background-position: 0 0;
+					}
+
+					&.bg01:before {
+						background-image:url(#{$url-img}/content/bg_mypage_event01.png);
+					}
+
+					&.bg02:before {
+						background-image:url(#{$url-img}/content/bg_mypage_event02.png);
+					}
+
+					&.bg03:before {
+						background-image:url(#{$url-img}/content/bg_mypage_event03.png);
+					}
+				}
+
+				.mypage_cate {
+					position: absolute;
+					top: 30px;
+					left: 17px;
+				}
+			}
+		}
+	}
+
+	&.notice {
+		li {
+			padding: 0;
+
+			a {
+				position: relative;
+				display: block;
+				padding: 29px 15px 29px 85px;
+
+				.mypage_cate {
+					position: absolute;
+					top: 30px;
+					left: 17px;
+				}
+
+				.tit {
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 24px;
+				}
+
+				span {
+					display: block;
+				}
+			}
+		}
+	}
+
+	&.sm {
 		border-bottom: 1px solid #eee;
 
+		li {
+			padding: 20px 15px;
+
+			>.flex_box {
+				line-height: 1;
+				align-items: normal;
+
+				&:not(:first-child) {
+					margin-top: 10px;
+				}
+
+				.r {
+					white-space: normal;
+				}
+			}
+		}
+	}
+}
+
+
+.mypage_cate {
+	position: relative;
+	display: inline-block;
+	min-width: 48px;
+	text-align: center;
+	height: 24px;
+	line-height: 24px;
+	border-radius: 30px;
+	background: #333;
+	padding: 0 10px;
+	font-size: 11px;
+	font-weight: 500;
+	color: #fff;
+
+	&:after {
+		content: '';
+		position: absolute;
+		right: -4px;
+		top: 50%;
+		margin-top: -3px;
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 3px 0 3px 5px;
+		border-color: transparent #333 transparent #333;
+	}
+
+	&.bg_primary {
+		color: #111;
+
+		&:after {
+			border-color: transparent #FDC61C transparent #FDC61C;
+		}
+	}
+
+	&.coupon {
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		border-radius: 50%;
+		font-size: 13px;
 	}
 }
 
@@ -232,14 +424,178 @@
 			}
 		}
 	}
+
+	.total {
+		padding: 8px 10px;
+		border-radius: 20px;
+		background: #fff;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
+		line-height: 1;
+	}
 }
 
+.noti_view {
+	padding: 0 15px;
+
+	.tit {
+		padding: 25px 0;
+
+		h4 {
+			font-size: 18px;
+			font-weight: 400;
+		}
+	}
+
+	.con {
+		color: #555;
+		min-height: 400px;
+	}
+}
+
+.img_box {
+	font-size: 0;
+}
+
+.btn_share {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: url(#{$url-img}/content/ico_share.png) 0 0 no-repeat;
+	vertical-align: middle;
+}
+
+.mypage_coupon_count {
+	display: flex;
+
+	li {
+		border-radius: 6px;
+		flex: 1;
+		padding: 72px 10px 21px;
+		text-align: center;
+		background-repeat: no-repeat;
+		background-color: #fef5e5;
+
+		&:not(:first-child) {
+			margin-left: 12px;
+		}
+
+		>* {
+			line-height: 1;
+		}
+
+		p {
+			margin-top: 7px;
+		}
+
+		&.bg01 {
+			background-image:url(#{$url-img}/content/ico_coupon01.png);
+			background-position: 50% 17px;
+		}
+
+		&.bg02 {
+			background-image:url(#{$url-img}/content/ico_coupon02.png);
+			background-position: 50% 19px;
+		}
+
+		&.bg03 {
+			background-image:url(#{$url-img}/content/ico_coupon03.png);
+			background-position: 50% 19px;
+		}
+	}
+
+	&.point_box {
+		li {
+			padding: 72px 8px 10px;
+
+			.btn {
+				height: 22px;
+				font-size: 12px;
+			}
+
+			&.bg01 {
+				background-image:url(#{$url-img}/content/ico_mypage_point01.png);
+				background-position: 50% 19px;
+			}
+
+			&.bg02 {
+				background-image:url(#{$url-img}/content/ico_mypage_point02.png);
+				background-position: 50% 15px;
+			}
+
+			&.bg03 {
+				background-image:url(#{$url-img}/content/ico_mypage_point03.png);
+				background-position: 50% 17px;
+			}
+
+			&.bg04 {
+				background-image:url(#{$url-img}/content/ico_mypage_point04.png);
+				background-position: 50% 15px;
+			}
+		}
+	}
+}
+
+.download_coupon {
+	position: relative;
+	background-repeat: no-repeat;
+	height: 150px;
+	padding: 34px 0 34px 83px;
+	background-size: 100%;
 
 
-.total {
-	padding: 8px 10px;
-	border-radius: 20px;
+	&.bg_coupon_yellow {
+		background-image:url(#{$url-img}/content/bg_coupon01.png);
+	}
+
+	&.bg_coupon_green {
+		background-image:url(#{$url-img}/content/bg_coupon02.png);
+	}
+
+	.mypage_cate {
+		position: absolute;
+		top: 25px;
+		left: 26px;
+
+		&:after {
+			right: -5px;
+			margin-top: -5px;
+			border-width: 5px 0 5px 7px;
+		}
+	}
+
+	strong {
+		display: block;
+		line-height: 1;
+		font-size: 30px;
+		font-weight: 600;
+	}
+
+	.btn_coupon {
+		position: absolute;
+		display: block;
+		right: 0;
+		top: 29px;
+		width: 45px;
+		height: 76px;
+	}
+}
+
+.coupon_number {
 	background: #fff;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
-	line-height: 1;
+	border: 1px solid #555;
+	border-radius: 6px;
+	padding: 20px 24px;
+}
+
+.coupon_info {
+	padding: 10px 20px;
+
+	>div {
+		padding: 16px 0;
+
+		&:not(:first-child) {
+			border-top: 1px solid #ddd;
+		}
+	}
 }
