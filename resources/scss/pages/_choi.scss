@@ -875,6 +875,75 @@ h3.tit2 {
 			}
 		}
 	}
+
+	&.add_img_box {
+		@include box_default(9px, 9px);
+		overflow-x: scroll;
+
+		>ul {
+			@include clearfix();
+			display: flex;
+
+			>li {
+				flex: 0 0 auto;
+				width: 93px;
+				height: 112px;
+				border-radius: 3px;
+
+				font-size: 0;
+				vertical-align: top;
+
+				overflow: hidden;
+				position: relative;
+
+				img {
+					width: 100%;
+				}
+
+				.btn_reset {
+					position: absolute;
+					right: 8px;
+					top: 5px;
+					z-index: 40;
+
+					width: 20px;
+					height: 20px;
+
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-position: center;
+					background-image: url(#{$url-img-common}/ico_reset.png);
+
+					text-indent: -9999px;
+				}
+
+				.btn_plus_circle {
+					position: absolute;
+					left: calc(50% - 10px);
+					top: calc(50% - 10px);
+					z-index: 40;
+
+					width: 20px;
+					height: 20px;
+
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-position: center;
+					background-image: url(#{$url-img-common}/ico_plus_circle.png);
+
+					text-indent: -9999px;
+				}
+
+				&+li {
+					margin-left: 10px;
+				}
+
+				&:not(.active) {
+					background-color: #f6f6f6;
+				}
+			}
+		}
+	}
 }
 
 .tel_box {
@@ -1020,6 +1089,15 @@ h3.tit2 {
 			&.disabled {
 				background-image: none;
 			}
+		}
+
+		&.btm_link_lg {
+			display: block;
+
+			background-repeat: no-repeat;
+			background-position: right 20px center;
+			background-image: url(#{$url-img-common}/ico_account_arrow.png);
+			background-size: 11px 20px;
 		}
 
 		&+.btm {
