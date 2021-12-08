@@ -25,8 +25,8 @@
 		$(document).ready(function () {
 
 			// 보내는 분 휴대전화 번호 박스
-			$('.sms_phone_check input[type=radio]').change(function(){
-				if($(this).val() == 'sms_phone1'){
+			$('.sms_phone_check input[type=radio]').change(function () {
+				if ($(this).val() == 'sms_phone1') {
 					$('[data-sms-phone=phone1]').show();
 					$('[data-sms-phone=phone2]').hide();
 				} else {
@@ -97,7 +97,8 @@
 					</div>
 					<div class="tbl_data tbl_complex_data mt_4">
 						<table>
-							<caption class="sr_only">입금은행, 입금계좌번호, 이체금액(원), 입금계좌 예금주, 출금계좌표시, 입금계좌표시, 수수료(원), 처리결과, 총 이체금액, 수수료, 처리결과, 총 이체금액, 수수료 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">입금은행, 입금계좌번호, 이체금액(원), 입금계좌 예금주, 출금계좌표시, 입금계좌표시, 수수료(원), 처리결과, 총 이체금액, 수수료, 처리결과,
+								총 이체금액, 수수료 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col style="width: 6%;">
 								<col style="width: 12%">
@@ -142,47 +143,70 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="tbl_data tbl_row_data mt_4">
+					<!-- SB v1.01 화면 수정 : 국세이체 -->
+					<div class="tbl_data tbl_complex_data mt_4">
 						<table>
-							<caption class="sr_only">청구기관, 전자납부번호, 납세자, 주민(사업자)등록번호, 납기내 기한, 납기후 기한, 세목, 과세대상, 예금주 전화번호 정보 안내입니다.</caption>
+							<caption class="sr_only">입금은행, 입금계좌번호, 입금계좌 예금주, 출금계좌표시, 처리결과 정보를 제공하고 있습니다.</caption>
 							<colgroup>
-								<col style="width: 15%;">
-								<col>
-								<col style="width: 15%;">
-								<col>
+								<col style="width: 12%">
+								<col style="width: 16%">
+								<col style="width: 12%">
+								<col style="width: 12%">
+								<col style="width: 9%">
 							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">입금은행</th>
+									<th scope="col">입금계좌번호</th>
+									<th scope="col">입금계좌 예금주</th>
+									<th scope="col">출금계좌표시</th>
+									<th scope="col">처리결과</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<th scope="col">청구기관</th>
-									<td>경기도성남시</td>
-									<th scope="col">전자납부번호</th>
-									<td>3014011017001110809</td>
-								</tr>
-								<tr>
-									<th scope="col">납세자</th>
-									<td>테스트</td>
-									<th scope="col">주민(사업자)등록번호</th>
-									<td>650529-*******</td>
-								</tr>
-								<tr>
-									<th scope="col">납기내 기한</th>
-									<td>2021.06.30</td>
-									<th scope="col">납기후 기한</th>
-									<td>2021.06.30</td>
-								</tr>
-								<tr>
-									<th scope="col">세목</th>
-									<td>주민세(재산분)</td>
-									<th scope="col">과세대상</th>
-									<td>테스트 자료</td>
-								</tr>
-								<tr>
-									<th scope="col">예금주 전화번호</th>
-									<td colspan="3">010-0000-0000</td>
+									<td>우체국</td>
+									<td>XXXXXXXXXXXXXX</td>
+									<td>홍길동</td>
+									<td>나봄미</td>
+									<td class="txt_c">정상</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<!-- // SB v1.01 화면 수정 : 국세이체 -->
+					<!-- SB v1.01 화면 수정 : 지방세이체 -->
+					<div class="tbl_data tbl_complex_data mt_4">
+						<table>
+							<caption class="sr_only">입금은행, 전자납부번호, 입금계좌 예금주, 출금계좌표시, 처리결과 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 12%">
+								<col style="width: 16%">
+								<col style="width: 12%">
+								<col style="width: 12%">
+								<col style="width: 9%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">입금은행</th>
+									<th scope="col">전자납부번호</th>
+									<th scope="col">입금계좌 예금주</th>
+									<th scope="col">출금계좌표시</th>
+									<th scope="col">처리결과</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>우체국</td>
+									<td>XXXXXXXXXXXXXX</td>
+									<td>홍길동</td>
+									<td>나봄미</td>
+									<td class="txt_c">정상</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- // SB v1.01 화면 수정 : 지방세이체 -->
 					<div class="tbl_data tbl_row_data mt_4">
 						<table>
 							<caption class="sr_only">이체금액, 수수료, 총 이체금액, 즉시이체 수수료 정보 안내입니다.</caption>
@@ -210,9 +234,12 @@
 					</div>
 					<div class="txt_r mt_4">
 						<a href="#;" class="btn btn_sm btn_outline_gray">자주쓰는입금계좌로등록</a>
-						<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('sms_popup', this);">SMS전송(카카오톡 알림)</button>
-						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('transfer_popup', this);">이체확인증</button>
-						<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('payment_popup', this);">납부확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('sms_popup', this);">SMS전송(카카오톡
+							알림)</button>
+						<button type="button" class="btn btn_sm btn_outline_default"
+							onclick="openModal('transfer_popup', this);">이체확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default"
+							onclick="openModal('payment_popup', this);">납부확인증</button>
 						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
 					</div>
 				</div>
@@ -232,7 +259,8 @@
 							</p>
 							<div class="tbl_data tbl_row_data mt_5">
 								<table>
-									<caption class="sr_only">SMS전송(카카오톡 알림) 입력양식 표이며 받는 분 휴대전화 번호, 보내는 분 휴대전화 번호, 메시지 정보를 제고하고 있습니다.</caption>
+									<caption class="sr_only">SMS전송(카카오톡 알림) 입력양식 표이며 받는 분 휴대전화 번호, 보내는 분 휴대전화 번호, 메시지 정보를 제고하고 있습니다.
+									</caption>
 									<colgroup>
 										<col style="width: 200px">
 										<col>
@@ -279,8 +307,10 @@
 												<!-- s: 우체국 대표전화 -->
 												<div class="mt_4" data-sms-phone="phone1">
 													<div class="phone_number corded_phone">
-														<div><input type="text" class="tf disabled" title="전화번호 앞자리 입력" style="width: 93px" value="1599" disabled></div>
-														<div><input type="text" class="tf" title="전화번호 뒷자리입력" style="width: 93px" value="1900" disabled></div>
+														<div><input type="text" class="tf disabled" title="전화번호 앞자리 입력" style="width: 93px"
+																value="1599" disabled></div>
+														<div><input type="text" class="tf" title="전화번호 뒷자리입력" style="width: 93px" value="1900"
+																disabled></div>
 													</div>
 													<div class="mt_3">
 														받는 분 휴대전화에 표시되는 전화번호가<br>
@@ -327,7 +357,8 @@
 							</div>
 							<div class="btn_group">
 								<button type="button" class="btn btn_lg btn_outline_default fx_w150">재입력</button>
-								<button type="button" class="btn btn_lg btn_primary fx_w150" onclick="closeModal('sms_popup');">확인</button>
+								<button type="button" class="btn btn_lg btn_primary fx_w150"
+									onclick="closeModal('sms_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -347,12 +378,14 @@
 								<div class="txt_right">
 									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
 									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
-									<button type="button" class="btn btn_xs btn_outline_default ml_3" onclick="$.print('.modal_popup[data-popup=transfer_popup]');">화면인쇄</button>
+									<button type="button" class="btn btn_xs btn_outline_default ml_3"
+										onclick="$.print('.modal_popup[data-popup=transfer_popup]');">화면인쇄</button>
 								</div>
 							</div>
 							<div class="tbl_data tbl_row_data">
 								<table>
-									<caption class="sr_only">이체확인증 내용 안내(이체일시, 출금은행, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장 표시내용,
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 출금은행, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장
+										표시내용,
 										이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
 									<colgroup>
 										<col style="width: 20%;">
@@ -515,8 +548,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -576,8 +611,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -593,8 +630,10 @@
 
 				<div class="section">
 					<ul class="list list1">
-						<li>주로 이용하는 PC를 지정하면 1일 300만원 미만 타행거래 시 보안매체(보안카드,OTP)를 사용하지 않아도 됩니다. <button type="button" class="btn btn_explain ml6" onclick="openModal('confirm01', this)">PC저장하기</button></li>
-						<li>고객님은 인터넷뱅킹 간편송금 서비스를 이용하고 계십니다. <button type="button" class="btn btn_explain ml6" onclick="openModal('confirm01', this)">간편송금 해지하기</button></li>
+						<li>주로 이용하는 PC를 지정하면 1일 300만원 미만 타행거래 시 보안매체(보안카드,OTP)를 사용하지 않아도 됩니다. <button type="button"
+								class="btn btn_explain ml6" onclick="openModal('confirm01', this)">PC저장하기</button></li>
+						<li>고객님은 인터넷뱅킹 간편송금 서비스를 이용하고 계십니다. <button type="button" class="btn btn_explain ml6"
+								onclick="openModal('confirm01', this)">간편송금 해지하기</button></li>
 					</ul>
 				</div>
 
