@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function(){
+			$('.account_arr').click(function () {
+				var tit = $(this).attr('title');
+				$(this).parents('.account_tab').toggleClass('active');
+				if (tit == '그룹 접기') {
+					$(this).attr('title', '그룹 펼치기');
+				} else if (tit == '그룹 펼치기') {
+					$(this).attr('title', '그룹 접기');
+				}
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">마이페이지</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				
+
+				<!-- Modal Popup : 이벤트캐시 -->
+				<div class="modal_popup modal_500 show" data-popup="layer08">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">이벤트캐시</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>우체국 뱅킹 이벤트에 참여하시면 적립되는 캐시로 500캐시 이상이면 바로 현금 이체 가능해요.</li>
+							</ul>
+							<div class="event_cash_total mt_3">
+								<div class="tit">이벤트캐시</div>
+								<div class="cash">
+									<strong>2,500</strong>
+									<p class="mt_2">총 적립 <span class="txt_md txt_bold">3,000</span> 캐시</p>
+									<p>총 현금 전환 <span class="txt_md txt_bold">500</span> 원</p>
+								</div>
+							</div>
+							<div class="mt_9">
+								<div class="account_tab">
+									<div class="tbl_tit">
+										<div class="tit_left">
+											<h4 class="txt_lg txt_medium">이벤트 캐시 현금  전환하기</h4>
+										</div>
+										<div class="txt_right">
+											<button type="button" title="그룹 접기" class="account_arr"><span class="sr_only">토글 버튼</span></button>
+										</div>
+									</div>
+									<div class="mypage_toggle_con">
+										<div class="cash_change_input">
+											<div>
+												<strong>이체할 캐시</strong>
+												<input type="text" class="tf" placeholder="이체할 캐시 입력" disabled>
+												<a href="#;" class="btn btn_md btn_outline_default ml_2">이체</a>
+											</div>
+											<div>
+												<strong>이체 받을 계좌</strong>
+												<div class="selectbox_wrap" style="width: 100%;">
+													<dl>
+														<dt><a href="#none" title="검색조건 선택"><span>우체국 999999</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>우체국 999999</span></a></li>
+																<li><a href="#none"><span>우체국 999999</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="account_tab">
+									<div class="tbl_tit">
+										<div class="tit_left">
+											<h4 class="txt_lg txt_medium">이벤트 캐시 기부하기</h4>
+										</div>
+										<div class="txt_right">
+											<button type="button" title="그룹 접기" class="account_arr"><span class="sr_only">토글 버튼</span></button>
+										</div>
+									</div>
+									<div class="mypage_toggle_con">
+										<div class="cash_change_input">
+											<div>
+												<strong>기부할 단체</strong>
+												<div class="selectbox_wrap" style="width: 100%;">
+													<dl>
+														<dt><a href="#none" title="검색조건 선택"><span>기부단체를 선택해주세요.</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>우체국 999999</span></a></li>
+																<li><a href="#none"><span>우체국 999999</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div>
+												<strong>기부할 캐시</strong>
+												<input type="text" class="tf" placeholder="기부할 캐시 입력" disabled>
+												<a href="#;" class="btn btn_md btn_outline_default ml_2">기부</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="account_tab">
+									<div class="tbl_tit">
+										<div class="tit_left">
+											<h4 class="txt_lg txt_medium">통합멤버십 포인트로 전환하기</h4>
+										</div>
+										<div class="txt_right">
+											<button type="button" title="그룹 접기" class="account_arr"><span class="sr_only">토글 버튼</span></button>
+										</div>
+									</div>
+									<div class="mypage_toggle_con">
+										<div class="cash_change_input">
+											<div>
+												<strong>전환할 캐시</strong>
+												<input type="text" class="tf" placeholder="전환할 캐시 입력" disabled>
+												<a href="#;" class="btn btn_md btn_outline_default ml_2">전환</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="account_tab">
+									<div class="tbl_tit">
+										<div class="tit_left">
+											<h4 class="txt_lg txt_medium">이벤트 캐시 적립/사용 내역</h4>
+										</div>
+										<div class="txt_right">
+											<button type="button" title="그룹 접기" class="account_arr"><span class="sr_only">토글 버튼</span></button>
+										</div>
+									</div>
+									<div class="mypage_toggle_con">
+										<ul class="border_list event_cash">
+											<li class="flex_box">
+												<div class="l txt_gray">
+													간편인증 등록 2차이벤트<br>
+													2021-06-29<br>
+													현금전환(스마트뱅킹)
+												</div>
+												<div class="r"><strong class="txt_blue">- 500</strong> 캐시</div>
+											</li>
+											<li class="flex_box">
+												<div class="l txt_gray">
+													간편인증 등록 2차이벤트<br>
+													2021-06-29<br>
+													현금전환(스마트뱅킹)
+												</div>
+												<div class="r"><strong class="txt_invalid">+ 1,000</strong> 캐시</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mt_8">
+								<h4 class="tit2">이벤트 캐시 이용 안내</h4>
+								<ul class="list list1">
+									<li>이벤트캐시는 우체국 본인 입출금 계좌로 이체 받을 수 있습니다.</li>
+									<li>이체 받을 계좌가 입금이 제한된 경우는 미지급 처리되오니 주의하시기 바랍니다.</li>
+									<li>당첨 금액이 5만원을 초과할 경우 제세공과금(22%)을 제외하고 주계좌에 이체 처리됩니다.</li>
+									<li>이벤트캐시를 현금으로 받으려면 아래 조건이 모두 충족되어야 합니다.</li>
+								</ul>
+								<div class="box bg_lightgray coupon_info mt_2">
+									<div class="flex_box">
+										<div class="l">스마트뱅킹 푸시 알림 수신 동의</div>
+										<div class="r">
+											<div class="btn_mouse_toggle txt_toggle">
+												<div class="switch mr_0">
+													<input type="checkbox" id="event_cash01" checked>
+													<label for="event_cash01">
+														<span class="first">미수신</span>
+														<span class="last">수신</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="flex_box">
+										<div class="l">마케팅 정보 SMS 수신</div>
+										<div class="r">
+											<div class="btn_mouse_toggle txt_toggle">
+												<div class="switch mr_0">
+													<input type="checkbox" id="event_cash02">
+													<label for="event_cash02">
+														<span class="first">미수신</span>
+														<span class="last">수신</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="flex_box">
+										<div class="l">스마트뱅킹 이용</div>
+										<div class="r txt_sm txt_normal">정상 이용중</div>
+									</div>
+									<div class="flex_box">
+										<div class="l">인터넷뱅킹 이용</div>
+										<div class="r txt_sm txt_normal">정상 이용중</div>
+									</div>
+								</div>
+								<ul class="list list1 mt_2">
+									<li>전자금융 약정 해지 시 모든 이벤트캐시는 소멸됩니다.</li>
+								</ul>
+							</div>
+							
+							
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 이벤트캐시 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+
+	</div>
+</body>
+
+</html>

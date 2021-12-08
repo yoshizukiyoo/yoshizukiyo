@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function(){
+			$('.account_arr').click(function () {
+				var tit = $(this).attr('title');
+				$(this).parents('.account_tab').toggleClass('active');
+				if (tit == '그룹 접기') {
+					$(this).attr('title', '그룹 펼치기');
+				} else if (tit == '그룹 펼치기') {
+					$(this).attr('title', '그룹 접기');
+				}
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">마이페이지</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				
+
+				<!-- Modal Popup : 알림함 -->
+				<div class="modal_popup modal_500 show" data-popup="layer05">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">알림함</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="border_list">
+								<li class="noti bg01">
+									<a href="#;" class="txt_size18 txt_normal">고객님 7월 26일은 카드 결제일입니다.</a>
+									<span class="txt_gray02 mt_1">2021-07-23 12:11</span>
+								</li>
+								<li class="noti bg01">
+									<p class="txt_normal mb_1 flex_container">카드발급 신청중
+										<a href="#;" class="btn lab_status bg_gray ml6">이어서 신청하기</a>
+									</p>
+									<a href="#;" class="txt_size18 txt_normal">우체국 어디서나 하이브리드 체크카드(VISA)</a>
+									<span class="txt_gray02 mt_1">2021-07-23 12:11</span>
+								</li>
+								<li class="noti bg02">
+									<a href="#;" class="txt_size18 txt_normal">(무)우체국저축보험 완납(120/120)</a>
+									<span class="txt_gray02 mt_1">2021-07-23 12:11</span>
+								</li>
+								<li class="noti bg03">
+									<p class="txt_normal mb_1">펀드 수익률 -5.1%</p>
+									<a href="#;" class="txt_size18 txt_normal">우리중소형고배당30투자신탁1호</a>
+									<span class="txt_gray02 mt_1">2021-07-23 12:11</span>
+								</li>
+								<li class="noti bg04">
+									<a href="#;" class="txt_size18 txt_normal">하나로마트  52,525원</a>
+									<span class="txt_gray02 mt_1">2021-07-23 12:11</span>
+								</li>
+								<li class="event">
+									<a href="#;">
+										<span class="mypage_cate">D-27</span>
+										<p class="txt_bold txt_size18">2021.09.03 ~ 2021.12.31</p>
+										<div class="txt bg01">
+											<p class="txt_gray02">추석맞이 “우체국 카드의 정석</p>
+											<p class="txt_normal mt_2">우체국쇼핑 10% 청구할인</p>
+										</div>
+									</a>
+								</li>
+								<li class="event">
+									<a href="#;">
+										<span class="mypage_cate">D-27</span>
+										<p class="txt_bold txt_size18">2021.09.03 ~ 2021.12.31</p>
+										<div class="txt bg02">
+											<p class="txt_gray02">모바일푸르니 적금 가입 이벤트</p>
+											<p class="txt_normal mt_2">선착순  3,000캐시 지급</p>
+										</div>
+									</a>
+								</li>
+								<li class="event">
+									<a href="#;">
+										<span class="mypage_cate">D-19</span>
+										<p class="txt_bold txt_size18">2021.09.03 ~ 2021.12.31</p>
+										<div class="txt bg03">
+											<p class="txt_gray02">우체국펀드 설문조사 참여 이벤트</p>
+											<p class="txt_normal mt_2">스타벅스 아메리카노 1잔</p>
+										</div>
+									</a>
+								</li>
+								<li class="notice">
+									<a href="#;">
+										<span class="mypage_cate bg_primary">새소식</span>
+										<div class="txt">
+											<p class="tit">코로나 상생 국민지원금 신청 안내</p>
+											<span class="txt_normal txt_gray02">2021.07.23 12:11</span>
+										</div>
+									</a>
+								</li>
+								<li class="notice">
+									<a href="#;">
+										<span class="mypage_cate">공지</span>
+										<div class="txt">
+											<p class="tit">우체국예금 우수고객 및 전자금융 우수고객 통합 안내</p>
+											<span class="txt_normal txt_gray02">2021.07.23 12:11</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+							<div class="btn_group">
+								<a href="#;" class="btn btn_xl btn_primary" onclick="closeModal('layer05');">알림 종류 설정</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 알림함 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+
+	</div>
+</body>
+
+</html>

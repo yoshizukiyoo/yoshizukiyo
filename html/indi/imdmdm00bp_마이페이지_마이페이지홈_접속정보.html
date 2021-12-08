@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function(){
+			$('.account_arr').click(function () {
+				var tit = $(this).attr('title');
+				$(this).parents('.account_tab').toggleClass('active');
+				if (tit == '그룹 접기') {
+					$(this).attr('title', '그룹 펼치기');
+				} else if (tit == '그룹 펼치기') {
+					$(this).attr('title', '그룹 접기');
+				}
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">마이페이지</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				
+
+				<!-- Modal Popup : 접속 정보 -->
+				<div class="modal_popup modal_500 show" data-popup="layer04">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">접속 정보</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">접속 정보 표로 진행 일시, 처리 구분, 내용, 처리자, 상태 정보 제공</caption>
+									<colgroup>
+										<col style="width: 40%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">최근 접속일시</th>
+											<td>2021.07.19 11:42:40</td>
+										</tr>
+										<tr>
+											<th scope="row">최근 거래일시</th>
+											<td>2021.07.19 22:12:23</td>
+										</tr>
+										<tr>
+											<th scope="row">현재 접속 IP</th>
+											<td>223.33.184.235</td>
+										</tr>
+										<tr>
+											<th scope="row">인증서 만료일</th>
+											<td>2024.03.22</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="security_con mt_6">
+								<div class="security_level">
+									<span class="level01">안전</span><!-- [D] class 속성에 on 추가 -->
+									<span class="level02">보통</span>
+									<span class="level03 on">주의</span>
+								</div>
+								<div class="total mt_4 txt_gray txt_normal">
+									<div class="inline_block">
+										보안점수 <strong class="txt_lg txt_normal"><span class="txt_default">8</span>/14점</strong>
+									</div>
+									<div class="inline_block ml_6">
+										보안수준 <strong class="txt_lg txt_normal txt_default">주의</strong>
+									</div>
+								</div>
+								<div class="btn btn_explain mt_6">보안 수준 자세히 보기</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"onclick="closeModal('layer04');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 접속 정보 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+
+	</div>
+</body>
+
+</html>
