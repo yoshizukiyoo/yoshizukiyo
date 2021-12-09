@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="전화번호송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container pt_4">
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">송금정보입력</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">경조인사문 선택</span></li>
+					<li><span class="num">3</span><span class="txt">요청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">송금요청완료</span></li>
+				</ul>
+
+				<div>
+					<h2 class="tit1">경조인사문 선택</h2>
+					<!-- s: 구분값 자주쓰는 경조문 -->
+					<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">구분</span>
+								<p class="tf">자주쓰는 경조문</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<div class="tf_item tf_item_md mt_2">
+						<div class="tf_item_body">
+							<div class="input_area pt_0">
+								<input type="text" id="inp1_1" class="tf txt_md" placeholder="경조인사문 검색">
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_search single"><span class="sr_only">검색</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="mt_2 txt_r">
+						<a href="#;" class="btn btn_md btn_round btn_default"
+							onclick="openModal('layer01', this); return false;">자주쓰는 경조문 관리</a>
+					</div>
+					<!-- e: 구분값 자주쓰는 경조문 -->
+
+					<!-- s: 구분값 직접입력 -->
+					<div class="fx_lr mt_2">
+						<div class="l" style="width: 60%">
+							<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">경조문 구분</span>
+										<p class="tf">직접입력</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="r ml_2" style="width: 40%;">
+							<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">구분</span>
+										<p class="tf">결혼</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<ul class="list list1 mt_2">
+						<li>경조인사문 입력시 첫 라인의 첫 칸을 띄우지 말고 입력하여 주시기 바랍니다.</li>
+						<li>경조카드에 인쇄되는 인사문은 총 3줄, 100자까지 입력 가능합니다.</li>
+						<li>특수문자( &lt; &gt; " ' )는 입력할 수 없습니다.</li>
+					</ul>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_2" class="lab">경조인사문 입력</label>
+								<textarea id="inp1_2" class="tf txt_light" cols="auto" rows="2" maxlength="100"
+									style="white-space: normal;" placeholder="최대 100자까지 입력 가능">행복한 하루 되시길 바랍니다. 모두 건강하게 지내세요~</textarea>
+							</div>
+							<div class="btn_area fx_align_end">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray">확인</a>
+							</div>
+						</div>
+					</div>
+					<div class="mt_2">
+						<span class="check_item">
+							<input type="checkbox" name="chk1" id="chk1_1">
+							<label for="chk1_1">자주쓰는 경조문으로 등록</label>
+						</span>
+					</div>
+					<!-- e: 구분값 직접입력 -->
+				</div>
+			</div>
+
+			<div class="scroll_container mt_2">
+				<div class="scroll_track pl_4 pr_4" style="max-height: 300px;">
+					<div class="scroll_content">
+						<ul class="border_list">
+							<li>
+								<div class="fx_lr mb_2">
+									<strong class="l">위로</strong>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+									</div>
+								</div>
+								<p>삼가 조의를 드립니다.</p>
+							</li>
+							<li>
+								<div class="fx_lr mb_2">
+									<strong class="l">결혼</strong>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+									</div>
+								</div>
+								<p>결혼을 축하하며 복된 가정 이루기 바랍니다.</p>
+							</li>
+							<li>
+								<div class="fx_lr mb_2">
+									<strong class="l">결혼</strong>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+									</div>
+								</div>
+								<p>결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</p>
+							</li>
+							<li>
+								<div class="fx_lr mb_2">
+									<strong class="l">결혼</strong>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_round btn_outline_default">선택</a>
+									</div>
+								</div>
+								<p>결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되시기 바랍니다.</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="container section pb_8">
+				<h2 class="tit1">경조카드 미리보기</h2>
+				<div class="img_wrap">
+					<img src="/resources/img/content/img_cong_sample.jpg" alt="결혼카드 새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.">
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="scftrc01bs_예금_이체출금_경조금송금_전화번호송금_보내기_요청정보확인.html" class="btn btn_xl btn_primary">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 자주쓰는 경조문 관리 팝업 -->
+			<div class="modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">자주쓰는 경조문 관리</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div>
+								<h3 class="tit1">자주쓰는 인사문 등록</h3>
+
+								<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">경조인사문 구분</span>
+											<p class="tf" style="height: auto;"><span class="txt_light">선택</span></p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+
+								<div class="tf_item mt_2">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label for="layer01_inp1_1" class="lab">경조인사문 입력</label>
+											<textarea id="layer01_inp1_1" class="tf txt_light" cols="auto" rows="2" maxlength="100"
+												style="white-space: normal;"
+												placeholder="최대 100자까지 입력 가능">행복한 하루 되시길 바랍니다. 모두 건강하게 지내세요~</textarea>
+										</div>
+										<div class="btn_area fx_align_end">
+											<a href="#;" class="btn btn_md btn_round btn_darkgray">확인</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="section pb_4">
+							<h3 class="tit1 pl_4 pr_4">등록 경조문</h3>
+							<div class="scroll_container">
+								<div class="scroll_track pl_4 pr_4" style="max-height: 300px;">
+									<div class="scroll_content">
+										<ul class="border_list">
+											<li>
+												<div class="fx_lr mb_2">
+													<strong class="l">위로</strong>
+													<div class="r">
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default" data-toggle-btn="list1">수정</a>
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default">삭제</a>
+													</div>
+												</div>
+												<p data-toggle-content="list1" style="display: block;">삼가 조의를 드립니다.</p>
+												<div class="tf_item mt_2" data-toggle-content="list1">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<label for="layer01_inp1_1" class="lab">경조인사문 입력</label>
+															<textarea id="layer01_inp1_1" class="tf txt_light" cols="auto" rows="2" maxlength="100"
+																style="white-space: normal;" placeholder="최대 100자까지 입력 가능">삼가 조의를 드립니다.</textarea>
+														</div>
+														<div class="btn_area fx_align_end fx_direction_col">
+															<a href="#;" class="btn btn_md btn_round btn_default" data-toggle-btn="list1">취소</a>
+															<a href="#;" class="btn btn_md btn_round btn_primary mt_1 ml_0">수정</a>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="fx_lr mb_2">
+													<strong class="l">결혼</strong>
+													<div class="r">
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default" data-toggle-btn="list2">수정</a>
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default">삭제</a>
+													</div>
+												</div>
+												<p data-toggle-content="list2" style="display: block;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</p>
+												<div class="tf_item mt_2" data-toggle-content="list2">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<label for="layer01_inp1_1" class="lab">경조인사문 입력</label>
+															<textarea id="layer01_inp1_1" class="tf txt_light" cols="auto" rows="2" maxlength="100"
+																style="white-space: normal;"
+																placeholder="최대 100자까지 입력 가능">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</textarea>
+														</div>
+														<div class="btn_area fx_align_end fx_direction_col">
+															<a href="#;" class="btn btn_md btn_round btn_default" data-toggle-btn="list2">취소</a>
+															<a href="#;" class="btn btn_md btn_round btn_primary mt_1 ml_0">수정</a>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="fx_lr mb_2">
+													<strong class="l">결혼</strong>
+													<div class="r">
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default" data-toggle-btn="list3">수정</a>
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default">삭제</a>
+													</div>
+												</div>
+												<p data-toggle-content="list3" style="display: block;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되시기 바랍니다.
+												</p>
+												<div class="tf_item mt_2" data-toggle-content="list3">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<label for="layer01_inp1_1" class="lab">경조인사문 입력</label>
+															<textarea id="layer01_inp1_1" class="tf txt_light" cols="auto" rows="2" maxlength="100"
+																style="white-space: normal;"
+																placeholder="최대 100자까지 입력 가능">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되시기 바랍니다.</textarea>
+														</div>
+														<div class="btn_area fx_align_end fx_direction_col">
+															<a href="#;" class="btn btn_md btn_round btn_default" data-toggle-btn="list3">취소</a>
+															<a href="#;" class="btn btn_md btn_round btn_primary mt_1 ml_0">수정</a>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="fx_lr mb_2">
+													<strong class="l">위로</strong>
+													<div class="r">
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default" data-toggle-btn="list4">수정</a>
+														<a href="#;" class="btn btn_sm btn_round btn_outline_default">삭제</a>
+													</div>
+												</div>
+												<p data-toggle-content="list4" style="display: block;">삼가 조의를 드립니다.</p>
+												<div class="tf_item mt_2" data-toggle-content="list4">
+													<div class="tf_item_body">
+														<div class="input_area">
+															<label for="layer01_inp1_1" class="lab">경조인사문 입력</label>
+															<textarea id="layer01_inp1_1" class="tf txt_light" cols="auto" rows="2" maxlength="100"
+																style="white-space: normal;" placeholder="최대 100자까지 입력 가능">삼가 조의를 드립니다.</textarea>
+														</div>
+														<div class="btn_area fx_align_end fx_direction_col">
+															<a href="#;" class="btn btn_md btn_round btn_default" data-toggle-btn="list4">취소</a>
+															<a href="#;" class="btn btn_md btn_round btn_primary mt_1 ml_0">수정</a>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('layer01')">닫기</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- s: 자주쓰는 경조문 관리 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

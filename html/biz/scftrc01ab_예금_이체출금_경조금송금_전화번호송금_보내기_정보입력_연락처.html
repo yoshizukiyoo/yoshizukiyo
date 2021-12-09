@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="전화번호송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#;"><span>보내기</span></a></li>
+					<li><a href="#;"><span>조회/취소</span></a></li>
+					<li><a href="#;"><span>받은내역</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container pt_1 pb_4">
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">송금정보입력</span></li>
+					<li><span class="num">2</span><span class="txt">경조인사문 선택</span></li>
+					<li><span class="num">3</span><span class="txt">요청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">송금요청완료</span></li>
+				</ul>
+
+				<div>
+					<h2 class="tit1">송금정보입력</h2>
+					<!-- s: 받는분 입력 -->
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_1" class="lab">받는분 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_1" class="tf" placeholder="받는분 입력">
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray"
+									onclick="openModal('phone_search', this); return false;">연락처</a>
+							</div>
+						</div>
+					</div>
+					<!-- e: 받는분 입력 -->
+
+					<!-- s: 휴대폰번호 입력 -->
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="input2_1">휴대폰번호 <span class="req">필수항목</span></label>
+								<div class="input_items">
+									<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;"
+										onclick="openModal('layerOption')">010</a>
+									<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- e: 휴대폰번호 입력 -->
+
+					<!-- s: 계좌정보 -->
+					<div class="account_info_box mt_2">
+						<a href="#;" onclick="openModal('layerAccount'),this">
+							<span class="bank">
+								<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+							</span>
+							<div class="info">
+								<strong>스마트 e-Postbank 예금</strong>
+								<p>100057-02-000010</p>
+								<div class="price">
+									<span>출금가능금액</span>
+									<strong>2,345,900 원</strong>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- e: 계좌정보 -->
+
+					<!-- s: 이체금액 입력 -->
+					<div class="account_amount mt_6">
+						<div class=inner>
+							<a href="#n" onclick="openModal('amount_keypad', this); return false;">
+								<div class="amount_label">
+									<span>금액 <strong class="req">필수항목</strong></span>
+								</div>
+								<div class="amount_area">
+									<span class="txt_amt1">4,123,000</span>
+									<span class="txt_amt2">원</span>
+									<span class="txt_amt3">사백일십이만삼천원</span>
+								</div>
+							</a>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+						<p class="mt_1">나의 이체한도 : 1회 3,000,000원 / 1일 3,000,000원</p>
+						<!-- Validation Check 문구 -->
+						<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
+					</div>
+					<!-- e: 이체금액 입력 -->
+
+					<div class="mt_4">
+						<span class="check_item">
+							<input type="checkbox" name="chk1" id="chk1_1">
+							<label for="chk1_1">경조금송금 예약이체</label>
+						</span>
+					</div>
+					<div class="tf_double mt_2">
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+									<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+										required>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+										<i class="ico ico_datepicker"></i>
+										<span class="sr_only">달력</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+									<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+										required>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+										<i class="ico ico_datepicker"></i>
+										<span class="sr_only">달력</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt_3 txt_gray">
+					<p class="bul_notice">송금 가능 한도액은 1일 최대 300만원 이하입니다.</p>
+					<p class="bul_notice mt_2">송금요청 완료시 송금정보와 경조메시지를 받는분에게 문자메시지로 전송합니다.</p>
+					<p class="bul_notice mt_2">받는분의 휴대폰이 스마트폰인 경우에만 경조금 수신이 가능하며 받는분이 스마트뱅킹 앱에서 수신 동의 후 본인계좌로 즉시 입금받아 수령하실 수 있습니다.
+					</p>
+					<p class="bul_notice mt_2">00:00~04:00 송금건은 당일00:00~04:00에만 취소 가능합니다.</p>
+					<p class="bul_notice mt_2">송금요청 완료 후 10일 이내에 받는분이 수신동의를 하지 않을 경우 자동취소되어 보내는분의 계좌로 반환 처리됩니다.</p>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="scftrc01as_예금_이체출금_경조금송금_전화번호송금_보내기_경조인사문선택.html" class="btn btn_xl btn_primary">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 연락처 팝업 -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="phone_search">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">전화번호검색</h2>
+					</div>
+					<div class="popup_body">
+						<nav class="tab_menu tab_menu1 mb_0">
+							<ul class="tab_list">
+								<li class="on"><a href="#;"><span>전화번호부</span></a></li>
+								<li><a href="#;"><span>이전내역</span></a></li>
+							</ul>
+						</nav>
+						<div class="tf_item tf_item_md bg_lightgray border0">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" id="phone_search_inp1_1" class="tf txt_light" placeholder="초성, 이름 검색">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_search"><span class="sr_only">검색</span></a>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<ul class="list list_phone_book">
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_darkgray">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_darkgray">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="phone_thumb">
+										<img src="../../resources/img/content/img_phone_thumb_default.png" alt="전화번호부">
+									</span>
+									<div class="fx_lr">
+										<div class="l"><strong>강순이</strong>010-1234-5678</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+												onclick="openModal('alert01', this); return false;">선택</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('phone_search')">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('phone_search')">추가</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 연락처 팝업 -->
+
+			<!-- s: 연락처 실명확인 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_body">
+						<div class="container">
+							<div class="txt_c txt_medium txt_black">
+								받는 분의 실명을<br>정확하게 입력해 주세요.
+							</div>
+							<div class="tf_item mt_2">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="alert01_inp1" class="lab">이름</label>
+										<input type="text" id="alert01_inp1" class="tf" placeholder="정확한 이름 입력" value="강순이">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('alert01')">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('alert01')">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 연락처 실명확인 팝업 -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

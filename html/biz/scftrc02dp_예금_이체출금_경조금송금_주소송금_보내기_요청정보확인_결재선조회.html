@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="주소송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">송금정보입력</span></li>
+					<li><span class="num">2</span><span class="txt">경조인사문 선택</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">요청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">송금요청완료</span></li>
+				</ul>
+
+				<div>
+					<h2 class="tit1">송금정보확인</h2>
+					<div class="double_box">
+						<div class="btm">
+							<div>
+								<div class="l">보내는분</div>
+								<div class="r">나봄미</div>
+							</div>
+							<div>
+								<div class="l">보내는분 연락처</div>
+								<div class="r">010-0000-1212</div>
+							</div>
+							<div>
+								<div class="l">SMS수신</div>
+								<div class="r">미수신</div>
+							</div>
+							<div>
+								<div class="l">송금금액</div>
+								<div class="r"><span class="txt_bold">100,000</span>원</div>
+							</div>
+							<div>
+								<div class="l">수수료</div>
+								<div class="r">2,000원</div>
+							</div>
+							<div>
+								<div class="l">발송일</div>
+								<div class="r">2021.07.22</div>
+							</div>
+							<div>
+								<div class="l">받는분</div>
+								<div class="r">김가을</div>
+							</div>
+							<div>
+								<div class="l">받는분 연락처</div>
+								<div class="r">010-4444-5259</div>
+							</div>
+							<div>
+								<div class="l">받는분 주소</div>
+								<div class="r">전라남도 나주시 교육길 18<br>메가티움 2차 A동 541호(빛가람동)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">출금정보</h2>
+					<div class="double_box">
+						<div class="btm">
+							<div>
+								<div class="l">송금합계</div>
+								<div class="r">100,000원</div>
+							</div>
+							<div>
+								<div class="l">수수료</div>
+								<div class="r">2,000원</div>
+							</div>
+							<div>
+								<div class="l">총금액</div>
+								<div class="r"><span class="txt_bold">102,000</span>원</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="img_wrap mt_4">
+						<img src="/resources/img/content/img_cong_sample.jpg" alt="결혼카드 새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.">
+					</div>
+				</div>
+
+				<a href="#;" class="tf_item mt_2" onclick="openModal('pwd_full_popup');return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<div class="lab">비밀번호 <span class="req">필수항목</span></div>
+							<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+							<div class="password_masking gray">
+								<!-- 자릿수에 맞춰 <i></i> 추가 -->
+								<i></i><i></i><i></i><i></i>
+							</div>
+						</div>
+					</div>
+				</a>
+				<p class="txt_guide">비밀번호 5회이상 오류시 거래 제한</p>
+
+				<!-- s: 보안카드 입력 -->
+				<div class="section">
+					<h3 class="tit1">보안카드 입력</h3>
+					<div class="security_box">
+						<div>
+							<strong>[55] 앞 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 앞 2자리">
+							</div>
+						</div>
+						<div>
+							<strong>[55] 뒤 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 뒤 2자리">
+							</div>
+						</div>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: 보안카드 입력 -->
+
+				<!-- s: OTP 입력 -->
+				<div class="section">
+					<h3 class="tit1">OTP 입력</h3>
+					<div class="otp_box">
+						<a href="#;" onclick="openModal('otp_pwd_popup', this);return false;">
+							<i class="on"></i><i></i><i></i><i></i><i></i><i></i>
+						</a>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: OTP 입력 -->
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">취소</a>
+					<a href="scftrc02cs_예금_이체출금_경조금송금_주소송금_보내기_송금요청완료.html" class="btn btn_xl btn_primary">송금 실행</a>
+				</div>
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary"
+						onclick="openModal('approval_popup', this); return false;"><span>결재선조회</span></a>
+					<a href="scftrc02cs_예금_이체출금_경조금송금_주소송금_보내기_송금요청완료.html" class="btn btn_xl btn_primary"><span>결재요청</span></a>
+				</div>
+			</div>
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">비밀번호 입력</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">4자리 숫자를 입력해 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								4자리 숫자를 입력해 주세요.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 비밀번호 입력 팝업 -->
+
+			<!-- s: OTP 암호입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="otp_pwd_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">디지털 OTP</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">디지털 OTP 보안인증을 진행합니다.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+									<span class="certi_time">02:59</span>
+								</div>
+							</div>
+							<div class="btn_group btn_bottom_fixed mt_0">
+								<a href="#;" class="btn btn_md btn_round btn_default">
+									<span>인증번호 재입력</span>
+								</a>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								디지털 OTP앱에서 생성한 6자리 번호를 입력해 주세요
+							</p>
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary">인증요청</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('otp_pwd_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('otp_pwd_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: OTP 암호입력 팝업 -->
+
+			<!-- s: 결재선조회 팝업 - 확인자가 있는 경우 -->
+			<div class="modal_popup popup show" data-popup="approval_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">결재선조회</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<h3 class="tit1">즉시이체</h3>
+							<div class="approval_line arrow">
+								<ul>
+									<li>
+										<div>
+											<span>사용자명</span>
+											<strong>김우정</strong>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>확인(1단계)자</span>
+											<strong>고길동</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle1">
+													<label for="approval_toggle1">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>확인(2단계)자</span>
+											<strong>도우너</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle2">
+													<label for="approval_toggle2">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>확인(3단계)자</span>
+											<strong>정중앙</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle3">
+													<label for="approval_toggle3">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>승인자</span>
+											<strong>박승인</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle4">
+													<label for="approval_toggle4">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<span>전결자</span>
+											<strong>남결자</strong>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('approval_popup'); return false;">확인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 결재선조회 팝업 - 확인자가 있는 경우 -->
+
+			<!-- s: 결재선조회 팝업 - 단독승인자 -->
+			<div class="modal_popup popup hide" data-popup="approval_single_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">결재선조회</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<h3 class="tit1">즉시이체</h3>
+							<div class="approval_line">
+								<ul>
+									<li>
+										<div>
+											<span>사용자명</span>
+											<strong>김우정</strong>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>승인자</span>
+											<strong>박승인</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle5">
+													<label for="approval_toggle5">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<span>전결자</span>
+											<strong>남결자</strong>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary"
+								onclick="closeModal('approval_single_popup'); return false;">확인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 결재선조회 팝업 - 단독승인자 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
