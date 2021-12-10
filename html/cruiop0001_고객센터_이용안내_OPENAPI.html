@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="OPEN API"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 우체국금융 OPEN API 영역 -->
+			<div class="container mb_16">
+
+				<div class="box box_border mt_3">
+					<strong class="tit1">우체국금융 OPEN API</strong>
+
+					<ul class="list list1 pt_2">
+						<li>
+							핀테크업체 개발자를 위한 우체국금융OPEN API서비스 입니다.
+						</li>
+						<li>
+							우체국 금융 OPEN API는 금융정보를 누구나 사용할 수 있도록 공개된 API로서 우체국 금융정보를 활용하여 웹서비스 및 어플리케이션 개발을 지원하기 위하여 API를 외부에 공개 합니다.
+						</li>
+						<li>
+							요청에 대한 결과는 xml형태로 제공되며 사용자는 이를 이용하여 원하는 디자인의 형태로 구현하고, 우체국에서 제공하는 금융정보를 활용하실 수 있습니다. </li>
+					</ul>
+				</div>
+
+
+				<!-- s: 테이블 영역 -->
+				<div class="section">
+					<h2 class="tit1">우체국금융API</h2>
+
+					<div class="tbl">
+						<table>
+							<caption class="sr_only">우체국금융API</caption>
+							<colgroup>
+								<col style="width: 35%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">API</th>
+									<th scope="col">소개</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_l">보험상품정보 조회 </td>
+									<td class="txt_l">보험 상품명을 이용하여 개인단체여부, 금리연동구분 등 우체국금융 보험상품정보를 조회할 수 있는 서비스입니다.
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">보험공시이율 조회 </td>
+									<td class="txt_l">보험이자율명을 이용하여 우체국금융 보험공시이율을 조회할 수 있는 서비스입니다.
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">1회 보험료 조회 </td>
+									<td class="txt_l">보험 상품, 나이, 성별정보를 이용하여 우체국금융 1회 보험료를 조회할 수 있는 서비스입니다.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">기본 요청 URL(request url) </h2>
+					<ul class="list list1">
+						<li>
+							보험상품정보 조회 : http://apis.data.go.kr/1721301/KpostInsuranceProductView/insuranceGoods
+						</li>
+						<li>
+							보험공시이율 조회 : http://apis.data.go.kr/1721301/KpostInsuranceInterestRateView/insuranceInterestRate
+						</li>
+						<li>
+							1회 보험료 조회 : http://apis.data.go.kr/1721301/KpostInsuranceFeeCalculationView/insuranceFee
+						</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">요청변수</h2>
+					<ul class="list list1">
+						<li>보험상품 API는 다음과 같은 요청 변수를 갖습니다.
+						</li>
+					</ul>
+
+					<div class="tbl pt_4">
+						<table style="min-width: 600px;">
+							<caption class="sr_only">요청변수 </caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col style="width: 45%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">API서비스</th>
+									<th scope="col">요청변수</th>
+									<th scope="col">값</th>
+									<th scope="col">설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="2" class="txt_l">보험상품정보 조회 </td>
+									<td class="txt_l">ServiceKey</td>
+									<td class="txt_l">string(필수)</td>
+									<td class="txt_l">공공데이터포털에서 발급받은 인증키</td>
+								</tr>
+								<tr>
+									<td class="txt_l">GOOD_ABNM</td>
+									<td class="txt_l">string(선택)</td>
+									<td class="txt_l">검색을 원하는 상품명 입력(미입력: 전체 조회)</td>
+								</tr>
+
+								<tr>
+									<td rowspan="2" class="txt_l">보험공시이율 조회
+									</td>
+									<td class="txt_l">ServiceKey
+									</td>
+									<td class="txt_l">string(필수) </td>
+									<td class="txt_l">공공데이터포털에서 발급받은 인증키</td>
+								</tr>
+								<tr>
+									<td class="txt_l">INSU_INTR_RATE_CODE_NM</td>
+									<td class="txt_l">string(선택)</td>
+									<td class="txt_l">검색을 원하는 이자율명 입력(미입력: 전체 조회)
+									</td>
+								</tr>
+
+								<tr>
+									<td rowspan="4" class="txt_l">1회 보험료 조회 </td>
+									<td class="txt_l">ServiceKey</td>
+									<td class="txt_l">string(필수)</td>
+									<td class="txt_l">공공데이터포털에서 발급받은 인증키 </td>
+								</tr>
+								<tr>
+									<td class="txt_l">PRODUCT_NAME</td>
+									<td class="txt_l">string(필수)</td>
+									<td class="txt_l">검색을 원하는 상품명 입력<br>조회 대상 상품(무배당 에버리치복지보험, 무배당 알찬전환특약,<br>무배당 그린보너스저축보험, 무배당 파워적립보험)
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">JOIN_AGE</td>
+									<td class="txt_l">string(필수)</td>
+									<td class="txt_l">에버리치복지보험: 만 나이를 숫자로 입력, 그외 상품: 0세 이상 입력
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">SEX_CODE</td>
+									<td class="txt_l">string(필수)</td>
+									<td class="txt_l">M(남성),W(여성) 입력</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">출력항목(response field)</h2>
+					<ul class="list list1">
+						<li>보험상품API는 다음과 같은 출력 변수를 갖습니다.
+						</li>
+					</ul>
+
+					<div class="tbl pt_4">
+						<table style="min-width: 600px;">
+							<caption class="sr_only">출력항목(response field)</caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">API서비스</th>
+									<th scope="col">출력항목</th>
+									<th scope="col">값</th>
+									<th scope="col">설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="11" class="txt_l">보험상품정보 조회 </td>
+									<td class="txt_l">resultCode </td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">API 에러코드 </td>
+								</tr>
+								<tr>
+									<td class="txt_l">resultMsg</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">에러 메시지 </td>
+								</tr>
+								<tr>
+									<td class="txt_l">GOOD_ABNM </td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">상품명</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PPSN_ASCT_DVSN
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">개인단체구분
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">RINT_LNKG_DVSN
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">금리연동구분
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PPAM_DC_YN
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">선납할인여부</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PINS_MIN
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">보험기간(MIN)
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PINS_MAX
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">보험기간(MAX)
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">UNIT_CODE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">단위코드
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">INTN_ENTR_PSBL_YN
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">온라인보험여부
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">GOOD_CLSF_NM
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">상품분류
+									</td>
+								</tr>
+
+								<tr>
+									<td rowspan="8" class="txt_l">보험공시이율 조회
+									</td>
+									<td class="txt_l">resultCode
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">API 에러코드
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">resultMsg</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">에러 메시지
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">INSU_INTR_RATE_CODE_NM
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">보험이자율명
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">APLY_STRT_DATE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">적용시작일
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">APLY_END_DATE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">적용종료일
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">NORM_INTR_RATE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">정상이자율
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">ARIN_RATE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">연체이자율
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PPAM_INTR_RATE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">선납이자율
+									</td>
+								</tr>
+
+
+								<tr>
+									<td rowspan="13" class="txt_l">1회보험료 조회
+									</td>
+									<td class="txt_l">resultCode
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">API 에러코드
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">resultMsg</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">에러 메시지
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">RECORD_ID
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">레코드ID
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">JOIN_AGE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">가입나이
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">SEX_CODE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">성별코드
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">INSURANCE_PAYMENT
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">보험료
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PAYMENT_PERIOD
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">납입기간
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">INSURANCE_PERIOD
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">보험기간
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">JOIN_PAYMENT_STANDARD
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">가입금액기준
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">CONTRACT_DIVISION
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">계약구분
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">CONTRACT_TYPE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">계약유형
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PRODUCT_CODE
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">상품코드
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_l">PRODUCT_NAME
+									</td>
+									<td class="txt_l">string</td>
+									<td class="txt_l">상품명
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- e: 테이블 영역 -->
+
+
+			</div>
+			<!-- e: 우체국금융 OPEN API 영역 -->
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
