@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="popup_tit">알림함</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body">
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list tab_list1">
+					<li class="on"><a href="#tab_cont1"><span>알림</span></a></li>
+					<li><a href="#tab_cont2"><span>이벤트</span></a></li>
+					<li><a href="#tab_cont3"><span>공지사항</span></a></li>
+				</ul>
+			</nav>
+			<div class="container">
+				<ul class="alarm_box_list">
+					<li class="continue">
+						<a href="#">
+							<strong class="d_b">(무)우체국저축보험<br>전자청약 진행 중입니다.</strong>
+							<span class="txt_gray">2021.07.23 12:11</span>
+						</a>
+						<a href="#;" class="btn btn_xs btn_round btn_darkgray">
+							이어하기
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<strong class="d_b">(무)우체국저축보험 실효 되었습니다.</strong>
+							<span class="txt_gray">2021.07.23 12:11</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<strong class="d_b">(무)우체국저축보험 실효예정</strong>
+							<span class="txt_gray">2021.07.23 12:11</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<strong class="d_b">(무)우체국저축보험 10월분 보험료 미납</strong>
+							<span class="txt_gray">2021.07.16 12:40</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<strong class="d_b">(무)우체국저축보험 만기예정</strong>
+							<span class="txt_gray">2021.07.11 10:15</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="popup_footer footer_full">
+			<div class="btn_group btn_group_flex">
+				<!-- <button type="button" class="btn btn_lg btn_default">취소</button> -->
+				<button type="button" class="btn btn_lg btn_primary" onclick="openModal('alarmBottomSheet'); return false;">알림
+					종류 설정</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- s: Modal popup 바텀시트 샘플 -->
+	<div class="modal_popup modal_bottom_sheet hide" data-popup="alarmBottomSheet">
+		<div class="dimed"></div>
+		<div class="popup_inner">
+			<div class="popup_header">
+				<h2 class="popup_tit">알림 종류 설정</h2>
+			</div>
+			<div class="popup_body">
+				<div class="container">
+					<div class="clfx">
+						<div class="f_l">
+							<h3 class="tit1">스마트보험PUSH알림</h3>
+						</div>
+						<div class="f_r">
+							<!-- 텍스트 노출형 -->
+							<span class="check_switch">
+								<input type="checkbox" id="inputCheckSwitch2" checked>
+								<label for="inputCheckSwitch2">
+									<span class="txt_uncheck">미수신</span>
+									<span class="txt_checked">수신</span>
+								</label>
+							</span>
+						</div>
+					</div>
+					<ul class="login_list mb_6">
+						<li>
+							<div class="tf_item pt_3 pb_3">
+								<div class="tf_item_body">
+									<span class="check_item txt_lg">
+										<input type="checkbox" id="lb_agreement">
+										<label for="lb_agreement" class="txt_default txt_medium">전체</label>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="tf_item pt_3 pb_1">
+								<div class="tf_item_body">
+									<span class="check_item txt_lg">
+										<input type="checkbox" id="lb_agreement">
+										<label for="lb_agreement" class="txt_default txt_medium">우체국 소식/이벤트</label>
+									</span>
+								</div>
+							</div>
+							<div class="tf_item pt_1 pb_1">
+								<div class="tf_item_body">
+									<span class="check_item txt_lg">
+										<input type="checkbox" id="lb_agreement">
+										<label for="lb_agreement" class="txt_default txt_medium">보험관련 정보 알림</label>
+									</span>
+								</div>
+							</div>
+							<div class="tf_item pt_1 pb_1">
+								<div class="tf_item_body">
+									<span class="check_item txt_lg">
+										<input type="checkbox" id="lb_agreement" checked>
+										<label for="lb_agreement" class="txt_default txt_medium">보험관련 정보 알림</label>
+									</span>
+								</div>
+							</div>
+							<div class="tf_item pt_1 pb_3">
+								<div class="tf_item_body">
+									<span class="check_item txt_lg">
+										<input type="checkbox" id="lb_agreement" checked>
+										<label for="lb_agreement" class="txt_default txt_medium">마케팅 정보 알림</label>
+									</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<button type="button" class="btn btn_close_popup">닫기</button>
+		</div>
+	</div>
+	<!-- e: Modal popup 바텀시트 샘플 -->
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class=" common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>

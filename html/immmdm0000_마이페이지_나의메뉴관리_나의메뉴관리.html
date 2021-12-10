@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.tab_list3 li .btn').on('click', function (e) {
+				e.preventDefault()
+				$('.tab_list3 li .btn').parent().removeClass('on')
+				$(this).parent().addClass('on')
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="나의 메뉴관리"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container pt_4">
+				<div class="clfx mb_3">
+					<div class="f_l">
+						<h3 class="tit1">나의 메뉴</h3>
+					</div>
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+							<i class="ico ico_help_sm"></i>
+							<span>알려드립니다</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu_management">
+				<ul class="menu_list">
+					<li>
+						계약사항조회
+						<a href="#" class="btn">
+							<img class="img_close" src="../resources/img/content/ico_closed.png" alt="닫기">
+						</a>
+					</li>
+					<li>
+						보장분석신청
+						<a href="#" class="btn">
+							<img class="img_close" src="../resources/img/content/ico_closed.png" alt="닫기">
+						</a>
+					</li>
+					<li>
+						보험료납입
+						<a href="#" class="btn">
+							<img class="img_close" src="../resources/img/content/ico_closed.png" alt="닫기">
+						</a>
+					</li>
+					<li>
+						실시간보험료납입
+						<a href="#" class="btn">
+							<img class="img_close" src="../resources/img/content/ico_closed.png" alt="닫기">
+						</a>
+					</li>
+				</ul>
+				<div class="gnb">
+					<ul class="tab_list3">
+						<li class="on">
+							<a href="#" class="btn">조회</a>
+						</li>
+						<li>
+							<a href="#" class="btn">납입</a>
+						</li>
+						<li>
+							<a href="#" class="btn">자동이체관리</a>
+						</li>
+						<li>
+							<a href="#" class="btn">대출/상환</a>
+						</li>
+						<li>
+							<a href="#" class="btn">지급</a>
+						</li>
+						<li>
+							<a href="#" class="btn">계약사항변경</a>
+						</li>
+						<li>
+							<a href="#" class="btn">안내장/증명서</a>
+						</li>
+						<li>
+							<a href="#" class="btn">전자청약</a>
+						</li>
+					</ul>
+					<ul class="content_list">
+						<li>
+							<div class="content">
+								<ul>
+									<li>
+										<span class="check_item">
+											<input type="checkbox" name="inputCheck1" id="inputCheck1_1" checked>
+											<label for="inputCheck1_1">보험료납입</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="inputCheck2" id="inputCheck1_2">
+											<label for="inputCheck1_2">보험료실시간납입</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="inputCheck3" id="inputCheck1_3">
+											<label for="inputCheck1_3">보험료추가납입</label>
+										</span>
+										<span class="check_item">
+											<input type="checkbox" name="inputCheck2" id="inputCheck1_4">
+											<label for="inputCheck1_4">포스트페이당일납입취소</label>
+										</span>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<button class="btn btn_xl btn_default">
+						<span>초기화</span>
+					</button>
+					<button class="btn btn_xl btn_primary">
+						<span>저장</span>
+					</button>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 알려드립니다 레이어 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알려드립니다.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1">
+								<li>자주 이용하시는 메뉴 최대 8개를 지정할 수 있습니다.</li>
+								<li>지정한 메뉴는 전체메뉴, 퀵메뉴 등에 적용됩니다.</li>
+								<li>설정된 내역은 스마트뱅킹에서도 동일하게 적용됩니다.</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 알려드립니다 레이어 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
