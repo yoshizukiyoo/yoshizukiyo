@@ -22,7 +22,11 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		//
+		$(document).ready(function () {
+			$('.btn_result').click(function(){
+				$('.btm_result_box').show();
+			});
+		});
 	</script>
 </head>
 
@@ -35,7 +39,18 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">송금결과조회</h2>
+				<h2 class="tit_cont">SWIFT환급</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
 				<!-- e: 본문 헤더 -->
 			</div>
 
@@ -43,22 +58,23 @@
 				<!-- s: 본문 -->
 				<div class="cont_header_right">
 					<ul class="step">
-						<li><span class="num">1</span><span class="txt">정보확인</span></li>
-						<li class="on"><span class="num">2</span><span class="txt">실행완료</span></li>
+						<li><span class="num">1</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">조회결과확인</span></li>
+						<li><span class="num">3</span><span class="txt">정보확인</span></li>
+						<li class="on"><span class="num">4</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
-				<div class="box box_more first_section">
+
+				<div class="box first_section">
 					<ul class="list list1">
-						<li>조회하신 원부번호에 해당하는 유로지로 송금내역입니다.</li>
-						<li>유로지로송금 내용을 변경하시려면 "변경" 버튼을 클릭하시기 바랍니다.</li>
-						<li>유로지로송금 확인증을 받으시려면 "송금확인증" 버튼을 클릭하시기 바랍니다.</li>
+						<li>SWIFT 환급신청 처리되었습니다.</li>
 					</ul>
 				</div>
 				
 				<div class="section">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">송금결과조회 표로 원부번호, 송금액(외화), 상태, 원화환산금액①, 적용환율, 수수료②, 송금일, 총 출금액(①+②) 정보 제공</caption>
+							<caption class="sr_only">SWIFT환급 표로 원부번호, 송금인명, 수취인명 정보 제공</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -68,146 +84,40 @@
 							<tbody>
 								<tr>
 									<th scope="row">원부번호</th>
-									<td colspan="3">12021040800002</td>
+									<td colspan="3">12010505555</td>
 								</tr>
 								<tr>
-									<th scope="row">송금액(외화)</th>
-									<td class="txt_r">1000.00</td>
-									<th scope="row">상태</th>
-									<td>송금신청</td>
-								</tr>
-								<tr>
-									<th scope="row">원화환산금액①</th>
-									<td class="txt_r">1,128,700 원</td>
-									<th scope="row">적용환율</th>
-									<td class="txt_r">1128.70</td>
-								</tr>
-								<tr>
-									<th scope="row">수수료②</th>
-									<td class="txt_r">5,000 원</td>
-									<th scope="row">송금일</th>
-									<td>2021.04.08</td>
-								</tr>
-								<tr>
-									<th scope="row">총 출금액(①+②)</th>
-									<td colspan="3" class="txt_r">1,133,700 원</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="section">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">송금인정보</h3>
-						</div>
-					</div>
-					<div class="tbl_data tbl_row_data">
-						<table>
-							<caption class="sr_only">송금인정보 표로 송금인, 실명번호, 전화번호, 주소 정보 제공</caption>
-							<colgroup>
-								<col style="width: 17%;">
-								<col>
-								<col style="width: 17%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">송금인</th>
-									<td>SO</td>
-									<th scope="row">실명번호</th>
-									<td>650529 - *******</td>
-								</tr>
-								<tr>
-									<th scope="row">전화번호</th>
-									<td colspan="3">01087870909</td>
-								</tr>
-								<tr>
-									<th scope="row" rowspan="3">주소</th>
-									<td colspan="3">SODP</td>
-								</tr>
-								<tr>
-									<td colspan="3">SODP</td>
-								</tr>
-								<tr>
-									<td colspan="3">SODP</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="section">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">수취인정보</h3>
-						</div>
-					</div>
-					<div class="tbl_data tbl_row_data">
-						<table>
-							<caption class="sr_only">수취인정보 표로 수취인명, 전화번호, 우편번호, 수취인 주소, 계좌번호, 입금계좌번호, 입금은행코드, SWIFT코드, 입금은행 (은행명, 지점명, 주소), 통신문 정보 제공</caption>
-							<colgroup>
-								<col style="width: 17%;">
-								<col>
-								<col style="width: 17%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
+									<th scope="row">송금인명</th>
+									<td>NA BOM ME</td>
 									<th scope="row">수취인명</th>
-									<td>SORD</td>
-									<th scope="row">전화번호</th>
-									<td>01087870909</td>
+									<td>NA BOM ME</td>
 								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">환급정보</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">환급정보 표로 환급계좌번호, 환급원화 정보 제공</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
 								<tr>
-									<th scope="row">우편번호</th>
-									<td colspan="3">254862</td>
-								</tr>
-								<tr>
-									<th scope="row" rowspan="3">수취인 주소</th>
-									<td colspan="3">SODP</td>
-								</tr>
-								<tr>
-									<td colspan="3">SODP</td>
-								</tr>
-								<tr>
-									<td colspan="3">SODP</td>
-								</tr>
-								<tr>
-									<th scope="row">계좌구분</th>
-									<td></td>
-									<th scope="row">입금계좌번호</th>
-									<td></td>
-								</tr>
-								<tr>
-									<th scope="row">입금은행코드</th>
-									<td></td>
-									<th scope="row">SWIFT코드</th>
-									<td></td>
-								</tr>
-								<tr>
-									<th scope="row" rowspan="4">입금은행<br>(은행명, 지점명, 주소)</th>
-									<td colspan="3"></td>
-								</tr>
-								<tr>
-									<td colspan="3"></td>
-								</tr>
-								<tr>
-									<td colspan="3"></td>
-								</tr>
-								<tr>
-									<td colspan="3"></td>
-								</tr>
-								<tr>
-									<th scope="row" rowspan="3">통신문</th>
-									<td colspan="3"></td>
-								</tr>
-								<tr>
-									<td colspan="3"></td>
-								</tr>
-								<tr>
-									<td colspan="3"></td>
+									<th scope="row">환급계좌번호</th>
+									<td>0100017-02-694511</td>
+									<th scope="row">환급원화</th>
+									<td class="txt_r">93,230 원</td>
 								</tr>
 							</tbody>
 						</table>
@@ -215,7 +125,7 @@
 				</div>
 
 				<div class="btn_tbl_btm">
-					<a href="외환_해외송금_인터넷유로지로송금_송금결과조회_조회정보입력.html" class="btn btn_xl btn_primary">확인</a>
+					<a href="#;" class="btn btn_xl btn_primary">확인</a>
 				</div>
 
 				<!-- s: alert 팝업 -->

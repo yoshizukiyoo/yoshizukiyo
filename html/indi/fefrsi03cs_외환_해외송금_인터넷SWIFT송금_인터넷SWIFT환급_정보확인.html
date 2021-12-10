@@ -23,7 +23,9 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			$('.btn_result').click(function(){
+				$('.btm_result_box').show();
+			});
 		});
 	</script>
 </head>
@@ -37,7 +39,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">KT통신요금</h2>
+				<h2 class="tit_cont">SWIFT환급</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -56,75 +58,88 @@
 				<!-- s: 본문 -->
 				<div class="cont_header_right">
 					<ul class="step">
-						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
-						<li><span class="num">2</span><span class="txt">입력확인</span></li>
-						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+						<li><span class="num">1</span><span class="txt">조회정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">조회결과확인</span></li>
+						<li class="on"><span class="num">3</span><span class="txt">정보확인</span></li>
+						<li><span class="num">4</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>납부할 출금정보를 입력하신 후 [납부] 버튼을 클릭하시기 바랍니다.</li>
+						<li>SWIFT 환급신청을 하시려면 “환급신청” 버튼을 클릭하시기 바랍니다.</li>
 					</ul>
 				</div>
-
-				<!-- s: 납부방식 선택 -->
-				<div class="section">
-					<div class="tab_menu_type1">
-						<ul>
-							<li><a href="#;" class="current">즉시납부</a></li>
-							<li><a href="#;">예약납부</a></li>
-						</ul>
-					</div>
-				</div>
-				<!-- e: 납부방식 선택 -->
-
-				<!-- s: 납부 상세내용 -->
+				
 				<div class="section">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">즉시납부 상세내용으로 전자납부번호, 전화번호, 납세자, 부과년월, 고지구분, 납기기한 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">SWIFT환급 표로 원부번호, 송금일, 송금인명, 수취인명 정보 제공</caption>
 							<colgroup>
-								<col style="width: 230px">
+								<col style="width: 17%;">
 								<col>
-								<col style="width: 230px">
+								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
-								<!-- 전자납부번호 case -->
 								<tr>
-									<th scope="row">전자납부번호</th>
-									<td colspan="3">96018968874</td>
-								</tr>
-								<!-- 전화번호 case -->
-								<tr>
-									<th scope="row">전화번호</th>
-									<td colspan="3">031-000-0000</td>
+									<th scope="row">원부번호</th>
+									<td>12010505555</td>
+									<th scope="row">송금일</th>
+									<td>2021.06.04</td>
 								</tr>
 								<tr>
-									<th scope="row">납세자</th>
-									<td>전보*</td>
-									<th scope="row">부과년월</th>
-									<td>2021-09</td>
-								</tr>
-								<tr>
-									<th scope="row">고지구분</th>
-									<td>정상분</td>
-									<th scope="row">납기기한</th>
-									<td>2021-09-23</td>
+									<th scope="row">송금인명</th>
+									<td>NA BOM ME</td>
+									<th scope="row">수취인명</th>
+									<td>NA BOM ME</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 납부 상세내용 -->
 
-				<!-- s: 출금정보 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">출금정보</h3>
+							<h3 class="tit1">환급내역</h3>
 						</div>
+					</div>
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">환급내역 표로 송금외화, 환급외화, 송금환율, 환급환율, 송금원화, 환급원화 정보 제공</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">송금외화</th>
+									<td class="txt_r">(CAD) 100</td>
+									<th scope="row">환급외화</th>
+									<td class="txt_r">(CAD) 100</td>
+								</tr>
+								<tr>
+									<th scope="row">송금환율</th>
+									<td class="txt_r">923.37</td>
+									<th scope="row">환급환율</th>
+									<td class="txt_r">919.79</td>
+								</tr>
+								<tr>
+									<th scope="row">송금원화 (원)</th>
+									<td class="txt_r">93,230</td>
+									<th scope="row">환급원화 (원)</th>
+									<td class="txt_r">93,230</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
 						<div class="txt_right">
 							<strong class="necessary">*</strong>
 							표시는 필수입력사항입니다.
@@ -132,13 +147,12 @@
 					</div>
 					<div class="tbl_data tbl_list_data tbl_payment">
 						<table>
-							<caption class="sr_only">출금정보 상세내용이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
-								제공하고 있습니다.</caption>
+							<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를 제공하고 있습니다.</caption>
 							<colgroup>
 								<col>
-								<col style="width: 14%">
-								<col style="width: 15%">
-								<col style="width: 15%">
+								<col style="width: 17%">
+								<col style="width: 17%">
+								<col style="width: 17%">
 							</colgroup>
 							<thead>
 								<tr>
@@ -153,8 +167,7 @@
 									<td>
 										<div class="fx_lr fx_align_center">
 											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
-											<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
-												onclick="openModal('popup01', this);">전체계좌조회</button>
+											<button type="button" class="btn btn_md btn_outline_default v_base fx_right" onclick="openModal('popup01', this);">전체계좌조회</button>
 										</div>
 									</td>
 									<td class="txt_r">3,100,000</td>
@@ -166,68 +179,83 @@
 					</div>
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">KT통신요금 즉시납부를 위한 출금정보 입력표로 출금계좌 비밀번호, 납부금액, 예금주 전화번호 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">경조금배달 보내는 분</caption>
 							<colgroup>
-								<col style="width: 16%;">
+								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
 									<th scope="row">
-										출금계좌 비밀번호
+										계좌비밀번호
 										<strong class="necessary">*</strong>
 									</th>
 									<td>
-										<input type="password" class="tf" style="width: 200px;" title="계좌비밀번호 입력">
+										<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 420px">
 										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">납부금액</th>
-									<td class="txt_r">42,880원</td>
-								</tr>
-								<tr>
-									<th scope="row">
-										예금주 전화번호
-										<strong class="necessary">*</strong>
-									</th>
-									<td>
-										<div class="phone_number">
-											<div class="selectbox_wrap" style="width: 93px;">
-												<dl title="조건 선택">
-													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
-													<dd>
-														<ul>
-															<li><a href="#none"><span>010</span></a></li>
-															<li><a href="#none"><span>011</span></a></li>
-															<li><a href="#none"><span>016</span></a></li>
-															<li><a href="#none"><span>017</span></a></li>
-															<li><a href="#none"><span>018</span></a></li>
-															<li><a href="#none"><span>019</span></a></li>
-														</ul>
-													</dd>
-												</dl>
-											</div>
-											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px">
-											</div>
-											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px">
-											</div>
-										</div>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 출금정보 -->
+
+				<!-- s: 보안매체 인증번호 입력 -->
+				<div class="section">
+					<h3 class="tit1">보안매체 인증번호 입력</h3>
+					<div class="box_security_cert bg_security_card">
+						<div class="security_cert_inner">
+							<p class="txt_security">영업점에서 발급 받으신 보안카드를 확인하여 아래의 빈 칸에 보안카드 코드를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
+									<span class="security_masking mas_r">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+								<div class="cert_number">
+									<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
+									<span class="security_masking mas_l">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+									</span>
+									<button type="button" class="btn_mouse">
+										<span class="sr_only">마우스로 보안카드번호입력</span>
+									</button>
+								</div>
+							</div>
+							<p class="txt_security_caution">
+								<strong>보안카드 비밀번호 5회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
+					<div class="box_security_cert bg_otp">
+						<div class="security_cert_inner">
+							<p class="txt_security">OTP발생번호 <strong>숫자6자리</strong>를 입력하십시오.</p>
+							<div class="security_cert_wrap">
+								<div class="cert_number">
+									<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="6">
+								</div>
+								<button type="button" class="btn btn_lg btn_outline_default">OTP카드안내</button>
+							</div>
+							<p class="txt_security_caution">
+								<strong>통합OTP는 비밀번호 10회 연속 오류시 서비스 이용이 제한</strong>되니 주의하시기<br>
+								오류해제를 위해서는 본인의 신분증을 지참하시고 우체국을 방문하셔야 합니다.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- e: 보안매체 인증번호 입력 -->
 
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="#;" class="btn btn_xl btn_outline_default">이전화면</a>
-					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+					<a href="#;" class="btn btn_xl btn_primary">환급신청</a>
 				</div>
 
-				<!-- s: 전체계좌 팝업 -->
+				<!-- s: 전체계좌조회 팝업 -->
 				<div class="modal_popup modal_xxl hide" data-popup="popup01">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
@@ -347,7 +375,7 @@
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 전체계좌 팝업 -->
+				<!-- e: 전체계좌조회 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
@@ -370,10 +398,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -396,15 +422,14 @@
 								<div class="cont">
 									<!-- s: confirm 메세지 입력 영역 -->
 									<p>
-										confirm 메세지 입력 영역
+										컨펌 메세지 입력 영역
 									</p>
 									<!-- e: confirm 메세지 입력 영역 -->
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('confirm_popup');">취소</button>
-								<a href="#;" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</a>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -415,7 +440,7 @@
 				<!-- e: 본문 -->
 			</div>
 		</article>
-		<footer class=" footer"></footer>
+		<footer class="footer"></footer>
 	</div>
 </body>
 
