@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="기부금송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#;"><span>보내기</span></a></li>
+					<li><a href="#;"><span>조회/취소</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container pb_4 pt_1">
+				<div class="box box_border">
+					<div class="p_4 txt_c">
+						<img src="/resources/img/content/img_donate_org01_xl.png" alt="희망친구 기아대책">
+					</div>
+					<p class="mt_1 txt_break">한국 기아대책 기구는 1989년 기독교 정신을 바탕으
+						로 설립된 국내 최초로 해외를 돕는 국제구호단체 입
+						니다. 국내와 북한을 비롯한 전세계 60여 개국에 기대
+						봉사단을 파견하고, 국제개발협력사업 및 긴급구호
+						사업을 수행하고 있습니다.
+					</p>
+					<div class="mt_2 txt_r">
+						<a href="#;" class="txt_darkprimary txt_normal btn_more" onclick="openModal('org_info', this); return false;">기부단체안내 및 소득공제</a>
+					</div>
+				</div>
+
+				<div class="mt_6">
+					<h2 class="tit1">연말정산소득공제 정보제공에 동의하십니까?</h2>
+					<div class="tf_item">
+						<div class="input_items fx_lr">
+							<div class="l">
+								<span class="check_item">
+									<input type="checkbox" name="chk1" id="chk1_1">
+									<label for="chk1_1" class="txt_lg txt_medium">동의합니다.</label>
+								</span>
+							</div>
+							<div class="r">
+								<a href="#;" class="btn btn_xs btn_round btn_default" onclick="openModal('terms_popup', this); return false;">전문보기 <i
+										class="ico ico_chevron_right_sm ml_1"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt_8">
+					<nav class="tab_menu tab_menu2">
+						<ul class="tab_list">
+							<li><a href="#;"><span>기부금송금</span></a></li>
+							<li class="on"><a href="#;"><span>정기기부</span></a></li>
+							<li><a href="#;"><span>포인트기부</span></a></li>
+						</ul>
+					</nav>
+
+					<div class="mt_4">
+						<div class="double_box">
+							<div class="btm">
+								<div>
+									<div class="l">기부단체명</div>
+									<div class="r">한국기아대책기구</div>
+								</div>
+								<div>
+									<div class="l">기부단체계좌</div>
+									<div class="r">013086-31-000654</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt_2">
+						<div class="account_info_box">
+							<a href="#;" onclick="openModal('layerAccount'),this">
+								<span class="bank">
+									<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+								</span>
+								<div class="info">
+									<strong>스마트 e-Postbank 예금</strong>
+									<p>100057-02-000010</p>
+									<div class="price">
+										<span>출금가능금액</span>
+										<strong>2,345,900 원</strong>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<!-- s: 이체금액 입력 -->
+					<div class="account_amount mt_6">
+						<div class=inner>
+							<a href="#n" onclick="openModal('amount_keypad', this); return false;">
+								<div class="amount_label">
+									<span>송금액 <strong class="req">필수항목</strong></span>
+								</div>
+								<div class="amount_area">
+									<span class="txt_amt1">4,123,000</span>
+									<span class="txt_amt2">원</span>
+									<span class="txt_amt3">사백일십이만삼천원</span>
+								</div>
+							</a>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+						<p class="mt_1">나의 이체한도 : 1회 3,000,000원 / 1일 3,000,000원</p>
+						<!-- Validation Check 문구 -->
+						<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
+					</div>
+					<!-- e: 이체금액 입력 -->
+
+					<!-- s: 기부일자 -->
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption', this); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">기부일자(매월)</span>
+								<p class="tf">날짜 입력</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<!-- e: 기부일자 -->
+
+					<!-- s: 약정기간 -->
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption', this); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">약정기간</span>
+								<p class="tf">1년</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<!-- e: 약정기간 -->
+					<p class="bul_notice txt_gray mt_1">정기기부 가능 한도액은 최소 1천원~최대 30만원 입니다.</p>
+					<p class="bul_notice txt_gray mt_2">정기기부는 이용한도에 포함되지 않습니다.<br>
+						해당월에 지정된 기부일자가 없을 경우 마지막 날 출금됩니다.</p>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 기부단체 안내 팝업-->
+			<div class="modal_popup popup hide" data-popup="org_info">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">기부단체 안내</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+
+							<!-- s: CI -->
+							<div class="box box_border">
+								<div class="p_4 txt_c">
+									<img src="/resources/img/content/img_donate_org01_xl.png" alt="희망친구 기아대책">
+								</div>
+								<p class="mt_1 txt_break">한국 기아대책 기구는 1989년 기독교 정신을 바탕으
+									로 설립된 국내 최초로 해외를 돕는 국제구호단체 입
+									니다. 국내와 북한을 비롯한 전세계 60여 개국에 기대
+									봉사단을 파견하고, 국제개발협력사업 및 긴급구호
+									사업을 수행하고 있습니다.
+								</p>
+							</div>
+							<!-- e: CI -->
+
+							<!-- s: description -->
+							<div class="mt_8">
+								<div>
+									<h3 class="tit1">기아대책의 미션</h3>
+									<p class="txt_break">하나님께서는 우리를 부르셨고, 우리는 <span class="txt_normal">세상의 영적ㆍ육체적 굶주림이 종식되는 때까지</span> 그 부르심에 응답하였다.
+									</p>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">기아대책의 비전</h3>
+									<p>기아대책이 꿈꾸는 미래는 <span class="txt_normal">굶주림을 겪는 모든 아이들과 가정, 공동체가 회복되어 또 다른 공동체를 돕는 것입니다.</span><br> “ 지금 이순간 한 생명이 죽어갑니다. 그래서 우리는 한 생명을 살려냅니다“
+									</p>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">기아대책의 정신 (7대 핵심가치)</h3>
+									<ul class="list list1 txt_break spacing_mt_4">
+										<li><strong class="d_b txt_black mb_1">예수그리스도의 주권</strong>
+											우리는 사역의 기반을 예수 그리스도의 주권과 하나님 나라에 두며, 모든 영역에서 주인 되심을 인정합니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">투명성</strong>
+											우리의 모든 업무와 경영은 투명하고 윤리적이며 공정하게 이루어집니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">전문성</strong>
+											우리는 비전을 실현하기 위해 차별화된 역량을 개발하고 탁월함을 갖춘 인재로 나아갑니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">순수성</strong>
+											우리는 말한 대로 행하고 행하는 것 만을 말합니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">협력</strong>
+											우리는 동역자를 존중하고 다양성을 인정하며 배려와 소통으로 탁월한 성과를 창출합니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">정의와 혁신</strong>
+											우리는 기존의 방식을 혁신적으로 개선할 수 있는 창조적인 아이디어를 통해 변화를 만들어 갑니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">감동</strong>
+											우리는 사역에 관련된 모든 이들, 즉 수혜자, 사역자, 후원자를 모두 섬기며 그들을 감동시키기 위해 노력합니다.
+										</li>
+									</ul>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">사업소개</h3>
+									<ul class="list list1 txt_break spacing_mt_4">
+										<li><strong class="d_b txt_black mb_1">국내사업</strong>
+											1998년 사회복지법인 설립하여 행복한 아동, 행복한 가정, 행복한 사회를 위한 다양한 복지사업을 진행하고 있습니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">해외사업</strong>
+											전 세계 60여개국에 기대봉사단을 파견하여 개인과 공동체가 자립할 수 있도록 돕고 있습니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">대북사업</strong>
+											북한 지역사회의 자립을 위해 다각적인 구호사업을 진행하고 있습니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">생명지기</strong>
+											의료 사각지대에 놓여있는 국내외 이웃들의 건강권 확보와 보건 의료 사업을 지원합니다.
+										</li>
+										<li><strong class="d_b txt_black mb_1">행복한 나눔</strong>
+											국내ㆍ외 소외된 이웃의 자립을 돕기 위해 기아대책이 설립한 사회적 기업입니다.(2008년 4월 노동부 사회적기업 인증) ‘나눔비즈니스＇모델 개발로 자립을 돕고, 지속적인 공익 펀드를 마련하여 어려운 이웃을 돕습니다.
+										</li>
+									</ul>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">기부금 소득공제 안내</h3>
+									<div class="box box_border bg_lightgray">
+										<ul class="list list1">
+											<li>우체국 스마트뱅킹 기부 이용에 동의하신 후원자님의 경우, 기부 내역이 기부단체로 제공되며, 국세청 연말정산 간소화 서비스에 자동으로 반영됩니다.</li>
+											<li>기부금 영수증이 필요한 기부자는 기부단체 홈페이지에서 회원가입 후 출력이 가능합니다.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: description -->
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('org_info'); return false;">확인</a>
+							<a href="https://m.kfhi.or.kr/" class="btn btn_lg btn_primary" target="_blank" title="새창으로 열림">홈페이지</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 기부단체 안내 팝업 -->
+
+			<!-- s: 연말정산소득제공 정보제공 팝업 -->
+			<div class="modal_popup popup hide" data-popup="terms_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">개인정보 정보제공동의서</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div>
+								<h3 class="tit1">[개인(신용)정보 제3자 정보제공 동의서]</h3>
+								<div>
+									<h4 class="tit2 txt_black">우체국 귀중</h4>
+									<p>우체국이 본인으로부터 취득한 개인(시용)정보는 [개인정보 보고법] 제17조, 제22조, 제24조와 [신용정보의 이용 및 보호에 관한 법률] 제32조에 따라 제3자에게 제공할 경우 본인의 사전 동의를 얻어야 합니다. 이에 본인은 우체국이 아래의 내용과 같이 본인의 개인(신용)정보를 제3자에게 제공하는데 동의합니다.</p>
+								</div>
+								<div class="mt_6">
+									<ol class="list spacing_mt_4">
+										<li>
+											<strong class="d_b">1. 개인(신용) 정보를 제공받는 자</strong>
+											<ul class="list list1 mt_1">
+												<li>스마트뱅킹 기부금 송금서비스를 이용하여 기부금을 송금한 단체<br>
+													※ 제공대상 업체에 제공되는 개인(신용)정보는 업무 수행에 필요한 최소한의 정보로 한정합니다.
+													</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">2. 개인(신용) 정보 제공 목적</strong>
+											<ul class="list list1 mt_1">
+												<li>
+													국세청 연말정산 자료 전송, 기부금 영수증 발급 등 기부금 관련 업무처리
+													</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">3. 제공대상 개인(신용) 정보</strong>
+											<ul class="list list1 mt_1">
+												<li>개인식별정보(성명, 주민등록번호, 휴대폰번호, 주소, 기부일자, 기부금액 등)<br>
+													※ 본 동의 건에 한하여 제공됩니다.
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">4. 제공받는 자의 개인(신용)정보 보유 및 이용기간</strong>
+											<ul class="list list1 mt_1">
+												<li>제공받은 개인(신용)정보는 소득세법에 따라 본인과 제공받는 자의 거래 종료일로 부터 5년간 보유 및 이용합니다.<br>
+													※ 단, 관련법령의 별도 규정이 명시되어 있는 경우 그 기간을 따릅니다.
+													<ul class="list list2">
+														<li>거래 종로 후에는 위에 기재된 제공목적과 관련된 금융사고 조사, 분쟁해결, 민원처리, 법령상 의무이행을 위하여 필요한 범위 내에서만 보유 및 이용 됩니다.</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">5. 동의를 거부할 권리 및 동의를 거부할 경우의 불이익</strong>
+											<ul class="list list1 mt_1">
+												<li>정보제공에 동의하지 않으셔도 기부 등 불이익은 발생하지않습니다.</li>
+												<li>개인(신용)정보 제공에 동의하지 않고 기부 영수증 발급 및 연말정산 소득공제를 받고자 하는 경우에는 개별적으로 해당 단체로 직접 문의하시기 바랍니다.</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+
+								<div class="mt_4 txt_r txt_lg txt_normal">
+									2021년 07월 27일<br>
+									<span>나봄미</span> 서명 또는 (인)
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('tersm_popup'); return false;">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 연말정산소득제공 정보제공 팝업 -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 정기기부 이력 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc">해당단체의 정기기부 내역이 존재합니다. <br>정기기부 내역조회 화면으로 이동하시겠습니까?</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('alert01'); return false;">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('alert01'); return false;">완료</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 정기기부 이력 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
