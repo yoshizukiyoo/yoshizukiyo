@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="금융상품계산기"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li><a href="#"><span>예금만기액</span></a></li>
+					<li><a href="#"><span>적금만기액</span></a></li>
+					<li class="on"><a href="#" title="선택됨"><span>목표금액</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container">
+
+				<p class="txt_guide">
+					목표 금액과 기간으로, 우체국 적금에 가입할 때, 매월 납입해야 하는 적금액을 확인해드려요.
+				</p>
+
+				<p class="txt_guide txt_r">
+					조회기준 : 2021.09.04 14:24:42
+				</p>
+
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">상품 종류 <span class="req">필수항목</span></span>
+							<p class="tf">챔피언정기예금</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">목표 금액<span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="금액을 입력하세요." required>
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide">
+					100,000원 ~ 10,000,000원
+				</p>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">계약기간<span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="기간을 입력하세요" required value="24 개월">
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide">
+					6개월 ~ 24개월
+				</p>
+
+				<div class="section mb_10">
+					<h2 class="tit1 ">과세 등 기타 상세 조건 설정</h2>
+					<div class="input_items line2">
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_1">
+							<label for="lb_setting_1">개인 일반 과세</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_2">
+							<label for="lb_setting_2">개인 세금우대</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_3">
+							<label for="lb_setting_3">개인 비과세</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_4" checked>
+							<label for="lb_setting_4">직접 설정</label>
+						</span>
+					</div>
+
+					<div class="tf_item mt_4">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_around">과제코드 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_around" class="tf" required value="01. 개인거주자">
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray"
+									onclick="openModal('layercodePop', this);">과세코드</a>
+							</div>
+						</div>
+					</div>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">과세구분 <span class="req">필수항목</span></span>
+								<p class="tf">일반과세</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">가입구분 <span class="req">필수항목</span></span>
+								<p class="tf">창구가입</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">거래자구분 <span class="req">필수항목</span></span>
+								<p class="tf">기타 개인</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">소득자구분 <span class="req">필수항목</span></span>
+								<p class="tf">주민등록번호 부여자</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">기간구분 <span class="req">필수항목</span></span>
+								<p class="tf">월단위</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">납입주기 <span class="req">필수항목</span></span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">회전주기 <span class="req">선택하세요</span></span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">이자지급구분 <span class="req">선택하세요</span></span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">이율적용방법 <span class="req">선택하세요</span></span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">추가금리 <span class="req">선택하세요</span></span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">회전주기 <span class="req">선택하세요</span></span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+				</div>
+
+			</div>
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+
+				<!-- s: 하단 고정영역 내 토글 모달 -->
+				<div class="bottom_toggle">
+					<div class="modal_popup modal_toggle hide" data-popup="layercodePop">
+						<div class="dimed"></div>
+						<div class="popup_inner">
+							<div class="toggle_cont">
+								<!-- s: 토글 레이어 본문 -->
+								<div class="p_4">
+									<h2 class="tit1">과세코드</h2>
+
+									<ol class="code_list">
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_1">
+												<label for="lb_code_1">01. 개인거주자</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_2">
+												<label for="lb_code_2">02. 개인비거주자</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_3">
+												<label for="lb_code_3">03. 영리법인 및 비영리법인
+												</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_4">
+												<label for="lb_code_4">04. 국가 금융기관 지방 자치단체
+												</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_5">
+												<label for="lb_code_5">05. 국내 사업장이 있거나 부동산 임대소득이 있는 외국법인
+												</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_6">
+												<label for="lb_code_6">06. 국내 사업장이 있거나 부동산 임대소득이 없는 외국법인
+												</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_7">
+												<label for="lb_code_7">11. 일본, 튜니시안인
+												</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_8">
+												<label for="lb_code_8">12. 미국인
+												</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code_9">
+												<label for="lb_code_9">13. 캐나다인
+												</label>
+											</span>
+										</li>
+										<li>
+											<span class="check_item">
+												<input type="radio" name="lb_code" id="lb_code10">
+												<label for="lb_code10">14. 영국, 독일, 벨기에, 프랑스, 네덜란드, 덴마크 등</label>
+											</span>
+										</li>
+									</ol>
+
+									<button class="code_close" onclick="closeModal('layercodePop', this);">
+										<img src="../resources/img/common/ico_close.png" alt="닫기">
+									</button>
+
+								</div>
+								<!-- e: 토글 레이어 본문 -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 하단 고정영역 내 토글 모달 -->
+
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>계산하기</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
