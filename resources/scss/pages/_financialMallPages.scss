@@ -1,1 +1,652 @@
 //금융상품몰
+
+.product_header {
+	padding: 25px 20px 16px;
+
+	.product_name {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	.in_detail {
+		display: flex;
+		justify-content: space-between;
+
+		.cate_list {
+			display: inline-block;
+
+			&:after {
+				content: '';
+				clear: both;
+				display: block;
+			}
+
+			li {
+				position: relative;
+				float: left;
+				padding: 0 5px;
+				font-size: 10px;
+				color: #555;
+
+				+li {
+					&:before {
+						content: ' ';
+						position: absolute;
+						top: calc(50% - 4px);
+						left: 0;
+						width: 1px;
+						height: 8px;
+						background-color: #ddd;
+					}
+				}
+
+				&:first-child {
+					padding-left: 0;
+				}
+
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+
+			&.square {
+				display: inline-block;
+				padding: 2px 5px 3px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+			}
+		}
+
+		.review_star {
+			display: inline-block;
+			padding-right: 8px;
+
+			.star {
+				display: inline-block;
+				background: url(#{$url-img}/content/ico_star_sm.png) left center no-repeat;
+				background-size: 19px 18px;
+				padding-left: 22px;
+				font-size: 14px;
+				vertical-align: top;
+
+			}
+		}
+
+		.right {
+			align-self: center;
+
+		}
+	}
+}
+
+.product_body {
+	.product_content {
+		padding: 25px 20px;
+	}
+
+	.slogan {
+		font-weight: 300;
+	}
+
+	.prd_tit {
+		margin-top: 30px;
+		margin-bottom: 10px;
+		font-size: 14px;
+		font-weight: 200;
+
+	}
+
+	.info_list {
+		display: block;
+		margin-top: 17px;
+		margin-bottom: 10px;
+
+		li {
+			margin-top: 10px;
+			padding: 14px 20px 17px;
+			background-color: #fff;
+			border-radius: 5px;
+
+			i {
+				display: inline-flex;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				background-position: center;
+				background-size: 40px 40px;
+				vertical-align: middle;
+
+				&.ico_ins_info01 {
+					background-image: url(#{$url-img}/content/ico_ins_info01.png);
+				}
+
+				&.ico_ins_info02 {
+					background-image: url(#{$url-img}/content/ico_ins_info02.png);
+				}
+
+				&.ico_ins_info03 {
+					background-image: url(#{$url-img}/content/ico_ins_info03.png);
+				}
+			}
+
+			>span {
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			em {
+				display: block;
+				font-style: normal;
+				font-size: 10px;
+				font-weight: lighter;
+			}
+
+			strong {
+				font-size: 13px;
+				font-weight: 200;
+			}
+		}
+	}
+
+	.ins_info {
+		display: table;
+		width: 100%;
+
+		li {
+			position: relative;
+			display: table-cell;
+			width: 1%;
+			padding: 0 10px;
+			font-size: 14px;
+			text-align: center;
+			vertical-align: middle;
+
+			span {
+				display: inline-block;
+				font-size: 11px;
+			}
+
+			>* {
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			em {
+				font-style: normal;
+				color: #666;
+				font-size: 12px;
+			}
+
+			strong {
+				font-size: 17px;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: calc(50% - 12px);
+				left: 0;
+				width: 1px;
+				height: 24px;
+				background-color: #eee;
+			}
+
+			&:first-child {
+				padding-left: 0;
+				text-align: left;
+
+				&:before {
+					content: '';
+					display: none;
+				}
+			}
+
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+
+	.text_guide {
+		margin-top: 7px;
+		font-size: 9px;
+		color: #666;
+	}
+
+	.tag_group {
+		display: block;
+		margin-top: 10px;
+		line-height: 1.2;
+
+		span {
+			display: inline-block;
+			margin-right: 8px;
+			font-size: 12px;
+
+			color: #555;
+
+			&:before {
+				content: '#';
+			}
+
+		}
+	}
+
+	.box_flex_list {
+		display: flex;
+		flex-wrap: wrap;
+		margin: -3.5px;
+
+		li {
+			flex: 0 1 calc(33.333% - 7px);
+			margin: 3.5px;
+			padding: 15px 10px;
+			height: 58px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			background-color: #fff;
+			text-align: center;
+
+			i {
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				background-position: center center;
+				background-repeat: no-repeat;
+
+				&.ico_rate01 {
+					background-image:url(#{$url-img}/content/ico_prd_rate01.png);
+					background-size: 14.5px 14.5px;
+				}
+
+				&.ico_rate02 {
+					background-image:url(#{$url-img}/content/ico_prd_rate02.png);
+					background-size: 12px 15.5px;
+				}
+
+				&.ico_rate03 {
+					background-image:url(#{$url-img}/content/ico_prd_rate03.png);
+					background-size: 15.5px 16px;
+				}
+
+				&.ico_rate04 {
+					background-image:url(#{$url-img}/content/ico_prd_rate04.png);
+					background-size: 13px 16px;
+				}
+
+				&.ico_rate05 {
+					background-image:url(#{$url-img}/content/ico_prd_rate05.png);
+					background-size: 15.5px 15px;
+				}
+
+				&.ico_rate06 {
+					background-image:url(#{$url-img}/content/ico_prd_rate06.png);
+					background-size: 15.5px 14px;
+				}
+			}
+
+			span {
+				display: block;
+				font-size: 10px;
+				line-height: 1;
+				color: #666;
+			}
+
+			strong {
+				display: block;
+				text-align: center;
+				font-weight: 200;
+				font-size: 12px;
+				letter-spacing: -.5px;
+			}
+
+			.btn_flex_group {
+				display: block;
+				margin-top: 20px;
+				margin-left: -2.5px;
+				margin-right: -2.5px;
+
+				&:after {
+					content: '';
+					clear: both;
+					display: block;
+				}
+
+				a {
+					float: left;
+					height: 40px;
+					width: calc(33.333% - 5px);
+					padding: 23px 5px 5px;
+					margin: 2.5px;
+					background-color: #f6f6f6;
+					font-size: 9px;
+					border-radius: 3px;
+					color: #333;
+
+					&.btn_download {
+						background-image:url(#{$url-img}/content/ico_prd_download.png);
+						background-position: center 7px;
+						background-repeat: no-repeat;
+						background-size: 13px 11.5px;
+					}
+
+					&.btn_view {
+						background-image:url(#{$url-img}/content/ico_prd_view.png);
+						background-position: center 7px;
+						background-repeat: no-repeat;
+						background-size: 12px 12px;
+					}
+
+					&.btn_share {
+						background-image:url(#{$url-img}/content/ico_prd_share_sm.png);
+						background-position: center 7px;
+						background-repeat: no-repeat;
+						background-size: 12px 13.5px;
+					}
+				}
+			}
+		}
+
+		&.col2 {
+			margin: 0 -5px;
+
+			li {
+				flex: 0 1 calc(50% - 10px);
+				padding: 12px 10px;
+				margin: 5px;
+				height: auto;
+			}
+		}
+	}
+
+	.prd_accordion {
+		margin-top: 15px;
+
+		>li {
+			&:last-child {
+				h3 {
+					border-bottom: 1px solid #ddd;
+				}
+			}
+		}
+
+		h3 {
+			position: relative;
+			border-top: 1px solid #ddd;
+			padding: 10px 0;
+			margin-bottom: 0px;
+			font-size: 16px;
+			font-weight: 400;
+
+			em {
+				font-style: normal;
+
+				&:after {
+					content: '';
+					display: inline-block;
+					width: 1px;
+					height: 13px;
+					background-color: #eee;
+					margin-left: 10px;
+					margin-right: 10px;
+				}
+			}
+
+			&.on {
+				border-bottom: 0 !important;
+
+				&:before {
+					transform: rotate(180deg);
+				}
+			}
+
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				margin-top: -10px;
+				width: 21px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				height: 20px;
+				background: url(#{$url-img-common}/ico_chevron_down_sm.png) center center no-repeat;
+				background-size: 10px 6px;
+			}
+
+			i {
+				position: relative;
+				display: inline-block;
+				width: 29.5px;
+				height: 29.5px;
+				margin-right: 10px;
+				background-size: 29.5px 29.5px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				vertical-align: middle;
+
+				&.ico_mall_join {
+					background-image: url(#{$url-img}/content/ico_mall_join.png);
+				}
+
+				&.ico_mall_exp {
+					background-image: url(#{$url-img}/content/ico_mall_exp.png);
+				}
+
+				&.ico_mall_rate {
+					background-image: url(#{$url-img}/content/ico_mall_rate.png);
+				}
+
+				&.ico_mall_terms {
+					background-image: url(#{$url-img}/content/ico_mall_terms.png);
+				}
+
+			}
+		}
+
+		.content {
+			padding: 0 0 20px;
+
+			.prd_tit2 {
+				margin-top: 30px;
+				margin-bottom: 10px;
+				font-size: 12px;
+				font-weight: 300;
+
+				&:first-child {
+					margin-top: 0;
+				}
+			}
+
+			.prd_tit3 {
+				margin-top: 35px;
+				margin-bottom: 10px;
+				padding-left: 15px;
+				font-size: 14px;
+				font-weight: 400;
+				color: #333;
+				background-image:url(#{$url-img}/content/ico_prd_tit.png);
+				background-position: left center;
+				background-size: 11px 12px;
+				background-repeat: no-repeat;
+
+				&:first-child {
+					margin-top: 0;
+				}
+
+				+.list {
+					margin-top: -3px;
+					margin-left: 15px;
+				}
+			}
+
+			.list {
+				+.prd_tit3 {
+					margin-top: 20px;
+				}
+			}
+
+			.finance_list {
+				border-top: 1px solid #ddd;
+
+				li {
+					display: flex;
+					justify-content: space-between;
+					padding: 18px 0 18px 55px;
+					border-bottom: 1px solid #ddd;
+					background-image: url(#{$url-img}/content/ico_finance01.png);
+					background-position: 4px center;
+					background-repeat: no-repeat;
+					background-size: 41px 38px;
+
+					.title {
+						display: inline-block;
+						width: calc(100% - 72px);
+						padding-right: 10px;
+						line-height: 1;
+
+						strong {
+							display: block;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
+							font-size: 13px;
+							font-weight: 400;
+						}
+
+						span {
+							font-size: 10px;
+						}
+					}
+
+					&:nth-child(2) {
+						background-image: url(#{$url-img}/content/ico_finance02.png);
+					}
+
+					&:nth-child(3) {
+						background-image: url(#{$url-img}/content/ico_finance03.png);
+					}
+
+					&:nth-child(4) {
+						background-image: url(#{$url-img}/content/ico_finance04.png);
+					}
+
+					.prd_btn_group {
+						max-width: 72px;
+					}
+				}
+			}
+
+			.tbl_top_txt {
+				text-align: right;
+				margin-top: 15px;
+				margin-bottom: 7px;
+				font-size: 13px;
+			}
+
+			.tbl {
+				td {
+					text-align: left;
+					padding: 10px;
+					font-weight: 200;
+				}
+
+				+.prd_tit3 {
+					margin-top: 20px;
+				}
+			}
+
+			.ref_info {
+				margin-top: 15px;
+
+				dt {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+}
+
+.prd_btn_group {
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		line-height: 32px;
+		border-radius: 16px;
+		background-color: #f6f6f6;
+		text-indent: -9999px;
+		overflow: hidden;
+
+		&:before {
+			content: '';
+			width: 19px;
+			height: 17px;
+			display: inline-block;
+			background-image: url(#{$url-img}/content/ico_prd_cart.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+		}
+
+		&.btn_like {
+			&:before {
+				width: 19px;
+				height: 16px;
+				background-image: url(#{$url-img}/content/ico_prd_like.png);
+			}
+		}
+
+		&.btn_share {
+			&:before {
+				width: 16px;
+				height: 17px;
+				background-image: url(#{$url-img}/content/ico_prd_share.png);
+			}
+		}
+	}
+}
+
+.cate_re_join {
+	position: relative;
+	display: inline-block;
+	padding: 0 15px 0 20px;
+	margin-left: 5px;
+	line-height: 20px;
+	color: #fff;
+	font-size: 10px;
+	border-radius: 10px 2px 2px 10px;
+	background-color: #5200c1;
+	background-image: url(#{$url-img}/content/ico_cate_re.png);
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+	background-position: 3px center;
+	box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: -3px;
+		top: 50%;
+		margin-top: -3px;
+		display: inline-block;
+		border-style: solid;
+		border-width: 3px 4px 3px 0;
+		border-color: transparent #5200c1 transparent #5200c1;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: calc(50% - 2.5px);
+		right: 5px;
+		width: 3px;
+		height: 5px;
+		background:url(#{$url-img}/content/ico_arr_right_white.png) center center no-repeat;
+		background-size: 3px 5px;
+	}
+}
