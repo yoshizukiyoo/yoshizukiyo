@@ -1,4 +1,5 @@
 //금융상품몰
+$mobile_spacing : 20px;
 
 .product_header {
 	padding: 25px 20px 16px;
@@ -80,8 +81,8 @@
 }
 
 .product_body {
-	.product_content {
-		padding: 25px 20px;
+	.product_container {
+		padding: 25px $mobile_spacing;
 	}
 
 	.slogan {
@@ -111,6 +112,7 @@
 				display: inline-flex;
 				width: 40px;
 				height: 40px;
+				margin-right: 5px;
 				line-height: 40px;
 				background-position: center;
 				background-size: 40px 40px;
@@ -139,9 +141,11 @@
 				font-style: normal;
 				font-size: 10px;
 				font-weight: lighter;
+				line-height: 1;
 			}
 
 			strong {
+				display: block;
 				font-size: 13px;
 				font-weight: 200;
 			}
@@ -256,7 +260,7 @@
 
 				&.ico_rate01 {
 					background-image:url(#{$url-img}/content/ico_prd_rate01.png);
-					background-size: 14.5px 14.5px;
+					background-size: 15px 15px;
 				}
 
 				&.ico_rate02 {
@@ -362,35 +366,16 @@
 	.prd_accordion {
 		margin-top: 15px;
 
-		>li {
+		>div {
 			&:last-child {
-				h3 {
-					border-bottom: 1px solid #ddd;
-				}
+				border-bottom: 1px solid #ddd;
 			}
 		}
 
 		h3 {
 			position: relative;
 			border-top: 1px solid #ddd;
-			padding: 10px 0;
 			margin-bottom: 0px;
-			font-size: 16px;
-			font-weight: 400;
-
-			em {
-				font-style: normal;
-
-				&:after {
-					content: '';
-					display: inline-block;
-					width: 1px;
-					height: 13px;
-					background-color: #eee;
-					margin-left: 10px;
-					margin-right: 10px;
-				}
-			}
 
 			&.on {
 				border-bottom: 0 !important;
@@ -400,48 +385,56 @@
 				}
 			}
 
-			&:before {
-				content: "";
-				display: block;
-				position: absolute;
-				right: 0;
-				top: 50%;
-				margin-top: -10px;
-				width: 21px;
-				border: 1px solid #ddd;
-				border-radius: 3px;
-				height: 20px;
-				background: url(#{$url-img-common}/ico_chevron_down_sm.png) center center no-repeat;
-				background-size: 10px 6px;
-			}
+			button {
+				display: flex;
+				align-items: center;
+				width: 100%;
+				padding: 10px 0;
+				font-size: 16px;
+				font-weight: 400;
+				text-align: left;
 
-			i {
-				position: relative;
-				display: inline-block;
-				width: 29.5px;
-				height: 29.5px;
-				margin-right: 10px;
-				background-size: 29.5px 29.5px;
-				background-position: center center;
-				background-repeat: no-repeat;
-				vertical-align: middle;
-
-				&.ico_mall_join {
-					background-image: url(#{$url-img}/content/ico_mall_join.png);
+				&:before {
+					content: "";
+					display: block;
+					position: absolute;
+					right: 0;
+					top: 50%;
+					margin-top: -10px;
+					width: 21px;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+					height: 20px;
+					background: url(#{$url-img-common}/ico_chevron_down_sm.png) center center no-repeat;
+					background-size: 10px 6px;
 				}
 
-				&.ico_mall_exp {
-					background-image: url(#{$url-img}/content/ico_mall_exp.png);
-				}
+				i {
+					position: relative;
+					display: inline-block;
+					width: 29.5px;
+					height: 29.5px;
+					margin-right: 10px;
+					background-size: 29.5px 29.5px;
+					background-position: center center;
+					background-repeat: no-repeat;
 
-				&.ico_mall_rate {
-					background-image: url(#{$url-img}/content/ico_mall_rate.png);
-				}
+					&.ico_mall_join {
+						background-image: url(#{$url-img}/content/ico_mall_join.png);
+					}
 
-				&.ico_mall_terms {
-					background-image: url(#{$url-img}/content/ico_mall_terms.png);
-				}
+					&.ico_mall_exp {
+						background-image: url(#{$url-img}/content/ico_mall_exp.png);
+					}
 
+					&.ico_mall_rate {
+						background-image: url(#{$url-img}/content/ico_mall_rate.png);
+					}
+
+					&.ico_mall_terms {
+						background-image: url(#{$url-img}/content/ico_mall_terms.png);
+					}
+				}
 			}
 		}
 
