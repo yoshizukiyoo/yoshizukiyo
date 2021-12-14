@@ -1,6 +1,8 @@
 //금융상품몰
 $mobile_spacing : 20px;
 
+
+
 .product_header {
 	padding: 25px 20px 16px;
 
@@ -78,11 +80,108 @@ $mobile_spacing : 20px;
 
 		}
 	}
+
+	.badge {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 29px;
+		height: 18px;
+		margin-top: -5px;
+		margin-left: 5px;
+		border-radius: 9px;
+		border: 0;
+		color: #fff;
+		font-weight: 500;
+		font-size: 9px;
+		vertical-align: middle;
+
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: calc(50% - 2.5px);
+			left: -2px;
+			width: 0;
+			height: 0;
+			border-width: 0px 0px 5px 5px;
+			border-style: solid;
+			transform: rotate(-45deg);
+		}
+
+		&.badge_red {
+			background-color: #d70000;
+			color: #fff;
+
+			&:before {
+				border-color: transparent transparent transparent #d70000;
+			}
+		}
+
+		&.badge_yellow {
+			background-color: $primary;
+			color: $black;
+
+			&:before {
+				border-color: transparent transparent transparent $primary;
+			}
+		}
+	}
+
+	.badge_join {
+		position: relative;
+		display: inline-block;
+		padding: 0 15px 0 20px;
+		margin-left: 5px;
+		line-height: 20px;
+		color: #fff;
+		font-size: 10px;
+		border-radius: 10px 2px 2px 10px;
+		background-color: #5200c1;
+		background-image: url(#{$url-img}/content/ico_cate_re.png);
+		background-repeat: no-repeat;
+		background-size: 14px 14px;
+		background-position: 3px center;
+		box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: -3px;
+			top: 50%;
+			margin-top: -3px;
+			display: inline-block;
+			border-style: solid;
+			border-width: 3px 4px 3px 0;
+			border-color: transparent #5200c1 transparent #5200c1;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: calc(50% - 2.5px);
+			right: 5px;
+			width: 3px;
+			height: 5px;
+			background:url(#{$url-img}/content/ico_arr_right_white.png) center center no-repeat;
+			background-size: 3px 5px;
+		}
+	}
 }
 
 .product_body {
 	.product_container {
 		padding: 25px $mobile_spacing;
+
+		&.bg_lightorange {
+			background-color: #fcf8f6;
+		}
+	}
+
+	.full_container {
+		margin-left: - $mobile_spacing;
+		margin-right: - $mobile_spacing;
 	}
 
 	.slogan {
@@ -95,6 +194,30 @@ $mobile_spacing : 20px;
 		font-size: 14px;
 		font-weight: 200;
 
+	}
+
+	.prd_tit4 {
+		margin-top: 20px;
+		margin-bottom: 30px;
+		font-size: 25px;
+		line-height: 32px;
+	}
+
+	.txt_deco {
+		position: relative;
+		font-size: 20px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 2px;
+			left: 0;
+
+			height: 9px;
+			width: 100%;
+			background-color: rgba(245, 144, 122, .4);
+			z-index: -1;
+		}
 	}
 
 	.info_list {
@@ -128,6 +251,10 @@ $mobile_spacing : 20px;
 
 				&.ico_ins_info03 {
 					background-image: url(#{$url-img}/content/ico_ins_info03.png);
+				}
+
+				&.ico_ins_info04 {
+					background-image: url(#{$url-img}/content/ico_ins_info04.png);
 				}
 			}
 
@@ -209,6 +336,25 @@ $mobile_spacing : 20px;
 				padding-right: 0;
 			}
 		}
+
+		&.info_vrtl {
+			li {
+				em {
+					display: block;
+					font-size: 11px;
+					text-align: center;
+				}
+
+				strong {
+					font-size: 14px;
+					text-align: center;
+				}
+
+				&:first-child {
+					text-align: center;
+				}
+			}
+		}
 	}
 
 	.text_guide {
@@ -287,6 +433,31 @@ $mobile_spacing : 20px;
 					background-image:url(#{$url-img}/content/ico_prd_rate06.png);
 					background-size: 15.5px 14px;
 				}
+
+				&.ico_service01 {
+					background-image:url(#{$url-img}/content/ico_prd_service01.png);
+					background-size: 12px 14px;
+				}
+
+				&.ico_service02 {
+					background-image:url(#{$url-img}/content/ico_prd_service02.png);
+					background-size: 10px 14px;
+				}
+
+				&.ico_service03 {
+					background-image:url(#{$url-img}/content/ico_prd_service03.png);
+					background-size: 14px 15px;
+				}
+
+				&.ico_service04 {
+					background-image:url(#{$url-img}/content/ico_prd_service04.png);
+					background-size: 13px 14px;
+				}
+
+				&.ico_service05 {
+					background-image:url(#{$url-img}/content/ico_prd_service05.png);
+					background-size: 13px 16px;
+				}
 			}
 
 			span {
@@ -361,6 +532,16 @@ $mobile_spacing : 20px;
 				height: auto;
 			}
 		}
+
+		&.col4 {
+			margin: 0 -5px;
+
+			li {
+				flex: 0 1 calc(25% - 10px);
+				padding: 12px 10px;
+				margin: 5px;
+			}
+		}
 	}
 
 	.prd_accordion {
@@ -376,14 +557,6 @@ $mobile_spacing : 20px;
 			position: relative;
 			border-top: 1px solid #ddd;
 			margin-bottom: 0px;
-
-			&.on {
-				border-bottom: 0 !important;
-
-				&:before {
-					transform: rotate(180deg);
-				}
-			}
 
 			button {
 				display: flex;
@@ -407,6 +580,14 @@ $mobile_spacing : 20px;
 					height: 20px;
 					background: url(#{$url-img-common}/ico_chevron_down_sm.png) center center no-repeat;
 					background-size: 10px 6px;
+				}
+
+				&.on {
+					border-bottom: 0 !important;
+
+					&:before {
+						transform: rotate(180deg);
+					}
 				}
 
 				i {
@@ -434,6 +615,62 @@ $mobile_spacing : 20px;
 					&.ico_mall_terms {
 						background-image: url(#{$url-img}/content/ico_mall_terms.png);
 					}
+
+					&.ico_mall_info {
+						background-image: url(#{$url-img}/content/ico_mall_info.png);
+					}
+
+					&.ico_mall_variance {
+						background-image: url(#{$url-img}/content/ico_mall_variance.png);
+					}
+
+					&.ico_mall_danger {
+						background-image: url(#{$url-img}/content/ico_mall_danger.png);
+					}
+
+					&.ico_mall_result {
+						background-image: url(#{$url-img}/content/ico_mall_result.png);
+					}
+
+					&.ico_mall_portfolio {
+						background-image: url(#{$url-img}/content/ico_mall_portfolio.png);
+					}
+
+					&.ico_mall_warning {
+						background-image: url(#{$url-img}/content/ico_mall_warning.png);
+					}
+
+					&.ico_mall_portfolio {
+						background-image: url(#{$url-img}/content/ico_mall_portfolio.png);
+					}
+
+					&.ico_mall_other {
+						background-image: url(#{$url-img}/content/ico_mall_other.png);
+					}
+
+					&.ico_mall_invest {
+						background-image: url(#{$url-img}/content/ico_mall_invest.png);
+					}
+
+					&.ico_mall_review {
+						background-image: url(#{$url-img}/content/ico_mall_review.png);
+					}
+
+					&.ico_mall_info2 {
+						background-image: url(#{$url-img}/content/ico_mall_info2.png);
+					}
+
+					&.ico_mall_benefits {
+						background-image: url(#{$url-img}/content/ico_mall_benefits.png);
+					}
+
+					&.ico_mall_sale {
+						background-image: url(#{$url-img}/content/ico_mall_sale.png);
+					}
+
+					&.ico_mall_overseas {
+						background-image: url(#{$url-img}/content/ico_mall_overseas.png);
+					}
 				}
 			}
 		}
@@ -442,7 +679,7 @@ $mobile_spacing : 20px;
 			padding: 0 0 20px;
 
 			.prd_tit2 {
-				margin-top: 30px;
+				margin-top: 25px;
 				margin-bottom: 10px;
 				font-size: 12px;
 				font-weight: 300;
@@ -559,6 +796,131 @@ $mobile_spacing : 20px;
 			}
 		}
 	}
+
+	.img_area {
+		position: relative;
+		margin: 20px auto 25px;
+		width: 139px;
+
+		img {
+			object-fit: cover;
+		}
+	}
+
+	.price_evaluation {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 20px;
+
+		.tit {
+			display: block;
+			font-size: 13px;
+			margin-bottom: 12px;
+		}
+
+		strong {
+			font-size: 20px;
+
+			+.gap {
+				margin-left: 25px;
+			}
+		}
+
+		em {
+			font-style: normal;
+
+			&.gap {
+				position: relative;
+				padding-left: 15px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					top: calc(50% - 4px);
+					left: 0;
+					width: 0;
+					height: 0;
+					border-width: 5px 0 5px 8px;
+					border-style: solid;
+					border-color: transparent transparent transparent #000;
+					transform: rotate(90deg);
+				}
+
+				&.down {
+					color: #45a0e0;
+
+					&:before {
+						border-color: transparent transparent transparent #45a0e0;
+					}
+				}
+
+				&.up {
+					color: #ff3131;
+
+
+					&:before {
+						transform: rotate(-90deg);
+						border-color: transparent transparent transparent #ff3131;
+					}
+				}
+			}
+		}
+
+		.zero_grade {
+			padding-top: 12px;
+		}
+	}
+
+	.num {
+		display: inline-block;
+		width: 33px;
+		height: 33px;
+		border-radius: 16.5px;
+		background-color: #000;
+		color: #fff;
+		text-align: center;
+		line-height: 33px;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.infographic_area {
+		.circle {
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 140px;
+			height: 140px;
+			font-size: 16px;
+			line-height: 21px;
+			border-radius: 70px;
+			color: #000;
+			border: 1px solid #784e2f;
+			vertical-align: middle;
+
+			&.bg_brown {
+				background-color: #784e2f;
+				color: #fff;
+				border: 0;
+			}
+
+			+.circle {
+				margin-left: -4px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					top: calc(50% - 10px);
+					left: -10px;
+					width: 20px;
+					height: 20px;
+					background:url(#{$url-img}/content/ico_plus_brown.png) 0 0 no-repeat;
+					background-size: 20px 20px;
+				}
+			}
+		}
+	}
 }
 
 .prd_btn_group {
@@ -601,45 +963,5 @@ $mobile_spacing : 20px;
 				background-image: url(#{$url-img}/content/ico_prd_share.png);
 			}
 		}
-	}
-}
-
-.cate_re_join {
-	position: relative;
-	display: inline-block;
-	padding: 0 15px 0 20px;
-	margin-left: 5px;
-	line-height: 20px;
-	color: #fff;
-	font-size: 10px;
-	border-radius: 10px 2px 2px 10px;
-	background-color: #5200c1;
-	background-image: url(#{$url-img}/content/ico_cate_re.png);
-	background-repeat: no-repeat;
-	background-size: 14px 14px;
-	background-position: 3px center;
-	box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.15);
-
-	&:before {
-		content: '';
-		position: absolute;
-		left: -3px;
-		top: 50%;
-		margin-top: -3px;
-		display: inline-block;
-		border-style: solid;
-		border-width: 3px 4px 3px 0;
-		border-color: transparent #5200c1 transparent #5200c1;
-	}
-
-	&:after {
-		content: '';
-		position: absolute;
-		top: calc(50% - 2.5px);
-		right: 5px;
-		width: 3px;
-		height: 5px;
-		background:url(#{$url-img}/content/ico_arr_right_white.png) center center no-repeat;
-		background-size: 3px 5px;
 	}
 }
