@@ -150,7 +150,7 @@
 			border-radius: 50%;
 			font-weight: 500;
 			color: #fff;
-			line-height: 40px;
+			line-height: 39px;
 		}
 
 		&.orange strong {
@@ -227,9 +227,20 @@
 }
 
 .icon_list.card {
+	flex-wrap: wrap;
+
 	li {
-		width: 60px;
+		width: 59px;
 		padding: 14px 0 9px;
+		margin-right: 5px;
+
+		&:nth-child(5n) {
+			margin-right: 0;
+		}
+
+		&:not(:nth-child(-n+5)) {
+			margin-top: 4px;
+		}
 
 		span {
 			padding-top: 25px;
@@ -319,10 +330,6 @@
 		margin-right: 5px;
 		margin-top: 10px;
 
-		&:nth-child(3n) {
-			margin-right: 0;
-		}
-
 		&:nth-child(-n+3) {
 			margin-top: 0;
 		}
@@ -359,4 +366,213 @@
 			border: 2px solid #fdc61c;
 		}
 	}
+}
+
+.explain_list {
+	>ul>li:nth-child(4)>div>span {
+		background-image:url(#{$url-img}/content/ico_deposit_lg4.png);
+	}
+
+	&.card {
+		>ul>li>div>span {
+			&.bg01 {
+				background-image:url(#{$url-img}/content/ico_card_lg1.png);
+			}
+
+			&.bg02 {
+				background-image:url(#{$url-img}/content/ico_card_lg2.png);
+			}
+
+			&.bg03 {
+				background-image:url(#{$url-img}/content/ico_card_lg3.png);
+			}
+		}
+	}
+}
+
+.inline_list.pd_list2.line {
+	li>span {
+		&:not(:first-child) {
+			&::before {
+				width: 1px;
+				height: 12px;
+				background: #ddd;
+				top: 50%;
+				margin-top: -5px;
+			}
+		}
+	}
+}
+
+.join_review {
+	position: relative;
+	display: flex;
+	padding: 31px 62px 31px 20px;
+	background: #fafafa;
+	border-radius: 6px;
+
+	&+.join_review {
+		margin-top: 18px;
+	}
+
+	.l {
+		margin-right: auto;
+		color: #555;
+
+		>.user,
+		.txt {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.user {
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			background-image:url(#{$url-img}/content/ico_user_gray.png);
+			padding-left: 40px;
+			font-size: 14px;
+			line-height: 29px;
+		}
+
+		.txt {
+			margin-left: 25px;
+			line-height: 24px;
+			padding-top: 2px;
+		}
+	}
+
+	.r {
+		margin-left: auto;
+
+		.btn_toggle {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: block;
+			width: 62px;
+			height: 100%;
+			background-image:url(#{$url-img}/common/ico_arr_down_sm.png);
+			background-repeat: no-repeat;
+			background-position: 50% 43px;
+		}
+
+		.btn_delete {
+			display: none;
+		}
+
+		.star {
+			display: inline-block;
+			font-size: 0;
+			vertical-align: top;
+			padding-top: 3px;
+
+			i {
+				display: inline-block;
+				width: 22px;
+				height: 21px;
+				background-image:url(#{$url-img}/common/ico_star_gray_sm.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+
+				&.on {
+					background-image:url(#{$url-img}/common/ico_star_primary_sm.png);
+				}
+
+				&.half {
+					background-image:url(#{$url-img}/content/ico_star_half_sm.png);
+				}
+
+				&+i {
+					margin-left: 5px;
+				}
+			}
+		}
+
+	}
+
+
+	&.active {
+		background: #fff;
+		border: 1px solid #ddd;
+
+		.l {
+			color: #111;
+
+			.user {
+				background-image:url(#{$url-img}/content/ico_user_primary.png);
+			}
+		}
+
+		.r {
+			.btn_toggle {
+				background-image:url(#{$url-img}/common/ico_arr_up_sm.png);
+			}
+
+			.btn_delete {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+.product_detail_info {
+	.icon_list.card {
+		display: inline-flex;
+		justify-content: flex-end;
+		vertical-align: top;
+		width: 251px;
+
+		li {
+			margin-left: 5px;
+			margin-right: 0;
+			margin-top: 3px;
+
+			&:nth-child(4n+1) {
+				margin-left: 0;
+			}
+
+			&:nth-child(-n+4) {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.ico_card {
+	&:after {
+		content: '';
+		display: inline-block;
+		width: 26px;
+		height: 26px;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		margin-left: 8px;
+		vertical-align: top;
+	}
+
+	&.ico01:after {
+		background-image: url(#{$url-img}/content/ico_card_compare09.png);
+	}
+
+	&.ico02:after {
+		background-image: url(#{$url-img}/content/ico_card_compare08.png);
+	}
+
+	&.ico03:after {
+		background-image: url(#{$url-img}/content/ico_card_compare13.png);
+	}
+
+	&.ico04:after {
+		background-image: url(#{$url-img}/content/ico_card_compare17.png);
+	}
+
+	&.ico05:after {
+		background-image: url(#{$url-img}/content/ico_card_compare07.png);
+	}
+}
+
+.txt_chk {
+	padding-left: 14px;
+	font-size: 15px;
+	background: url(#{$url-img}/content/ico_txt_chk.png) 0 10px no-repeat;
 }
