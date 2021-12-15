@@ -137,10 +137,14 @@
 
 .ch_product {
 	display: flex;
+	position: relative;
 	padding: 35px;
 	border-bottom: 1px solid #ddd;
 
 	>.product_check {
+		position: absolute;
+		left: 0;
+		top: 35px;
 		padding-right: 20px;
 	}
 
@@ -158,6 +162,7 @@
 
 .inline_list {
 	display: flex;
+	align-items: center;
 	line-height: 1;
 	font-size: 14px;
 	color: #666;
@@ -167,6 +172,10 @@
 
 		&:first-child {
 			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
 		}
 
 		&:not(:first-child) {
@@ -205,17 +214,7 @@
 				vertical-align: top;
 				font-size: 14px;
 
-				&.grade {
-					padding: 3px 0 3px 19px;
-					background: url(#{$url-img}/content/ico_grade.png) no-repeat 0 50%;
-					font-weight: 400;
-					font-size: 14px;
-					color: #111;
 
-					&::before {
-						display: none;
-					}
-				}
 
 				&:first-child {
 					padding: 0 7px 0 0;
@@ -238,12 +237,12 @@
 					}
 				}
 			}
-
-			>.fir {
-				font-weight: 400;
-				color: #000;
-			}
 		}
+	}
+
+	.fir {
+		font-weight: 400;
+		color: #000;
 	}
 }
 
@@ -1021,5 +1020,52 @@
 			height: 2px;
 			background: #fdc61c;
 		}
+	}
+}
+
+.product_cate {
+	display: flex;
+}
+
+.inline_rounding {
+	display: flex;
+	height: 28px;
+	padding: 0 6px;
+	border: 1px solid #ddd;
+	border-radius: 23px;
+	align-items: center;
+
+	>li {
+		position: relative;
+		padding: 0 10px;
+		font-size: 14px;
+		color: #555;
+
+		&:not(:first-child)::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 7px;
+			width: 1px;
+			height: 12px;
+			background: #ddd;
+		}
+	}
+}
+
+.grade {
+	display: flex;
+	height: 28px;
+	margin-left: 10px;
+	padding: 0 11px 0 31px;
+	border-radius: 23px;
+	background: #f6f6f6 url(#{$url-img}/content/ico_grade.png) no-repeat 12px 50%;
+	align-items: center;
+	font-weight: 500;
+	font-size: 14px;
+	color: #111;
+
+	&::before {
+		display: none;
 	}
 }
