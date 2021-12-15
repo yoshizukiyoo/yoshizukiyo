@@ -6738,38 +6738,29 @@ table > tbody > tr > .fund_name {
 }
 
 .product_compare {
+  position: relative;
   display: table;
   width: 100%;
   table-layout: fixed;
-  padding: 30px 50px;
+  -webkit-box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.07);
+          box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.07);
 }
 
 .product_compare .item {
   position: relative;
   display: table-cell;
+  width: 50%;
   vertical-align: middle;
-  padding: 33px 20px 18px;
+  padding: 30px 20px 33px;
   text-align: center;
-  border: 2px solid #555;
-  border-radius: 10px;
-  background: #fff;
 }
 
-.product_compare .item span {
-  position: absolute;
-  top: 0;
-  left: 20px;
-  display: inline-block;
-  line-height: 22px;
-  font-size: 12px;
-  color: #fff;
-  padding: 0 23px;
-  background: #555;
-  border-radius: 0 0 22px 22px;
+.product_compare .item:not(:first-child) {
+  border-left: 1px dashed #ddd;
 }
 
 .product_compare .item .tit {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 25px;
 }
@@ -6780,58 +6771,43 @@ table > tbody > tr > .fund_name {
           justify-content: center;
 }
 
+.product_compare .item .product_top_btn > li:not(:last-child) {
+  margin-right: 10px;
+}
+
 .product_compare .vs {
-  display: table-cell;
-  width: 80px;
-  vertical-align: middle;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.product_compare .vs span {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 8px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.product_compare .vs span:after {
-  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: #a6a6a6;
-}
-
-.product_compare .vs strong {
-  display: block;
+  top: 50%;
+  left: 50%;
+  margin-left: -20px;
+  margin-top: -20px;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  font-weight: 500;
-  color: #fff;
   line-height: 39px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+  z-index: 1;
+  -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.product_compare .vs.orange strong {
-  background: #ff883a;
+.product_compare .vs.orange {
+  background: #ffae77;
 }
 
-.product_compare .vs.green strong {
-  background: #26d5ba;
+.product_compare .vs.green {
+  background: #86e2a0;
 }
 
-.product_compare .vs.yellow strong {
+.product_compare .vs.yellow {
   background: #fdc61c;
 }
 
-.product_compare .vs.blue strong {
-  background: #37bde3;
+.product_compare .vs.blue {
+  background: #95deef;
 }
 
 .compare_con {
@@ -6839,36 +6815,40 @@ table > tbody > tr > .fund_name {
   width: 100%;
   table-layout: fixed;
   color: #555;
-  border: 1px solid #ddd;
   border-radius: 4px;
+  padding: 10px 0 5px;
+}
+
+.compare_con.card_service {
+  position: relative;
+  padding: 20px 0 20px 66px;
+}
+
+.compare_con.card_service h4 {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  display: inline-block;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #d5d5d5;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .compare_con > div {
   position: relative;
+  width: 50%;
   display: table-cell;
-  padding: 24px 30px;
-}
-
-.compare_con > div:not(:first-child) {
-  border-left: 1px solid #ddd;
-}
-
-.compare_con > div:not(:first-child):after {
-  content: 'vs';
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: -15px;
-  margin-top: -15px;
-  width: 30px;
-  height: 30px;
-  line-height: 27px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
   text-align: center;
-  color: #666;
-  font-weight: 500;
-  background: #fff;
+  padding: 0 30px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  padding: 10px 30px;
+}
+
+.compare_con > div:not(:last-child) {
+  border-right: 1px dashed #ddd;
 }
 
 .modal_popup.compare .popup_body {
@@ -6897,6 +6877,7 @@ table > tbody > tr > .fund_name {
   width: 59px;
   padding: 14px 0 9px;
   margin-right: 5px;
+  background: #fff;
 }
 
 .icon_list.card li:nth-child(5n) {
@@ -7070,6 +7051,10 @@ table > tbody > tr > .fund_name {
 .join_review .l {
   margin-right: auto;
   color: #555;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
 }
 
 .join_review .l > .user,
@@ -7091,6 +7076,10 @@ table > tbody > tr > .fund_name {
   margin-left: 25px;
   line-height: 24px;
   padding-top: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 80%;
 }
 
 .join_review .r {
@@ -7154,6 +7143,11 @@ table > tbody > tr > .fund_name {
   background-image: url(/resources/img/content/ico_user_primary.png);
 }
 
+.join_review.active .l .txt {
+  white-space: normal;
+  overflow: visible;
+}
+
 .join_review.active .r .btn_toggle {
   background-image: url(/resources/img/common/ico_arr_up_sm.png);
 }
@@ -7187,41 +7181,282 @@ table > tbody > tr > .fund_name {
   margin-top: 0;
 }
 
-.ico_card:after {
+.txt_chk {
+  padding-left: 19px;
+  background: url(/resources/img/content/ico_txt_chk.png) 0 11px no-repeat;
+}
+
+.txt_chk .list3 > li {
+  font-size: 15px;
+}
+
+.tit4 {
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 28px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.tit4:before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 17px;
+  height: 17px;
+  background: url(/resources/img/content/ico_tit4.png) 0 0 no-repeat;
+}
+
+.standard_txt {
+  position: relative;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0 15px;
+  line-height: 26px;
+  background: #fdc61c url(/resources/img/content/bg_standard.png) 0 0 no-repeat;
+  border-radius: 20px;
+  margin-right: 8px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.standard_txt:before {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  margin-top: -6px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 6px;
+  border-color: transparent #fdc61c transparent #fdc61c;
+}
+
+.ico_tit {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 22px;
+  font-weight: 500;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 1;
+}
+
+.ico_tit:before {
   content: '';
   display: inline-block;
-  width: 26px;
-  height: 26px;
+  margin-right: 5px;
+  background-position: 0 0;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  margin-left: 8px;
-  vertical-align: top;
 }
 
-.ico_card.ico01:after {
-  background-image: url(/resources/img/content/ico_card_compare09.png);
+.ico_tit.ico_review:before {
+  width: 32px;
+  height: 30px;
+  background-image: url(/resources/img/content/ico_tit_review.png);
 }
 
-.ico_card.ico02:after {
-  background-image: url(/resources/img/content/ico_card_compare08.png);
+.ico_tit.ico_info:before {
+  width: 30px;
+  height: 31px;
+  background-image: url(/resources/img/content/ico_tit_info.png);
 }
 
-.ico_card.ico03:after {
-  background-image: url(/resources/img/content/ico_card_compare13.png);
+.ico_tit.ico_shop:before {
+  width: 29px;
+  height: 32px;
+  background-image: url(/resources/img/content/ico_tit_shop.png);
 }
 
-.ico_card.ico04:after {
-  background-image: url(/resources/img/content/ico_card_compare17.png);
+.ico_tit.ico_food:before {
+  width: 30px;
+  height: 32px;
+  background-image: url(/resources/img/content/ico_tit_food.png);
 }
 
-.ico_card.ico05:after {
-  background-image: url(/resources/img/content/ico_card_compare07.png);
+.ico_tit.ico_comm:before {
+  width: 29px;
+  height: 33px;
+  background-image: url(/resources/img/content/ico_tit_comm.png);
 }
 
-.txt_chk {
-  padding-left: 14px;
-  font-size: 15px;
-  background: url(/resources/img/content/ico_txt_chk.png) 0 10px no-repeat;
+.ico_tit.ico_refu:before {
+  width: 26px;
+  height: 28px;
+  background-image: url(/resources/img/content/ico_tit_refu.png);
+}
+
+.ico_tit.ico_movie:before {
+  width: 33px;
+  height: 29px;
+  background-image: url(/resources/img/content/ico_tit_movie.png);
+}
+
+.ico_tit.ico_cash:before {
+  width: 30px;
+  height: 28px;
+  background-image: url(/resources/img/content/ico_tit_cash.png);
+}
+
+.ico_tit.ico_point:before {
+  width: 34px;
+  height: 29px;
+  background-image: url(/resources/img/content/ico_tit_point.png);
+}
+
+.ico_tit.ico_caution01:before {
+  width: 30px;
+  height: 30px;
+  background-image: url(/resources/img/content/ico_tit_caution01.png);
+}
+
+.ico_tit.ico_caution02:before {
+  width: 31px;
+  height: 24px;
+  background-image: url(/resources/img/content/ico_tit_caution02.png);
+}
+
+.ico_tit.ico_caution03:before {
+  width: 32px;
+  height: 27px;
+  background-image: url(/resources/img/content/ico_tit_caution03.png);
+}
+
+.ico_tit.ico_caution04:before {
+  width: 34px;
+  height: 31px;
+  background-image: url(/resources/img/content/ico_tit_caution04.png);
+}
+
+.ico_tit.bor_btm {
+  padding-bottom: 20px;
+}
+
+.ico_tit.bor_btm:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 5px;
+  background: #eee;
+}
+
+.card_benefit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 30px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.card_benefit .ico_tit {
+  width: 210px;
+  padding: 10px 10px 0 52px;
+}
+
+.card_benefit .ico_tit:before {
+  margin-right: 17px;
+}
+
+.card_benefit .txt {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 30px 0 38px;
+  border-left: 1px dashed #ddd;
+}
+
+.btn_join {
+  display: inline-block;
+  height: 38px;
+  line-height: 37px;
+  padding: 0 12px 0 36px;
+  background-color: #f6f6f6;
+  background-repeat: no-repeat;
+  background-position: 10px 50%;
+  background-image: url(/resources/img/content/ico_compare_join.png);
+  border-radius: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.compare_tit {
+  position: relative;
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 24px;
+  padding-left: 32px;
+}
+
+.compare_tit:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 25px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
+}
+
+.compare_tit.tit_bor {
+  position: relative;
+}
+
+.compare_tit.tit_bor span {
+  background: #fff;
+  padding-right: 10px;
+}
+
+.compare_tit.tit_bor:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: #f4f4f4;
+  z-index: -1;
+}
+
+.compare_tit.insure01:before {
+  background-image: url(/resources/img/content/ico_insure_tit01.png);
+}
+
+.compare_tit.insure02:before {
+  background-image: url(/resources/img/content/ico_insure_tit02.png);
+}
+
+.compare_tit.insure03:before {
+  background-image: url(/resources/img/content/ico_insure_tit03.png);
+}
+
+.compare_tit.insure04:before {
+  background-image: url(/resources/img/content/ico_insure_tit04.png);
+}
+
+.compare_tit.insure05:before {
+  background-image: url(/resources/img/content/ico_insure_tit05.png);
+}
+
+.compare_tit.insure06:before {
+  background-image: url(/resources/img/content/ico_insure_tit06.png);
 }
 
 .ico_pd_search {
