@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+			$(".tooltip.tooltip_md > button").click(function () {
+				$(this).closest(".tooltip").hide();
+			})
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">고객정보조회/수정</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- e: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">정보조회</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="first_section box">
+					<ul class="list list1">
+						<li>새주소(도로명주소)의 표기법
+							<ul class="list list3">
+								<li>기본주소 : 시ㆍ도 + 시ㆍ군ㆍ구 + 읍ㆍ면 + 도로명 + 지하여부 + 건물번호</li>
+								<li>상세주소 : 상세주소(동ㆍ호수 등) + 참고항목(법정동, 건물/아파트/상호 명칭 등)</li>
+							</ul>
+						</li>
+						<li class="txt_darkprimary">고객정보를 수정하신 후 페이지 하단의 [변경]버튼을 클릭하시기 바랍니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 기본정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h2 class="tit1 mb_0">기본정보</h2>
+						</div>
+					</div>
+					<div class="tbl_row2 type2">
+						<table>
+							<caption class="sr_only">기본정보</caption>
+							<colgroup>
+								<col style="width: 160px">
+								<col>
+								<col style="width: 160px">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row" class="pt_4 pb_4">성명</th>
+									<td class="pt_4 pb_4">나봄미</td>
+									<th scope="row" class="pt_4 pb_4">주민등록번호</th>
+									<td class="pt_4 pb_4">650529 - *******</td>
+								</tr>
+								<tr>
+									<th scope="row">휴대폰번호 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<div class="phone_number">
+											<div class="selectbox_wrap disabled" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>010</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>011</span></a></li>
+															<li><a href="#none"><span>016</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div>
+												<input type="text" class="tf" placeholder="7484" style="width: 93px" disabled>
+											</div>
+											<div>
+												<input type="text" class="tf" placeholder="0909" style="width: 93px" disabled>
+											</div>
+											<span class="check_item square ml_2">
+												<input type="checkbox" id="Check1_1">
+												<label for="Check1_1"></label>
+											</span>
+											<a href="#;" class="btn btn_md btn_outline_default">휴대폰번호변경</a>
+											<span class="txt_darkgray ml_1">휴대폰번호 변경은 휴대폰 본인인증을 통해서만 변경이 가능합니다.</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">이메일 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<div class="phone_number">
+											<div class="email_box mt_1">
+												<input type="text" class="tf" title="이메일 아이디 입력" style="width: 160px;">
+												<div class="right">
+													<div class="selectbox_wrap" style="width: 200px;">
+														<dl>
+															<dt><a href="#none" title="이메일 주소 입력"><span>hanmir.com</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>직접입력</span></a></li>
+																	<li><a href="#none"><span>naver.com</span></a></li>
+																	<li><a href="#none"><span>daum.net</span></a></li>
+																	<li><a href="#none"><span>nate.com</span></a></li>
+																	<li><a href="#none"><span>gmail.com</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div class="selectbox_wrap ml_1" style="width: 200px;">
+														<dl>
+															<dt><a href="#none" title="이메일 주소 선택"><span>직접입력</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>직접입력</span></a></li>
+																	<li><a href="#none"><span>naver.com</span></a></li>
+																	<li><a href="#none"><span>daum.net</span></a></li>
+																	<li><a href="#none"><span>nate.com</span></a></li>
+																	<li><a href="#none"><span>gmail.com</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 기본정보 -->
+
+				<!-- s: 자택정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h2 class="tit1 mb_0">자택정보</h2>
+						</div>
+					</div>
+					<div class="tbl_row2 type2">
+						<table>
+							<caption class="sr_only">자택정보</caption>
+							<colgroup>
+								<col style="width: 160px">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">주소 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="address_form">
+											<div class="zip_code">
+												<input type="text" class="tf" title="우편번호 입력" style="width: 160px;" value="58323" disabled>
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default">우편번호검색</a>
+													<a href="#;" class="btn btn_md btn_outline_default ml_1">새주소 안내</a>
+												</div>
+											</div>
+											<div class="add1">
+												<input type="text" class="tf" id="input_add1" placeholder="전라남도 나주시 정보화길 1" title="주소 입력"
+													style="width: 500px" disabled>
+												<label for="input_add1" class="ml_1 txt_darkgray">예시) 서울 종로구 세종대로 166</label>
+											</div>
+											<div class="add2">
+												<input type="text" class="tf" id="input_add2" placeholder="313호 (빛가람동, 우정사업정보센터)"
+													title="나머지 주소 입력" style="width: 500px" disabled>
+												<label for="input_add2" class="ml_1 txt_darkgray">예시) 00호(종로1가, 건물명/상호 등)</label>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호</th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 앞자리 선택"><span>02</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>02</span></a></li>
+															<li><a href="#none"><span>031</span></a></li>
+															<li><a href="#none"><span>032</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div>
+												<input type="text" class="tf" placeholder="9999" title="전화번호 가운데자리 입력" style="width: 93px">
+											</div>
+											<div>
+												<input type="text" class="tf" placeholder="9999" title="전화번호 마지막자리 입력" style="width: 93px">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 자택정보 -->
+
+				<!-- s: 직장정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h2 class="tit1 mb_0">직장정보</h2>
+						</div>
+					</div>
+					<div class="tbl_row2 type2">
+						<table>
+							<caption class="sr_only">직장정보</caption>
+							<colgroup>
+								<col style="width: 160px">
+								<col>
+								<col style="width: 160px">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row"><label for="input_workplace">직장명</label></th>
+									<td>
+										<input type="text" class="tf" id="input_workplace" style="width: 300px;">
+									</td>
+									<th scope="row"><label for="input_workplace2">부서명</label></th>
+									<td>
+										<input type="text" class="tf" id="input_workplace2" style="width: 300px;">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">주소</th>
+									<td colspan="3">
+										<div class="address_form">
+											<div class="zip_code">
+												<input type="text" class="tf" title="우편번호 입력" style="width: 160px;" value="58323" disabled>
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default">우편번호검색</a>
+													<a href="#;" class="btn btn_md btn_outline_default ml_1">새주소 안내</a>
+												</div>
+											</div>
+											<div class="add1">
+												<input type="text" class="tf" id="input_add3" placeholder="전라남도 나주시 정보화길 1" title="주소 입력"
+													style="width: 500px" disabled>
+												<label for="input_add3" class="ml_1 txt_darkgray">예시) 서울 종로구 세종대로 166</label>
+											</div>
+											<div class="add2">
+												<input type="text" class="tf" id="input_add4" placeholder="313호 (빛가람동, 우정사업정보센터)"
+													title="나머지 주소 입력" style="width: 500px" disabled>
+												<label for="input_add4" class="ml_1 txt_darkgray">예시) 00호(종로1가, 건물명/상호 등)</label>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호</th>
+									<td colspan="3">
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 앞자리 선택"><span>061</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>02</span></a></li>
+															<li><a href="#none"><span>031</span></a></li>
+															<li><a href="#none"><span>032</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div>
+												<input type="text" class="tf" placeholder="9888" title="전화번호 가운데자리 입력" style="width: 93px">
+											</div>
+											<div>
+												<input type="text" class="tf" placeholder="9888" title="전화번호 마지막자리 입력" style="width: 93px">
+											</div>
+											<span class="pr_2 ml_2 txt_darkgray">(</span><input type="text" class="tf" title="전화번호 마지막자리 입력"
+												style="width: 93px;"><span class="pl_2 txt_darkgray">)</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">팩스번호</th>
+									<td colspan="3">
+										<div class="phone_number">
+											<div>
+												<input type="text" class="tf" title="팩스번호 앞자리 입력" style="width: 93px">
+											</div>
+											<div>
+												<input type="text" class="tf" title="팩스번호 가운데자리 입력" style="width: 93px">
+											</div>
+											<div>
+												<input type="text" class="tf" title="팩스번호 마지막자리 입력" style="width: 93px">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 직장정보 -->
+
+				<!-- s: 기타정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h2 class="tit1 mb_0">기타정보</h2>
+						</div>
+					</div>
+					<div class="tbl_row2 type2">
+						<table>
+							<caption class="sr_only">기타정보</caption>
+							<colgroup>
+								<col style="width: 160px">
+								<col>
+								<col style="width: 160px">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">우편물수령지</th>
+									<td colspan="3">
+										<div class="top_radio">
+											<span class="check_item">
+												<input type="radio" name="transfer_info" id="transfer_info_1">
+												<label for="transfer_info_1">거주지(현주소, 자택)</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="transfer_info" id="transfer_info_2" checked>
+												<label for="transfer_info_2">직장주소</label>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="tf_birth">생년월일</label></th>
+									<td colspan="3">
+										<span class="datepicker_box">
+											<input id="tf_birth" type="text" class="tf tf_datepicker" placeholder="2021.02.03">
+										</span>
+										<span class="top_radio ml_4">
+											<span class="check_item">
+												<input type="radio" name="bir_info" id="bir_info_1">
+												<label for="bir_info_1">양력</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="bir_info" id="bir_info_2">
+												<label for="bir_info_2">음력</label>
+											</span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="tf_wedding">결혼기념일</label></th>
+									<td>
+										<span class="datepicker_box">
+											<input id="tf_wedding" type="text" class="tf tf_datepicker" placeholder="2021.02.03">
+										</span>
+									</td>
+									<th scope="row">자녀수</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 115px;">
+											<dl title="자녀수 선택">
+												<dt><a href="#none" title="자녀수 선택"><span>없음</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>없음</span></a></li>
+														<li><a href="#none"><span>1</span></a></li>
+														<li><a href="#none"><span>2</span></a></li>
+														<li><a href="#none"><span>3</span></a></li>
+														<li><a href="#none"><span>4</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">취미</th>
+									<td colspan="3">
+										<div class="selectbox_wrap" style="width: 350px;">
+											<dl title="취미 선택">
+												<dt><a href="#none" title="취미 선택"><span>선택</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택</span></a></li>
+														<li><a href="#none"><span>미술</span></a></li>
+														<li><a href="#none"><span>공예</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">운전여부</th>
+									<td colspan="3">
+										<div class="top_radio">
+											<span class="check_item">
+												<input type="radio" name="drive_info" id="drive_info_1">
+												<label for="drive_info_1">안한다</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="drive_info" id="drive_info_2" checked>
+												<label for="drive_info_2">한다</label>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">차량구분</th>
+									<td colspan="3">
+										<div class="selectbox_wrap" style="width: 350px;">
+											<dl title="차량구분 선택">
+												<dt><a href="#none" title="차량구분 선택"><span>선택</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택</span></a></li>
+														<li><a href="#none"><span>미술</span></a></li>
+														<li><a href="#none"><span>공예</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 기타정보 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary">변경</a>
+				</div>
+
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
