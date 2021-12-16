@@ -24,7 +24,8 @@
 	<script>
 		$(document).ready(function () {
 			// 이곳에 정의
-			$('.toggle_list .tbl_tit .btn').click(function () {
+			$('.toggle_list>a').click(function (e) {
+				e.preventDefault();
 				var tit = $(this).attr('title');
 				$(this).parents('.toggle_list').toggleClass('active');
 				if (tit == '그룹 접기') {
@@ -34,7 +35,8 @@
 				}
 			});
 
-			$('.faq_list .btn').click(function () {
+			$('.faq_list a').click(function (e) {
+				e.preventDefault();
 				var tit = $(this).attr('title');
 				$(this).parents('.faq_list li').toggleClass('active');
 				if (tit == '그룹 접기') {
@@ -160,18 +162,15 @@
 				<!-- e: 탭리스트 -->
 				<!-- s: 메뉴 영역 -->
 
-				<div class="toggle_list mt_12 active">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1 txt_medium">메뉴</h3>
-							<span class="num_circle txt_sm ml_2">105</span>
+				<div class="toggle_list arr_bottom mt_12 active">
+					<a href="#" title="그룹 펼치기">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_medium">메뉴</h3>
+								<span class="num_circle txt_sm ml_2">105</span>
+							</div>
 						</div>
-						<div class="tit_right">
-							<button class="btn" title="그룹 접기">
-								<i class="ico ico_arr_bottom"></i>
-							</button>
-						</div>
-					</div>
+					</a>
 					<div class="search_list">
 						<ul class="list list1 tbl_list">
 							<li>
@@ -196,18 +195,15 @@
 				<!-- e: 메뉴 영역 -->
 				<!-- s: 금융상품몰 영역 -->
 
-				<div class="toggle_list mt_12 active">
-					<div class="tbl_tit mb_0">
-						<div class="tit_left">
-							<h3 class="tit1 txt_medium">금융상품몰</h3>
-							<span class="num_circle txt_sm ml_2">105</span>
+				<div class="toggle_list arr_bottom mt_12 active">
+					<a href="#" title="그룹 펼치기">
+						<div class="tbl_tit mb_0">
+							<div class="tit_left">
+								<h3 class="tit1 txt_medium">금융상품몰</h3>
+								<span class="num_circle txt_sm ml_2">105</span>
+							</div>
 						</div>
-						<div class="tit_right">
-							<button class="btn" title="그룹 접기">
-								<i class="ico ico_arr_bottom"></i>
-							</button>
-						</div>
-					</div>
+					</a>
 					<div class="search_list">
 						<ul class="finance-list">
 							<li>
@@ -304,18 +300,15 @@
 				<!-- e: 금융상품몰 영역 -->
 				<!-- s: 웹페이지 영역 -->
 
-				<div class="toggle_list mt_12 active">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1 txt_medium">웹페이지</h3>
-							<span class="num_circle txt_sm ml_2">105</span>
+				<div class="toggle_list arr_bottom mt_12 active">
+					<a href="#" title="그룹 펼치기">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_medium">웹페이지</h3>
+								<span class="num_circle txt_sm ml_2">105</span>
+							</div>
 						</div>
-						<div class="tit_right">
-							<button class="btn" title="그룹 접기">
-								<i class="ico ico_arr_bottom"></i>
-							</button>
-						</div>
-					</div>
+					</a>
 					<div class="search_list">
 						<ul class="list list1 tbl_list">
 							<li>
@@ -347,57 +340,58 @@
 				<!-- e: 메뉴 영역 -->
 
 				<!-- s: FAQ(자주하는 질문) -->
-				<div class="toggle_list mt_12 active">
-					<div class="tbl_tit mb_0">
-						<div class="tit_left">
-							<h3 class="tit1 txt_medium">FAQ(자주하는 질문)</h3>
-							<span class="num_circle txt_sm ml_2">105</span>
+				<div class="toggle_list arr_bottom mt_12 active">
+					<a href="#" title="그룹 펼치기">
+						<div class="tbl_tit mb_0">
+							<div class="tit_left">
+								<h3 class="tit1 txt_medium">FAQ(자주하는 질문)</h3>
+								<span class="num_circle txt_sm ml_2">105</span>
+							</div>
 						</div>
-						<div class="tit_right">
-							<button class="btn" title="그룹 접기">
-								<i class="ico ico_arr_bottom"></i>
-							</button>
-						</div>
-					</div>
+					</a>
 					<div class="search_list">
 						<ul class="faq_list">
 							<li>
-								<div class="box_list">
-									<div class="box1">
-										<span class="ques mr_2">Q</span>
-										<p>제 타은행 계좌로 10만원이 입금되었는데, 은행에서는 우체국 인터넷뱅킹으로 이체되었다고 합니다. 누가 입금했는지, 입금한사람과 연락할 수 있는 방법이 있을까요? </p>
+								<a href="#">
+									<div class="box_list">
+										<div class="box1">
+											<span class="ques mr_2">Q</span>
+											<p>제 타은행 계좌로 10만원이 입금되었는데, 은행에서는 우체국 인터넷뱅킹으로 이체되었다고 합니다. 누가 입금했는지, 입금한사람과 연락할 수 있는 방법이 있을까요? </p>
+										</div>
+										<div class="box2 ml_4">
+											<button class="btn" title="그룹 접기">
+												<i class="ico ico_arr_down_sm"></i>
+											</button>
+										</div>
 									</div>
-									<div class="box2 ml_4">
-										<button class="btn" title="그룹 접기">
-											<i class="ico ico_arr_down_sm"></i>
-										</button>
+									<div class="box_content">
+										<span class="answ mr_2">A</span>
+										<p>입금 받은 계좌번호, 거래일, 금액을 확인하신 후 우체국 금융고객센터(☎ 1599-1900, 1588-1900 → 0번 → 1번(예금상담사연결), 상담시간 평일
+											9:00~20:00)로<br>
+											전화주시면 상담사를 통한 중계 요청이 가능합니다.</p>
 									</div>
-								</div>
-								<div class="box_content">
-									<span class="answ mr_2">A</span>
-									<p>입금 받은 계좌번호, 거래일, 금액을 확인하신 후 우체국 금융고객센터(☎ 1599-1900, 1588-1900 → 0번 → 1번(예금상담사연결), 상담시간 평일
-										9:00~20:00)로<br>
-										전화주시면 상담사를 통한 중계 요청이 가능합니다.</p>
-								</div>
+								</a>
 							</li>
 							<li>
-								<div class="box_list">
-									<div class="box1">
-										<span class="ques mr_2">Q</span>
-										<p>제 타은행 계좌로 10만원이 입금되었는데, 은행에서는 우체국 인터넷뱅킹으로 이체되었다고 합니다. 누가 입금했는지, 입금한사람과 연락할 수 있는 방법이 있을까요? </p>
+								<a href="#">
+									<div class="box_list">
+										<div class="box1">
+											<span class="ques mr_2">Q</span>
+											<p>제 타은행 계좌로 10만원이 입금되었는데, 은행에서는 우체국 인터넷뱅킹으로 이체되었다고 합니다. 누가 입금했는지, 입금한사람과 연락할 수 있는 방법이 있을까요? </p>
+										</div>
+										<div class="box2 ml_4">
+											<button class="btn" title="그룹 접기">
+												<i class="ico ico_arr_down_sm"></i>
+											</button>
+										</div>
 									</div>
-									<div class="box2 ml_4">
-										<button class="btn" title="그룹 접기">
-											<i class="ico ico_arr_down_sm"></i>
-										</button>
+									<div class="box_content">
+										<span class="answ mr_2">A</span>
+										<p>입금 받은 계좌번호, 거래일, 금액을 확인하신 후 우체국 금융고객센터(☎ 1599-1900, 1588-1900 → 0번 → 1번(예금상담사연결), 상담시간 평일
+											9:00~20:00)로<br>
+											전화주시면 상담사를 통한 중계 요청이 가능합니다.</p>
 									</div>
-								</div>
-								<div class="box_content">
-									<span class="answ mr_2">A</span>
-									<p>입금 받은 계좌번호, 거래일, 금액을 확인하신 후 우체국 금융고객센터(☎ 1599-1900, 1588-1900 → 0번 → 1번(예금상담사연결), 상담시간 평일
-										9:00~20:00)로<br>
-										전화주시면 상담사를 통한 중계 요청이 가능합니다.</p>
-								</div>
+								</a>
 							</li>
 						</ul>
 						<div class="mt_4 txt_c">
@@ -408,18 +402,15 @@
 				<!-- e: FAQ(자주하는 질문) -->
 
 				<!-- s: FAQ(자주하는 질문) -->
-				<div class="toggle_list mt_12 active">
-					<div class="tbl_tit mb_0">
-						<div class="tit_left">
-							<h3 class="tit1 txt_medium">FAQ(자주하는 질문)</h3>
-							<span class="num_circle txt_sm ml_2">0</span>
+				<div class="toggle_list arr_bottom mt_12 active">
+					<a href="#" title="그룹 펼치기">
+						<div class="tbl_tit mb_0">
+							<div class="tit_left">
+								<h3 class="tit1 txt_medium">FAQ(자주하는 질문)</h3>
+								<span class="num_circle txt_sm ml_2">0</span>
+							</div>
 						</div>
-						<div class="tit_right">
-							<button class="btn" title="그룹 접기">
-								<i class="ico ico_arr_bottom"></i>
-							</button>
-						</div>
-					</div>
+					</a>
 					<div class="notice_caution">
 						<p><i class="ico ico_warning_gray mr_1"></i>“매일”이 포함된 메뉴가 없습니다. 다시 검색해주시기 바랍니다.</p>
 					</div>
