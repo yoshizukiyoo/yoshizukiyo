@@ -1,0 +1,597 @@
+//금융상품몰
+
+//modal_bottom_sheet
+.popup_footer {
+	.btn {
+		&.btn_fg_2 {
+			flex-grow: 0.2;
+		}
+	}
+}
+
+.popup_sub_header {
+	min-height: 53px;
+	margin: 0px 20px 10px 20px;
+	display: flex;
+
+	span {
+		display: flex;
+		// align-items: center;
+	}
+}
+
+.popup_body {
+	.btn_drelete {
+		position: absolute;
+		top: 16px;
+		right: 0;
+	}
+}
+
+.popup_inner {
+	.ico {
+		&.ico_filter {
+			position: absolute;
+			display: inline-block;
+			background-image: url(../../../resources/img/content/ico_filter.png);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			margin-top: 8px;
+			margin-left: 10px;
+			width: 31px;
+			height: 26px;
+		}
+
+		&.ico_refresh {
+			background-image: url(../../../resources/img/content/ico_refresh.png);
+			background-size: 20px 20px;
+			width: 20px;
+			height: 20px;
+		}
+	}
+}
+
+//ico 커스텀
+.ico_share01 {
+	display: inline-flex;
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	background-image: url(../../../resources/img/content/ico_share.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+//필터 팝업
+.input_items {
+	&.simple_items {
+		display: block;
+
+		.simple_chk {
+			margin: 5px 0px 0px 2px !important;
+		}
+
+		.simple {
+			margin: 5px 0px 0px 2px !important;
+
+			input+label {
+				font-size: 12px;
+				height: 25px;
+				padding: 0 15px !important;
+			}
+		}
+	}
+}
+
+//보험료간편 설계설정_checkbox_bg
+.bottom_fixed_area {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 500;
+	background-color: #fff;
+
+	.dim2 {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: -1000px;
+		right: 0;
+		bottom: 0;
+		z-index: 100;
+		background: rgba(0, 0, 0, 0.5)
+	}
+
+	&.active {
+		.dim2 {
+			display: block;
+		}
+	}
+
+	.total_price {
+		padding: 15px 20px;
+		border-radius: 15px 15px 0 0;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		background: #fff;
+		position: relative;
+		z-index: 500;
+
+
+		.btn_toggle_type {
+			display: block;
+			text-align: center;
+			font-size: 14px;
+			font-weight: 500;
+			padding: 15px 0;
+			margin: -15px -20px;
+
+			&:after {
+				content: "";
+				display: inline-block;
+				width: 13px;
+				height: 13px;
+				vertical-align: middle;
+				background: url(../../../resources/img/content/ico_chevron_down_circle.png)0 0 no-repeat;
+				position: relative;
+				top: -1px;
+				background-size: 13px 13px;
+				transform: rotate(180deg);
+			}
+
+			&.on:after {
+				transform: rotate(0deg);
+			}
+		}
+
+		.user_controll_box {
+			margin-top: 15px;
+			max-height: 350px;
+			overflow: hidden;
+			overflow-y: auto;
+			display: none;
+
+			.user_chk_area {
+				.ico {
+					&.ico_calculator {
+						position: absolute;
+						background-image: url(../../../resources/img/content/ico_calculator.png);
+						background-size: 34px 34px;
+						background-repeat: no-repeat;
+						margin-top: 5px;
+						margin-left: 12px;
+						display: inline-block;
+						width: 55px;
+						height: 34px;
+					}
+				}
+			}
+
+			.tab {
+				font-size: 0;
+				margin: 0px 0 0 -10px;
+
+				li {
+					display: inline-block;
+					vertical-align: top;
+					position: relative;
+					width: calc(50% - 10px);
+					margin: 10px 0 0 10px;
+
+					input {
+						position: absolute;
+						left: 0;
+						top: 0;
+						opacity: 0;
+
+						&:checked {
+							&+label {
+								background: url(/resources/img/common/ico_check_on.png) left 10px center no-repeat;
+								border-color: #111;
+							}
+						}
+					}
+
+					label {
+						padding: 10px 35px;
+						border: 1px solid #ddd;
+						border-radius: 5px;
+						display: block;
+						background: url(/resources/img/common/ico_check_off.png) left 10px center no-repeat;
+						background-size: 20px 20px !important;
+						font-size: 14px;
+						color: #111;
+						font-weight: 400;
+					}
+
+					&.on {
+						label {
+							background: #fdc61c url(/resources/img/common/ico_check_on.png) left 10px center no-repeat !important;
+							border-color: #fdc61c !important;
+							background-size: 20px 20px !important;
+						}
+					}
+				}
+			}
+		}
+
+		&+.btn_group {
+			position: relative;
+			z-index: 600;
+			background: #fff;
+		}
+	}
+}
+
+//공유할 정보 선택 _checkbox_type
+.input_items {
+	&.ico_items {
+		flex-wrap: wrap;
+
+		.check_item {
+			position: relative;
+			display: flex;
+			align-items: center;
+			border-radius: 7.5px;
+			min-width: auto;
+			box-sizing: border-box;
+			margin-top: 10px;
+			flex: 1 1 calc(33.333% - 10px);
+
+			&:nth-child(2n) {
+				margin-left: 10px;
+			}
+
+			input[type=checkbox] {
+				&+label {
+					width: 100%;
+					background-position: right 9px top 9px;
+					padding: 0;
+					display: inline-flex;
+					align-items: center;
+					border: 1px solid #ddd;
+					border-radius: 7.5px;
+				}
+
+				&:checked+label {
+					border: 1px solid #fdc61c;
+					border-radius: 7.5px;
+				}
+			}
+
+			&.chk_disabled {
+				background-color: #f2f2f2;
+
+				input[type=checkbox] {
+
+					&+label {
+						background-image: url(../../../resources/img/content/ico_checkbox_disabled.png);
+					}
+
+					&:checked+label {
+						border: 1px solid #ddd;
+						background-image: url(../../../resources/img/content/ico_checkbox_disabled.png);
+					}
+				}
+			}
+
+			label {
+				height: 90px;
+				display: inline-flex;
+				flex-direction: column;
+				justify-content: center;
+
+				.ico {
+					width: 40px;
+					height: 30px;
+					line-height: 30px;
+
+					&.ico_file_all {
+						background: url(../../../resources/img/content/ico_file_all.png);
+						background-repeat: no-repeat;
+						background-size: 30px 25px;
+						background-position: top 1px center;
+					}
+
+					&.ico_write {
+						background: url(../../../resources/img/content/ico_write.png);
+						background-repeat: no-repeat;
+						background-size: 26px 26.5px;
+						background-position: top center;
+					}
+
+					&.ico_document_type01-1 {
+						background: url(../../../resources/img/content/ico_document_type01-1.png);
+						background-repeat: no-repeat;
+						background-size: 25px 26px;
+						background-position: top center;
+					}
+
+					&.ico_document_type01-2 {
+						background: url(../../../resources/img/content/ico_document_type01-2.png);
+						background-repeat: no-repeat;
+						background-size: 25px 26px;
+						background-position: top center;
+					}
+
+					&.ico_document_type02 {
+						background: url(../../../resources/img/content/ico_document_type02.png);
+						background-repeat: no-repeat;
+						background-size: 24.5px 25.5px;
+						background-position: top center;
+					}
+
+					&.ico_leaflet {
+						background: url(../../../resources/img/content/ico_leaflet.png);
+						background-repeat: no-repeat;
+						background-size: 28px 21.5px;
+						background-position: top 2px center;
+					}
+				}
+			}
+		}
+	}
+}
+
+//금리조회 /보험 보장 분석 결과
+
+.sub_guide {
+	display: inline-flex;
+	align-items: center;
+
+	.ico {
+		margin: 0px 10px 0px 10px;
+		line-height: 30px;
+
+
+		&.ico_interest_rate {
+			display: inline-block;
+			background: url(../../../resources/img/content/ico_interest_rate.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			width: 31.5px;
+			height: 30px;
+		}
+
+		&.ico_usercheck {
+			display: inline-flex;
+			background: url(../../../resources/img/content/ico_usercheck.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			width: 33.5px;
+			height: 26.5px;
+		}
+
+		p {
+			display: inline-block;
+			padding-left: 30px;
+		}
+	}
+}
+
+.bdt_gray02 {
+	border-top: 1px solid #eee;
+}
+
+//통장개설선택
+.ico_items1 {
+	.check_item {
+		display: inline-block;
+		align-items: center;
+		min-width: auto;
+
+		// .ico {
+		// 	.ico_make_bankaccount {
+		// 		display: inline-flex;
+		// 		background: url(../../../resources/img/content/ico_make_bankaccount.png);
+		// 		background-repeat: no-repeat;
+		// 		background-size: 33.5px 26.5px;
+		// 		background-position: center center;
+		// 		width: 33.5px;
+		// 		height: 26.5px;
+		// 	}
+		// }
+
+		.image_icon {
+			display: flex;
+			width: 41.5px;
+			height: 34.5px;
+		}
+
+	}
+}
+
+//맞춤 펀드
+.ico {
+	&.ico_pd_search02 {
+		display: inline-flex;
+		background: url(../../../resources/img/content/ico_pd_search02.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		width: 22px;
+		height: 22px;
+		line-height: 22px;
+	}
+
+	&.ico_pd_analysis02 {
+		display: inline-flex;
+		background: url(../../../resources/img/content/ico_pd_analysis02.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		width: 26.5px;
+		height: 21.5px;
+		line-height: 22px;
+	}
+
+	&.ico_pd_advisor02 {
+		display: inline-flex;
+		background: url(../../../resources/img/content/ico_pd_advisor02.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		width: 26px;
+		height: 21.5px;
+		line-height: 22px;
+	}
+}
+
+.input_items {
+	&.ico_items {
+		.check_item {
+			position: relative;
+			display: flex;
+			align-items: center;
+			border-radius: 4px;
+			min-width: auto;
+			box-sizing: border-box;
+			margin-top: 10px;
+			flex: 1 1 calc(33.333% - 10px);
+
+			&:nth-child(2n) {
+				margin-left: 10px;
+			}
+
+			&.type_btn_round {
+				input[type=radio] {
+					&+label {
+						width: 100%;
+						border: 1px solid #f8f8f8;
+						border-radius: 4px;
+						background-color: #f8f8f8 !important;
+						justify-content: flex-start;
+
+						span {
+							line-height: 16px;
+							color: #111;
+						}
+					}
+
+					&:checked+label {
+						background-color: #fff !important;
+						border: 1px solid #fdc61c;
+						border-radius: 4px;
+					}
+				}
+
+				label {
+					height: 120px;
+					display: inline-flex;
+					flex-direction: column;
+					justify-content: center;
+
+					.ico {
+						&.ico_make_bankaccount {
+							display: inline-flex;
+							background: url(../../../resources/img/content/ico_make_bankaccount.png);
+							background-repeat: no-repeat;
+							background-size: 42.5px 34.5px;
+							background-position: center center;
+							width: 50px;
+							height: 40px;
+							margin-bottom: 8px;
+						}
+
+						&.ico_make_checkcard {
+							display: inline-flex;
+							background: url(../../../resources/img/content/ico_make_checkcard.png);
+							background-repeat: no-repeat;
+							background-size: 42.5px 40px;
+							background-position: center center;
+							width: 50px;
+							height: 40px;
+							margin-bottom: 8px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//키워드로 찾기 결과
+.border_list {
+	&.bdr_lightgray {
+		>li {
+			border-bottom: 1px solid #eee;
+		}
+	}
+
+	.border_t0 {
+		.list_inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.ico {
+				&.icon_vsit_arrow02 {
+					display: inline-flex;
+					background: url(../../../resources/img/content/icon_vsit_arrow02.png);
+					background-repeat: no-repeat;
+					background-size: 5.5px 10px;
+					background-position: right center;
+					width: 6px;
+					height: 11px;
+				}
+			}
+		}
+	}
+}
+
+
+.ico {
+	&.icon_vsit_arrow02_primary {
+		display: inline-flex;
+		background: url(../../../resources/img/content/icon_vsit_arrow02_primary.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		width: 6px;
+		height: 10.5px;
+	}
+}
+
+.tag_group {
+	&.tag_box {
+		.tag {
+			display: inline-block;
+			border: 1px solid #bbb;
+			border-radius: 12.5px;
+			font-size: 12px;
+			color: #111;
+			padding-left: 14px;
+			padding-right: 14px;
+			margin-left: 2px;
+			margin-bottom: 3px;
+		}
+	}
+}
+
+//과세코드
+.taxation_list {
+	li {
+		.check_item {
+			display: flex;
+
+			label {
+				display: flex;
+				width: 100%;
+				font-size: 14px;
+				color: #111;
+				font-weight: normal;
+				background-position: right top 2px;
+				padding: 0px;
+				margin: 9px 0px 9px 0px;
+
+				.num {
+					margin-right: 3px;
+				}
+			}
+		}
+	}
+}
