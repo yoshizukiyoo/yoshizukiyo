@@ -769,7 +769,25 @@
 	}
 
 	>.r {
-		margin-left: auto;
+		display: flex;
+
+		>.btn_product_btm {
+			&.fn_btn {
+				>li {
+					&:not(:last-child) {
+						margin-right: 5px;
+					}
+				}
+			}
+
+			&.lk_btn {
+				>li {
+					&:not(:last-child) {
+						margin-right: 10px;
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -777,11 +795,11 @@
 	display: flex;
 	align-items: center;
 
-	>li {
-		&:not(:last-child) {
-			margin-right: 10px;
-		}
+	&+.btn_product_btm {
+		margin-left: 10px;
+	}
 
+	>li {
 		>a {
 			min-width: 180px;
 			padding: 0;
@@ -806,7 +824,8 @@
 	.btn_produt_like {
 		background-image: url(#{$url-img}/content/btn_like_lg.png);
 
-		&:hover {
+		&:hover,
+		&.on {
 			background-image: url(#{$url-img}/content/btn_like_lg_on.png);
 		}
 	}
@@ -814,7 +833,8 @@
 	.btn_produt_cart {
 		background-image: url(#{$url-img}/content/btn_cart_lg.png);
 
-		&:hover {
+		&:hover,
+		&.on {
 			background-image: url(#{$url-img}/content/btn_cart_lg_on.png);
 		}
 	}
@@ -822,7 +842,8 @@
 	.btn_produt_share {
 		background-image: url(#{$url-img}/content/btn_share_lg.png);
 
-		&:hover {
+		&:hover,
+		&.on {
 			background-image: url(#{$url-img}/content/btn_share_lg_on.png);
 		}
 	}
