@@ -10509,7 +10509,7 @@ h3.tit2.score_tit {
 }
 
 .top_explanation {
-  padding: 20px 0;
+  padding-bottom: 20px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
 }
@@ -10742,6 +10742,7 @@ h3.tit2.score_tit {
 
 .top_ico_txt {
   padding: 20px 0;
+  margin-top: 5px;
 }
 
 .top_ico_txt p {
@@ -10783,6 +10784,11 @@ h3.tit2.score_tit {
 .top_ico_txt.ico6 p {
   background: url(/resources/img/content/ico_teg6.png) 0 center no-repeat;
   background-size: 32px 27px !important;
+}
+
+.top_ico_txt.ico7 p {
+  background: url(/resources/img/content/ico_teg7.png) 0 center no-repeat;
+  background-size: 26px 31px !important;
 }
 
 .top_ico_txt.border {
@@ -11172,8 +11178,53 @@ h3.tit2.score_tit {
   float: right;
 }
 
+.modal_tendency .popup_inner {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  left: 0;
+  bottom: -50px;
+  right: 0;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.modal_tendency .popup_inner .container {
+  padding-bottom: 20px;
+}
+
+.modal_tendency .popup_inner .container .box {
+  margin-top: 20px;
+}
+
+.modal_tendency .popup_inner .container .box strong {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  color: #0069e1;
+  margin-bottom: 20px;
+}
+
+.modal_tendency .popup_inner .container .box p {
+  font-size: 14px;
+  line-height: 20px;
+  color: #555;
+}
+
+.modal_tendency .popup_inner .container .btn_group {
+  margin-top: 70px;
+}
+
+.modal_tendency.show .popup_inner {
+  bottom: 0;
+}
+
 .suggestion_rolling {
   position: relative;
+}
+
+.suggestion_rolling.bottom_rolling {
+  margin-bottom: 50px;
 }
 
 .suggestion_rolling div[class^="box"] {
@@ -11391,17 +11442,36 @@ p.notice {
   background: url(/resources/img/content/ico_fund_bottom2.png) left center no-repeat;
 }
 
-.fund_chk_list li .top span {
+.fund_chk_list {
+  margin-top: 10px;
+}
+
+.fund_chk_list > li {
+  margin-top: 35px;
+}
+
+.fund_chk_list > li:first-child {
+  margin-top: 0;
+}
+
+.fund_chk_list > li .top {
+  position: relative;
+  padding-left: 63px;
+}
+
+.fund_chk_list > li .top span {
+  position: absolute;
+  left: 0;
+  top: -2px;
   color: #fff;
   font-size: 13px;
   background: #555;
   border-radius: 25px;
   display: inline-block;
   padding: 3px 13px;
-  position: relative;
 }
 
-.fund_chk_list li .top span:after {
+.fund_chk_list > li .top span:after {
   content: "";
   display: block;
   width: 0;
@@ -11413,19 +11483,20 @@ p.notice {
   margin-top: -2px;
 }
 
-.fund_chk_list li .top strong {
+.fund_chk_list > li .top strong {
   font-weight: 300;
   margin-left: 5px;
+  display: block;
 }
 
-.fund_chk_list li .chk_box .list {
+.fund_chk_list > li .chk_box .list {
   font-size: 0;
   text-align: center;
-  margin: 20px 0;
+  margin: 20px 0 0;
   position: relative;
 }
 
-.fund_chk_list li .chk_box .list:before {
+.fund_chk_list > li .chk_box .list:before {
   content: "";
   display: block;
   border-top: 3px solid #ddd;
@@ -11435,20 +11506,23 @@ p.notice {
   right: 0;
 }
 
-.fund_chk_list li .chk_box .list li {
+.fund_chk_list > li .chk_box .list li {
   display: inline-block;
   vertical-align: top;
+  margin: 0 -0.5px;
 }
 
-.fund_chk_list li .chk_box .list li .check_item label {
+.fund_chk_list > li .chk_box .list li .check_item label {
   font-size: 14px;
   padding: 0;
   padding-top: 25px;
   font-size: 14px;
   background: none;
+  letter-spacing: -0.5px;
+  line-height: 18px;
 }
 
-.fund_chk_list li .chk_box .list li .check_item label:before {
+.fund_chk_list > li .chk_box .list li .check_item label:before {
   content: "";
   display: block;
   width: 20px;
@@ -11461,22 +11535,423 @@ p.notice {
   margin-left: -10px;
 }
 
-.fund_chk_list li .chk_box .list li .check_item input[type=radio]:checked + label {
+.fund_chk_list > li .chk_box .list li .check_item input[type=radio]:checked + label {
   background: url(/resources/img/common/ico_checkbox_checked.png) center top no-repeat;
   background-size: 20px auto;
+  font-weight: 500;
 }
 
-.fund_chk_list li .chk_box .list li .check_item input[type=radio]:checked + label:before {
+.fund_chk_list > li .chk_box .list li .check_item input[type=radio]:checked + label:before {
   display: none;
 }
 
-.fund_chk_list li .chk_box .list.length6:before {
+.fund_chk_list > li .chk_box .list.length4:before {
+  left: 10%;
+  right: 10%;
+}
+
+.fund_chk_list > li .chk_box .list.length4 li {
+  width: calc(100% / 6);
+}
+
+.fund_chk_list > li .chk_box .list.length4 li:first-child {
+  float: left;
+}
+
+.fund_chk_list > li .chk_box .list.length4 li:nth-child(2) {
+  margin-right: 12%;
+}
+
+.fund_chk_list > li .chk_box .list.length4 li:last-child {
+  float: right;
+}
+
+.fund_chk_list > li .chk_box .list.length4 li label {
+  margin: 0 -20px;
+}
+
+.fund_chk_list > li .chk_box .list.length5:before {
+  left: 10%;
+  right: 10%;
+}
+
+.fund_chk_list > li .chk_box .list.length5 li {
+  width: calc(100% / 6);
+}
+
+.fund_chk_list > li .chk_box .list.length5 li:first-child {
+  float: left;
+}
+
+.fund_chk_list > li .chk_box .list.length5 li:last-child {
+  float: right;
+}
+
+.fund_chk_list > li .chk_box .list.length5 li:nth-child(3) {
+  margin: 0 5%;
+}
+
+.fund_chk_list > li .chk_box .list.length6:before {
   left: 7%;
   right: 7%;
 }
 
-.fund_chk_list li .chk_box .list.length6 li {
+.fund_chk_list > li .chk_box .list.length6 li {
   width: calc(100% / 6);
+}
+
+.fund_chk_list > li .radio_box .list {
+  font-size: 0;
+  margin-top: 15px;
+}
+
+.fund_chk_list > li .radio_box .list li label {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.fund_chk_list > li .radio_box .list li input:checked + label {
+  font-weight: 500;
+}
+
+.fund_chk_list > li .radio_box .list.block li {
+  margin-top: 15px;
+}
+
+.fund_chk_list > li .radio_box .list.block li:first-child {
+  margin-top: 0;
+}
+
+.fund_chk_list > li .radio_box .list.length2 li {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.fund_chk_list > li .radio_box .list.length2 li label {
+  letter-spacing: -1px;
+}
+
+.fund_chk_list > li .radio_box .list.length2 li:nth-child(2) ~ li {
+  margin-top: 15px;
+}
+
+.fund_chk_list > li .fund_graph {
+  background-size: 100% auto;
+  margin-top: 25px;
+  position: relative;
+}
+
+.fund_chk_list > li .fund_graph:before {
+  content: "";
+  display: block;
+  width: 19px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 10px;
+  background: url(/resources/img/content/arr_top.png) 0 0 no-repeat;
+  background-size: 19px auto;
+}
+
+.fund_chk_list > li .fund_graph:after {
+  content: "";
+  display: block;
+  height: 19px;
+  position: absolute;
+  right: 0;
+  left: 10px;
+  bottom: 0;
+  background: url(/resources/img/content/arr_right.png) right 0 no-repeat;
+  background-size: auto 19px;
+}
+
+.fund_chk_list > li .fund_graph .bar {
+  position: absolute;
+  font-size: 12px;
+  color: #000;
+  font-weight: 400;
+}
+
+.fund_chk_list > li .fund_graph .bar.height {
+  left: 20px;
+  top: 10px;
+}
+
+.fund_chk_list > li .fund_graph .bar.width {
+  bottom: 18px;
+  right: 0;
+}
+
+.fund_chk_list > li .fund_graph ul {
+  font-size: 0;
+  padding: 0 0 10px 5%;
+  text-align: center;
+}
+
+.fund_chk_list > li .fund_graph ul li {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  position: relative;
+}
+
+.fund_chk_list > li .fund_graph ul li .check_item label {
+  width: 55px;
+  margin: 0 auto;
+  display: block;
+  height: 170px;
+  padding: 0;
+  position: relative;
+  background-size: 45px auto !important;
+}
+
+.fund_chk_list > li .fund_graph ul li .check_item label:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  margin-left: -10px;
+}
+
+.fund_chk_list > li .fund_graph ul li .check_item input:checked + label:before {
+  background: url(/resources/img/common/ico_checkbox_checked.png) center bottom no-repeat;
+  background-size: 20px auto;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(1) label {
+  background: url(/resources/img/content/img_fund_grhph1.png) center bottom no-repeat;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(1) input:checked + label {
+  background: url(/resources/img/content/img_fund_grhph1_on.png) center bottom no-repeat;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(2) label {
+  background: url(/resources/img/content/img_fund_grhph2.png) center bottom no-repeat;
+  background-size: 55px auto;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(2) input:checked + label {
+  background: url(/resources/img/content/img_fund_grhph2_on.png) center bottom no-repeat;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(3) label {
+  background: url(/resources/img/content/img_fund_grhph3.png) center bottom no-repeat;
+  background-size: 55px auto;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(3) input:checked + label {
+  background: url(/resources/img/content/img_fund_grhph3_on.png) center bottom no-repeat;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(4) label {
+  background: url(/resources/img/content/img_fund_grhph4.png) center bottom no-repeat;
+  background-size: 55px auto;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(4) input:checked + label {
+  background: url(/resources/img/content/img_fund_grhph4_on.png) center bottom no-repeat;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(5) label {
+  background: url(/resources/img/content/img_fund_grhph5.png) center bottom no-repeat;
+  background-size: 55px auto;
+}
+
+.fund_chk_list > li .fund_graph ul li:nth-child(5) input:checked + label {
+  background: url(/resources/img/content/img_fund_grhph5_on.png) center bottom no-repeat;
+}
+
+.fund_chk_list > li .square_chk {
+  margin-left: -5px;
+  font-size: 0;
+  margin-top: 15px;
+}
+
+.fund_chk_list > li .square_chk li {
+  margin-left: 5px;
+  width: calc(33.33% - 5px);
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.fund_chk_list > li .square_chk li .check_item {
+  text-align: center;
+  display: block;
+}
+
+.fund_chk_list > li .square_chk li .check_item label {
+  padding: 0 0 30px;
+  background: none;
+  position: relative;
+  display: block;
+}
+
+.fund_chk_list > li .square_chk li .check_item label:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-left: -10px;
+}
+
+.fund_chk_list > li .square_chk li .check_item label .img {
+  background: #f6f6f6;
+  display: block;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px 0;
+  height: 94px;
+}
+
+.fund_chk_list > li .square_chk li .check_item label .img img {
+  width: 36px;
+  display: block;
+  margin: 0 auto 5px;
+}
+
+.fund_chk_list > li .square_chk li .check_item label .img strong {
+  display: block;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.5px;
+}
+
+.fund_chk_list > li .square_chk li .check_item input:checked + label {
+  background: url(/resources/img/common/ico_checkbox_checked.png) center bottom no-repeat;
+  background-size: 20px auto;
+}
+
+.fund_chk_list > li .square_chk li .check_item input:checked + label:before {
+  display: none;
+}
+
+.fund_chk_list > li .square_chk li .check_item input:checked + label strong {
+  font-weight: 500;
+}
+
+.fund_chk_list > li .vertical_chk {
+  margin-top: 20px;
+}
+
+.fund_chk_list > li .vertical_chk .list li {
+  margin-top: 15px;
+}
+
+.fund_chk_list > li .vertical_chk .list li:first-child {
+  margin-top: 0;
+}
+
+.fund_chk_list > li .vertical_chk .list li label {
+  background: none;
+}
+
+.fund_chk_list > li .vertical_chk .list li label strong {
+  display: block;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.fund_chk_list > li .vertical_chk .list li label span {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  color: #666;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+.fund_chk_list > li .vertical_chk .list li label:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.fund_chk_list > li .vertical_chk .list li input[type=radio]:checked + label {
+  background: url(/resources/img/common/ico_checkbox_checked.png) left top no-repeat;
+  background-size: 20px auto;
+  font-weight: 500;
+}
+
+.fund_chk_list > li .vertical_chk .list li input[type=radio]:checked + label:before {
+  display: none;
+}
+
+.fund_chk_list > li .normal li {
+  margin-top: 15px;
+}
+
+.fund_chk_list > li .normal li:first-child {
+  margin-top: 0;
+}
+
+.fund_chk_list > li .normal li label {
+  font-weight: 300;
+}
+
+.fund_chk_list > li .normal li input:checked + label {
+  font-weight: 500;
+}
+
+.fund_chk_list.invest > li .top {
+  padding-left: 30px;
+}
+
+.fund_chk_list.invest > li .top span {
+  padding: 3px 0;
+  width: 26px;
+  text-align: center;
+}
+
+.fund_chk_list.invest > li .top span:after {
+  border: 4px solid transparent;
+  border-left: 5px solid #555;
+  right: -8px;
+  margin-top: -4px;
+}
+
+.fund_chk_list.invest > li .top strong {
+  font-size: 14px;
+  color: #555;
+  line-height: 20px;
+}
+
+.num_txt {
+  font-size: 14px;
+  color: #333;
+  line-height: 20px;
+  border-bottom: 1px solid #ddd;
+  margin: 10px 0 20px;
+  padding-bottom: 20px;
+  font-weight: 500;
+  padding-left: 20px;
+  position: relative;
+  text-align: left;
+}
+
+.num_txt span {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .popup_footer .btn.btn_fg_2 {
@@ -12027,4 +12502,3 @@ p.notice {
 .taxation_list li .check_item label .num {
   margin-right: 3px;
 }
-/*# sourceMappingURL=content.css.map */
