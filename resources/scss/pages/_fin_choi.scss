@@ -28,6 +28,10 @@
 	font-size: 30px !important;
 }
 
+.txt_lh_sm {
+	line-height: 1.2 !important;
+}
+
 .txt_lh_md {
 	line-height: 1.5 !important;
 }
@@ -1168,11 +1172,47 @@
 
 .compare_tit {
 
-	&.fund01::before {
-		background-image: url(#{$url-img}/content/ico_fund_tit01.png);
-	}
+	$end: 8;
 
-	&.fund02::before {
-		background-image: url(#{$url-img}/content/ico_fund_tit02.png);
+	@for $i from 1 to $end+1 {
+		&.fund0#{$i}::before {
+			background-image: url(#{$url-img}/content/ico_fund_tit0#{$i}.png);
+		}
+	}
+}
+
+th.bdr_btm {
+	border-bottom: 1px solid $border-base;
+}
+
+.check_item {
+	&.type_btn {
+		input {
+			&+label {
+				display: inline-flex;
+				height: 46px;
+				padding: 0 14px 0 24px;
+				border: 1px solid $border-base;
+				border-radius: 4px;
+
+				background-image: none;
+				background-color: #fff;
+
+				align-items: center;
+				justify-content: center;
+
+				font-size: 18px;
+				font-weight: normal;
+				color: #111;
+				line-height: 1;
+			}
+
+			&:checked {
+				&+label {
+					background-image: none;
+					border-color: #111;
+				}
+			}
+		}
 	}
 }
