@@ -31,7 +31,7 @@
 <body>
 	<div class="wrapper">
 		<a href="#content" class="skip_nav">본문 바로가기</a>
-		<header class="header"></header>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
 		<div class="quick_menu_wrap"></div>
 		<aside class="breadcrumb"></aside>
 		<article id="content">
@@ -167,10 +167,21 @@
 							<a href="#n" class="btn_manual">상품설명서</a>
 						</div>
 						<div class="r">
-							<ul class="btn_product_btm">
-								<li><a href="#;" class="btn_produt_like"><span class="sr_only">좋아요</span></a></li>
-								<li><a href="#;" class="btn_produt_cart"><span class="sr_only">장바구니</span></a></li>
-								<li><a href="#;" class="btn_produt_share"><span class="sr_only">공유하기</span></a></li>
+							<ul class="btn_product_btm fn_btn">
+								<li>
+									<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_produt_like on"> -->
+									<a href="#;" class="btn_produt_like"><span class="sr_only">좋아요</span></a>
+								</li>
+								<li>
+									<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_produt_cart on"> -->
+									<a href="#;" class="btn_produt_cart"><span class="sr_only">장바구니</span></a>
+								</li>
+								<li>
+									<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_produt_share on"> -->
+									<a href="#;" class="btn_produt_share"><span class="sr_only">공유하기</span></a>
+								</li>
+							</ul>
+							<ul class="btn_product_btm lk_btn">
 								<li><a href="#;" class="btn btn_xl btn_outline_default darkgray">상담하기</a></li>
 								<li><a href="#;" class="btn btn_xl btn_primary darkgray">가입하기</a></li>
 							</ul>
@@ -696,7 +707,8 @@
 									</h3>
 								</div>
 								<div class="r">
-									<a href="#;" class="btn btn_md btn_outline_default">가입후기작성</a>
+									<a href="#;" class="btn btn_md btn_outline_default"
+										onclick="openModal('star_rating', this);return false;">가입후기작성</a>
 								</div>
 							</div>
 							<div class="join_review mt_4">
@@ -780,6 +792,63 @@
 						<!-- e : 후기 -->
 					</div>
 				</div>
+
+				<!-- s: 평가하기 팝업 -->
+				<div class="modal_popup modal_xs hide" data-popup="star_rating">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">평가하기</h2>
+						</div>
+						<div class="popup_body">
+							<div class="star_rating">
+								<div class="rating_num">10</div>
+								<div class="star">
+									<div class="star_on"><span></span></div>
+									<input type="range" oninput="drawStar(this)" onchange="drawStar(this)" value="100" step="1" min="1"
+										max="10">
+								</div>
+								<p class="txt_c mt_3 mb_3">좌우로 드래그해주세요.</p>
+								<textarea name="" id="" title="고객님의 솔직한 평가 의견를 남겨 주세요."
+									placeholder="고객님의 솔직한 평가 의견를 남겨 주세요."></textarea>
+								<script>
+									// 별점 주기
+									function drawStar(obj) {
+										var value = obj.value * 10;
+										$('.rating_num').text(value.toString().slice(0, -1));
+										if (value == '10') {
+											$('.star_on > span').css('width', 18);
+										} else if (value == '20') {
+											$('.star_on > span').css('width', 34);
+										} else if (value == '30') {
+											$('.star_on > span').css('width', 63);
+										} else if (value == '40') {
+											$('.star_on > span').css('width', 80);
+										} else if (value == '50') {
+											$('.star_on > span').css('width', 109);
+										} else if (value == '60') {
+											$('.star_on > span').css('width', 126);
+										} else if (value == '70') {
+											$('.star_on > span').css('width', 155);
+										} else if (value == '80') {
+											$('.star_on > span').css('width', 173);
+										} else if (value == '90') {
+											$('.star_on > span').css('width', 201);
+										} else if (value == '100') {
+											$('.star_on > span').css('width', 219);
+										}
+									}
+								</script>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default">취소</button>
+								<button type="button" class="btn btn_md btn_primary">저장</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 평가하기 팝업 -->
 
 				<!-- e: 본문 -->
 			</div>

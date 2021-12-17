@@ -6,9 +6,16 @@
 */
 
 $(function () {
-	$('.header').load('/html/_inc-header.html .header > *', function () {
-		// if ($.isFunction(window.gnbSetting)) gnbSetting();
-	});
+	var headerInc = $('.header').data('inc');
+	if (headerInc == undefined) {
+		$('.header').load('/html/_inc-header.html .header > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	} else if (headerInc != undefined) {
+		$('.header').load('/html/_inc-mall-header.html .header > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	}
 	$('.quick_menu_wrap').load('/html/_inc-quickmenu.html .quick_menu_wrap > *', function () {
 		// if ($.isFunction(window.scrollbar)) scrollbar();
 	});
