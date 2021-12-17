@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+</head>
+
+<body>
+	<header class="header">
+		<div class="container">
+			<!-- s: util menu -->
+			<div class="header_top">
+				<div class="logo">
+					<a href="#;"><img src="/resources/img/common/mall_logo.png" alt="우체국 금융상품"></a>
+				</div>
+				<div class="util_menu">
+					<div class="l">
+						<!-- s: 로그인전 노출영역 -->
+						<div class="util_btn bg_type1" style="display: none;">
+							<a href="#;"><span>로그인</span></a>
+							<a href="#;"><span>인증센터</span></a>
+						</div>
+						<!-- e: 로그인전 노출영역 -->
+
+						<!-- s: 로그인후 노출영역 -->
+						<div class="box_user_login">
+							<div class="user_name">
+								<strong>나봄미</strong> 고객님
+								<div class="msg_alert"><span>5</span></div>
+							</div>
+							<div class="util_btn connect_time">
+								<strong class="sr_only">로그아웃까지 남은 시간:</strong>
+								<span>
+									<strong>08:02</strong>
+									<button type="button">연장</button>
+								</span>
+							</div>
+							<div class="util_btn bg_type1">
+								<a href="#;" class="btn_icon btn_mypg"><span>마이페이지</span></a>
+								<a href="#;" class="btn_icon btn_logout"><span>로그아웃</span></a>
+							</div>
+						</div>
+						<!-- e: 로그인후 노출영역 -->
+					</div>
+					<div class="r">
+						<div class="util_btn bg_type2">
+							<a href="#;"><span>예금</span></a>
+							<a href="#;"><span>보험</span></a>
+						</div>
+						<div class="util_btn bg_type1 box_single">
+							<a href="#;"><span>고객센터</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: util menu -->
+
+			<!-- s: gnb -->
+			<div id="gnb" class="gnb">
+				<ul>
+					<li><a href="#" class="my_product_mn">MY상품</a></li>
+					<li><a href="#">가입진행중</a></li>
+					<li><a href="#">예금상품</a></li>
+					<li><a href="#">보험상품</a></li>
+					<li><a href="#">카드상품</a></li>
+					<li><a href="#">펀드상품</a></li>
+					<li><a href="#">상품찾기</a></li>
+				</ul>
+			</div>
+			<!-- e: gnb -->
+
+			<!-- s: top search -->
+			<div class="btn_header_search">
+				<button type="button" onclick="openModal('searchLayer', this);return false;">
+					<span class=" sr_only">검색하기</span>
+				</button>
+			</div>
+			<!-- e: top search -->
+
+			<!-- s: total menu -->
+			<div class="btn_allmenu">
+				<button type="button" onclick="allMenuScroll();return false;">
+					<i></i><i></i><i></i>
+					<span class="sr_only">전체메뉴 열기</span>
+				</button>
+			</div>
+			<!-- e: total menu -->
+
+			<!-- s: 전체메뉴 레이어 -->
+			<div class="modal_popup modal_xxl hide" data-popup="allMenuLayer">
+				<div class=" dimed"></div>
+				<div class="popup_inner allmenu_inner">
+					<div class="popup_header">
+						<div class="allmenu_top">
+							<div class="top_left">
+								<h2 class="popup_tit">전체메뉴</h2>
+								<div class="btn_mymenu_box">
+									<a href="#;" class="btn_lately" onclick="menuBox('lately');return false;">
+										<span>최근이용 메뉴</span>
+									</a>
+									<a href="#;" class="btn_my" onclick="menuBox('my');return false;">
+										<span>MY 메뉴</span>
+									</a>
+								</div>
+							</div>
+							<div class="top_right">
+								<div class="search_menu">
+									<input type="text" placeholder="메뉴 찾기" title="메뉴명 입력">
+									<button type="button" class="btn_menu_search" onclick="menuBox('search');return false;"><span
+											class="sr_only">검색</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_body">
+						<!-- s: 결과 -->
+						<div class="result_box">
+
+							<div class="lately_result_box" style="display: none;">
+								<!-- s: 최근이용 메뉴 5개 표시-->
+								<div class="mymenu_list_box">
+									<div class="fx_lr">
+										<div class="fx_left">
+											<strong class="war_style1">최근이용 메뉴 최대5개까지 표시됩니다.</strong>
+										</div>
+										<div class="fx_right">
+											<button type="button" class="lately_check" onclick="openModal('myMenuAlert', this);">최근 이용 메뉴 확인하지
+												않음</button> <!-- [D] 활성된 버튼 스타일은 class에 on 추가 -->
+										</div>
+									</div>
+									<div class="mymenu_list">
+										<ul>
+											<li><a href="#;">즉시이체</a></li>
+											<li><a href="#;">다른은행거래내역조회</a></li>
+											<li><a href="#;">전계좌조회</a></li>
+											<li><a href="#;">다른은행 계좌 등록</a></li>
+											<li><a href="#;">출금계좌조회</a></li>
+										</ul>
+									</div>
+								</div>
+								<!-- e: 최근이용 메뉴 5개 표시 -->
+
+								<!-- s: 최근이용 메뉴 - 메뉴 없음-->
+								<div class="mymenu_list_box" style="display: none;">
+									<div class="fx_lr">
+										<div class="fx_right">
+											<span class="inp_checkbox">
+												<input type="checkbox" name="" id="mymenu_check2" class="sr_only">
+												<label for="mymenu_check2">최근 이용 메뉴 확인하지 않음</label>
+											</span>
+										</div>
+									</div>
+									<div class="mymenu_none txt_c">
+										<strong class="war_style1">최근 이용 메뉴가 없습니다.</strong>
+									</div>
+								</div>
+								<!-- e: 최근이용 메뉴 - 메뉴 없음 -->
+
+								<!-- s: 최근이용 메뉴 - 메뉴확인하지 않음-->
+								<div class="mymenu_list_box" style="display: none;">
+									<div class="fx_lr">
+										<div class="fx_right">
+											<span class="inp_checkbox">
+												<input type="checkbox" name="" id="mymenu_check2" class="sr_only">
+												<label for="mymenu_check2">최근 이용 메뉴 확인하지 않음</label>
+											</span>
+										</div>
+									</div>
+									<div class="mymenu_none">
+										<p class="war_style2 txt_c">
+											<strong>
+												<span>최근 이용 메뉴가 없습니다.</span><br>
+												확인하고 싶으시면 최근 이용 메뉴 확인 하지 않음을 체크 해제 해주세요.
+											</strong>
+										</p>
+									</div>
+								</div>
+								<!-- e: 최근이용 메뉴 - 메뉴확인하지 않음 -->
+							</div>
+
+							<div class="mymenu_result_box" style="display: none;">
+								<!-- s: MY메뉴-->
+								<div class="mymenu_list_box">
+									<div class="fx_lr">
+										<div class="fx_left">
+											<strong class="war_style1">최대 10개 까지 지정 가능합니다.</strong>
+										</div>
+										<div class="fx_right">
+											<a href="#;">
+												<i class="ico ico_settings"></i>
+												<span class="txt_sm">설정변경</span>
+											</a>
+										</div>
+									</div>
+									<div class="mymenu_list">
+										<ul>
+											<li><a href="#;">즉시이체</a></li>
+											<li><a href="#;">다른은행거래내역조회</a></li>
+											<li><a href="#;">전계좌조회</a></li>
+											<li><a href="#;">다른은행 계좌 등록</a></li>
+											<li><a href="#;">펀드매매</a></li>
+											<li><a href="#;">오픈뱅킹조회</a></li>
+											<li><a href="#;">경조금배달</a></li>
+											<li><a href="#;">전계좌조회</a></li>
+											<li><a href="#;">다른은행 계좌 등록</a></li>
+											<li><a href="#;">출금계좌조회</a></li>
+										</ul>
+									</div>
+								</div>
+								<!-- e: MY메뉴 -->
+							</div>
+
+							<div class="menu_search_box" style="display: none;">
+								<!-- s: 메뉴 검색결과 -->
+								<div class="menu_search_result">
+									<div class="tit_search">
+										<h3>메뉴 검색어 ‘ 조회’ 에 대한 검색결과 <span>105건</span></h3>
+									</div>
+									<!-- s: 검색결과 있음 -->
+									<div class="search_result_show">
+										<div class="menu_search_list">
+											<ul>
+												<li>
+													<a href="#;">
+														예금 &gt; 공과금 &gt; 국고 &gt; 특허수수료 &gt; <span>납부내역조회</span>
+													</a>
+												</li>
+												<li>
+													<a href="#;">
+														예금 &gt; 공과금 &gt; 국고 &gt; 특허수수료 &gt; <span>납부내역조회</span>
+													</a>
+												</li>
+												<li>
+													<a href="#;">
+														예금 &gt; 공과금 &gt; 국고 &gt; 특허수수료 &gt; <span>납부내역조회</span>
+													</a>
+												</li>
+												<li>
+													<a href="#;">
+														예금 &gt; 공과금 &gt; 국고 &gt; 특허수수료 &gt; <span>납부내역조회</span>
+													</a>
+												</li>
+												<li>
+													<a href="#;">
+														예금 &gt; 공과금 &gt; 국고 &gt; 특허수수료 &gt; <span>납부내역조회</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="fx_lr">
+											<div class="fx_left search_warning">
+												<strong>
+													메뉴 검색 결과가 많아, 상위 5건만 우선 표시하였습니다.<br>
+													찾는 메뉴명 없으시면, 좀더 상세한 키워드로 재검색 하시거나 통합검색으로 겨로가 더보기를 진행해주세요.
+												</strong>
+											</div>
+											<div class="fx_right btn_search_link">
+												<a href="#" class="btn btn_sm btn_outline_default">
+													통합검색으로 결과 더보기
+												</a>
+												<span>통합검색 결과로 이동합니다.</span>
+											</div>
+										</div>
+									</div>
+									<!-- e: 검색결과 있음 -->
+
+									<!-- s: 검색결과 없음 -->
+									<div class="search_result_none" style="display: none;">
+										<div class="menu_search_list">
+											<strong class="war_style1">“매일”이 포함된 메뉴가 없습니다. 다시 검색해주시기 바랍니다.</strong>
+										</div>
+									</div>
+									<!-- e: 검색결과 없음 -->
+								</div>
+								<!-- e: 메뉴 검색결과-->
+							</div>
+
+						</div>
+						<!-- e: 결과 -->
+
+						<div class="tab_allmenu">
+							<!-- s: 탭메뉴 -->
+							<div class="tab_menu_type3">
+								<ul class="tab_all_menu">
+									<li><a href="#;" class="current" title="선택됨" data-layer-tab="menu01"><span>예금</span></a></li>
+									<li><a href="#;" data-layer-tab="menu02"><span>카드</span></a></li>
+									<li><a href="#;" data-layer-tab="menu03"><span>펀드</span></a></li>
+									<li><a href="#;" data-layer-tab="menu04"><span>외환</span></a></li>
+									<li><a href="#;" data-layer-tab="menu05"><span>금융상품몰</span></a></li>
+									<li><a href="#;" data-layer-tab="menu06"><span>기업</span></a></li>
+								</ul>
+							</div>
+							<!-- e: 탭메뉴 -->
+
+							<!-- s: 메뉴 목록 -->
+							<div class="allmenu_wrap">
+								<!-- s: 예금 하위 메뉴 -->
+								<div class="tab_sub_menu" data-menu-box="menu01">
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- e: 예금 하위 메뉴 -->
+
+								<!-- s: 카드 하위 메뉴 -->
+								<div class="tab_sub_menu" data-menu-box="menu02" style="display: none;">
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- e: 카드 하위 메뉴 -->
+
+								<!-- s: 펀드 하위 메뉴 -->
+								<div class="tab_sub_menu" data-menu-box="menu03" style="display: none;">
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- e: 펀드 하위 메뉴 -->
+
+								<!-- s: 외환 하위 메뉴 -->
+								<div class="tab_sub_menu" data-menu-box="menu04" style="display: none;">
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- e: 외환 하위 메뉴 -->
+
+								<!-- s: 금융상품몰 하위 메뉴 -->
+								<div class="tab_sub_menu" data-menu-box="menu05" style="display: none;">
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- e: 금융상품몰 하위 메뉴 -->
+
+								<!-- s: 기업 하위 메뉴 -->
+								<div class="tab_sub_menu" data-menu-box="menu06" style="display: none;">
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="menu_section">
+										<h3>조회</h3>
+										<div class="allmenu_list">
+											<strong>계좌조회</strong>
+											<ul>
+												<li><a href="#;">전체계좌조회</a></li>
+												<li><a href="#;">출금계좌조회</a></li>
+												<li><a href="#;">대월계좌조회</a></li>
+												<li><a href="#;">만기계좌조회</a></li>
+												<li><a href="#;">해약계좌조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>거래내역조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>오픈뱅킹조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>수표조회</strong>
+											<ul>
+												<li><a href="#;">최근거래내역조회</a></li>
+												<li><a href="#;">과거거래내역조회</a></li>
+											</ul>
+										</div>
+										<div class="allmenu_list">
+											<strong>기타조회</strong>
+											<ul>
+												<li><a href="#;">납입금한도금액조회</a></li>
+												<li><a href="#;">신계좌번호조회</a></li>
+												<li><a href="#;">비과세종합저축조회</a></li>
+												<li><a href="#;">e-포인트적금 포인트저축내역조회</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- e: 기업 하위 메뉴 -->
+							</div>
+							<!-- e: 메뉴 목록 -->
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 전체메뉴 레이어 -->
+
+			<!-- s: 정보 삭제 확인 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="myMenuAlert">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">정보 삭제 확인</h2>
+					</div>
+					<div class="popup_body">
+						<div class="alert_cont">
+							<div class="artwork">
+								<i class="ico_alert_xxl_primary"></i>
+								<!-- <i class="ico_confirm_xxl_primary"></i> -->
+							</div>
+							<div class="cont">
+								<p>
+									저장된 최근 이용 메뉴가 모두 삭제됩니다.<br>
+									삭제된 이용 정보는 복구 불가능합니다.
+								</p>
+							</div>
+						</div>
+						<div class="btn_group">
+
+							<button type="button" class="btn btn_md btn_outline_default" onclick="latelyCheck();">확인</button>
+							<button type="button" class="btn btn_md btn_outline_default"
+								onclick="closeModal('myMenuAlert');">취소</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<script>
+
+			</script>
+			<!-- e: 정보 삭제 확인 팝업 -->
+
+			<!-- s: 통합검색 팝업 -->
+			<div class="modal_popup modal_lg hide" data-popup="searchLayer">
+				<div class="dimed"></div>
+				<div class="popup_inner popup_search">
+					<div class="popup_header">
+						<h2 class="popup_tit">통합검색</h2>
+					</div>
+					<div class="popup_body">
+						<div class="search_word_write">
+							<div class="search_inner">
+								<select name="" id="" class="opt" title="검색조건 선택">
+									<option value="">메뉴</option>
+									<option value="">웹페이지</option>
+									<option value="">상품</option>
+									<option value="">FAQ</option>
+								</select>
+								<input type="text" class="tf" placeholder="검색어를 입력해주세요" title="검색어 입력">
+								<button type="button"><span class="sr_only">검색</span></button>
+							</div>
+						</div>
+						<!-- s: 추천 검색어 목록 -->
+						<div class="search_word_list">
+							<div class="search_inner">
+								<div class="search_word">
+									<h3>추천 검색어</h3>
+									<ul>
+										<li><a href="#;"># e-Postbank</a></li>
+										<li><a href="#;">이웃사랑자유적금</a></li>
+										<li><a href="#;">듬뿍우대정기적금</a></li>
+									</ul>
+								</div>
+								<div class="search_word">
+									<h3>최근 검색어</h3>
+									<ul>
+										<li><a href="#;">이체결과조회</a></li>
+										<li><a href="#;">복리적금</a></li>
+										<li><a href="#;">길게쓰면 어떻게 처리할...</a></li>
+									</ul>
+								</div>
+								<div class="search_word">
+									<h3>오늘 검색어</h3>
+									<ul>
+										<li><a href="#;">증명서 발급</a></li>
+										<li><a href="#;">비대면서류제출</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- e: 추천 검색어 목록 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 통합검색 팝업 -->
+		</div>
+	</header>
+</body>
+
+</html>
