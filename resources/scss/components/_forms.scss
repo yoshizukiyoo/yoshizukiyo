@@ -567,7 +567,7 @@ p.txt_guide {
 }
 
 .selectbox_wrap+.selectbox_wrap {
-	margin-left: 6px;
+	margin-left: 10px;
 }
 
 .btn_mouse_pwd {
@@ -688,4 +688,104 @@ input.error {
 	line-height: 1;
 	font-size: 14px;
 	color: #d70000;
+}
+
+// 토글형 체크박스
+.check_switch {
+	display: inline-flex;
+	vertical-align: middle;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 400;
+
+	label {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		min-width: 85px;
+		border-radius: 18px;
+		min-height: 37px;
+		text-align: center;
+		background-color: #eee;
+		padding-right: 18px;
+		padding-left: 32px;
+
+		color: #555;
+		white-space: nowrap;
+
+		transition-duration: .3s;
+		transition-property: background-color;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 8px;
+			left: 5px;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: #fff;
+			transition-duration: .3s;
+		}
+
+		span {
+			display: block;
+			line-height: 23px;
+		}
+
+		.txt_checked {
+			display: none;
+			opacity: 0;
+			transition-duration: .3s;
+			transition-timing-function: ease-in;
+		}
+	}
+
+	input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+
+		&:checked+label {
+			color: #111;
+			background-color: $bg_primary;
+			padding-left: 18px;
+			padding-right: 32px;
+
+			&:after {
+				left: calc(100% - 25px);
+			}
+
+			.txt_uncheck {
+				display: none;
+				opacity: 0;
+			}
+
+			.txt_checked {
+				display: inline;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.check_switch_sm {
+	label {
+		min-width: 45px;
+		height: 19px;
+
+		&:after {
+			left: 3px;
+			top: 3px;
+		}
+	}
+
+	input {
+		&:checked+label {
+			&:after {
+				left: calc(100% - 16px);
+			}
+		}
+	}
 }
