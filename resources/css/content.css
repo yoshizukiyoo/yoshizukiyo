@@ -9437,27 +9437,6 @@ h3.tit2.score_tit {
   height: 20px;
 }
 
-.popup_inner .ico.ico_calculator {
-  position: absolute;
-  background-image: url(../../../resources/img/content/ico_calculator.png);
-  background-size: 34px 34px;
-  background-repeat: no-repeat;
-  margin-top: 5px;
-  margin-left: 12px;
-  display: inline-block;
-  width: 55px;
-  height: 34px;
-}
-
-.popup_inner .ico.ico_chevron_down_circle {
-  display: inline-block;
-  background-image: url(../../../resources/img/content/ico_chevron_down_circle.png);
-  background-size: 13px 13px;
-  background-repeat: no-repeat;
-  width: 13px;
-  height: 16px;
-}
-
 .ico_share01 {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -9489,62 +9468,476 @@ h3.tit2.score_tit {
   padding: 0 15px !important;
 }
 
-.input_items.chk_type {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  font-size: 0;
-  margin: 0;
+.bottom_fixed_area {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 500;
+  background-color: #fff;
 }
 
-.input_items.chk_type .type_btn {
-  width: calc(50% - 3px);
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-  margin-left: 0px !important;
-  margin-right: 5px;
-  margin-top: 5px;
+.bottom_fixed_area .dim2 {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: -1000px;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.bottom_fixed_area.active .dim2 {
   display: block;
 }
 
-.input_items.chk_type .type_btn:nth-child(2n) {
-  margin-right: 0;
-}
-
-.input_items.chk_type .type_btn:nth-child(-n+2) {
-  margin-top: 0;
-}
-
-.input_items.chk_type .type_btn input + label {
+.bottom_fixed_area .total_price {
+  padding: 15px 20px;
+  border-radius: 15px 15px 0 0;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background: #fff;
   position: relative;
-  -webkit-box-pack: normal;
-      -ms-flex-pack: normal;
-          justify-content: normal;
-  padding: 0 14px !important;
-  height: 40px;
-  background-color: #fff !important;
-  border-color: currentColor;
+  z-index: 500;
 }
 
-.input_items.chk_type .type_btn input + label:before {
-  content: '';
+.bottom_fixed_area .total_price .btn_toggle_type {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 15px 0;
+  margin: -15px -20px;
+}
+
+.bottom_fixed_area .total_price .btn_toggle_type:after {
+  content: "";
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 13px;
+  height: 13px;
+  vertical-align: middle;
+  background: url(../../../resources/img/content/ico_chevron_down_circle.png) 0 0 no-repeat;
+  position: relative;
+  top: -1px;
+  background-size: 13px 13px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.bottom_fixed_area .total_price .btn_toggle_type.on:after {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.bottom_fixed_area .total_price .user_controll_box {
+  margin-top: 15px;
+  max-height: 350px;
+  overflow: hidden;
+  overflow-y: auto;
+  display: none;
+}
+
+.bottom_fixed_area .total_price .user_controll_box .user_chk_area .ico.ico_calculator {
+  position: absolute;
+  background-image: url(../../../resources/img/content/ico_calculator.png);
+  background-size: 34px 34px;
   background-repeat: no-repeat;
-  background-position: 0 0;
-  background-image: url(/resources/img/common/ico_check_on.png);
+  margin-top: 5px;
+  margin-left: 12px;
+  display: inline-block;
+  width: 55px;
+  height: 34px;
+}
+
+.bottom_fixed_area .total_price .user_controll_box .tab_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.bottom_fixed_area .total_price .user_controll_box .tab_area li {
+  width: calc(50% - 10px);
+  margin: 2.5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.bottom_fixed_area .total_price .user_controll_box .tab_area li a {
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  padding-left: 35px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-image: url(/resources/img/common/ico_check_off.png);
   background-size: 20px auto;
-  margin-right: 5px;
 }
 
-.input_items.chk_type .type_btn input:checked + label {
-  background-color: #FDC61C !important;
-  border: none;
+.bottom_fixed_area .total_price .user_controll_box .tab_area li.on {
+  border-color: #fdc61c !important;
+  background-size: 20px 20px !important;
+  background-color: #fdc61c;
 }
 
-.input_items.chk_type .type_btn input:checked + label:before {
-  background-image: url(/resources/img/common/ico_check_on.png);
+.bottom_fixed_area .total_price .user_controll_box .tab_area li.on a {
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  padding-left: 35px;
+  background: url(/resources/img/common/ico_check_on.png);
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-size: 20px auto;
+}
+
+.bottom_fixed_area .total_price + .btn_group {
+  position: relative;
+  z-index: 600;
+  background: #fff;
+}
+
+.input_items.ico_items {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.input_items.ico_items .check_item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 7.5px;
+  min-width: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc(33.333% - 10px);
+          flex: 1 1 calc(33.333% - 10px);
+}
+
+.input_items.ico_items .check_item:nth-child(2n) {
+  margin-left: 10px;
+}
+
+.input_items.ico_items .check_item input[type=checkbox] + label {
+  width: 100%;
+  background-position: right 9px top 9px;
+  padding: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 7.5px;
+}
+
+.input_items.ico_items .check_item input[type=checkbox]:checked + label {
+  border: 1px solid #fdc61c;
+  border-radius: 7.5px;
+}
+
+.input_items.ico_items .check_item.chk_disabled {
+  background-color: #f2f2f2;
+}
+
+.input_items.ico_items .check_item.chk_disabled input[type=checkbox] + label {
+  background-image: url(../../../resources/img/content/ico_checkbox_disabled.png);
+}
+
+.input_items.ico_items .check_item.chk_disabled input[type=checkbox]:checked + label {
+  border: 1px solid #ddd;
+  background-image: url(../../../resources/img/content/ico_checkbox_disabled.png);
+}
+
+.input_items.ico_items .check_item label {
+  height: 90px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input_items.ico_items .check_item label .ico {
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.input_items.ico_items .check_item label .ico.ico_file_all {
+  background: url(../../../resources/img/content/ico_file_all.png);
+  background-repeat: no-repeat;
+  background-size: 30px 25px;
+  background-position: top 1px center;
+}
+
+.input_items.ico_items .check_item label .ico.ico_write {
+  background: url(../../../resources/img/content/ico_write.png);
+  background-repeat: no-repeat;
+  background-size: 26px 26.5px;
+  background-position: top center;
+}
+
+.input_items.ico_items .check_item label .ico.ico_document_type01-1 {
+  background: url(../../../resources/img/content/ico_document_type01-1.png);
+  background-repeat: no-repeat;
+  background-size: 25px 26px;
+  background-position: top center;
+}
+
+.input_items.ico_items .check_item label .ico.ico_document_type01-2 {
+  background: url(../../../resources/img/content/ico_document_type01-2.png);
+  background-repeat: no-repeat;
+  background-size: 25px 26px;
+  background-position: top center;
+}
+
+.input_items.ico_items .check_item label .ico.ico_document_type02 {
+  background: url(../../../resources/img/content/ico_document_type02.png);
+  background-repeat: no-repeat;
+  background-size: 24.5px 25.5px;
+  background-position: top center;
+}
+
+.input_items.ico_items .check_item label .ico.ico_leaflet {
+  background: url(../../../resources/img/content/ico_leaflet.png);
+  background-repeat: no-repeat;
+  background-size: 28px 21.5px;
+  background-position: top 2px center;
+}
+
+.sub_guide {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sub_guide .ico {
+  margin: 0px 10px 0px 10px;
+  line-height: 30px;
+}
+
+.sub_guide .ico.ico_interest_rate {
+  display: inline-block;
+  background: url(../../../resources/img/content/ico_interest_rate.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 31.5px;
+  height: 30px;
+}
+
+.sub_guide .ico.ico_usercheck {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/ico_usercheck.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 33.5px;
+  height: 26.5px;
+}
+
+.sub_guide .ico p {
+  display: inline-block;
+  padding-left: 30px;
+}
+
+.bdt_gray02 {
+  border-top: 1px solid #eee;
+}
+
+.ico.ico_pd_search02 {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/ico_pd_search02.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+}
+
+.ico.ico_pd_analysis02 {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/ico_pd_analysis02.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 26.5px;
+  height: 21.5px;
+  line-height: 22px;
+}
+
+.ico.ico_pd_advisor02 {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/ico_pd_advisor02.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 26px;
+  height: 21.5px;
+  line-height: 22px;
+}
+
+.input_items.ico_items .check_item.type_btn_round input[type=radio] + label {
+  width: 100%;
+  border: 1px solid #f8f8f8;
+  border-radius: 4px;
+  background-color: #f8f8f8 !important;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.input_items.ico_items .check_item.type_btn_round input[type=radio] + label span {
+  line-height: 16px;
+  color: #111;
+}
+
+.input_items.ico_items .check_item.type_btn_round input[type=radio]:checked + label {
+  background-color: #fff !important;
+  border: 1px solid #fdc61c;
+  border-radius: 4px;
+}
+
+.input_items.ico_items .check_item.type_btn_round label {
+  height: 120px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input_items.ico_items .check_item.type_btn_round label .ico.ico_make_bankaccount {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/ico_make_bankaccount.png);
+  background-repeat: no-repeat;
+  background-size: 42.5px 34.5px;
+  background-position: center center;
+  width: 50px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.input_items.ico_items .check_item.type_btn_round label .ico.ico_make_checkcard {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/ico_make_checkcard.png);
+  background-repeat: no-repeat;
+  background-size: 42.5px 40px;
+  background-position: center center;
+  width: 50px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.border_list.bdr_lightgray > li {
+  border-bottom: 1px solid #eee;
+}
+
+.border_list .border_t0 .list_inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.border_list .border_t0 .list_inner .ico.icon_vsit_arrow02 {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/icon_vsit_arrow02.png);
+  background-repeat: no-repeat;
+  background-size: 5.5px 10px;
+  background-position: right center;
+  width: 6px;
+  height: 11px;
+}
+
+.ico.icon_vsit_arrow02_primary {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: url(../../../resources/img/content/icon_vsit_arrow02_primary.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 6px;
+  height: 10.5px;
+}
+
+.tag_group.tag_box .tag {
+  display: inline-block;
+  border: 1px solid #bbb;
+  border-radius: 12.5px;
+  font-size: 12px;
+  color: #111;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-left: 2px;
+  margin-bottom: 3px;
+}
+
+.taxation_list li .check_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.taxation_list li .check_item label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  font-size: 14px;
+  color: #111;
+  font-weight: normal;
+  background-position: right top 2px;
+  padding: 0px;
+  margin: 9px 0px 9px 0px;
+}
+
+.taxation_list li .check_item label .num {
+  margin-right: 3px;
 }
 
 .container .product_list {
