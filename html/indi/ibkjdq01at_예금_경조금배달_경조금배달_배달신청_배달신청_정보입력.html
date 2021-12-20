@@ -24,7 +24,7 @@
 	<script>
 		$(document).ready(function () {
 			// 레이팝업 경조인사문선택 탭메뉴 활성화
-			$('.card_select a').on('click', function(){
+			$('.card_select a').on('click', function () {
 				var obj = $(this);
 				var tg = obj.data('tab-tg');
 				obj.addClass('current').parent().siblings().find('>a').removeClass();
@@ -33,7 +33,7 @@
 			});
 
 			// 레이팝업 경조인사문 직접입력 탭메뉴 활성화
-			$('.card_write a').on('click', function(){
+			$('.card_write a').on('click', function () {
 				var obj = $(this);
 				var tg = obj.data('tab-tg');
 				obj.addClass('current').parent().siblings().find('>a').removeClass();
@@ -42,11 +42,19 @@
 			});
 
 			// 레이팝업 경조카드 탭메뉴 활성화
-			$('.card_type a').on('click', function(){
+			$('.card_type a').on('click', function () {
 				var obj = $(this);
 				var tg = obj.data('tab-tg');
 				obj.addClass('current').parent().siblings().find('>a').removeClass();
 				$('[data-sub-tab^="card_type"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
+			$('.delivery_select a').on('click', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="delivery_select_"]').hide();
 				$('[data-sub-tab=' + tg + ']').show();
 			});
 		});
@@ -62,7 +70,7 @@
 			$('[data-address="address_list"]').show();
 			$('[data-popup="address_popup"]').find('.popup_inner').focus();
 			$('[data-address="address_write"]').hide();
-		}	
+		}
 	</script>
 </head>
 
@@ -89,7 +97,7 @@
 				-->
 				<!-- e: 본문 헤더 -->
 			</div>
-			
+
 			<div class="cont_body">
 				<!-- s: 본문 -->
 				<div class="cont_header_right">
@@ -134,38 +142,6 @@
 							표시는 필수입력사항입니다.
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data tbl_payment">
-						<table>
-							<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를 제공하고 있습니다.</caption>
-							<colgroup>
-								<col>
-								<col style="width: 17%">
-								<col style="width: 17%">
-								<col style="width: 17%">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
-									<th scope="col">잔액(원)</th>
-									<th scope="col">출금가능금액(원)</th>
-									<th scope="col">1일 송금가능금액(원)</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<div class="fx_lr fx_align_center">
-											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
-											<button type="button" class="btn btn_md btn_outline_default v_base fx_right" onclick="openModal('popup01', this);">전체계좌</button>
-										</div>
-									</td>
-									<td class="txt_r">3,100,000</td>
-									<td class="txt_r">100,000</td>
-									<td class="txt_r">10,000,000</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
 					<div class="tbl_row2">
 						<table>
 							<caption class="sr_only">경조금배달 보내는 분</caption>
@@ -175,16 +151,10 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">계좌비밀번호 <strong class="necessary">*</strong>
-									</th>
+									<th scope="row">보내는분 성명 <strong class="necessary">*</strong></th>
 									<td>
-										<input type="text" class="tf" title="계좌비밀번호 입력" placeholder="최대 5회까지 입력가능" style="width: 420px;">
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">보내는분 성명</th>
-									<td>
-										<input type="text" class="tf" title="보내는분 성명 입력" placeholder="미입력시 출금계좌의 예금주명이 표시됩니다." style="width: 420px;">
+										<input type="text" class="tf" title="보내는분 성명 입력" placeholder="미입력시 출금계좌의 예금주명이 표시됩니다."
+											style="width: 420px;">
 									</td>
 								</tr>
 								<tr>
@@ -192,11 +162,13 @@
 									<td>
 										<div class="address_form">
 											<div class="zip_code">
-													<input type="text" class="tf" title="우편번호 입력" disabled style="width: 148px;">
-													<div class="btn_inline_box">
-															<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('zipcode_popup', this);">우편번호검색</a>
-															<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('address_popup', this);">자주쓰는주소</a>
-													</div>
+												<input type="text" class="tf" title="우편번호 입력" disabled style="width: 148px;">
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default"
+														onclick="openModal('zipcode_popup', this);">우편번호검색</a>
+													<a href="#;" class="btn btn_md btn_outline_default"
+														onclick="openModal('address_popup', this);">자주쓰는주소</a>
+												</div>
 											</div>
 											<div class="add1"><input type="text" class="tf" disabled style="width: 700px"></div>
 											<div class="add2"><input type="text" class="tf" style="width: 700px"></div>
@@ -204,7 +176,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">문자메시지수신(무료)<br>배달완료 시 1회 발송</th>
+									<th scope="row">문자메시지수신(무료)<br>배달완료 시 1회 발송 <strong class="necessary">*</strong></th>
 									<td>
 										<div class="selectbox_wrap" style="width: 420px;">
 											<dl title="조건 선택">
@@ -272,7 +244,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">전화번호</th>
+									<th scope="row">전화번호 <strong class="necessary">*</strong></th>
 									<td>
 										<div class="phone_number">
 											<div class="selectbox_wrap" style="width: 93px;">
@@ -297,14 +269,18 @@
 									<td>
 										<div class="address_form">
 											<div class="zip_code">
-													<input type="text" class="tf" title="우편번호 입력" disabled style="width: 148px;">
-													<div class="btn_inline_box">
-														<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('zipcode_popup', this);">우편번호검색</a>
-														<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('address_popup', this);">자주쓰는주소</a>
-													</div>
+												<input type="text" class="tf" title="우편번호 입력" disabled style="width: 148px;">
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default"
+														onclick="openModal('zipcode_popup', this);">우편번호검색</a>
+													<a href="#;" class="btn btn_md btn_outline_default"
+														onclick="openModal('address_popup', this);">자주쓰는주소</a>
+												</div>
 											</div>
-											<div class="add1"><input type="text" class="tf" placeholder="도로명주소 예시) 서울종로구 세종대로 166" title="도로명주소 예시) 서울종로구 세종대로 166" disabled style="width: 700px"></div>
-											<div class="add2"><input type="text" class="tf" placeholder="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" style="width: 700px"></div>
+											<div class="add1"><input type="text" class="tf" placeholder="도로명주소 예시) 서울종로구 세종대로 166"
+													title="도로명주소 예시) 서울종로구 세종대로 166" disabled style="width: 700px"></div>
+											<div class="add2"><input type="text" class="tf" placeholder="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)"
+													title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" style="width: 700px"></div>
 										</div>
 									</td>
 								</tr>
@@ -314,16 +290,50 @@
 				</div>
 				<!-- e: 받는 분 -->
 
-				<!-- s: 경조금 배달정보 -->
+				<!-- s: 송금정보 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">경조금 배달정보</h3>
+							<h3 class="tit1">송금정보</h3>
 						</div>
 						<div class="txt_right">
 							<strong class="necessary">*</strong>
 							표시는 필수입력사항입니다.
 						</div>
+					</div>
+					<div class="tbl_data tbl_list_data tbl_payment">
+						<table>
+							<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
+								제공하고 있습니다.</caption>
+							<colgroup>
+								<col>
+								<col style="width: 17%">
+								<col style="width: 17%">
+								<col style="width: 17%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">출금가능금액(원)</th>
+									<th scope="col">1일 송금가능금액(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="fx_lr fx_align_center">
+											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
+												onclick="openModal('popup01', this);">전체계좌</button>
+										</div>
+									</td>
+									<td class="txt_r">3,100,000</td>
+									<td class="txt_r">100,000</td>
+									<td class="txt_r">10,000,000</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 					<div class="tbl_row2">
 						<table>
@@ -333,19 +343,6 @@
 								<col>
 							</colgroup>
 							<tbody>
-								<tr>
-									<th scope="row">배달구분</th>
-									<td>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_1" checked>
-											<label for="chk1_1">증서배달 (수수료 : 2,000원)</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_2">
-											<label for="chk1_2">현금배달 (수수료 : 4,060원)</label>
-										</span>
-									</td>
-								</tr>
 								<tr>
 									<th scope="row">
 										보내는 금액
@@ -361,56 +358,137 @@
 												<button type="button" class="btn btn_sm btn_outline_default">5만</button>
 												<button type="button" class="btn btn_sm btn_outline_default">10만</button>
 												<button type="button" class="btn btn_sm btn_outline_default">50만</button>
-												<button type="button" class="btn btn_sm btn_outline_default">100만</button>
 												<button type="button" class="btn btn_sm btn_outline_default">정정</button>
 											</div>
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">경조인사문 <strong class="necessary">*</strong></th>
+									<th scope="row">배달구분</th>
 									<td>
-										<button type="button" class="btn btn_sm btn_outline_default" onclick="openModal('layer05', this);">경조인사문선택 </button>
-										<span class="check_item square ml6" onclick="openModal('layer06', this);">
-											<input type="checkbox" name="" id="chk2">
-											<label for="chk2">직접입력</label>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_1" checked>
+											<label for="chk1_1">증서배달 (수수료 : 2,000원)</label>
 										</span>
-										<div class="mt_2">
-											<textarea name="" class="tf" title="경조인사문 입력" style="width:413px; height:100px;" disabled></textarea>
-											<p class="pl_3">/ 200Byte (최대 한글 100자, 영/숫자 200자)	</p>
-										</div>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_2">
+											<label for="chk1_2">현금배달 (수수료 : 4,060원)</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_3">
+											<label for="chk1_3">카드배달(수수료 2,000원)</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab_menu_type1 md mt_1 delivery_select">
+						<ul>
+							<li><a href="#;" class="current" title="선택됨" data-tab-tg="delivery_select_tab01">자주쓰는입금계좌</a></li>
+							<li><a href="#;" data-tab-tg="delivery_select_tab02">직접입력</a></li>
+						</ul>
+					</div>
+					<div class="tab_sub" data-sub-tab="delivery_select_tab01">
+						<div class="tbl_data tbl_list_data mt_1">
+							<table>
+								<caption class="sr_only">경조금 배달정보</caption>
+								<colgroup>
+									<col style="width: 10%;">
+									<col>
+									<col style="width: 30%;">
+									<col>
+									<col>
+									<col style="width:10%;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">번호</th>
+										<th scope="col">입금은행명</th>
+										<th scope="col">입금계좌번호</th>
+										<th scope="col">예금주</th>
+										<th scope="col">그룹</th>
+										<th scope="col">계좌선택</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="txt_c">1</td>
+										<td>우체국</td>
+										<td>xxxxxxxxxxx</td>
+										<td class="txt_c">홍길동</td>
+										<td>친구</td>
+										<td class="txt_c">
+											<a href="#;" class="btn btn_sm btn_default">선택</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="txt_c">1</td>
+										<td>우체국</td>
+										<td>xxxxxxxxxxx</td>
+										<td class="txt_c">홍길동</td>
+										<td>친구</td>
+										<td class="txt_c">
+											<a href="#;" class="btn btn_sm btn_default">선택</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab_sub" data-sub-tab="delivery_select_tab02" style="display:none;">
+						<div class="tbl_data tbl_row_data mt_1">
+							<table>
+								<caption class="sr_only">경조금 배달정보</caption>
+								<colgroup>
+									<col style="width: 17%;">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">입금계좌번호 <strong class="necessary">*</strong></th>
+										<td>
+											<input type="text" class="tf" title="입금계좌번호 입력" placeholder="-없이 입력하세요." style="width: 420px;">
+											<a href="#;" class="btn btn_md btn_outline_default ml6">이체</a>
+											<span class="ml6">* 경조금을 이체할 경우에만 입력하십시오. (우체국입금계좌만 가능)</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tbl_row2 mt_4">
+						<table>
+							<caption class="sr_only">경조금 배달정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">경조인사문 입력<strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<button type="button" class="btn btn_sm btn_outline_default"
+											onclick="openModal('layer05', this);">경조인사문선택 </button>
+										<button type="button" class="btn btn_sm btn_outline_default"
+											onclick="openModal('layer06', this);">직접입력 </button>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">경조카드 <strong class="necessary">*</strong></th>
-									<td>
-										<div class="selectbox_wrap" style="width: 92px;">
-											<dl title="조건 선택">
-												<dt><a href="#none"><span>선택</span></a></dt>
-												<dd>
-													<ul>
-														<li><a href="#none"><span>123</span></a></li>
-														<li><a href="#none"><span>123</span></a></li>
-													</ul>
-												</dd>
-											</dl>
-										</div>
-										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default" onclick="openModal('layer07', this);">카드보기</button>
-										</div>
-									</td>
+									<th scope="row">경조인사문 구분</th>
+									<td>결혼</td>
+									<th scope="row">경조인사문</th>
+									<td>결혼을 축하하며 복된 가정 이루기 바랍니다.</td>
 								</tr>
 								<tr>
-									<th scope="row">입금은행</th>
-									<td>우체국</td>
-								</tr>
-								<tr>
-									<th scope="row">입금계좌번호</th>
-									<td>
-										<input type="text" class="tf" title="입금계좌번호 입력" placeholder="- 없이 입력해 주세요." style="width: 350px;">
-										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default" onclick="openModal('layer03', this);">자주쓰는 입금계좌</button>
-											<span class="ml6">경조금을 이체할 경우에만 입력하십시오. (우체국입금계좌만 가능)</span>
+									<th scope="row">경조카드 미리보기</th>
+									<td colspan="3">
+										<div class="greeting_card bg01">
+											<strong>결혼축하카드</strong>
+											<p>새 식구 맞으심을 축하하며 화목한 가정<br> 이루시기를 기원합니다.</p>
 										</div>
 									</td>
 								</tr>
@@ -422,7 +500,7 @@
 						<a href="예금_경조금배달_경조금배달_배달신청_배달신청_입력확인.html" class="btn btn_xl btn_primary">확인</a>
 					</div>
 				</div>
-				<!-- e: 경조금 배달정보 -->
+				<!-- e: 송금정보 -->
 
 				<div class="section">
 					<dl class="box">
@@ -595,17 +673,16 @@
 										</tr>
 									</tbody>
 								</table>
-							</div>	
+							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary"
-									onclick="closeModal('layer01');">확인</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
 				<!-- e: 출금가능금액 -->
-				
+
 				<!-- Modal Popup : 비밀번호오류횟수조회 -->
 				<div class="modal_popup modal_sm hide" data-popup="layer02">
 					<div class="dimed"></div>
@@ -628,10 +705,9 @@
 										</tr>
 									</tbody>
 								</table>
-							</div>	
+							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary" 
-									onclick="closeModal('layer02');">닫기</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">닫기</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -660,12 +736,12 @@
 											<td>
 												<div class="selectbox_wrap" style="width:180px">
 													<dl title="검색조건 선택">
-															<dt><a href="#none"><span>전체</span></a></dt>
-															<dd>
-																	<ul>
-																			<li><a href="#none"><span>전체</span></a></li>
-																	</ul>
-															</dd>
+														<dt><a href="#none"><span>전체</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>전체</span></a></li>
+															</ul>
+														</dd>
 													</dl>
 												</div>
 											</td>
@@ -707,11 +783,11 @@
 								</table>
 							</div>
 							<div class="mt_4 txt_r">
-								<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('layer04', this);">자주쓰는입금계좌관리</button>
+								<button type="button" class="btn btn_sm btn_outline_gray"
+									onclick="openModal('layer04', this);">자주쓰는입금계좌관리</button>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary"
-									onclick="closeModal('layer03');">닫기</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03');">닫기</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -779,7 +855,8 @@
 											</td>
 											<th scope="row">참고사항</th>
 											<td>
-												<input type="text" class="tf" title="참고사항 입력" placeholder="최대 한글 10자, 영/숫자 20자" style="width:100%;">
+												<input type="text" class="tf" title="참고사항 입력" placeholder="최대 한글 10자, 영/숫자 20자"
+													style="width:100%;">
 											</td>
 										</tr>
 										<tr>
@@ -824,7 +901,7 @@
 								<div class="tbl_tit">
 									<div class="txt_right">
 										<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+										<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 									</div>
 								</div>
 								<table>
@@ -883,12 +960,12 @@
 											<td class="border_r">
 												<div class="selectbox_wrap" style="width:100%">
 													<dl title="검색조건 선택">
-															<dt><a href="#none"><span>55</span></a></dt>
-															<dd>
-																	<ul>
-																			<li><a href="#none"><span>55</span></a></li>
-																	</ul>
-															</dd>
+														<dt><a href="#none"><span>55</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>55</span></a></li>
+															</ul>
+														</dd>
 													</dl>
 												</div>
 											</td>
@@ -926,12 +1003,12 @@
 											<td class="border_r">
 												<div class="selectbox_wrap" style="width:100%">
 													<dl title="검색조건 선택">
-															<dt><a href="#none"><span>그룹없음</span></a></dt>
-															<dd>
-																	<ul>
-																			<li><a href="#none"><span>그룹없음</span></a></li>
-																	</ul>
-															</dd>
+														<dt><a href="#none"><span>그룹없음</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>그룹없음</span></a></li>
+															</ul>
+														</dd>
 													</dl>
 												</div>
 											</td>
@@ -947,7 +1024,7 @@
 				<!-- e: 자주쓰는 입금계좌 관리 -->
 
 				<!-- Modal Popup : 경조인사문 -->
-				<div class="modal_popup modal_sm hide line_popup" data-popup="layer05">
+				<div class="modal_popup modal_md hide line_popup" data-popup="layer05">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
@@ -966,6 +1043,7 @@
 									<li><a href="#;" data-tab-tg="card_select_tab2"><span>축하</span></a></li>
 									<li><a href="#;" data-tab-tg="card_select_tab3"><span>위로</span></a></li>
 									<li><a href="#;" data-tab-tg="card_select_tab4"><span>조위</span></a></li>
+									<li><a href="#;"><span>자주쓰는 경조문</span></a></li>
 								</ul>
 							</div>
 							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab1">
@@ -973,15 +1051,107 @@
 									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
 									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
 								</div>
-								<div class="greeting_list mt_4">
-									<ul>
-										<li><a href="#;">결혼을 축하하며 복된 가정 이루기 바랍니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되는길...</a></li>
-										<li><a href="#;">결혼을 진심으로 축하합니다.</a></li>
-										<li><a href="#;">댁내에 경사 맞으심을 축하하며 해복한 가정 이루시기 바랍니다.</a></li>
-										<li><a href="#;">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</a></li>
-									</ul>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 진심으로 축하합니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>두 사람의 소중한 결합을 축하하며 더없이…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>댁내에 경사 맞으심을 축하하며 해복한 가정…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>새 식구 맞으심을 축하하며 화목한 가정 이루…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab2" style="display:none;">
@@ -989,15 +1159,55 @@
 									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
 									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
 								</div>
-								<div class="greeting_list mt_4">
-									<ul>
-										<li><a href="#;">결혼을 축하하며 복된 가정 이루기 바랍니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되는길...</a></li>
-										<li><a href="#;">결혼을 진심으로 축하합니다.</a></li>
-										<li><a href="#;">댁내에 경사 맞으심을 축하하며 해복한 가정 이루시기 바랍니다.</a></li>
-										<li><a href="#;">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</a></li>
-									</ul>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab3" style="display:none;">
@@ -1005,15 +1215,55 @@
 									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
 									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
 								</div>
-								<div class="greeting_list mt_4">
-									<ul>
-										<li><a href="#;">결혼을 축하하며 복된 가정 이루기 바랍니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되는길...</a></li>
-										<li><a href="#;">결혼을 진심으로 축하합니다.</a></li>
-										<li><a href="#;">댁내에 경사 맞으심을 축하하며 해복한 가정 이루시기 바랍니다.</a></li>
-										<li><a href="#;">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</a></li>
-									</ul>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab4" style="display:none;">
@@ -1021,16 +1271,72 @@
 									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
 									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
 								</div>
-								<div class="greeting_list mt_4">
-									<ul>
-										<li><a href="#;">결혼을 축하하며 복된 가정 이루기 바랍니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</a></li>
-										<li><a href="#;">결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되는길...</a></li>
-										<li><a href="#;">결혼을 진심으로 축하합니다.</a></li>
-										<li><a href="#;">댁내에 경사 맞으심을 축하하며 해복한 가정 이루시기 바랍니다.</a></li>
-										<li><a href="#;">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</a></li>
-									</ul>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 진심으로 축하합니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">닫기</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -1046,168 +1352,60 @@
 							<h3 class="popup_tit">경조인사문</h3>
 						</div>
 						<div class="popup_body">
-							<div class="tab_menu_type3 sm card_write">
-								<ul>
-									<li><a href="#;" class="current" data-tab-tg="card_write_tab1"><span>직접 입력</span></a></li>
-									<li><a href="#;" data-tab-tg="card_write_tab2"><span>경조문구 관리</span></a></li>
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>경조인사문 입력시 첫 라인의 첫 칸을 띄우지 말고 입력하여 주시기 바랍니다.</li>
+									<li>경조카드에 인쇄되는 인사문은 총 3줄, 200바이트까지 입력 가능합니다.</li>
+									<li>줄바꿈은 엔터를 누르시거나 마우스로 입력하실 칸을 선택하시면 됩니다.</li>
+									<li>특수문자( &lt; &gt; " ' )는 입력할 수 없습니다.</li>
 								</ul>
 							</div>
-							<div class="tab_sub" data-sub-tab="card_write_tab1">
-								<div class="popup_box_gray mt_4">
-									<ul class="list list1">
-										<li>경조인사문 입력시 첫 라인의 첫 칸을 띄우지 말고 입력하여 주시기 바랍니다.</li>
-										<li>경조카드에 인쇄되는 인사문은 총 3줄, 200바이트까지 입력 가능합니다.</li>
-										<li>줄바꿈은 엔터를 누르시거나 마우스로 입력하실 칸을 선택하시면 됩니다. 특수문자( &lt; &gt; " ' )는 입력할 수 없습니다.</li>
-									</ul>
-								</div>
-								<div class="tbl_row2 mt_4">
-									<table>
-										<caption class="sr_only">${표제목}</caption>
-										<colgroup>
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<td>
-													<input type="text" class="tf" style="width:100%;" placeholder="테스트 첫째줄">
-													<p class="mt_1">13/70Byte</p>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<input type="text" class="tf" style="width:100%;" placeholder="테스트 둘째줄">
-													<p class="mt_1">13/70Byte</p>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<input type="text" class="tf" style="width:100%;" placeholder="테스트 마지막줄">
-													<p class="mt_1">13/70Byte</p>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="mt_2 txt_c">41Byte / 200 Byte (최대 한글 1000자, 영/숫자 200자)</div>
-								<div class="btn_group">
-									<button type="button" class="btn btn_lg btn_primary"
-										onclick="closeModal('layer06');">확인</button>
-								</div>
+							<div class="tbl_row2 mt_4">
+								<table>
+									<caption class="sr_only">경조인사문 직접입력</caption>
+									<colgroup>
+										<col style="width: 25%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">구분</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_1" checked>
+													<label for="chk3_1">결혼</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_2">
+													<label for="chk3_2">축하</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_3">
+													<label for="chk3_3">위로</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_4">
+													<label for="chk3_4">호위</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="pl_0 pr_0">
+												<textarea name="" id="" class="tf" placeholder="41자 / 200 자 (최대 한글 100자, 영/숫자 200자)"
+													title="41자 / 200 자 (최대 한글 100자, 영/숫자 200자)"></textarea>
+											</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-							<div class="tab_sub" data-sub-tab="card_write_tab2" style="display:none;">
-								<div class="tbl_row2 bdr_top_none">
-									<table>
-										<caption class="sr_only">경조문구 관리</caption>
-										<colgroup>
-											<col style="width: 25%;">
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row" class="v_top">경조문구</th>
-												<td>
-													<input type="text" class="tf" title="경조문구 입력" style="width: 384px">
-													<div class="mt_1">/ 200Byte (최대 한글 100자, 영/숫자 200자)</div>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row">카드 유형</th>
-												<td>
-													<span class="check_item">
-														<input type="radio" name="chk3" id="chk3_1" checked>
-														<label for="chk3_1">결혼</label>
-													</span>
-													<span class="check_item">
-														<input type="radio" name="chk3" id="chk3_2">
-														<label for="chk3_2">축하</label>
-													</span>
-													<span class="check_item">
-														<input type="radio" name="chk3" id="chk3_3">
-														<label for="chk3_3">위로</label>
-													</span>
-													<span class="check_item">
-														<input type="radio" name="chk3" id="chk3_4">
-														<label for="chk3_4">호위</label>
-													</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="btn_data_search">
-									<a href="#;" class="btn btn_lg btn_outline_default">취소</a>
-									<a href="#;" class="btn btn_lg btn_primary">수정</a>
-									<a href="#;" class="btn btn_lg btn_primary">등록</a>
-								</div>
-								<div class="tbl_data tbl_list_data mt_8 tbl_scroll_y">
-									<table>
-										<caption class="sr_only">경조문 관리</caption>
-										<colgroup>
-											<col style="width: 16%">
-											<col>
-										</colgroup>
-										<thead>
-											<tr>
-												<th scope="col">유형</th>
-												<th scope="col">경조인사문</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="txt_c">결혼</td>
-												<td>
-													<div class="flex_box">
-														<div class="l">축하드려요</div>
-														<div class="r">
-															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
-															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
-															<button type="button" class="btn btn_xs btn_default" onclick="openModal('alert_popup', this);">삭제</button>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="txt_c">결혼</td>
-												<td>
-													<div class="flex_box">
-														<div class="l">행복하세요</div>
-														<div class="r">
-															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
-															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
-															<button type="button" class="btn btn_xs btn_default">삭제</button>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="txt_c">축하</td>
-												<td>
-													<div class="flex_box">
-														<div class="l">꿈을 이루셨네요</div>
-														<div class="r">
-															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
-															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
-															<button type="button" class="btn btn_xs btn_default">삭제</button>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td class="txt_c">위로</td>
-												<td>
-													<div class="flex_box">
-														<div class="l">힘내세요</div>
-														<div class="r">
-															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
-															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
-															<button type="button" class="btn btn_xs btn_default">삭제</button>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+							<span class="check_item square mt_2">
+								<input type="checkbox" name="chk_ok" id="chk_ok">
+								<label for="chk_ok">자주쓰는 인사문 등록</label>
+							</span>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('layer06');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer06');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -1262,9 +1460,9 @@
 									<label for="pop_chk1">경조문구 미리보기</label>
 								</span>
 							</div>
-							
-							
-							
+
+
+
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
@@ -1289,8 +1487,9 @@
 									<div class="txt_right">
 										<div class="txt_right">
 											<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
-											<button type="button" class="btn btn_sm btn_outline_default ml6" onclick="addressWrite();">자주쓰는 주소등록</button>
+											<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+											<button type="button" class="btn btn_sm btn_outline_default ml6" onclick="addressWrite();">자주쓰는
+												주소등록</button>
 										</div>
 									</div>
 								</div>
@@ -1345,7 +1544,7 @@
 									<div class="txt_right">
 										<div class="txt_right">
 											<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+											<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 										</div>
 									</div>
 								</div>
@@ -1368,12 +1567,16 @@
 														<div class="zip_code">
 															<input type="text" class="tf" title="우편번호 입력" disabled style="width: 250px;">
 															<div class="btn_inline_box">
-																<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('zipcode_popup', this);">우편번호검색</a>
-																<a href="#;" class="btn btn_md btn_outline_default" onclick="openModal('address_popup', this);">자주쓰는주소</a>
+																<a href="#;" class="btn btn_md btn_outline_default"
+																	onclick="openModal('zipcode_popup', this);">우편번호검색</a>
+																<a href="#;" class="btn btn_md btn_outline_default"
+																	onclick="openModal('address_popup', this);">자주쓰는주소</a>
 															</div>
 														</div>
-														<div class="add1"><input type="text" class="tf" placeholder="도로명주소 예시) 서울종로구 세종대로 166" title="도로명주소 예시) 서울종로구 세종대로 166" disabled="" style="width: 100%"></div>
-														<div class="add2"><input type="text" class="tf" placeholder="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" style="width: 100%"></div>
+														<div class="add1"><input type="text" class="tf" placeholder="도로명주소 예시) 서울종로구 세종대로 166"
+																title="도로명주소 예시) 서울종로구 세종대로 166" disabled="" style="width: 100%"></div>
+														<div class="add2"><input type="text" class="tf" placeholder="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)"
+																title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" style="width: 100%"></div>
 													</div>
 												</td>
 											</tr>
@@ -1459,7 +1662,8 @@
 										</div>
 									</li>
 									<li class="mt_4">
-										도로명주소 및 국가기초구역에 대한 자세한 안내는 <a href="#;" target="_blank" class="txt_normal" title="새창으로 열림">도로명주소안내시스템</a>을 참고하시기 바랍니다.
+										도로명주소 및 국가기초구역에 대한 자세한 안내는 <a href="#;" target="_blank" class="txt_normal"
+											title="새창으로 열림">도로명주소안내시스템</a>을 참고하시기 바랍니다.
 									</li>
 								</ul>
 							</div>
@@ -1528,7 +1732,8 @@
 											</tr>
 											<tr>
 												<th scope="row">기본주소</th>
-												<td><input type="text" class="tf" value="강원도 횡성군 강림면 태종로 12 (강림리)" disabled style="width: 100%;"></td>
+												<td><input type="text" class="tf" value="강원도 횡성군 강림면 태종로 12 (강림리)" disabled
+														style="width: 100%;"></td>
 											</tr>
 											<tr>
 												<th scope="row">상세주소</th>
@@ -1555,7 +1760,8 @@
 								<a href="#" class="dir lst"><span class="sr_only">끝</span></a>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('zipcode_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('zipcode_popup');">취소</button>
 								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('zipcode_popup');">확인</button>
 							</div>
 						</div>
@@ -1563,7 +1769,7 @@
 					</div>
 				</div>
 				<!-- e: 우편번호 검색 팝업 -->
-					
+
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
 					<div class="dimed"></div>
@@ -1585,8 +1791,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -1615,8 +1823,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>

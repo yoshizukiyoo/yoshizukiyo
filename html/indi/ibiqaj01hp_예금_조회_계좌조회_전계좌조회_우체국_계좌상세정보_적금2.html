@@ -37,6 +37,15 @@
 				$(this).parents('li').toggleClass('active');
 			});
 
+			// 우체국/다른은행 탭메뉴 활성화
+			$('.account_tab a').on('click', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
 		});
 	</script>
 </head>
@@ -70,8 +79,8 @@
 
 				<div class="tab_menu_type1 first_section tab_ico account_tab">
 					<ul>
-						<li><a href="#;">우체국</a></li>
-						<li><a href="#;" class="current">다른은행</a></li>
+						<li><a href="#;" class="current" data-tab-tg="sub_tab1">우체국</a></li>
+						<li><a href="#;" data-tab-tg="sub_tab2">다른은행</a></li>
 					</ul>
 				</div>
 
@@ -89,8 +98,125 @@
 					</div>
 				</div>
 
+				<!-- s: 우체국 보유계좌 -->
+				<div data-sub-tab="sub_tab1">
+					<div class="mt_20 total_account active">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_normal">입출금</h3>
+								<span class="num_circle ml_1">1</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+							</div>
+						</div>
+						<ul class="account_con">
+							<li class="active">
+								<!-- [D] 계좌관리 버튼 클릭시 class active 추가 -->
+								<div class="top">
+									<div class="l">
+										<span>우체국</span>
+										<h4 class="tit2 mt_2 mb_2 txt_normal">Young利한 통장</h4>
+										<span>100057-02-000010</span>
+									</div>
+									<div class="r">
+										<span class="price"><strong>500,000</strong>원</span>
+										<div class="mt_4">
+											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
+										</div>
+									</div>
+								</div>
+								<!-- s: 계좌관리 버튼 액션 영역 -->
+								<div class="btm">
+									<button type="button" onclick="openModal('layer01', this);">계좌상세정보</button>
+									<button type="button">계좌해약</button>
+									<button type="button" onclick="openModal('layer02', this);">통장사본출력</button>
+									<button type="button" onclick="openModal('layer03', this);">간편계좌등록</button>
+									<button type="button">계좌별칭관리</button>
+									<button type="button">SMS통지서비스</button>
+									<button type="button">이체한도감액</button>
+								</div>
+								<!-- e: 계좌관리 버튼 액션 영역 -->
+							</li>
+						</ul>
+					</div>
+
+					<div class="mt_20 total_account active">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_normal">예금/적금</h3>
+								<span class="num_circle ml_1">1</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+							</div>
+						</div>
+						<ul class="account_con">
+							<li class="active">
+								<!-- [D] 계좌관리 버튼 클릭시 class active 추가 -->
+								<div class="top">
+									<div class="l">
+										<span>우체국</span>
+										<h4 class="tit2 mt_2 mb_2 txt_normal">Young利한 통장</h4>
+										<span>100057-02-000010</span>
+									</div>
+									<div class="r">
+										<span class="price"><strong>500,000</strong>원</span>
+										<div class="mt_4">
+											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
+											<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
+										</div>
+									</div>
+								</div>
+								<!-- s: 계좌관리 버튼 액션 영역 -->
+								<div class="btm">
+									<button type="button" onclick="openModal('layer01', this);">계좌상세정보</button>
+									<button type="button">계좌해약</button>
+									<button type="button" onclick="openModal('layer02', this);">통장사본출력</button>
+									<button type="button" onclick="openModal('layer03', this);">간편계좌등록</button>
+									<button type="button">계좌별칭관리</button>
+									<button type="button">SMS통지서비스</button>
+									<button type="button">이체한도감액</button>
+								</div>
+								<!-- e: 계좌관리 버튼 액션 영역 -->
+							</li>
+						</ul>
+					</div>
+
+					<div class="mt_20 total_account active">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_normal">휴면/정리계좌</h3>
+								<span class="num_circle ml_1">2</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+							</div>
+						</div>
+						<ul class="account_con">
+							<li class="active">
+								<!-- [D] 계좌관리 버튼 클릭시 class active 추가 -->
+								<div class="top">
+									<div class="l">
+										<span>우체국</span>
+										<h4 class="tit2 mt_2 mb_2 txt_normal">Young利한 통장</h4>
+										<span>100057-02-000010</span>
+									</div>
+									<div class="r">
+										<span class="price"><strong>500,000</strong>원</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- e: 우체국 보유계좌 -->
+
 				<!-- s: 다른은행 보유계좌 -->
-				<div>
+				<div data-sub-tab="sub_tab2" style="display:none;">
 					<div class="mt_20 total_account active">
 						<div class="tbl_tit">
 							<div class="tit_left">
@@ -157,7 +283,7 @@
 					<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 				</div>
 
-				<!-- Modal Popup : 계좌상세정보 입출금 -->
+				<!-- Modal Popup : 계좌상세정보 적금2 -->
 				<div class="modal_popup modal_xl show" data-popup="layer01">
 					<div class="dimed"></div>
 					<div class="popup_inner">
@@ -183,34 +309,98 @@
 									<tbody>
 										<tr>
 											<th scope="row">예금종류</th>
-											<td colspan="3">보통예금</td>
+											<td colspan="3">우체국 스마트 퍼즐적금</td>
 										</tr>
 										<tr>
-											<th scope="row">계좌번호</th>
-											<td>xxxxxxxxxxxxxxxxx</td>
 											<th scope="row">예금주</th>
 											<td>홍길동</td>
+											<th scope="row">계좌번호</th>
+											<td>xxxxxxxxxxxxxxxxx</td>
 										</tr>
 										<tr>
 											<th scope="row">가입일</th>
 											<td>2021.01.01</td>
-											<th scope="row">최근거래일</th>
+											<th scope="row">만기일</th>
 											<td>2021.05.24</td>
 										</tr>
 										<tr>
-											<th scope="row">미결제타점금액</th>
-											<td class="txt_r">0 원</td>
-											<th scope="row">일이체가능금액</th>
-											<td class="txt_r">38,000,000 원</td>
+											<th scope="row">재예치신청</th>
+											<td></td>
+											<th scope="row">최종만기일</th>
+											<td>2021.05.24</td>
 										</tr>
 										<tr>
-											<th scope="row">현재잔액</th>
+											<th scope="row">세금우대적용</th>
+											<td>일반과세</td>
+											<th scope="row">만기자동해약</th>
+											<td>미신청</td>
+										</tr>
+										<tr>
+											<th scope="row">이율적용방식</th>
+											<td></td>
+											<th scope="row">이자지급방법</th>
+											<td>만기일시지급</td>
+										</tr>
+										<tr>
+											<th scope="row">금융거래통보</th>
+											<td>해당사항없음</td>
+											<th scope="row">본인추천번호</th>
+											<td>1049211</td>
+										</tr>
+										<tr>
+											<th scope="row">통장별칭</th>
+											<td colspan="3"></td>
+										</tr>
+										<tr>
+											<th scope="row">모임추천번호</th>
+											<td><a href="#;" class="link" onclick="openModal('sms_popup',this)">EW67885</a></td>
+											<th scope="row">모임추천번호 사용기한</th>
+											<td>2022.09.14</td>
+										</tr>
+										<tr>
+											<th scope="row">입금(이체)계좌번호</th>
+											<td>입금(이체)계좌번호</td>
+											<th scope="row">최초계약기간</th>
+											<td>2021.05.24</td>
+										</tr>
+										<tr>
+											<th scope="row">납입원금</th>
 											<td class="txt_r">100,000,000,000 원</td>
-											<th scope="row">출금가능금액</th>
+											<th scope="row">계약금액</th>
 											<td class="txt_r">100,000,000,000 원</td>
+										</tr>
+										<tr>
+											<th scope="row">계좌가입국</th>
+											<td colspan="3">마포우체국도고출장소(503169)</td>
+										</tr>
+										<tr>
+											<th scope="row">기본이율</th>
+											<td class="txt_r">1.500 %</td>
+											<th scope="row">우대이율</th>
+											<td class="txt_r">0.000 %</td>
+										</tr>
+										<tr>
+											<th scope="row">총적용이율</th>
+											<td colspan="3" class="txt_r">1.500%</td>
 										</tr>
 									</tbody>
 								</table>
+							</div>
+							<div class="mt_4 txt_r">
+								<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('layer01-2')">우대이율</button>
+								<button type="button" class="btn btn_sm btn_outline_default"
+									onclick="$.print('.modal_popup[data-popup=layer01]');">화면인쇄</button>
+							</div>
+							<div class="box mt_4">
+								<dl>
+									<dt>참고사항</dt>
+									<dd>
+										<ul class="list list1">
+											<li>본 예금 가입 당시 확정된 우대이율만 표시되며, 거래실적에 따른 차등이율 적용 여부는 세부내역에서 확인하실 수 있습니다.</li>
+											<li>우대이율 항목은 상품약관에 설명되어 있으며, 문의사항은 고객센터(1588-1900)로 해주시기 바랍니다.</li>
+										</ul>
+									</dd>
+								</dl>
 							</div>
 							<div class="btn_group">
 								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
@@ -219,7 +409,7 @@
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 계좌상세정보 -->
+				<!-- e: 계좌상세정보 적금2 -->
 
 				<!-- Modal Popup : 통장사본출력 -->
 				<div class="modal_popup modal_xl hide" data-popup="layer02">
