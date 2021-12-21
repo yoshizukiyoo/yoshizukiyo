@@ -1,0 +1,244 @@
+/* 탭메뉴 */
+
+.tab_menu {
+	white-space: nowrap;
+	margin-bottom: 15px;
+}
+
+.tab_menu1 {
+	position: relative;
+
+	.tab_list {
+		display: flex;
+		text-align: center;
+		line-height: 1.2;
+		font-size: 0;
+
+		li {
+			flex: 1 1 auto;
+			display: inline-block;
+			font-size: $font-size-base;
+			border-bottom: 1px solid $border-base;
+
+			&.on {
+				border-bottom: 2px solid $default;
+				font-weight: 500;
+			}
+		}
+
+		a {
+			display: block;
+
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0 15px;
+				height: 48px;
+			}
+		}
+	}
+
+	&.scroll_enable {
+
+		.tab_list {
+			overflow-x: auto;
+
+			a {
+				span {
+					padding: 0 25px;
+				}
+			}
+		}
+
+		&:before,
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+		}
+
+		&:before {
+			top: 10px;
+			right: 6px;
+			width: 65px;
+			height: 28px;
+			border-radius: 14px;
+			background: #fff url(#{$url-img-common}/bg_scroll_track.png) no-repeat center center;
+			background-size: 40px auto;
+			box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.11);
+
+			animation: fadeOut 1s forwards;
+			animation-delay: 1s;
+		}
+
+		&:after {
+			top: 19px;
+			right: 26px;
+			box-sizing: border-box;
+			width: 11px;
+			height: 11px;
+			border-radius: 50%;
+			background-color: #fff;
+			border: 2px solid $primary;
+
+			animation: bounceFadeOut 2s forwards;
+		}
+
+		.bounce {
+			animation: bounceFadeOut 0.5s;
+			// animation-direction: alternate;
+			// animation-iteration-count: 4;
+		}
+
+		@keyframes fadeOut {
+			from {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			to {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		@keyframes bounceFadeOut {
+			from {
+				transform: translate3d(0, 0, 0);
+				opacity: 1;
+				visibility: visible;
+			}
+
+			33% {
+				transform: translate3d(-12px, 0, 0);
+			}
+
+			50% {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			66% {
+				transform: translate3d(0, 0, 0);
+			}
+
+			to {
+				transform: translate3d(-12px, 0, 0);
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+	}
+}
+
+.tab_menu2 {
+	position: relative;
+
+	.tab_list {
+		display: flex;
+		text-align: center;
+		line-height: 1.2;
+
+		li {
+			flex: 1 1 25%;
+			font-size: $font-size-base;
+
+			&.on {
+				position: relative;
+				color: #fff;
+				font-weight: 500;
+				background-color: #333;
+			}
+		}
+
+		a {
+			display: block;
+
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 40px;
+			}
+		}
+	}
+
+	&:not(.col_drop) {
+		position: relative;
+		border-radius: 4px;
+		overflow: hidden;
+
+		&:before {
+			content: '';
+			border-radius: 4px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border: 1px solid $border-base;
+			background: #fff;
+			border-radius: 4px;
+		}
+
+		.tab_list {
+			position: relative;
+
+			li {
+				+li {
+					border-left: 1px solid $border-base;
+				}
+			}
+		}
+	}
+
+	&.col_drop {
+		.tab_list {
+			flex-wrap: wrap;
+			border-radius: 4px;
+
+			li {
+				flex: 0 0 auto;
+				width: 50%;
+				margin-right: -1px;
+				margin-bottom: -1px;
+				border: 1px solid $border-base;
+				background-color: #fff;
+
+				&.on {
+					background-color: #333;
+					border-color: #333;
+				}
+
+				&:nth-child(1) {
+					border-top-left-radius: 4px;
+				}
+
+				&:nth-child(2) {
+					border-top-right-radius: 4px;
+				}
+
+				&:nth-child(2n+1):nth-last-child(-n+2) {
+					border-bottom-left-radius: 4px;
+				}
+
+				&:nth-child(2n):nth-last-child(-n+2) {
+					border-bottom-right-radius: 4px;
+				}
+
+				&:nth-child(2) {
+					border-top-right-radius: 4px;
+				}
+
+				&:last-child {
+					border-bottom-right-radius: 4px;
+				}
+			}
+		}
+	}
+}
+
+.tab_cont {
+	display: none;
+}

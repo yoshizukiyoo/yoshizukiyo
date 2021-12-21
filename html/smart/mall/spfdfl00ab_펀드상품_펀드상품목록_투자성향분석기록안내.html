@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".box_toggle > dt button").click(function () {
+				$(this).toggleClass("on");
+			})
+			$('.find_fund').on('click', function () {
+				$('.invest_result').slideToggle(500);
+				$('.find_fund_area').show();
+				$('.btn_group.btn_group_flex').addClass('active');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-inc="_inc_header_untact.html" data-page-title="투자성향분석"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container pt_4 pb_10">
+
+				<div class="invest_result">
+
+					<p class="txt_top_guide fund">
+						펀드 투자 전 필수 확인 사항! 내 투자성향을 확인
+						하고 투자성향에 맞는 펀드를 확인해 보세요.
+					</p>
+
+					<!-- s: 이력이 있는경우 -->
+					<div class="box box_border">
+						<strong class="txt_lg txt_gray">이전 투자성향 분석 기록이 있어요.</strong>
+						<p class="mt_2 txt_gray">고객님의 투자성향을 다시 분석하거나 투자성향에 맞
+							는 상품을 확인할 수 있습니다.</p>
+					</div>
+					<!-- e: 이력이 있는경우 -->
+					<!--
+					안정형 : txt_darkprimary
+					안정추구형 : txt_green
+					위험중립형 : txt_blue
+					적극투자형 : txt_purple
+					공격투자형 : txt_red
+
+				-->
+					<h3 class="u_fund_guide"><strong>홍길동</strong>님의 현재<br>
+						투자성향은 <strong class="txt_blue">위험중립형</strong>입니다.</h3>
+
+					<div class="box bg_lightgray txt_c mb_4">
+						<strong class="txt_lg">투자 가능 펀드: 보통위험(4등급 이상)</strong>
+					</div>
+
+					<div class="chart_area">
+						<!--
+						<img src="../../resources/smart/img/content/img_fund_infographic01.png" alt="안정형">
+						<img src="../../resources/smart/img/content/img_fund_infographic02.png" alt="안정추구형">
+						<img src="../../resources/smart/img/content/img_fund_infographic04.png" alt="적극투자형">
+						<img src="../../resources/smart/img/content/img_fund_infographic05.png" alt="공격투자형">
+					-->
+						<img src="../../resources/smart/img/content/img_fund_infographic03.png" alt="위험중립형">
+					</div>
+
+					<p class="chart_guide_txt">투자손실의 위험성을 감안하여 투자원금의 손실을 일정부분
+						감내하면서 채권혼합형, 채권형 펀드에 주로 투자하여 평균
+						이상의 시장수익률을 기대하는 투자자 유형</p>
+					<ul class="list list1 mt_3">
+						<li>투자성향분석일: 2021년 8월 18일</li>
+						<li>정보만기일: 2023년 8월 18일</li>
+					</ul>
+
+					<dl class="box_toggle mt_8">
+						<dt>
+							<button type="button" data-toggle-btn="sample">
+								유의사항
+							</button>
+						</dt>
+						<dd data-toggle-content="sample">
+							<ul class="list list1">
+								<li>안정형: 43점 미만/ 안정추구형:44점~54점 /위험중
+									립형 :55점~67점 / 적극투자형:68점~80점/
+									공격투자형:81점 이상</li>
+								<li>위 투자성향 결과는 고객님이 입력한 투자자정보를
+									근거로 산출된 결과입니다. 고객님에게 적합한 펀드
+									상품의 위험등급을 확인하시고, 그 책임하에 투자결
+									정을 신중히 하시기 바랍니다.
+
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- s: 펀드 추천상품 목록  -->
+				<div class="find_fund_area" style="display:none">
+					<div class="top_explanation pt_0">
+						<div class="box bg_lightgray txt_c">
+							<strong class="txt_lg">위험중립형</strong>
+						</div>
+						<p class="pt_3">내게 맞는 펀드 <strong>15개</strong>를 찾았어요.</p>
+					</div>
+					<ul class="product_list mb_6">
+						<li>
+							<div class="top_util">
+								<div class="right_area">
+									<span class="star">
+										5
+									</span>
+									<a href="#;" class="cart">장바구니</a>
+									<a href="#;" class="good">좋아요</a>
+									<a href="#;" class="links">링크</a>
+								</div>
+							</div>
+							<div class="list_info">
+								<ul class="top_info">
+									<li>보통위험</li>
+									<li>채권혼합형</li>
+									<li>KB운용</li>
+								</ul>
+
+								<strong class="tit">
+									KB밸류포커스30증권자투자신탁 (채권혼합)A
+									<span class="ico red">NEW</span>
+								</strong>
+
+								<div class="month_info">
+									<div class="left_tit">
+										<strong>
+											최고 우대<br>
+											기간별 적응이율
+										</strong>
+									</div>
+									<ul class="length3">
+										<li>
+											<span>6개월</span>
+											<strong>3.13%</strong>
+										</li>
+										<li>
+											<span>1년</span>
+											<strong>13.13%</strong>
+										</li>
+										<li>
+											<span>3년</span>
+											<strong>13.13%</strong>
+										</li>
+									</ul>
+								</div>
+
+								<div class="btn_flex_group mt_3">
+									<a href="#;" class="btn btn_md btn_round btn_default">상세보기</a>
+									<a href="#;" class="btn btn_md btn_round btn_default">매수하기</a>
+								</div>
+
+								<ul class="hash">
+									<li>#4차혁명</li>
+									<li>#KB운용</li>
+									<li>#저평가기업</li>
+									<li>#공유경제</li>
+									<li>#바이오테크</li>
+									<li>#인공지능</li>
+									<li>#바이오테크</li>
+									<li>#빅데이터</li>
+									<li>#국내시장</li>
+								</ul>
+
+							</div>
+						</li>
+						<li>
+							<div class="top_util">
+								<div class="right_area">
+									<span class="star">
+										5
+									</span>
+									<a href="#;" class="cart">장바구니</a>
+									<a href="#;" class="good">좋아요</a>
+									<a href="#;" class="links">링크</a>
+								</div>
+							</div>
+							<div class="list_info">
+								<ul class="top_info">
+									<li>보통위험</li>
+									<li>채권혼합형</li>
+									<li>KB운용</li>
+								</ul>
+
+								<strong class="tit">
+									KB밸류포커스30증권자투자신탁 (채권혼합)A
+									<span class="ico red">NEW</span>
+								</strong>
+
+								<div class="month_info">
+									<div class="left_tit">
+										<strong>
+											최고 우대<br>
+											기간별 적응이율
+										</strong>
+									</div>
+									<ul class="length3">
+										<li>
+											<span>6개월</span>
+											<strong>3.13%</strong>
+										</li>
+										<li>
+											<span>1년</span>
+											<strong>13.13%</strong>
+										</li>
+										<li>
+											<span>3년</span>
+											<strong>13.13%</strong>
+										</li>
+									</ul>
+								</div>
+
+								<div class="btn_flex_group mt_3">
+									<a href="#;" class="btn btn_md btn_round btn_default">상세보기</a>
+									<a href="#;" class="btn btn_md btn_round btn_default">매수하기</a>
+								</div>
+
+								<ul class="hash">
+									<li>#4차혁명</li>
+									<li>#KB운용</li>
+									<li>#저평가기업</li>
+									<li>#공유경제</li>
+									<li>#바이오테크</li>
+									<li>#인공지능</li>
+									<li>#바이오테크</li>
+									<li>#빅데이터</li>
+									<li>#국내시장</li>
+								</ul>
+
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- e: 펀드 추천상품 목록  -->
+
+				<!-- s: 하단 고정 영역 -->
+				<div class="bottom_fixed_area">
+					<div class="btn_group btn_group_flex">
+						<!-- 비활성화시 .btn_disabled 추가 -->
+						<a href="#;" class="btn btn_xl btn_default">
+							<span>다시분석하기</span>
+						</a>
+						<a href="#;" class="btn btn_xl btn_primary find_fund">
+							<span>맞춤펀드찾기</span>
+						</a>
+						<a href="#;" class="btn btn_xl btn_primary prd_compare">
+							<span>상품비교하기</span>
+						</a>
+					</div>
+				</div>
+				<!-- e: 하단 고정 영역 -->
+
+			</div>
+			<!-- e: 본문 -->
+
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".bottom_fixed_area .btn_toggle_type").click(function () {
+
+				if (!$(this).hasClass("on")) {
+					$(".user_controll_box").slideDown();
+					$("body , html").css({
+						overflow: "hidden"
+					})
+					$(".bottom_fixed_area").addClass("active");
+					$(this).addClass("on");
+				} else {
+					$(this).removeClass("on");
+					$(".user_controll_box").slideUp();
+					$("body , html").css({
+						overflow: "visible"
+					})
+					$(".bottom_fixed_area").removeClass("active");
+				}
+			})
+
+			$('.tab_area li').on('click', function () {
+				var tabIdx = $(this).index();
+				$(this).addClass('on').siblings('li').removeClass('on');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-inc="_inc_header_untact.html" data-page-title="보험상품"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 하단 고정 영역 -->
+			<!-- s: 보험료 간편설계 설정(기본) 팝업 -->
+			<div class="bottom_fixed_area">
+				<div class="dim2"></div>
+				<div class="total_price">
+					<a href="#;" class="btn_toggle_type">
+						보험료 간편설계 설정
+					</a>
+
+					<div class="user_controll_box pb_7">
+						<div class="user_chk_area">
+							<div class="p_r">
+								<i class="ico ico_calculator"></i>
+								<span class="pl_11 d_b">간편계산 정보를 한번 입력하시면, 보험 마다 따로 계산할 필요가 없어요.</span>
+							</div>
+
+							<ul class="tab_area mt_3 mb_4">
+								<li>
+									<a href="#;">기본</a>
+								</li>
+								<li>
+									<a href="#;">태아</a>
+								</li>
+								<li>
+									<a href="#;">어린이</a>
+								</li>
+								<li class="on">
+									<a href="#;">연금/저축</a>
+								</li>
+							</ul>
+						</div>
+
+
+						<!-- s : 월 납입 보험료 -->
+						<div class="pension_set">
+							<h3 class="sr_only">연금/저축</h3>
+							<h4 class="tit2">월 납입 보험료</h4>
+							<div class="input_items">
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_1">
+									<label for="month_price1_1">10만원</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_2">
+									<label for="month_price1_2">20만원</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_3" checked>
+									<label for="month_price1_3">30만원</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="month_price1" id="month_price1_4">
+									<label for="month_price1_4">50만원</label>
+								</span>
+							</div>
+						</div>
+						<!-- e : 월 납입 보험료 -->
+					</div>
+				</div>
+
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">상품비교하기 </a>
+					<a href="#;" class="btn btn_xl btn_primary">간편설계하기</a>
+				</div>
+				<!-- e: 보험료 간편설계 설정(기본) 팝업 -->
+				<!-- e: 하단 고정 영역 -->
+
+				<!-- s: 공통 레이어 로딩 -->
+				<div class="common_layers"></div>
+				<!-- e: 공통 레이어 로딩 -->
+				<!-- e: 본문 -->
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

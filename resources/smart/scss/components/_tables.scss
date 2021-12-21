@@ -1,0 +1,134 @@
+.tbl {
+	position: relative;
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+}
+
+.tbl {
+	overflow: hidden;
+
+	&.tbl_scroll {
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			z-index: 10;
+			top: 0;
+			bottom: 0;
+
+			width: 23px;
+			top: 0;
+			bottom: 0;
+
+			transition-duration: .1s;
+		}
+
+		&:before {
+			opacity: 0;
+			visibility: hidden;
+
+			left: -23px;
+			box-shadow: 5px 0 15px 5px rgba(255, 255, 255, 1);
+		}
+
+		&:after {
+			right: -23px;
+			box-shadow: -5px 0 15px 5px rgba(255, 255, 255, 1);
+		}
+
+		>.ico {
+			content: '';
+			position: absolute;
+			z-index: 11;
+			top: 50%;
+			margin-top: -9px;
+			transition-duration: .3s;
+		}
+
+		.ico_chevron_primary_bold_left {
+			opacity: 0;
+			visibility: hidden;
+			left: 10px;
+		}
+
+		.ico_chevron_primary_bold_right {
+			right: 10px;
+			background-image: url(#{$url-img-common}/ico_chevron_primary_bold_right.png);
+		}
+
+		&.scroll_ing {
+
+			&:before,
+			.ico_chevron_primary_bold_left {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		&.scroll_end {
+
+			&:after,
+			.ico_chevron_primary_bold_right {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+	}
+
+	.scroll_track {
+		position: relative;
+		overflow-y: hidden;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	table {
+		border-style: solid hidden solid;
+		border-width: 1px 0 1px;
+		border-color: #eee;
+	}
+
+	th,
+	td {
+		height: 45px;
+		padding: 10px 15px;
+		border: 1px solid #eee;
+	}
+
+	th {
+		background-color: #f6f6f6;
+		font-weight: 200;
+		line-height: 18px;
+		text-align: left;
+
+		small {
+			display: inline-block;
+			font-size: 12px;
+			line-height: 15px;
+		}
+	}
+
+	td {
+		font-weight: normal;
+	}
+
+	tbody {
+		th {
+			vertical-align: top;
+		}
+	}
+
+	thead,
+	thead~tbody,
+	thead~tfoot {
+
+		th,
+		td {
+			text-align: center;
+		}
+	}
+}

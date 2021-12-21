@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $mainRollingArea1 = $('.top_rolling .rolling_area');
+			$mainRollingArea1.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				infinite: true,
+				false: true,
+				fade: false,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 4000,
+				customPaging: function (slick, index) {
+					$(".top_rolling .nums span").text(slick.slideCount);
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".top_rolling .nums strong").text(slick + 1);
+			});;
+
+			var $mainRollingArea2 = $('.bottom_rolling .rolling_area');
+			$mainRollingArea2.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				infinite: true,
+				false: true,
+				fade: false,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 4000,
+				customPaging: function (slick, index) {
+					$(".bottom_rolling .nums span").text(slick.slideCount);
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".bottom_rolling .nums strong").text(slick + 1);
+			});;
+
+
+			$(".suggestion_rolling").each(function (i) {
+				var _length = $(".suggestion_rolling").eq(i).find(".slick-dots li").length;
+				$(".suggestion_rolling").eq(i).find(".rolling_area").append(
+					"<div class='nums'><strong>1</strong> / <span>1</span></div>");
+
+				$(".suggestion_rolling").eq(i).find(".nums span").text(_length);
+				$(".suggestion_rolling").eq(i).find(".slick-list").after(
+					"<div class='btn_ctrl'><button type='button' class='btn_pause'>정지</button></div>");
+
+				if ($(".suggestion_rolling").eq(i).find(".slick-slide").length < 2) {
+					$(".suggestion_rolling").eq(i).find(".nums").hide();
+				}
+
+			})
+
+			$(".top_rolling .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea1.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("시작")
+				} else {
+					$mainRollingArea1.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("정지");
+				}
+			});
+
+			$(".bottom_rolling .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea2.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("시작")
+				} else {
+					$mainRollingArea2.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("정지");
+				}
+			});
+
+			$(".top_rolling .btn_ctrl , .top_rolling .slick-dots , .top_rolling .nums").wrapAll(
+				"<div class='controlls'></div>");
+			$(".bottom_rolling .btn_ctrl , .bottom_rolling .slick-dots , .bottom_rolling .nums").wrapAll(
+				"<div class='controlls'></div>");
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-inc="_inc_header_untact.html" data-page-title="예금상품"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1 scroll_enable">
+				<ul class="tab_list">
+					<li class="on"><a href="#tab_cont1"><span>추천</span></a></li>
+					<li><a href="#"><span>입출금</span></a></li>
+					<li><a href="#"><span>적금</span></a></li>
+					<li><a href="#"><span>예금</span></a></li>
+					<li><a href="#"><span>기업</span></a></li>
+					<li><a href="#"><span>전체</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="suggestion_rolling top_rolling mb_4">
+				<div class='rolling_area'>
+
+					<div class="box2">
+						<span>매일매일 알아서 저축해주는</span>
+						<strong class="bold">
+							매일모아 e적금
+						</strong>
+						<span>매일매일 알아서 저축해주는</span>
+
+					</div>
+
+					<div class="box2">
+						<span>매일매일 알아서 저축해주는</span>
+						<strong class="bold">
+							매일모아 e적금
+						</strong>
+						<span>매일매일 알아서 저축해주는</span>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="container ">
+
+				<div class="tab_cont" id="tab_cont1">
+					<h2 class="sr_only">추천</h2>
+
+					<!-- s : 로그인 전 -->
+					<div class="clfx">
+						<h3 class="tit1 f_l mt_1">예금 판매량 Top 2</h3>
+						<a href="#;" class="btn btn_md btn_round btn_darkgray f_r">비교하기</a>
+					</div>
+					<div class="sales_rate_rolling suggestion none">
+						<ul class="list">
+							<li>
+								<div class="top_util">
+									<div class="right_area">
+										<a href="#;" class="links" tabindex="0">링크</a>
+									</div>
+								</div>
+								<div class="list_info">
+									<strong class="tit">
+										매일모다 e적금
+										<span class="ico yellow">추천</span>
+									</strong>
+									<strong class="lg">
+										<span>최고 우대 연</span>
+										1.2%
+									</strong>
+									<ul class="hash">
+										<li>#매일적금</li>
+										<li>#목표설정</li>
+										<li>#매일용돈</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<div class="top_util">
+									<div class="right_area">
+										<a href="#;" class="links" tabindex="0">링크</a>
+									</div>
+								</div>
+								<div class="list_info">
+									<strong class="tit">
+										가치모아적금
+										<span class="ico yellow">추천</span>
+									</strong>
+									<strong class="lg">
+										<span>최고 우대 연</span>
+										2.35%
+									</strong>
+									<ul class="hash">
+										<li>#여행자금</li>
+										<li>#모임회비</li>
+										<li>#목교달성우대</li>
+										<li>#여행특화체크카드</li>
+										<li>#함께자동이체</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<!-- e : 로그인 전 -->
+
+					<!-- s : 로그인 후 -->
+
+					<h3 class="tit1">연령대 PICK</h3>
+					<div class="top_pick_chk">
+
+						<a href="#;" class="opt" title="옵션 선택" onclick="openModal('layerOption'); return false;">20대</a>
+
+						<div class="input_items">
+							<span class="check_item type_btn">
+								<input type="radio" name="lb_gender" id="lb_gender_1" checked>
+								<label for="lb_gender_1">남</label>
+							</span>
+							<span class="check_item type_btn">
+								<input type="radio" name="lb_gender" id="lb_gender_2">
+								<label for="lb_gender_2">여</label>
+							</span>
+						</div>
+
+					</div>
+					<ul class="product_list">
+						<li>
+							<div class="top_util">
+								<div class="right_area">
+									<span class="star">
+										5
+									</span>
+									<a href="#;" class="cart">장바구니</a>
+									<a href="#;" class="good">좋아요</a>
+									<a href="#;" class="links">링크</a>
+								</div>
+							</div>
+							<div class="list_info">
+								<ul class="top_info">
+									<li>적금</li>
+									<li>비과세</li>
+									<li>예금자보호</li>
+								</ul>
+
+								<strong class="tit">
+									장병내일준비적금
+									<span class="ico red">NEW</span>
+								</strong>
+
+								<div class="month_info">
+									<div class="left_tit">
+										<strong>
+											최고우대<br>
+											기간별적용이율
+										</strong>
+									</div>
+									<ul class="length3">
+										<li>
+											<span>6개월</span>
+											<strong>4%</strong>
+										</li>
+										<li>
+											<span>12개월</span>
+											<strong>4.3%</strong>
+										</li>
+										<li>
+											<span>3년</span>
+											<strong>5%</strong>
+										</li>
+									</ul>
+								</div>
+
+								<div class="btn_group btn_group_flex">
+									<a href="#;" class="btn btn_md btn_round btn_default">상세보기</a>
+									<a href="#;" class="btn btn_md btn_round btn_default">상담신청</a>
+								</div>
+
+								<ul class="hash">
+									<li>#국군병사</li>
+									<li>#군복무</li>
+									<li>#장병내일준비</li>
+									<li>#휴일재해보장보험</li>
+								</ul>
+
+							</div>
+
+						</li>
+						<li>
+							<div class="top_util">
+								<div class="right_area">
+									<span class="star">
+										5
+									</span>
+									<a href="#;" class="cart">장바구니</a>
+									<a href="#;" class="good">좋아요</a>
+									<a href="#;" class="links">링크</a>
+								</div>
+							</div>
+							<div class="list_info">
+								<ul class="top_info">
+									<li>적금</li>
+									<li>비과세</li>
+									<li>예금자보호</li>
+								</ul>
+
+								<strong class="tit">
+									장병내일준비적금
+									<span class="ico red">NEW</span>
+								</strong>
+
+								<div class="month_info">
+									<div class="left_tit">
+										<strong>
+											최고우대<br>
+											기간별적용이율
+										</strong>
+									</div>
+									<ul class="length3">
+										<li>
+											<span>6개월</span>
+											<strong>4%</strong>
+										</li>
+										<li>
+											<span>12개월</span>
+											<strong>4.3%</strong>
+										</li>
+										<li>
+											<span>3년</span>
+											<strong>5%</strong>
+										</li>
+									</ul>
+								</div>
+
+								<div class="btn_group btn_group_flex">
+									<a href="#;" class="btn btn_md btn_round btn_default">상세보기</a>
+									<a href="#;" class="btn btn_md btn_round btn_default">상담신청</a>
+								</div>
+
+								<ul class="hash">
+									<li>#국군병사</li>
+									<li>#군복무</li>
+									<li>#장병내일준비</li>
+									<li>#휴일재해보장보험</li>
+								</ul>
+
+							</div>
+
+						</li>
+					</ul>
+
+
+					<!-- e : 로그인 후 -->
+
+					<h3 class="tit1">이벤트 혜택 놓치지 마세요</h3>
+					<div class="suggestion_rolling bottom_rolling">
+						<div class='rolling_area'>
+
+							<div class="box1">
+								<span>시니어 싱글벙글 정기예금 출시 이벤트</span>
+								<strong class="bold">
+									싱글벙글 정기예금 가입 <br>
+									선착순
+								</strong>
+								<em>2021.05.13 - 8.12</em>
+								<strong class="bottom">1등 경품 : LG스타일러</strong>
+
+								<a href="#;" class="share">공유</a>
+							</div>
+
+							<div class="box1">
+								<span>시니어 싱글벙글 정기예금 출시 이벤트</span>
+								<strong class="bold">
+									싱글벙글 정기예금 가입 <br>
+									선착순
+								</strong>
+								<em>2021.05.13 - 8.12</em>
+								<strong class="bottom">1등 경품 : LG스타일러</strong>
+
+								<a href="#;" class="share">공유</a>
+							</div>
+
+							<div class="box1">
+								<span>시니어 싱글벙글 정기예금 출시 이벤트</span>
+								<strong class="bold">
+									싱글벙글 정기예금 가입 <br>
+									선착순
+								</strong>
+								<em>2021.05.13 - 8.12</em>
+								<strong class="bottom">1등 경품 : LG스타일러</strong>
+
+								<a href="#;" class="share">공유</a>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

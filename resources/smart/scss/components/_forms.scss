@@ -1,0 +1,648 @@
+// 
+// Forms
+// 
+
+input[type=password]::-ms-reveal,
+input[type=password]::-ms-clear {
+	display: none;
+}
+
+.tf,
+.opt {
+	display: block;
+	appearance: none;
+	white-space: nowrap;
+
+	border: 0;
+	max-width: 100%;
+	height: 20px;
+	line-height: 16px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-size: 16px;
+	font-family: inherit;
+	letter-spacing: -0.05em;
+	font-weight: 400;
+	color: $default;
+	text-align: left;
+
+	transition-duration: .2s;
+	transition-property: color, border-color, box-shadow;
+	will-change: color, border-color, box-shadow;
+
+	&::-ms-clear {
+		display: none;
+	}
+
+	&.full {
+		width: 100%;
+	}
+
+	&.inline {
+		width: auto !important;
+	}
+
+	&:focus {
+		outline: 0;
+		position: relative;
+		border-color: $black;
+	}
+
+	&::-webkit-input-placeholder {
+		color: #555;
+		opacity: 1;
+	}
+
+	&:-ms-input-placeholder {
+		color: #666 !important;
+		opacity: 1;
+	}
+
+	&:disabled,
+	&[readonly=readonly],
+	&.readonly {
+		background-color: #f3f3f3;
+		opacity: 1;
+
+		&::-ms-value {
+			color: $disabled-color !important;
+		}
+	}
+
+	&:disabled {
+		color: #666;
+
+		&:hover,
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	// &:read-only:not(select):not(button) {
+	// 	// color: $disabled-color;
+	// 	background-color: $bg-lightgray;
+	// 	opacity: 1;
+	// }
+
+	// iOS 핀치줌 방지
+	@include media-breakpoint-down(md) {
+		font-size: 16px;
+	}
+}
+
+.opt {
+	max-width: 100%;
+	line-height: 1;
+	padding-right: 25px;
+	background: url(#{$url-img-common}/ico_chevron_down_md.png) no-repeat right center;
+	background-size: 12px auto;
+	color: $darkgray;
+
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+.opt+.btn {
+	margin-left: 6px;
+}
+
+textarea.tf {
+	width: 100%;
+	height: auto;
+	padding: 13px 16px;
+	border: 1px solid $border-base;
+	border-radius: 6px;
+	resize: none;
+	font-weight: 200;
+	line-height: 1.5;
+	color: $darkgray;
+
+	// &:focus {
+	// 	color: #333;
+	// 	position: relative;
+	// 	border-color: $border-active;
+	// }
+
+	.modal_alert & {
+		font-size: 14px;
+
+		&::placeholder {
+			font-weight: 200;
+			font-size: 13px;
+			letter-spacing: -0.06em;
+			color: $darkgray;
+		}
+	}
+}
+
+// 체크박스, 라디오버튼
+.check_item {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+
+	// color: $default;
+	font-weight: normal;
+
+	>input[type=radio],
+	>input[type=checkbox] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+	}
+
+	>input[type=radio]+label {
+		padding-left: 30px;
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-image: url(#{$url-img-common}/ico_radio_default.png);
+		background-size: 20px auto;
+	}
+
+	>input[type=radio]:checked+label {
+		background-image: url(#{$url-img-common}/ico_radio_checked.png);
+	}
+
+	>input[type=checkbox]+label {
+		padding-left: 30px;
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-image: url(#{$url-img-common}/ico_checkbox_default.png);
+		background-size: 20px auto;
+	}
+
+	>input[type=checkbox]:checked+label {
+		background-image: url(#{$url-img-common}/ico_checkbox_checked.png);
+	}
+
+	&.single {
+		>input+label {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			overflow: hidden;
+			padding: 0;
+			vertical-align: top;
+			font-size: 0;
+		}
+	}
+
+	&.type_btn {
+		label {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			height: $form-height;
+			font-size: 14px;
+			font-weight: 500;
+			border-radius: 4px;
+
+			border: 1px solid #ddd;
+			background: #fff !important;
+			color: #555;
+			font-weight: normal;
+			min-width: auto;
+			padding: 0 !important;
+		}
+
+		input:checked+label {
+			color: $default;
+			border-color: currentColor;
+		}
+	}
+
+	&.type_btn_round {
+		label {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			height: $form-height;
+			font-size: 14px;
+			font-weight: 500;
+			border-radius: 18px;
+
+			border: 1px solid #ddd;
+			background: #fff !important;
+			color: #555;
+			font-weight: normal;
+			min-width: auto;
+			padding: 0 !important;
+		}
+
+		input:checked+label {
+			color: $default;
+			border-color: $primary;
+		}
+	}
+
+	&.simple {
+		>input[type=checkbox]+label {
+			background-image: url(#{$url-img-common}/ico_check_off.png);
+		}
+
+		>input[type=checkbox]:checked+label {
+			background-image: url(#{$url-img-common}/ico_check_on.png);
+		}
+	}
+
+	&.simple_primary {
+		>input[type=checkbox]+label {
+			background-image: url(#{$url-img-common}/ico_check_off.png);
+		}
+
+		>input[type=checkbox]:checked+label {
+			background-image: url(#{$url-img-common}/ico_check_primary.png);
+		}
+	}
+
+	>label {
+		padding-bottom: 2px;
+		cursor: pointer;
+		color: $darkgray;
+	}
+
+	+.check_item {
+		margin-left: 15px;
+	}
+}
+
+// 토글형 체크박스
+.check_switch {
+	display: inline-flex;
+	vertical-align: middle;
+	align-items: center;
+	font-size: 10px;
+
+	label {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		min-width: 60px;
+		border-radius: 13px;
+		min-height: 18px;
+		text-align: center;
+		background-color: #eee;
+		padding-right: 13px;
+		padding-left: 28px;
+
+		color: #555;
+		white-space: nowrap;
+
+		transition-duration: .3s;
+		transition-property: background-color;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 13px;
+			height: 13px;
+			border-radius: 50%;
+			background-color: #fff;
+			transition-duration: .3s;
+		}
+
+		span {
+			display: block;
+			line-height: 23px;
+		}
+
+		.txt_checked {
+			display: none;
+			opacity: 0;
+			transition-duration: .3s;
+			transition-timing-function: ease-in;
+		}
+	}
+
+	input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+
+		&:checked+label {
+			color: #111;
+			background-color: $primary;
+			padding-left: 13px;
+			padding-right: 28px;
+
+			&:after {
+				left: calc(100% - 18px);
+			}
+
+			.txt_uncheck {
+				display: none;
+				opacity: 0;
+			}
+
+			.txt_checked {
+				display: inline;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.check_switch_sm {
+	label {
+		min-width: 45px;
+		height: 19px;
+
+		&:after {
+			left: 3px;
+			top: 3px;
+		}
+	}
+
+	input {
+		&:checked+label {
+			&:after {
+				left: calc(100% - 16px);
+			}
+		}
+	}
+}
+
+// 입력 항목 박스
+.tf_item {
+	display: block;
+	border: 1px solid $border-base;
+	border-radius: 8px;
+	overflow: hidden;
+
+	padding: 14px 19px 15px;
+	background: #fff;
+
+	transition-duration: .1s;
+	transition-property: border-color;
+
+	.tf_item_body {
+		position: relative;
+		display: flex;
+		min-height: 39px;
+		align-items: center;
+	}
+
+	.tf_item_footer {
+		margin-top: 3px;
+	}
+
+	&.focus {
+		border-color: $default;
+	}
+
+	&.invalid {
+		border-color: $invalid;
+
+		+.txt_guide {
+			color: $invalid;
+		}
+	}
+
+	&.disabled {
+		border-color: $border-base !important;
+		background-color: #f2f2f2;
+
+		>*,
+		+.txt_guide {
+			opacity: .4;
+		}
+
+		.btn_darkgray {
+			opacity: .5;
+		}
+	}
+
+	&.disabled_tf {
+		border-color: $border-base !important;
+		background-color: #f2f2f2;
+
+		.lab,
+		.tf,
+		.opt,
+		+.txt_guide {
+			opacity: .4;
+		}
+	}
+
+	.input_area {
+		position: relative;
+		flex: 1 1 auto;
+		padding-top: 19px;
+		line-height: 1;
+
+		.btn_reset {
+			position: absolute;
+			top: 50%;
+			margin-top: -15px;
+			right: -5px;
+			width: 30px;
+			height: 30px;
+		}
+	}
+
+	.lab {
+		display: flex;
+		white-space: nowrap;
+		position: absolute;
+		z-index: 10;
+		line-height: 1;
+		transition-duration: .2s;
+		transition-property: transform, top, font-size;
+
+		top: 50%;
+		transform: translateY(-50%);
+		color: #666;
+		font-size: 16px;
+
+		&:not(label) {
+			font-size: 13px;
+			top: 0;
+			transform: translateY(0);
+		}
+
+		.req {
+			display: inline-block;
+			margin-left: 4px;
+			width: 5px;
+			height: 5px;
+			border-radius: 50%;
+			background-color: currentColor;
+			text-indent: -9999px;
+		}
+	}
+
+	&.active {
+		.lab {
+			font-size: 13px;
+			top: 0;
+			transform: translateY(0);
+		}
+	}
+
+	.tf,
+	.opt {
+		border: 0;
+		overflow: hidden;
+		display: block;
+		color: $black;
+	}
+
+	.tf {
+		width: 100%;
+		padding: 0;
+		background: none;
+	}
+
+	.check_item {
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 20px;
+
+		label {
+			display: inline-block;
+			background-position-y: 1px !important;
+		}
+	}
+
+	.btn_area {
+		display: flex;
+		align-items: center;
+		flex: 0 0 auto;
+		max-height: 68px;
+		margin-left: 15px;
+
+		.btn_icon {
+			height: 68px;
+			margin: -14px -20px -15px;
+			padding: 14px 20px 15px;
+		}
+
+		.btn {
+			+.btn {
+				margin-left: 10px;
+			}
+		}
+	}
+}
+
+// 입력박스 가로 배치
+.form_row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	max-width: none !important;
+
+	.txt_item {
+		flex: 0 0 auto;
+		padding: 0 5px;
+	}
+
+	.bar_item {
+		flex: 0 0 auto;
+		margin: 0 6px;
+		width: 8px;
+		height: 1px;
+		background-color: $border-base;
+	}
+
+	.tf_item {
+		flex: 1 1 10%;
+
+		+.tf_item {
+			margin-left: 10px;
+		}
+
+		.tf {
+			width: 100%;
+		}
+	}
+}
+
+// 입력요소 가로 배치
+.input_items {
+	display: flex;
+	align-items: center;
+	margin: 0 -5px;
+
+	+.input_items {
+		margin-top: 13px;
+	}
+
+	>* {
+		margin: 0 5px;
+	}
+
+	.btn,
+	.check_item {
+		flex: 1 1 20%;
+	}
+
+	.btn_md {
+		min-width: auto !important;
+		height: $form-height;
+		font-size: 14px;
+		font-weight: 500;
+		border-radius: 4px;
+	}
+
+	.text {
+		flex: 0 0 auto;
+	}
+
+	.tf,
+	.opt {
+		flex: 1 1 auto;
+	}
+
+	.tf_email_id {
+		width: 40%;
+		flex: 0 0 auto;
+	}
+
+	.check_item {
+		+.check_item {
+			margin-left: 5px !important;
+		}
+	}
+}
+
+// 비밀번호 표시
+.password_masking {
+	display: flex;
+	margin-top: 3px;
+
+	i {
+		display: inline-block;
+		margin-right: 15px;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background-color: #ddd;
+	}
+
+	&.active {
+		i {
+			background-color: #333;
+		}
+	}
+}
+
+// 입력폼 관련 컴포넌트
+.txt_guide {
+	color: #555;
+	font-size: 13px;
+	margin: 6px 0 0;
+	padding-left: 5px;
+}
+
+.req {
+	color: #f46e16;
+	vertical-align: middle;
+}

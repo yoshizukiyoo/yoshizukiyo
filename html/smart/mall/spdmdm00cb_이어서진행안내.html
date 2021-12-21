@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-inc="_inc_header_untact.html" data-page-title="금융상품몰"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container pt_4 pb_4">
+				<div class="mb_1">
+					<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerSample'); return false;">
+						이어서 진행 안내
+					</a>
+				</div>
+			</div>
+
+			<!-- s: 이어서 진행 안내 팝업 -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="layerSample">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">이어서 진행 안내</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container mb_6">
+							<div class="box bg_lightgray">
+								<strong class="txt_lg txt_medium d_b txt_c">
+									우체국 어디서나 하이브리드 체크카드(VISA)
+								</strong>
+							</div>
+
+							<div class="section mt_5">
+								<p class="txt_darkgray txt_sm">조회 기준 일시: <strong class="txt_normal">2021.06.21 15:00:56</strong></p>
+								<ul class="border_list mt_3">
+									<li class="p_r pt_3 pb_3">
+										<div class="flex_box">
+											<span class="l txt_gray02 txt_sm">
+												<span>2021-06-12 12:45:55</span>
+											</span>
+										</div>
+										<p class="txt_gray02 txt_sm">스마트뱅킹</p>
+										<strong class="txt_lg txt_medium pb_1">체크카드 신청(4단계)</strong>
+										<span class="btn_drelete">
+											<a href="#;" class="btn btn_xs btn_outline_default btn_round"
+												onclick="openModal('alert01', this);return false;">기록
+												삭제</a>
+										</span>
+									</li>
+								</ul>
+								<div class="txt_r mt_3">
+									<a href="#;" class="txt_gray">
+										더보기 <i class="ico ico_chevron_right_md mr_1"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 하단 고정 푸터 (미사용시 삭제) -->
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layerSample');">처음부터 다시
+								신청</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSample');">이어서
+								신청하기</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이어서 진행 안내 팝업 -->
+
+			<!-- s: 진행 이력정보 삭제 전 확인 안내 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">알림</h2>
+					</div>
+					<div class="popup_body pt_4">
+						<div class="container">
+							<div class="desc">
+								<p>
+									해당 상품에 대한 가입 진행 이력 정보를 삭제합니다.<br>
+									삭제된 기록은 복원할 수 없습니다.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('alert01');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 진행 이력정보 삭제 전 확인 안내 팝업 -->
+
+			<!-- s: 진행 이력정보 삭제 완료 안내 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">알림</h2>
+					</div>
+					<div class="popup_body pt_4">
+						<div class="container">
+							<div class="desc">
+								<p>
+									가입 진행 이력정보 삭제가 완료되었습니다.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert02');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 진행 이력정보 삭제 완료 안내 팝업 -->
+
+			<!-- s: 진행 이력정보 삭제 실패 안내 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert03">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">알림</h2>
+					</div>
+					<div class="popup_body pt_4">
+						<div class="container">
+							<div class="desc">
+								<p>
+									죄송합니다.
+								</p><br>
+								<p>가입 진행 이력정보 삭제에 실패했습니다.
+									잠시 후 다시 시도해주세요.
+								</p><br>
+								<p>실패 사유: 시스템 내부 일시 오류(99999)
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert03');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 진행 이력정보 삭제 실패 안내 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

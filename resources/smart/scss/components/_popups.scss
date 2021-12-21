@@ -1,0 +1,406 @@
+$popup-title-height: 56px;
+
+$popup-size: (alert: 280px,
+	datepicker: 320px,
+	full: 100%,
+);
+
+/* 모달, 윈도우 팝업 공통 */
+.popup_header {
+	font-family: $font-family-title;
+	height: $popup-title-height;
+	display: flex;
+	align-items: center;
+	padding: 0 $spacing;
+
+	.popup_tit {
+		display: inline-flex;
+		vertical-align: middle;
+		align-items: center;
+		font-size: 16px;
+		font-weight: 500;
+	}
+
+	@if ($mode=='responsive') {
+		.modal_popup & {
+			@include media-breakpoint-up(lg) {
+				border-radius: 10px 10px 0 0;
+			}
+
+			@include media-breakpoint-down(md) {
+				height: $popup-mobile-title-height;
+				justify-content: flex-start;
+				padding-left: $mobile-spacing;
+			}
+		}
+	}
+}
+
+.popup_body {
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+
+	.btn_group {
+		margin-top: 30px;
+		text-align: center;
+	}
+
+	.btn+.btn_md {
+		margin-left: 2px;
+	}
+
+	.btn_md {
+		min-width: 82px;
+	}
+
+	@if ($mode=='responsive') {
+		@include media-breakpoint-down(md) {
+			padding: $mobile-spacing $mobile-spacing 0;
+		}
+	}
+}
+
+.popup_footer {
+	position: relative;
+	padding: 0 $spacing $spacing;
+	border-radius: 0 0 10px 10px;
+
+	font-size: $font-size-sm;
+	color: $gray;
+	line-height: 22px;
+
+	.btn_group {
+		margin: 0;
+	}
+}
+
+.btn_close_popup {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: $popup-title-height;
+	height: $popup-title-height;
+	background: url(#{$url-img-common}/ico_close.png) no-repeat center center;
+	background-size: 15px 15px;
+
+	@include ir;
+	text-decoration: none;
+	overflow: hidden;
+
+	// &:focus,
+	// &:active {
+	// 	@include ir;
+	// 	top: 0;
+	// 	right: 0;
+	// 	width: auto;
+	// 	height: auto;
+	// 	width: 30px;
+	// 	height: 30px;
+	// 	background: url(#{$url-img-common}/ico_close_sm.png) no-repeat center center;
+	// }
+}
+
+/* 모달 팝업 */
+.modal_open {
+	overflow: hidden;
+}
+
+.modal_popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.dimed {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(#000, 0.5);
+	}
+
+	.popup_inner {
+		position: relative;
+		z-index: 1100;
+		transition-duration: 0.3s;
+		transition-property: transform;
+		background-color: #fff;
+
+		&:focus {
+			outline: 0;
+			// box-shadow: 0 0 20px 5px rgba(#fff, .2);
+		}
+
+		.modal_popup.hide & {
+			transform: scale(0.9);
+		}
+
+		.modal_popup.show & {
+			transform: scale(1);
+		}
+	}
+
+	&.hide {
+		opacity: 0;
+		visibility: hidden;
+
+		.popup_inner {
+			transform: translateY(50px);
+		}
+	}
+
+	&.show {
+		opacity: 1;
+		visibility: visible;
+		transition-duration: 0.3s;
+
+		.popup_inner {
+			transform: translateY(0);
+		}
+	}
+
+	@each $size,
+	$width in $popup-size {
+		&.modal_#{$size} {
+			.popup_inner {
+				width: $width;
+			}
+		}
+	}
+
+	// 데이트피커 모달
+	&.modal_datepicker {
+		align-items: flex-start;
+
+		.popup_inner {
+			margin-top: calc(50vh - 182px);
+			// min-height: 365px;
+			overflow: hidden;
+			padding: $spacing;
+			border-radius: 16px;
+		}
+
+		.popup_body {
+			padding-top: 25px;
+		}
+	}
+
+	// 알림 팝업
+	&.modal_alert {
+		.popup_inner {
+			overflow: hidden;
+			border-radius: 16px;
+		}
+
+		.popup_header {
+			justify-content: center;
+
+			~.popup_body {
+				padding-top: 0;
+			}
+
+			.popup_tit {
+				font-weight: bold;
+			}
+		}
+
+		.popup_body {
+			padding: 40px 0;
+			max-height: calc(100vh - 200px);
+		}
+
+		.desc {
+			text-align: center;
+
+			&.txt_l {
+				padding-left: 10px;
+			}
+		}
+
+		.popup_footer {
+			padding: 0;
+		}
+
+		.btn_group_flex {
+			padding: 0;
+
+			.btn {
+				margin: 0;
+				border-radius: 0;
+			}
+		}
+
+		.btn_close_popup {
+			display: none;
+		}
+	}
+
+	// 풀 페이지 모달
+	&.modal_full {
+		.popup_inner {
+			height: 100%;
+			border-radius: 0;
+		}
+	}
+
+	// 바텀시트
+	&.modal_bottom_sheet {
+		height: 100%;
+		align-items: flex-end;
+
+		.popup_tit {
+			font-size: 18px;
+			font-weight: 500;
+		}
+
+		.popup_header,
+		.popup_footer {
+			flex: 0 0 auto;
+		}
+
+		.popup_body {
+			padding-top: 0;
+			padding-bottom: 20px;
+			flex: 1 1 auto;
+		}
+
+		.popup_inner {
+			display: flex;
+			flex-direction: column;
+
+			width: 100%;
+			height: auto;
+			max-height: calc(100vh - 56px);
+			border-radius: 16px 16px 0 0;
+			box-shadow: 0px -1px 35px 0px rgba(0, 0, 0, 0.13);
+		}
+	}
+
+	// 하단 고정영역 내 토글
+	&.modal_toggle {
+		position: relative;
+		display: block;
+		z-index: auto;
+
+		.popup_inner {
+			z-index: auto;
+		}
+
+		.toggle_cont {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border-radius: 16px 16px 0 0;
+			background-color: #fff;
+		}
+	}
+}
+
+/* 윈도우 팝업 */
+.popup {
+	height: 100%;
+	overflow: hidden;
+
+	.popup_inner {
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		height: 100%;
+	}
+
+	.popup_header {
+		flex: 0 0 auto;
+	}
+
+	.popup_body {
+		flex: 1 1 auto;
+		max-height: 100%;
+
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.popup_footer {
+		flex: 0 0 auto;
+	}
+}
+
+.dim_hide>.dimed {
+	opacity: 0;
+	transition: .3s;
+}
+
+// 옵션
+.opt_list {
+	.btn {
+		display: block;
+		width: 100%;
+		border-radius: 8px;
+		padding: 13px 20px;
+		color: $gray;
+		font-size: 16px;
+		font-weight: normal;
+		white-space: normal;
+		text-align: center;
+		background-image: none;
+
+		&.active {
+			background: rgb(238, 238, 238);
+			color: $default;
+		}
+	}
+}
+
+.opt_list_account {
+	+.opt_list_account {
+		margin-top: 10px;
+		padding-top: 10px;
+		border-top: 1px solid $border-light;
+	}
+
+	.inner {
+		display: flex;
+		align-items: center;
+	}
+
+	.bank {
+		display: block;
+		width: 32px;
+		height: 32px;
+		margin-right: 10px;
+		border-radius: 50%;
+		background-color: $bg-lightgray;
+	}
+
+	.info {
+		text-align: left;
+	}
+
+	.account_name {
+		display: block;
+		font-size: 14px;
+		color: $default;
+	}
+
+	.account_num {
+		display: block;
+		font-size: 13px;
+		color: #666;
+	}
+
+	.btn {
+		&.active {
+			.bank {
+				background-color: #fff;
+			}
+		}
+	}
+}

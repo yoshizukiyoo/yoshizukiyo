@@ -22,13 +22,13 @@ $(function () {
 	var siteCode = path[path.indexOf('html') + 1];
 	console.log(siteCode);
 
-	$('.header').load('/html/' + siteCode + '/_inc-header.html .header > *', function () {
+	$('.header').load('/html/internet/' + siteCode + '/_inc-header.html .header > *', function () {
 		// if ($.isFunction(window.gnbSetting)) gnbSetting();
 	});
-	$('.breadcrumb').load('/html/' + siteCode + '/_inc-breadcrumb.html .breadcrumb > *', function () {
+	$('.breadcrumb').load('/html/internet/' + siteCode + '/_inc-breadcrumb.html .breadcrumb > *', function () {
 		// if ($.isFunction(window.scrollbar)) scrollbar();
 	});
-	$('.footer').load('/html/' + siteCode + '/_inc-footer.html .footer > *', function () {
+	$('.footer').load('/html/internet/' + siteCode + '/_inc-footer.html .footer > *', function () {
 		// if ($.isFunction(window.toTop)) toTop();
 	});
 });

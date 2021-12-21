@@ -8,21 +8,21 @@
 $(function () {
 	var headerInc = $('.header').data('inc');
 	if (headerInc == undefined) {
-		$('.header').load('/html/_inc-header.html .header > *', function () {
+		$('.header').load('/html/internet/_inc-header.html .header > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
 	} else if (headerInc != undefined) {
-		$('.header').load('/html/_inc-mall-header.html .header > *', function () {
+		$('.header').load('/html/internet/_inc-mall-header.html .header > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
 	}
-	$('.quick_menu_wrap').load('/html/_inc-quickmenu.html .quick_menu_wrap > *', function () {
+	$('.quick_menu_wrap').load('/html/internet/_inc-quickmenu.html .quick_menu_wrap > *', function () {
 		// if ($.isFunction(window.scrollbar)) scrollbar();
 	});
-	$('.breadcrumb').load('/html/_inc-breadcrumb.html .breadcrumb > *', function () {
+	$('.breadcrumb').load('/html/internet/_inc-breadcrumb.html .breadcrumb > *', function () {
 		// if ($.isFunction(window.scrollbar)) scrollbar();
 	});
-	$('.footer').load('/html/_inc-footer.html .footer > *', function () {
+	$('.footer').load('/html/internet/_inc-footer.html .footer > *', function () {
 		// if ($.isFunction(window.toTop)) toTop();
 	});
 });

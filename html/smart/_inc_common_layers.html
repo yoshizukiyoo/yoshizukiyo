@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+</head>
+
+<body>
+	<div class="container p_4">
+		<h1 class="tit1">샘플 레이어 (코드 복사 후 명칭 변경 사용)</h1>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerSampleAlert'); return false;">
+				얼럿 레이어 샘플
+			</a>
+		</div>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerSampleBottomSheet'); return false;">
+				바텀시트 샘플
+			</a>
+		</div>
+		<h1 class="tit1 mt_6">공통 레이어 모음</h1>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerOption'); return false;">
+				옵션선택 : layerOption
+			</a>
+		</div>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerAccount'); return false;">
+				계좌선택 : layerAccount
+			</a>
+		</div>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerPeriod'); return false;">
+				기간조회 : layerPeriod
+			</a>
+		</div>
+	</div>
+	<div class="common_layers">
+		<!-- s: Modal popup 얼럿 샘플 -->
+		<div class="modal_popup modal_alert hide" data-popup="layerSampleAlert">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="popup_tit">타이틀 (미사용시 제거)</h2>
+				</div>
+				<div class="popup_body">
+					<div class="bg_lightprimary">
+						가로 풀사이즈 콘텐츠 영역<br> .popup_body 하위에 정의
+					</div>
+					<div class="container">
+						<div class="bg_lightprimary">
+							양쪽 여백 콘텐츠 영역 .container 내 정의
+						</div>
+						<div class="desc">
+							<p class="txt_lg txt_bold">받는분의 실명을<br> 정확하게 입력해 주세요.</p>
+							<p class="mt_2">.desc 안내문구 (기본 가운데정렬)</p>
+						</div>
+
+						<br>
+
+						<div class="desc txt_l">
+							<p class="txt_lg txt_bold">좌측정렬 안내문구</p>
+							<p class="mt_2">
+								좌측정렬 안내문구<br>
+								안내문구
+							</p>
+						</div>
+
+						<br>
+
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_name">이름</label>
+									<input type="text" id="lb_name" class="tf" value="홍길동" required>
+								</div>
+							</div>
+						</div>
+
+						<br>
+
+						<textarea class="tf" cols="50" rows="3" title="메모" placeholder="※ 최대 한글 20자, 영/숫자 40자까지 입력"></textarea>
+					</div>
+				</div>
+				<div class="popup_footer">
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layerSampleAlert');">취소</button>
+						<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleAlert');">확인</button>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: Modal popup 얼럿 샘플 -->
+
+		<!-- s: Modal popup 바텀시트 샘플 -->
+		<div class="modal_popup modal_bottom_sheet hide" data-popup="layerSampleBottomSheet">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="popup_tit">타이틀</h2>
+				</div>
+				<div class="popup_body">
+					<div class="bg_lightprimary">
+						가로 풀사이즈 콘텐츠 영역<br> .popup_body 하위에 정의
+					</div>
+					<div class="container">
+						<div class="bg_lightprimary">
+							양쪽 여백 콘텐츠 영역 .container 내 정의
+						</div>
+
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="lb_address_group" class="lab">주소그룹선택</label>
+									<input type="text" id="lb_address_group" class="tf" value="전체" readonly>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openModal('layerOption', this);">
+										<i class=" ico ico_chevron_down_md"></i>
+										<span class="sr_only">옵션선택</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="popup_footer">
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layerSampleFull');">취소</button>
+						<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleFull');">확인</button>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: Modal popup 바텀시트 샘플 -->
+
+		<!-- s: Modal popup 기간조회 -->
+		<div class="modal_popup modal_bottom_sheet hide" data-popup="layerPeriod">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="popup_tit">기간조회</h2>
+				</div>
+				<div class="popup_body">
+					<div class="container">
+
+						<!-- [2021-11-29] radio > button 타입 변경 -->
+						<div class="input_items">
+							<button type="button" class="btn btn_md btn_period">계약기간</button>
+							<button type="button" class="btn btn_md btn_period active" title="선택됨">1개월</button>
+							<button type="button" class="btn btn_md btn_period">3개월</button>
+							<button type="button" class="btn btn_md btn_period">1년</button>
+						</div>
+
+						<div class="form_row mt_2">
+							<div class="tf_item">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_s">시작일 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_s" class="tf" value="2021.09.30" required>
+									</div>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_icon btn_datepicker" onclick="openDatepicker(this); return false;">
+											<i class="ico ico_datepicker"></i>
+											<span class="sr_only">달력</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bar_item"></div>
+							<div class="tf_item">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_e">종료일 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_e" class="tf" value="2021.09.30" required>
+									</div>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_icon btn_datepicker" onclick="openDatepicker(this); return false;">
+											<i class="ico ico_datepicker"></i>
+											<span class="sr_only">달력</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="popup_footer">
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerPeriod');">확인</button>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: Modal popup 기간조회 -->
+
+		<!-- s: Modal popup 옵션 선택 -->
+		<div class="modal_popup modal_bottom_sheet hide" data-popup="layerOption">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="sr_only">옵션 선택</h2>
+				</div>
+				<div class="popup_body">
+					<div class="container">
+						<div class="opt_list">
+							<button type="button" class="btn active" onclick="closeModal('layerOption');">option1</button>
+							<button type="button" class="btn" onclick="closeModal('layerOption');">option2</button>
+							<button type="button" class="btn" onclick="closeModal('layerOption');">option3</button>
+							<button type="button" class="btn" onclick="closeModal('layerOption');">option4</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: Modal popup 옵션 선택 -->
+
+		<!-- s: Modal popup 계좌 선택 -->
+		<div class="modal_popup modal_bottom_sheet hide" data-popup="layerAccount">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="sr_only">계좌 선택</h2>
+				</div>
+				<div class="popup_body">
+					<div class="container">
+						<div class="opt_list opt_list_account">
+							<button type="button" class="btn active" onclick="closeModal('layerAccount');">
+								<span class="inner">
+									<span class="bank"><img src="/resources/smart/img/common/bi_epost.png" alt="우체국" class="bi"></span>
+									<span class="info">
+										<strong class="account_name">우체국 가치모아 e적금</strong>
+										<span class="account_num">123456-78-901234</span>
+									</span>
+								</span>
+							</button>
+							<button type="button" class="btn" onclick="closeModal('layerAccount');">
+								<span class="inner">
+									<span class="bank"><img src="/resources/smart/img/common/bi_epost.png" alt="우체국" class="bi"></span>
+									<span class="info">
+										<strong class="account_name">우체국 가치모아 e적금</strong>
+										<span class="account_num">123456-78-901234</span>
+									</span>
+								</span>
+							</button>
+							<button type="button" class="btn" onclick="closeModal('layerAccount');">
+								<span class="inner">
+									<span class="bank"><img src="/resources/smart/img/common/bi_epost.png" alt="우체국" class="bi"></span>
+									<span class="info">
+										<strong class="account_name">우체국 가치모아 e적금</strong>
+										<span class="account_num">123456-78-901234</span>
+									</span>
+								</span>
+							</button>
+							<button type="button" class="btn" onclick="closeModal('layerAccount');">
+								<span class="inner">
+									<span class="bank"><img src="/resources/smart/img/common/bi_epost.png" alt="우체국" class="bi"></span>
+									<span class="info">
+										<strong class="account_name">우체국 가치모아 e적금</strong>
+										<span class="account_num">123456-78-901234</span>
+									</span>
+								</span>
+							</button>
+						</div>
+						<div class="opt_list opt_list_account">
+							<button type="button" class="btn" onclick="closeModal('layerAccount');">
+								<span class="inner">
+									<span class="bank"><img src="/resources/smart/img/common/bi_hana.png" alt="하나은행" class="bi"></span>
+									<span class="info">
+										<strong class="account_name">하나은행 통장명</strong>
+										<span class="account_num">12345678901234</span>
+									</span>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: Modal popup 계좌 선택 -->
+	</div>
+</body>
+
+</html>
