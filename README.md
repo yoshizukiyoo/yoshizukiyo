@@ -72,7 +72,7 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 스마트보험 : smart-insurance
 - 채널통합 : cea (하위에 인뱅스뱅 모두 존재)
 - 팀원별 임시 브랜치 생성시 네이밍 규칙
-> 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach, 채널통합 cea/sub-branch
+> 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach, 채널통합 a/sub-branch
 단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
 
 ### 퍼블리셔 팀 협업 가이드
