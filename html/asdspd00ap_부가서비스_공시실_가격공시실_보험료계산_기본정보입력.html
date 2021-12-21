@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="보험금 계산"></header>
+		<div id="content">
+			<div class="container pt_4">
+
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">기본정보 입력</span></li>
+					<li><span class="num">2</span><span class="txt">상세정보 입력</span></li>
+					<li><span class="num">3</span><span class="txt">보험료계산 결과</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<!-- s: 보험료계산상품 영역 -->
+				<div class="clfx">
+					<div class="f_l">
+						<h2 class="tit1">보험료 계산 상품</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="contract_detail pt_0">
+				<strong class="list_name">(무)우체국든든한종신보험 2007<i class="ico ico_new_red ml_1"></i></strong>
+			</div>
+			<!-- e: 보험료계산상품 영역 -->
+
+			<!-- s: 기본정보 입력 영역 -->
+			<div class="container pt_4 pb_16">
+				<h2 class="tit1 mb_4">기본정보 입력</h2>
+
+				<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">보험종류 <span class="req">필수항목</span></span>
+							<p class="tf">무배당 우체국든든한종신보험 2109 1종</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_name">피보험자 이름 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_name" class="tf" placeholder="나봄미" required>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_date1">피보험자 생년월일 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_date1" class="tf" placeholder="1987.10.17" readonly required>
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+								<i class="ico ico_datepicker"></i>
+								<span class="sr_only">달력</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_gender_1">피보험자 성별 <span class="req">필수항목</span></label>
+							<div class="input_items">
+								<span class="check_item">
+									<input type="radio" name="lb_gender" id="lb_gender_1" checked>
+									<label for="lb_gender_1">남자</label>
+								</span>
+								<span class="check_item">
+									<input type="radio" name="lb_gender" id="lb_gender_2">
+									<label for="lb_gender_2">여자</label>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tel">휴대폰 번호</label>
+							<div class="input_items">
+								<a href="#;" class="opt" title="휴대폰번호 앞자리 선택" onclick="openModal('layerOption');">010</a>
+								<input type="text" id="lb_tel" class="tf" title="휴대폰번호 앞자리 제외한 나머지 번호 입력">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_date2">기준일자 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_date2" class="tf" placeholder="2021.08.23" readonly required>
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+								<i class="ico ico_datepicker"></i>
+								<span class="sr_only">달력</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">납입주기</span>
+							<p class="tf">월납</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+
+				<!-- s: case 2 연금성 보험 -->
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">연금지급개시 <span class="req">필수항목</span></span>
+							<p class="tf">60세</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">연금지급형태 <span class="req">필수항목</span></span>
+							<p class="tf">종신연금형(20년보증)</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<!-- e: case 2 연금성 보험 -->
+
+			</div>
+			<!-- e: 기본정보 입력 영역 -->
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex btn_group_r">
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>상세정보 입력</span>
+						<i class="ico ico_chevron_right_xl ml_2"></i>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+		</div>
+	</div>
+</body>
+
+</html>
