@@ -23,7 +23,9 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			$('.btn_result').click(function () {
+				$('.btm_result_box').show();
+			})
 		});
 	</script>
 </head>
@@ -37,7 +39,18 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">납부내역조회</h2>
+				<h2 class="tit_cont">예약납부내역조회/취소</h2>
+
+				<!-- <button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button> -->
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
 				<!-- e: 본문 헤더 -->
 			</div>
 
@@ -46,23 +59,22 @@
 
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>도움말 영역</li>
+						<li>예약납부 취소가 아래와 같이 처리되었습니다.</li>
 					</ul>
 				</div>
 
-				<div class="tab_menu_type1 section">
-					<ul>
-						<li><a href="#;" class="current">납부내역조회</a></li>
-						<li><a href="#;">예약납부내역조회/취소</a></li>
-						<li><a href="#;">자동납부내역조회</a></li>
-					</ul>
-				</div>
-
-				<!-- s: 실행결과 -->
+				<!-- s: 조회정보 -->
 				<div class="section">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">납부정보 상세정보 표이며 전자납부번호, 납세자, 부과년월, 고지구분, 납기기한 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">선택한 예약납부 정보이며 요금형태, 전자납부번호, 예약번호, 예약등록일, 납부실행일, 출금계좌번호, 납부금액 정보를 제공하고 있습니다.
+							</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -70,50 +82,27 @@
 								<col>
 							</colgroup>
 							<tbody>
+								<tr>
+									<th scope="row">요금형태</th>
+									<td colspan="3">0113514101702891800</td>
+								</tr>
 								<tr>
 									<th scope="row">전자납부번호</th>
-									<td colspan="3">0000000000000000000</td>
+									<td>3014011015402411134</td>
+									<th scope="row">예약번호</th>
+									<td>202110190005</td>
 								</tr>
 								<tr>
-									<th scope="row">납세자</th>
-									<td>감사돈</td>
-									<th scope="row">납부자번호</th>
-									<td>6007011869710</td>
+									<th scope="row">예약등록일</th>
+									<td>2021.10.19</td>
+									<th scope="row">납부실행일</th>
+									<td>2021.10.20</td>
 								</tr>
-								<tr>
-									<th scope="row">부과년월</th>
-									<td>2012년 10월</td>
-									<th scope="row">납기구분</th>
-									<td>당월분</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_row_data mt_4">
-						<table>
-							<caption class="sr_only">납부정보 표이며 출금계좌번호, 납부일, 납부금액, 납부 취소일, 취소 사유 정보를 제공하고 있습니다.</caption>
-							<colgroup>
-								<col style="width: 17%;">
-								<col>
-								<col style="width: 17%;">
-								<col>
-							</colgroup>
-							<tbody>
 								<tr>
 									<th scope="row">출금계좌번호</th>
-									<td>0000000000000</td>
-									<th scope="row">납부일</th>
-									<td>2012.01.12</td>
-								</tr>
-								<tr>
+									<td>00000000000000</td>
 									<th scope="row">납부금액</th>
-									<td class="txt_r">30,000원</td>
-									<th scope="row">납부 취소일</th>
-									<td>2012.01.12</td>
-								</tr>
-								<tr>
-									<th scope="row">취소 사유</th>
-									<td colspan="3">고객에 의한 취소요청</td>
+									<td class="txt_r">40,000 원</td>
 								</tr>
 							</tbody>
 						</table>
@@ -122,9 +111,9 @@
 						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 					</div>
 				</div>
-				<!-- e: 실행결과 -->
+				<!-- e: 조회정보 -->
 
-				<div class="btn_tbl_btm">
+				<div class="btn_tbl_btm btn_data_search">
 					<a href="#;" class="btn btn_xl btn_primary">확인</a>
 				</div>
 

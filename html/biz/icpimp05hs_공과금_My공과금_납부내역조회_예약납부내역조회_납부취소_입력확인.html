@@ -23,7 +23,9 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			
+			$('.btn_result').click(function () {
+				$('.btm_result_box').show();
+			})
 		});
 	</script>
 </head>
@@ -37,80 +39,77 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">지로납부</h2>
+				<h2 class="tit_cont">예약납부내역조회/취소</h2>
+
+				<!-- <button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button> -->
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
 			</div>
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="cont_header_right">
-					<ul class="step">
-						<li><span class="num">1</span><span class="txt">지로번호입력</span></li>
-						<li><span class="num">2</span><span class="txt">정보입력</span></li>
-						<li class="on"><span class="num">3</span><span class="txt">입력확인</span></li>
-						<li><span class="num">4</span><span class="txt">실행완료</span></li>
-					</ul>
-				</div>
-
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>입력하신 일반지로요금 납부 신청내역입니다.</li>
-						<li>납부를 실행하신 후에는 취소가 불가능하오니, 내용이 맞는지 다시 확인하시기 바랍니다.</li>
+						<li>예약납부 취소는 납부희망일 전일 24:00까지 가능합니다.</li>
+						<li>취소할 공과금 정보가 맞는지 다시 확인하시기 바랍니다.</li>
 					</ul>
 				</div>
 
-				<!-- s: 납부정보 -->
+				<!-- s: 조회정보 -->
 				<div class="section">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">지로납부 정보 표이며 지로번호, 청구기관, 고객번호조회, 납부자 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">선택한 예약납부 정보이며 요금형태, 전자납부번호, 예약번호, 예약등록일, 납부실행일, 출금계좌번호, 납부금액 정보를 제공하고 있습니다.
+							</caption>
 							<colgroup>
-								<col style="width: 15%;">
+								<col style="width: 17%;">
 								<col>
-								<col style="width: 15%;">
+								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">지로번호</th>
-									<td>3001187</td>
-									<th scope="row">청구기관</th>
-									<td>(주)가톨릭신문사</td>
+									<th scope="row">요금형태</th>
+									<td colspan="3">0113514101702891800</td>
 								</tr>
 								<tr>
-									<th scope="row">고객번호조회</th>
-									<td>4002017093</td>
-									<th scope="row">납부자</th>
-									<td>나봄미</td>
+									<th scope="row">전자납부번호</th>
+									<td>3014011015402411134</td>
+									<th scope="row">예약번호</th>
+									<td>202110190005</td>
 								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_row_data mt_4">
-						<table>
-							<caption class="sr_only">출금정보 표이며 출금계좌번호, 예금주전화번호, 납부금액 정보를 제공하고 있습니다.</caption>
-							<colgroup>
-								<col style="width: 15%;">
-								<col>
-								<col style="width: 15%;">
-								<col>
-							</colgroup>
-							<tbody>
+								<tr>
+									<th scope="row">예약등록일</th>
+									<td>2021.10.19</td>
+									<th scope="row">납부실행일</th>
+									<td>2021.10.20</td>
+								</tr>
 								<tr>
 									<th scope="row">출금계좌번호</th>
-									<td>00000000000</td>
-									<th scope="row">예금주 전화번호</th>
-									<td>00000000000</td>
-								</tr>
-								<tr>
+									<td>00000000000000</td>
 									<th scope="row">납부금액</th>
-									<td colspan="3" class="txt_r">100,000원</td>
+									<td class="txt_r">40,000 원</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 납부정보 -->
+				<!-- e: 조회정보 -->
 
 				<!-- s: 보안매체 인증번호입력 -->
 				<div class="section">
@@ -122,7 +121,8 @@
 								<div class="cert_number">
 									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
 									<span class="security_masking mas_r">
-										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력"
+											style="width: 50px;height: 32px;">
 									</span>
 									<button type="button" class="btn_mouse">
 										<span class="sr_only">마우스로 보안카드번호입력</span>
@@ -131,7 +131,8 @@
 								<div class="cert_number">
 									<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
 									<span class="security_masking mas_l">
-										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력"
+											style="width: 50px;height: 32px;">
 									</span>
 									<button type="button" class="btn_mouse">
 										<span class="sr_only">마우스로 보안카드번호입력</span>
@@ -162,9 +163,9 @@
 				</div>
 				<!-- e: 보안매체 인증번호입력 -->
 
-				<div class="btn_tbl_btm">
+				<div class="btn_tbl_btm btn_data_search">
 					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="예금_공과금_지로_지로납부_즉시납부_실행완료.html" class="btn btn_xl btn_primary">납부실행</a>
+					<a href="#;" class="btn btn_xl btn_primary">확인</a>
 				</div>
 
 				<!-- s: alert 팝업 -->
