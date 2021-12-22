@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_result').on('click', function () {
+				$('.btm_result_box').show();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">아파트거주자</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">약관동의</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li><span class="num">4</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 first_section">
+					<ul>
+						<li><a href="#;">관리비납부</a></li>
+						<li><a href="#;" class="current" title="선택됨">관리비자동이체등록</a></li>
+						<li><a href="#;">관리비자동이체 조회/변경/해지</a></li>
+					</ul>
+				</div>
+
+				<div class="box section">
+					<ul class="list list1">
+						<li>아파트관리비를 고객님이 선택하신 출금계좌에서 자동이체 되는 서비스입니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 출금정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data tbl_payment">
+						<table>
+							<caption class="sr_only">통장/인감 사고신고 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
+								제공하고 있습니다.</caption>
+							<colgroup>
+								<col>
+								<col style="width: 17%">
+								<col style="width: 17%">
+								<col style="width: 17%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">출금가능금액(원)</th>
+									<th scope="col">1일 송금가능금액(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="fx_lr fx_align_center">
+											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
+												onclick="openModal('popup01', this);">전체계좌조회</button>
+										</div>
+									</td>
+									<td class="txt_r">3,100,000</td>
+									<td class="txt_r">100,000</td>
+									<td class="txt_r">10,000,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">가계수표 사고신고</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌 비밀번호 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf" title="계좌비밀번호 입력" style="width: 350px;">
+										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">약정구분 <strong class="necessary">*</strong></th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="inputCheck1" id="inputCheck1_1" checked>
+											<label for="inputCheck1_1">아파트 관리비</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="inputCheck1" id="inputCheck1_2">
+											<label for="inputCheck1_2">이지스 아파트 관리비</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">아파트 수납기관코드 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf" style="width: 350px;" title="아파트 수납기관코드 입력">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default fx_right"
+												onclick="openModal('popup01', this);">아파트기관조회</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">아파트 동호수 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf" style="width: 100px;" title="아파트 동 입력"> 동
+										<input type="text" class="tf ml6" style="width: 100px;" title="아파트 호수 입력"> 호
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default fx_right"
+												onclick="openModal('popup01', this);">아파트동/호조회</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>011</span></a></li>
+															<li><a href="#none"><span>016</span></a></li>
+															<li><a href="#none"><span>017</span></a></li>
+															<li><a href="#none"><span>018</span></a></li>
+															<li><a href="#none"><span>019</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 출금정보 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="#;" class="btn btn_xl btn_primary">확인</a>
+				</div>
+
+				<div class="box section">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list1">
+								<li>
+									아파트관리비 자동이체 약정/해지 내역은 아파트아파트거주자에 별도 통보되지 않습니다.<br>
+									(고객님께서 직접 아파트 아파트거주자에 약정/해지 사항을 통보하셔야 합니다.)
+								</li>
+								<li>
+									이지스 아파트관리비 자동이체 약정거래 안내
+									<ul class="list list2">
+										<li>약정거래가 정상처리 되었다고 해서 자동이체 처리가 완료된 것은 아닙니다.</li>
+										<li>해당기관에서 처리를 해주고 기관응답결과 [정상]응답을 받아야 완료된 것입니다.</li>
+										<li>해당기관에서 처리하고 응답을 받는데 4일정도 소요됩니다.</li>
+										<li>이지스아파트관리비 자동이체 약정후 7영업일 이후부터 이체가능</li>
+									</ul>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- s: 전체계좌조회 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col style="width: 23%">
+										<col style="width: 18%">
+										<col style="width: 19%">
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">대표계좌설정</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌조회 팝업 -->
+
+				<!-- s: 아파트기관조회 팝업 -->
+				<div class="modal_popup modal_md show" data-popup="apt_popup1">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">아파트기관조회</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+								</div>
+							</div>
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">아파트기관조회 입력양식이며 아파트(기관)코드, 아파트명 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 35%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">
+												<span class="check_item">
+													<input type="radio" name="apt" id="atp1_1" checked>
+													<label for="atp1_1">아파트(기관)코드</label>
+												</span>
+											</th>
+											<td>
+												<input type="text" class="tf" title="아파트(기관)코드 입력" style="width: 100%;">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												<span class="check_item">
+													<input type="radio" name="apt" id="atp1_2">
+													<label for="atp1_2">아파트명</label>
+												</span>
+											</th>
+											<td>
+												<input type="text" class="tf" title="아파트명 입력" disabled style="width: 100%">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('apt_popup1');">조회</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 아파트기관조회 팝업 -->
+
+				<!-- s: 아파트동/호 팝업 -->
+				<div class="modal_popup modal_md hide" data-popup="apt_popup2">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">아파트동/호</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">아파트동/호 목록이며 동, 호, 상태, 신청일자, 해지일자 정보를 제공하고 있습니다.</caption>
+									<thead>
+										<tr>
+											<th scope="col">동</th>
+											<th scope="col">호</th>
+											<th scope="col">상태</th>
+											<th scope="col">신청일자</th>
+											<th scope="col">해지일자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">0701</td>
+											<td class="txt_c">0101</td>
+											<td class="txt_c">등록</td>
+											<td class="txt_c">2015-08-03</td>
+											<td class="txt_c"></td>
+										</tr>
+										<tr>
+											<td class="txt_c">0701</td>
+											<td class="txt_c">0101</td>
+											<td class="txt_c">등록</td>
+											<td class="txt_c">2015-08-03</td>
+											<td class="txt_c"></td>
+										</tr>
+										<tr>
+											<td class="txt_c">0701</td>
+											<td class="txt_c">0101</td>
+											<td class="txt_c">등록</td>
+											<td class="txt_c">2015-08-03</td>
+											<td class="txt_c"></td>
+										</tr>
+										<tr>
+											<td class="txt_c">0701</td>
+											<td class="txt_c">0101</td>
+											<td class="txt_c">등록</td>
+											<td class="txt_c">2015-08-03</td>
+											<td class="txt_c"></td>
+										</tr>
+										<tr>
+											<td class="txt_c">0701</td>
+											<td class="txt_c">0101</td>
+											<td class="txt_c">등록</td>
+											<td class="txt_c">2015-08-03</td>
+											<td class="txt_c"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('apt_popup2');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 아파트동/호 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										confirm 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<a href="#;" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>
