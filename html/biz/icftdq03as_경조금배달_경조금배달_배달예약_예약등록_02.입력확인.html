@@ -23,7 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			// 이곳에 정의
 		});
 	</script>
 </head>
@@ -43,7 +43,6 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-
 				<div class="cont_header_right">
 					<ul class="step">
 						<li><span class="num">1</span><span class="txt">정보입력</span></li>
@@ -71,7 +70,7 @@
 					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">경조금배달 보내는 분</caption>
+							<caption class="sr_only">경조금배달 보내는 분 표로 출금계좌번호, 보내는분, 문자메시지 수신여부, 전화번호, 주소 정보 제공</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -113,7 +112,7 @@
 					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">경조금배달 받는 분</caption>
+							<caption class="sr_only">경조금배달 받는 분 표로 받는분, 전화번호, 주소 정보 제공</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -128,12 +127,6 @@
 									<td>010-3333-4444</td>
 								</tr>
 								<tr>
-									<th scope="row">입금은행</th>
-									<td>우체국</td>
-									<th scope="row">입금계좌번호</th>
-									<td>010041-22-222222</td>
-								</tr>
-								<tr>
 									<th scope="row" rowspan="2">주소</th>
 									<td colspan="3">전라남도 나주 빛가람동</td>
 								</tr>
@@ -146,16 +139,17 @@
 				</div>
 				<!-- e: 받는 분 -->
 
-				<!-- s: 경조금 배달정보 -->
+				<!-- s: 20211222 경조금배달예약 v1.01-->
+				<!-- s: 배달정보 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">경조금 배달정보</h3>
+							<h3 class="tit1">배달정보</h3>
 						</div>
 					</div>
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">경조금 배달정보</caption>
+							<caption class="sr_only">배달정보 표로 배달구분, 경조카드 구분, 보내는 금액, 경조예약일, 경조카드 정보 제공</caption>
 							<colgroup>
 								<col style="width: 15%;">
 								<col>
@@ -166,28 +160,40 @@
 								<tr>
 									<th scope="row">배달구분</th>
 									<td>증서배달</td>
-									<th scope="row">경조카드</th>
+									<th scope="row">경조카드 구분</th>
 									<td>결혼11</td>
 								</tr>
 								<tr>
 									<th scope="row">보내는 금액</th>
-									<td colspan="3" class="txt_r">200000 원</td>
+									<td colspan="3" class="txt_r">20,000 원</td>
 								</tr>
 								<tr>
 									<th scope="row">경조예약일</th>
 									<td colspan="3">2021.05.28</td>
 								</tr>
 								<tr>
-									<th scope="row">경조인사문</th>
-									<td colspan="3">결혼을 축하며 복된 가정 이루기 바랍니다.</td>
+									<th scope="row">경조카드</th>
+									<td colspan="3">
+										<div class="greeting_card bg01">
+											<strong>결혼축하카드</strong>
+											<p>새 식구 맞으심을 축하하며 화목한 가정<br> 이루시기를 기원합니다.</p>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">계좌비밀번호</th>
+									<td colspan="3">
+										<input type="password" class="tf" title="계좌비밀번호 입력" style="width:200px;">
+										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 경조금 배달정보 -->
+				<!-- e: 배달정보 -->
+				<!-- e: 20211222 경조금배달예약 v1.01-->
 
-				<!-- s: 보안매체 인증번호 입력 -->
 				<div class="section">
 					<h3 class="tit1">보안매체 인증번호 입력</h3>
 					<div class="box_security_cert bg_security_card">
@@ -197,7 +203,8 @@
 								<div class="cert_number">
 									<span class="txt_security"><strong>[XX]</strong>번의 앞의 두자리</span>
 									<span class="security_masking mas_r">
-										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력" style="width: 50px;height: 32px;">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 앞의 두자리 입력"
+											style="width: 50px;height: 32px;">
 									</span>
 									<button type="button" class="btn_mouse">
 										<span class="sr_only">마우스로 보안카드번호입력</span>
@@ -206,7 +213,8 @@
 								<div class="cert_number">
 									<span class="txt_security"><strong>[XX]</strong>번의 뒤의 두자리</span>
 									<span class="security_masking mas_l">
-										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력" style="width: 50px;height: 32px;">
+										<input type="password" class="tf txt_c" maxlength="2" title="[XX]번의 뒤의 두자리 입력"
+											style="width: 50px;height: 32px;">
 									</span>
 									<button type="button" class="btn_mouse">
 										<span class="sr_only">마우스로 보안카드번호입력</span>
@@ -235,14 +243,13 @@
 						</div>
 					</div>
 				</div>
-				<!-- e: 보안매체 인증번호 입력 -->
 
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
 					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
-					<a href="#';" class="btn btn_xl btn_primary">빠른실행</a>
+					<a href="#;" class="btn btn_xl btn_primary">실행</a>
 					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('popup01', this);return false;">결재선조회</a>
-					<a href="경조금배달_경조금배달_배달예약_예약등록_03.실행완료.html" class="btn btn_xl btn_primary">결제요청</a>
+					<a href="#;" class="btn btn_xl btn_primary">결재요청</a>
 				</div>
 
 				<!-- s: 결재선조회 팝업 -->
@@ -338,7 +345,8 @@
 							</div>
 							<div class="mt_3">
 								<p>
-									※ 해당 결재자에게 본 건에 대해 SMS로 결재요청을 하실 경우, 사용자 이름 앞에 체크박스 “□”를 선택하여 보내실 수 있습니다. SMS결재알림을 원하시는 해당자만 선택하여 보내실 수도 있습니다.
+									※ 해당 결재자에게 본 건에 대해 SMS로 결재요청을 하실 경우, 사용자 이름 앞에 체크박스 “□”를 선택하여 보내실 수 있습니다. SMS결재알림을 원하시는 해당자만 선택하여 보내실
+									수도 있습니다.
 								</p>
 							</div>
 							<div class="btn_group">
@@ -349,13 +357,13 @@
 					</div>
 				</div>
 				<!-- e: 결재선조회 팝업 -->
-					
+
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
-							<h3 class="popup_tit">안내</h3>
+							<h2 class="popup_tit">안내</h2>
 						</div>
 						<div class="popup_body">
 							<div class="alert_cont">
@@ -371,8 +379,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -385,7 +395,7 @@
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
-							<h3 class="popup_tit">확인</h3>
+							<h2 class="popup_tit">확인</h2>
 						</div>
 						<div class="popup_body">
 							<div class="alert_cont">
@@ -401,8 +411,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>

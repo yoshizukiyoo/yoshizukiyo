@@ -23,9 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').click(function () {
-				$('.btm_result_box').show();
-			});
+			// 이곳에 정의
 		});
 	</script>
 </head>
@@ -39,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">해약계좌조회</h2>
+				<h2 class="tit_cont">오픈뱅킹 계좌 등록</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -56,108 +54,119 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="box first_section">
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">계좌선택</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>홍길동 고객님이 최근 5년 이내에 해약하신 우체국 계좌입니다.</li>
-						<li>계좌번호를 클릭하면 계좌상세내역을 알 수 있습니다.</li>
+						<li>본인명의의 수시입출금 계좌만 등록가능합니다. (예적금/펀드/비활동성 계좌 등은 등록불가)</li>
+						<li>등록계좌는 한번에 최대 5개까지 선택 가능하나, 고객당 최대 7개까지만 이용등록 가능합니다.</li>
+						<li>일부 계좌는 해당 은행의 전산시스템 상황에 따라 등록이 되지 않을 수 있습니다.</li>
 					</ul>
 				</div>
 
 				<div class="section">
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">해약계좌조회</caption>
+							<caption class="sr_only">오픈뱅킹 계좌 등록</caption>
 							<colgroup>
-								<col style="width: 16%;">
+								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">
-										조회구분
-										<strong class="necessary">*</strong>
-									</th>
+									<th scope="row">조회 구분</th>
 									<td>
 										<span class="check_item">
-											<input type="radio" name="chk" id="chk1_1" checked>
-											<label for="chk1_1">입출금이자유로운상품</label>
+											<input type="radio" name="chk" id="chk-1" checked>
+											<label for="chk-1">은행</label>
 										</span>
 										<span class="check_item">
-											<input type="radio" name="chk" id="chk1_2">
-											<label for="chk1_2">목돈굴리기상품</label>
+											<input type="radio" name="chk" id="chk-2">
+											<label for="chk-2">제2금융권</label>
 										</span>
 										<span class="check_item">
-											<input type="radio" name="chk" id="chk1_3">
-											<label for="chk1_3">목돈마련상품</label>
+											<input type="radio" name="chk" id="chk-3">
+											<label for="chk-3">금융투자회사</label>
 										</span>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="btn_data_search">
-						<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
-					</div>
 				</div>
 
-				<div class="btm_result_box mt_18">
+				<div class="btn_tbl_btm btn_data_search">
+					<a href="#;" class="btn btn_xl btn_primary">조회</a>
+				</div>
+
+				<div class="section">
 					<div class="tbl_tit">
-						<div class="txt_right">
-							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						<div class="tit_left">
+							<h3 class="tit1">통합조회결과 계좌 보유 목록 <span class="txt_md txt_gray txt_normal v_mid">(보유계좌 9건 / 추가 등록가능 계좌
+									1건)</span>
+							</h3>
 						</div>
 					</div>
 					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">해약계좌조회 표로 예금종류, 계좌번호, 가입일자, 해약일자, 해약종류, 해약금액 정보 제공</caption>
+							<caption class="sr_only">통합조회결과 계좌 보유 목록 표로 선택, 은행명, 상품명, 계좌번호, 현재잔액(원), 활동성여부 정보 제공</caption>
 							<colgroup>
+								<col style="width: 7%;">
 								<col>
-								<col style="width: 17%">
-								<col style="width: 13%">
-								<col style="width: 14%">
-								<col style="width: 14%">
-								<col style="width: 15%">
+								<col style="width: 30%;">
+								<col>
+								<col>
+								<col>
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">예금종류</th>
+									<th scope="col">선택</th>
+									<th scope="col">은행명</th>
+									<th scope="col">상품명</th>
 									<th scope="col">계좌번호</th>
-									<th scope="col">가입일자</th>
-									<th scope="col">해약일자</th>
-									<th scope="col">해약종류</th>
-									<th scope="col">해약금액(원)</th>
+									<th scope="col">현재잔액(원)</th>
+									<th scope="col">활동성여부</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>시니어싱글벙글정기예금</td>
-									<td>012435-11-488680</td>
-									<td class="txt_c">2020.03.25</td>
-									<td class="txt_c">2021.03.25</td>
-									<td>정상계좌</td>
-									<td class="txt_r">2,000,000</td>
+									<td class="txt_c">
+										<span class="check_item square single">
+											<input type="checkbox" name="chk1" id="chk1-1">
+											<label for="chk1-1">선택</label>
+										</span>
+									</td>
+									<td>농협</td>
+									<td>하나로증권통장</td>
+									<td>123456789123</td>
+									<td class="txt_r">511</td>
+									<td>N</td>
 								</tr>
 								<tr>
-									<td>2040+α스마트정기예금</td>
-									<td>012435-11-488680</td>
-									<td class="txt_c">2020.03.25</td>
-									<td class="txt_c">2021.03.25</td>
-									<td>정상계좌</td>
-									<td class="txt_r">2,000,000</td>
-								</tr>
-								<tr>
-									<td>2040+α스마트정기예금</td>
-									<td>012435-11-488680</td>
-									<td class="txt_c">2020.03.25</td>
-									<td class="txt_c">2021.-03.25</td>
-									<td>정상계좌</td>
-									<td class="txt_r">2,000,000</td>
+									<td class="txt_c">
+										<span class="check_item square single">
+											<input type="checkbox" name="chk1" id="chk1-2">
+											<label for="chk1-2">선택</label>
+										</span>
+									</td>
+									<td>농협</td>
+									<td>하나로증권통장</td>
+									<td>123456789123</td>
+									<td class="txt_r">158,377</td>
+									<td>등록계좌</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="mt_4 txt_r">
-						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
+					<div class="btn_tbl_btm">
+						<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+						<a href="#;" class="btn btn_xl btn_primary">계좌선택확인</a>
 					</div>
 				</div>
 
