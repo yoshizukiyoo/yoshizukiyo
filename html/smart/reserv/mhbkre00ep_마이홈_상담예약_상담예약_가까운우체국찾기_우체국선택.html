@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="txt_size18">가까운 우체국 찾기</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body">
+			<div class="container mt_4">
+
+				<div class="search_area">
+					<!-- s: 검색창 -->
+					<form action="#;">
+						<fieldset>
+							<legend class="sr_only">전체</legend>
+							<div class="form_integrated_search">
+								<input type="text" class="tf txt_lg" title="검색어 입력" placeholder="검색명을 입력하세요">
+								<button type="submit" class="btn btn_sm">
+									<i class="ico ico_search_sm"></i>
+									<span class="sr_only">검색</span>
+								</button>
+							</div>
+						</fieldset>
+					</form>
+					<!-- e: 검색창 -->
+
+					<!-- s: 검색 히스토리 영역 -->
+					<div class="row_recommend mt_3">
+						<strong class="tag_tit">자주찾는 우체국</strong>
+						<ul class="tag_list">
+							<li>
+								<a href="#">
+									<span class="item_tag">
+										#성동우체국
+										<button type="button" class="btn btn_icon btn_close">
+											<i class="ico ico_close_btn"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="item_tag">
+										#마포우체국
+										<button type="button" class="btn btn_icon btn_close">
+											<i class="ico ico_close_btn"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="item_tag">
+										#광진우체국
+										<button type="button" class="btn btn_icon btn_close">
+											<i class="ico ico_close_btn"></i>
+											<span class="sr_only">초기화</span>
+										</button>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- e: 검색 히스토리 영역 -->
+				</div>
+			</div>
+
+			<!-- s: 지도영역 -->
+			<div class="map_area mt_6">
+				<p>지도영역</p>
+				<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layermapBottomSheet'); return false;">
+					지도 버튼
+				</a>
+			</div>
+			<!-- e: 지도영역 -->
+
+			<!-- s: Modal popup 바텀시트 -->
+			<div class="modal_popup modal_bottom_sheet modal_map show" data-popup="layermapBottomSheet">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit"></h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="address_area bg_lightgray pt_3">
+								<strong>동대문우체국 <span class="distance">283m</span></strong>
+								<p>서울특별시 동대문구 신설동 117-23</p>
+								<a href="#" class="btn btn_xs btn_outline_default">주소복사</a>
+								<span class="phonenumber">02-****-****</span>
+
+								<!-- 텍스트 노출형 -->
+								<span class="check_switch">
+									<input type="checkbox" id="inputCheckSwitch2" checked>
+									<label for="inputCheckSwitch2">
+										<span class="txt_uncheck">즐겨찾기</span>
+										<span class="txt_checked">즐겨찾기</span>
+									</label>
+								</span>
+							</div>
+						</div>
+						<div class="popup_footer pt_4 pb_0">
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layernoticeAlert');">
+									상담예약 신청하기
+								</button>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 바텀시트 -->
+		</div>
+	</div>
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>

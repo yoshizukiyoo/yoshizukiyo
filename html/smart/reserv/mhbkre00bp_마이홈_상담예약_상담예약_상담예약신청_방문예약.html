@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="고객상담신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#tab_cont1"><span>상담예약</span></a></li>
+					<li><a href="#tab_cont2"><span>나의상담</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container mb_16">
+				<h2 class="sr_only">상담예약</h2>
+
+				<!-- s: 서울성동우체국 영역 -->
+				<h3 class="tit1">서울 성동 우체국
+					<a href="#;" data-toggle-btn="tooltip1">
+						<i class="ico ico_help"></i>
+						<span class="sr_only">도움말</span>
+					</a>
+				</h3>
+
+				<div class="top_btn_group">
+					<a href="#;" class="btn btn_lg btn_outline_default">전화연결</a>
+					<a href="#;" class="btn btn_lg btn_outline_default">위치보기</a>
+					<a href="#;" class="btn btn_lg btn_outline_default">다른우체국</a>
+				</div>
+
+				<div class="tf_item mt_4 disabled">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_user">상담고객 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_user" class="tf" placeholder="홍길동" required disabled>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_phone">휴대폰 번호 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_phone" class="tf" placeholder="010-5555-1234" required>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide txt_md">연락처는 고객정보에 등록된 휴대폰번호가 자동입력 되었습니다. 다른 번호로 상담이 필요한 경우 수정하여 신청 가능합니다.</p>
+				<!-- e: 서울성동우체국 영역 -->
+
+				<!-- s: 상담업무 영역 -->
+				<h3 class="tit1 mt_8">상담업무</h3>
+				<div class="tf_double tf_double2">
+					<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">업무구분 <span class="req">필수항목</span></span>
+								<p class="tf">방문예약</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<a href="#;" class="tf_item ml_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<p class="tf">예금이체</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+				</div>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">상담원</span>
+							<p class="tf">미지정</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<p class="txt_guide">상담원을 선택해주세요.</p>
+				<!-- e: 상담업무 영역 -->
+
+				<!-- s: 상담희망시간대 영역 -->
+				<h3 class="tit1 mt_8">상담희망시간대</h3>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_day">방문일 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_day" class="tf" placeholder="2021.10.17" required>
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+								<i class="ico ico_datepicker"></i>
+								<span class="sr_only">방문 날짜 선택</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_2 disabled">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_time">방문시간 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_time" class="tf" placeholder="09:00 - 10:00" required disabled>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="morning_box mt_2">
+					<span>오전</span>
+					<a href="#;">09시 - 10시</a>
+					<a href="#;">10시 - 11시</a>
+					<a href="#;">11시 - 12시</a>
+				</div>
+				<div class="afternoon_box mt_1">
+					<span>오후</span>
+					<a href="#;">13시 - 14시</a>
+					<a href="#;">14시 - 15시</a>
+					<a href="#;">15시 - 16시</a>
+				</div>
+				<div class="tf_item mt_10">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label for="lb_text" class="lab">상담내용</label>
+							<textarea class="tf" id="lb_text" rows="5" placeholder="100자 이내로 입력해주세요."
+								style="overflow: auto;"></textarea>
+						</div>
+					</div>
+				</div>
+				<!-- e: case 2 : 일정변경 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>신청하기</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

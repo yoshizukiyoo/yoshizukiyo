@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="txt_size18">가까운 우체국 찾기</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body">
+
+			<!-- s: 지도영역 -->
+			<div class="map_area">
+				<p>지도영역</p>
+				<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layermapBottomSheet'); return false;">
+					지도 버튼
+				</a>
+			</div>
+			<!-- e: 지도영역 -->
+
+			<!-- s: Modal popup 바텀시트 -->
+			<div class="modal_popup modal_bottom_sheet modal_map show" data-popup="layermapBottomSheet">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">나의 상담 우체국</h2>
+					</div>
+					<div class="popup_body pb_9">
+						<div class="container">
+							<div class="address_area bg_lightgray pt_3">
+								<strong>동대문우체국</strong>
+								<p>서울특별시 동대문구 신설동 117-23</p>
+								<a href="#" class="btn btn_xs btn_outline_default">주소복사</a>
+								<span class="phonenumber">02-****-****</span>
+
+								<!-- 텍스트 노출형 -->
+								<span class="check_switch">
+									<input type="checkbox" id="inputCheckSwitch2" checked>
+									<label for="inputCheckSwitch2">
+										<span class="txt_uncheck">즐겨찾기</span>
+										<span class="txt_checked">즐겨찾기</span>
+									</label>
+								</span>
+							</div>
+							<ul class="list list1 mt_1">
+								<li>우편 업무시간 09:00 - 18:00</li>
+								<li class="mt_0">금융 업무시간 08:00 - 16:30</li>
+							</ul>
+							<div class="btn_group btn_group_flex mt_3">
+								<button type="button" class="btn btn_lg btn_outline_default">전화연결</button>
+								<button type="button" class="btn btn_lg btn_outline_default">지도로 보기</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layermapBottomSheet');">
+								상담예약 신청하기
+							</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 바텀시트 -->
+		</div>
+	</div>
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>
