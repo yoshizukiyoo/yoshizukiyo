@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">국민연금</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box box_more first_section">
+					<div class="inner">
+						<ul class="list list1">
+							<li>국민건강보험공단에서 부과하는 반납금,추납보험료 및 연금보험료지원환수금을 납부하실 수 있습니다.</li>
+							<li>국민건강보험공단에서 고지하는 연금보험료는 통합징수보험료 메뉴에서 납부하여야 합니다.</li>
+							<li>반납금,추납보험료의 본인내역 납부 시 주민등록번호(전자납부번호)로 조회하실 수 있으며 ,미납 및 타인내역 납부 시 전자납부번호로 조회하실 수 있습니다.</li>
+							<li>연금보험료지원환수금의 납부 시 전자납부번호로 조회하실 수 있습니다.</li>
+							<li>본인에게 부과된 공과금을 납부할 경우 보안매체(보안카드/OTP)인증과 공동인증서 전자서명을 생략합니다.</li>
+							<li>단, 인터넷뱅킹 간편송금서비스를 해지한 고객은 보안매체 및 인증 절차를 정상적으로 거치게 됩니다.</li>
+							<li>납부기관 장애여부는 [장애기관]버튼을 클릭하시면 확인하실 수 있습니다. <button type="button" class="btn btn_xs btn_default"
+									onclick="openModal('popup01', this)">장애기관</button></li>
+						</ul>
+					</div><button type="button" class="btn btn_more_white">더보기</button>
+				</div>
+
+				<!-- s: 납부방식 선택 -->
+				<div class="section">
+					<div class="tab_menu_type1">
+						<ul>
+							<li><a href="#;" class="current">즉시납부</a></li>
+							<li><a href="#;">예약납부</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- e: 납부방식 선택 -->
+
+				<!-- s: 조회방식 선택 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">조회정보</h3>
+						</div>
+						<div class="txt_right">
+							<span class="necessary">*</span> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="check_list_box">
+						<div class="row_box">
+							<div class="b1" style="width: 200px;">연금보험료 구분 <strong class="necessary">*</strong></div>
+							<div class="b2">
+								<span class="check_item">
+									<input type="radio" name="radioCheck" id="radioCheck1_1">
+									<label for="radioCheck1_1">지역 연금보험료/추납보험료/반납금</label>
+								</span>
+								<span class="check_item">
+									<input type="radio" name="radioCheck" id="radioCheck1_2">
+									<label for="radioCheck1_2">사업장 연금보험료</label>
+								</span>
+							</div>
+						</div>
+						<div class="row_box">
+							<div class="b1" style="width: 200px;">조회정보 구분 <strong class="necessary">*</strong></div>
+							<div class="b2">
+								<span class="check_item">
+									<input type="radio" name="radioCheck2" id="radioCheck2_1">
+									<label for="radioCheck2_1">납부자번호(주민등록번호)</label>
+								</span>
+								<span class="check_item">
+									<input type="radio" name="radioCheck2" id="radioCheck2_2">
+									<label for="radioCheck2_2">전자납부번호</label>
+								</span>
+							</div>
+						</div>
+						<!-- case : 납부자번호(주민등록번호) -->
+						<div class="row_box">
+							<div class="b1" style="width: 200px;">납부자번호(주민등록번호) <strong class="necessary">*</strong></div>
+							<div class="b2">000000-0******</div>
+						</div>
+						<!-- case : 전자납부번호 -->
+						<div class="row_box">
+							<div class="b1" style="width: 200px;">전자납부번호 <strong class="necessary">*</strong></div>
+							<div class="b2"><input type="text" class="tf" style="width: 360px;" title="전자납부번호 입력"
+									placeholder="숫자 14자리" disabled></div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 조회방식 선택 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">조회</a>
+				</div>
+
+				<!-- s: 조회목록 -->
+				<div class="section">
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">국민연금 조회내역 상세안내 이어서(선택, 부과년월, 고지구분, 납기구분, 납부금액(원), 납기기한, 상세보기)</caption>
+							<colgroup>
+								<col style="width: 9%;">
+								<col style="width: 15%;">
+								<col>
+								<col>
+								<col>
+								<col style="width: 15%;">
+								<col style="width: 12%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">선택</th>
+									<th scope="col">부과년월</th>
+									<th scope="col">고지구분</th>
+									<th scope="col">납기구분</th>
+									<th scope="col">납부금액(원)</th>
+									<th scope="col">납기기한</th>
+									<th scope="col">상세보기</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c" colspan="7">조회 결과가 없습니다.</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="txt_c">
+										<span class="check_item single">
+											<input type="radio" name="check1" id="check1_1">
+											<label for="check1_1"><span class="sr_only">해당항목 선택</span></label>
+										</span>
+									</td>
+									<td>2012년 10월</td>
+									<td>당월분</td>
+									<td>정상분</td>
+									<td class="txt_r">500,000</td>
+									<td class="txt_c">2012.11.30</td>
+									<td class="txt_c">
+										<button type="button" class="btn btn_sm btn_default"
+											onclick="openModal('popup02', this)">상세보기</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mt_4 txt_c">
+						<button type="button" class="btn btn_more">더보기</button>
+					</div>
+				</div>
+				<!-- e: 조회목록 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary">납부</a>
+				</div>
+
+				<!-- s: 참고사항 -->
+				<div class="box section">
+					<dl>
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>국민건강보험공단의 연체금 일할계산 납부제도 시행(2016.6.23)으로 건강, 연금보험료 납부 시, 납부기한 경과일수에 따라 고지서 상의 금액과 조회 금액이 다를 수 있습니다.
+								</li>
+								<li>이용가능시간 : 07:00 ~ 23:30 (토 · 일요일, 공휴일 이용 가능)</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- e: 참고사항 -->
+
+				<!-- s: 장애기관 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_body">
+							<h3 class="tit2">현재 이체(납부)거래가 불가능한 장애기관입니다.</h3>
+							<div class="tbl_data tbl_list_data">
+								<table>
+									<caption class="sr_only">장애기관 목록 안내(기관코드, 기관명)</caption>
+									<thead>
+										<tr>
+											<th scope="col">기관코드</th>
+											<th scope="col">기관명</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="2" class="txt_c">현재 장애기관이 없습니다</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('popup01');">닫기</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 장애기관 팝업 -->
+
+				<!-- s: 국민연금 납부 상세보기 popup(ibpipp02bp) -->
+				<div class="modal_popup modal_xxl show" data-popup="popup02">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">국민연금</h2>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">국민연금납부 상세 조회결과 안내(전자납부번호, 납세자, 납부자번호, 부과년월, 납기내/후 구분, 납기내기한, 납기후기한, 납기내금액,
+										납기후금액)
+									</caption>
+									<colgroup>
+										<col style="width: 15%;">
+										<col>
+										<col style="width: 15%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">전자납부번호</th>
+											<td colspan="3">0137110910215001633</td>
+										</tr>
+										<tr>
+											<th scope="row">납세자</th>
+											<td>노현홍</td>
+											<th scope="row">납부자번호</th>
+											<td>6007011869710</td>
+										</tr>
+										<tr>
+											<th scope="row">부과년월[고지구분]</th>
+											<td>2012년 10월[당월분]</td>
+											<th scope="row">납기내/후 구분</th>
+											<td>납기내 기한</td>
+										</tr>
+										<tr>
+											<th scope="row">납기내 기한</th>
+											<td>2021.12.31</td>
+											<th scope="row">납기후 기한</th>
+											<td>2021.12.31</td>
+										</tr>
+										<tr>
+											<th scope="row">납기내 금액</th>
+											<td class="txt_r">40,000원</td>
+											<th scope="row">납기후 금액</th>
+											<td class="txt_r">40,000원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="txt_r mt_4">
+								<button type="button" class="btn btn_xs btn_outline_default"
+									onclick="$.print('.modal_popup[data-popup=popup02]');">화면인쇄</button>
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup02');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 국민연금 납부 상세보기 popup(ibpipp02bp) -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										confirm 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<a href="#;" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>
