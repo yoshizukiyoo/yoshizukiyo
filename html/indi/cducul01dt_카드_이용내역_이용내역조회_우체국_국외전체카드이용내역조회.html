@@ -39,7 +39,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">후불교통/하이패스 이용내역</h2>
+				<h2 class="tit_cont">이용내역조회</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -60,21 +60,21 @@
 				<!-- s: 20211227 (이용내역 v1.01) -->
 				<div class="tab_menu_type1 first_section">
 					<ul>
-						<li><a href="#;">카드이용내역</a></li>
+						<li><a href="#;" class="current" title="선택됨">카드이용내역</a></li>
 						<li><a href="#;">신용승인내역</a></li>
-						<li><a href="#;" class="current" title="선택됨">후불교통/하이패스 이용내역</a></li>
+						<li><a href="#;">후불교통/하이패스 이용내역</a></li>
 					</ul>
 				</div>
 				<!-- e: 20211227 (이용내역 v1.01) -->
 
-				<div class="box first_section">
+				<div class="box section">
 					<ul class="list list1">
-						<li>고객님의 후불교통카드 및 하이패스 이용내역을 확인할 수 있는 서비스입니다.</li>
+						<li>고객님의 카드 승인내역을 확인 할 수 있는 서비스입니다.</li>
 					</ul>
 				</div>
 
 				<div class="section">
-					<div class="tbl_tit">
+					<div class="tbl_tit mt_12">
 						<div class="tit_left">
 							<h3 class="tit1">카드정보</h3>
 						</div>
@@ -90,7 +90,7 @@
 								<tr>
 									<th scope="row">카드번호</th>
 									<td>
-										<div class="selectbox_wrap" style="width: 490px;">
+										<div class="selectbox_wrap" style="width: 492px;">
 											<dl title="조건 선택">
 												<dt><a href="#none"><span>카드를 선택하여 주십시오.</span></a></dt>
 												<dd>
@@ -101,29 +101,63 @@
 												</dd>
 											</dl>
 										</div>
-										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="openModal('layer01', this);">다른카드조회</button>
-										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">국내외구분</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_1" checked>
+											<label for="chk1_1">국내</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_2">
+											<label for="chk1_2">국외</label>
+										</span>
 									</td>
 								</tr>
 								<tr>
 									<th>조회기간</th>
 									<td>
-										<div class="mulit_date_box">
-											<div class="btn_date">
-												<button type="button" class="btn btn_sm btn_default">당일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">당월</button>
-												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
-												<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
-											</div>
-											<div class="datepicker_box">
-												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
-												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
-											</div>
+										<div class="selectbox_wrap">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>2021</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>2021</span></a></li>
+														<li><a href="#none"><span>2021</span></a></li>
+														<li><a href="#none"><span>2021</span></a></li>
+													</ul>
+												</dd>
+											</dl>
 										</div>
+										년
+										<div class="selectbox_wrap ml_3">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>07</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>01</span></a></li>
+														<li><a href="#none"><span>02</span></a></li>
+														<li><a href="#none"><span>03</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										월
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">조회내역결과순서</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="chk2" id="chk2_1" checked>
+											<label for="chk2_1">최근승인일자순</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk2" id="chk2_2">
+											<label for="chk2_2">과거승인일자순</label>
+										</span>
 									</td>
 								</tr>
 							</tbody>
@@ -135,14 +169,10 @@
 				</div>
 
 				<!-- s: 조회 결과 -->
-				<div class="section btm_result_box">
+				<div class="section btm_result_box" style="display:block;">
 					<div class="tbl_tit">
 						<div class="tit_left">
 							<h3 class="tit1">조회결과 요약</h3>
-						</div>
-						<div class="txt_right">
-							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
 					<div class="tbl_data tbl_row_data">
@@ -176,29 +206,43 @@
 						</div>
 						<div class="tbl_data tbl_list_data">
 							<table>
-								<caption class="sr_only">이용내역 표로 이용일자, 승차시간, 하차시간, 이용금액, 결제일자, 승차, 하차 정보 제공</caption>
+								<caption class="sr_only">이용내역 표로 승인일자, 승인시간, 승인금액, 사용포인트, 승인번호, 가맹점명, 매출구분, 승인구분, 불능사유 정보 제공</caption>
+								<colgroup>
+									<col style="width: 10%;">
+									<col style="width: 10%;">
+									<col>
+									<col>
+									<col>
+									<col>
+									<col style="width: 18%;">
+									<col style="width: 8%;">
+									<col style="width: 8%;">
+									<col style="width: 8%;">
+								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col">이용일자</th>
-										<th scope="col">승차시간</th>
-										<th scope="col">하차시간</th>
-										<th scope="col">이용금액</th>
-										<th scope="col">결제일자</th>
-										<th scope="col">승차</th>
-										<th scope="col">하차</th>
+										<th scope="col">승인일자</th>
+										<th scope="col">승인시간</th>
+										<th scope="col">카드명</th>
+										<th scope="col">승인금액</th>
+										<th scope="col">원화금액</th>
+										<th scope="col">승인번호</th>
+										<th scope="col">가맹점명</th>
+										<th scope="col">매출구분</th>
+										<th scope="col">승인구분</th>
+										<th scope="col">불능사유</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="7" class="txt_c">
-											해당내역이 존재하지 않습니다.
-										</td>
+										<td colspan="10" class="txt_c">해당내역이 존재하지 않습니다.</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
 					<div class="mt_4 txt_r">
+						<button type="button" class="btn btn_sm btn_outline_default">엑셀저장</button>
 						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 					</div>
 				</div>
