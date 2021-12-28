@@ -23,9 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').on('click', function () {
-				$('.btm_result_box').show();
-			})
+
 		});
 	</script>
 </head>
@@ -39,137 +37,201 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">예약 대량이체 조회/취소</h2>
-
-				<button type="button" class="btn btn_favorite">
-					<i class="ico ico_star_gray"></i>
-					<span class="sr_only">마이메뉴 등록</span>
-				</button>
-				<!--
-				<button type="button" class="btn btn_favorite">
-					<i class="ico ico_star_primary"></i>
-					<span class="sr_only">마이메뉴 해제</span>
-				</button>
-				-->
+				<h2 class="tit_cont">그룹이체</h2>
 				<!-- e: 본문 헤더 -->
 			</div>
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
+
 				<div class="cont_header_right">
 					<ul class="step">
-						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
-						<li><span class="num">2</span><span class="txt">입력확인</span></li>
-						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+						<li><span class="num">1</span><span class="txt">그룹선택</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li><span class="num">4</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<div class="box first_section">
+				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>고객명 고객님의 예약 대량이체 내역 조회 및 취소를 할 수 있는 서비스입니다.</li>
+						<li>계좌정보와 이체하고자 하는 내용을 각 항목에 맞게 입력하신 후 이체실행 버튼을 눌러주세요.</li>
 					</ul>
 				</div>
 
-				<!-- s: 조회정보 -->
+				<!-- s: 출금정보 -->
 				<div class="section">
+					<!-- SB v1.0 수정 / 테이블 타이틀 추가 -->
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">조회정보</h3>
+							<h3 class="tit1">출금정보</h3>
 						</div>
-					</div>
-					<div class="tbl_row2">
-						<table>
-							<caption class="sr_only">예약대량이체 조회를 위한 계좌선택표</caption>
-							<colgroup>
-								<col style="width: 17%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">계좌번호
-										<span class="necessary">*</span>
-									</th>
-									<td>
-										[우체국]2040 +a 저축예금 xxxxxxxxxx[별칭전체]
-										<div class="btn_inline_box">
-											<button type="button" class="btn btn_md btn_outline_default"
-												onclick="openModal('popup01', this)">전체계좌조회</button>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- e: 조회정보 -->
-
-				<div class="btn_data_search">
-					<button type="button" class="btn btn_xl btn_primary btn_result">조회</button>
-				</div>
-
-				<!-- s: 조회결과 -->
-				<div class="btm_result_box section">
-					<div class="tbl_tit">
 						<div class="txt_right">
-							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
 						</div>
 					</div>
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_data tbl_list_data tbl_payment">
 						<table>
-							<caption class="sr_only">예약대량이체 조회결과 안내(출금계좌번호, 조회기간)</caption>
-							<colgroup>
-								<col style="width: 15%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">출금계좌번호</th>
-									<td>010017-01-023296</td>
-								</tr>
-								<tr>
-									<th scope="row">조회기간</th>
-									<td>2021.06.09 ~ 2021.06.19</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_list_data mt_4">
-						<table>
-							<caption class="sr_only">예약대량이체 조회결과 안내 이어서(등록일, 작업구분, 예약구분, 이체(예정)일, 총 이체금액, 총 건수, 진행상태, 업무)</caption>
+							<caption class="sr_only">출금정보 상세내용이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
+								제공하고 있습니다.</caption>
 							<colgroup>
 								<col>
-								<col>
-								<col>
-								<col style="width: 15%;">
-								<col style="width: 16%;">
-								<col>
-								<col>
-								<col>
+								<col style="width: 14%">
+								<col style="width: 15%">
+								<col style="width: 15%">
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">등록일</th>
-									<th scope="col">작업구분</th>
-									<th scope="col">예약구분</th>
-									<th scope="col">이체(예정)일</th>
-									<th scope="col">총 이체금액(원)</th>
-									<th scope="col">총 건수</th>
-									<th scope="col">진행상태</th>
-									<th scope="col">업무</th>
+									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">출금가능금액(원)</th>
+									<th scope="col">1일 송금가능금액(원)</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td colspan="8" class="txt_c">조회기간에 해당내역이 존재하지 않습니다.</td>
+									<td>
+										<div class="fx_lr fx_align_center">
+											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
+												onclick="openModal('popup01', this);">전체계좌조회</button>
+										</div>
+									</td>
+									<td class="txt_r">3,100,000</td>
+									<td class="txt_r">100,000</td>
+									<td class="txt_r">10,000,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">이체금액 입력 폼이며 이체금액(원)을 입력하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 16%;">
+								<col>
+								<col style="width: 16%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										계좌비밀번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td colspan="3">
+										<input type="password" class="tf" style="width: 200px;" title="계좌비밀번호 입력">
+										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										이체구분
+										<strong class="necessary">*</strong>
+									</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_1" checked>
+											<label for="chk1_1">즉시이체</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_2">
+											<label for="chk1_2">예약이체</label>
+										</span>
+									</td>
+								</tr>
+								<!-- 20211228 SB v1.0 수정 / 즉시, 예약 페이지 분리에따른 예약이체 입력폼 삭제 -->
+								<tr>
+									<!-- s: 20211228 SB v1.0 수정 / 출입금 계좌표시 2열로 변경 -->
+									<th scope="row">출금계좌표시</th>
+									<td>
+										<input type="text" class="tf" style="width: 200px;" title="출금계좌 입력" value="홍길동">
+									</td>
+									<th scope="row">입금계좌표시</th>
+									<td>
+										<input type="text" class="tf" style="width: 200px;" title="입금계좌 입력" value="나봄미">
+									</td>
+									<!-- e: 20211228 SB v1.0 수정 / 출입금 계좌표시 2열로 변경 -->
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- e: 조회결과 -->
+				<!-- e: 출금정보 -->
 
-				<!-- s: 전체계좌목록 팝업 -->
+				<!-- s: 그룹정보 -->
+				<div class="section">
+					<h3 class="tit1">입금정보</h3>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">그룹정보 목록이며 번호, 입금은행, 입금계좌번호, 입금계좌 예금주, 이체금액(원), 삭제 정보를 제고하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 6%;">
+								<col style="width: 16%;">
+								<col style="width: 22%;">
+								<col style="width: 21%;">
+								<col style="width: 26%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">입금은행</th>
+									<th scope="col">입금계좌번호</th>
+									<th scope="col">입금계좌 예금주</th>
+									<th scope="col">이체금액(원)</th>
+									<th scope="col">삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td>기업</td>
+									<td>24502340200104</td>
+									<td>선창최고 눈문동</td>
+									<td><input type="text" value="40,000" class="tf txt_r" style="width: 100%;"></td>
+									<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">삭제</button></td>
+								</tr>
+								<tr>
+									<td class="txt_c">1</td>
+									<td>기업</td>
+									<td>24502340200104</td>
+									<td>선창최고 눈문동</td>
+									<td><input type="text" value="40,000" class="tf txt_r" style="width: 100%;"></td>
+									<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">삭제</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 그룹정보 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="이체_자금이체_그룹이체_그룹이체등록_03.입력확인.html" class="btn btn_xl btn_primary">이체실행</a>
+				</div>
+
+				<!-- s: 참고사항 -->
+				<!-- 20211228 SB v1.0 수정 / 참고사항 박스 위치 변경 -->
+				<div class="section">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>
+									이체가능시간
+									<ul class="list list3">
+										<li>당행(우체국) : 24시간(04:00 ~ 05:00 제외)</li>
+										<li>타은행: 24시간(04:00 ~ 05:00, 23:50 ~ 익일 00:10 제외)</li>
+									</ul>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- e: 참고사항 -->
+
+				<!-- s: 전체계좌조회 팝업 -->
 				<div class="modal_popup modal_xxl hide" data-popup="popup01">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
@@ -279,14 +341,14 @@
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 전체계좌목록 팝업 -->
+				<!-- e: 전체계좌조회 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
-							<h2 class="popup_tit">안내</h2>
+							<h3 class="popup_tit">안내</h3>
 						</div>
 						<div class="popup_body">
 							<div class="alert_cont">
@@ -318,7 +380,7 @@
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
-							<h2 class="popup_tit">확인</h2>
+							<h3 class="popup_tit">확인</h3>
 						</div>
 						<div class="popup_body">
 							<div class="alert_cont">
