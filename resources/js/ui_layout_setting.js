@@ -512,15 +512,18 @@ $(document).on("click", ".lookup_container .btn_unfold", function () {
 
 $(document).on("click", ".quick_icon_menu li", function () {
 	var unfold = $('.lookup_container .lookup_list');
-	var quickmenu = $('.quick_icon_menu li').eq(1).children('a');
+	var unfoldBtn = $('.lookup_container .btn_unfold');
+	var quickmenu = $('.quick_icon_menu li');
 	$(this).toggleClass('on');
-	$(this).parents('.wrapper').children('.lookup_list').toggleClass('on');
-	if (quickmenu.hasClass('on') == quickmenu.hasClass('on')) {
-		$(unfold).addClass('on')
+
+	if (quickmenu.hasClass('on')) {
+		unfoldBtn.addClass('on');
+		unfold.addClass('on');
 		$('.lookup_container .btn_unfold').attr('title', '접기');
 		$('.lookup_container .btn_unfold span').text('접기');
-	} else if (quickmenu.hasClass('on') == quickmenu.hasClass('on'), false) {
-		$(unfold).removeClass('on')
+	} else {
+		unfoldBtn.removeClass('on');
+		unfold.removeClass('on');
 		$('.lookup_container .btn_unfold span').text('펼침');
 		$('.lookup_container .btn_unfold').attr('title', '펼침');
 	}
