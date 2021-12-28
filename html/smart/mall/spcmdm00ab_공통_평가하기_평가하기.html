@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-inc="_inc_header_untact.html" data-page-title="상품정보"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<div class="mb_1">
+					<a href="#;" class="btn btn_md btn_primary" onclick="openModal('alert01', this); return false;">
+						평가하기
+					</a>
+				</div>
+
+				<!-- s: 평가하기 팝업 -->
+				<div class="modal_popup modal_alert show" data-popup="alert01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header popup_h">
+							<h2 class="popup_tit">평가하기</h2>
+						</div>
+						<div class="popup_body pb_6">
+							<div class="star_rating star_rating_mob">
+								<div class="rating_num txt_normal">10</div>
+								<div class="star">
+									<div class="star_on"><span></span></div>
+									<input type="range" oninput="drawStar(this)" onchange="drawStar(this)" value="100" step="1" min="1"
+										max="10">
+								</div>
+								<p class="txt_c txt_darkgray txt_sm txt_normal mt_3 mb_3">좌우로 드래그해주세요.</p>
+								<textarea title="평가 의견 작성" placeholder="고객님의 솔직한 평가 의견를 남겨 주세요."></textarea>
+								<p class="txt_gray pr_4 txt_sm txt_r">12/200</p>
+								<script>
+									// 별점 주기
+									function drawStar(obj) {
+										var value = obj.value * 10;
+										$('.rating_num').text(value.toString().slice(0, -1));
+										if (value == '10') {
+											$('.star_on > span').css('width', 12.5);
+										} else if (value == '20') {
+											$('.star_on > span').css('width', 31.2);
+										} else if (value == '30') {
+											$('.star_on > span').css('width', 45.2);
+										} else if (value == '40') {
+											$('.star_on > span').css('width', 62.4);
+										} else if (value == '50') {
+											$('.star_on > span').css('width', 78);
+										} else if (value == '60') {
+											$('.star_on > span').css('width', 93.6);
+										} else if (value == '70') {
+											$('.star_on > span').css('width', 110.5);
+										} else if (value == '80') {
+											$('.star_on > span').css('width', 124.8);
+										} else if (value == '90') {
+											$('.star_on > span').css('width', 143.8);
+										} else if (value == '100') {
+											$('.star_on > span').css('width', 156);
+										}
+									}
+								</script>
+							</div>
+						</div>
+						<div class="popup_footer">
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_default" onclick="closeModal('alert01');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert01');">저장</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 평가하기 팝업  -->
+			</div>
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
