@@ -495,3 +495,33 @@ $(document).on('mousedown', function (e) {
 // 	});
 // }
 // resizeApply();
+
+// 헤더 간편조회서비스
+$(document).on("click", ".lookup_container .btn_unfold", function () {
+	var unfold = $('.lookup_container .lookup_list');
+	$(this).toggleClass('on');
+	$(this).parents('.lookup_container').find(unfold).toggleClass('on');
+	if (unfold.hasClass('on') == true) {
+		$('.lookup_container .btn_unfold').attr('title', '접기');
+		$('.lookup_container .btn_unfold span').text('접기');
+	} else {
+		$('.lookup_container .btn_unfold span').text('펼침');
+		$('.lookup_container .btn_unfold').attr('title', '펼침');
+	}
+});
+
+$(document).on("click", ".quick_icon_menu li", function () {
+	var unfold = $('.lookup_container .lookup_list');
+	var quickmenu = $('.quick_icon_menu li').eq(1).children('a');
+	$(this).toggleClass('on');
+	$(this).parents('.wrapper').children('.lookup_list').toggleClass('on');
+	if (quickmenu.hasClass('on') == quickmenu.hasClass('on')) {
+		$(unfold).addClass('on')
+		$('.lookup_container .btn_unfold').attr('title', '접기');
+		$('.lookup_container .btn_unfold span').text('접기');
+	} else if (quickmenu.hasClass('on') == quickmenu.hasClass('on'), false) {
+		$(unfold).removeClass('on')
+		$('.lookup_container .btn_unfold span').text('펼침');
+		$('.lookup_container .btn_unfold').attr('title', '펼침');
+	}
+});
