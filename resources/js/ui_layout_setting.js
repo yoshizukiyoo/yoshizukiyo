@@ -9,7 +9,7 @@ $(function () {
 	var headerInc = $('.header').data('inc');
 	if (headerInc == undefined) {
 		$('.header').load('/html/_inc-header.html .header > *', function () {
-			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+			if ($.isFunction(window.lookupSetting)) lookupSetting();
 		});
 	} else if (headerInc != undefined) {
 		$('.header').load('/html/_inc-mall-header.html .header > *', function () {
@@ -496,35 +496,21 @@ $(document).on('mousedown', function (e) {
 // }
 // resizeApply();
 
-// 헤더 간편조회서비스
-$(document).on("click", ".lookup_container .btn_unfold", function () {
-	var unfold = $('.lookup_container .lookup_list');
-	$(this).toggleClass('on');
-	$(this).parents('.lookup_container').find(unfold).toggleClass('on');
-	if (unfold.hasClass('on') == true) {
-		$('.lookup_container .btn_unfold').attr('title', '접기');
-		$('.lookup_container .btn_unfold span').text('접기');
-	} else {
-		$('.lookup_container .btn_unfold span').text('펼침');
-		$('.lookup_container .btn_unfold').attr('title', '펼침');
-	}
+// 헤더 간편조회 서비스
+$(function () {
+	lookupSetting();
 });
 
-$(document).on("click", ".quick_icon_menu li", function () {
-	var unfold = $('.lookup_container .lookup_list');
-	var unfoldBtn = $('.lookup_container .btn_unfold');
-	var quickmenu = $('.quick_icon_menu li');
-	$(this).toggleClass('on');
-
-	if (quickmenu.hasClass('on')) {
-		unfoldBtn.addClass('on');
-		unfold.addClass('on');
-		$('.lookup_container .btn_unfold').attr('title', '접기');
-		$('.lookup_container .btn_unfold span').text('접기');
-	} else {
-		unfoldBtn.removeClass('on');
-		unfold.removeClass('on');
-		$('.lookup_container .btn_unfold span').text('펼침');
-		$('.lookup_container .btn_unfold').attr('title', '펼침');
+function lookupSetting() {
+	if ($('.lookup_container').length) {
+		$('#content').css('padding-top', $('.lookup_container').height());
 	}
-});
+}
+
+function toggleLookup() {
+	var $btn = $('.lookup_container .btn_unfold');
+
+	$('.lookup_list').toggleClass('on');
+	$btn.toggleClass('on').children('span').text($('span', $btn).text() == '펼침' ? "접기" : "펼침");
+	$('#content').css('padding-top', $('.lookup_container').height());
+}
