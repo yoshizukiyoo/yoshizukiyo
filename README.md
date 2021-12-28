@@ -5,6 +5,9 @@
 - 퍼블리싱팀 파일 공유용 구글드라이브 : https://drive.google.com/drive/folders/1e5NJ5CQ3C1jNKhGjJTVgU2kg1lJrNol2?usp=sharing
 수정사항 스토리보드 업로드 폴더 : https://drive.google.com/drive/folders/1oz2IWU8Fuiw0W-2Zt2MTM3kmZ4DhV3ki?usp=sharing
 - 퍼블리싱팀 공통 컴포넌트 가이드 
+    - 채널통합(cea)
+> http://cea.epost.inseq.co.kr:7789/html/internet/index.html
+http://cea.epost.inseq.co.kr:7789/html/smart/index.html
     - 인터넷뱅킹(deposit) : http://ceb.epost.inseq.co.kr:7789/html/index.html
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
     - 스마트뱅킹(smart-deposit) : http://ced.epost.inseq.co.kr:7789/html/index.html
@@ -67,8 +70,9 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 - 스마트(모바일) 공통 : smart-master (퍼블리싱 PL 승인외 수정 금지)
 스마트뱅킹 : smart-deposit
 스마트보험 : smart-insurance
+- 채널통합 : cea (하위에 인뱅스뱅 모두 존재)
 - 팀원별 임시 브랜치 생성시 네이밍 규칙
-> 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach
+> 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach, 채널통합 a/sub-branch
 단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
 
 ### 퍼블리셔 팀 협업 가이드
