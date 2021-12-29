@@ -1458,6 +1458,14 @@
 			background-image: url(#{$url-img-content}/ico_mypage_coupon.png);
 		}
 	}
+
+	&.bg_point {
+		&::before {
+			width: 31px;
+			height: 32px;
+			background-image: url(#{$url-img-content}/ico_mypage_point.png);
+		}
+	}
 }
 
 .my_account_list {
@@ -1693,6 +1701,23 @@
 .coupon_check {
 	margin: 20px 0;
 
+	&.point_check {
+		>ul {
+			flex-wrap: wrap;
+			margin-bottom: -10px;
+
+			>li {
+				width: calc(50% - 10px);
+				flex: auto;
+				margin-bottom: 10px;
+
+				&:nth-child(2n) {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
 	>ul {
 		display: flex;
 
@@ -1715,26 +1740,46 @@
 			&:not(:last-child) {
 				margin-right: 10px;
 			}
-
-			&:nth-child(1) {
-				background-image: url(#{$url-img-content}/ico_coupon_check1.png);
-				background-size: 31px;
-			}
-
-			&:nth-child(2) {
-				background-image: url(#{$url-img-content}/ico_coupon_check2.png);
-				background-size: 31px;
-			}
-
-			&:nth-child(3) {
-				background-image: url(#{$url-img-content}/ico_coupon_check3.png);
-				background-size: 31px;
-			}
 		}
+	}
+
+	.bg_cp1 {
+		background-image: url(#{$url-img-content}/ico_coupon_check1.png);
+		background-size: 31px;
+	}
+
+	.bg_cp2 {
+		background-image: url(#{$url-img-content}/ico_coupon_check2.png);
+		background-size: 31px;
+	}
+
+	.bg_cp3 {
+		background-image: url(#{$url-img-content}/ico_coupon_check3.png);
+		background-size: 31px;
+	}
+
+	.bg_point1 {
+		background-image: url(#{$url-img-content}/ico_point_check1.png);
+		background-size: 37px;
+	}
+
+	.bg_point2 {
+		background-image: url(#{$url-img-content}/ico_point_check2.png);
+		background-size: 37px;
+	}
+
+	.bg_point3 {
+		background-image: url(#{$url-img-content}/ico_point_check3.png);
+		background-size: 34px;
+	}
+
+	.bg_point4 {
+		background-image: url(#{$url-img-content}/ico_point_check4.png);
+		background-size: 33px;
 	}
 }
 
-.mypg_coupon_list {
+.mypg_toggle_list {
 	>ul {
 		>li {
 			border-bottom: 1px solid #ddd;
@@ -1808,7 +1853,9 @@
 .my_coupon {
 	display: flex;
 	position: relative;
+	width: 318px;
 	height: 145px;
+	margin: 0 auto;
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	background-size: 100%;
@@ -1846,4 +1893,28 @@
 		left: 37px;
 		top: 50px;
 	}
+}
+
+.coupon_info {
+	padding: 3px 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+
+	>div {
+		padding: 16px 0;
+
+		&:not(:first-child) {
+			border-top: 1px solid #ddd;
+		}
+	}
+}
+
+.blind {
+	position: absolute;
+	left: -1000%;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	color: transparent;
 }
