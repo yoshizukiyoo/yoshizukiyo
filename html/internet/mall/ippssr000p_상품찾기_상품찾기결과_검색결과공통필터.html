@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">예금상품</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="pt_4">
+					<button type="button" onclick="openModal('layer01', this);return false;"
+						class="btn btn_md btn_outline_darkgray txt_default ml6">
+						<i class="ico ico_list_filter mr_1"></i>상품필터
+					</button>
+				</div>
+
+
+				<!-- s: 검색결과 공통 필터 팝업 -->
+				<div class="modal_popup modal_sm show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">상품 필터</h2>
+						</div>
+						<div class="popup_body">
+							<div class="txt_gray ml_2"><i class="ico ico_list_filter mr_2"></i> 상품 목록을 내가 원하는 조건으로 필터링해서 확인할 수 있어요.
+							</div>
+							<div class="tbl_scroll_y mt_4">
+								<div class="box bg_lightgray border0 p_4">
+									<h3 class="tit2 mt_0 mb_2 pl_2">상품종류</h3>
+									<div class="filter_chk">
+										<span class="chk_item">
+											<input type="checkbox" name="chk1-1" id="chk1-1" class="sr_only" checked>
+											<label for="chk1-1">입출금</label>
+										</span>
+										<span class="chk_item">
+											<input type="checkbox" name="chk1-2" id="chk1-2" class="sr_only">
+											<label for="chk1-2">예금</label>
+										</span>
+										<span class="chk_item">
+											<input type="checkbox" name="chk1-3" id="chk1-3" class="sr_only">
+											<label for="chk1-3">적금</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk1-4" id="chk1-4" class="sr_only">
+											<label for="chk1-4">펀드</label>
+										</span>
+										<span class="chk_item">
+											<input type="checkbox" name="chk1-5" id="chk1-5" class="sr_only">
+											<label for="chk1-5">카드</label>
+										</span>
+										<span class="chk_item">
+											<input type="checkbox" name="chk1-6" id="chk1-6" class="sr_only">
+											<label for="chk1-6">보험</label>
+										</span>
+									</div>
+								</div>
+								<div class="box bg_lightgray border0 p_4 mt_4">
+									<h3 class="tit2 mt_0 mb_2 pl_2">가입대상</h3>
+									<div class="filter_chk">
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk2-1" id="chk2-1" class="sr_only" checked>
+											<label for="chk2-1">개인</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk2-2" id="chk2-2" class="sr_only">
+											<label for="chk2-2">기업</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk2-3" id="chk2-3" class="sr_only">
+											<label for="chk2-3">개인사업자</label>
+										</span>
+									</div>
+								</div>
+								<div class="box bg_lightgray border0 p_4 mt_4">
+									<h3 class="tit2 mt_0 mb_2 pl_2">평점</h3>
+									<div class="filter_chk">
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk3-1" id="chk3-1" class="sr_only" checked>
+											<label for="chk3-1">1점</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk3-2" id="chk3-2" class="sr_only">
+											<label for="chk3-2">2점 이상</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk3-3" id="chk3-3" class="sr_only">
+											<label for="chk3-3">3점 이상</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk3-4" id="chk3-4" class="sr_only">
+											<label for="chk3-4">4점 이상</label>
+										</span>
+										<span class="chk_item">
+											<input type="checkbox" name="chk3-5" id="chk3-5" class="sr_only">
+											<label for="chk3-5">5점</label>
+										</span>
+									</div>
+								</div>
+								<div class="box bg_lightgray border0 p_4 mt_4">
+									<h3 class="tit2 mt_0 mb_2 pl_2">이벤트</h3>
+									<div class="filter_chk">
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk4-1" id="chk4-1" class="sr_only" checked>
+											<label for="chk4-1">이벤트캐시</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk4-2" id="chk4-2" class="sr_only">
+											<label for="chk4-2">쿠폰</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk4-3" id="chk4-3" class="sr_only">
+											<label for="chk4-3">포인트</label>
+										</span>
+										<span class="chk_item">
+											<input type="checkbox" name="chk4-4" id="chk4-4" class="sr_only">
+											<label for="chk4-4">사은품</label>
+										</span>
+									</div>
+								</div>
+								<div class="box bg_lightgray border0 p_4 mt_4">
+									<h3 class="tit2 mt_0 mb_2 pl_2">가입 채널</h3>
+									<div class="filter_chk">
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk5-1" id="chk5-1" class="sr_only" checked>
+											<label for="chk5-1">우체국창구</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk5-2" id="chk5-2" class="sr_only">
+											<label for="chk5-2">인터넷뱅킹</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="checkbox" name="chk5-3" id="chk5-3" class="sr_only">
+											<label for="chk5-3">스마트뱅킹</label>
+										</span>
+									</div>
+								</div>
+								<div class="box bg_lightgray border0 p_4 mt_4">
+									<h3 class="tit2 mt_0 mb_2 pl_2">정렬</h3>
+									<div class="filter_chk">
+										<span class="chk_item mt_0">
+											<input type="radio" name="chk6" id="chk6-1" class="sr_only" checked>
+											<label for="chk6-1">상품명순</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="radio" name="chk6" id="chk6-2" class="sr_only">
+											<label for="chk6-2">출시순</label>
+										</span>
+										<span class="chk_item mt_0">
+											<input type="radio" name="chk6" id="chk6-3" class="sr_only">
+											<label for="chk6-3">판매량순</label>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="reset" class="btn btn_lg btn_outline_default">선택초기화</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">상품보기
+									<span class="num_circle txt_sm v_mid ml_1 txt_normal">41</span>
+								</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 검색결과 공통 필터 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

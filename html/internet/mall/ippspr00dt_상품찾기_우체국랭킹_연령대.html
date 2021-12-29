@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">우체국랭킹</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="tab_menu_type1 first_section">
+					<ul>
+						<li><a href="#;">판매량</a></li>
+						<li><a href="#;">관심설정</a></li>
+						<li><a href="#;">평점</a></li>
+						<li><a href="#;" class="current" title="선택됨">연령대</a></li>
+					</ul>
+				</div>
+
+				<!-- s: 상단 버튼 영역 -->
+				<div class="section mt_8">
+					<h3 class="sr_only">연령대</h3>
+					<div class="acco_list">
+						<div class="top flex_box pb_5">
+							<div class="l">
+								<div class="selectbox_wrap" style="width: 120px;">
+									<dl>
+										<dt><a href="#none" title="연령대 선택"><span class=" mr_3 txt_gray02">20대</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span class="mr_3 txt_gray02">10대 이하</span></a></li>
+												<li><a href="#none"><span class="mr_3 txt_gray02">30대</span></a></li>
+												<li><a href="#none"><span class="mr_3 txt_gray02">40대</span></a></li>
+												<li><a href="#none"><span class="mr_3 txt_gray02">50대</span></a></li>
+												<li><a href="#none"><span class="mr_3 txt_gray02">60대</span></a></li>
+												<li><a href="#none"><span class="mr_3 txt_gray02">70대 이상</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<button type="button" class="btn btn_md btn_outline_default txt_gray ml_1 pl_2 pr_2"
+									style="min-width: 69px;">
+									적용
+								</button>
+							</div>
+							<div class="r flex_box">
+								<ul class="btn_product_btm fun_item ml_0">
+									<li>
+										<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+										<a href="#;" class="btn_produt_like"><span class="sr_only">좋아요</span></a>
+									</li>
+									<li>
+										<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+										<a href="#;" class="btn_produt_cart ml_1"><span class="sr_only">장바구니</span></a>
+									</li>
+									<li>
+										<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+										<a href="#;" class="btn_produt_share ml_1"><span class="sr_only">상품 공유하기</span></a>
+									</li>
+								</ul>
+								<button type="button" class="btn btn_md btn_outline_darkgray txt_default ml_2 pl_8 pr_8"
+									style="width: 130px;">
+									상담하기
+								</button>
+								<button type="button" class="btn btn_md btn_outline_darkgray txt_default ml_1 pl_8 pr_8"
+									style="width: 130px;">
+									가입하기
+								</button>
+								<button type="button" class="btn btn_md btn_primary txt_default ml_1 pl_2 pr_2" style="width: 140px;">
+									<i class="ico ico_cart_compare mr_1"></i>
+									비교하기
+									<span class="num_circle txt_sm v_mid ml_1 txt_normal">2</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<!-- e: 상단 버튼 영역 -->
+
+					<!-- s: 판매량 table -->
+					<div class="section mt_0">
+						<div class="tbl_data tbl_ico_mix">
+							<table>
+								<caption class="sr_only">연령대별 랭킹</caption>
+								<colgroup>
+									<col style="width: 10%">
+									<col style="width: 22.5%;">
+									<col style="width: 22.5%;">
+									<col style="width: 22.5%;">
+									<col style="width: 22.5%;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">순위</th>
+										<th scope="col">
+											<ul>
+												<li>예금</li>
+												<li><img src="/resources/img/content/ico_search1.png" alt=""></li>
+											</ul>
+										</th>
+										<th scope="col">
+											<ul>
+												<li>카드</li>
+												<li><img src="/resources/img/content/ico_search2.png" alt=""></li>
+											</ul>
+										</th>
+										<th scope="col">
+											<ul>
+												<li>펀드</li>
+												<li><img src="/resources/img/content/ico_search3.png" alt=""></li>
+											</ul>
+										</th>
+										<th scope="col">
+											<ul>
+												<li>보험</li>
+												<li><img src="/resources/img/content/ico_search4.png" alt=""></li>
+											</ul>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="v_top">
+										<th scope="row" class="v_mid">1</th>
+										<td class="p_4 pb_4 pt_10">
+											<span class="check_item square">
+												<input type="checkbox" name="Check1_1" id="Check1_1" checked>
+												<label for="Check1_1">우체국 매일모아 e적금</label>
+											</span>
+										</td>
+										<td class="p_4 pb_4 pt_10">
+											<span class="check_item square">
+												<input type="checkbox" name="Check1_2" id="Check1_2">
+												<label for="Check1_2" class="flex_box">우체국 어디서나 하이브리드 체크카드(VISA)</label>
+											</span>
+										</td>
+										<td class="p_4 pb_4 pt_10">
+											<span class="check_item square">
+												<input type="checkbox" name="Check1_3" id="Check1_3">
+												<label for="Check1_3">삼성MMF법인 제1호</label>
+											</span>
+										</td>
+										<td class="p_4 pb_4 pt_10">
+											<span class="check_item square">
+												<input type="checkbox" name="Check1_4" id="Check1_4">
+												<label for="Check1_4">무배당에버리치상해보험2007</label>
+											</span>
+										</td>
+									</tr>
+									<tr class="v_top">
+										<th scope="row" class="v_mid rank_type">2</th>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check2_1" id="Check2_1">
+												<label for="Check2_1">보통/저축예금</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check2_2" id="Check2_2">
+												<label for="Check2_2" class="flex_box">우체국 多Dream 하이브리드 체크카드(MASTER)</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check2_3" id="Check2_3">
+												<label for="Check2_3" class="flex_box">한국투자크레딧포커스ESG 증권투자신탁1호(채권)C</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check2_4" id="Check2_4">
+												<label for="Check2_4">무배당우체국연금보험 2007</label>
+											</span>
+										</td>
+									</tr>
+									<tr class="v_top">
+										<th scope="row" class="v_mid rank_type">3</th>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check3_1" id="Check3_1" checked>
+												<label for="Check3_1">e-Postbank예금</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check3_2" id="Check3_2">
+												<label for="Check3_2" class="flex_box">우체국 go캐시백 글로벌 체크카드(Master)</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_2 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check3_3" id="Check3_3">
+												<label for="Check3_3" class="flex_box">흥국공모주로우볼채움플러스 증권투자신탁1호(채권혼합)Ae</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check3_4" id="Check3_4">
+												<label for="Check3_4">우체국안전벨트보험 2007</label>
+											</span>
+										</td>
+									</tr>
+									<tr class="v_top">
+										<th scope="row" class="v_mid rank_type">20</th>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check4_1" id="Check4_1">
+												<label for="Check4_1">2040+&alpha;정기예금</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check4_2" id="Check4_2">
+												<label for="Check4_2">우체국 Young利한 체크카드</label>
+											</span>
+
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check4_3" id="Check4_3">
+												<label for="Check4_3" class="flex_box">신한BEST국공채개인용 MMF5호[국공채]C1</label>
+											</span>
+										</td>
+										<td class="pl_4 pr_4 pb_5 pt_8">
+											<span class="check_item square">
+												<input type="checkbox" name="Check4_4" id="Check4_4">
+												<label for="Check4_4">무배당만원의행복보험 2007</label>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- e: 판매량 table -->
+
+					<!-- s: 하단 버튼 영역 -->
+					<div class="section mt_4">
+						<div class="acco_list acco_list2">
+							<div class="top flex_box pb_4">
+								<div class="l">
+									<div class="selectbox_wrap" style="width: 120px;">
+										<dl>
+											<dt><a href="#none" title="연령대 선택"><span class=" mr_3 txt_gray02">20대</span></a></dt>
+											<dd>
+												<ul>
+													<li><a href="#none"><span class="mr_3 txt_gray02">10대 이하</span></a></li>
+													<li><a href="#none"><span class="mr_3 txt_gray02">30대</span></a></li>
+													<li><a href="#none"><span class="mr_3 txt_gray02">40대</span></a></li>
+													<li><a href="#none"><span class="mr_3 txt_gray02">50대</span></a></li>
+													<li><a href="#none"><span class="mr_3 txt_gray02">60대</span></a></li>
+													<li><a href="#none"><span class="mr_3 txt_gray02">70대 이상</span></a></li>
+												</ul>
+											</dd>
+										</dl>
+									</div>
+									<button type="button" class="btn btn_md btn_outline_default txt_gray ml_1 pl_2 pr_2"
+										style="min-width: 69px;">
+										적용
+									</button>
+								</div>
+								<div class="r flex_box">
+									<ul class="btn_product_btm fun_item ml_0">
+										<li>
+											<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+											<a href="#;" class="btn_produt_like"><span class="sr_only">좋아요</span></a>
+										</li>
+										<li>
+											<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+											<a href="#;" class="btn_produt_cart ml_1"><span class="sr_only">장바구니</span></a>
+										</li>
+										<li>
+											<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+											<a href="#;" class="btn_produt_share ml_1"><span class="sr_only">상품 공유하기</span></a>
+										</li>
+									</ul>
+									<button type="button" class="btn btn_md btn_outline_darkgray txt_default ml_2 pl_8 pr_8"
+										style="width: 130px;">
+										상담하기
+									</button>
+									<button type="button" class="btn btn_md btn_outline_darkgray txt_default ml_1 pl_8 pr_8"
+										style="width: 130px;">
+										가입하기
+									</button>
+									<button type="button" class="btn btn_md btn_gray02 ml_1 pl_2 pr_2" style="width:140px;">
+										<i class="ico ico_cart_compare mr_1"></i>
+										비교하기
+										<span class="num_circle txt_sm v_mid ml_1 txt_normal">1</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 하단 버튼 영역 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
