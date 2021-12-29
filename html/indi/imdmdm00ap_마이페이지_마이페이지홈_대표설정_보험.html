@@ -22,9 +22,17 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			// 이곳에 정의
-		});
+		$(document).ready(function(){
+			$('.account_arr').click(function () {
+				var tit = $(this).attr('title');
+				$(this).parents('.account_tab').toggleClass('active');
+				if (tit == '그룹 접기') {
+					$(this).attr('title', '그룹 펼치기');
+				} else if (tit == '그룹 펼치기') {
+					$(this).attr('title', '그룹 접기');
+				}
+			});
+		})
 	</script>
 </head>
 
@@ -37,7 +45,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">인터넷뱅킹일시정지/해제</h2>
+				<h2 class="tit_cont">마이페이지</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -54,64 +62,87 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="cont_header_right">
-					<ul class="step">
-						<li><span class="num">1</span><span class="txt">정보입력</span></li>
-						<li><span class="num">2</span><span class="txt">입력확인</span></li>
-						<li class="on"><span class="num">3</span><span class="txt">실행완료</span></li>
-					</ul>
-				</div>
+				
 
-				<div class="box first_section">
-					<ul class="list list1">
-						<li>인터넷뱅킹 일시정지 해제가 성공적으로 이루어졌습니다.</li>
-					</ul>
-				</div>
-
-				<div class="section">
-					<div class="tbl_row2">
-						<table>
-							<caption class="sr_only">인터넷뱅킹일시정지/해제 표로 이용자성명, 이용자ID, 출금계좌번호, 생년월일 정보제공</caption>
-							<colgroup>
-								<col style="width: 17%;">
-								<col>
-							</colgroup>
-							<tbody>
-                                <tr>
-									<th scope="row">이용자성명</th>
-									<td>sampled</td>
-								</tr>
-								<tr>
-									<th scope="row">이용자ID</th>
-									<td>sampled</td>
-								</tr>
-                                <tr>
-									<th scope="row">출금계좌번호</th>
-									<td>00000000000000</td>
-								</tr>
-                                <tr>
-									<th scope="row">생년월일</th>
-									<td>1988.10.17</td>
-								</tr>
-							</tbody>
-						</table>
+				<!-- Modal Popup : 대표설정 - 예금 -->
+				<div class="modal_popup modal_sm show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">대표 설정</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>메인 표시, 조회 서비스를 이용할 때, 표시되는 순서를 지정할 수 있어요.</li>
+								<li>설정된 순서는 스마트뱅킹을 이용할 때도 같이 적용됩니다.</li>
+							</ul>
+							<div class="tab_menu_type3 sm full mt_4 mypage01">
+								<ul>
+									<li><a href="#;"><span>예금</span></a></li>
+									<li><a href="#;" class="current" title="선택됨"><span>보험</span></a></li>
+									<li><a href="#;"><span>카드</span></a></li>
+									<li><a href="#;"><span>펀드</span></a></li>
+									<li><a href="#;"><span>오픈</span></a></li>
+								</ul>
+							</div>
+							<div class="tab_sub" data-sub-tab="mypage01_tab1">
+								<div class="mypage_account_list mypage_toggle_con">
+									<ul>
+										<li>
+											<strong>대표</strong>
+											<div class="txt">
+												<p class="txt_lg txt_normal">(무)우체국저축보험</p>
+												<span class="date">2005.10.10~2025.10.09</span>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 내리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												<p class="txt_lg txt_normal">무배당온라인암보험</p>
+												<span class="date">2005.10.10~2025.10.09</span>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_down"></i>
+													<span class="sr_only">순서 내리기</span>
+												</button>
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+										<li>
+											<div class="txt">
+												<p class="txt_lg txt_normal">(무)우체국 연금보험 2007</p>
+												<span class="date">2005.10.10~2025.10.09</span>
+											</div>
+											<div class="arr">
+												<button type="button">
+													<i class="ico ico_circle_up"></i>
+													<span class="sr_only">순서 올리기</span>
+												</button>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="mt_4 txt_c">
+									<a href="#;" class="btn btn_more">더보기</a>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary"onclick="closeModal('layer01');">설정 저장</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-
-                <div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_primary">확인</a>
-				</div>
-
-				<div class="section">
-					<dl class="box">
-						<dt>참고사항</dt>
-						<dd>
-							<ul class="list list2">
-								<li>공동인증서 유효기간이 경과한 경우는 공동인증서 재발급을 하시고, 타 인증기관에서 발급받은 인증서를 사용하고자 하는 고객은 타행공동인증서 등록을 하세요.</li>
-							</ul>
-						</dd>
-					</dl>
-				</div>
+				<!-- e: 대표설정 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
@@ -177,6 +208,7 @@
 			</div>
 		</article>
 		<footer class="footer"></footer>
+
 	</div>
 </body>
 

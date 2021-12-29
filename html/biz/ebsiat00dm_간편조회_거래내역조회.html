@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">간편조회</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<!-- Modal Popup : 간편조회_거래내역조회 팝업 -->
+				<div class="modal_popup modal_xxl show" data-popup="simple_inquiry">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header txt_c">
+							<h3 class="popup_tit">간편조회</h3>
+						</div>
+						<div class="popup_body">
+							<div class="simple_inquiry_temp">
+								<div class="tab_menu_type3 stretch mb_8">
+									<ul>
+										<li><a href="#;" class="current" title="선택됨"><span>거래내역조회</span></a></li>
+										<li><a href="#;"><span>수표조회</span></a></li>
+										<li><a href="#;"><span>환율조회</span></a></li>
+										<li><a href="#;"><span>신계좌번호조회</span></a></li>
+										<li><a href="#;"><span>상속인금융내적조회</span></a></li>
+										<li><a href="#;"><span>대학등록금 납부결과조회</span></a></li>
+									</ul>
+								</div>
+
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h4 class="tit1 txt_xl">거래내역조회</h4>
+									</div>
+								</div>
+
+								<div class="box">
+									<ul class="list list1">
+										<li>개인정보 보호법 개정시행(2014.8.7.)으로 주민등록번호 수집제한에 따라 거래내역 조회시 입력정보가 주민등록번호(뒤 7자리)/사업자등록번호(뒤 5자리)에서
+											주민등록번호/사업자등록번호 앞 6자리로 변경되었으니 거래에 참고하시기 바랍니다.</li>
+										<li>간편계좌로 등록한 우체국 예금계좌에 대해 거래내역을 조회하실 수 있습니다.</li>
+										<li>공동인증서 로그인 없이 간편조회를 신청하신 고객만 이용하실 수 있습니다.</li>
+										<li>거래내역조회는 최근 3개월간의 거래 내역을 조회하실 수 있습니다.</li>
+										<li>계좌비밀번호 5회 오류시 사고등록되며 사고등록해제 후 이용가능합니다.</li>
+									</ul>
+									<div class="btn_group mt_4">
+										<button type="button" class="btn btn_md btn_outline_default">개인 간편조회 계좌등록</button>
+										<button type="button" class="btn btn_md btn_default ml_1">기업 간편조회 계좌등록</button>
+									</div>
+								</div>
+
+								<div class="mt_8">
+									<div class="tbl_tit">
+										<div class="txt_right">
+											<strong class="necessary">*</strong>
+											표시는 필수입력사항입니다.
+										</div>
+									</div>
+									<div class="check_list_box">
+										<div class="row_box">
+											<div class="b1" style="width:150px">계좌번호 <strong class="necessary">*</strong></div>
+											<div class="b2">
+												000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌
+												<div class="btn_inline_box ml_8">
+													<button type="button" class="btn btn_md btn_outline_default"
+														onclick="openModal('popup01',this)">전체계좌조회</button>
+												</div>
+											</div>
+										</div>
+										<div class="row_box">
+											<div class="b1" style="width:150px">조회기간 <strong class="necessary">*</strong></div>
+											<div class="b2">
+												<div class="mulit_date_box">
+													<div class="btn_date">
+														<button type="button" class="btn btn_sm btn_default">당일</button>
+														<button type="button" class="btn btn_sm btn_outline_default">7일</button>
+														<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+														<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
+														<button type="button" class="btn btn_sm btn_outline_default">1년</button>
+													</div>
+													<div class="datepicker_box">
+														<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+														<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row_box">
+											<div class="b1" style="width:150px">조회구분 <strong class="necessary">*</strong></div>
+											<div class="b2">
+												<span class="check_item">
+													<input type="radio" name="chk1" id="chk1_1" checked>
+													<label for="chk1_1">전체(입금+출금)</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk1" id="chk1_2">
+													<label for="chk1_2">입금내역만</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk1" id="chk1_3">
+													<label for="chk1_3">출금내역만</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk1" id="chk1_4">
+													<label for="chk1_4">무통장(입출+출금)</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk1" id="chk1_5">
+													<label for="chk1_5">무통장입금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk1" id="chk1_6">
+													<label for="chk1_6">무통장출금</label>
+												</span>
+											</div>
+										</div>
+										<div class="row_box">
+											<div class="b1" style="width:150px">조회내역결과순서 <strong class="necessary">*</strong></div>
+											<div class="b2">
+												<span class="check_item">
+													<input type="radio" name="chk2" id="chk2_1" checked>
+													<label for="chk2_1">최근거래순서대로</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk2" id="chk2_2">
+													<label for="chk2_2">과거거래순서대로</label>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="btn_data_search">
+										<a href="#;" class="btn btn_lg btn_primary fx_w150">조회</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 간편조회_거래내역조회 팝업 -->
+
+				<!-- s: 전체계좌목록 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_data tbl_list_data tbl_scroll_y">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 16%">
+										<col style="width: 23%">
+										<col style="width: 18%">
+										<col style="width: 19%">
+										<col style="width: 13%">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">대표계좌설정</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">설정</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">해제</button></td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌목록 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
