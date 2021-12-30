@@ -62,7 +62,7 @@
 					<div class="tf_item_body">
 						<div class="input_area">
 							<label class="lab" for="lb_user">상담고객 <span class="req">필수항목</span></label>
-							<input type="text" id="lb_user" class="tf" placeholder="홍길동" required disabled>
+							<input type="text" id="lb_user" class="tf" value="홍길동" required disabled>
 						</div>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 					<div class="tf_item_body">
 						<div class="input_area">
 							<label class="lab" for="lb_phone">휴대폰 번호 <span class="req">필수항목</span></label>
-							<input type="text" id="lb_phone" class="tf" placeholder="010-5555-1234" required>
+							<input type="text" id="lb_phone" class="tf" value="010-5555-1234" required>
 							<button type="button" class="btn btn_icon btn_reset">
 								<i class="ico ico_reset"></i>
 								<span class="sr_only">초기화</span>
@@ -78,7 +78,7 @@
 						</div>
 					</div>
 				</div>
-				<p class="txt_guide txt_md">연락처는 고객정보에 등록된 휴대폰번호가 자동입력 되었습니다. 다른 번호로 상담이 필요한 경우 수정하여 신청 가능합니다.</p>
+				<p class="txt_guide txt_md">연락처는 고객정보에 등록된 휴대폰번호가 자동 입력되었습니다. 다른 번호로 상담이 필요한 경우 수정하여 신청 가능합니다.</p>
 				<!-- e: 서울성동우체국 영역 -->
 
 				<!-- s: 상담업무 영역 -->
@@ -125,11 +125,22 @@
 
 				<!-- s: 상담희망시간대 영역 -->
 				<h3 class="tit1 mt_8">상담희망시간대</h3>
+				<a href="#;" class="tf_item tf_item_sm" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<p class="tf">오전</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
 				<div class="tf_item mt_2">
 					<div class="tf_item_body">
 						<div class="input_area">
 							<label class="lab" for="lb_day">방문일 <span class="req">필수항목</span></label>
-							<input type="text" id="lb_day" class="tf" placeholder="2021.10.17" required>
+							<input type="text" id="lb_day" class="tf" value="2021.10.17" required>
 						</div>
 						<div class="btn_area">
 							<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
@@ -143,7 +154,7 @@
 					<div class="tf_item_body">
 						<div class="input_area">
 							<label class="lab" for="lb_time">방문시간 <span class="req">필수항목</span></label>
-							<input type="text" id="lb_time" class="tf" placeholder="09:00 - 10:00" required disabled>
+							<input type="text" id="lb_time" class="tf" value="09:00 - 10:00" required disabled>
 							<button type="button" class="btn btn_icon btn_reset">
 								<i class="ico ico_reset"></i>
 								<span class="sr_only">초기화</span>
@@ -151,24 +162,23 @@
 						</div>
 					</div>
 				</div>
-				<div class="morning_box mt_2">
+				<div class="time_box mt_2">
 					<span>오전</span>
-					<a href="#;">09시 - 10시</a>
-					<a href="#;">10시 - 11시</a>
-					<a href="#;">11시 - 12시</a>
+					<button type="button">09시 - 10시</button>
+					<button type="button" class="btn btn_disabled">10시 - 11시</button>
+					<button type="button">11시 - 12시</button>
 				</div>
-				<div class="afternoon_box mt_1">
+				<div class="time_box mt_1">
 					<span>오후</span>
-					<a href="#;">13시 - 14시</a>
-					<a href="#;">14시 - 15시</a>
-					<a href="#;">15시 - 16시</a>
+					<button type="button">13시 - 14시</button>
+					<button type="button" class="btn btn_disabled">14시 - 15시</button>
+					<button type="button">15시 - 16시</button>
 				</div>
-				<div class="tf_item mt_10">
+				<div class="tf_item ft_txt_row mt_10">
 					<div class="tf_item_body">
 						<div class="input_area">
 							<label for="lb_text" class="lab">상담내용</label>
-							<textarea class="tf" id="lb_text" rows="5" placeholder="100자 이내로 입력해주세요."
-								style="overflow: auto;"></textarea>
+							<textarea class="tf" id="lb_text" rows="3" placeholder="100자 이내로 입력해주세요."></textarea>
 						</div>
 					</div>
 				</div>
@@ -181,12 +191,57 @@
 					<a href="#;" class="btn btn_xl btn_default">
 						<span>취소</span>
 					</a>
-					<a href="#;" class="btn btn_xl btn_primary">
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('myhome_alert');">
 						<span>신청하기</span>
 					</a>
 				</div>
 			</div>
 			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 예약완료 알림 경고창 -->
+			<div class="modal_popup modal_alert hide" data-popup="myhome_alert">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">예약 완료</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="bg_lightgray">
+								<div class="container pt_4 pb_4 txt_c">
+									<p>
+										우체국 방문예약이 완료되었습니다.<br><br>
+										예약한 일자에 우체국에 방문하지 않을시 자동 취소 처리됩니다.<br><br>
+										예약 당일, 예약시간 도래 전 앱 PUSH알림으로 안내받으실 수 있습니다.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default txt_md"
+								onclick="closeModal('myhome_alert');">신청내역보기</button>
+							<button type="button" class="btn btn_lg btn_primary txt_md"
+								onclick="closeModal('myhome_alert');">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 예약완료 알림 경고창 -->
+
+			<!-- s: 툴팁 레이어 -->
+			<div class="tooltip" data-toggle-content="tooltip1">
+				<div class="tooltip_body">
+					고객님 주소지를 기준으로 상담우체국이 자동 지정되었습니다.<br>
+					다른 우체국 찾기로 변경 지정 가능합니다.
+				</div>
+				<button type="button" class="btn btn_icon btn_close_tooltip">
+					<i class="ico ico_close_sm"></i>
+					<span class="sr_only">닫기</span>
+				</button>
+			</div>
+			<!-- e: 툴팁 레이어 -->
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
