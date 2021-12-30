@@ -138,7 +138,8 @@
 					</div>
 					<div class="tbl_data tbl_list_data tbl_payment">
 						<table>
-							<caption class="sr_only">서비스등록 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">서비스등록 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 매수가능금액(원) 정보를 제공하고
+								있습니다.</caption>
 							<colgroup>
 								<col>
 								<col style="width: 17%">
@@ -150,7 +151,7 @@
 									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
 									<th scope="col">잔액(원)</th>
 									<th scope="col">출금가능금액(원)</th>
-									<th scope="col">1일 송금가능금액(원)</th>
+									<th scope="col">1일 매수가능금액(원)</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -158,7 +159,8 @@
 									<td>
 										<div class="fx_lr fx_align_center">
 											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
-											<button type="button" class="btn btn_md btn_outline_default v_base fx_right" onclick="openModal('popup01', this);">우체국계좌조회</button>
+											<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
+												onclick="openModal('popup01', this);">우체국계좌조회</button>
 										</div>
 									</td>
 									<td class="txt_r">3,100,000</td>
@@ -180,43 +182,31 @@
 									<th scope="row">계좌비밀번호 <strong class="necessary">*</strong></th>
 									<td>
 										<div class="btn_mouse_pwd">
-											<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 420px;" placeholder="최대5회까지 입력가능">
+											<input type="password" class="tf" title="계좌비밀번호 입력" style="width: 420px;"
+												placeholder="최대5회까지 입력가능">
+											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row">출금가능금액</th>
-									<td class="txt_r">25,510,240 원</td>
-								</tr>
-								<tr>
-									<th scope="row">서비스구분</th>
+									<th scope="row">투자 유형 및 금액구분 <strong class="necessary">*</strong></th>
 									<td>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_1" checked>
-											<label for="chk1_1">잔돈투자(매일)</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_2">
-											<label for="chk1_2">캐시백투자(캐시백 입금일)</label>
-										</span>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">투자금액구분</th>
-									<td>
-										<span class="check_item">
-											<input type="radio" name="chk2" id="chk2_1" checked>
-											<label for="chk2_1">1만원 미만</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="chk2" id="chk2_2">
-											<label for="chk2_2">1천원 미만</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="chk2" id="chk2_3">
-											<label for="chk2_3">캐시백 일 합산금액</label>
-										</span>
-										<p>※ 매일(비영업일 제외)24시 기준으로 익영업일에 펀드로 자동투자</p>
+										<div class="selectbox_wrap" style="width: 358px;">
+											<dl>
+												<dt><a href="#none" title="${조건} 선택"><span>매일 1만원 미만 잔돈 투자</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>매일 1만원 미만 잔돈 투자</span></a></li>
+														<li><a href="#none"><span>매일 1만원 미만 잔돈 투자</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<ul class="list list1 mt_1">
+											<li>매일(비영업일 제외)24시 기준으로 지정한 출금계좌의 잔액 잔돈이 다음 영업일에 펀드로 자동 투자 됩니다.</li>
+											<li>잔돈 자동 투자는 비영업일 제외됩니다. 예시) [금] 24시 잔돈을 [월]에 투자</li>
+											<li>투자금액 확정(전일 24시) 이후 자동 매수 신청 시 연결 계좌에 잔액이 부족한 경우 선택하신 펀드에 매수 신청 처리가 되지 않습니다.</li>
+										</ul>
 									</td>
 								</tr>
 							</tbody>
@@ -233,12 +223,9 @@
 					<ul class="num_list">
 						<li>연결 요구불 예금계좌(서비스 신청중)가 동일한 펀드계좌는 서비스 신청이 불가합니다.</li>
 						<li>펀드를 변경하고자 하는 경우 서비스 해지 후 재약정이 필요합니다.</li>
-						<li>투자금액 확정(전일 24시) 이후 자동 매수신청 시 연결 요구불 예금계좌에 잔액이 부족한 경우선택하신 펀드에 매수신청 처리가 되지 않습니다.</li>
 						<li>연결 요구불 예금계좌가 사고신고* 계좌인 경우 선택하신 펀드에 매수신청 처리가 되지 않습니다.
 							<p class="txt_sm">* 1종사고(사망/실종, 금치산, 한정치산, 압류 및 가압류 등) + 외국인실명미확인</p>
 						</li>
-						<li>펀드에 자동 투자할 금액 확정 시 잔돈은 비영업일 제외, 캐시백은 비영업일을 포함합니다.
-							<br>예시) 잔돈 : [금] 24시 잔돈을 [월]에 투자, 캐시백 : [금,토,일] 캐시백 발생금액을 [월]에 투자</li>
 						<li>펀드 계좌를 해지하는 경우 '펀드 소액투자 서비스'도 자동으로 약정이 해지됩니다.</li>
 					</ul>
 				</div>
