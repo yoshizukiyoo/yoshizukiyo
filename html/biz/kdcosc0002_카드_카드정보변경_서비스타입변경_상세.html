@@ -22,9 +22,7 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			//
-		})
+		//
 	</script>
 </head>
 
@@ -37,108 +35,111 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">판매사 전입신청</h2>
+				<h2 class="tit_cont">서비스 타입 변경</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
 				<!-- e: 본문 헤더 -->
 			</div>
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="cont_header_right">
-					<ul class="step">
-						<li><span class="num">1</span><span class="txt">원판매사펀드계좌확인</span></li>
-						<li><span class="num">2</span><span class="txt">신규계좌생성</span></li>
-						<li class="on"><span class="num">3</span><span class="txt">신청정보확인</span></li>
-						<li><span class="num">4</span><span class="txt">전입신청완료</span></li>
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>고객님이 보유하고 계신 우체국 카드의 서비스 타입을 변경할 수 있습니다.</li>
+						<li>카드번호를 클릭하시면 카드의 상세정보를 조회 하실 수 있습니다.</li>
 					</ul>
 				</div>
 
-				<div class="first_section">
-					<div class="point_donation_txt ico_xxl">
-						<strong>신규 계좌개설이 <span class="txt_medium">완료</span>되었습니다.</strong>
-						<p>판매사 전입을 신청하세요.</p>
-					</div>
-				</div>
-
 				<div class="section">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">펀드전입(이수) 신규 계좌개설 계좌정보</h3>
-						</div>
-					</div>
-					<div class="tbl_data tbl_row_data">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">펀드전입(이수) 신규 계좌개설 계좌정보 표로 신규사유, 펀드계좌번호, 연결계좌, 펀드명, 고객명, 저축유형 정보제공</caption>
+							<caption class="sr_only">서비스 타입 변경 표로 카드번호, 카드명, 유효기한, 상태(사고여부), 서비스 타입 변경 정보 제공</caption>
 							<colgroup>
-								<col style="width: 17%;">
 								<col>
-								<col style="width: 17%;">
 								<col>
+								<col style="width: 13%;">
+								<col style="width: 13%;">
+								<col style="width: 28%;">
 							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" rowspan="2">카드번호</th>
+									<th scope="col" rowspan="2">카드명</th>
+									<th scope="col" rowspan="2">유효기한</th>
+									<th scope="col">상태</th>
+									<th scope="col" rowspan="2">서비스 타입 변경</th>
+								</tr>
+								<tr>
+									<th scope="col" class="border_r">사고여부</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">신규사유</th>
-									<td>판매사이동신규</td>
-									<th scope="row">펀드계좌번호</th>
-									<td>010017-02-526768</td>
+									<td colspan="5" class="txt_c">서비스 유형 변경 가능한 카드가 없습니다.</td>
+								</tr>
+								<!-- s: SB v.1.01 화면수정 (2021-12-17) -->
+								<tr>
+									<td rowspan="2">9440-****-****-****</td>
+									<td rowspan="2">우체국 우리동네 플러스 체크카드</td>
+									<td rowspan="2">****/**</td>
+									<td>정상(후발급)</td>
+									<td rowspan="2">
+										<div class="txt_c">
+											<select class="opt" id="" style="width: 200px;">
+												<option>Ⅱ 충청/전라</option>
+												<option>항목1</option>
+												<option>항목2</option>
+											</select>
+											<button type="button" class="btn btn_md btn_outline_default">변경</button>
+										</div>
+									</td>
 								</tr>
 								<tr>
-									<th scope="row">연결계좌</th>
-									<td>010017-95-001647</td>
-									<th scope="row">펀드명</th>
-									<td>키움단기국공채증권자투자신탁제1호[채권]A1</td>
+									<td class="border_r">해당없음</td>
 								</tr>
-								<tr>
-									<th scope="row">고객명</th>
-									<td>나봄미</td>
-									<th scope="row">저축유형</th>
-									<td>임의용</td>
-								</tr>
+								<!-- e: SB v.1.01 화면수정 (2021-12-17) -->
 							</tbody>
 						</table>
 					</div>
-
 				</div>
 
-				<div class="section">
-					<div class="tbl_tit">
-						<div class="tit_left">
-							<h3 class="tit1">원판매사 펀드계좌정보</h3>
+				<!-- s: 카드 서비스 유형 변경 팝업 -->
+				<div class="modal_popup modal_lg show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">카드 서비스 유형 변경</h3>
 						</div>
+						<div class="popup_body">
+							<!--
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+								</div>
+							</div>
+							-->
+							<div class="point_donation_txt ico_xxl">
+								카드번호 <span class="txt_medium">9350-****-****-7678</span>의 서비스 유형이<br>
+								<span class="txt_medium">그린카드</span> 유형에서 <span class="txt_medium">임신/출산</span> 유형으로 변경되었습니다.
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
-					<div class="tbl_data tbl_row_data">
-						<table>
-							<caption class="sr_only">원판매사 펀드계좌정보 표로 원판매사, 고객명, 이동가능여부, 원판매사 계좌번호 정보제공</caption>
-							<colgroup>
-								<col style="width: 17%;">
-								<col>
-								<col style="width: 17%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">원판매사</th>
-									<td>신한은행</span></td>
-									<th scope="row">고객명</th>
-									<td>나봄미</td>
-								</tr>
-								<tr>
-									<th scope="row">이동가능여부</th>
-									<td>이동가능</span></td>
-									<th scope="row">원판매사 계좌번호</th>
-									<td>010017-02-526768</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<ul class="list list1 mt_2">
-						<li>전입신청을 정상적으로 완료하기 위해서는 필히 전출하고자 하시는 원판매사의 펀드계좌를 전출신청하시고 진행하시기 바랍니다</li>
-					</ul>
 				</div>
-
-				<div class="btn_tbl_btm">
-					<a href="펀드_펀드매매_판매사이동_판매사전입신청_원판매사펀드계좌확인.html" class="btn btn_xl btn_outline_default">취소</a>
-					<a href="펀드_펀드매매_판매사이동_판매사전입신청_전입신청완료.html" class="btn btn_xl btn_primary">전입신청</a>
-				</div>
+				<!-- e: 카드 서비스 유형 변경 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">

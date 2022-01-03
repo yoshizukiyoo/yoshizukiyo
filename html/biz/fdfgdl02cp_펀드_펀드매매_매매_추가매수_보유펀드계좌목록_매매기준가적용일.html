@@ -23,9 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').click(function () {
-				$('.btm_result_box').show();
-			});
+			//
 		})
 	</script>
 </head>
@@ -39,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">거래내역</h2>
+				<h2 class="tit_cont">추가매수</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -56,158 +54,197 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="first_section">
-					<div class="tab_menu_type1">
-						<ul>
-							<li><a href="펀드_My펀드_거래내역_거래내역.html">거래내역</a></li>
-							<li><a href="펀드_My펀드_거래내역_펀드매매현황.html" class="current">펀드매매현황</a></li>
-						</ul>
-					</div>
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">보유펀드계좌목록</span></li>
+						<li><span class="num">2</span><span class="txt">신청정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력정보확인</span></li>
+						<li><span class="num">4</span><span class="txt">추가매수신청완료</span></li>
+					</ul>
+				</div>
+				<div class="first_section box box_more">
+					<ul class="list list1">
+						<li>저축유형이 거치식인 경우는 추가매수가 불가합니다.</li>
+						<li>매수신청 시간대별 기준가격 적용일 및 매수결제일자
+							<ul class="list list3">
+								<li>주식형, 주식혼합형(약관상 주식편입비율 50% 이상인 펀드)</li>
+								<li>채권혼합형, 채권형, MMF(약관상 주식편입비율 50% 미만인 펀드)</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 
 				<div class="section">
-					<div class="tbl_row2">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">거래내역 펀드매매현황</caption>
+							<caption class="sr_only">추가매수예약 표로 구분, 15:30 이전 매수, 15:30 이후 매수, 16시 이전 매수, 16시 이후 매수 정보 제공</caption>
 							<colgroup>
-								<col style="width: 17%;">
+								<col>
+								<col>
+								<col>
+								<col>
 								<col>
 							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">구분</th>
+									<th scope="col">15:30 이전 매수</th>
+									<th scope="col">15:30 이후 매수</th>
+									<th scope="col">16시 이전 매수</th>
+									<th scope="col">16시 이후 매수</th>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">업무구분</th>
-									<td>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_1" checked>
-											<label for="chk1_1">전체</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_2">
-											<label for="chk1_2">매수신청</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_3">
-											<label for="chk1_3">환매신청</label>
-										</span>
-										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_4">
-											<label for="chk1_4">전환신청</label>
-										</span>
-									</td>
+									<td>주식형</td>
+									<td>익영업일</td>
+									<td>3영업일</td>
+									<td></td>
+									<td></td>
 								</tr>
 								<tr>
-									<th scope="row">기간선택</th>
-									<td>
-										<div class="mulit_date_box">
-											<div class="btn_date">
-												<button type="button" class="btn btn_sm btn_default">당일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
-											</div>
-											<div class="datepicker_box">
-												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
-												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
-											</div>
-										</div>
-									</td>
+									<td>주식혼합형</td>
+									<td>익영업일</td>
+									<td>3영업일</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>채권혼합형</td>
+									<td></td>
+									<td></td>
+									<td>익영업일</td>
+									<td>3영업일</td>
+								</tr>
+								<tr>
+									<td>채권형</td>
+									<td></td>
+									<td></td>
+									<td>익영업일</td>
+									<td>3영업일</td>
+								</tr>
+								<tr>
+									<td>MMF</td>
+									<td></td>
+									<td></td>
+									<td>익영업일</td>
+									<td>3영업일</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-				</div>
-				<div class="btn_tbl_btm btn_data_search">
-					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
+					<ul class="list list1 mt_2">
+						<li>익영업일은 매수신청일의 다음 영업일을 의미합니다. (ex. 매수신청일이 금요일인 경우 주말을 지난 월요일이 익영업일입니다.)</li>
+						<li>매수신청 시간대별 기준가격 적용일 및 매수결제일자, 기준가 등의 경우는 각 펀드의 특징에 따라 다를 수 있습니다. 이점 유의 바랍니다.</li>
+					</ul>
 				</div>
 
-				<!-- s: 조회결과 -->
-				<div class="section btm_result_box">
-					<ul class="list list1">
-						<li>환매신청의 경우 수수료 관련 정보 상세 제공</li>
-					</ul>
-					<div class="tbl_data tbl_list_data mt_2">
+				<div class="section">
+					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">펀드매매현황 표로 펀드계좌번호, 펀드명, 업무구분 (신청구분), 신청일자/기준가적용일자, 신청금액(원), 신청좌수(좌), 처리구분,
-								결제일자/처리시각, 결제금액(원), 결제금액(좌) 정보 제공</caption>
+							<caption class="sr_only">추가매수 표로 펀드계좌번호, 펀드명, 저축유형, 잔고좌수(좌), 평가액(원), 매수신청액(원), 추가매수 정보 제공</caption>
 							<colgroup>
-								<col style="width: 13%;">
+								<col style="width: 15%;">
+								<col style="width: 21%;">
 								<col>
-								<col style="width: 11%;">
-								<col style="width: 11%;">
-								<col style="width: 7%;">
-								<col style="width: 7%;">
-								<col style="width: 10%;">
-								<col style="width: 10%;">
-								<col style="width: 7%;">
-								<col style="width: 8%;">
+								<col>
+								<col>
+								<col>
+								<col>
 							</colgroup>
 							<thead>
 								<tr>
 									<th scope="col">펀드계좌번호</th>
 									<th scope="col">펀드명</th>
-									<th scope="col">업무구분 (신청구분)</th>
-									<th scope="col">신청일자/기준가적용일자</th>
-									<th scope="col">신청금액(원)</th>
-									<th scope="col">신청좌수(좌)</th>
-									<th scope="col">처리구분</th>
-									<th scope="col">결제일자/처리시각</th>
-									<th scope="col">결제금액(원)</th>
-									<th scope="col">결제좌수(좌)</th>
+									<th scope="col">저축유형</th>
+									<th scope="col">잔고좌수(좌)</th>
+									<th scope="col">평가액(원)</th>
+									<th scope="col">매수신청액(원)</th>
+									<th scope="col">추가매수</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>00000-0000000
-										<button type="button" class="btn btn_xs bg_gray border0 mt_1"
+									<td>010017-95-001647
+										<button type="button" class="btn btn_xs bg_green border0 mt_1"
 											onclick="openModal('layer01'), this">계좌상세정보</button>
 									</td>
-									<td class="fund_name">IBK그랑프리국공채MMF개인투자신탁제1호[국공채]Ce
-										<div class="mt_1">
-											<button type="button" class="btn btn_xs btn_outline_default"
-												onclick="openModal('layer02'), this">펀드상품정보</button>
-										</div>
+									<td class="fund_name">
+										NH-Amundi4차산업혁명 30증권투자신탁(채권혼합)Ce
+										<button type="button" class="btn btn_xs btn_outline_default mt_1"
+											onclick="openModal('layer02', this)">펀드상품정보</button>
 									</td>
-									<td class="txt_c">매수신청 (결제완료)</td>
-									<td class="txt_c">2021.05.07 2021.05.10</td>
-									<td class="txt_r">830</td>
-									<td class="txt_r">0</td>
-									<td>소액투자신청</td>
-									<td class="txt_c">2021.07.02 08:50:15</td>
+									<td>임의식</td>
 									<td class="txt_r">24,882</td>
-									<td class="txt_r">30,002</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">0</td>
+									<td class="txt_c">
+										<a href="#;" class="btn btn_xs w95 bg_primary border0" onclick="openModal('layer03'), this">추가매수</a>
+									</td>
 								</tr>
 								<tr>
-									<td>00000-0000000
-										<button type="button" class="btn btn_xs bg_gray border0 mt_1"
+									<td>010017-95-001647
+										<button type="button" class="btn btn_xs bg_green border0 mt_1"
 											onclick="openModal('layer01'), this">계좌상세정보</button>
 									</td>
-									<td class="fund_name">IBK그랑프리국공채MMF개인투자신탁제1호[국공채]Ce
-										<div class="mt_1">
-											<button type="button" class="btn btn_xs btn_outline_default"
-												onclick="openModal('layer02'), this">펀드상품정보</button>
-										</div>
+									<td class="fund_name">
+										NH-Amundi4차산업혁명 30증권투자신탁(채권혼합)Ce
+										<button type="button" class="btn btn_xs btn_outline_default mt_1"
+											onclick="openModal('layer02', this)">펀드상품정보</button>
 									</td>
-									<td class="txt_c">환매신청 (결제완료)
-										<button type="button" class="btn btn_xs bg_blue w95 p_1 mt_1"
-											onclick="openModal('layer03', this)">거래환매상세</button>
-									</td>
-									<td class="txt_c">2021.05.07 2021.05.10</td>
-									<td class="txt_r">830</td>
-									<td class="txt_r">0</td>
-									<td>소액투자신청</td>
-									<td class="txt_c">2021.07.02 08:50:15</td>
+									<td>적립식(자유)</td>
 									<td class="txt_r">24,882</td>
-									<td class="txt_r">30,002</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">0</td>
+									<td class="txt_c">
+										<div><a href="#;" class="btn btn_xs w95 bg_blue border0">환매신청중</a></div>
+										<div class="mt_1"><a href="#;" class="btn btn_xs w95 bg_purple border0">환매신청</a></div>
+									</td>
+								</tr>
+								<tr>
+									<td>010017-95-001647
+										<button type="button" class="btn btn_xs bg_green border0 mt_1"
+											onclick="openModal('layer01'), this">계좌상세정보</button>
+									</td>
+									<td class="fund_name">
+										NH-Amundi4차산업혁명 30증권투자신탁(채권혼합)Ce
+										<button type="button" class="btn btn_xs btn_outline_default mt_1"
+											onclick="openModal('layer02', this)">펀드상품정보</button>
+									</td>
+									<td>거치식</td>
+									<td class="txt_r">24,882</td>
+									<td class="txt_r">30,211</td>
+									<td class="txt_r">0</td>
+									<td class="txt_c"></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="mt_6 txt_c">
-						<button type="button" class="btn btn_more">더보기</button>
-					</div>
 				</div>
-				<!-- e: 조회결과 -->
+				<div class="mt_4 txt_c">
+					<button type="button" class="btn btn_more">더보기</button>
+				</div>
+
+				<div class="section">
+					<dl class="box">
+						<dt>투자시 유의사항
+							<span class="txt_thin txt_sm ml6">※ 우정사업본부 준법감시인 심사필 제20-12호(2020.10.25.)</span>
+						</dt>
+						<dd>
+							<ul class="list list2">
+								<li>집합투자증권은 자산가격 변동 등에 따라 투자원금의 손실(0~100%)이 발생할 수 있으며, 그 손실은 투자자에게 귀속됩니다.</li>
+								<li>집합투자증권을 취득하시기 전에 투자대상, 보수·수수료 및 환매방법 등에 관하여 (간이)투자설명서 및 집합투자규약을 반드시 읽어 보시기 바랍니다.</li>
+								<li>당사는 이 금융투자상품&lt;집합투자증권&gt;에 관하여 충분히 설명할 의무가 있으며, 투자자는 투자에 앞서 그러한 설명을 충분히 들으시기 바랍니다.</li>
+								<li>이 금융투자상품&lt;집합투자증권&gt;은 예금자보호법에 따라 예금보험공사가 보호하지 않습니다.</li>
+								<li>증권거래비용, 기타비용이 추가로 발생할 수 있습니다.</li>
+								<li>과거의 운용실적이 미래의 수익률을 보장하는 것은 아닙니다.</li>
+								<li>종류형 펀드의 경우, 종류별 집합투자증권에 부과되는 보수·수수료 차이로 운용실적이 달라질 수 있습니다.</li>
+								<li>MMF는 시가와 장부가의 차이가 ±0.5%를 초과하거나 초과할 우려가 있는 경우 시가로 전환됩니다.</li>
+								<li>제로인 평가등급(태극마크)은 펀드평가사인 제로인이 운용기간이 3년 이상인 펀드를 대상으로 수익률과 변동성(위험)을 동시에 고려하여 산출한 것입니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
 
 				<!-- Modal Popup : 펀드계좌상세정보 -->
 				<div class="modal_popup modal_xl hide" data-popup="layer01">
@@ -1295,50 +1332,69 @@
 				</div>
 				<!-- e: 펀드상품상세정보 -->
 
-				<!-- Modal Popup : 거래환매상세 -->
-				<div class="modal_popup modal_xs hide" data-popup="layer03">
+				<!-- Modal Popup : 매매기준가적용일 -->
+				<div class="modal_popup modal_sm show" data-popup="layer03">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
-							<h3 class="popup_tit">거래환매상세</h3>
+							<h3 class="popup_tit">매매기준가적용일</h3>
 						</div>
 						<div class="popup_body">
-							<div class="tbl_data tbl_row_data">
+							<div class="box txt_size18 standard_price_box">
+								<p class="txt_normal">키움단기국공채증권자투자신탁제1호[채권]Ce</p>
+								<strong class="txt_bold">000000-00-000000</strong>
+							</div>
+							<div class="tbl_data tbl_list_data mt_4">
 								<table>
-									<caption class="sr_only">거래환매상세 표로 평가금액, 환매좌수, 세금합계, 환매수수료, 재투자금액(차감지급액) 정보 제공</caption>
+									<caption class="sr_only">매매기준가적용일 표로 매입신청일, 기준가 적용일, 매입일 정보 제공</caption>
 									<colgroup>
-										<col style="width: 50%;">
+										<col style="width: 44%;">
+										<col>
 										<col>
 									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">매입신청일</th>
+											<th scope="col">기준가 적용일</th>
+											<th scope="col">매입일</th>
+										</tr>
+									</thead>
 									<tbody>
-										<tr>
-											<th scope="row">평가금액</th>
-											<td class="txt_r">1,001 원</td>
+										<tr class="txt_c">
+											<td>2021.10.12 <strong>15:30 이전</strong></td>
+											<td>2021.10.13</td>
+											<td>2021.10.14</td>
 										</tr>
-										<tr>
-											<th scope="row">환매좌수</th>
-											<td class="txt_r">1,000좌</td>
-										</tr>
-										<tr>
-											<th scope="row">세금합계</th>
-											<td class="txt_r">0 원</td>
-										</tr>
-										<tr>
-											<th scope="row">환매수수료</th>
-											<td class="txt_r">0 원</td>
-										</tr>
-										<tr>
-											<th scope="row">재투자금액<br>(차감지급액)</th>
-											<td class="txt_r">1,001 원</td>
+										<tr class="txt_c">
+											<td>2021.10.12 <strong>15:30 경과</strong></td>
+											<td>2021.10.14</td>
+											<td>2021.10.15</td>
 										</tr>
 									</tbody>
 								</table>
+							</div>
+							<ul class="list list1 mt_2">
+								<li>매입 신청 기준 시간은 매수 신청 완료 시간으로 처리됩니다.</li>
+								<li>펀드의 매매는 당일 즉시 처리가 없습니다. 매수 신청 시 매수신청액을 투자자예탁금계정에 예치 후 영업일기준에 따라 펀드계좌로 입금(실매수)처리됩니다.</li>
+							</ul>
+							<div class="mt_12">
+								<h3 class="tit3 tit_gray mb_3">현재 펀드 기준가 적용 및 매입 기준</h3>
+								<div class="img_box">
+									<img src="/resources/img/content/stand_price_img02.png" alt="하단에 내용 참고바랍니다.">
+								</div>
+								<ul class="list list1 mt_2">
+									<li>2영업일은 신청일 기준 다음 영업일로 다음날이 법정 공휴일인 경우 그 다음 영업일을 말합니다.<br>
+										예: 금요일 신청 → 2영업일: 다음주 월요일</li>
+								</ul>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 거래환매상세 -->
+				<!-- e: 매매기준가적용일 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
