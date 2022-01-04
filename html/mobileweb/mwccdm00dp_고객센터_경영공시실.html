@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.tab_cont:eq(' + $('.tab_list li.on').index() + ')').show();
+
+			$('.tab_list li a').click(function () {
+				var tabIdx = $(this).parent().index();
+				$('.tab_cont').hide();
+				$('.tab_cont').eq(tabIdx).show();
+			})
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="popup_tit">경영 공시실</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body">
+			<div class="container pt_4 pb_4">
+				<nav class="tab_menu tab_border">
+					<ul class="tab_list">
+						<li class="on"><a href="#"><span>연도별 경영공시</span></a></li>
+						<li><a href="#"><span>스튜어드십코드</span></a></li>
+					</ul>
+				</nav>
+
+				<div class="tab_cont">
+					<h2 class="sr_only">연도별 경영공시</h2>
+
+					<div class="tbl_header">
+						<h3 class="tbl_year">2021년</h3>
+						<button type="button" class="btn_arrow btn_prev">prev</button>
+						<button type="button" class="btn_arrow btn_next">next</button>
+					</div>
+
+					<div class="tbl">
+						<table>
+							<caption class="sr_only">연도별 경영공시</caption>
+							<colgroup>
+								<col style="width: 8%;">
+								<col>
+								<col style="width: 5%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">연도</th>
+									<th scope="col">공시내용</th>
+									<th scope="col">보기</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_medium">2021년</td>
+									<td class="txt_l">2021년 상반기우체국예금 경영현황</td>
+									<td><a href="#" class="btn_download"><span class="sr_only">다운로드</span></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="tab_cont">
+					<h2 class="tit1">우체국 금융 스튜어드십코드</h2>
+
+					<div class="tbl">
+						<table>
+							<caption class="sr_only">연도별 경영공시</caption>
+							<colgroup>
+								<col>
+								<col style="width: 5%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">내용</th>
+									<th scope="col">보기</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_l">우체국금융 수탁자 책임에 관한 원칙</td>
+									<td><a href="#" class="btn_download"><span class="sr_only">다운로드</span></a></td>
+								</tr>
+								<tr>
+									<td class="txt_l">우체국금융 수탁자 책임 활동에 관한 지침</td>
+									<td><a href="#" class="btn_download"><span class="sr_only">다운로드</span></a></td>
+								</tr>
+								<tr>
+									<td class="txt_l">의결권 행사내역 공시(키다리스튜디오)</td>
+									<td><a href="#" class="btn_download"><span class="sr_only">다운로드</span></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>
