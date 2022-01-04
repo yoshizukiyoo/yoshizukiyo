@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_result').on('click', function () {
+				$('.btm_result_box').show();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">특급해외송금(MoneyGram)</h2>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">약관동의</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li><span class="num">4</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>MoneyGram 우체국 특급해외송금은 수취 Agent를 지정하여 송금하는 것은 아니며, 수취국가 내의 모든 Agent에서 자금을 수취하실 수 있습니다.</li>
+						<li>특급해외송금 Agent조회 사이트 : <a href="https://secure.moneygram.com/locations" target="_blank"
+								title="새창열림">https://secure.moneygram.com/locations</a><br>
+							MG회사 전화번호 : 0079-8852-12997
+						</li>
+						<li>송금인명은 보내시는 분의 영문성명과 일치해야 합니다. 다른(또는 타인의) 영문명 입력시 외국환거래법 또는 금융실명제에 따라 불이익을 받으실 수 있습니다.</li>
+						<li>송금인 영문명이 Full Name이 아니거나 잘못된 경우 송금이 되지 않거나 추가 수수료가 발생할 수 있으니 확인 후 정확히 입력해 주시기 바랍니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 송금정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">송금정보</h3>
+						</div>
+						<!--
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+						-->
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">송금정보 표로 수취국가, 송금환율, 전환율, 송금외화, 수수료외화, 수취예상금액, 송금원화, 수수료원화, 송금합계 정보제공</caption>
+							<colgroup>
+								<col style="width: 12%;">
+								<col>
+								<col style="width: 12%;">
+								<col>
+								<col style="width: 12%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">수취국가
+										<!--<strong class="necessary">*</strong>-->
+									</th>
+									<td colspan="5">
+										<div class="selectbox_wrap" style="width: 226px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택하십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>미국</span></a></li>
+														<li><a href="#none"><span>호주</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<button type="button" class="btn btn_md btn_outline_default ml6"
+											onclick="openModal('layer03', this);">수수료조회</button>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">송금환율</th>
+									<td colspan="3"><input type="text" title="전환율 입력" class="tf" style="width: 226px" readonly></td>
+									<th scope="row">전환율</th>
+									<td>
+										<input type="text" title="전환율 입력" class="tf" style="width: 100%" readonly>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">송금외화</th>
+									<td><span>USD <input type="text" class="tf ml_2" title="송금외화 입력" style="width: 178px;"
+												readonly></span>
+									</td>
+									<th scope="row">수수료외화</th>
+									<td><span>USD <input type="text" class="tf ml_2" title="수수료외화 입력" style="width: 178px;"
+												readonly></span></td>
+									<th scope="row">수취예상금액</th>
+									<td>
+										<span><input type="text" title="수취예상금액 입력" class="tf" style="width: 80px" readonly></span>
+										<span><input type="text" title="수취예상금액 입력" class="tf ml_2" style="width: 131px" readonly></span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">송금원화</th>
+									<td><input type="text" class="tf" title="송금외화 입력" style="width: 100%" readonly></td>
+									<th scope="row">수수료원화</th>
+									<td><input type="text" class="tf" title="수수료원화 입력" style="width: 100%;" readonly></td>
+									<th scope="row">송금합계</th>
+									<td><input type="text" title="송금합계 입력" class="tf" style="width: 100%" readonly></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="txt_r mt_4">
+						<button type="button" class="btn btn_xs btn_outline_gray ml6"
+							onclick="openModal('layer01', this);">거래외국환은행지정조회</button>
+					</div>
+				</div>
+				<!-- e: 송금정보 -->
+
+				<!-- s: 송금인정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">송금인정보</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">송금인정보 표로 송금인명, 주소, 전화번호, 국적, 거주성, 거래주체성격, 사유코드, 생년월일, 직업 정보제공</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">송금인명 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<span>성 <input type="text" class="tf ml_2" title="송금인 성 입력" style="width: 92px;" readonly></span>
+										<span class="ml_6">이름 <input type="text" class="tf ml_2" title="송금인 이름 입력" style="width: 190px;"
+												readonly></span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">주소 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<div><input type="text" title="주소 입력" class="tf" style="width: 864px;" readonly>
+										</div>
+										<div class="mt_2"><input type="text" title="주소 입력" class="tf" style="width: 864px;" readonly></div>
+										<div class="mt_2"><input type="text" title="주소 입력" class="tf" style="width: 387px;" readonly></div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" title="전화번호 입력" class="tf" style="width: 326px;" readonly>
+									</td>
+									<th scope="row">국적 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 326px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택하십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택하십시오</span></a></li>
+														<li><a href="#none"><span>선택하십시오</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">거주성 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 326px;">
+											<dl title="거주성 선택">
+												<dt><a href="#none"><span>선택하십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>거주자</span></a></li>
+														<li><a href="#none"><span>비거주자</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<th scope="row">거래주체성격 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 326px;">
+											<dl title="거래주체성격 선택">
+												<dt><a href="#none"><span>선택하십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택하십시오</span></a></li>
+														<li><a href="#none"><span>선택하십시오</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">사유코드 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 326px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>선택하십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>선택하십시오</span></a></li>
+														<li><a href="#none"><span>선택하십시오</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<th scope="row">생년월일 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf tf_datepicker" style="width: 170px;" readonly>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">직업 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<div class="selectbox_wrap" style="width: 326px;">
+											<dl title="직업 선택">
+												<dt><a href="#none"><span>선택하십시오</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>37205 : 개인의 이전거래</span></a></li>
+														<li><a href="#none"><span>37205 : 개인의 이전거래</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<input type="text" class="tf ml_2" title="직업 입력" style="width: 524px;" readonly>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="txt_r mt_4">
+						<button type="button" class="btn btn_xs btn_outline_gray" onclick="openModal('layer02', this);">이전송금/사전등록
+							조회</button>
+					</div>
+				</div>
+				<!-- e: 송금인정보 -->
+
+				<!-- s: 수취인정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">수취인정보</h3>
+						</div>
+						<!--
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+						-->
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">수취인정보 표로 수취인명, 2nd Last Name, Middle Name, 주소, 수취인전화 정보제공</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">수취인명
+										<!--<strong class="necessary">*</strong>-->
+									</th>
+									<td>
+										<span>성 <input type="text" class="tf ml_2" title="수취인 성 입력" style="width: 92px;" readonly></span>
+										<span class="ml_6">이름 <input type="text" class="tf ml_2" title="수취인 이름 입력" style="width: 190px;"
+												readonly></span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">2nd Last Name</th>
+									<td>
+										<input type="text" title="2nd Last Name 입력" class="tf" style="width: 387px;" readonly>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">Middle Name</th>
+									<td>
+										<input type="text" title="Middle Name 입력" class="tf" style="width: 387px;" readonly>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">주소</th>
+									<td>
+										<div><input type="text" title="주소 입력" class="tf" style="width: 864px;" readonly></div>
+										<div class="mt_2"><input type="text" title="주소 입력" class="tf" style="width: 864px;" readonly></div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">수취인전화</th>
+									<td>
+										<input type="text" title="수취인전화번호 입력" class="tf" style="width: 387px;" readonly>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 수취인정보 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">확인</a>
+				</div>
+
+				<div class="section">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>이용가능시간 : 00:10 ~ 23:50 (토 · 일요일, 공휴일 이용 가능)<br>
+									단, 23:50 ~ 00:10, 04:00 ~ 05:00 제외
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- Modal Popup : 거래외국환은행지정조회 -->
+				<div class="modal_popup modal_md hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">거래외국환은행지정조회</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="tit_left">
+									<h3 class="tit1">거래외국환은행지정조회 결과</h3>
+								</div>
+							</div>
+							<div class="tbl_data tbl_row_data">
+								<table>
+									<caption class="sr_only">거래외국환은행지정조회 결과</caption>
+									<colgroup>
+										<col style="width: 30%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">신한은행 지정여부</th>
+											<td>지정</td>
+										</tr>
+										<tr>
+											<th scope="row">지정항목</th>
+											<td>1:거주자 지급증빙서류 미제출 지급</td>
+										</tr>
+										<tr>
+											<th scope="row">신한은행 지로번호</th>
+											<td>0880466</td>
+										</tr>
+										<tr>
+											<th scope="row">지정일련번호</th>
+											<td>210002</td>
+										</tr>
+										<tr>
+											<th scope="row">신한은행 지점번호</th>
+											<td>0084</td>
+										</tr>
+										<tr>
+											<th scope="row">지정구분</th>
+											<td>신규지정</td>
+										</tr>
+										<tr>
+											<th scope="row">지정일자</th>
+											<td>2021.01.11</td>
+										</tr>
+										<tr>
+											<th scope="row">지정취소일자</th>
+											<td></td>
+										</tr>
+										<tr>
+											<th scope="row">송금금액(USD)</th>
+											<td class="txt_r">0.00</td>
+										</tr>
+										<tr>
+											<th scope="row">잔여금액(USD)</th>
+											<td class="txt_r">50,000.00</td>
+										</tr>
+										<tr>
+											<th scope="row">총한도금액(USD)</th>
+											<td class="txt_r">50,000.00</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 거래외국환은행지정조회 -->
+
+				<!-- Modal Popup : 이전송금/사전등록내역 -->
+				<div class="modal_popup modal_xxl hide" data-popup="layer02">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">특급해외송금(MoneyGram) 이전송금/사전등록내역</h3>
+						</div>
+						<div class="popup_body">
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>고객님께서 이전에 특급해외송금(MoneyGram)하시거나 창구에서 사전등록하신 내역입니다.</li>
+								</ul>
+							</div>
+							<div class="tbl_data tbl_list_data mt_4">
+								<table>
+									<caption class="sr_only">특급해외송금(MoneyGram) 이전송금/사전등록내역 표로 송금일/등록일, 수취통화, 원부번호/등록번호, MG Ref.no, 수취국가,
+										수취인명, 송금방법, 확인 정보제공</caption>
+									<colgroup>
+										<col style="width:13%">
+										<col style="width:11%">
+										<col style="width:20%">
+										<col>
+										<col style="width:8%">
+										<col>
+										<col style="width:9%">
+										<col style="width:9%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">송금일/등록일</th>
+											<th scope="col">수취통화</th>
+											<th scope="col">원부번호/등록번호</th>
+											<th scope="col">MG Ref.no</th>
+											<th scope="col">수취국가</th>
+											<th scope="col">수취인명</th>
+											<th scope="col">송금방법</th>
+											<th scope="col">확인</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c">2018.04.23</td>
+											<td>USD</td>
+											<td>010020000300004</td>
+											<td>SSSSSSSSS</td>
+											<td>US</td>
+											<td>BANK NAME</td>
+											<td>창구</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">선택</button></td>
+										</tr>
+										<tr>
+											<td class="txt_c">2018-04-23</td>
+											<td>USD</td>
+											<td>010020000300004</td>
+											<td>SSSSSSSSS</td>
+											<td>US</td>
+											<td>BANK NAME</td>
+											<td>창구</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 이전송금/사전등록내역 -->
+
+				<!-- Modal Popup : 수수료조회 -->
+				<div class="modal_popup modal_xxl hide" data-popup="layer03">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">수수료조회</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="tit_left">
+									<h3 class="tit1">수수료조회</h3>
+								</div>
+							</div>
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">수수료조회 표로 수취국가, 송금통화, 송금금액, 수수료구분 정보제공</caption>
+									<colgroup>
+										<col style="width: 17%;">
+										<col>
+										<col style="width: 17%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">수취국가</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 100%">
+													<dl title="수취국가 선택">
+														<dt><a href="#none"><span>선택하십시오</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>선택하십시오</span></a></li>
+																<li><a href="#none"><span>선택하십시오</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+											<th scope="row">송금통화</th>
+											<td>USD</td>
+										</tr>
+										<tr>
+											<th scope="row">송금금액</th>
+											<td>
+												<span><input type="text" title="송금금액 입력" class="tf" style="width: 131px"></span>
+												<span class="v_bot ml_2">.</span>
+												<span><input type="text" title="송금금액 입력" class="tf ml_2" style="width: 80px"></span>
+											</td>
+											<th scope="row">수수료구분</th>
+											<td>
+												<div class="selectbox_wrap" style="width: 326px;">
+													<dl title="수수료구분 선택">
+														<dt><a href="#none"><span>선택하십시오</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#none"><span>선택하십시오</span></a></li>
+																<li><a href="#none"><span>선택하십시오</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary">조회</button>
+							</div>
+
+							<div class="section mb_6">
+								<div class="tbl_tit">
+									<div class="txt_right">
+										<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+										<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									</div>
+								</div>
+								<div class="tbl_data tbl_list_data mt_4">
+									<table>
+										<caption class="sr_only">수수료조회결과 표로 출금액, 송금외화금액, 수수료외화, 수취통화, 전환율, 수취예상금액(외화), 송금원화금액, 수수료원화, 계좌
+											출금금액(원화), 확인 정보제공</caption>
+										<colgroup>
+											<col style="width:10%">
+											<col style="width:11%">
+											<col style="width:10%">
+											<col style="width:10%">
+											<col style="width:10%">
+											<col style="width:10%">
+											<col style="width:10%">
+											<col style="width:10%">
+											<col style="width:10%">
+											<col style="width:9%">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">출금액</th>
+												<th scope="col">송금외화금액</th>
+												<th scope="col">수수료외화</th>
+												<th scope="col">수취통화</th>
+												<th scope="col">전환율</th>
+												<th scope="col">수취예상<br>금액(외화)</th>
+												<th scope="col">송금원화<br>금액</th>
+												<th scope="col">수수료원화</th>
+												<th scope="col">계좌출금<br>금액(원화)</th>
+												<th scope="col">확인</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_r">16.00</td>
+												<td class="txt_r">1.00</td>
+												<td class="txt_r">16.00</td>
+												<td>USD</td>
+												<td>1.0000</td>
+												<td class="txt_r">1.00</td>
+												<td class="txt_r">1.180</td>
+												<td class="txt_r">17,830</td>
+												<td class="txt_r">17,830</td>
+												<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">선택</button></td>
+											</tr>
+											<tr>
+												<td class="txt_r">16.00</td>
+												<td class="txt_r">1.00</td>
+												<td class="txt_r">16.00</td>
+												<td>USD</td>
+												<td>1.0000</td>
+												<td class="txt_r">1.00</td>
+												<td class="txt_r">1.180</td>
+												<td class="txt_r">17,830</td>
+												<td class="txt_r">17,830</td>
+												<td class="txt_c"><button type="button" class="btn btn_xs btn_outline_default">선택</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 수수료조회 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										confirm 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<a href="#;" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>
