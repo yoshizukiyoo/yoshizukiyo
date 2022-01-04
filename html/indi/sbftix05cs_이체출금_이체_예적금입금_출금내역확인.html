@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="예적금입금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<div class="account_info_box normal_box">
+					<div>
+						<span class="bank">
+							<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+						</span>
+						<div class="info">
+							<strong>스마트 e-Postbank 예금</strong>
+							<p>100057-02-000010</p>
+							<div class="price">
+								<span>출금가능금액</span>
+								<strong>2,345,900 원</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="double_box mt_2">
+					<div class="btm pb_0">
+						<div>
+							<div class="l">입금은행</div>
+							<div class="r">우체국</div>
+						</div>
+						<div>
+							<div class="l">입금계좌</div>
+							<div class="r">12345678912345</div>
+						</div>
+						<div>
+							<div class="l">받는분</div>
+							<div class="r">강하나</div>
+						</div>
+						<div>
+							<div class="l">이체금액</div>
+							<div class="r"><strong class="txt_bold">10,000</strong>원</div>
+						</div>
+						<div>
+							<div class="l">수수료</div>
+							<div class="r"><strong class="txt_bold">0</strong>원</div>
+						</div>
+						<div>
+							<div class="l">출금통장표시</div>
+							<div class="r">점심</div>
+						</div>
+						<div>
+							<div class="l">입금통장표시</div>
+							<div class="r">나봄미</div>
+						</div>
+					</div>
+					<div class="btn_group btn_group_flex pt_0 p_4">
+						<a href="#;" class="btn btn_md btn_round btn_darkgray">취소하기</a>
+					</div>
+				</div>
+				<div class="double_box mt_2">
+					<div class="btm">
+						<div>
+							<div class="l">이체건수</div>
+							<div class="r"><strong class="txt_bold">1</strong>건</div>
+						</div>
+						<div>
+							<div class="l">총 이체금액</div>
+							<div class="r"><strong class="txt_bold">10,000</strong>원</div>
+						</div>
+						<div>
+							<div class="l">총 이체수수료</div>
+							<div class="r"><strong class="txt_bold">0</strong>원</div>
+						</div>
+					</div>
+				</div>
+				<div class="mt_4"><a href="#;" class="btn btn_lg btn_outline_default full">이체추가</a></div>
+				<div class="mt_4">
+					<a href="#;" class="tf_item mt_2" onclick="openModal('pwd_full_popup');return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<div class="lab">비밀번호 <span class="req">필수항목</span></div>
+								<div class="pwd_placeholder">숫자4자리</div>
+								<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+								<div class="password_masking gray">
+									<!-- 자릿수에 맞춰 <i></i> 추가 -->
+									<i></i><i></i><i></i><i></i>
+								</div>
+							</div>
+						</div>
+					</a>
+					<p class="txt_guide">비밀번호 5회이상 오류시 거래 제한</p>
+				</div>
+
+				<!-- s: 추가인증 -->
+				<div class="section">
+					<h2 class="tit1">추가인증</h2>
+					<div class="add_certi_box">
+						<div class="add_list">
+							<a href="#;" class="btn btn_lg btn_default" onclick="openModal('certi_sms_popup', this);">SMS 인증</a>
+							<a href="#;" class="btn btn_lg btn_default" onclick="openModal('certi_ars_popup', this);">ARS 인증</a>
+							<a href="#;" class="btn btn_lg btn_default" onclick="openModal('certi_foreign_popup', this);">해외체류</a>
+						</div>
+						<div class="box certi_box mt_2">
+							인증되었습니다.
+						</div>
+					</div>
+				</div>
+				<!-- e: 추가인증 -->
+
+				<!-- s: 보안매체 (보안카드 입력) -->
+				<div class="section">
+					<h2 class="tit1">보안카드 입력</h2>
+					<div class="security_box">
+						<div>
+							<strong>[55] 앞 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 앞 2자리">
+							</div>
+						</div>
+						<div>
+							<strong>[55] 뒤 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 뒤 2자리">
+							</div>
+						</div>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: 보안매체 (보안카드 입력) -->
+
+				<!-- s: 보안매체 (OTP 입력) -->
+				<div class="section">
+					<h2 class="tit1">OTP 입력</h2>
+					<div class="otp_box">
+						<a href="#;" onclick="openModal('otp_pwd_popup', this);return false;">
+							<i class="on"></i><i></i><i></i><i></i><i></i><i></i>
+						</a>
+					</div>
+				</div>
+				<!-- e: 보안매체 (OTP 입력) -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary"><span>이체</span></a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 계좌정보 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="account_bottom_sheet">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">계좌정보</h2>
+					</div>
+					<div class="tab_menu tab_menu1 width_fix">
+						<ul class="tab_list">
+							<li class="on"><a href="#" title="선택됨"><span>최근이체계좌</span></a></li>
+							<li><a href="#"><span>자주쓰는등록계좌</span></a></li>
+							<li><a href="#"><span>본인계좌</span></a></li>
+						</ul>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="account_tab_list">
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('account_bottom_sheet');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 계좌정보 bottom sheet -->
+
+			<!-- s: 입금계좌 예금주 확인 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="account_alert_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header"></div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc txt_l">
+								<p class="txt_lg txt_c">
+									<span class="txt_bold">강하나</span><br>
+									받는 사람이 맞습니까?
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default"
+								onclick="closeModal('account_alert_popup');">아니오</button>
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('account_alert_popup');">예</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 입금계좌 예금주 확인 팝업 -->
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">비밀번호 입력</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">4자리 숫자를 입력해 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								4자리 숫자를 입력해 주세요.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 비밀번호 입력 팝업 -->
+
+			<!-- s: 추가인증(SMS인증 레이어팝업) -->
+			<div class="modal_popup popup hide" data-popup="certi_sms_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">SMS인증서비스</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4 pb_4">
+							<div class="easy_certi_top bg_sms_certi">홍길동님의 휴대폰으로 발송한<br>인증번호를 입력해 주세요</div>
+							<div class="section">
+								<h3 class="tit1">휴대폰 SMS인증</h3>
+								<div class="tf_item mt_3 invalid active">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_4">SMS인증번호 <span class="req">필수항목</span></label>
+											<input type="password" id="lb_tf_1_4" class="tf" placeholder="6자리 인증번호 입력" value="" required="">
+										</div>
+										<span class="certi_time">02:59</span>
+									</div>
+								</div>
+								<p class="txt_guide">인증번호가 일치하지 않습니다.</p>
+								<p class="bul_notice mt_3">인증요청후 인증번호 유효시간은 3분입니다. 인증시간 경과시 인증요청을 다시 해주세요</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default">재요청</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('certi_sms_popup');">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 추가인증(SMS인증 레이어팝업) -->
+
+			<!-- s: 추가인증(ARS인증 레이어팝업) -->
+			<div class="modal_popup popup hide" data-popup="certi_ars_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">ARS인증서비스</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4 pb_4">
+							<div class="easy_certi_top bg_ars_certi">
+								고객님의 휴대전화<br>010-0000-****으로 연락드리겠습니다.
+							</div>
+							<p class="txt_guide txt_c">ARS인증번호 4자리를 입력하세요</p>
+							<div class="section">
+								<h3 class="tit1">휴대전화 ARS 본인인증</h3>
+								<div class="ars_certi_number">
+									<strong>3200</strong>
+								</div>
+								<p class="mt_1 txt_r"><span class="certi_time">02:59</span></p>
+								<p class="bul_notice mt_3">인증요청후 인증번호 숫자 4자리를 입력하세요. 인증번호 유효시간은 3분입니다.</p>
+								<p class="bul_notice mt_3">인증시간 경과시 인증요청을 다시해주세요.</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default">재요청</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('certi_ars_popup');">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 추가인증(ARS인증 레이어팝업) -->
+
+			<!-- s: 추가인증(해외체류확인 레이어팝업) -->
+			<script>
+				// 해외체류확인 실행완료 단계
+				function nextforeignStep() {
+					$('[data-foreign-step=step1], [data-foreign-btn=step1]').hide();
+					$('[data-foreign-step=step2], [data-foreign-btn=step2]').show();
+				}
+			</script>
+			<div class="modal_popup popup hide" data-popup="certi_foreign_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">해외체류확인</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4 pb_4">
+							<!-- s: 내용 확인 및 동의 단계 -->
+							<div data-foreign-step="step1">
+								<h3 class="tit1">내용 확인</h3>
+								<p>출입국 관리사무소 시스템에 장애가 발생하거나 출입국 정보 업데이트가 지연될 경우 출국정보 이용이 제한될 수 있습니다.</p>
+								<p class="bul_notice mt_2">
+									출입국정보 업데이트 주기<br>
+									- 통상 출입국 후 최소 12시간에서 최대36시간
+								</p>
+								<p class="mt_2">한국국적의 해외체류자 및 해외거주자의 경우 법무부 출입국 관리사무소로 부터 출국사실이 확인되면 별도의 추가 본인인 증절차를 생략할 수 있습니다.</p>
+								<p class="mt_2">출국사실을 확인하기 위하여 개인정보보호법 제15조(개인 정보의 수집이용) 및 제18조(개인정보의 이용 제공제한)에 따라 고객님의 주민등록번호 및 성명 등을
+									출국정보 조회시스템을 운영하고 있는 금융결제원을 통하여 법무부 출입국 관리사무소로 전송하고, 확인받는데 동의하십니까?</p>
+								<div class="tf_item mt_2">
+									<div class="input_items">
+										<span class="check_item check flex_auto">
+											<input type="radio" name="foreign" id="foreign_y" checked="">
+											<label for="foreign_y">동의합니다.</label>
+										</span>
+										<span class="check_item check flex_auto">
+											<input type="radio" name="foreign" id="foreign_n">
+											<label for="foreign_n" onclick="openModal('certi_foreign_align', this)">동의하지 않습니다.</label>
+										</span>
+									</div>
+								</div>
+								<p class="bul_notice mt_2">고객님께서는 동의를 거부하실 수 있으며, 동의를 거부하 실 경우에는 서비스 이용에 제한이 있을 수 있습니다.</p>
+								<p class="bul_notice mt_2">고객님의 출극정보는 별도의 추가 본인인증 절차를 생략 하기 위한 목적에 한하여 사용됩니다.</p>
+							</div>
+							<!-- e: 내용 확인 및 동의 단계 -->
+
+							<!-- s: 실행완료 단계 -->
+							<div data-foreign-step="step2" style="display: none;">
+								<h3 class="tit1">실행완료</h3>
+								<div class="double_box mt_2">
+									<div class="btm">
+										<div>
+											<div class="l">체류확인결과</div>
+											<div class="r">확인안됨</div>
+										</div>
+										<div>
+											<div class="l">메세지</div>
+											<div class="r">
+												해외 체류자가 아닙니다.<br>
+												(참고사항 ⇒ 최소 : 출국일 익일 12시, 최대 : 출국일 익일 24시 후
+											</div>
+										</div>
+									</div>
+								</div>
+								<p class="bul_notice mt_2">해외체류 확인 신청이 위와 같이 처리되었습니다.</p>
+							</div>
+							<!-- e: 실행완료 단계 -->
+						</div>
+					</div>
+					<!-- s: 내용 확인 및 동의 단계 버튼 -->
+					<div class="popup_footer" data-foreign-btn="step1">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="nextforeignStep();">확인</button>
+						</div>
+					</div>
+					<!-- e: 내용 확인 및 동의 단계 버튼 -->
+
+					<!-- s: 실행완료 단계 버튼 -->
+					<div class="popup_footer" data-foreign-btn="step2" style="display: none;">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('certi_foreign_popup');">확인</button>
+						</div>
+					</div>
+					<!-- e: 실행완료 단계 버튼 -->
+				</div>
+			</div>
+			<div class="modal_popup modal_alert hide" data-popup="certi_foreign_align">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">출국정보 조회시스템 확인 동의</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc txt_l">
+								<p>출국정보 조회시스템 확인 동의가 필요합니다.</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('certi_foreign_align');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 추가인증(해외체류확인 레이어팝업) -->
+
+			<!-- s: OTP 암호입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="otp_pwd_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">디지털 OTP</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">디지털 OTP 보안인증을 진행합니다.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+									<span class="certi_time">02:59</span>
+								</div>
+							</div>
+							<div class="btn_group btn_bottom_fixed mt_0">
+								<a href="#;" class="btn btn_md btn_round btn_default">
+									<span>인증번호 재입력</span>
+								</a>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								디지털 OTP앱에서 생성한 6자리 번호를 입력해 주세요
+							</p>
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary">인증요청</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('otp_pwd_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('otp_pwd_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: OTP 암호입력 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

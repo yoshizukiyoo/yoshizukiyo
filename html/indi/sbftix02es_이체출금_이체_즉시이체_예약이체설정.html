@@ -23,7 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			
 		});
 	</script>
 </head>
@@ -88,8 +88,8 @@
 						</div>
 						<div class="account_number">
 							<a href="#n" class="acc_inp" onclick="openModal('deposit_bottom_sheet', this);return false;">
+								<!-- <span>입금계좌번호 입력</span> 플레이스홀더 텍스트 -->
 								<span>123456789012345</span>
-								<!-- <input type="text" value="123456789012345"> -->
 							</a>
 							<button type="button" class="btn btn_icon btn_reset">
 								<i class="ico ico_reset"></i>
@@ -119,10 +119,51 @@
 					</p>
 					<div class="mt_4">
 						<span class="check_item">
-							<input type="checkbox" name="inputCheck2" id="inputCheck2_2">
+							<input type="checkbox" name="inputCheck2" id="inputCheck2_2" checked>
 							<label for="inputCheck2_2">예약이체</label>
 						</span>
 					</div>
+					<!-- s: 예약이체 설정 -->
+					<div class="reserve_date mt_2">
+						<div class="l">
+							<div class="tf_item active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_date2">날짜 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" required="">
+									</div>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+											<i class="ico ico_datepicker"></i>
+											<span class="sr_only">달력</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="r">
+							<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">예약시간 <span class="req">필수항목</span></span>
+										<p class="tf">오전 9시</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">오전 9시</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<ul class="mt_2">
+						<li class="bul_notice">
+							지정하신 예약이체일에 이체금액과 수수료가 자동인출되며, 이체 시점의 고객수수료 면제가능건수에 따라 수수료가 부과될 수 있습니다.
+						</li>
+						<li class="bul_notice mt_2">입금계좌가 가상계좌인 경우 예약이체가 불가합니다.</li>
+						<li class="bul_notice mt_2">예약이체 취소는 이체지정일 전일까지 가능하며 이체당일에는 취소하실 수 없습니다.</li>
+					</ul>
+					<!-- e: 예약이체 설정 -->
 				</div>
 				<!-- e: 입금계좌정보 -->
 			</div>
@@ -254,8 +295,7 @@
 					</div>
 					<div class="popup_footer">
 						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_primary"
-								onclick="closeModal('account_bottom_sheet');">확인</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('account_bottom_sheet');">확인</button>
 						</div>
 					</div>
 					<button type="button" class="btn btn_close_popup">닫기</button>
@@ -271,10 +311,8 @@
 					<div class="popup_body">
 						<div class="container">
 							<div class="btn_group btn_group_flex mt_0">
-								<button type="button" class="btn btn_lg btn_default"
-									onclick="closeModal('layerSampleFull');">취소</button>
-								<button type="button" class="btn btn_lg btn_primary"
-									onclick="closeModal('layerSampleFull');">확인</button>
+								<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layerSampleFull');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleFull');">확인</button>
 							</div>
 						</div>
 					</div>
@@ -305,10 +343,8 @@
 					</div>
 					<div class="popup_footer">
 						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_default"
-								onclick="closeModal('account_alert_popup');">아니오</button>
-							<button type="button" class="btn btn_lg btn_primary"
-								onclick="closeModal('account_alert_popup');">예</button>
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('account_alert_popup');">아니오</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('account_alert_popup');">예</button>
 						</div>
 					</div>
 					<button type="button" class="btn btn_close_popup">닫기</button>

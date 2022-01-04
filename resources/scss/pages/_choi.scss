@@ -1990,6 +1990,10 @@ h3.tit2 {
 				display: flex;
 				width: calc(100% - 30px);
 
+				&.clear {
+					background-image: none !important;
+				}
+
 				>.l {
 					display: flex;
 					width: 100%;
@@ -2716,13 +2720,13 @@ h3.tit2 {
 	}
 }
 
-.transfer_menu {
+.bridge_menu {
 	.menu_wrap {
 		position: relative;
 
-		padding: 15px 20px;
+		padding: 15px 30px;
 
-		background-color: $primary;
+		background-color: inherit;
 
 		&::before {
 			content: "";
@@ -2733,21 +2737,26 @@ h3.tit2 {
 			top: 100%;
 			transform: translateX(-50%);
 
-			border-top: 10px solid $primary;
+			border-top-width: 10px;
+			border-top-style: solid;
 			border-left: 11px solid transparent;
 			border-right: 11px solid transparent;
 		}
 
 		.menu_track {
 			display: flex;
-			padding: 0 10px;
+			max-width: 100%;
+			overflow-x: scroll;
 
-			justify-content: space-around;
+			justify-content: left;
 
 			>li {
 				display: inline-flex;
-				flex: 0 0 auto;
+				flex: 0 0 25%;
 				padding: 0 8px;
+				max-width: 110px;
+
+				justify-content: center;
 
 				>a {
 					width: 60px;
@@ -2757,7 +2766,7 @@ h3.tit2 {
 					background-repeat: no-repeat;
 					background-color: transparent;
 
-					transition: all 0.4s ease-out;
+					transition: all 0.4s linear;
 
 
 				}
@@ -2767,62 +2776,6 @@ h3.tit2 {
 						border-radius: 100%;
 						background-color: #fff;
 						box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-					}
-				}
-
-				&.menu01 {
-					>a {
-						background-image: url(#{$url-img}/content/bg_transfer_menu01.png);
-						background-size: 40px 33px;
-						background-position: 14px center;
-					}
-
-					&.on {
-						>a {
-							background-image: url(#{$url-img}/content/bg_transfer_menu01_on.png);
-						}
-					}
-				}
-
-				&.menu02 {
-					>a {
-						background-image: url(#{$url-img}/content/bg_transfer_menu02.png);
-						background-size: 35px 26px;
-						background-position: 12px 18px;
-					}
-
-					&.on {
-						>a {
-							background-image: url(#{$url-img}/content/bg_transfer_menu02_on.png);
-						}
-					}
-				}
-
-				&.menu03 {
-					>a {
-						background-image: url(#{$url-img}/content/bg_transfer_menu03.png);
-						background-size: 33px 27px;
-						background-position: 16px 18px;
-					}
-
-					&.on {
-						>a {
-							background-image: url(#{$url-img}/content/bg_transfer_menu03_on.png);
-						}
-					}
-				}
-
-				&.menu04 {
-					>a {
-						background-image: url(#{$url-img}/content/bg_transfer_menu04.png);
-						background-size: 37px 32px;
-						background-position: 15px 15px;
-					}
-
-					&.on {
-						>a {
-							background-image: url(#{$url-img}/content/bg_transfer_menu04_on.png);
-						}
 					}
 				}
 			}
@@ -2866,7 +2819,6 @@ h3.tit2 {
 		strong {
 			display: block;
 			font-size: 24px;
-			color: #fd581e;
 			font-weight: bold;
 			line-height: 1;
 		}
@@ -2876,6 +2828,92 @@ h3.tit2 {
 			line-height: 24px;
 			font-weight: normal;
 			color: #111;
+		}
+
+		.list {
+			text-align: left;
+
+			&.list1 {
+				font-size: 13px;
+				color: #555;
+			}
+		}
+	}
+
+	&.transfer {
+
+		.menu_wrap {
+			background-color: $primary;
+
+			&::before {
+				border-top-color: $primary;
+			}
+
+			.menu_track {
+				>li {
+					&.menu01 {
+						>a {
+							background-image: url(#{$url-img}/content/bg_transfer_menu01.png);
+							background-size: 40px 33px;
+							background-position: 14px center;
+						}
+
+						&.on {
+							>a {
+								background-image: url(#{$url-img}/content/bg_transfer_menu01_on.png);
+							}
+						}
+					}
+
+					&.menu02 {
+						>a {
+							background-image: url(#{$url-img}/content/bg_transfer_menu02.png);
+							background-size: 35px 26px;
+							background-position: 12px 18px;
+						}
+
+						&.on {
+							>a {
+								background-image: url(#{$url-img}/content/bg_transfer_menu02_on.png);
+							}
+						}
+					}
+
+					&.menu03 {
+						>a {
+							background-image: url(#{$url-img}/content/bg_transfer_menu03.png);
+							background-size: 33px 27px;
+							background-position: 16px 18px;
+						}
+
+						&.on {
+							>a {
+								background-image: url(#{$url-img}/content/bg_transfer_menu03_on.png);
+							}
+						}
+					}
+
+					&.menu04 {
+						>a {
+							background-image: url(#{$url-img}/content/bg_transfer_menu04.png);
+							background-size: 37px 32px;
+							background-position: 15px 15px;
+						}
+
+						&.on {
+							>a {
+								background-image: url(#{$url-img}/content/bg_transfer_menu04_on.png);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.menu_info_area {
+			strong {
+				color: #fd581e;
+			}
 		}
 	}
 }
