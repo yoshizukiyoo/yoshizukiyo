@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_toggle_more').click(function () {
+				$(this).parent().toggleClass('active');
+			})
+
+			$('.btn_submenu').click(function () {
+				$(this).parent().find('.sub_toggle').show();
+			})
+
+			$('.btn_close_tooltip').click(function () {
+				$(this).parent().hide();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="내카드조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<nav class="tab_menu tab_menu1 mb_0">
+				<ul class="tab_list">
+					<li class="on"><a href="#"><span>우체국</span></a></li>
+					<li><a href="#"><span>다른기관</span></a></li>
+				</ul>
+			</nav>
+			<div class="container p_4">
+				<h2 class="tit1 d_f">보유카드수
+					<span class="count_num">5</span>
+					<button class="btn_refresh"><span class="sr_only">새로고침</span></button>
+				</h2>
+				<div class="price_total">
+					<p class="txt_sm">7월 전체카드 이용금액</p>
+					<strong>75,678,900<span>원</span></strong>
+				</div>
+
+				<ul class="card_info_list mt_4">
+					<li>
+						<div class="con">
+							<div class="clfx">
+								<div class="f_l">
+									<span class="btn btn_sm btn_default">교통</span>
+									<span class="btn btn_sm btn_default">UnionPay</span>
+								</div>
+								<div class="f_r">
+									<span class="btn btn_sm btn_primary">대표</span>
+									<button type="button" class="btn btn_submenu" onclick="openModal('layerOption'),this"><span
+											class="sr_only">세부 메뉴</span></button>
+								</div>
+							</div>
+							<a href="#;" onclick="openModal('layer01',this)">
+								<div class="tit mt_2">
+									<div class="txt_normal">우체국 하나로 전자카드</div>
+									<strong class="mt_1">6262-****-****-6142</strong>
+								</div>
+								<div class="mt_2">
+									<dl>
+										<dt>유효기간</dt>
+										<dd>2021.08</dd>
+									</dl>
+									<dl>
+										<dt>결제계좌</dt>
+										<dd>010017-02-526768</dd>
+									</dl>
+								</div>
+							</a>
+						</div>
+						<div class="link_btn">
+							<a href="#;">이용내역</a>
+							<a href="#;">실적조회</a>
+							<a href="#;">비밀번호변경</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+			<!-- s: Modal Popup : 카드 상세 정보 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">카드 상세 정보</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="double_box btm_toggle">
+								<div class="btm">
+									<div>
+										<div class="l">카드번호</div>
+										<div class="r">6262-****-****-6142</div>
+									</div>
+									<div>
+										<div class="l">결제계좌번호</div>
+										<div class="r">우체국 010017-02-526768</div>
+									</div>
+									<div>
+										<div class="l">고객명</div>
+										<div class="r">나봄미</div>
+									</div>
+									<div>
+										<div class="l">카드명</div>
+										<div class="r">우체국 하나로 전자카드 (교통)(UnionPay)</div>
+									</div>
+									<div>
+										<div class="l">휴일재해보장보험</div>
+										<div class="r">비동의</div>
+									</div>
+									<div>
+										<div class="l">카드상태</div>
+										<div class="r">정상(후발급)</div>
+									</div>
+									<div>
+										<div class="l">교통카드구분</div>
+										<div class="r">사용</div>
+									</div>
+									<div>
+										<div class="l">유효기간</div>
+										<div class="r">2021.08</div>
+									</div>
+									<div>
+										<div class="l">카드발급일</div>
+										<div class="r">2021.06.18</div>
+									</div>
+									<div>
+										<div class="l">카드발급국</div>
+										<div class="r">서울중앙우체국</div>
+									</div>
+									<div>
+										<div class="l">카드개시일</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">카드해지일</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">발급구분</div>
+										<div class="r">추가신규</div>
+									</div>
+									<div>
+										<div class="l">월 한도</div>
+										<div class="r"><strong>20,000,000 원</strong></div>
+									</div>
+									<div>
+										<div class="l">일 한도</div>
+										<div class="r"><strong>6,000,000 원</strong></div>
+									</div>
+									<div>
+										<div class="l">알림서비스 사용여부</div>
+										<div class="r">미사용</div>
+									</div>
+									<div>
+										<div class="l">알림서비스 수신번호</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">잔액표시</div>
+										<div class="r">-</div>
+									</div>
+								</div>
+								<a href="#;" class="btn_toggle_more"><span class="sr_only">더보기</span></a>
+							</div>
+							<div class="mt_4 flex_btn">
+								<a href="#;" class="btn btn_lg btn_outline_default">이용내역</a>
+								<a href="#;" class="btn btn_lg btn_outline_default">실적조회</a>
+								<a href="#;" class="btn btn_lg btn_outline_default">비밀번호 변경</a>
+								<a href="#;" class="btn btn_lg btn_outline_default">사고신고</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup : 카드 상세 정보 -->
+
+			<!-- s: 카드관리 팝업 -->
+			<div class="modal_popup sidepopup show" data-popup="account_manage">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">카드관리</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<div class="card_ico">
+								<img src="/resources/img/content/ico_epost02.png" alt="우체국">
+								<p class="txt_normal"><span class="txt_lg">우체국 하나로 전자카드</span><br>
+									6262-****-****-6142
+								</p>
+							</div>
+
+							<div class="mt_6">
+								<h3 class="tit1">카드 별명 관리</h3>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label for="sidepopup_input1_1" class="lab">카드별명</label>
+											<input type="text" id="sidepopup_input1_1" class="tf" placeholder="최대 12자까지 입력">
+										</div>
+										<div class="btn_area ml_0">
+											<a href="#;" class="btn btn_md btn_round btn_darkgray" style="min-width: 65px">저장</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="container bdt_gray mt_10 p_4">
+							<h3 class="tit1 quick_menu_tit">빠른업무</h3>
+							<ul class="list list1 list_bar">
+								<li><a href="#;">실적충족현황</a></li>
+								<li><a href="#;">포인트적립내역</a></li>
+								<li><a href="#;">대표설정</a></li>
+								<li><a href="#;">해지</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 카드관리 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
