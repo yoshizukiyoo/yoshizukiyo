@@ -29,15 +29,15 @@
 		});
 
 		function dropDown(obj, currList) {
-			obj.not('.active').siblings().slice(currList).hide();
+			obj.not('.active').siblings().slice(currList).attr('style', 'display: none !important');
 
 			obj.on('click', function (e) {
 				e.preventDefault();
 				if (obj.hasClass('active')) {
-					obj.siblings().slice(currList).hide();
+					obj.siblings().slice(currList).attr('style', 'display: none !important');
 					obj.html('펼치기').removeClass('active');
 				} else {
-					obj.siblings().not(':visible').show();
+					obj.siblings().not(':visible').removeAttr('style');
 					obj.html('접기').addClass('active');
 				}
 			})

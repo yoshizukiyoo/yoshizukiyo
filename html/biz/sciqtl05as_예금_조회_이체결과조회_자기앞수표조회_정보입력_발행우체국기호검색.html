@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="자기앞수표조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+
+				<h2 class="tit1">정보입력</h2>
+				<div>
+					<div class="img_wrap">
+						<img src="/resources/img/content/img_bankcheck.gif" alt="자기앞수표">
+					</div>
+					<p class="txt_guide">
+						<span class="mr_1">① 수표번호
+							<a href="#;" data-toggle-btn="tooltip1">
+								<i class="ico ico_help v_mid"></i>
+								<span class="sr_only">도움말</span>
+							</a>
+						</span>
+						<span>② 발행우체국기호
+							<a href="#;" data-toggle-btn="tooltip2">
+								<i class="ico ico_help"></i>
+								<span class="sr_only">도움말</span>
+							</a>
+						</span>
+					</p>
+
+					<!-- s: 1. 수표번호 도움말 -->
+					<div class="tooltip" data-toggle-content="tooltip1">
+						<div class="tooltip_body">
+							<ul class="list list1">
+								<li>내용 입력</li>
+								<li>내용 입력</li>
+							</ul>
+						</div>
+						<button type="button" class="btn btn_icon btn_close_tooltip">
+							<i class="ico ico_close_sm"></i>
+							<span class="sr_only">닫기</span>
+						</button>
+					</div>
+					<!-- e: 1. 수표번호 도움말 -->
+
+					<!-- s: 2. 발행우체국기호 도움말 -->
+					<div class="tooltip" data-toggle-content="tooltip2">
+						<div class="tooltip_body">
+							<ul class="list list1">
+								<li>내용 입력</li>
+								<li>내용 입력</li>
+							</ul>
+						</div>
+						<button type="button" class="btn btn_icon btn_close_tooltip">
+							<i class="ico ico_close_sm"></i>
+							<span class="sr_only">닫기</span>
+						</button>
+					</div>
+					<!-- e: 2. 발행우체국기호 도움말 -->
+				</div>
+
+				<!-- s: 수표번호 입력 -->
+				<div class="mt_4">
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_1" class="lab">수표번호 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_1" class="tf" maxlength="8">
+							</div>
+						</div>
+					</div>
+					<p class="txt_guide">수표번호 8자리 입력</p>
+				</div>
+				<!-- e: 수표번호 입력 -->
+
+				<!-- s: 수표매수 입력 -->
+				<div class="mt_2">
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_2" class="lab">수표매수 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_2" class="tf">
+							</div>
+						</div>
+					</div>
+					<p class="txt_guide">최대 20매</p>
+				</div>
+				<!-- e: 수표매수 입력 -->
+
+				<!-- s: 발행우체국기호 입력 -->
+				<div class="mt_2">
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_3" class="lab">발행우체국기호 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_3" class="tf" readonly required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray"
+									onclick="openModal('layer01', this); return false;">검색</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 발행우체국기호 입력 -->
+
+				<!-- s: 자기앞수표종류 선택 -->
+				<div class="mt_2">
+					<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">자기앞수표종류 <span class="req">필수항목</span></span>
+								<p class="tf">10만원권 정액</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+				</div>
+				<!-- e: 자기앞수표종류 선택 -->
+
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="sciqtl05bs_예금_조회_이체결과조회_자기앞수표조회_조회완료.html" class="btn btn_xl btn_primary">조회</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal Popup : 발행우체국기호 조회 -->
+			<div class="modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">발행우체국기호 조회</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+
+							<!-- s: 우체국 조회 정보 입력 -->
+							<div>
+								<h3 class="tit1">우체국 조회 정보 입력</h3>
+
+								<!-- s: 지역선택 -->
+								<div>
+									<a href="#;" class="tf_item" onclick="openModal('layer_option'); return false">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<span class="lab">지역</span>
+												<p class="tf">서울</p>
+											</div>
+											<div class="btn_area">
+												<i class="ico ico_chevron_down_md"></i>
+												<span class="sr_only">선택</span>
+											</div>
+										</div>
+									</a>
+								</div>
+								<!-- e: 지역선택 -->
+
+								<!-- s: 검색구분 선택 -->
+								<div class="mt_2">
+									<a href="#;" class="tf_item" onclick="openModal('layer_option'); return false">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<span class="lab">검색구분</span>
+												<p class="tf">우체국명</p>
+											</div>
+											<div class="btn_area">
+												<i class="ico ico_chevron_down_md"></i>
+												<span class="sr_only">선택</span>
+											</div>
+										</div>
+									</a>
+								</div>
+								<!-- e: 검색구분 선택 -->
+
+								<!-- s: 우체국명 입력 -->
+								<div class="mt_2">
+									<div class="tf_item">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label for="pop_inp1_1" class="lab">우체국명</label>
+												<input type="text" id="pop_inp1_1" class="tf" placeholder="우체국명 입력">
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- e: 우체국명 입력 -->
+
+							</div>
+							<!-- e: 우체국 조회 정보 입력 -->
+
+							<!-- s: 조회목록 -->
+							<div class="section">
+								<h3 class="tit1">조회목록</h3>
+								<ul class="border_list">
+									<li>
+										<div class="flex_box">
+											<div class="l txt_gray">기호</div>
+											<div class="r">0711441</div>
+										</div>
+										<div class="flex_box">
+											<div class="l txt_gray">우체국명</div>
+											<div class="r">서울서초3동우체국</div>
+										</div>
+									</li>
+									<li>
+										<div class="flex_box">
+											<div class="l txt_gray">기호</div>
+											<div class="r">0711441</div>
+										</div>
+										<div class="flex_box">
+											<div class="l txt_gray">우체국명</div>
+											<div class="r">서울서초3동우체국</div>
+										</div>
+									</li>
+									<li>
+										<div class="flex_box">
+											<div class="l txt_gray">기호</div>
+											<div class="r">0711441</div>
+										</div>
+										<div class="flex_box">
+											<div class="l txt_gray">우체국명</div>
+											<div class="r">서울서초3동우체국</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- e: 조회목록 -->
+						</div>
+					</div>
+
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01')">닫기</a>
+							<a href="sciqtl05bs_예금_조회_이체결과조회_자기앞수표조회_조회완료.html" class="btn btn_lg btn_primary">조회</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup : 발행우체국기호 조회 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
