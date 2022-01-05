@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box > a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="설정">
+		</header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="postpay">
+				<div class="container pb_4">
+					<p class="top_ico_txt bg_postpay_setting">포스트페이 결제 및 앱 환경을 설정할 수 있습니다.</p>
+
+					<div class="section">
+						<div class="setting_box only">
+							<h2 class="tit1 mb_0">포스트페이 비밀번호</h2>
+							<div class="box box_border">
+								<ul class="settings">
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_pw"></span>
+											<h3 class="tit2 mb_0">개인인증번호</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch1" checked>
+												<label for="inputCheckSwitch1">
+													<span class="txt_uncheck">미사용</span>
+													<span class="txt_checked">사용</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_pinger"></span>
+											<h3 class="tit2 mb_0">지문 인증 사용</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch2" checked>
+												<label for="inputCheckSwitch2">
+													<span class="txt_uncheck">미사용</span>
+													<span class="txt_checked">사용</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_pattern"></span>
+											<h3 class="tit2 mb_0">패턴 인증 사용</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch3" checked>
+												<label for="inputCheckSwitch3">
+													<span class="txt_uncheck">미사용</span>
+													<span class="txt_checked">사용</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_pw_c"></span>
+											<h3 class="tit2 mb_0">개인인증번호 변경하기</h3>
+										</div>
+										<div class="r">
+											<i class="ico ico_chevron_right_sm_gray"></i>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_pw_r"></span>
+											<h3 class="tit2 mb_0">개인인증번호 재등록</h3>
+										</div>
+										<div class="r">
+											<i class="ico ico_chevron_right_sm_gray"></i>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="setting_box lock">
+							<h2 class="tit1 mb_0">앱 보안 설정</h2>
+							<div class="box box_border">
+								<div class="d_flex">
+									<div class="l">
+										<span class="setting_icon ico_settings_lock"></span>
+										<div class="double_line">
+											<h3 class="tit2 mb_0">앱 잠금</h3>
+											<span class="desc">잠금 해제 비밀번호 4자리 사용</span>
+										</div>
+									</div>
+									<div class="r">
+										<span class="check_switch">
+											<input type="checkbox" id="inputCheckSwitch4" checked>
+											<label for="inputCheckSwitch4">
+												<span class="txt_uncheck">미사용</span>
+												<span class="txt_checked">사용</span>
+											</label>
+										</span>
+									</div>
+								</div>
+
+								<h3 class="tit2">자동 잠금 시간</h3>
+								<div class="input_items">
+									<span class="check_item type_btn">
+										<input type="radio" name="lb_period" id="lb_period_1" checked>
+										<label for="lb_period_1"><span class="ico ico_check_on"></span> 즉시 잠금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="lb_period" id="lb_period_2">
+										<label for="lb_period_2"><span class="ico ico_check_off"></span> 30초 후 잠금</label>
+									</span>
+								</div>
+
+								<ul class="settings">
+									<li>
+										<div class="l">
+											<h3 class="tit2 mb_0">앱 잠금 해제에 지문 사용</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch5" checked>
+												<label for="inputCheckSwitch5">
+													<span class="txt_uncheck">미사용</span>
+													<span class="txt_checked">사용</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<h3 class="tit2 mb_0">앱 잠금 비밀번호 변경</h3>
+										</div>
+										<div class="r">
+											<i class="ico ico_chevron_right_sm_gray"></i>
+										</div>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+						<div class="setting_box only">
+							<h2 class="tit1 mb_0">간편 결제 실행 설정
+								<span class="check_switch">
+									<input type="checkbox" id="inputCheckSwitch6" checked>
+									<label for="inputCheckSwitch6">
+										<span class="txt_uncheck">미사용</span>
+										<span class="txt_checked">사용중</span>
+									</label>
+								</span>
+							</h2>
+							<div class="box box_border">
+								<p>앱 실행 후 흔들기로 설정한 화면이 자동 실행됩니다.</p>
+								<ul class="settings">
+									<li>
+										<div class="l">
+											<span class="setting_icon wide ico_settings_postpay"></span>
+											<h3 class="tit2 mb_0">포스트페이 결제</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch7" checked>
+												<label for="inputCheckSwitch7">
+													<span class="txt_uncheck">미사용</span>
+													<span class="txt_checked">사용</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon wide ico ico_settings_zero"></span>
+											<h3 class="tit2 mb_0">제로페이 결제</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch8" checked>
+												<label for="inputCheckSwitch8">
+													<span class="txt_uncheck">미사용</span>
+													<span class="txt_checked">사용</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon wide ico ico_settings_zero_check"></span>
+											<h3 class="tit2 mb_0">제로페이 체크인</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch9" checked>
+												<label for="inputCheckSwitch9">
+													<span class="txt_uncheck">미사용</span>
+													<span class="txt_checked">사용</span>
+												</label>
+											</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="setting_box only">
+							<h2 class="tit1 mb_0">PUSH 알림
+								<span class="check_switch">
+									<input type="checkbox" id="inputCheckSwitch10" checked>
+									<label for="inputCheckSwitch10">
+										<span class="txt_uncheck">미수신</span>
+										<span class="txt_checked">수신</span>
+									</label>
+								</span>
+							</h2>
+							<div class="box box_border">
+								<p>앱 PUSH 서비스 를 설정하시면 포스트페이결제 정보를 PUSH 알림으로 편리하게 확인하실 수 있습니다.</p>
+								<ul class="settings">
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_bill"></span>
+											<h3 class="tit2 mb_0">포스트페이 결제 정보</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch11" checked>
+												<label for="inputCheckSwitch11">
+													<span class="txt_uncheck">미수신</span>
+													<span class="txt_checked">수신</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_chat"></span>
+											<h3 class="tit2 mb_0">모임서비스 대화</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch12" checked>
+												<label for="inputCheckSwitch12">
+													<span class="txt_uncheck">미수신</span>
+													<span class="txt_checked">수신</span>
+												</label>
+											</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="setting_box">
+							<h2 class="tit1 mb_0">설정 권한 확인</h2>
+							<div class="box box_border">
+								<ul class="settings">
+									<li>
+										<div class="l">
+											<span class="setting_icon ico ico_file_all"></span>
+											<h3 class="tit2 mb_0">저장 권한
+												<span class="btn btn_xs btn_default">필수</span>
+											</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch13" checked>
+												<label for="inputCheckSwitch13">
+													<span class="txt_uncheck">미수신</span>
+													<span class="txt_checked">수신</span>
+												</label>
+											</span>
+										</div>
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_call"></span>
+											<h3 class="tit2 mb_0">전화 권한
+												<span class="btn btn_xs btn_default">필수</span>
+											</h3>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch14" checked>
+												<label for="inputCheckSwitch14">
+													<span class="txt_uncheck">미수신</span>
+													<span class="txt_checked">수신</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li class="double_wrap">
+										<div class="l">
+											<span class="setting_icon ico_settings_alert"></span>
+											<div class="double_line">
+												<h3 class="tit2 mb_0">알림 권한</h3>
+												<span class="desc">PUSH 알림</span>
+											</div>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch15" checked>
+												<label for="inputCheckSwitch15">
+													<span class="txt_uncheck">미수신</span>
+													<span class="txt_checked">수신</span>
+												</label>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span class="setting_icon ico_settings_camera"></span>
+											<div class="double_line">
+												<h3 class="tit2 mb_0">카메라 권한</h3>
+												<span class="desc">공과금 QR코드 납부, 결제 등 사용</span>
+											</div>
+										</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch16" checked>
+												<label for="inputCheckSwitch16">
+													<span class="txt_uncheck">미수신</span>
+													<span class="txt_checked">수신</span>
+												</label>
+											</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<p class="bul_notice mt_2 txt_gray">권한 설정 변경은 스마트폰 환경 설정에서 변경 가능합니다.</p>
+							<p class="txt_r"><a href="#;" class="txt_normal">권한 설정변경으로 이동 <i class="ico ico_chevron_down_sm"></i></a>
+							</p>
+						</div>
+						<div class="setting_box">
+							<h2 class="tit1 mb_0">앱 버전 확인</h2>
+							<div class="box box_border">
+							</div>
+							<p class="bul_notice mt_2 txt_gray">스마트뱅킹 앱 오류로 상담을 진행하실 경우, 스마트폰 정보를 같이 제공하시면 보다 신속한 해결이 가능합니다.
+							</p>
+						</div>
+						<!-- <div class="toggle_box">
+							<a href="#;">
+								<h2 class="tit1 mb_0">앱 버전 확인</h2>
+							</a>
+							<div class="toggle_con">
+								<div class="flex_box">
+									<div class="l">
+										<h3 class="tit2 mb_0">현재 설치 버전</h3>
+									</div>
+									<div class="r">
+										<strong class="txt_bold txt_darkgray">SDA 5.7.6</strong>
+									</div>
+								</div>
+								<div class="mt_2">
+									<h3 class="tit2 mb_0">스마트폰 정보</h3>
+									<div class="double_box">
+										<div class="btm">
+											<div>
+												<div class="l">모델번호</div>
+												<div class="r">SM-N950N</div>
+											</div>
+											<div>
+												<div class="l">제조사</div>
+												<div class="r">SAMSUNG</div>
+											</div>
+											<div>
+												<div class="l">OS 버전</div>
+												<div class="r">안드로이드9</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<p class="bul_notice mt_2 txt_gray">스마트뱅킹 앱 오류로 상담을 진행하실 경우, 스마트폰 정보를 같이 제공하시면 보다 신속한 해결이 가능합니다.</p>
+							</div>
+						</div>
+						<div class="toggle_box">
+							<a href="#;">
+								<h2 class="tit1 mb_0">캐시/쿠키 삭제</h2>
+							</a>
+							<div class="toggle_con">
+								<ul class="border_list settings">
+									<li>
+										<div class="l">
+											<h3 class="tit2 mb_0">쿠키
+												<span class="d_b txt_size10 txt_light txt_gray">모든 브라우저에서 조회 기록 삭제</span>
+											</h3>
+										</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_darkgray d_i_f">삭제</a>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<h3 class="tit2 mb_0">캐시데이터
+												<span class="d_b txt_size10 txt_light txt_gray">스마트폰에 캐시된 콘텐츠/데이터베이스 삭제</span>
+											</h3>
+										</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_darkgray d_i_f">삭제</a>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<h3 class="tit2 mb_0">쿠키/캐시데이터 모두</h3>
+										</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_darkgray d_i_f">삭제</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>하단 고정 영역</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

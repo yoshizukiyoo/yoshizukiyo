@@ -1,1 +1,363 @@
-// 포스트페이1
+// 포스트페이2
+
+@mixin alert {
+	display: inline-block;
+	color: #f46e16;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: currentColor;
+	text-indent: -9999px;
+}
+
+.titlebar {
+
+	&.postpay {
+
+		.right {
+			padding: 0 5px;
+		}
+
+		.btn_icon {
+			padding: 0 10px;
+		}
+
+		.left {
+			padding-left: 20px;
+		}
+
+		.btn_icon {
+			position: relative;
+
+			.alert {
+				@include alert;
+				position: absolute;
+				top: 15px;
+				right: 11px;
+			}
+		}
+
+	}
+}
+
+.postpay {
+
+	// 송금
+
+	.list_phone_book2 {
+
+		li {
+			padding: 19px 0 19px 11px;
+
+			.phone_name {
+				color: #000011;
+				margin-right: 48px;
+			}
+
+			.star {
+				display: inline-block;
+				width: 17px;
+				height: 17px;
+				background-image: url(#{$url-img}/content/ico_star.png);
+				background-size: 17px;
+
+				&.check {
+					background-image: url(#{$url-img}/content/ico_star_sm.png);
+				}
+			}
+		}
+
+		li+li {
+			border-top: 1px solid $border-light;
+		}
+
+	}
+
+	.groups_phone_book {
+		background: #ccc;
+
+		li.active a {
+			background: $white;
+			color: $black;
+			font-weight: 500;
+		}
+
+		a {
+			background: rgba($color: #fff, $alpha: 0.3);
+			color: $gray;
+			padding: 5px 26px;
+			border-radius: 15px;
+		}
+	}
+
+	.popup_search {
+		position: relative;
+		border: 1px solid $border-base;
+		padding: 14px 52px 14px 20px;
+		border-radius: 4px;
+
+		.tf {
+			font-size: $font-size-lg;
+			font-weight: 400;
+
+			&::placeholder {
+				font-size: $font-size-lg;
+				font-weight: 400;
+			}
+		}
+
+		.btn_search {
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 15px;
+			height: 15px;
+			background: url(/resources/img/content/ico_search.png) 50% no-repeat;
+			background-size: 15px;
+		}
+	}
+
+	// 마이홈
+
+	.bg_postpay_setting {
+
+		&::before {
+			width: 41px;
+			height: 27px;
+			background-image: url(#{$url-img-content}/ico_postpay_setting.png);
+		}
+	}
+
+	.section {
+		margin-top: 35px;
+
+		.setting_box {
+
+			margin-top: 50px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&.lock {
+				.box_border {
+					padding-bottom: 0;
+
+					.tit2 {
+						font-weight: normal;
+					}
+
+					.settings {
+						padding-bottom: 9px;
+					}
+				}
+			}
+
+			&.pw {
+				.settings {
+					padding: 3.5px 0;
+				}
+			}
+
+			&.only {
+				.box.box_border {
+					padding-top: 20px;
+				}
+
+				// .settings {
+				// 	margin: 5px 0 3.5px;
+				// }
+			}
+
+			.box.box_border {
+				margin-top: 21px;
+				padding: 0 20px;
+
+				.d_flex {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 20px 0;
+					border-bottom: 1px solid $border-base;
+
+					.l {
+						display: flex;
+						align-items: center;
+
+						>span {
+							margin-right: 16px;
+						}
+					}
+
+					&+.tit2 {
+						margin-top: 20px;
+						margin-bottom: 11px;
+					}
+				}
+
+				.check_item.type_btn input+label {
+
+					justify-content: start;
+
+					.ico {
+						background-image: url(../../../resources/img/common/ico_check_off.png);
+
+						margin-left: 10px;
+						margin-right: 6px;
+					}
+				}
+
+				.check_item.type_btn input:checked+label .ico {
+					background-image: url(../../../resources/img/common/ico_check_on.png);
+				}
+			}
+
+			.tit1 {
+				position: relative;
+
+				>.check_switch {
+					position: absolute;
+					right: 0;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+
+			.settings {
+
+				li {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 13 px 0;
+					margin: 11px 0;
+					height: 23px;
+
+					.l {
+						line-height: 23px;
+
+						.tit2 {
+							font-weight: 400;
+							vertical-align: middle;
+						}
+
+						.check_switch {
+							vertical-align: middle;
+						}
+					}
+
+					.r {
+						line-height: 23px;
+					}
+				}
+
+				.double_wrap {
+					height: auto;
+
+					.l,
+					.r {
+						line-height: initial;
+					}
+				}
+			}
+
+			.setting_icon {
+				display: inline-block;
+				background-repeat: no-repeat;
+				width: 25px;
+				height: 23px;
+				background: url(../../../resources/img/content/ico_settings_file.png) no-repeat center / 25px 23px;
+				vertical-align: middle;
+				margin-right: 12px;
+
+				&.wide {
+					width: 35px;
+					background-size: 35px 23px;
+				}
+
+				&.ico_settings_pw {
+					background-image: url(../../../resources/img/content/ico_settings_pw.png);
+				}
+
+				&.ico_settings_pinger {
+					background-image: url(../../../resources/img/content/ico_settings_pinger.png);
+				}
+
+				&.ico_settings_pattern {
+					background-image: url(../../../resources/img/content/ico_settings_pattern.png);
+				}
+
+				&.ico_settings_pw_c {
+					background-image: url(../../../resources/img/content/ico_settings_pw_change.png);
+				}
+
+				&.ico_settings_pw_r {
+					background-image: url(../../../resources/img/content/ico_settings_pw_register.png);
+				}
+
+				&.ico_settings_lock {
+					background-image: url(../../../resources/img/content/ico_settings_lock.png);
+				}
+
+				&.ico_settings_bill {
+					background-image: url(../../../resources/img/content/ico_settings_bill.png);
+				}
+
+				&.ico_settings_chat {
+					background-image: url(../../../resources/img/content/ico_settings_chat.png);
+				}
+
+				&.ico_settings_call {
+					background-image: url(../../../resources/img/content/ico_settings_call.png);
+				}
+
+				&.ico_settings_alert {
+					background-image: url(../../../resources/img/content/ico_settings_alert.png);
+				}
+
+				&.ico_settings_camera {
+					background-image: url(../../../resources/img/content/ico_settings_camera.png);
+				}
+
+				&.ico_settings_postpay {
+					background-image: url(../../../resources/img/content/ico_settings_pay_postpay.png);
+				}
+
+				&.ico_settings_zero {
+					background-image: url(../../../resources/img/content/ico_settings_pay_zero.png);
+				}
+
+				&.ico_settings_zero_check {
+					background-image: url(../../../resources/img/content/ico_settings_pay_zero_check.png);
+				}
+
+			}
+
+			h3 {
+				display: inline-block;
+			}
+
+			.double_line {
+				display: inline-block;
+
+				h3 {
+					display: block;
+				}
+
+				.desc {
+					font-size: 10px;
+					color: $gray;
+					display: inherit;
+				}
+
+			}
+
+			.txt_nomal {
+				color: $gray;
+			}
+		}
+	}
+
+
+}
