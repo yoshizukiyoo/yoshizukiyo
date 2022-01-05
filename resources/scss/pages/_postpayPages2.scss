@@ -34,6 +34,11 @@
 				position: absolute;
 				top: 15px;
 				right: 11px;
+				display: none;
+
+				&.on {
+					display: block;
+				}
 			}
 		}
 
@@ -142,16 +147,31 @@
 
 			&.lock {
 				.box_border {
+
 					padding-bottom: 0;
 
-					.tit2 {
-						font-weight: normal;
+					.post_chk {
+						&:checked {
+							.toggle_hide {
+								display: none;
+							}
+						}
+					}
+
+					.toggle_hide {
+						// display: none;
+
+						.tit2 {
+							font-weight: 400;
+							margin-top: 20px;
+						}
 					}
 
 					.settings {
 						padding-bottom: 9px;
 					}
 				}
+
 			}
 
 			&.pw {
@@ -161,18 +181,26 @@
 			}
 
 			&.only {
-				.box.box_border {
-					padding-top: 20px;
+				.settings {
+					padding: 5px 0 3.5px;
 				}
+			}
 
-				// .settings {
-				// 	margin: 5px 0 3.5px;
-				// }
+			&.check {
+				.settings {
+					li {
+						margin: 26px 0;
+					}
+				}
 			}
 
 			.box.box_border {
 				margin-top: 21px;
 				padding: 0 20px;
+
+				>p:first-child {
+					margin-top: 19px;
+				}
 
 				.d_flex {
 					display: flex;
@@ -196,8 +224,12 @@
 					}
 				}
 
-				.check_item.type_btn input+label {
+				.check_switch label {
+					min-width: 65px;
+					padding-right: 9px;
+				}
 
+				.check_item.type_btn input+label {
 					justify-content: start;
 
 					.ico {
@@ -257,7 +289,7 @@
 
 					.l,
 					.r {
-						line-height: initial;
+						line-height: 100%
 					}
 				}
 			}
@@ -340,6 +372,7 @@
 
 			.double_line {
 				display: inline-block;
+				vertical-align: middle;
 
 				h3 {
 					display: block;
@@ -347,15 +380,25 @@
 
 				.desc {
 					font-size: 10px;
-					color: $gray;
 					display: inherit;
 				}
 
 			}
 
-			.txt_nomal {
-				color: $gray;
+			.txt_r {
+				margin-top: 8px;
+
+				.ico_chevron_up_sm {
+					transform: rotate(90deg);
+					margin-bottom: 4px;
+					margin-left: 5px;
+				}
 			}
+
+			.double_box {
+				margin-top: 21px;
+			}
+
 		}
 	}
 
