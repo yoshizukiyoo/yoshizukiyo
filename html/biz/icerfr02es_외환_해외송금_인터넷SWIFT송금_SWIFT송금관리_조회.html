@@ -23,7 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').click(function(){
+			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
 		});
@@ -57,13 +57,23 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
+				<!-- s: 20220105 수정 -->
 				<div class="box first_section">
 					<ul class="list list1">
 						<li>고객님의 SWIFT 해외송금내역을 조회, 변경, 취소, 퇴결요청, 퇴결요청취소 하실 수 있습니다.</li>
+						<li>변경/취소는 당일 거래에 한하여 가능합니다.</li>
 						<li>SWIFT송금 변경 및 취소는 당일 등록하신 거래에 한해서만 가능합니다.</li>
+						<li>SWIFT송금 퇴결요청은 "해외발송후" 상태인 경우만 가능합니다.</li>
+						<li>SWIFT송금 퇴결요청취소는 "퇴결요청" 상태인 경우만 가능합니다.</li>
+						<li>SWIFT송금을 변경하시려면 "변경" 클릭하시기 바랍니다.</li>
+						<li>SWIFT송금을 취소하시려면 "송금취소" 클릭하시기 바랍니다.</li>
+						<li>SWIFT송금을 퇴결요청하시려면 "퇴결요청" 클릭하시기 바랍니다.</li>
+						<li>SWIFT송금을 퇴결요청취소하시려면 "퇴결요청취소" 클릭하시기 바랍니다.</li>
+						<li>SWIFT송금을 확인증을 받으시려면 "송금확인증" 클릭하시기 바랍니다.</li>
 					</ul>
 				</div>
-				
+				<!-- e: 20220105 수정 -->
+
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
@@ -82,13 +92,15 @@
 									<th scope="row">조회기간</th>
 									<td>
 										<div class="mulit_date_box">
+											<!-- s: 20220105 수정 -->
 											<div class="btn_date">
 												<button type="button" class="btn btn_sm btn_default">당일</button>
-												<button type="button" class="btn btn_sm btn_outline_default">3일</button>
 												<button type="button" class="btn btn_sm btn_outline_default">7일</button>
 												<button type="button" class="btn btn_sm btn_outline_default">15일</button>
 												<button type="button" class="btn btn_sm btn_outline_default">1개월</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3개월</button>
 											</div>
+											<!-- e: 20220105 수정 -->
 											<div class="datepicker_box">
 												<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
 												<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
@@ -112,15 +124,18 @@
 							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
 						</div>
 					</div>
+					<!-- s: 20220105 수정 -->
 					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">SWIFT송금관리  조회 결과</caption>
+							<caption class="sr_only">SWIFT송금관리 조회 결과 표로 송금일, 원부번호, 수취인, 국가, 상태, 배달 정보, 구분 정보제공</caption>
 							<colgroup>
+								<col style="width: 12%">
 								<col style="width: 17%">
-								<col style="width: 21%">
+								<col style="width: 17%">
 								<col>
 								<col>
-								<col style="width: 23%;">
+								<col>
+								<col style="width: 17%;">
 							</colgroup>
 							<thead>
 								<tr>
@@ -128,6 +143,8 @@
 									<th scope="col">원부번호</th>
 									<th scope="col">수취인</th>
 									<th scope="col">국가</th>
+									<th scope="col">상태</th>
+									<th scope="col">배달 정보</th>
 									<th scope="col">구분</th>
 								</tr>
 							</thead>
@@ -137,10 +154,14 @@
 									<td>12021051700001</td>
 									<td>AAAAAAAAAAAAAAAAA</td>
 									<td>US</td>
+									<td>해외발송전</td>
 									<td class="txt_c">
-										<a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup01', this); return false;">상세보기</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_변경_01.정보입력.html" class="btn btn_xs btn_outline_default">변경</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_취소_01.정보입력.html" class="btn btn_xs btn_outline_default">송금취소</a>
+										<a href="#;" class="btn btn_xs btn_outline_default"
+											onclick="openModal('popup01', this); return false;">상세보기</a>
+									</td>
+									<td class="txt_c">
+										<a href="#;" class="btn btn_xs btn_outline_default">변경</a>
+										<a href="#;" class="btn btn_xs btn_outline_default">송금취소</a>
 									</td>
 								</tr>
 								<tr>
@@ -148,10 +169,13 @@
 									<td>12021051700001</td>
 									<td>AAAAAAAAAAAAAAAAA</td>
 									<td>US</td>
+									<td>해외발송전</td>
 									<td class="txt_c">
-										<a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup01', this); return false;">상세보기</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_변경_01.정보입력.html" class="btn btn_xs btn_outline_default">변경</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_취소_01.정보입력.html" class="btn btn_xs btn_outline_default">송금취소</a>
+										<a href="#;" class="btn btn_xs btn_outline_default"
+											onclick="openModal('popup01', this); return false;">상세보기</a>
+									</td>
+									<td class="txt_c">
+										<a href="#;" class="btn btn_xs btn_outline_default">퇴결요청</a>
 									</td>
 								</tr>
 								<tr>
@@ -159,37 +183,19 @@
 									<td>12021051700001</td>
 									<td>AAAAAAAAAAAAAAAAA</td>
 									<td>US</td>
+									<td>해외발송전</td>
 									<td class="txt_c">
-										<a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup01', this); return false;">상세보기</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_변경_01.정보입력.html" class="btn btn_xs btn_outline_default">변경</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_취소_01.정보입력.html" class="btn btn_xs btn_outline_default">송금취소</a>
+										<a href="#;" class="btn btn_xs btn_outline_default"
+											onclick="openModal('popup01', this); return false;">상세보기</a>
 									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">2021.05.17</td>
-									<td>12021051700001</td>
-									<td>AAAAAAAAAAAAAAAAA</td>
-									<td>US</td>
 									<td class="txt_c">
-										<a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup01', this); return false;">상세보기</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_변경_01.정보입력.html" class="btn btn_xs btn_outline_default">변경</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_취소_01.정보입력.html" class="btn btn_xs btn_outline_default">송금취소</a>
-									</td>
-								</tr>
-								<tr>
-									<td class="txt_c">2021.05.17</td>
-									<td>12021051700001</td>
-									<td>AAAAAAAAAAAAAAAAA</td>
-									<td>US</td>
-									<td class="txt_c">
-										<a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup01', this); return false;">상세보기</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_변경_01.정보입력.html" class="btn btn_xs btn_outline_default">변경</a>
-										<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_취소_01.정보입력.html" class="btn btn_xs btn_outline_default">송금취소</a>
+										<a href="#;" class="btn btn_xs btn_outline_default">퇴결요청취소</a>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<!-- e: 20220105 수정 -->
 
 					<div class="section">
 						<dl class="box">
@@ -239,7 +245,8 @@
 								</div>
 								<div class="tbl_data tbl_row_data">
 									<table>
-										<caption class="sr_only">원부번호 표이며 원부번호, 상태, 송금액, 적용환율, 원화환산금액①, 수수료②, 송금일, 총 출금액(①+②) 정보를 제공하고 있습니다.</caption>
+										<caption class="sr_only">원부번호 표이며 원부번호, 상태, 송금액, 적용환율, 원화환산금액①, 수수료②, 송금일, 총 출금액(①+②) 정보를 제공하고 있습니다.
+										</caption>
 										<colgroup>
 											<col style="width: 17%;">
 											<col>
@@ -321,7 +328,8 @@
 								</div>
 								<div class="tbl_data tbl_row_data">
 									<table>
-										<caption class="sr_only">수취인정보 표이며 수취인, 전화번호, 주소, 국가, 입금은행, 입금은행코드, 입금계좌번호, 입금은행주소, 통신문 정보를 제공하고 있습니다.</caption>
+										<caption class="sr_only">수취인정보 표이며 수취인, 전화번호, 주소, 국가, 입금은행, 입금은행코드, 입금계좌번호, 입금은행주소, 통신문 정보를 제공하고
+											있습니다.</caption>
 										<colgroup>
 											<col style="width: 17%;">
 											<col>
@@ -365,7 +373,8 @@
 							</div>
 							<!-- e: 수취인 정보 -->
 							<div class="btn_group">
-								<a href="#;" class="btn btn_lg btn_outline_default" onclick="closeModal('popup01'); return false;">목록</a>
+								<a href="#;" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup01'); return false;">목록</a>
 								<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_취소_01.정보입력.html" class="btn btn_lg btn_primary">송금취소</a>
 								<a href="외환_해외송금_인터넷SWIFT송금_인터넷SWIFT송금관리_변경_01.정보입력.html" class="btn btn_lg btn_primary">변경</a>
 							</div>

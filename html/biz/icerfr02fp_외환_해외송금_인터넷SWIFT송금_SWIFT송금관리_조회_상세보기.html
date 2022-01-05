@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_result').click(function () {
+				$('.btm_result_box').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">인터넷SWIFT송금관리</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<!-- s: SWIFT 송금 상세보기 팝업 -->
+				<div class="modal_popup modal_xxl show" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- s: 20220105 수정 -->
+						<div class="popup_header">
+							<h3 class="popup_tit">SWIFT송금 상세보기</h3>
+						</div>
+						<!-- e: 20220105 수정 -->
+						<div class="popup_body">
+							<h4 class="tit_cont mt_0">인터넷SWIFT송금 상세보기</h4>
+							<!-- s: 20220105 수정 -->
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>조회하신 원부번호에 해당하는 SWIFT 해외송금 내역입니다.</li>
+								</ul>
+							</div>
+							<!-- e: 20220105 수정 -->
+
+							<!-- s: 원부번호 -->
+							<div class="mt_12">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h5 class="tit1 mb_0">원부번호</h5>
+									</div>
+									<div class="txt_right">
+										<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+										<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									</div>
+								</div>
+								<div class="tbl_data tbl_row_data">
+									<table>
+										<caption class="sr_only">원부번호 표이며 원부번호, 상태, 송금액, 적용환율, 원화환산금액①, 수수료②, 송금일, 총 출금액(①+②) 정보를 제공하고 있습니다.
+										</caption>
+										<colgroup>
+											<col style="width: 17%;">
+											<col>
+											<col style="width: 17%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">원부번호</th>
+												<td>12021053100001</td>
+												<th scope="row">상태</th>
+												<td>해외발송전</td>
+											</tr>
+											<tr>
+												<th scope="row">송금액</th>
+												<td class="txt_r">111.115</td>
+												<th scope="row">적용환율</th>
+												<td class="txt_r">201.00</td>
+											</tr>
+											<tr>
+												<th scope="row">원화환산금액①</th>
+												<td class="txt_r">22,334.115 원</td>
+												<th scope="row">수수료②</th>
+												<td class="txt_r">5,000 원</td>
+											</tr>
+											<tr>
+												<th scope="row">송금일</th>
+												<td colspan="3">2021.05.31</td>
+											</tr>
+											<tr>
+												<th scope="row">총 출금액(①+②)</th>
+												<td colspan="3" class="txt_r">27,334.115 원</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- e: 원부번호 -->
+
+							<!-- s: 송금인 정보 -->
+							<div class="mt_12">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h5 class="tit1 mb_0">송금인정보</h5>
+									</div>
+								</div>
+								<div class="tbl_data tbl_row_data">
+									<table>
+										<caption class="sr_only">송금인정보 표이며 송금인, 전화번호, 주소 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 17%;">
+											<col>
+											<col style="width: 17%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">송금인</th>
+												<td>Tester Kim</td>
+												<th scope="row">전화번호</th>
+												<td>01022223333</td>
+											</tr>
+											<tr>
+												<th scope="row">주소</th>
+												<td colspan="3">1 JEONGBOHWA-GIL NAJU-SI JEOLLANAM-DO</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- e: 송금인 정보 -->
+
+							<!-- s: 수취인 정보 -->
+							<div class="mt_12">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h5 class="tit1 mb_0">수취인정보</h5>
+									</div>
+								</div>
+								<div class="tbl_data tbl_row_data">
+									<table>
+										<caption class="sr_only">수취인정보 표이며 수취인, 전화번호, 주소, 국가, 입금은행, 입금은행코드, 입금계좌번호, 입금은행주소, 통신문 정보를 제공하고
+											있습니다.</caption>
+										<colgroup>
+											<col style="width: 17%;">
+											<col>
+											<col style="width: 17%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">수취인</th>
+												<td>Taobao seller</td>
+												<th scope="row">전화번호</th>
+												<td>821011112222</td>
+											</tr>
+											<tr>
+												<th scope="row">주소</th>
+												<td colspan="3">356 Tester Hainan</td>
+											</tr>
+											<tr>
+												<th scope="row">국가</th>
+												<td>china</td>
+												<th scope="row">입금은행</th>
+												<td></td>
+											</tr>
+											<tr>
+												<th scope="row">입금은행코드</th>
+												<td></td>
+												<th scope="row">입금계좌번호</th>
+												<td></td>
+											</tr>
+											<tr>
+												<th scope="row">입금은행주소</th>
+												<td colspan="3">777 tester Hainan</td>
+											</tr>
+											<tr>
+												<th scope="row">통신문</th>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- s: 20220105 수정 -->
+								<div class="mt_4 txt_r">
+									<button type="button" class="btn btn_sm btn_outline_default"
+										onclick="$.print('.modal_popup[data-popup=popup01]');">화면인쇄</button>
+									<button type="button" class="btn btn_sm btn_outline_gray">증명서발급</button>
+									<button type="button" class="btn btn_sm btn_outline_gray">증명서발급(영문)</button>
+								</div>
+								<!-- e: 20220105 수정 -->
+							</div>
+							<!-- e: 수취인 정보 -->
+							<!-- s: 20220105 수정 -->
+							<div class="btn_group">
+								<a href="#;" class="btn btn_lg btn_primary">확인</a>
+							</div>
+							<!-- e: 20220105 수정 -->
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: SWIFT 송금 상세보기 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
