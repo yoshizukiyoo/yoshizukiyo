@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="btn_group mt_4">
+					<a href="#;" class="btn btn_sm btn_primary" onclick="openModal('userratingcalc_popup', this);"> 고객등급
+						계산기</a>
+				</div>
+
+				<!-- s: 고객등급 계산기 팝업 -->
+				<div class="modal_popup modal_alert show" data-popup="userratingcalc_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_type_calc">
+						<div class="popup_header">
+							<h2 class="popup_tit">고객등급 계산기</h2>
+							<div class="user_rating">
+								<div class="rating">
+									<i class="ico ico_piggybank"></i><span class="status_box pl_2">MVP</span>
+								</div>
+								<div class="txt_xl_35">
+									<span class="txt_bold">3,100</span>점
+								</div>
+								<div class="rating_next">
+									<span>다음등급까지<br><strong class="txt_medium txt_lg txt_red">+200</strong> 점</span>
+								</div>
+							</div>
+							<p class="txt_notice"><i class="ico ico_doublequote"></i>이번달 말까지 실적으로 <span
+									class="txt_medium pl_1 pr_1">12월
+									10일</span> 선정돼요.</p>
+						</div>
+
+						<div class="popup_body pt_3">
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3">거래기간 <span class="lab_status">1년 당 5점</span></h3>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">60점</span>
+										<span>12년</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="거래기간 점수" value="60" disabled></span>
+										<span>12년</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_2">전자금융 <span class="lab_status">5건 당 10점</span></h3>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">50점 <span class="bg_speechbubble_outline">최대</span></span>
+										<span>40건</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><span class="bg_speechbubble_outline bg_right">최대</span><input type="text"
+												class="tf cont_input" title="전자금융 점수" value="50" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="전자금융 건수" value="40"> <span
+												class="txt_light">건</span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">급여(연금)이체 <span class="lab_status">이용 200점</span></h3>
+								<!-- 급여이체 인정 기준-->
+								<button type="button" class="btn btn_help_black f_r mt_4" onclick="openModal('popup01', this)">
+									<i class="ico ico_help_black"></i>
+									<span class="sr_only">도움말</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0점</span>
+										<span>미이용</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input mb_2" title="금융(연금)이체 점수" value="100" disabled></span>
+										<span class="check_item circle mr_2">
+											<input type="checkbox" name="chk1" id="chk1" checked>
+											<label for="chk1">이용</label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">자동이체 <span class="lab_status">건당 30점 (최대 150점)</span></h3>
+								<!-- 자동이체 등록 -->
+								<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4"
+									onclick="openModal('popup02', this)">
+									<span class="p_4 pt_1 pb_1 txt_sm txt_medium">자동이체등록</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0</span>
+										<span>미이용</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><span class="bg_speechbubble_outline bg_right">최대</span><input type="text"
+												class="tf cont_input" title="자동이체 점수" value="150" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="자동이체 건수" value="5"> <span
+												class="txt_light">건</span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">마케팅활용동의 <span class="lab_status">모든항목동의</span></h3>
+								<!-- 마케팅 활용 전체 동의 -->
+								<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4"
+									onclick="openModal('popup03', this)">
+									<span class="p_4 pt_1 pb_1 txt_sm txt_medium">마케팅동의</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0</span>
+										<span>비동의</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="마케팅활용동의 점수" value="50" disabled> <span
+												class="txt_light">점</span></span>
+										<span class="check_item circle ml_4">
+											<input type="checkbox" name="chk2" id="chk2" checked>
+											<label for="chk2">전체동의</label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">체크카드 <span class="lab_status">월이용실적(20만원 당 10점) </span></h3>
+								<!-- 추천 카드 -->
+								<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4"
+									onclick="openModal('popup04', this)">
+									<span class="p_4 pt_1 pb_1 txt_sm txt_medium">카드발급신청</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0</span>
+										<span>미이용</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="체크카드 점수" value="30" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="체크카드 이용 액수" value="60"> <span
+												class="txt_light">만원</span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 ">카드결제 <span class="lab_status">카드결제대금 이체(이용 50점) </span></h3>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0</span>
+										<span>미이용</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="카드결제 점수" value="50" disabled> <span
+												class="txt_light">점</span></span>
+										<span class="check_item circle mr_2">
+											<input type="checkbox" name="chk3" id="chk3" checked>
+											<label for="chk3">이용</label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">외국환 송금 <span class="lab_status">100&#36; 당 5점(US 달러기준) </span></h3>
+								<!-- 해외송금 -->
+								<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4"
+									onclick="openModal('popup05', this)">
+									<span class="p_4 pt_1 pb_1 txt_sm txt_medium">해외송금</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0점</span>
+										<span>0&#36;</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="외국환 송금 점수" value="50" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="외국환 송금 달러" value="1,000"> <span
+												class="txt_light">&#36;</span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">수시입출금 잔액 <span class="lab_status">3개월 평잔, 10만원 당 10점 </span></h3>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0</span>
+										<span>5,00,000원 </span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="수시입출금 잔액 점수" value="100" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="수시입출금 잔액" value="1,000"> <span
+												class="txt_light">만원</span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">적립식 예금 잔액 <span class="lab_status">3개월 평잔, 50만원 당 10점 </span></h3>
+								<!-- 추천 적금 -->
+								<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4"
+									onclick="openModal('popup06', this)">
+									<span class="p_4 pt_1 pb_1 txt_sm txt_medium">추천 적금</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0</span>
+										<span>없음</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="적립식 예금 잔액 점수" value="20" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="적립식 예금 잔액" value="1,000"> <span
+												class="txt_light">만원</span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">거치식 예금 잔액 <span class="lab_status">3개월 평잔, 100만원 당 10점 </span></h3>
+								<!-- 추천 예금 -->
+								<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4"
+									onclick="openModal('popup07', this)">
+									<span class="p_4 pt_1 pb_1 txt_sm txt_medium">추천 예금</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">100</span>
+										<span>100,000,000원</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="거치식 예금 잔액 점수" value="100" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="거치식 예금 잔액" value="10,000"> <span
+												class="txt_light">만원</span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="section mt_0">
+								<h3 class="tit2 mt_4 mb_3 d_i_b">펀드 잔액 <span class="lab_status">50만원 당 10점 </span></h3>
+								<!-- 추천 펀드 -->
+								<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4"
+									onclick="openModal('popup08', this)">
+									<span class="p_4 pt_1 pb_1 txt_sm txt_medium">추천 펀드</span>
+								</button>
+								<div class="cont">
+									<div class="cont_box">
+										<span class="txt_bold">0</span>
+										<span>없음</span>
+									</div>
+									<div class="cont_box mr_2">
+										<span><input type="text" class="tf cont_input" title="펀드 잔액 점수" value="20" disabled> <span
+												class="txt_light">점</span></span>
+										<span><input type="text" class="tf cont_input" title="펀드 잔액" value="1,000"> <span
+												class="txt_light">만원</span></span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="popup_footer p_4 pt_3">
+							<p class="txt_notice txt_white txt_sm txt_c">이번달 말일까지 추가 가능한 실적 항목을 입력하시면 점수가 자동 계산됩니다.</p>
+							<div class="box mt_3">
+								<div class="score_arrow">
+									<div class="score">
+										<span class="score_head">현재</span>
+										<span class="txt_xl_35 txt_medium"><span class="txt_bold">3,100</span>점</span>
+										<span class="status_box">MVP</span>
+									</div>
+
+									<div class="score">
+										<span class="score_head head_type02">미리 계산</span>
+										<span class="txt_xl_35 txt_medium"><span class="txt_bold">3,500</span>점</span>
+										<span class="status_box">S-MVP</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 고객등급 계산기 팝업 -->
+
+
+				<!-- s: 급여이제 인정 기준 레이어 팝업-->
+				<div class="modal_popup modal_alert hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">급여이체 인정 기준</h3>
+						</div>
+						<div class="popup_body">
+							<p class="pb_2 lh_24 txt_w_3">
+								급여이체 약정 없이도 다음과 같은 조건에 해당되면 급여이체로 인정됩니다.
+							</p>
+							<div class="box box_calc">
+								<ul class="list list1 txt_w_3">
+									<li>
+										당월 중 <span class="txt_bold">50만원</span> 이상의 입금 실적
+									</li>
+									<li>
+										입금 내역 적요 내용에 아래 문구 포함
+										<ul class="list list3">
+											<li>급여, 월급, 연봉, 급료, 상여, 성과, 보너스, 월보수, 연금
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<p class="txt_w_3">
+								우대서비스 제공 기간: 다음달 5일부터 다다음달 4일까지
+							</p>
+							<div class="btn_group mt_5">
+								<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+									급여성이체 기준 자세히 보기</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 급여이제 인정 기준 레이어 팝업 -->
+
+
+				<!-- s: 자동이체 등록 레이어 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="popup02">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">자동이체 등록</h3>
+						</div>
+						<div class="popup_body">
+							<div class="box box_calc mt_1">
+								<ul class="list list1 txt_w_3">
+									<li>
+										우체국 예금, 적금 입금 자동이체
+									</li>
+									<li>
+										매월 일정 금액 타인 계좌로 자동이체
+									</li>
+									<li>
+										공과금 자동 납부
+									</li>
+								</ul>
+							</div>
+							<div class="btn_group">
+								<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+									공과금 자동이체 신청 </a>
+								<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+									매월 일정금액 자동이체 신청</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 자동이체 등록 레이어 팝업 -->
+
+
+				<!-- s: 마케팅 활용 전체 동의 레이어 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="popup03">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">마케팅 활용 전체 동의 </h3>
+						</div>
+						<div class="popup_body">
+							<div class="box box_calc mt_1">
+								<ul class="list list1 list_dottline">
+									<li>
+										앱 PUSH
+										<span class="check_box">
+											<input type="checkbox" name="chk2-1" id="chk2-1" checked>
+											<label for="chk2-1">
+												<span class="txt_uncheck">수신</span>
+												<span class="txt_checked">미수신</span>
+											</label>
+										</span>
+									</li>
+									<li>
+										문자(SMS)
+										<span class="check_box">
+											<input type="checkbox" name="chk2-2" id="chk2-2">
+											<label for="chk2-2">
+												<span class="txt_uncheck">수신</span>
+												<span class="txt_checked">미수신</span>
+											</label>
+										</span>
+									</li>
+									<li>
+										VMS(음성)
+										<span class="check_box">
+											<input type="checkbox" name="chk2-3" id="chk2-3">
+											<label for="chk2-3">
+												<span class="txt_uncheck">수신</span>
+												<span class="txt_checked">미수신</span>
+											</label>
+										</span>
+									</li>
+									<li>
+										이메일
+										<span class="check_box">
+											<input type="checkbox" name="chk2-4" id="chk2-4" checked>
+											<label for="chk2-4">
+												<span class="txt_uncheck">수신</span>
+												<span class="txt_checked">미수신</span>
+											</label>
+										</span>
+									</li>
+									<li class="bdr_n">
+										우편(DM)
+										<span class="check_box">
+											<input type="checkbox" name="chk2-5" id="chk2-5">
+											<label for="chk2-5">
+												<span class="txt_uncheck">수신</span>
+												<span class="txt_checked">미수신</span>
+											</label>
+										</span>
+									</li>
+								</ul>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+									개인정보제공동의 자세히 보기
+								</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 마케팅 활용 전체 동의 레이어 팝업 -->
+
+
+				<!-- s: 추천 카드 레이어팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="popup04">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">추천 카드</h3>
+						</div>
+						<div class="popup_body pb_0">
+							<ul class="card_list scroll_list">
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">1</span>
+											<span class="lab_status">체크</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												영리한PLUS 체크카드
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total">
+											<span>850,826</span>명
+										</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">2</span>
+											<span class="lab_status">하이브리드</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												행福한 하이브리드 체크카드
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total">
+											<span>550,826</span>명
+										</strong>
+									</a>
+								</li>
+
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">3</span>
+											<span class="lab_status">하이브리드</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												행福한 하이브리드 체크카드
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total">
+											<span>550,826</span>명
+										</strong>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="btn_group txt_c mt_5 mb_8">
+							<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+								카드 상품 더보기
+							</a>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 추천 카드 레이어 팝업 -->
+
+
+				<!-- s: 해외송금 레이어 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="popup05">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">해외송금</h3>
+						</div>
+						<div class="popup_body mt_1">
+							<ul class="card_list col_list">
+								<li class="card_box mb_2">
+									<div class="card_tit mb_2"><i class="ico ico_calc_paperairplane"></i><strong>SWIFT 송금</strong>
+										<p>전세계 은행으로 외화를 보내고 받으세요.</p>
+									</div>
+									<div class="card_info">
+										<span>한국 &rarr; 해외</span>
+										<p>인터넷/스마트/ATM:5,000원</p>
+									</div>
+									<div class="card_info">
+										<span>해외 &larr; 한국</span>
+										<p>건당 5,000원</p>
+									</div>
+								</li>
+								<li class="card_box mb_2">
+									<div class="card_tit mb_2"><i class="ico ico_calc_coin"></i><strong>Eurogiro</strong>
+										<p>계좌송금과 환증서 송금이 가능!</p>
+									</div>
+									<div class="card_info">
+										<span>한국 &rarr; 해외</span>
+										<p>인터넷/스마트/ATM:5,000원</p>
+									</div>
+									<div class="card_info">
+										<span>해외 &larr; 한국</span>
+										<p>계좌송금: 3,000원, 주소송금: 없음</p>
+									</div>
+								</li>
+								<li class="card_box">
+									<div class="card_tit"><i class="ico ico_calc_money"></i><strong>특급해외송금(MoneyGram)</strong>
+										<p>통장이 없이도 해외 송금이 간편하게 뚝딱!</p>
+									</div>
+								</li>
+							</ul>
+
+							<div class="btn_group">
+								<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+									해외송금서비스 자세히 보기
+								</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 해외송금 레이어 팝업 -->
+
+				<!-- s: 추천 적금 레이어팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="popup06">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">추천 적금</h3>
+						</div>
+						<div class="popup_body pb_0">
+							<ul class="card_list scroll_list">
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">1</span>
+											<span class="lab_status bg_purple02">적금</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												매일모아 e적금
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_purple02">
+											<span>450,826</span>명
+										</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">2</span>
+											<span class="lab_status bg_purple02">적금</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												가치모아적금
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_purple02">
+											<span>850,826</span>명
+										</strong>
+									</a>
+								</li>
+
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">3</span>
+											<span class="lab_status bg_purple02">적금</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												가치모아적금
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_purple02">
+											<span>850,826</span>명
+										</strong>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="btn_group txt_c mt_5 mb_8">
+							<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+								적금 상품 더보기
+							</a>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 추천 적금 레이어 팝업 -->
+
+				<!-- s: 추천 거치식예금 레이어팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="popup07">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">추천 거치식 예금</h3>
+						</div>
+						<div class="popup_body pb_0">
+							<ul class="card_list scroll_list">
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">1</span>
+											<span class="lab_status bg_beige">예금</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												우체국 편리한 e정기예금
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_beige">
+											<span>1,050,826</span>명
+										</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">2</span>
+											<span class="lab_status bg_beige">예금</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												2040+&alpha;정기예금
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_beige">
+											<span>850,826</span>명
+										</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">3</span>
+											<span class="lab_status bg_beige">예금</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												2040+&alpha;정기예금
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_beige">
+											<span>850,826</span>명
+										</strong>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="btn_group txt_c mt_5 mb_8">
+							<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+								거치식 예금 상품 더보기
+							</a>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 추천 거치식예금 레이어 팝업 -->
+
+				<!-- s: 추천 펀드 레이어팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="popup08">
+					<div class="dimed"></div>
+					<div class="popup_inner popup_calc_alert" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">추천 펀드</h3>
+						</div>
+						<div class="popup_body pb_0">
+							<ul class="card_list scroll_list">
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">1</span>
+											<span class="lab_status bg_green02">펀드</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												멀티에셋국공채법인MMF투자신탁1호[국공채]
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_green02">
+											<span>650,890</span>명
+										</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">2</span>
+											<span class="lab_status bg_green02">펀드</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												교보악사프라임법인MMFJ-1C
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_green02">
+											<span>450,126</span>명
+										</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#;" class="card_box">
+										<div class="card_header">
+											<span class="card_num">3</span>
+											<span class="lab_status bg_green02">펀드</span>
+										</div>
+										<div class="card_body">
+											<strong class="txt_l">
+												교보악사프라임법인MMFJ-1C
+											</strong>
+											<span>
+												<i class="ico ico_calc_user"></i>
+												<span>가입고객(최근 1년)</span>
+											</span>
+										</div>
+										<strong class="card_total bg_green02">
+											<span>450,126</span>명
+										</strong>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="btn_group txt_c mt_5 mb_8">
+							<a href="#;" class="btn btn_sm btn_round btn_darkgray02 pl_4 pr_4">
+								펀드 상품 더보기
+							</a>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 추천 펀드 레이어 팝업 -->
+
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

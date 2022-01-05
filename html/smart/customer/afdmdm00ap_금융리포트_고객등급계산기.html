@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<!-- s: 고객등급 계산기 팝업 -->
+
+<body class="popup">
+	<div class="popup_inner popup_type_calc">
+		<div class="popup_header">
+			<div class="header_top">
+				<h1 class="popup_tit">고객등급 계산기</h1>
+				<button type="button" class="btn btn_close_popup mr_0" onclick="closeWindow();">닫기</button>
+			</div>
+			<div class="user_rating mt_4">
+				<div class="rating">
+					<i class="ico ico_piggybank"></i><span class="status_box pl_2">MVP</span>
+				</div>
+				<p class="rating txt_xl_23 ml_2 mr_2">
+					<span class="txt_bold">3,100</span>점
+				</p>
+				<div class="rating rating_next">
+					<span>다음등급까지<br><strong class="txt_bold txt_md txt_red">+200</strong><span class="txt_md">점</span></span>
+				</div>
+			</div>
+			<p class="txt_notice"><i class="ico ico_doublequote"></i>이번달 말까지 실적으로 <span class="txt_medium pl_1 pr_1">12월
+					10일</span> 선정돼요.</p>
+		</div>
+
+		<div class="popup_body">
+			<div class="container">
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">거래기간 <span>1년 당 5점</span></h2>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">60점</span>
+							<span class="txt_gray">12년</span>
+						</div>
+						<div class="cont_box box_r">
+							<span><input type="text" class="tf cont_input txt_medium" title="거래기간 점수" value="60" disabled><span
+									class="txt_light">점</span></span>
+							<span class="txt_medium">12년</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">전자금융 <span>5년 당 10점</span></h2>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">50점
+								<span class="bg_speechbubble_outline">최대</span>
+							</span>
+							<span class="txt_gray">40건</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<span class="bg_speechbubble_outline bg_right">최대</span>
+								<input type="text" class="tf cont_input txt_medium" title="전자금융 점수" value="50" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span>
+								<input type="text" class="tf cont_input input_outline txt_medium" title="전자금융 건수" value="40"><span
+									class="txt_light">건</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0 pb_2">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">급여(연금)이체 <span>이용 200점</span></h2>
+					<button type="button" class="btn btn_help_black f_r mt_4">
+						<i class="ico ico_help_black"></i>
+						<span class="sr_only">도움말</span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0점
+							</span>
+							<span class="txt_gray">미이용</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="금융(연금)이체 점수" value="100" disabled>
+								<span class="txt_light">점</span>
+							</span>
+
+							<span class="check_item circle mr_2">
+								<input type="checkbox" name="chk1" id="chk1" checked>
+								<label for="chk1">이용</label>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">자동이체 <span>건당 30점 (최대 150점)</span></h2>
+					<!-- 자동이체 등록 -->
+					<button type="button" class="btn btn_primary btn_round f_r mt_4">
+						<span class="calc_btn_txt">자동이체등록</span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0
+							</span>
+							<span class="txt_gray">미이용</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<span class="bg_speechbubble_outline bg_right">최대</span>
+								<input type="text" class="tf cont_input txt_medium" title="자동이체 점수" value="150" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span>
+								<input type="text" class="tf cont_input input_outline txt_medium" title="자동이체 건수" value="5"><span
+									class="txt_light">건</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">마케팅활용동의 <span>모든항목동의</span></h2>
+					<!-- 마케팅 활용 전체 동의 -->
+					<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4">
+						<span class="calc_btn_txt">마케팅동의</span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0
+							</span>
+							<span class="txt_gray">비동의</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="마케팅활용동의 점수" value="50" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span class="check_item circle ml_4">
+								<input type="checkbox" name="chk2" id="chk2" checked>
+								<label for="chk2">전체동의</label>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">체크카드 <span>월이용실적(20만원 당 10점)</span></h2>
+					<!-- 마케팅 활용 전체 동의 -->
+					<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4">
+						<span class="calc_btn_txt">카드발급신청</span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0
+							</span>
+							<span class="txt_gray">미이용</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="체크카드 점수" value="30" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span class="mar_0">
+								<input type="text" class="tf cont_input input_outline txt_medium" title="체크카드 이용 액수" value="60"><span
+									class="txt_light">만원</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">카드결제 <span>카드결제대금 이체(이용 50점)</span></h2>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0 </span>
+							<span class="txt_gray">미이용</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="카드결제 점수" value="50" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span class="check_item circle mr_2">
+								<input type="checkbox" name="chk3" id="chk3" checked>
+								<label for="chk3">이용</label>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">외국환 송금 <span>100$ 당 5점(US 달러기준)
+						</span></h2>
+					<!-- 해외송금 -->
+					<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4">
+						<span class="calc_btn_txt">해외송금</span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0
+							</span>
+							<span class="txt_gray">0&#36;</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="외국환 송금 점수" value="50" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span>
+								<input type="text" class="tf cont_input input_outline txt_medium" title="외국환 송금 달러" value="1,000"><span
+									class="txt_light">&#36;</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">수시입출금통장 잔액
+						<span>10만원 당 10점
+						</span></h2>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0
+							</span>
+							<span class="txt_gray">5,00,000원
+							</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="수시입출금 잔액 점수" value="100" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span class="mar_0">
+								<input type="text" class="tf cont_input input_outline txt_medium" title="수시입출금 잔액" value="1,000"><span
+									class="txt_light">만원</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">적립식 예금 잔액
+						<span>50만원 당 10점
+						</span></h2>
+					<!-- 추천 적금 -->
+					<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4">
+						<span class="calc_btn_txt">추천 적금 </span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0
+							</span>
+							<span class="txt_gray">없음
+							</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="적립식 예금 잔액 점수" value="20" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span class="mar_0">
+								<input type="text" class="tf cont_input input_outline txt_medium" title="적립식 예금 잔액" value="1,000"><span
+									class="txt_light">만원</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">거치식 예금 잔액
+						<span>100만원 당 10점
+						</span></h2>
+					<!-- 추천 예금 -->
+					<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4">
+						<span class="calc_btn_txt">추천 예금 </span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">100
+							</span>
+							<span class="txt_gray">100,000,000원
+							</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="거치식 예금 잔액 점수" value="100" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span class="mar_0">
+								<input type="text" class="tf cont_input input_outline txt_medium" title="거치식 예금 잔액" value="10,000"><span
+									class="txt_light">만원</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_0">
+					<h2 class="tit3 mt_3 mb_2 d_i_b">펀드 잔액
+						<span>50만원 당 10점
+						</span></h2>
+					<!-- 추천 펀드 -->
+					<button type="button" class="btn btn_primary btn_round btn_help_black f_r mt_4">
+						<span class="calc_btn_txt">추천 펀드 </span>
+					</button>
+					<div class="cont">
+						<div class="cont_box">
+							<span class="txt_medium txt_gray">0
+							</span>
+							<span class="txt_gray">없음
+							</span>
+						</div>
+						<div class="cont_box box_r">
+							<span>
+								<input type="text" class="tf cont_input txt_medium" title="펀드 잔액 점수" value="20" disabled><span
+									class="txt_light">점</span>
+							</span>
+							<span class="mar_0">
+								<input type="text" class="tf cont_input input_outline txt_medium" title="펀드 잔액" value="1,000"><span
+									class="txt_light">만원</span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="popup_footer">
+			<p class="txt_notice txt_white txt_c">이번달 말일까지 추가 가능한 실적 항목을 입력하시면 점수가 자동 계산됩니다.</p>
+			<div class="box mt_3">
+				<div class="score_arrow">
+					<div class="score">
+						<div class="score_head"><span>현재</span>
+						</div>
+						<span class="txt_xl_23 txt_medium"><span class="txt_bold">3,100</span>점</span>
+						<span class="status_box">MVP</span>
+					</div>
+
+					<div class="score">
+						<div class="score_head head_type02">미리 계산</div>
+						<span class="txt_xl_23 txt_medium"><span class="txt_bold">3,500</span>점</span>
+						<span class="status_box">S-MVP</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- e: 고객등급 계산기 팝업 -->
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>

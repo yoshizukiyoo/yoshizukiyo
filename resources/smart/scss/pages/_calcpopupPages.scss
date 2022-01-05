@@ -1,0 +1,770 @@
+//금융리포트_고객등급계산기
+
+.popup_type_calc {
+	.popup_header {
+		height: 191px;
+		position: relative;
+		width: 100%;
+		align-items: flex-start;
+		flex-direction: column;
+
+		overflow: hidden;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+		padding: 0;
+
+		.header_top {
+			padding: 0 20px;
+
+			.popup_tit {
+				height: 56.2px;
+				font-size: 18px;
+			}
+		}
+
+		.user_rating {
+			position: relative;
+			width: 100%;
+			height: 78.5px;
+			background-color: #fef5e5;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0px 20px 0px 20px;
+
+			.txt_xl_23 {
+				font-size: 23px;
+			}
+
+			.rating {
+				position: relative;
+				width: 100px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.status_box {
+					width: 65px;
+					height: 30px;
+					border-radius: 15px;
+					background-color: #fdc61c;
+					font-size: 13px;
+					font-weight: bold;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					margin-left: 30px;
+				}
+
+				.ico {
+					&.ico_piggybank {
+						background: url(/resources/smart/img/content/ico_piggybank@2x.png);
+						background-size: 100% 100%;
+						background-repeat: no-repeat;
+						width: 41px;
+						height: 38px;
+						position: absolute;
+						left: 7px;
+						top: calc(50% - 19px);
+					}
+				}
+
+				&.rating_next {
+					justify-content: left;
+					padding-left: 2px;
+
+					>span {
+						width: 90px;
+						height: 38px;
+						border-radius: 19px;
+						background-color: #fff;
+						display: inline-block;
+
+						font-size: 10px;
+						line-height: 15px;
+						color: #555;
+						text-align: right;
+						padding-top: 3px;
+						padding-right: 18px;
+					}
+				}
+			}
+		}
+
+		.txt_notice {
+			width: 100%;
+			height: 36.5px;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #555;
+			padding-bottom: 2.5px;
+
+			.ico {
+				&.ico_doublequote {
+					display: inline-block;
+					background: url(/resources/smart/img/content/ico_doublequote@2x.png);
+					background-size: 20.6px 18.6px;
+					background-repeat: no-repeat;
+					width: 20.5px;
+					height: 18.5px;
+					margin-top: 2.5px;
+				}
+			}
+		}
+	}
+
+
+	.popup_footer {
+		width: 100%;
+		height: 205px;
+		box-shadow: 0 -5px 2.5px rgba(0, 0, 0, 0.1);
+		background-color: #444;
+		border-radius: 0px;
+
+		.txt_notice {
+			font-size: 10px;
+			padding-top: 15px;
+		}
+
+		.box {
+			width: 100%;
+			height: 126px;
+			border-radius: 10px;
+			background-color: #484848;
+			display: flex;
+			padding: 20px 25px;
+
+			.score_arrow {
+				background: url(/resources/smart/img/content/bg_arrow_primary_xl@2x.png);
+				background-repeat: no-repeat;
+				background-size: 15.5px 25.5px;
+				background-position: top calc(50% - 5px) center;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				.score {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					width: 82px;
+					height: 87px;
+
+					div {
+						&.score_head {
+							background: url(/resources/smart/img/content/bg_speechbubble_white@2x.png);
+							background-repeat: no-repeat;
+							background-size: 100% 100%;
+							background-position: center center;
+							width: 55px;
+							height: 25.5px;
+							font-size: 10px;
+							text-align: center;
+							color: #333;
+							margin-bottom: 5px;
+
+							&.head_type02 {
+								background: url(/resources/smart/img/content/bg_speechbubble_black@2x.png);
+								background-repeat: no-repeat;
+								background-size: 100% 100%;
+								background-position: center center;
+								width: 55px;
+								height: 25.5px;
+								color: #fff;
+								font-size: 10px;
+							}
+						}
+					}
+
+					span {
+						&.txt_xl_23 {
+							font-size: 23px;
+							color: #fff;
+						}
+
+						&.status_box {
+							width: 60px;
+							height: 25px;
+							border-radius: 12.5px;
+							background: #fdc61c;
+							margin-top: 10px;
+							display: inline-flex;
+							justify-content: center;
+							align-items: center;
+							font-size: 13px;
+							font-weight: bold;
+							color: #111;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	.popup_body {
+		.section {
+			border-bottom: 1px solid #ddd;
+			padding-bottom: 15px;
+
+			h2 {
+				display: flex;
+				align-items: flex-end;
+
+				&.tit3 {
+					font-size: 16px;
+				}
+
+				span {
+					font-size: 12px;
+					color: #555;
+					margin-left: 9px;
+					line-height: 19px;
+					font-weight: 200;
+				}
+			}
+
+			.btn {
+				&.btn_help_black {
+
+					.ico {
+						&.ico_help_black {
+							background: url(/resources/smart/img/content/ico_hlep_black.png);
+							background-repeat: no-repeat;
+							background-size: 100% 100%;
+							background-position: center center;
+							width: 15.5px;
+							height: 15.5px;
+							margin: 0px;
+						}
+					}
+				}
+			}
+
+			.cont {
+				display: flex;
+				width: 100%;
+				justify-content: space-between;
+				align-items: center;
+
+				background: url(/resources/smart/img/content/bg_arrow_gray_xl@2x.png);
+				background-repeat: no-repeat;
+				background-size: 23.5px 38.5px;
+				background-position: top calc(50% - -1px) left calc(50% - 14px);
+
+				.cont_box {
+					width: 96px;
+					display: flex;
+					flex-direction: column;
+					padding-left: 15px;
+
+
+					>span {
+						font-size: 14px;
+						color: #111;
+						line-height: 35px;
+						position: relative;
+						display: flex;
+						align-items: center;
+					}
+
+					&.box_r {
+						padding-left: 0;
+						margin-right: 7px;
+						align-items: center;
+
+						span {
+							&.mar_0 {
+								margin-right: -12px;
+							}
+						}
+					}
+
+					.tf {
+						&.cont_input {
+							width: 70px;
+							height: 25px;
+							border-radius: 4px;
+							font-size: 14px;
+							font-weight: normal;
+							text-align: center;
+							color: #111;
+
+							&.input_outline {
+								border: 1px solid #ddd;
+							}
+
+							&+span {
+								display: inline-block;
+								padding-left: 5px;
+								line-height: 35px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.check_item {
+		&.circle {
+			margin-left: -7.5px;
+
+			>input[type=checkbox] {
+				&+label {
+					background-position: top 8px left 0;
+					line-height: 36px;
+				}
+
+				&:checked+label {
+					background-position: top 8px left 0;
+					line-height: 36px;
+				}
+			}
+		}
+	}
+
+	button {
+		span {
+			&.calc_btn_txt {
+				padding: 3.5px 12px 3.5px 12px;
+				font-size: 12px;
+				font-weight: 500;
+			}
+		}
+	}
+}
+
+
+//ico
+
+.bg_speechbubble_outline {
+	background: url(/resources/smart/img/content/bg_speechbubble_outline@2x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center center;
+	width: 41px;
+	height: 21px;
+	color: #d70000;
+	display: inline-block;
+	position: absolute;
+	top: 25%;
+	left: 32px;
+	font-size: 10px !important;
+	font-weight: 300;
+	line-height: 16px;
+	padding-left: 12px;
+
+	&.bg_right {
+		background: url(/resources/smart/img/content/bg_speechbubble_outline_r@2x.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-position: center center;
+		display: inline-block;
+		position: absolute;
+		top: 25%;
+		left: -50%;
+		padding-left: 9.5px;
+	}
+}
+
+//팝업
+.mr_cst_3 {
+	margin-top: -3px;
+}
+
+.box_calc {
+	width: 100%;
+	border-radius: 3px;
+	background-color: #f6f6f6;
+	padding: 15px 19px;
+
+	.list1 {
+		&.list1_mar {
+			>li+li {
+				margin-top: 7px;
+			}
+		}
+	}
+}
+
+.list {
+	&.list_clac {
+		width: 100%;
+		// height: 328px;
+		padding: 10px 19px;
+		border-radius: 8px;
+		background-color: #fefefe;
+		border: 1px solid #ddd;
+		font-size: 14px;
+		color: #555;
+
+		li {
+			display: flex;
+			align-items: center;
+			position: relative;
+			padding: 3px 0px;
+
+			.check_box {
+				display: inline-flex;
+				vertical-align: middle;
+				align-items: center;
+				font-size: 10px;
+				font-weight: 200;
+				position: absolute;
+				right: 0;
+
+				input {
+					position: absolute;
+					width: 1px;
+					height: 1px;
+					opacity: 0;
+
+					&:checked+label {
+						color: #111;
+						background-color: #fdc61c;
+						border: 1px solid #fdc61c;
+						padding-left: 12px;
+						padding-right: 12px;
+						font-weight: 400;
+
+						span {
+							&.txt_checked {
+								display: none;
+								opacity: 0;
+							}
+
+							&.txt_uncheck {
+								display: block;
+								opacity: 100;
+							}
+						}
+					}
+				}
+
+				label {
+					position: relative;
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					width: 45px;
+					height: 18px;
+					border-radius: 9px;
+					text-align: center;
+					background-color: #eee;
+					padding-right: 12px;
+					padding-left: 12px;
+					color: #555;
+					font-size: 10px;
+
+					&:after {
+						content: none;
+					}
+
+					span {
+						display: block;
+
+						&.txt_checked {
+							display: block;
+							opacity: 100;
+						}
+
+						&.txt_uncheck {
+							display: none;
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+//card_list
+.container {
+	&.scorll_list {
+		.card_list_calc {
+			overflow-x: scroll;
+			margin: 0px;
+		}
+	}
+}
+
+.card_list_calc {
+	display: flex;
+	margin: 0 -5px;
+
+	&.col_list {
+		flex-direction: column;
+		margin: 0px;
+
+		.card_box {
+			width: 100%;
+			height: auto;
+			margin: 0px;
+			border: none;
+			border-radius: 8px;
+			padding: 15px 30px 20px 30px;
+			display: flex;
+			flex-direction: column;
+			border: 1px solid #eee;
+
+			.card_tit {
+				position: relative;
+
+				.ico {
+					&.ico_calc_paperairplane {
+						position: absolute;
+						top: 4px;
+						left: 0;
+						display: inline-flex;
+						background: url(/resources/smart/img/content/ico_calc_paperairplane@2x.png);
+						background-repeat: no-repeat;
+						background-size: 100% 100%;
+						background-position: center center;
+						width: 35.5px;
+						height: 29.5px;
+					}
+
+					&.ico_calc_coin {
+						position: absolute;
+						top: 4px;
+						left: 0;
+						display: inline-flex;
+						background: url(/resources/smart/img/content/ico_calc_coin@2x.png);
+						background-repeat: no-repeat;
+						background-size: 100% 100%;
+						background-position: center center;
+						width: 36.5px;
+						height: 29.5px;
+					}
+
+					&.ico_calc_money {
+						position: absolute;
+						top: 8px;
+						left: 0;
+						display: inline-flex;
+						background: url(/resources/smart/img/content/ico_calc_money@2x.png);
+						background-repeat: no-repeat;
+						background-size: 100% 100%;
+						background-position: center center;
+						width: 41px;
+						height: 29.5px;
+					}
+				}
+
+				strong {
+					font-size: 16px;
+					font-weight: 500;
+					padding-left: 47px;
+				}
+
+				p {
+					font-size: 12px;
+					font-weight: 300;
+					padding-left: 47px;
+					margin-top: -3px;
+					color: #555;
+				}
+			}
+
+			.card_info {
+				margin-bottom: 3px;
+				display: flex;
+
+				span {
+					display: inline-block;
+					width: 76px;
+					height: 26px;
+					font-size: 10px;
+					font-weight: 300;
+					color: #555;
+					text-align: center;
+					border: 1px solid #ddd;
+					border-radius: 13px;
+					margin-right: 9px;
+					line-height: 23px;
+				}
+
+				p {
+					display: inline-block;
+					font-size: 13px;
+					color: #555;
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+	}
+
+	>li {
+		margin-right: 0px;
+
+		// &:first-child {
+		// 	margin-left: 0px;
+		// }
+
+		&:last-child {
+			a {
+				&.card_box {
+					margin-right: 0px;
+				}
+			}
+		}
+	}
+
+
+	.card_box {
+		width: 155px;
+		min-width: calc(50vw - 25px);
+		height: 191px;
+		padding: 20px 20px;
+		background-color: #fff;
+		border: 1px solid #eee;
+		border-radius: 7px;
+		margin-right: 10px;
+		display: block;
+		position: relative;
+
+		.card_header {
+			position: relative;
+			width: 100%;
+			height: 38px;
+
+			.card_num {
+				position: absolute;
+				top: -4px;
+				left: -5px;
+				display: inline-flex;
+				background: url(/resources/smart/img/content/bg_calcrating_gray@2x.png);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				background-position: center center;
+				width: 34px;
+				height: 23px;
+				align-items: center;
+				justify-content: center;
+				font-size: 12px;
+				font-weight: bold;
+				color: #111;
+				line-height: 10px;
+				padding-bottom: 5px;
+			}
+
+			.lab_status {
+				position: absolute;
+				right: -10px;
+				min-width: 46px;
+				height: 19px;
+				display: inline-block;
+				background-color: #e9f4f7;
+				border-radius: 9px;
+				font-size: 10px;
+				font-weight: 400;
+				line-height: 17px;
+				padding: 0 7.5px 0 7.5px;
+				color: #111;
+
+				&.bg_purple02 {
+					background-color: #f9f2fa;
+				}
+
+				&.bg_beige {
+					background-color: #f9f5ea;
+				}
+
+				&.bg_green02 {
+					background-color: #edf8f2;
+				}
+			}
+		}
+
+		.card_body {
+			height: 80px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			strong {
+				font-size: 13px;
+				font-weight: 500;
+				line-height: 18px;
+				margin-left: -5px;
+				margin-right: -5px;
+				max-height: 33px;
+				overflow: hidden;
+
+				&.let_sp {
+					letter-spacing: -0.75px;
+				}
+			}
+
+			span {
+				font-size: 10px;
+				font-weight: 400;
+				color: #111;
+				text-align: center;
+				margin-bottom: 13px;
+				vertical-align: sub;
+
+				.ico {
+					&.ico_calc_user {
+						background: url(/resources/smart/img/content/ico_calc_user@2x.png);
+						background-repeat: no-repeat;
+						background-size: 100% 100%;
+						background-position: center center;
+						width: 17px;
+						height: 14px;
+						display: inline-block;
+						vertical-align: middle;
+						margin-right: 3px;
+						margin-left: 6px;
+					}
+				}
+			}
+		}
+
+		.card_total {
+			display: block;
+			height: 52px;
+			background-color: #e9f4f7;
+			margin-left: -21px;
+			margin-right: -21px;
+			text-align: center;
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 51px;
+			border-radius: 0px 0px 7px 7px;
+			position: absolute;
+			width: 100%;
+			bottom: 0px;
+			left: 21px;
+
+			span {
+				font-weight: bold;
+			}
+
+			&.bg_purple02 {
+				background-color: #f9f2fa;
+			}
+
+			&.bg_beige {
+				background-color: #f9f5ea;
+			}
+
+			&.bg_green02 {
+				background-color: #edf8f2;
+			}
+		}
+	}
+
+}
+
+.txt_w_3 {
+	font-weight: 300;
+}
