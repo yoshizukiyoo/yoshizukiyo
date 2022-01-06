@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="퇴직급여 계좌대월 연장신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">대상조회</span></li>
+					<li><span class="num">2</span><span class="txt">정보입력</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">약관동의</span></li>
+					<li><span class="num">3</span><span class="txt">신청완료</span></li>
+				</ul>
+
+				<!-- s: 전체동의 -->
+				<div>
+					<h2 class="tit1">
+						약정서 및 설명서 확인
+						<a href="#;" data-toggle-btn="agree_info">
+							<i class="ico ico_help"></i>
+							<span class="sr_only">도움말</span>
+						</a>
+					</h2>
+					<!-- 툴팁 레이어 -->
+					<div class="tooltip" data-toggle-content="agree_info">
+						<div class="tooltip_body">
+							<p>퇴직급여대월연장신청을 위하여 관련 법률과 규정에 따라 각종 항목에 대한 동의 및 확인이 필요합니다.</p>
+							<p class="mt_2">보기를 선택하시면 연장 약정 정보가 기입된 약정 서류를 미리 확인하실 수 있습니다.</p>
+						</div>
+						<button type="button" class="btn btn_icon btn_close_tooltip">
+							<i class="ico ico_close_sm"></i>
+							<span class="sr_only">닫기</span>
+						</button>
+					</div>
+					<div class="double_box terms_box ag_check_type2">
+						<div class="top">
+							<span class="check_item txt_medium">
+								<input type="checkbox" name="" id="all_chk">
+								<label for="all_chk">전체 동의</label>
+							</span>
+						</div>
+						<div class="btm">
+							<div>
+								<div class="l">
+									<span class="check_item simple_primary">
+										<input type="checkbox" name="" id="chk1" checked>
+										<label for="chk1">[필수] 우편대체 계좌대월약정서</label>
+									</span>
+								</div>
+								<div class="r">
+									<button type="button" class="btn_more txt_darkprimary"
+										onclick="openModal('layer01', this)">보기</button>
+								</div>
+							</div>
+							<div>
+								<div class="l">
+									<span class="check_item simple_primary">
+										<input type="checkbox" name="" id="chk2">
+										<label for="chk2">[필수] 우편대체 계좌대월상품설명서</label>
+									</span>
+								</div>
+								<div class="r">
+									<button type="button" class="btn_more txt_darkprimary"
+										onclick="openModal('layer01', this)">보기</button>
+								</div>
+							</div>
+							<div>
+								<div class="l">
+									<span class="check_item simple_primary">
+										<input type="checkbox" name="" id="chk3">
+										<label for="chk3">[필수] 계좌대월 약정기간연장동의서</label>
+									</span>
+								</div>
+								<div class="r">
+									<button type="button" class="btn_more txt_darkprimary"
+										onclick="openModal('layer01', this)">보기</button>
+								</div>
+							</div>
+							<div>
+								<div class="l">
+									<span class="check_item simple_primary">
+										<input type="checkbox" name="" id="chk4">
+										<label for="chk4">[필수] 서약서(별정우체국직원 퇴직급여 계좌대월용)</label>
+									</span>
+								</div>
+								<div class="r">
+									<button type="button" class="btn_more txt_darkprimary"
+										onclick="openModal('layer01', this)">보기</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 전체동의 -->
+
+				<!-- s: 신청 전 중요 사항 확인 -->
+				<div class="double_box terms_box ag_check_type2 mt_3">
+					<div class="top pb_2 pt_2">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="" id="all_chk2">
+							<label for="all_chk2">신청 전 중요 사항 확인</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk1-2" checked>
+									<label for="chk1-2">퇴직급여 계좌대월 연장 신청 중요 사항</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary" onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk1-3">
+									<label for="chk1-3">추가 확인 사항 1</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary" onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 신청 전 중요 사항 확인 -->
+
+				<!-- s: 약관 및 상품설명서 받기 -->
+				<div class="double_box terms_box ag_check_type2 mt_3">
+					<div class="top pb_2 pt_2">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="" id="all_chk3">
+							<label for="all_chk3">약관 및 상품설명서 받기</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk2-1" checked>
+									<label for="chk2-1">이메일</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_tf_1_1">이메일 주소</label>
+									<input type="text" id="lb_tf_1_1" class="tf" value="abcd@naver.com" placeholder="이메일 주소를 입력하세요.">
+								</div>
+							</div>
+						</div>
+						<p class="mt_1">이메일주소가 맞는 지 확인하시기 바랍니다.</p>
+					</div>
+					<div class="btm pt_0 bt_none">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk2-1" checked>
+									<label for="chk2-1">문자(SMS)</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item disabled">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_tf_1_1">문자(SMS) 입력</label>
+									<input type="text" id="lb_tf_1_1" class="tf" value="010-1234-5678" disabled
+										placeholder="문자(SMS) 입력 입력하세요.">
+								</div>
+							</div>
+						</div>
+						<p class="bul_notice mt_1">이메일, 문자 중 하나를 필수 선택하여 약관 및 상품설명서를 교부받으셔야 합니다.</p>
+					</div>
+				</div>
+				<!-- e: 약관 및 상품설명서 받기 -->
+
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary">전자서명</a>
+				</div>
+			</div>
+
+			<!-- s: 약정서 및 설명서 동의 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">약정서 및 설명서 동의</h2>
+					</div>
+					<div class="popup_body">
+
+						<div class="tab_cont dsp_block mt_3">
+							<div class="container scroll_container mb_10 scroll_start">
+								<div class="scroll_track">
+									<div class="scroll_content">
+										<div class="fx_lr">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_1">
+													<label for="pop_chk1_1">[필수] 우편대체 계좌대월약정서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_2">
+													<label for="pop_chk1_2">[필수] 우편대체 계좌대월상품설명서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_3">
+													<label for="pop_chk1_3">[필수] 계좌대월 약정기간연장동의서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_3">
+													<label for="pop_chk1_3">[필수] 서약서(별정우체국직원 퇴직급여 계좌대월용)</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- s: 약관 및 상품설명서 확인 -->
+							<div class="container pb_4">
+								<div class="box box_border box_narrow bg_lightgray">
+									<div class="txt_c">
+										<i class="ico ico_notice_lg"></i>
+										<p class="mt_2"><strong class="txt_normal">금융소비자보호법에 따라<br>약관 및 설명서 확인이 필요해요.</strong></p>
+									</div>
+
+									<div class="mt_4">
+										<ul class="list list2 spacing_mt_4">
+											<li>약관 및 상품설명서의 내용 중 반드시 확인하셔 야 할 중요한 사항은 가입 전 확인사항에서 다시 한번 알려드려요.</li>
+											<li>확인 방법은 아래 두가지 중 한가지를 선택할 수 있어요.
+												<ul>
+													<li>
+														① 약관명 앞 체크박스를 선택<br>
+														→ 약관 파일 표시되며 바로 확인
+													</li>
+													<li>
+														② 약관명 옆 [저장하기] 버튼, 하단 [전체 저장] 버튼 선택<br>
+														→ 선택한 약관 파일 또는 전체 약관 파일을 고객님의 스마트폰에 내려받아 확인
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: 약관 및 상품설명서 확인 -->
+
+							<!-- s: PDF 뷰어 -->
+							<div class="pt_4">
+								<div class="slide_sheet box box_gradient_gray">
+									<button type="button" class="btn btn_slide">접기</button>
+									<div class="pdf_viewer mt_6">
+										<div style="height: 600px;">PDF 뷰어 영역</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: PDF 뷰어 -->
+						</div>
+
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer01');">전체 저장</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">모두 확인했어요</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 신청 전 중요사항 확인 -->
+
+			<!-- s: 신청 전 중요사항 확인 -->
+			<div class="modal_popup popup show" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">신청 전 중요사항 확인</h2>
+					</div>
+					<div class="popup_body">
+
+						<div class="tab_cont dsp_block mt_3">
+							<div class="container scroll_container mb_10">
+								<div class="scroll_track">
+									<div class="scroll_content">
+										<div class="fx_lr">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk2_1" checked>
+													<label for="pop_chk2_1">대월계좌연장 관련 중요한 사항</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk2_2">
+													<label for="pop_chk2_2">확인 사항 2</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- s: 약관 및 상품설명서 확인 -->
+							<div class="container pb_4">
+								<div class="box box_border box_narrow bg_lightgray">
+									<div class="txt_c">
+										<p class="mt_2"><strong class="txt_normal">대월계좌연장 관련 중요한 사항</strong></p>
+									</div>
+
+									<div class="mt_4">
+										<ul class="list list1">
+											<li>상품설명서 내 기준금리 일자는 약정서 작성일자로 자동 기입니다.</li>
+											<li>다른은행에 3천만원을 초과하는 신용대출이 있을 경우 연장 신청이 불가능합니다.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: 약관 및 상품설명서 확인 -->
+						</div>
+
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 신청 전 중요사항 확인 -->
+
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

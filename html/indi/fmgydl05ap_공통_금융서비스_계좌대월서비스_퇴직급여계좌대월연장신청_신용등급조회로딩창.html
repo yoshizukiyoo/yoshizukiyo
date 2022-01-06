@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="퇴직급여 계좌대월 연장신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">대상조회</span></li>
+					<li><span class="num">2</span><span class="txt">정보입력</span></li>
+					<li><span class="num">3</span><span class="txt">약관동의</span></li>
+					<li><span class="num">3</span><span class="txt">신청완료</span></li>
+				</ul>
+
+				<p>홍길동 고객님이 보유하고 계신 퇴직급여대월 계좌 정보입니다. 연장 신청 시 징구서류 제출이 필요하며, 서류를 등록하지 않으시면 연장신청을 할 수 없습니다.</p>
+
+				<!-- s: 계좌대월정보 -->
+				<div class="section">
+					<h2 class="tit1">계좌대월정보</h2>
+					<div class="double_box">
+
+						<div class="btm">
+							<div>
+								<div class="l">대월종류명</div>
+								<div class="r">별정국퇴직급여</div>
+							</div>
+							<div>
+								<div class="l">약정 계좌 번호</div>
+								<div class="r">123-4567-8912345</div>
+							</div>
+							<div>
+								<div class="l">약정일</div>
+								<div class="r">2021.01.01</div>
+							</div>
+							<div>
+								<div class="l">약정만기일</div>
+								<div class="r">2022.01.01</div>
+							</div>
+							<div>
+								<div class="l">대월약정금액(원)</div>
+								<div class="r">10,000,000</div>
+							</div>
+							<div>
+								<div class="l">출금가능금액(원)</div>
+								<div class="r">100,000,000</div>
+							</div>
+							<div>
+								<div class="l">관리우체국</div>
+								<div class="r">빛가람우체국<br>(042-999-9999)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 계좌대월정보 -->
+
+				<div class="section">
+					<h2 class="tit1 mb_1">서류안내</h2>
+					<p>
+						퇴직급여 대월 계좌 연장을 위해서는 아래 서류를 등록해야 합니다.
+						<span class="txt_darkprimary">서류를 등록하지 않으면 연장 신청이 불가능하니</span>, 이용에 참고해 주시기 바랍니다.
+					</p>
+					<ul class="mt_2">
+						<li>① 신분증(앞, 뒤)</li>
+						<li>② 재직증명서</li>
+						<li>③ 공무원관리공단 융자 추천서</li>
+					</ul>
+				</div>
+
+				<!-- s: 약관동의 -->
+				<div class="mt_10">
+					<div class="agree_box1 layer_type">
+						<div class="agree_list">
+							<div class="agree_check agree_open">
+								<span class="check_item txt_lg">
+									<input type="checkbox" id="lb_agreement1" checked>
+									<label for="lb_agreement1">[필수] 개인(신용)정보조회에 동의합니다.</label>
+								</span>
+								<a href="#;" onclick="openModal('layer01', this);return false;">보기</a>
+							</div>
+						</div>
+					</div>
+					<div class="agree_box1 layer_type">
+						<div class="agree_list">
+							<div class="agree_check agree_open">
+								<span class="check_item txt_lg">
+									<input type="checkbox" id="lb_agreement2">
+									<label for="lb_agreement2">[필수] 신용평가정보조회에 동의합니다.</label>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 약관동의 -->
+
+				<div class="box_notice mt_3">
+					<p class="bul_notice">
+						단순 신용평가기관의 신용정보 조회이며, 우체국 심사에 따라 약정이 불가능하거나, 약정한도액이 줄어들 수 있습니다.
+					</p>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 개인정보조회 동의 팝업 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">개인(신용)정보조회 동의</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="fx_lr">
+								<div class="l">
+									<span class="check_item">
+										<input type="checkbox" name="pop_chk1" id="pop_chk1_1" checked>
+										<label for="pop_chk1_1">[필수] 입출금이 자유로운 예금약관</label>
+									</span>
+								</div>
+								<div class="r">
+									<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+								</div>
+							</div>
+						</div>
+						<!-- s: PDF 뷰어 -->
+						<div class="mt_6">
+							<div class="slide_sheet box box_gradient_gray">
+								<button type="button" class="btn btn_slide">접기</button>
+								<div class="pdf_viewer mt_6">
+									<div style="height: 600px;">PDF 뷰어 영역</div>
+								</div>
+							</div>
+						</div>
+						<!-- e: PDF 뷰어 -->
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01');">저장</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 개인정보조회 동의 팝업 -->
+
+			<!-- s: 로딩 팝업 -->
+			<div class="modal_popup modal_alert show" data-popup="layerSampleAlert">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_body">
+						<div class="container">
+							<div class="loader mt_8 mb_11"></div>
+							<p class="txt_c txt_lg">
+								<strong>고객님의 신용정보조회가 진행중입니다.</strong>
+							</p>
+							<p class="mt_2 txt_c">
+								다소 시간이 소요됩니다.<br>
+								잠시만 기다려주세요.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 로딩 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

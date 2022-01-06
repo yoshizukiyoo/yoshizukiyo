@@ -23,16 +23,16 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_toggle_more').click(function(){
+			$('.btn_toggle_more').click(function () {
 				$(this).parent().toggleClass('active');
 			})
 
-			$('.btn_submenu').click(function(){
+			$('.btn_submenu').click(function () {
 				$('.sub_toggle').hide();
 				$(this).parent().find('.sub_toggle').show();
 			})
 
-			$('.btn_close_tooltip').click(function(){
+			$('.btn_close_tooltip').click(function () {
 				$(this).parent().hide();
 			});
 
@@ -68,7 +68,7 @@
 												<span class="sr_only">닫기</span>
 											</button>
 											<div>
-												<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
+												<a href="#;" onclick="openModal('approval_popup',this)">상세정보</a>
 												<a href="#;" onclick="openModal('layer03',this)">결재선수정</a>
 												<a href="#;" onclick="openModal('layer04',this)">삭제</a>
 											</div>
@@ -93,7 +93,7 @@
 												<span class="sr_only">닫기</span>
 											</button>
 											<div>
-												<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
+												<a href="#;" onclick="openModal('approval_popup',this)">상세정보</a>
 												<a href="#;" onclick="openModal('layer03',this)">결재선수정</a>
 												<a href="#;" onclick="openModal('layer04',this)">삭제</a>
 											</div>
@@ -127,7 +127,7 @@
 												<span class="sr_only">닫기</span>
 											</button>
 											<div>
-												<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
+												<a href="#;" onclick="openModal('approval_popup',this)">상세정보</a>
 												<a href="#;" onclick="openModal('layer03',this)">결재선수정</a>
 												<a href="#;" onclick="openModal('layer04',this)">삭제</a>
 											</div>
@@ -152,7 +152,7 @@
 												<span class="sr_only">닫기</span>
 											</button>
 											<div>
-												<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
+												<a href="#;" onclick="openModal('approval_popup',this)">상세정보</a>
 												<a href="#;" onclick="openModal('layer03',this)">결재선수정</a>
 												<a href="#;" onclick="openModal('layer04',this)">삭제</a>
 											</div>
@@ -180,28 +180,174 @@
 			</div>
 			<!-- e: 하단 고정 영역 -->
 
-			<!-- s: Modal Popup 상세정보 -->
-			<div class="modal_popup popup hide" data-popup="layer01">
+
+			<!-- s: 결재선조회 팝업 - 확인자가 있는 경우 -->
+			<div class="modal_popup popup hide" data-popup="approval_popup">
 				<div class="dimed"></div>
 				<div class="popup_inner">
 					<div class="popup_header">
 						<h2 class="popup_tit">결재선 상세정보</h2>
-						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 					<div class="popup_body">
-						<div class="container">
-							
+						<div class="container p_4">
+							<h3 class="tit1">즉시이체</h3>
+							<div class="approval_line arrow">
+								<ul>
+									<li>
+										<div>
+											<span>사용자명</span>
+											<strong>김우정</strong>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>확인(1단계)자</span>
+											<strong>고길동</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle1">
+													<label for="approval_toggle1">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>확인(2단계)자</span>
+											<strong>도우너</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle2">
+													<label for="approval_toggle2">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>확인(3단계)자</span>
+											<strong>정중앙</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle3">
+													<label for="approval_toggle3">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>승인자</span>
+											<strong>박승인</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle4">
+													<label for="approval_toggle4">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<span>전결자</span>
+											<strong>남결자</strong>
+										</div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 					<div class="popup_footer">
 						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('approval_popup'); return false;">확인</a>
 						</div>
 					</div>
-					<button type="button" class="btn btn_close_popup">닫기</button>
 				</div>
 			</div>
-			<!-- e: Modal Popup 상세정보 -->
+			<!-- e: 결재선조회 팝업 - 확인자가 있는 경우 -->
+
+			<!-- s: 결재선조회 팝업 - 단독승인자 -->
+			<div class="modal_popup popup hide" data-popup="approval_single_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">결재선 상세정보</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<h3 class="tit1">즉시이체</h3>
+							<div class="approval_line">
+								<ul>
+									<li>
+										<div>
+											<span>사용자명</span>
+											<strong>김우정</strong>
+										</div>
+									</li>
+									<li>
+										<div class="l">
+											<span>승인자</span>
+											<strong>박승인</strong>
+										</div>
+										<div class="r">
+											<span>결재승인알림</span>
+											<div class="btn_switch switc_style1">
+												<div class="switch" style="width: 70px;">
+													<input type="checkbox" id="approval_toggle5">
+													<label for="approval_toggle5">
+														<span class="check_y">예</span>
+														<span class="check_n">아니오</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<span>전결자</span>
+											<strong>남결자</strong>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary"
+								onclick="closeModal('approval_single_popup'); return false;">확인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 결재선조회 팝업 - 단독승인자 -->
+
 
 			<!-- s: Modal Popup 결재선 등록 -->
 			<div class="modal_popup popup hide" data-popup="layer02">
@@ -287,7 +433,8 @@
 											<input type="text" id="lb_tf_1_2" class="tf" placeholder="등록자를 등록해 주세요.">
 										</div>
 										<div class="btn_area">
-											<a href="#;" class="btn btn_md btn_round btn_darkgray" onclick="openModal('layer_bottom',this)">선택</a>
+											<a href="#;" class="btn btn_md btn_round btn_darkgray"
+												onclick="openModal('layer_bottom',this)">선택</a>
 										</div>
 									</div>
 								</div>
@@ -369,7 +516,8 @@
 					</div>
 					<div class="popup_footer">
 						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layer02');">계속이체</button>
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('layer02');">계속이체</button>
 							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">완료</button>
 						</div>
 					</div>
@@ -452,7 +600,8 @@
 											<input type="text" id="lb_tf_1_2" class="tf" value="김우정">
 										</div>
 										<div class="btn_area">
-											<a href="#;" class="btn btn_md btn_round btn_darkgray" onclick="openModal('layer_bottom',this)">선택</a>
+											<a href="#;" class="btn btn_md btn_round btn_darkgray"
+												onclick="openModal('layer_bottom',this)">선택</a>
 										</div>
 									</div>
 								</div>
@@ -624,11 +773,11 @@
 			<!-- e: Modal popup 결재선 삭제 -->
 
 
-		<!-- s: 공통 레이어 로딩 -->
-		<div class="common_layers"></div>
-		<!-- e: 공통 레이어 로딩 -->
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
 
-		<!-- e: 본문 -->
+			<!-- e: 본문 -->
 		</div>
 	</div>
 </body>

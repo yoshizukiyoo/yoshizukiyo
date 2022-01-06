@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="e-포인트약정조회/해지"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">조회결과</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">보안매체확인</span></li>
+					<li><span class="num">3</span><span class="txt">해지완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<h2 class="tit1">조회결과</h2>
+				<div class="double_box">
+					<div class="btm">
+						<div>
+							<div class="l">e-포인트적금 약정</div>
+							<div class="r">약정</div>
+						</div>
+						<div>
+							<div class="l">입금시작일자</div>
+							<div class="r">2020.03.01</div>
+						</div>
+						<div>
+							<div class="l">입금만료일자</div>
+							<div class="r">2021.07.31</div>
+						</div>
+						<div>
+							<div class="l">LMS수신여부</div>
+							<div class="r">수신</div>
+						</div>
+						<div>
+							<div class="l">약정금액</div>
+							<div class="r"><strong>1,000</strong> 원</div>
+						</div>
+						<div>
+							<div class="l">포인트적립횟수</div>
+							<div class="r">0건</div>
+						</div>
+						<div>
+							<div class="l">포인트적립누적금액</div>
+							<div class="r">0원</div>
+						</div>
+						<div>
+							<div class="l">포인트이자</div>
+							<div class="r">0원</div>
+						</div>
+					</div>
+				</div>
+				<!-- s: 보안카드 입력 -->
+				<div class="section">
+					<h2 class="tit1">보안카드 입력</h2>
+					<div class="security_box">
+						<div>
+							<strong>[55] 앞 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 앞 2자리">
+							</div>
+						</div>
+						<div>
+							<strong>[55] 뒤 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 뒤 2자리">
+							</div>
+						</div>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: 보안카드 입력 -->
+				<!-- s: OTP 입력 -->
+				<div class="section">
+					<h2 class="tit1">OTP 입력</h2>
+					<div class="otp_box">
+						<a href="#;" onclick="openModal('otp_pwd_popup', this);return false;">
+							<i class="on"></i><i></i><i></i><i></i><i></i><i></i>
+						</a>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: OTP 입력 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="fmbiep01cs_공통_뱅킹정보관리_가입상품관리_e-포인트약정조회해지_해지완료.html" class="btn btn_xl btn_primary">
+						<span>확인</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: OTP 암호입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="otp_pwd_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">디지털 OTP</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">디지털 OTP 보안인증을 진행합니다.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+									<span class="certi_time">02:59</span>
+								</div>
+							</div>
+							<div class="btn_group btn_bottom_fixed mt_0">
+								<a href="#;" class="btn btn_md btn_round btn_default">
+									<span>인증번호 재입력</span>
+								</a>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								디지털 OTP앱에서 생성한 6자리 번호를 입력해 주세요
+							</p>
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary">인증요청</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('otp_pwd_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('otp_pwd_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: OTP 암호입력 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

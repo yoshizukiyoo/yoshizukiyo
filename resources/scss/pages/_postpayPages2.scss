@@ -34,6 +34,11 @@
 				position: absolute;
 				top: 15px;
 				right: 11px;
+				display: none;
+
+				&.on {
+					display: block;
+				}
 			}
 		}
 
@@ -118,7 +123,7 @@
 		}
 	}
 
-	// 마이홈
+	// 마이홈 - 설정
 
 	.bg_postpay_setting {
 
@@ -142,16 +147,31 @@
 
 			&.lock {
 				.box_border {
+
 					padding-bottom: 0;
 
-					.tit2 {
-						font-weight: normal;
+					.post_chk {
+						&:checked {
+							.toggle_hide {
+								display: none;
+							}
+						}
+					}
+
+					.toggle_hide {
+						// display: none;
+
+						.tit2 {
+							font-weight: 400;
+							margin-top: 20px;
+						}
 					}
 
 					.settings {
 						padding-bottom: 9px;
 					}
 				}
+
 			}
 
 			&.pw {
@@ -161,18 +181,26 @@
 			}
 
 			&.only {
-				.box.box_border {
-					padding-top: 20px;
+				.settings {
+					padding: 5px 0 3.5px;
 				}
+			}
 
-				// .settings {
-				// 	margin: 5px 0 3.5px;
-				// }
+			&.check {
+				.settings {
+					li {
+						margin: 26px 0;
+					}
+				}
 			}
 
 			.box.box_border {
 				margin-top: 21px;
 				padding: 0 20px;
+
+				>p:first-child {
+					margin-top: 19px;
+				}
 
 				.d_flex {
 					display: flex;
@@ -196,8 +224,12 @@
 					}
 				}
 
-				.check_item.type_btn input+label {
+				.check_switch label {
+					min-width: 65px;
+					padding-right: 9px;
+				}
 
+				.check_item.type_btn input+label {
 					justify-content: start;
 
 					.ico {
@@ -257,7 +289,7 @@
 
 					.l,
 					.r {
-						line-height: initial;
+						line-height: 100%
 					}
 				}
 			}
@@ -332,6 +364,18 @@
 					background-image: url(../../../resources/img/content/ico_settings_pay_zero_check.png);
 				}
 
+				&.ico_settings_cookie {
+					background-image: url(../../../resources/img/content/ico_settings_cookie.png);
+				}
+
+				&.ico_settings_data {
+					background-image: url(../../../resources/img/content/ico_settings_data.png);
+				}
+
+				&.ico_settings_trash {
+					background-image: url(../../../resources/img/content/ico_settings_trash.png);
+				}
+
 			}
 
 			h3 {
@@ -340,6 +384,7 @@
 
 			.double_line {
 				display: inline-block;
+				vertical-align: middle;
 
 				h3 {
 					display: block;
@@ -347,17 +392,262 @@
 
 				.desc {
 					font-size: 10px;
-					color: $gray;
 					display: inherit;
 				}
 
 			}
 
-			.txt_nomal {
-				color: $gray;
+			.txt_r {
+				margin-top: 8px;
+
+				.ico_chevron_up_sm {
+					transform: rotate(90deg);
+					margin-bottom: 4px;
+					margin-left: 5px;
+				}
+			}
+
+			.double_box {
+				margin-top: 21px;
+			}
+
+		}
+	}
+
+	// 마이홈 - 알림함
+
+	.titlebar {
+		&.go_back {
+			justify-content: start;
+			align-items: center;
+			padding: 0 20px;
+
+			.btn_icon {
+				padding: 0;
+				margin-left: 3px;
+				margin-right: 16px;
+			}
+
+			.tit_page {
+				.alert_num {
+					display: inline-block;
+					min-width: 16px;
+					height: 16px;
+					margin-left: 5px;
+					padding: 0 4.5px;
+					border-radius: 50%;
+					background: $darkgray;
+					line-height: 15px;
+					font-size: 11px;
+					color: $white;
+					vertical-align: bottom;
+				}
+			}
+
+			.btn_sm {
+				padding: 0 12px;
+				margin-left: 5px;
 			}
 		}
 	}
+
+	.myhome_notice {
+		padding-bottom: 180px;
+
+		.certi_list {
+
+			li {
+				.tit1 {
+					line-height: 1;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					margin-bottom: 14px;
+				}
+
+				.date {
+					font-size: 12px;
+					color: $gray;
+					line-height: 1;
+					display: block;
+				}
+
+				&.ad {
+					.tit1 {
+						line-height: 22px;
+						white-space: initial;
+						overflow: unset;
+						text-overflow: unset;
+					}
+
+					a {
+						background-image: url(/resources/img/content/bg_noti10.png);
+					}
+				}
+
+				&.notice {
+					.tit1 {
+						white-space: initial;
+						display: -webkit-box;
+						word-wrap: break-word;
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 2;
+					}
+
+					a {
+						background-image: url(/resources/img/content/bg_noti11.png);
+					}
+				}
+
+				a {
+					padding-left: 60px;
+					background: url(/resources/img/content/bg_noti08.png) 17px 21px no-repeat;
+					background-size: 29px;
+				}
+
+				&.calender {
+					a {
+						background-image: url(/resources/img/content/bg_noti09.png);
+					}
+				}
+			}
+		}
+	}
+
+	// 공통
+
+	.d_flex {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+
+	// 고객센터 - 홈
+
+	&.info_home {
+
+		.tt {
+			&.d_flex {
+				align-items: start;
+				margin-bottom: 15px;
+
+				.l {
+					margin-top: 10px;
+					color: $darkgray;
+					line-height: 1;
+
+					h3 {
+						font-weight: 400;
+						margin-bottom: 8px;
+					}
+				}
+
+				.chat_bot {
+
+					img {
+						width: 46px;
+						height: 46px;
+					}
+
+					span {
+						display: block;
+						text-align: center;
+						font-size: 10px;
+						line-height: 1;
+					}
+				}
+			}
+
+		}
+
+
+		.info_list {
+			li {
+				padding: 20px;
+				line-height: 25px;
+
+				.tit1 {
+					margin-bottom: 0;
+					display: inline-block;
+					margin-left: 15px;
+
+				}
+
+				&+li {
+					margin-top: 10px;
+				}
+			}
+
+		}
+
+
+
+		.service_tell {
+			background: $primary;
+			left: 20px;
+			right: 20px;
+			bottom: 20px;
+
+			img {
+				width: 17px;
+				height: 15px;
+				vertical-align: middle;
+				margin-right: 10px;
+			}
+
+			>ul {
+				border-radius: 6px 6px 0 0;
+			}
+
+			.day {
+				background: $white;
+				border-radius: 0 0 6px 6px;
+				color: $gray;
+				padding-bottom: 18px;
+				letter-spacing: -0.05em;
+			}
+		}
+	}
+
+
+
+	// 고객센터 - 자주하는 질문
+
+	&.faq {
+		.tab_menu2 {
+			margin-top: 10px;
+			margin-bottom: 50px;
+		}
+	}
+
+	// 고객센터 - 종료된 이벤트
+
+	&.event_detail {
+		.lab_status {
+			&.end {
+				background: $btn-xl-disable2;
+			}
+		}
+	}
+
+	// 고객센터 - 서비스 해지
+
+	&.cancel {
+
+		.tac {
+			text-align: center;
+		}
+
+		// .ico_mall_terms {
+		// 	background: url(../../img/content/ico_mall_terms.png);
+		// 	background-size: 20px 20px;
+		// 	display: inline-block;
+		// 	width: 20px;
+		// 	height: 21px;
+		// }
+	}
+
 
 
 }
