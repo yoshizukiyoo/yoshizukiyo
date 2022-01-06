@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="기부금송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#;"><span>보내기</span></a></li>
+					<li><a href="#;"><span>조회/취소</span></a></li>
+				</ul>
+			</nav>
+			
+			<div class="container pt_1 pb_4">
+				<div>
+					<h2 class="tit1">정보확인</h2>
+					<div class="double_box">
+						<div class="btm">
+							<div>
+								<div class="l">기부단체</div>
+								<div class="r">대한적십자사</div>
+							</div>
+							<div>
+								<div class="l">입금은행</div>
+								<div class="r">우체국</div>
+							</div>
+							<div>
+								<div class="l">계좌번호</div>
+								<div class="r">013086-31-000654</div>
+							</div>
+							<div>
+								<div class="l">기부일자</div>
+								<div class="r">매월 01일</div>
+							</div>
+							<div>
+								<div class="l">약정기간</div>
+								<div class="r">1년</div>
+							</div>
+						</div>
+					</div>
+					<div class="double_box mt_2">
+						<div class="btm">
+							<div>
+								<div class="l">기부금액</div>
+								<div class="r"><span class="txt_bold">10,000</span>원</div>
+							</div>
+						</div>
+					</div>
+					<a href="#;" class="tf_item mt_2" onclick="openModal('pwd_full_popup');return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<div class="lab">계좌 비밀번호 <span class="req">필수항목</span></div>
+								<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+								<div class="password_masking gray">
+									<!-- 자릿수에 맞춰 <i></i> 추가 -->
+									<i></i><i></i><i></i><i></i>
+								</div>
+							</div>
+						</div>
+					</a>
+					<p class="txt_guide">비밀번호 5회이상 오류시 거래 제한</p>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('indi_certi_popup', this); return false;">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">비밀번호 입력</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">4자리 숫자를 입력해 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								4자리 숫자를 입력해 주세요.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 비밀번호 입력 팝업 -->
+
+			<!-- s: 개인인증번호 팝업 -->
+			<div class="modal_popup popup hide" data-popup="indi_certi_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<!-- <h2 class="popup_tit">팝업 타이틀</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button> -->
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">개인인증번호 6자리를<br>입력하여 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								비밀번호 총 5회 오류 시 처음부터 다시 시작하셔야 합니다.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 개인인증번호 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

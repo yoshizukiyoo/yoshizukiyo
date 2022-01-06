@@ -614,7 +614,7 @@ $demiprimary: #fbe59b !default;
 
 	&.list_transfer_info {
 		>li {
-			>div {
+			>div:not(.con) {
 				@include fx_lr();
 
 				>.l {
@@ -663,6 +663,73 @@ $demiprimary: #fbe59b !default;
 
 			.lab_status {
 				margin-left: 10px;
+			}
+		}
+
+		&.slider {
+			>li {
+				position: relative;
+				overflow: hidden;
+				height: 125px;
+				border: 1px solid $border-base;
+				border-radius: 8px;
+
+				>.con {
+					@include box_default(19px, 17px);
+					position: absolute;
+					right: auto;
+					top: auto;
+					z-index: 20;
+					transform: translate(-1px, -1px);
+					transition: all 0.4s ease-in-out;
+
+					width: calc(100% + 2px);
+					height: calc(100% + 2px);
+
+					>div {
+						@include fx_lr();
+
+						>.l {
+							display: flex;
+							align-items: center;
+						}
+
+						>.r {
+							display: flex;
+							align-items: center;
+							text-align: right;
+						}
+					}
+
+					&.sliding {
+						right: 65px;
+					}
+				}
+
+				>.sd_hide {
+					position: absolute;
+					z-index: 10;
+					left: 0;
+					top: 0;
+					transform: translate(-1px, -1px);
+					text-indent: -9999px;
+					font-size: 0;
+
+					width: calc(100% + 2px);
+					height: calc(100% + 2px);
+
+
+					border-width: 1px;
+					border-style: solid;
+					border-color: $border-base;
+					border-radius: 8px;
+
+					background-color: #555;
+					background-repeat: no-repeat;
+					background-size: 21px 25px;
+					background-position: right 22px center;
+					background-image: url(#{$url-img}/content/ico_delete_white.png);
+				}
 			}
 		}
 	}

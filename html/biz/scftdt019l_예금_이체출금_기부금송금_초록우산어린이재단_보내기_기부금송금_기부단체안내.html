@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="기부금송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#;"><span>보내기</span></a></li>
+					<li><a href="#;"><span>조회/취소</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container pb_4 pt_1">
+				<div class="box box_border">
+					<div class="p_4 txt_c">
+						<img src="/resources/img/content/img_donate_org04_xl.png" alt="초록우산어린이재단">
+					</div>
+					<p class="mt_1 txt_break">초록우산 어린이재단은 1948년 전쟁고아 구호를 시작으로 현재에 이르기까지 국내외 아동복지사업, 애드보커시, 모금사업, 연구조사 등을 폭넓게 실시하고
+						있는 글로벌 아동복지전문기관입니다.</p>
+					<div class="mt_2 txt_r">
+						<a href="#;" class="txt_darkprimary txt_normal btn_more"
+							onclick="openModal('org_info', this); return false;">기부단체안내 및 소득공제</a>
+					</div>
+				</div>
+
+				<div class="mt_6">
+					<h2 class="tit1">연말정산소득공제 정보제공에 동의하십니까?</h2>
+					<div class="tf_item">
+						<div class="input_items fx_lr">
+							<div class="l">
+								<span class="check_item">
+									<input type="checkbox" name="chk1" id="chk1_1">
+									<label for="chk1_1" class="txt_lg txt_medium">동의합니다.</label>
+								</span>
+							</div>
+							<div class="r">
+								<a href="#;" class="btn btn_xs btn_round btn_default"
+									onclick="openModal('terms_popup', this); return false;">전문보기 <i
+										class="ico ico_chevron_right_sm ml_1"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt_8">
+					<nav class="tab_menu tab_menu2">
+						<ul class="tab_list">
+							<li class="on"><a href="#;"><span>기부금송금</span></a></li>
+							<li><a href="#;"><span>정기기부</span></a></li>
+							<li><a href="#;"><span>포인트기부</span></a></li>
+						</ul>
+					</nav>
+
+					<div class="mt_4">
+						<div class="double_box">
+							<div class="btm">
+								<div>
+									<div class="l">기부단체명</div>
+									<div class="r">초록우산어린이재단</div>
+								</div>
+								<div>
+									<div class="l">기부단체계좌</div>
+									<div class="r">013086-31-000654</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt_2">
+						<div class="account_info_box">
+							<a href="#;" onclick="openModal('layerAccount'),this">
+								<span class="bank">
+									<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+								</span>
+								<div class="info">
+									<strong>스마트 e-Postbank 예금</strong>
+									<p>100057-02-000010</p>
+									<div class="price">
+										<span>출금가능금액</span>
+										<strong>2,345,900 원</strong>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<!-- s: 이체금액 입력 -->
+					<div class="account_amount mt_6">
+						<div class=inner>
+							<a href="#n" onclick="openModal('amount_keypad', this); return false;">
+								<div class="amount_label">
+									<span>송금액 <strong class="req">필수항목</strong></span>
+								</div>
+								<div class="amount_area">
+									<span class="txt_amt1">4,123,000</span>
+									<span class="txt_amt2">원</span>
+									<span class="txt_amt3">사백일십이만삼천원</span>
+								</div>
+							</a>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+						<p class="mt_1">나의 이체한도 : 1회 3,000,000원 / 1일 3,000,000원</p>
+						<!-- Validation Check 문구 -->
+						<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
+					</div>
+					<!-- e: 이체금액 입력 -->
+					<p class="bul_notice txt_gray mt_1">기부 가능 한도액은 1회 최소 1천원 ~ 최대 200만원, 1일 최대 300만원입니다.
+					</p>
+					<p class="bul_notice txt_gray mt_2">기부금송금은 기부단체로 즉시 입금됨에 따라 보내는 분이 취소 요청을 하실 수 없습니다.
+					</p>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 기부단체 안내 팝업-->
+			<div class="modal_popup popup show" data-popup="org_info">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">기부단체 안내</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+
+							<!-- s: CI -->
+							<div class="box box_border">
+								<div class="p_4 txt_c">
+									<img src="/resources/img/content/img_donate_org04_xl.png" alt="초록우산어린이재단">
+								</div>
+								<p class="mt_1 txt_break">초록우산 어린이재단은 1948년 전쟁고아 구호를 시작으로 현재에 이르기까지 국내외 아동복지사업, 애드보커시, 모금사업, 연구조사 등을 폭넓게
+									실시하고 있는 글로벌 아동복지전문기관입니다.</p>
+							</div>
+							<!-- e: CI -->
+
+							<!-- s: description -->
+							<div class="mt_8">
+								<div>
+									<h3 class="tit1">어린이는 우리의 미래!</h3>
+									<ul class="list list1 txt_break spacing_mt_4">
+										<li><strong class="d_b txt_black">어린이를 돕는 일, 초록우산 어린이재단이 합니다.</strong></li>
+									</ul>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">왜 초록우산 어린이재단을 신뢰할까요?</h3>
+									<ul class="list list1 txt_break spacing_mt_4">
+										<li>
+											<strong class="d_b txt_black mb_1">전문성</strong>
+											국내외 아동을 위해 생존지원, 보호지원, 발달지원, 권리옹호 사업을 펼치고 있으며 아동의 성장과 관련된 모든 영역에서재단만의 특화되고 표준화된 서비스를 제공하는 국내 최대
+											아동복지전문기관입니다.
+										</li>
+										<li>
+											<strong class="d_b txt_black mb_1">투명성</strong>
+											초록우산 어린이재단은 '기부금품 모집 및 사용에 관한 법률'에 따라 모금과 분배사업을 진행하고 있습니다. 또 나라의 투명한 살림을 책임지는 공직자나 전문가들이 믿고 선택하는
+											신뢰받는 기관입니다.
+										</li>
+										<li>
+											<strong class="d_b txt_black mb_1">역사성</strong>
+											1948년 CCF 한국지부로 출발해 지난 70년 가까이 모든 아이들의 행복을 위해 외길을 걸어왔습니다. 초록우산 어린이재단은 한국의 사회복지역사와 궤를 함께하며 기부문화를
+											선도하고 있습니다.
+										</li>
+										<li>
+											<strong class="d_b txt_black mb_1">국제성</strong>
+											초록우산 어린이재단은 전 세계 11개국으로 구성된 국제어린이재단연맹(ChildFund Alliance)의 회원기관으로 전 세계 60여 개국 어린이들을 위해 지역개발
+											사업,옹호사업,긴급구호사업 등을 펼치고 있습니다.
+										</li>
+									</ul>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">기부금 소득공제 안내</h3>
+									<div class="box box_border bg_lightgray">
+										<ul class="list list1">
+											<li>우체국 스마트뱅킹 기부 이용에 동의하신 후원자님의 경우, 기부 내역이 기부단체로 제공되며, 국세청 연말정산 간소화 서비스에 자동으로 반영됩니다.</li>
+											<li>기부금 영수증이 필요한 기부자는 기부단체 홈페이지에서 회원가입 후 출력이 가능합니다.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: description -->
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('org_info'); return false;">확인</a>
+							<a href="https://childfund.or.kr//" class="btn btn_lg btn_primary" target="_blank"
+								title="새창으로 열림">홈페이지</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 기부단체 안내 팝업 -->
+
+			<!-- s: 연말정산소득제공 정보제공 팝업 -->
+			<div class="modal_popup popup hide" data-popup="terms_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">개인정보 정보제공동의서</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div>
+								<h3 class="tit1">[개인(신용)정보 제3자 정보제공 동의서]</h3>
+								<div>
+									<h4 class="tit2 txt_black">우체국 귀중</h4>
+									<p>우체국이 본인으로부터 취득한 개인(시용)정보는 [개인정보 보고법] 제17조, 제22조, 제24조와 [신용정보의 이용 및 보호에 관한 법률] 제32조에 따라 제3자에게 제공할 경우
+										본인의 사전 동의를 얻어야 합니다. 이에 본인은 우체국이 아래의 내용과 같이 본인의 개인(신용)정보를 제3자에게 제공하는데 동의합니다.</p>
+								</div>
+								<div class="mt_6">
+									<ol class="list spacing_mt_4">
+										<li>
+											<strong class="d_b">1. 개인(신용) 정보를 제공받는 자</strong>
+											<ul class="list list1 mt_1">
+												<li>스마트뱅킹 기부금 송금서비스를 이용하여 기부금을 송금한 단체<br>
+													※ 제공대상 업체에 제공되는 개인(신용)정보는 업무 수행에 필요한 최소한의 정보로 한정합니다.
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">2. 개인(신용) 정보 제공 목적</strong>
+											<ul class="list list1 mt_1">
+												<li>
+													국세청 연말정산 자료 전송, 기부금 영수증 발급 등 기부금 관련 업무처리
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">3. 제공대상 개인(신용) 정보</strong>
+											<ul class="list list1 mt_1">
+												<li>개인식별정보(성명, 주민등록번호, 휴대폰번호, 주소, 기부일자, 기부금액 등)<br>
+													※ 본 동의 건에 한하여 제공됩니다.
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">4. 제공받는 자의 개인(신용)정보 보유 및 이용기간</strong>
+											<ul class="list list1 mt_1">
+												<li>제공받은 개인(신용)정보는 소득세법에 따라 본인과 제공받는 자의 거래 종료일로 부터 5년간 보유 및 이용합니다.<br>
+													※ 단, 관련법령의 별도 규정이 명시되어 있는 경우 그 기간을 따릅니다.
+													<ul class="list list2">
+														<li>거래 종로 후에는 위에 기재된 제공목적과 관련된 금융사고 조사, 분쟁해결, 민원처리, 법령상 의무이행을 위하여 필요한 범위 내에서만 보유 및 이용 됩니다.
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">5. 동의를 거부할 권리 및 동의를 거부할 경우의 불이익</strong>
+											<ul class="list list1 mt_1">
+												<li>정보제공에 동의하지 않으셔도 기부 등 불이익은 발생하지않습니다.</li>
+												<li>개인(신용)정보 제공에 동의하지 않고 기부 영수증 발급 및 연말정산 소득공제를 받고자 하는 경우에는 개별적으로 해당 단체로 직접 문의하시기 바랍니다.</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+
+								<div class="mt_4 txt_r txt_lg txt_normal">
+									2021년 07월 27일<br>
+									<span>나봄미</span> 서명 또는 (인)
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('terms_popup'); return false;">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 연말정산소득제공 정보제공 팝업 -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

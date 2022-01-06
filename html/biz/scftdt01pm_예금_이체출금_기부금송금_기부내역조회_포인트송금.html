@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_dropdown').each(function () {
+				dropDown($(this), 3)
+			})
+		});
+
+		function dropDown(obj, currList) {
+			obj.not('.active').siblings().slice(currList).attr('style', 'display: none !important');
+
+			obj.on('click', function (e) {
+				e.preventDefault();
+				if (obj.hasClass('active')) {
+					obj.siblings().slice(currList).attr('style', 'display: none !important');
+					obj.html('펼치기').removeClass('active');
+				} else {
+					obj.siblings().not(':visible').removeAttr('style');
+					obj.html('접기').addClass('active');
+				}
+			})
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="기부내역조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container pt_4">
+				<div>
+					<h2 class="tit1">조회기간</h2>
+					<div class="tf_double mt_2">
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+									<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+										required>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+										<i class="ico ico_datepicker"></i>
+										<span class="sr_only">달력</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+									<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+										required>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+										<i class="ico ico_datepicker"></i>
+										<span class="sr_only">달력</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mt_2 btn_group btn_group_flex">
+						<a href="#;" class="btn btn_lg btn_primary">조회</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="section">
+				<h2 class="tit1 pl_4 pr_4">조회결과</h2>
+				<nav class="tab_menu tab_menu1">
+					<ul class="tab_list">
+						<li><a href="#;"><span>계좌송금</span></a></li>
+						<li class="on"><a href="#;"><span>포인트송금</span></a></li>
+					</ul>
+				</nav>
+
+				<div class="container pt_1 pb_4">
+					<ul class="border_list dropdown">
+						<li>
+							<div class="flex_box">
+								<div class="l txt_gray">기부단체</div>
+								<div class="r">(사) 한국국제기아대책기구</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부일자</div>
+								<div class="r">2021.07.27</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부금액</div>
+								<div class="r"><span class="txt_bold">10,000</span>Point</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부상태</div>
+								<div class="r"><span class="txt_bold">완료</span></div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부계좌</div>
+								<div class="r">013068-31-000654</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">소득공제</div>
+								<div class="r">연말소득공제 정보제공 동의</div>
+							</div>
+							<a href="#;" class="btn btn_dropdown">펼치기</a>
+						</li>
+						<li>
+							<div class="flex_box">
+								<div class="l txt_gray">기부단체</div>
+								<div class="r">(사) 한국국제기아대책기구</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부일자</div>
+								<div class="r">2021.07.27</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부금액</div>
+								<div class="r"><span class="txt_bold">10,000</span>Point</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부상태</div>
+								<div class="r"><span class="txt_bold">완료</span></div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">기부계좌</div>
+								<div class="r">013068-31-000654</div>
+							</div>
+							<div class="flex_box mt_1">
+								<div class="l txt_gray">소득공제</div>
+								<div class="r">연말소득공제 정보제공 동의</div>
+							</div>
+							<a href="#;" class="btn btn_dropdown active">접기</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="기부금송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li class="on"><a href="#;"><span>보내기</span></a></li>
+					<li><a href="#;"><span>조회/취소</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container pb_4 pt_1">
+				<div class="box box_border">
+					<div class="p_4 txt_c">
+						<img src="/resources/img/content/img_donate_org03_xl.png" alt="대한적십자사">
+					</div>
+					<p class="mt_1 txt_break">1905년 고종황제 칙령(제47호)으로 설립되어 1919년 상해 임시정부 하에 독립군과 재외거주동포를 위한 인도적 활동을 전개하였으며 1950년
+						6.25전쟁이라는 동족상잔의 비극 속에서도 수백만에 이르는 피난민에 대한 구호활동을 실시하였습니다. 2013년부터 대표 프로그램인 ‘희망풍차 나눔플랫폼’으로 4대 취약계층(아동·청소년, 노인,
+						다문화가족, 북한이주민)에 대한 맞춤형 통합지원을 실시합니다.</p>
+					<div class="mt_2 txt_r">
+						<a href="#;" class="txt_darkprimary txt_normal btn_more"
+							onclick="openModal('org_info', this); return false;">기부단체안내 및 소득공제</a>
+					</div>
+				</div>
+
+				<div class="mt_6">
+					<h2 class="tit1">연말정산소득공제 정보제공에 동의하십니까?</h2>
+					<div class="tf_item">
+						<div class="input_items fx_lr">
+							<div class="l">
+								<span class="check_item">
+									<input type="checkbox" name="chk1" id="chk1_1">
+									<label for="chk1_1" class="txt_lg txt_medium">동의합니다.</label>
+								</span>
+							</div>
+							<div class="r">
+								<a href="#;" class="btn btn_xs btn_round btn_default"
+									onclick="openModal('terms_popup', this); return false;">전문보기 <i
+										class="ico ico_chevron_right_sm ml_1"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt_8">
+					<nav class="tab_menu tab_menu2">
+						<ul class="tab_list">
+							<li class="on"><a href="#;"><span>기부금송금</span></a></li>
+							<li><a href="#;"><span>정기기부</span></a></li>
+							<li><a href="#;"><span>포인트기부</span></a></li>
+						</ul>
+					</nav>
+
+					<div class="mt_4">
+						<div class="double_box">
+							<div class="btm">
+								<div>
+									<div class="l">기부단체명</div>
+									<div class="r">대한적십자사</div>
+								</div>
+								<div>
+									<div class="l">기부단체계좌</div>
+									<div class="r">013086-31-000654</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt_2">
+						<div class="account_info_box">
+							<a href="#;" onclick="openModal('layerAccount'),this">
+								<span class="bank">
+									<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+								</span>
+								<div class="info">
+									<strong>스마트 e-Postbank 예금</strong>
+									<p>100057-02-000010</p>
+									<div class="price">
+										<span>출금가능금액</span>
+										<strong>2,345,900 원</strong>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<!-- s: 이체금액 입력 -->
+					<div class="account_amount mt_6">
+						<div class=inner>
+							<a href="#n" onclick="openModal('amount_keypad', this); return false;">
+								<div class="amount_label">
+									<span>송금액 <strong class="req">필수항목</strong></span>
+								</div>
+								<div class="amount_area">
+									<span class="txt_amt1">4,123,000</span>
+									<span class="txt_amt2">원</span>
+									<span class="txt_amt3">사백일십이만삼천원</span>
+								</div>
+							</a>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+						<p class="mt_1">나의 이체한도 : 1회 3,000,000원 / 1일 3,000,000원</p>
+						<!-- Validation Check 문구 -->
+						<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
+					</div>
+					<!-- e: 이체금액 입력 -->
+					<p class="bul_notice txt_gray mt_1">기부 가능 한도액은 1회 최소 1천원 ~ 최대 200만원, 1일 최대 300만원입니다.
+					</p>
+					<p class="bul_notice txt_gray mt_2">기부금송금은 기부단체로 즉시 입금됨에 따라 보내는 분이 취소 요청을 하실 수 없습니다.
+					</p>
+				</div>
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 기부단체 안내 팝업-->
+			<div class="modal_popup popup show" data-popup="org_info">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">기부단체 안내</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+
+							<!-- s: CI -->
+							<div class="box box_border">
+								<div class="p_4 txt_c">
+									<img src="/resources/img/content/img_donate_org03_xl.png" alt="대한적십자사">
+								</div>
+								<p class="mt_1 txt_break">1905년 고종황제 칙령(제47호)으로 설립되어 1919년 상해 임시정부 하에 독립군과 재외거주동포를 위한 인도적 활동을 전개하였으며
+									1950년 6.25전쟁이라는 동족상잔의 비극 속에서도 수백만에 이르는 피난민에 대한 구호활동을 실시하였습니다. 2013년부터 대표 프로그램인 ‘희망풍차 나눔플랫폼’으로 4대
+									취약계층(아동·청소년, 노인, 다문화가족, 북한이주민)에 대한 맞춤형 통합지원을 실시합니다.
+								</p>
+							</div>
+							<!-- e: CI -->
+
+							<!-- s: description -->
+							<div class="mt_8">
+								<div>
+									<h3 class="tit1">대한적십자사 주요사업</h3>
+									<div class="tbl">
+										<table>
+											<caption class="sr_only">대한적십자사 주요사업 표이며 사업영역, 내역 정보제공</caption>
+											<colgroup>
+												<col style="width: 26%;">
+												<col>
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">사업영역</th>
+													<th scope="col">내역</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row" class="v_mid">구호사업</th>
+													<td class="txt_l">화재, 태풍, 수도권 집중호우 등 전국 이재민 구호</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">사회봉사사업</th>
+													<td class="txt_l">사회적 약자에게 생활필수품 전달 및 심리사회적 지원</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">지역보건사업</th>
+													<td class="txt_l">보건교육 스트레스 관리, HIV편견제거, 안전한 성습관 등 지역사회 건강개선 지원</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">안전사업</th>
+													<td class="txt_l">재난 위기 상황 등으로부터 안전한 삶을 영위하기 위한 각종 교육 및 구조봉사활동</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">RCY사업</th>
+													<td class="txt_l">어려운 이웃을 위한 사랑나눔, 글로벌 리더 양성 프로젝트, 봉사포스트 활동</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">국제협력사업</th>
+													<td class="txt_l">긴급재난지역 이재민 국제구호</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">재원조성사업</th>
+													<td class="txt_l">인도주의 활동 재원확보를 위한 다양한 시도</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">국제인도법 보급사업</th>
+													<td class="txt_l">국제인도법 존재가치 보급 및 인도주의 적십자 정신 확산 활동</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">혈액사업</th>
+													<td class="txt_l">안전한 혈액과 혈액제품 공급을 통한 국민 건강 보호</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">병원사업</th>
+													<td class="txt_l">지역내 저소득층, 노약자, 장애인 외국인 근로자 등 의료사각지대 공공의료서비스 제공</td>
+												</tr>
+												<tr>
+													<th scope="row" class="v_mid">특수복지사업</th>
+													<td class="txt_l">원폭피해자 복지사업 및 사할린 동포 지원</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">나눔스토리</h3>
+									<ul class="list list1 txt_break spacing_mt_4">
+										<li>
+											<strong class="d_b txt_black mb_1">일찍 찾아온 천사들의 얼굴에서 새 희망을 그려봅니다.</strong>
+											베트남 출신인 저는 2013년 10살 이상 나이가 많았던 남편과 결혼하면서 한국에 오게 되었습니다. 가구 경첩 만드는 공장에서 일하며 대가족의 생계를 꾸리다 가족과의 불화로
+											이혼하게 된 후에, 불법체류자로 전락하면서 화장 솜 만드는 부업을 하면서 생활하던 중, 제가 임신한 사실을 알게 되었어요. 병원에서 쌍둥이 임신을 확인하면서 주변에서는 혼자
+											키우는 것에 대한 걱정을 하였지만 저는 가족을 다시 일굴 수 있으리란 기대에 오히려 기뻤어요. 너무 무리했던 탓인지 임신 25주차가 지나면서 몸이 안좋아지기 시작했고
+											대학병원에서 산모와 아기 모두 위험하다며 긴급제왕절개 수술을 하게 되었습니다.
+										</li>
+										<li>
+											<strong class="d_b txt_black mb_1">28주 만에 만난 세상에서 가장 작은 천사들</strong>
+											출산의 기쁨도 잠시 자가 호흡이 어려울 정도로 작게 태어난 쌍둥이는 엄마 젖 한 번 제대로 물지 못한 아기들이 기계의 힘으로 호흡하는 것을 보며 참 많이 울었습니다. 게다가
+											신분의 한계로 건강보험을 적용 받지 못하면서 병원비 내역서는 그야말로 시한폭탄과 같았습니다. 일주일 만에 쌓인 병원비가 무려 1,600만 원, 아기들이 숨 쉴 수 있는 최소한의
+											시간을 갖기 위해 두달 정도 인큐베이터 생활을 해야 했고 추산 금액은 2억원에 달했습니다.
+										</li>
+										<li>
+											<strong class="d_b txt_black mb_1">반지하 단칸방에서 쌍둥이와 함께 그려보는 희망</strong>
+											병원 측의 배려와 대한적십자사의 도움으로 아기들은 40여 일의 인큐베이터 생활을 끝내고 퇴원할 수 있었습니다. 어느덧 7개월에 접어든 쌍둥이는 벌써 8kg이 넘었어요. 아기들을
+											돌보느라 어디 나가서 일할 수 없는 탓에 컴퓨터 부품 조립 부업을 하고 있는데 한 달 열심히 일해도 손에 쥐어지는 돈은 20~30만원으로 기저귀와 분유 값을 대려니 버겁기만
+											합니다. 불법체류자로 아기들 예방접종은 고사하고 아플 때 병원 한 번 갈 수 없는 상황은 무섭기까지 해요. 아직 이름도 지어줄 수 없는 형편이지만 저를 보며 방실방실 웃어주는
+											아기들을 위해서라도 더 열심히 살아야겠다고 다짐합니다. 엄마의 눈빛에 미소로 화답하는 아기들의 얼굴에서 희망을 보고 나아가겠습니다. 감사합니다.
+										</li>
+										<li>
+											<strong class="d_b txt_black mb_1">후원참여</strong>
+											<a href="http://www.redcross.or.kr/main/main.do" class="link"
+												target="_blank">http://www.redcross.or.kr/main/main.do</a>
+										</li>
+										<li>
+											<strong class="d_b txt_black mb_1">봉사활동 참여 신청</strong>
+											<a href="http://www.redcross.or.kr/voluntary/voluntary_main.do" class="link"
+												target="_blank">http://www.redcross.or.kr/voluntary/voluntary_main.do</a>
+										</li>
+									</ul>
+								</div>
+
+								<div class="section">
+									<h3 class="tit1">기부금 소득공제 안내</h3>
+									<div class="box box_border bg_lightgray">
+										<ul class="list list1">
+											<li>우체국 스마트뱅킹 기부 이용에 동의하신 후원자님의 경우, 기부 내역이 기부단체로 제공되며, 국세청 연말정산 간소화 서비스에 자동으로 반영됩니다.</li>
+											<li>기부금 영수증이 필요한 기부자는 기부단체 홈페이지에서 회원가입 후 출력이 가능합니다.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: description -->
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('org_info'); return false;">확인</a>
+							<a href="https://redcross.or.kr//" class="btn btn_lg btn_primary" target="_blank" title="새창으로 열림">홈페이지</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 기부단체 안내 팝업 -->
+
+			<!-- s: 연말정산소득제공 정보제공 팝업 -->
+			<div class="modal_popup popup hide" data-popup="terms_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">개인정보 정보제공동의서</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<div>
+								<h3 class="tit1">[개인(신용)정보 제3자 정보제공 동의서]</h3>
+								<div>
+									<h4 class="tit2 txt_black">우체국 귀중</h4>
+									<p>우체국이 본인으로부터 취득한 개인(시용)정보는 [개인정보 보고법] 제17조, 제22조, 제24조와 [신용정보의 이용 및 보호에 관한 법률] 제32조에 따라 제3자에게 제공할 경우
+										본인의 사전 동의를 얻어야 합니다. 이에 본인은 우체국이 아래의 내용과 같이 본인의 개인(신용)정보를 제3자에게 제공하는데 동의합니다.</p>
+								</div>
+								<div class="mt_6">
+									<ol class="list spacing_mt_4">
+										<li>
+											<strong class="d_b">1. 개인(신용) 정보를 제공받는 자</strong>
+											<ul class="list list1 mt_1">
+												<li>스마트뱅킹 기부금 송금서비스를 이용하여 기부금을 송금한 단체<br>
+													※ 제공대상 업체에 제공되는 개인(신용)정보는 업무 수행에 필요한 최소한의 정보로 한정합니다.
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">2. 개인(신용) 정보 제공 목적</strong>
+											<ul class="list list1 mt_1">
+												<li>
+													국세청 연말정산 자료 전송, 기부금 영수증 발급 등 기부금 관련 업무처리
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">3. 제공대상 개인(신용) 정보</strong>
+											<ul class="list list1 mt_1">
+												<li>개인식별정보(성명, 주민등록번호, 휴대폰번호, 주소, 기부일자, 기부금액 등)<br>
+													※ 본 동의 건에 한하여 제공됩니다.
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">4. 제공받는 자의 개인(신용)정보 보유 및 이용기간</strong>
+											<ul class="list list1 mt_1">
+												<li>제공받은 개인(신용)정보는 소득세법에 따라 본인과 제공받는 자의 거래 종료일로 부터 5년간 보유 및 이용합니다.<br>
+													※ 단, 관련법령의 별도 규정이 명시되어 있는 경우 그 기간을 따릅니다.
+													<ul class="list list2">
+														<li>거래 종로 후에는 위에 기재된 제공목적과 관련된 금융사고 조사, 분쟁해결, 민원처리, 법령상 의무이행을 위하여 필요한 범위 내에서만 보유 및 이용 됩니다.
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<strong class="d_b">5. 동의를 거부할 권리 및 동의를 거부할 경우의 불이익</strong>
+											<ul class="list list1 mt_1">
+												<li>정보제공에 동의하지 않으셔도 기부 등 불이익은 발생하지않습니다.</li>
+												<li>개인(신용)정보 제공에 동의하지 않고 기부 영수증 발급 및 연말정산 소득공제를 받고자 하는 경우에는 개별적으로 해당 단체로 직접 문의하시기 바랍니다.</li>
+											</ul>
+										</li>
+									</ol>
+								</div>
+
+								<div class="mt_4 txt_r txt_lg txt_normal">
+									2021년 07월 27일<br>
+									<span>나봄미</span> 서명 또는 (인)
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('tersm_popup'); return false;">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 연말정산소득제공 정보제공 팝업 -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
