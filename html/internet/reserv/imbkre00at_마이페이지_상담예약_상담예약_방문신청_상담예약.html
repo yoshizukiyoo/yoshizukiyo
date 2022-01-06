@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".closed").on("click", function () {
+				$(".chatbot").css({
+					"opacity": "0"
+				});
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">상담예약</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="first_section box pt_5 pb_5">
+					<ul class="list list1">
+						<li>상담 신청은 만 60세 이상 고령자, 장애인(고객정보등록), 우체국 우수고객만 가능합니다.</li>
+						<li>상담 예약시 상담원이 연결하는 휴대폰번호는 현재 사용 휴대폰번호와 동일한지 확인해 주시기 바랍니다.</li>
+						<li>휴대폰 번호 변경이 필요하다면 개인정보변경에서 가능합니다.<span class="btn_xs btn_outline_default txt_gray ml_2"><a href="#;">개인정보
+									변경하기</a></span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 mt_16">
+					<ul>
+						<li><a href="#;" class="current txt_lg" title="선택됨">상담예약</a></li>
+						<li><a href="#;" class="txt_lg">나의상담</a></li>
+					</ul>
+				</div>
+				<h3 class="sr_only">상담예약</h3>
+
+				<!-- s: 상담우체국 선택 -->
+				<div class="section mt_12">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h4 class="tit1">상담우체국 선택</h4>
+						</div>
+					</div>
+
+					<div class="tbl_data tbl_row_data">
+						<table>
+							<caption class="sr_only">상담우체국 선택</caption>
+							<colgroup>
+								<col style="width:145px;">
+								<col>
+								<col style="width:145px;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row" class="pt_4 pb_4">상담우체국 <strong class="necessary">*</strong></th>
+									<td class="pt_4 pb_4">광화문 우체국<span class="btn_xs btn_outline_default txt_gray ml_2"><a href="#;"
+												target="_blank" title="새창열림">위치보기</a></span><span
+											class="btn_xs btn_outline_default txt_gray ml_1"><a href="#;" target="_blank" title="새창열림">다른 우체국
+												찾기</a></span>
+									</td>
+									<th scope="row" class="pt_4 pb_4">상담가능업무</th>
+									<td class="pt_4 pb_4">예금, 카드, 펀드, 세무상담</td>
+								</tr>
+								<tr>
+									<th scope="row">주소</th>
+									<td>서울시 종로구 서린동 종로 6</td>
+									<th scope="row">전화번호</th>
+									<td>02-xxxx-xxxx</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="list list1 mt_3">
+						<li>고객님 주소지를 기준으로 상담우체국이 자동 지정되었습니다. 다른 우체국 찾기로 변경 지정 가능합니다.</li>
+					</ul>
+				</div>
+				<!-- e: 상담우체국 선택 -->
+
+				<!-- s: case 1 : 예약신청정보 -->
+				<div class="section mt_15">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h4 class="tit1">예약 신청 정보</h4>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">예약 신청 정보</caption>
+							<colgroup>
+								<col style="width:145px;">
+								<col>
+								<col style="width:145px;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3"><label for="tf_name">이름</label>
+										<strong class="necessary">*</strong></th>
+									<td>
+										<input id="tf_name" type="text" class="tf disabled" value="홍길동" style="width: 267px;" required
+											disabled>
+									</td>
+									<th scope="row" style="border: none; background: none;" class="pl_3">연락처 <strong
+											class="necessary">*</strong></th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 94px;">
+												<dl>
+													<dt><a href="#;" title="휴대폰번호 앞 자리 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#;"><span>010</span></a></li>
+															<li><a href="#;"><span>011</span></a></li>
+															<li><a href="#;"><span>016</span></a></li>
+															<li><a href="#;"><span>017</span></a></li>
+															<li><a href="#;"><span>018</span></a></li>
+															<li><a href="#;"><span>019</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="휴대폰번호 가운데 자리 입력" style="width: 93px" required>
+											</div>
+											<div><input type="text" class="tf" title="휴대폰번호 마지막 자리 입력" style="width: 93px" required>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3">상담구분 <strong
+											class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 150px;">
+											<dl>
+												<dt><a href="#;" title="상담구분1 선택"><span>전화상담</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>상담구분</span></a></li>
+														<li><a href="#;"><span>상담구분</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="selectbox_wrap" style="width: 150px;">
+											<dl>
+												<dt><a href="#;" title="상담구분2 선택"><span>예금이체</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>상담구분</span></a></li>
+														<li><a href="#;"><span>상담구분</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<th scope="row" style="border: none; background: none;" class="pl_3">상담원</th>
+									<td>
+										<div class="selectbox_wrap" style="width:267px;">
+											<dl>
+												<dt><a href="#;" title="상담원 선택"><span>미지정</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>상담원</span></a></li>
+														<li><a href="#;"><span>상담원</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3">상담희망시간대</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk_time1" id="chk_time1_1" checked>
+											<label for="chk_time1_1">오전</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk_time1" id="chk_time1_2">
+											<label for="chk_time1_2">오후</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk_time1" id="chk_time1_3">
+											<label for="chk_time1_3">다음날 오전</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3"><label
+											for="tf_content">상담내용</label></th>
+									<td colspan="3">
+										<textarea id="tf_content" class="tf" style="width:1000px; height: 120px;"
+											placeholder="상담내용을 100자 이내로 입력해주세요."></textarea>
+										<p class="txt_r txt_default pr_6">0<span class="txt_666">/100</span></p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3">상담알림받기</th>
+									<td colspan="3">
+										<p class="txt_gray">상담 진행 현황을 스마트뱅킹 PUSH 알림 또는 카카오톡으로 받으실 수 있습니다.</p>
+										<span class="check_item">
+											<input type="radio" name="chk_push1" id="chk_push1_1" checked>
+											<label for="chk_push1_1">받기</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk_push1" id="chk_push1_2">
+											<label for="chk_push1_2">받지않음</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="list list1 mt_3">
+						<li>연락처는 고객정보에 등록된 휴대폰번호가 자동 입력되었습니다. 다른 번호로 상담이 필요한 경우 수정하여 신청 가능합니다.</li>
+					</ul>
+				</div>
+				<!-- e: case 1 : 예약신청정보 -->
+
+				<!-- s: case 2 : 상담내역 -->
+				<div class="section mt_15">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h4 class="tit1">상담내역</h4>
+						</div>
+					</div>
+
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">상담내역</caption>
+							<colgroup>
+								<col style="width:145px;">
+								<col>
+								<col style="width:145px;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3"><label for="tf_name2">이름</label>
+										<strong class="necessary">*</strong></th>
+									<td>
+										<input id="tf_name2" type="text" class="tf disabled" value="홍길동" style="width: 267px;" required
+											disabled>
+									</td>
+									<th scope="row" style="border: none; background: none;" class="pl_3">연락처 <strong
+											class="necessary">*</strong></th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 94px;">
+												<dl>
+													<dt><a href="#;" title="휴대폰번호 앞 자리 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#;"><span>010</span></a></li>
+															<li><a href="#;"><span>011</span></a></li>
+															<li><a href="#;"><span>016</span></a></li>
+															<li><a href="#;"><span>017</span></a></li>
+															<li><a href="#;"><span>018</span></a></li>
+															<li><a href="#;"><span>019</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="휴대폰번호 가운데 자리 입력" style="width: 93px" required>
+											</div>
+											<div><input type="text" class="tf" title="휴대폰번호 마지막 자리 입력" style="width: 93px" required>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3">상담구분 <strong
+											class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 150px;">
+											<dl>
+												<dt><a href="#;" title="상담구분1 선택"><span>방문예약</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>상담구분</span></a></li>
+														<li><a href="#;"><span>상담구분</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<div class="selectbox_wrap" style="width: 150px;">
+											<dl>
+												<dt><a href="#;" title="상담구분2 선택"><span>예금이체</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>상담구분</span></a></li>
+														<li><a href="#;"><span>상담구분</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<th scope="row" style="border: none; background: none;" class="pl_3">상담원</th>
+									<td>
+										<div class="selectbox_wrap" style="width:267px;">
+											<dl>
+												<dt><a href="#;" title="상담원 선택"><span>미지정</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>상담원</span></a></li>
+														<li><a href="#;"><span>상담원</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3"><label for="tf_day">방문일</label>
+										<strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" id="tf_day" class="tf tf_datepicker" style="width: 200px;"
+											placeholder="YYYY.MM.DD">
+									</td>
+									<th scope="row" style="border: none; background: none;" class="pl_3">방문시간 <strong
+											class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width:267px;">
+											<dl>
+												<dt><a href="#;" title="방문시간 선택"><span>09시 ~ 10시</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>방문시간</span></a></li>
+														<li><a href="#;"><span>방문시간</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3"><label
+											for="tf_content2">상담내용</label></th>
+									<td colspan="3">
+										<textarea id="tf_content2" class="tf" style="width:1000px; height: 120px;"
+											placeholder="상담내용을 100자 이내로 입력해주세요."></textarea>
+										<p class="txt_r txt_default pr_6">0<span class="txt_666">/100</span></p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="border: none; background: none;" class="pl_3">상담알림받기</th>
+									<td colspan="3">
+										<p class="txt_gray">상담 진행 현황을 스마트뱅킹 PUSH 알림 또는 카카오톡으로 받으실 수 있습니다.</p>
+										<span class="check_item">
+											<input type="radio" name="chk_push2" id="chk_push2_1" checked>
+											<label for="chk_push2_1">받기</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk_push2" id="chk_push2_2">
+											<label for="chk_push2_2">받지않음</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="list list1 mt_3">
+						<li>연락처는 고객정보에 등록된 휴대폰번호가 자동 입력되었습니다. 다른 번호로 상담이 필요한 경우 수정하여 신청 가능합니다.</li>
+					</ul>
+				</div>
+				<!-- e: case 2 : 상담내역 -->
+
+				<div class="btn_tbl_btm mt_11">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary">상담신청</a>
+				</div>
+
+				<dl class="box mt_14 pt_4 pb_5">
+					<dt>참고사항</dt>
+					<dd class="ml_1">
+						<ul class="list list2">
+							<li>급한 상담 건은 우체국 고객센터나 챗봇 서비스를 이용하실 수 있습니다.</li>
+							<li>챗봇서비스를 이용하시려면 챗봇서비스 아이콘을 클릭해 주세요.</li>
+							<li>상담 신청은 24시간 가능합니다.<br>우체국 업무 시간(영업일 09:00 ~ 18:00)에 신청 순서대로 안내 후 상담 가능합니다.</li>
+							<li>야간/주말/공휴일에 등록된 상담 예약은 다음 영업일에 확인 후 처리됩니다.</li>
+							<li>관리 우체국 업무상황에 따라 신청 당일 16:30분 이후부터 다음 영업일 18시 전까지 전화 연락이 지연될 수 있습니다.</li>
+							<li>상담예약이 집중되는 경우 연락이 지연될 수 있습니다.</li>
+							<li class="txt_normal">상담알림메모는 카카오톡, 우체국 스마트뱅킹 앱으로 수신할 수 있습니다. 알림 수신을 위해 우체국 스마트뱅킹앱을 설치 하시길 권장 드립니다.<br>
+								<span class="btn_xs btn_outline_default txt_gray"><a href="#;" target="_blank" title="새창열림">우체국스마트뱅킹앱 설치
+										바로가기</a></span>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<div class="chatbot">
+					<a href="#;">챗봇<br>서비스</a><button type="button" title="닫기" class="closed"></button>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

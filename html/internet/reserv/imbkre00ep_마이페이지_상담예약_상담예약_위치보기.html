@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.closed').on("click", function () {
+				$(".tooltip_map").hide();
+			});
+			$('.map_ico1').on("click", function () {
+				$(".tooltip_map").show();
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">상담예약</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<a href="#;" class="btn btn_md btn_primary mt_2" onclick="openModal('map_popup', this); return false;">
+					위치보기</a>
+
+				<!-- s: 위치보기 팝업 -->
+				<div class="modal_popup modal_xxl show" data-popup="map_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">위치보기</h2>
+						</div>
+						<div class="popup_body p_0">
+							<div class="map_pop">
+								<div class="list">
+									<div class="box">
+										<ul>
+											<li>
+												<strong>관리 우체국</strong>
+												<button type="button" class="btn">선택</button>
+											</li>
+											<li>
+												<strong>광화문우체국</strong>
+												<p>서울특별시 종로구 서린동 종로 6</p>
+												<p>02-xxxx-xxxx</p>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="map">
+									<img src="/resources/img/content/bg_map2.png" alt="지도">
+									<div class="tooltip_map tooltip_md" tabindex="0">
+										<strong class="txt_22px">광화문우체국</strong>
+										<p class="txt_md txt_light">서울특별시 종로구 서린동 종로 6</p>
+										<p class="txt_md txt_normal">02-1234-1234</p>
+										<ul class="tooltip_list mt_1">
+											<li>우편 영업시간 : 09:00 ~ 20:00</li>
+											<li>금융 업무시간 : 09:00 ~ 18:30 (365코너 유)</li>
+										</ul>
+										<button type="button" class="closed"><span class="sr_only">닫기</span></button>
+									</div>
+									<div class="map_ico1"></div>
+									<div class="map_ico2"></div>
+								</div>
+							</div>
+
+							<div class="btn_group mt_6 mb_8">
+								<button type="button" class="btn btn_lg btn_primary pl_8 pr_8"
+									onclick="closeModal('map_popup');">확인</button>
+							</div>
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 위치보기 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

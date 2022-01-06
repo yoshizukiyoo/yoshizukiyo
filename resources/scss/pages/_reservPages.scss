@@ -1,0 +1,566 @@
+// [채널통합] 상담예약 - 김정연 
+// 공통
+.txt_666 {
+	color: #666666;
+}
+
+.txt_22px {
+	font-size: 22px;
+	line-height: 22px;
+}
+
+.list {
+	&.f_c {
+		width: 300px;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.transfer_complete_box {
+	text-align: center;
+	padding: 60px 0 0;
+
+	.ico_check_xxl_primary {
+		display: inline-block;
+		background-repeat: no-repeat;
+		background-position: centerr center;
+		vertical-align: middle;
+		text-indent: -9999px;
+		overflow: hidden;
+		text-align: left;
+		width: 90px;
+		height: 90px;
+		line-height: 90px;
+	}
+
+	>span {
+		display: block;
+		font-size: 40px;
+		line-height: 44px;
+		margin: 35px 0 15px;
+
+		strong {
+			font-size: 40px;
+			line-height: 44px;
+		}
+	}
+
+	>p {
+		font-size: 18px;
+		line-height: 24px;
+		color: #555555;
+	}
+}
+
+// 챗봇 서비스 
+.chatbot {
+	display: block;
+	width: 66px;
+	height: 66px;
+	background: #5d5e6d;
+	border-radius: 50% 50% 7% 50%;
+	text-align: center;
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 20px;
+	padding-top: 12px;
+	position: relative;
+	top: -294px;
+	left: 1083px;
+	box-shadow: 0 3px 6px 1px #cbcbcb;
+
+	button {
+		&:after {
+			content: '';
+			position: absolute;
+			top: -5px;
+			right: -5.5px;
+			width: 11px;
+			height: 11px;
+			background: url(/resources/img/content/ico_closed2.png) no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+}
+
+// 위치보기
+.map_pop {
+	display: flex;
+	height: 500px;
+	overflow: hidden;
+
+	.list {
+		width: 420px;
+		height: 100%;
+		background: #f4f4f4;
+		box-shadow: 10px 0 10px 0 #dddddd;
+		position: relative;
+		z-index: 50;
+		padding: 30px;
+		overflow: auto;
+		overflow-x: hidden;
+
+		.line {
+			position: relative;
+
+			&:before {
+				content: '';
+				position: absolute;
+				bottom: -30px;
+				left: -30px;
+				width: 420px;
+				border: 1px solid #e6e6e6;
+			}
+
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: -31px;
+				left: -30px;
+				width: 420px;
+				border: 1px solid #ffffff;
+			}
+		}
+
+		.box {
+			width: 100%;
+			padding: 13px 18px 16px;
+			border: none;
+			border-radius: 5px;
+
+			ul {
+				li {
+					&:first-child {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						padding-bottom: 12px;
+
+						strong {
+							font-size: 20px;
+						}
+
+						.btn {
+							width: 80px;
+							height: 28px;
+							border: 1px solid #a2a2a2;
+							border-radius: 20px;
+							font-size: 14px;
+							color: #555555;
+						}
+					}
+
+					&:last-child {
+						border-top: 1px solid #eeeeee;
+						padding-top: 10px;
+
+						strong {
+							font-size: 18px;
+							line-height: 18px;
+						}
+
+						p {
+							font-size: 16px;
+							line-height: 17px;
+							padding-left: 25px;
+							position: relative;
+
+							&:nth-child(2) {
+								margin-top: 5px;
+
+								&:before {
+									content: '';
+									position: absolute;
+									left: 0;
+									width: 17px;
+									height: 17px;
+									background: url(/resources/img/content/ico_map1.png) no-repeat;
+								}
+							}
+
+							&:nth-child(3) {
+								margin-top: 8px;
+
+								&:before {
+									content: '';
+									position: absolute;
+									left: 0;
+									width: 17px;
+									height: 17px;
+									background: url(/resources/img/content/ico_map2.png) no-repeat;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.map {
+		width: 780px;
+		height: 100%;
+		position: relative;
+
+		img {
+			width: 200%;
+			margin-top: -100px;
+		}
+
+		.tooltip_map {
+			width: 330px;
+			height: 190px;
+			background: url(/resources/img/content/tooltip_box.png) no-repeat;
+			background-size: 100% 100%;
+			position: absolute;
+			top: 82px;
+			left: 288px;
+			font-weight: 200;
+			line-height: 16px;
+			letter-spacing: -1px;
+
+			&.tooltip_md {
+				width: 330px;
+				padding: 20px 20px 20px 33px;
+				line-height: 1.5;
+
+				>button {
+					position: absolute;
+					right: 20px;
+					top: 20px;
+					width: 23px;
+					height: 23px;
+					background: url(/resources/img/content/ico_closed.png) no-repeat 0 0;
+				}
+			}
+
+			.tooltip_list {
+				font-size: 16px;
+				line-height: 16px;
+				letter-spacing: -1px;
+				color: #666666;
+
+				>li {
+					position: relative;
+					padding-left: 14px;
+
+					&:not(:last-child) {
+						margin-bottom: 7px;
+					}
+
+					&:before {
+						content: '';
+						position: absolute;
+						left: 3px;
+						top: 8px;
+						box-sizing: border-box;
+						width: 5px;
+						height: 5px;
+						background-color: #666666;
+					}
+				}
+			}
+		}
+
+		.map_ico1 {
+			position: absolute;
+			top: 263px;
+			right: 330px;
+			width: 32px;
+			height: 42px;
+			background: url(/resources/img/content/ico_map3.png) no-repeat;
+			background-size: 100%;
+			cursor: pointer;
+		}
+
+		.map_ico2 {
+			position: absolute;
+			top: 407px;
+			left: 272px;
+			width: 32px;
+			height: 42px;
+			background: url(/resources/img/content/ico_map4.png) no-repeat;
+			background-size: 100%;
+		}
+	}
+}
+
+.qrcode {
+	width: 140px;
+	height: 140px;
+	margin-left: 50%;
+	transform: translateX(-50%);
+
+	img {
+		width: 100%;
+	}
+}
+
+// 가까운 우체국찾기
+.tit3 {
+	position: relative;
+	font-size: 20px;
+	font-weight: 500;
+	padding-left: 27px;
+	align-items: center;
+	line-height: 20px;
+	margin-bottom: 16px;
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 20px;
+		height: 20px;
+		background: url(#{$url-img-common}/ico_tit_arrow.png) no-repeat center center;
+	}
+}
+
+.row_recommend2 {
+	.tag_list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		.item_tag {
+			padding: 10px 40px 10px 15px;
+			background: #ffffff;
+			border-radius: 20px;
+			margin-right: 10px;
+			margin-top: 10px;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 12px;
+			display: inline-block;
+			position: relative;
+			color: #111111;
+			box-shadow: 0 3px 6px 1px #e0e0e0;
+
+			.btn_close {
+				position: absolute;
+				top: 12px;
+				right: 20px;
+				width: 11px;
+				height: 11px;
+
+				.ico_close_btn {
+					display: inline-block;
+					background-repeat: no-repeat;
+					background-position: center center;
+					vertical-align: middle;
+					overflow: hidden;
+					text-align: left;
+					width: 100%;
+					height: 100%;
+					background-image: url(/resources/img/content/ico_closed2.png);
+					background-size: 100%;
+				}
+			}
+		}
+	}
+}
+
+.map_search {
+	.tit3 {
+		margin-bottom: 26px;
+	}
+
+	.form_group {
+		.tf {
+			color: #111111;
+			font-size: 16px;
+		}
+	}
+
+	.box {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 10px;
+
+		&.check_list_box3 {
+			padding: 20px 20px;
+
+			div {
+				&:first-child {
+					strong {
+						display: block;
+						font-size: 18px;
+						line-height: 18px;
+						margin-bottom: 8px;
+					}
+
+					p {
+						line-height: 16px;
+
+						&:nth-child(2) {
+							margin-bottom: 7px;
+						}
+					}
+				}
+
+				&:last-child {
+					.btn_choice {
+						width: 80px;
+						height: 28px;
+						text-align: center;
+						line-height: 10px;
+						font-size: 14px;
+						color: #555555;
+						border: 1px solid #a2a2a2;
+						border-radius: 20px;
+					}
+
+					.btn_mark {
+						width: 80px;
+						height: 28px;
+						text-align: center;
+						line-height: 10px;
+						font-size: 14px;
+						color: #444444;
+						border: 1px solid #dddddd;
+						border-radius: 20px;
+						background: #eeeeee;
+						margin-top: 5px;
+					}
+
+					button {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+// 상담예약메인
+.btn_group_l {
+	margin-top: 60px;
+
+	.btn {
+		border: 1px solid #dddddd;
+		background: #f8f8f8;
+		color: #666666;
+		font-size: 16px;
+		padding-left: 12px;
+		padding-right: 12px;
+
+		img {
+			margin-right: 12px;
+		}
+
+		.count {
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: #333333;
+			color: #ffffff;
+			font-size: 14px;
+			text-align: center;
+			line-height: 22px;
+			margin-left: 10px;
+		}
+	}
+}
+
+// 상담진행현황
+.condition_box {
+	display: flex;
+
+	li {
+		width: 25%;
+		text-align: center;
+		position: relative;
+
+		p {
+			&:nth-child(2) {
+				margin-top: 5px;
+			}
+
+			&.on {
+				width: 130px;
+				height: 28px;
+				margin-left: 50%;
+				transform: translateX(-50%);
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 28px;
+				color: #111111;
+				background: #fdc61c;
+				border-radius: 15px;
+			}
+
+			&.off {
+				width: 130px;
+				height: 28px;
+				margin-left: 50%;
+				transform: translateX(-50%);
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 28px;
+				color: #111111;
+				background: #f6f6f6;
+				border-radius: 15px;
+			}
+
+			&.time {
+				height: 18px;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 16px;
+				margin-top: 15px;
+				position: relative;
+				left: 12px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					left: 15px;
+					width: 18px;
+					height: 18px;
+					background: url(/resources/img/content/ico_time.png) no-repeat;
+					background-size: 100% 100%;
+				}
+			}
+		}
+
+		&:first-child {
+			&:after {
+				content: '';
+				position: absolute;
+				top: 40px;
+				right: -5px;
+				width: 10px;
+				height: 19px;
+				background: url(/resources/img/common/ico_arr_right.png) no-repeat;
+				background-size: 100%;
+			}
+		}
+
+		&:nth-child(2),
+		&:nth-child(3) {
+			img {
+				margin-top: 2px;
+			}
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 40px;
+				right: -5px;
+				width: 10px;
+				height: 19px;
+				background: url(/resources/img/common/ico_arr_right.png) no-repeat;
+				background-size: 100%;
+			}
+		}
+
+		&:nth-child(4) {
+			img {
+				margin-top: 3px;
+			}
+		}
+	}
+}
