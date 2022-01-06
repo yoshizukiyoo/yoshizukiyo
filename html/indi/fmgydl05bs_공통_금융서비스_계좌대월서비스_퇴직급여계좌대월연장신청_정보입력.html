@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.btn_close_popup[data-btn-close]').on('click', function () {
+				var _tg = $(this).data();
+				$('[data-sheet-tg]').data(_tg).hide();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="퇴직급여 계좌대월 연장신청"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">대상조회</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">정보입력</span></li>
+					<li><span class="num">3</span><span class="txt">약관동의</span></li>
+					<li><span class="num">3</span><span class="txt">신청완료</span></li>
+				</ul>
+
+				<!-- s: 기존대월정보 -->
+				<div>
+					<h2 class="tit1">기존대월정보</h2>
+					<div class="double_box">
+						<div class="btm">
+							<div>
+								<div class="l">대월종류</div>
+								<div class="r">별정우체국직원 퇴직급여 계좌대월</div>
+							</div>
+							<div>
+								<div class="l">대월 계좌 번호</div>
+								<div class="r">123-4567-8912345</div>
+							</div>
+							<div>
+								<div class="l">대월약정금액(원)</div>
+								<div class="r">10,000,000</div>
+							</div>
+							<div>
+								<div class="l">약정기간</div>
+								<div class="r">2021.01.01 ~ 2022.01.01</div>
+							</div>
+							<div>
+								<div class="l">대월금리기준</div>
+								<div class="r">CD금리</div>
+							</div>
+							<div>
+								<div class="l">관리우체국</div>
+								<div class="r">빛가람우체국<br>(042-999-9999)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 기존대월정보 -->
+
+				<!-- s: 연장대월정보 -->
+				<div class="section">
+					<h2 class="tit1">연장대월정보<span class="tit_req req">필수항목</span></h2>
+					<div class="tf_item p_4">
+						<div class="input_items">
+							<span class="check_item check">
+								<input type="radio" name="radio_chk1" id="radio_chk1-1" checked>
+								<label for="radio_chk1-1">12개월</label>
+							</span>
+							<span class="check_item check">
+								<input type="radio" name="radio_chk1" id="radio_chk1-2">
+								<label for="radio_chk1-2">24개월</label>
+							</span>
+						</div>
+					</div>
+					<div class="txt_r mt_4">
+						<a href="#;" class="btn btn_sm btn_round btn_default">이율 조회</a>
+					</div>
+					<div class="tf_item p_4 mt_2">
+						<div class="input_items">
+							<div class="check_item_wrap">
+								<span class="check_item check">
+									<input type="radio" name="radio_chk2" id="radio_chk1-3" checked>
+									<label for="radio_chk1-3">CD금리</label>
+								</span>
+								<div class="pl_5">
+									<span class="btn btn_xs btn_round btn_default">2.8%</span>
+								</div>
+							</div>
+							<div class="check_item_wrap">
+								<span class="check_item check">
+									<input type="radio" name="radio_chk2" id="radio_chk1-4">
+									<label for="radio_chk1-4">단기 COFIX</label>
+								</span>
+								<div class="pl_7">
+									<span class="btn btn_xs btn_round btn_default">3.1%</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p class="txt_r mt_1">※ 금리 기준 일자: 2021.12.12</p>
+					<div class="account_amount mt_8">
+						<div class="inner">
+							<div class="amount_wrap">
+								<div class="amount_label">
+									<span>대월약정<br>희망금액</span>
+								</div>
+								<div class="amount_area">
+									<input type="text" class="amount_input" value="4,123,000"
+										onclick="openModal('amount_keypad', this); return false;">
+									<span class="txt_amt2">원</span>
+									<span class="txt_amt3">사백일십이만삼천원</span>
+								</div>
+							</div>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+					</div>
+					<p class="bul_notice_red mt_1">
+						① 신분증(앞,뒤), ② 재직증명서, ③ 공무원관리
+						공단 융자 추천서의 이미지나 파일을 촬영(첨부)해 주세요.
+					</p>
+					<div class="tf_item active mt_5">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_cate1_1">대월연장동의여부</label>
+								<div class="input_items">
+									<span class="check_item">
+										<input type="radio" name="lb_cate1" id="lb_cate1_1" checked>
+										<label for="lb_cate1_1">대월연장에 동의합니다.</label>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 연장대월정보 -->
+
+				<!-- s: 청구서류 제출 -->
+				<div class="section">
+					<div class="lr_box">
+						<div class="l">
+							<h2 class="tit1">청구서류 제출 <span class="tit_req req">필수항목</span></h2>
+						</div>
+						<div class="r">
+							<a href="#;" class="btn btn_sm btn_round btn_default"
+								onclick="openModal('layer_info', this);return false;">
+								<i class="ico ico_tip_sm"></i>
+								<span>참고사항</span>
+							</a>
+						</div>
+					</div>
+					<p class="mt_1">① 신분증(앞,뒤), ② 재직증명서, ③ 공무원관리 공단 융자 추천서의 이미지나 파일을 촬영(첨부)해 주세요.</p>
+
+					<!-- s: 이미지 등록 -->
+					<div class="mt_5">
+						<h3 class="tit2">이미지 등록</h3>
+						<div class="img_pic_box">
+							<div class="l">
+								<ul>
+									<li><a href="#;" class="btn_pic_add"><span class="sr_only">사진 첨부</span></a></li>
+									<li><a href="#;" class="btn_pic_cmr"><span class="sr_only">사진 촬영</span></a></li>
+								</ul>
+							</div>
+							<div class="r">
+								<ul class="pic_list">
+									<li>
+										<img src="/resources/img/content/img_pic_temp.gif" alt="">
+										<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+									</li>
+									<li>
+										<img src="/resources/img/content/img_pic_temp.gif" alt="">
+										<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+									</li>
+									<li>
+										<img src="/resources/img/content/img_pic_temp.gif" alt="">
+										<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+									</li>
+									<li>
+										<img src="/resources/img/content/img_pic_temp.gif" alt="">
+										<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+									</li>
+									<li>
+										<img src="/resources/img/content/img_pic_temp.gif" alt="">
+										<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- e: 이미지 등록 -->
+
+					<!-- s: 파일 등록 -->
+					<div class="mt_5">
+						<h3 class="tit2">파일 등록</h3>
+						<a href="#;" class="btn btn_md btn_round btn_darkgray btn_file_add"><span>파일 추가하기</span></a>
+						<div class="tf_item mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<a href="#;" class="file_name">재직증명서.pdf</a>
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_md btn_round btn_darkgray"
+										onclick="openModal('layerSampleBottomSheet'); return false;">삭제</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- e: 파일 등록 -->
+				</div>
+				<!-- e: 청구서류 제출 -->
+
+			</div>
+
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+				</div>
+			</div>
+
+			<!-- s: 참고사항 Bottom Sheet -->
+			<div class="modal_popup modal_bottom_sheet no_dimed hide" data-popup="layer_info">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">참고사항</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pb_4">
+							<ul class="list list1">
+								<li>본 서비스는 고객님이 제출해야 할 서류를 이미지파일로 우체국에 전달하는 서비스입니다.</li>
+								<li class="txt_darkprimary">제출서류에 개인실명번호(주민등록번호)가 표시된 경우에는 뒷번호 7자리를 종이로 가리거나 지우고 첨부바랍니다.</li>
+								<li>신분증 촬영 이미지가 빛반사 등으로 인식하기 어려울 경우 우체국/접수 심사 단계에서 신청이 거부 될 수 있습니다.</li>
+								<li>신청서 등은 본인이 직접 작성한 원본을 촬영하여 첨부하시기 바랍니다.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_info');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 참고사항 Bottom Sheet -->
+
+			<!-- s: 이체금액 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="amount_keypad">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select">
+								<a href="#n">1만</a>
+								<a href="#n" class="on">5만</a>
+								<a href="#n">10만</a>
+								<a href="#n">50만</a>
+								<a href="#n">100만</a>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
