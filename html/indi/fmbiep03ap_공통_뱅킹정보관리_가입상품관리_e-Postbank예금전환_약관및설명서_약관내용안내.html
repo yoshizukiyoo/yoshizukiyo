@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="e-Postbank 예금전환"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">전환가능 계좌목록</span></li>
+					<li class="on"><span class="num">2</span><span class="txt">약관 동의</span></li>
+					<li><span class="num">3</span><span class="txt">정보입력</span></li>
+					<li><span class="num">4</span><span class="txt">실행완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+				<h2 class="tit1">약관 및 상품설명서 확인</h2>
+				<div class="double_box terms_box">
+					<div class="top pt_3 pb_3 pl_4">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="" id="all_chk">
+							<label for="all_chk">전체 동의</label>
+						</span>
+					</div>
+					<div class="btm p_4">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk1" checked>
+									<label for="chk1">[필수] 상품설명서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary" onclick="openModal('layer01', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk2">
+									<label for="chk2">[필수] 예금약관</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary" onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="double_box terms_box mt_2">
+					<div class="top pt_3 pb_3 pl_4">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="" id="all_chk2">
+							<label for="all_chk2">중요 사항 확인</label>
+						</span>
+					</div>
+					<div class="btm p_4">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk3" checked>
+									<label for="chk3">불법 탈법 차명거래 금지 설명 확인서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary" onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="" id="chk4">
+									<label for="chk4">예금상품계약서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary" onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="double_box terms_box mt_2">
+					<div class="top pt_3 pb_3 pl_4">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="" id="all_chk2">
+							<label for="all_chk2">본인은 약관 및 상품설명서를 제공받고 중요한 사항을 충분히 이해했음을 확인합니다.</label>
+						</span>
+					</div>
+				</div>
+				<div class="double_box terms_box mt_2">
+					<div class="top pt_3 pb_3 pl_4">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="" id="all_chk3">
+							<label for="all_chk3">약관 및 상품설명서 받기</label>
+						</span>
+					</div>
+					<div class="btm p_4">
+						<span class="check_item simple_primary d_b">
+							<input type="checkbox" name="" id="chk5" checked>
+							<label for="chk5">이메일</label>
+						</span>
+						<div class="tf_item mt_1">
+							<input type="text" class="tf" title="이메일 입력" style="width:100%;" value="abcd@naver.com">
+						</div>
+						<span class="check_item simple_primary d_b ml_0 mt_2">
+							<input type="checkbox" name="" id="chk6">
+							<label for="chk6">SMS 문자</label>
+						</span>
+						<div class="tf_item mt_1 disabled">
+							<input type="text" class="tf" title="SMS 문자 입력" style="width:100%;" value="010-1234-5678" disabled>
+						</div>
+						<p class="bul_notice mt_1 txt_gray">이메일, 문자 중 하나를 필수 선택하여 약관 및 상품설명서를 교부받으셔야 합니다.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="fmbiep03cs_공통_뱅킹정보관리_가입상품관리_e-Postbank예금전환_정보입력.html" class="btn btn_xl btn_primary">
+						<span>동의 후 전환</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 약관 및 설명서 확인 팝업 -->
+			<div class="modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">약관 및 설명서 확인</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container scroll_container pt_4">
+							<div class="scroll_track mb_14">
+								<div class="scroll_content">
+									<div class="fx_lr">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="pop_chk1" id="pop_chk1_1">
+												<label for="pop_chk1_1">[필수] 상품설명서</label>
+											</span>
+										</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+										</div>
+									</div>
+									<div class="fx_lr mt_3">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="pop_chk1" id="pop_chk1_2">
+												<label for="pop_chk1_2">[필수] 예금약관</label>
+											</span>
+										</div>
+										<div class="r">
+											<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="box box_border box_narrow bg_lightgray">
+								<div class="txt_c">
+									<i class="ico ico_notice_lg"></i>
+									<p class=mt_2><strong class="txt_normal">금융소비자보호법에 따라<br>약관 및 설명서 확인이 필요해요.</strong></p>
+								</div>
+								<div class="mt_4">
+									<ul class="list list2 spacing_mt_4">
+										<li>약관 및 상품설명서의 내용 중 반드시 확인하셔 야 할 중요한 사항은 가입 전 확인사항에서 다시 한번 알려드려요.</li>
+										<li>확인 방법은 아래 두가지 중 한가지를 선택할 수 있어요.
+											<ul>
+												<li>
+													① 약관명 앞 체크박스를 선택<br>
+													→ 약관 파일 표시되며 바로 확인
+												</li>
+												<li>
+													② 약관명 옆 [저장하기] 버튼, 하단 [전체 저장] 버튼 선택<br>
+													→ 선택한 약관 파일 또는 전체 약관 파일을 고객님의 스마트폰에 내려받아 확인
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer01');">전체 저장</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">모두 확인했어요</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 약관 및 설명서 확인 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

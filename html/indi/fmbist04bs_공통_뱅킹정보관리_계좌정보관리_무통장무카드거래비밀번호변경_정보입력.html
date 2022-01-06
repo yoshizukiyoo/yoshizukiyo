@@ -22,16 +22,15 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		function nextforeignStep() {
-			$('[data-foreign-step=step1], [data-foreign-btn=step1]').hide();
-			$('[data-foreign-step=step2], [data-foreign-btn=step2]').show();
-		}
+		$(document).ready(function () {
+			//
+		});
 	</script>
 </head>
 
 <body>
 	<div class="wrapper">
-		<header class="header" data-page-title="계좌비밀번호 변경/재등록"></header>
+		<header class="header" data-page-title="무통장/무카드거래 비밀번호 변경"></header>
 		<div id="content">
 			<!-- s: 본문 -->
 			<div class="container p_4">
@@ -43,33 +42,30 @@
 				</ul>
 				<!-- e: 현재 단계 표시 -->
 
-				<h2 class="tit1">기본정보</h2>
-				<div class="double_box">
-					<div class="btm">
-						<div>
-							<div class="l">상품명</div>
-							<div class="r">스마트 페이든든+ 통장</div>
-						</div>
-						<div>
-							<div class="l">계좌번호</div>
-							<div class="r">xxxxxxxxxxx</div>
-						</div>
-						<div>
-							<div class="l">계좌별칭</div>
-							<div class="r">-</div>
+				<h2 class="tit1">계좌 비밀번호 입력</h2>
+				<a href="#;" class="tf_item" onclick="openModal('pwd_full_popup');return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<div class="lab">비밀번호 <span class="req">필수항목</span></div>
+							<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+							<div class="password_masking gray">
+								<!-- 자릿수에 맞춰 <i></i> 추가 -->
+								<i></i><i></i><i></i><i></i>
+							</div>
 						</div>
 					</div>
-				</div>
+				</a>
+
 				<div class="section">
-					<h2 class="tit1">계좌 비밀번호 입력</h2>
-					<a href="#;" class="tf_item mt_2 disabled" onclick="openModal('pwd_full_popup');return false;">
+					<h2 class="tit1">거래 실행번호 변경</h2>
+					<a href="#;" class="tf_item" onclick="openModal('pwd_full_popup');return false;">
 						<div class="tf_item_body">
 							<div class="input_area">
-								<div class="lab">비밀번호 <span class="req">필수항목</span></div>
+								<div class="lab">실행번호 입력 <span class="req">필수항목</span></div>
 								<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
 								<div class="password_masking gray">
 									<!-- 자릿수에 맞춰 <i></i> 추가 -->
-									<i></i><i></i><i></i><i></i>
+									<i></i><i></i><i></i><i></i><i></i><i></i>
 								</div>
 							</div>
 						</div>
@@ -108,13 +104,30 @@
 					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
 				</div>
 				<!-- e: OTP 입력 -->
+
+				<!-- s: 2채널 인증 영역 -->
+				<div class="section">
+					<h2 class="tit1">추가인증</h2>
+					<div class="add_certi_box">
+						<div class="add_list">
+							<a href="#;" class="btn btn_lg btn_default" onclick="openModal('certi_sms_popup', this);">SMS 인증</a>
+							<a href="#;" class="btn btn_lg btn_default" onclick="openModal('certi_ars_popup', this);">ARS 인증</a>
+							<a href="#;" class="btn btn_lg btn_default" onclick="openModal('certi_foreign_popup', this);">해외체류</a>
+						</div>
+						<div class="box certi_box mt_2">
+							인증되었습니다.
+						</div>
+					</div>
+				</div>
+				<!-- e: 2채널 인증 영역 -->
+
 			</div>
 
 			<!-- s: 하단 고정 영역 -->
 			<div class="bottom_fixed_area">
 				<div class="btn_group btn_group_flex">
 					<!-- 비활성화시 .btn_disabled 추가 -->
-					<a href="fmbird02cs_공통_뱅킹정보관리_계좌정보관리_계좌비밀번호변경재등록_실행완료.html" class="btn btn_xl btn_primary">
+					<a href="fmbist04cs_공통_뱅킹정보관리_계좌정보관리_무통장무카드거래비밀번호변경_실행완료.html" class="btn btn_xl btn_primary">
 						<span>전자서명</span>
 					</a>
 				</div>
@@ -288,6 +301,118 @@
 				</div>
 			</div>
 			<!-- e: 추가인증(ARS인증 레이어팝업) -->
+
+			<!-- s: 추가인증(해외체류확인 레이어팝업) -->
+			<script>
+				// 해외체류확인 실행완료 단계
+				function nextforeignStep() {
+					$('[data-foreign-step=step1], [data-foreign-btn=step1]').hide();
+					$('[data-foreign-step=step2], [data-foreign-btn=step2]').show();
+				}
+			</script>
+			<div class="modal_popup popup hide" data-popup="certi_foreign_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">해외체류확인</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4 pb_4">
+							<!-- s: 내용 확인 및 동의 단계 -->
+							<div data-foreign-step="step1">
+								<h3 class="tit1">내용 확인</h3>
+								<p>출입국 관리사무소 시스템에 장애가 발생하거나 출입국 정보 업데이트가 지연될 경우 출국정보 이용이 제한될 수 있습니다.</p>
+								<p class="bul_notice mt_2">
+									출입국정보 업데이트 주기<br>
+									- 통상 출입국 후 최소 12시간에서 최대36시간
+								</p>
+								<p class="mt_2">한국국적의 해외체류자 및 해외거주자의 경우 법무부 출입국 관리사무소로 부터 출국사실이 확인되면 별도의 추가 본인인 증절차를 생략할 수 있습니다.</p>
+								<p class="mt_2">출국사실을 확인하기 위하여 개인정보보호법 제15조(개인 정보의 수집이용) 및 제18조(개인정보의 이용 제공제한)에 따라 고객님의 주민등록번호 및 성명 등을
+									출국정보 조회시스템을 운영하고 있는 금융결제원을 통하여 법무부 출입국 관리사무소로 전송하고, 확인받는데 동의하십니까?</p>
+								<div class="tf_item mt_2">
+									<div class="input_items">
+										<span class="check_item check flex_auto">
+											<input type="radio" name="foreign" id="foreign_y" checked>
+											<label for="foreign_y">동의합니다.</label>
+										</span>
+										<span class="check_item check flex_auto">
+											<input type="radio" name="foreign" id="foreign_n">
+											<label for="foreign_n" onclick="openModal('certi_foreign_align', this)">동의하지 않습니다.</label>
+										</span>
+									</div>
+								</div>
+								<p class="bul_notice mt_2">고객님께서는 동의를 거부하실 수 있으며, 동의를 거부하 실 경우에는 서비스 이용에 제한이 있을 수 있습니다.</p>
+								<p class="bul_notice mt_2">고객님의 출극정보는 별도의 추가 본인인증 절차를 생략 하기 위한 목적에 한하여 사용됩니다.</p>
+							</div>
+							<!-- e: 내용 확인 및 동의 단계 -->
+
+							<!-- s: 실행완료 단계 -->
+							<div data-foreign-step="step2" style="display: none;">
+								<h3 class="tit1">실행완료</h3>
+								<div class="double_box mt_2">
+									<div class="btm">
+										<div>
+											<div class="l">체류확인결과</div>
+											<div class="r">확인안됨</div>
+										</div>
+										<div>
+											<div class="l">메세지</div>
+											<div class="r">
+												해외 체류자가 아닙니다.<br>
+												(참고사항 ⇒ 최소 : 출국일 익일 12시, 최대 : 출국일 익일 24시 후
+											</div>
+										</div>
+									</div>
+								</div>
+								<p class="bul_notice mt_2">해외체류 확인 신청이 위와 같이 처리되었습니다.</p>
+							</div>
+							<!-- e: 실행완료 단계 -->
+						</div>
+					</div>
+					<!-- s: 내용 확인 및 동의 단계 버튼 -->
+					<div class="popup_footer" data-foreign-btn="step1">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="nextforeignStep();">확인</button>
+						</div>
+					</div>
+					<!-- e: 내용 확인 및 동의 단계 버튼 -->
+
+					<!-- s: 실행완료 단계 버튼 -->
+					<div class="popup_footer" data-foreign-btn="step2" style="display: none;">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('certi_foreign_popup');">확인</button>
+						</div>
+					</div>
+					<!-- e: 실행완료 단계 버튼 -->
+				</div>
+			</div>
+
+			<div class="modal_popup modal_alert hide" data-popup="certi_foreign_align">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">출국정보 조회시스템 확인 동의</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="desc txt_l">
+								<p>출국정보 조회시스템 확인 동의가 필요합니다.</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('certi_foreign_align');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 추가인증(해외체류확인 레이어팝업) -->
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
