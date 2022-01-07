@@ -23,69 +23,103 @@
 </head>
 
 <body>
-	<div class="postpay cancel">
-		<div class="titlebar go_back">
-			<a href="#;" class="btn btn_icon">
-				<i class="ico ico_back2"></i>
-				<span class="sr_only">뒤로 가기</span>
-			</a>
-			<h1 class="tit_page">포스트페이 해지</h1>
-		</div>
-		<div class="container pt_4">
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay_type3.html" data-page-title="포스트페이 해지"></header>
+		<div id="content">
 
-			<!-- s: 상단 안내 -->
-			<div class="easy_certi_top bg06">
-				<p class="txt_normal">신청 진행 중인 서비스가 있어요.</p>
+			<!-- s: 본문 -->
+			<div class="container pt_4">
+				<div class="postpay cancel">
+
+					<!-- s: 상단 안내 1 : 진행중인 서비스가 있을 때 -->
+					<div class="service">
+						<div class="easy_certi_top bg06">
+							<p class="txt_normal">신청 진행 중인 서비스가 있어요.</p>
+						</div>
+						<div class="mt_1 txt_c txt_gray txt_sm">해당 업무가 완료된 해지 신청이 가능해요.</div>
+						<p class="txt_c"><a href="#;" class="btn btn_md btn_darkgray btn_round">통합이용조회 바로가기</a></p>
+					</div>
+					<!-- e: 상단 안내 1 : 진행중인 서비스가 있을 때  -->
+
+					<!-- s: 상단 안내 2 : 잔여 포스트페이머니가 있을 때 -->
+					<div class="leftover" style="display: none;">
+						<div class="easy_certi_top bg07">
+							<p class="txt_normal">잔여 포스트페이머니가 있어요.</p>
+						</div>
+						<p class="txt_c"><span class="leftover"><strong>12,030</strong>캐시</span></p>
+						<div class="mt_1 txt_c txt_gray txt_sm">해지 시 모두 소멸 예정입니다.</div>
+					</div>
+					<!-- e: 상단 안내 2 : 잔여 포스트페이머니가 있을 때 -->
+
+					<!-- s: 확인 체크박스 영역  -->
+					<h2 class="tit1"><span class="ico ico_document_check"></span> 서비스 해지 전 확인해 주세요.</h2>
+					<ul class="box box_border check_list">
+						<li class="tf_item_body">
+							<span class="check_item txt_lg">
+								<input type="checkbox" id="check1">
+								<label for="check1">서비스 해지 시 출금 계좌, 주소록 등 설정된 모든
+									데이터가 삭제되고 복원할 수 없습니다.</label>
+							</span>
+						</li>
+						<li class="tf_item_body">
+							<span class="check_item txt_lg">
+								<input type="checkbox" id="check2">
+								<label for="check2">삭제된 데이터는 복원할 수 없습니다.</label>
+							</span>
+						</li>
+						<li class="tf_item_body">
+							<span class="check_item txt_lg">
+								<input type="checkbox" id="check3">
+								<label for="check3">포스트페이 서비스만 해지되며, 우체국스마트 뱅킹 등 우체국 금융의 다른 이용 중인 앱 서비스는 그대로 이용가능합니다.
+								</label>
+							</span>
+						</li>
+					</ul>
+					<!-- e: 확인 체크박스 영역  -->
+
+				</div>
+
+				<!-- s: 하단 고정 영역 -->
+				<div class="bottom_fixed_area">
+					<div class="btn_group btn_group_flex">
+						<!-- [D] 모두 체크해야 활성화, 비활성화시 .btn_disabled 추가 -->
+						<a href="#" class="btn btn_xl btn_primary" onclick="openModal('layer01'); return false;">
+							<span>서비스 해지 실행</span>
+						</a>
+					</div>
+				</div>
+				<!-- e: 하단 고정 영역 -->
+
+				<!-- s: 확인 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_body">
+							<div class="container">
+								<div class="desc txt_l">
+									<p class="txt_lg txt_bold">서비스 해지가 완료되었습니다.</p>
+									<p class="mt_2">확인을 누르면 포스트페이 앱이 자동 종료됩니다.</p>
+								</div>
+							</div>
+						</div>
+						<div class="popup_footer">
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 확인 팝업 -->
+
 			</div>
-			<div class="mt_1 txt_c txt_gray txt_sm">해당 업무가 완료된 해지 신청이 가능해요.</div>
-			<p class="tac"><a href="#;" class="btn btn_md btn_darkgray btn_round">통합이용조회 바로가기</a></p>
-			<!-- e: 상단 안내 -->
+			<!-- e: 본문 -->
 
-			<!-- s: 확인 체크박스 영역  -->
-			<h2 class="tit1"><span class="ico ico_mall_terms"></span> 서비스 해지 전 확인해 주세요.</h2>
-			<ul class="box check_list">
-				<li class="tf_item_body">
-					<span class="check_item txt_lg">
-						<input type="checkbox" id="check1" checked>
-						<label for="check1">서비스 해지 시 출금 계좌, 주소록 등 설정된 모든
-							데이터가 삭제되고 복원할 수 없습니다.</label>
-					</span>
-				</li>
-				<li class="tf_item_body">
-					<span class="check_item txt_lg">
-						<input type="checkbox" id="check1" checked>
-						<label for="check1">서비스 해지 시 출금 계좌, 주소록 등 설정된 모든
-							데이터가 삭제되고 복원할 수 없습니다.</label>
-					</span>
-				</li>
-				<li class="tf_item_body">
-					<span class="check_item txt_lg">
-						<input type="checkbox" id="check1" checked>
-						<label for="check1">서비스 해지 시 출금 계좌, 주소록 등 설정된 모든
-							데이터가 삭제되고 복원할 수 없습니다.</label>
-					</span>
-				</li>
-			</ul>
-			<!-- e: 확인 체크박스 영역  -->
-		</div>
-
-
-	</div>
-
-	<!-- s: 하단 고정 영역 -->
-	<div class="bottom_fixed_area">
-		<div class="btn_group btn_group_flex">
-			<!-- 비활성화시 .btn_disabled 추가 -->
-			<a href="#" class="btn btn_xl btn_primary">
-				<span>서비스 해지 실행</span>
-			</a>
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
 		</div>
 	</div>
-	<!-- e: 하단 고정 영역 -->
-
-	<!-- s: 공통 레이어 로딩 -->
-	<div class="common_layers"></div>
-	<!-- e: 공통 레이어 로딩 -->
 </body>
 
 </html>
