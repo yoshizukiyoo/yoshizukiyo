@@ -2,6 +2,7 @@ $popup-title-height: 56px;
 
 $popup-size: (alert: 280px,
 	datepicker: 320px,
+	alret_lg: 320px,
 	full: 100%,
 );
 
@@ -194,6 +195,73 @@ $popup-size: (alert: 280px,
 
 	// 알림 팝업
 	&.modal_alert {
+		.popup_inner {
+			overflow: hidden;
+			border-radius: 16px;
+		}
+
+		.popup_header {
+			justify-content: center;
+
+			~.popup_body {
+				padding-top: 0;
+			}
+
+			.popup_tit {
+				font-weight: bold;
+			}
+		}
+
+		.popup_body {
+			padding: 40px 0;
+			max-height: calc(100vh - 200px);
+		}
+
+		.desc {
+			text-align: center;
+
+			&.txt_l {
+				padding-left: 10px;
+			}
+		}
+
+		.popup_footer {
+			padding: 0;
+		}
+
+		.btn_group_flex {
+			padding: 0;
+
+			.btn {
+				margin: 0;
+				border-radius: 0;
+			}
+		}
+
+		.btn_close_popup {
+			display: none;
+		}
+
+		&.no_dimed {
+			// height: auto;
+			left: 50%;
+			right: auto;
+			bottom: auto;
+			top: 50%;
+			transform: translate3d(-50%, -50%, 0);
+
+			.popup_inner {
+				box-shadow: 0px -1px 35px 0px rgba(0, 0, 0, 0.13);
+			}
+
+			.dimed {
+				display: none;
+			}
+		}
+	}
+
+	// 알림 팝업 lg 사이즈
+	&.modal_alret_lg {
 		.popup_inner {
 			overflow: hidden;
 			border-radius: 16px;
