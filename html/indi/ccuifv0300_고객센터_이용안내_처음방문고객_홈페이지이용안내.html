@@ -23,8 +23,25 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			//
-		})
+
+			$(document).on("click", ".radio_list .qna_q > a", function () {
+				var parent = $(this).parent();
+				$('.radio_list .qna_q').removeClass("active");
+				$('.radio_list .qna_a').removeClass("on");
+				parent.addClass('active');
+				parent.next('.qna_a').addClass('on');
+				if (parent.hasClass('active')) {
+					$(this).attr('title', '이용가이드 상세보기 닫기');
+				} else {
+					$(this).attr('title', '이용가이드 상세보기');
+				}
+			})
+
+			$(document).on("click", ".radio_list .qna_q.active a", function () {
+				$(this).parent().removeClass("active");
+				$(this).parent().next(".qna_a").removeClass("on");
+			})
+		});
 	</script>
 </head>
 
@@ -56,13 +73,136 @@
 				<!-- s: 본문 -->
 				<div class="first_section">
 					<h3 class="tit1">우체국금융 홈페이지 이용가이드</h3>
-
-					<div>
-						<h4 class="tit3"><a href="#;">원하는 서비스를 편리하게 찾으세요.</a></h4>
-						<h4 class="tit3 mt_4"><a href="#;">더욱 편리하게 원하는 금융상품을 찾아 가입하세요.</a></h4>
-						<h4 class="tit3 mt_4"><a href="#;">다양한 방식으로 궁금하신 사항을 해결하실 수 있습니다.</a></h4>
-						<h4 class="tit3 mt_4"><a href="#;">우체국금융 홈페이지를 보다 안전하게 이용하세요.</a></h4>
-					</div>
+					<ul class="qna_list radio_list">
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="이용가이드 상세보기">원하시는 서비스를 편리하게 찾으세요.</a>
+							</div>
+							<div class="qna_a">
+								<div class="re_question">
+									<span class="num">01</span>
+									<div class="q_t">서비스 찾는 방법이 편리해졌습니다</div>
+									<div class="q_b">고객님께서 원하시는 서비스를 찾으시려면?</div>
+								</div>
+								<ul class="answer_list">
+									<li>
+										1. 홈페이지 전체 콘텐츠 검색은 메인메뉴 우측상단 통합검색 입력창에 검색어를 입력하시어 원하시는 콘텐츠를 찾으실 수 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_01.png" alt="">
+										</div>
+									</li>
+									<li>
+										2. 메인메뉴의 전체메뉴 보기를 클릭하시면 홈페이지에서 서비스 중인 모든 메뉴를 확인하실 수 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_02.png" alt="">
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="이용가이드 상세보기">더욱 편리하게 원하는 금융상품을 찾아 가입하세요.</a>
+							</div>
+							<div class="qna_a">
+								<div class="re_question">
+									<span class="num">02</span>
+									<div class="q_t">금융상품을 찾고 가입하시는 방법이 편리해졌습니다.</div>
+									<div class="q_b">고객님께서 손쉽게 금융상품을 가입하시려면?</div>
+								</div>
+								<ul class="answer_list">
+									<li>
+										1. 금융상품 카테고리를 선택하시면 예금상품, 보험상품, 카드상품 메뉴가 활성화되고 각 메뉴를 클릭하시면 상품목록을 확인하실 수 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_03.png" alt="">
+										</div>
+									</li>
+									<li>
+										2. 전체 상품목록에서 인터넷 가입이 가능한 상품은 가입버튼이 보이며 버튼을 클릭하시면 안내에 따라 손쉽게 가입하실 수 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_04.png" alt="">
+										</div>
+									</li>
+									<li>
+										3. 비교하기 버튼을 클릭하신 후 선택상품비교 버튼을 클릭하시면 여러가지 상품을 비교해보신 후 고객님께서 원하시는 상품으로 가입하실 수 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_05.png" alt="">
+										</div>
+									</li>
+									<li>
+										4. 금융상품 메인화면에서 생애주기별, 상품유형별로 상품을 검색하시어 고객님께서 원하시는 상품을 가입하실 수 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_06.png" alt="">
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="이용가이드 상세보기">다양한 방식으로 궁금하신 사항을 해결하실 수 있습니다.</a>
+							</div>
+							<div class="qna_a">
+								<div class="re_question">
+									<span class="num">03</span>
+									<div class="q_t">다양한 방식으로 궁금하신 사항을 해결하실 수 있습니다</div>
+									<div class="q_b">이용하시다가 궁금하신 사항을 해결하시려면?</div>
+								</div>
+								<ul class="answer_list">
+									<li>
+										1. 고객센터 카테고리의 이용안내 메뉴에서 궁금하신 다양한 분야의 내용을 확인하실 수 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_07.png" alt="">
+										</div>
+									</li>
+									<li>
+										2. 고객센터 카테고리의 자주하는질문 메뉴에서 다른 고객님이 문의하신 내용 중 고객님이 원하시는 답변을 찾을 수도 있습니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_08.png" alt="">
+										</div>
+									</li>
+									<li>
+										3 고객센터 인터넷상담, 이메일상담, 전화예약상담을 등록하시면 우체국금융고객센터에서 답변해 드립니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_09.png" alt="">
+										</div>
+									</li>
+									<li>
+										4 우체국금융고객센터에 전화주시면 친절하게 안내해드립니다.
+										<div class="img_box mt_4">
+											<img src="/resources/img/content/img_ccuifv0300_10.png" alt="">
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="qna_q">
+								<a href="#;" title="이용가이드 상세보기">우체국금융 홈페이지를 보다 안전하게 이용하세요.</a>
+							</div>
+							<div class="qna_a">
+								<div class="re_question">
+									<span class="num">04</span>
+									<div class="q_t">우체국금융 홈페이지는 안전한 서비스를 제공합니다.</div>
+									<div class="q_b">홈페이지를 보다 안전하고 효과적으로 이용하시려면?</div>
+								</div>
+								<ul class="answer_list">
+									<li>
+										1. 우체국금융 홈페이지는 '맑은고딕' 폰트에 최적화 되어 있습니다.
+									</li>
+									<li>
+										2. 전자금융사기예방서비스가 적용되어 있습니다.
+										<div class="border_round_box mt_4">
+											<ul class="list list1">
+												<li>피싱, 파밍으로부터 금융피해를 막기위해 개인고객이 공동인증서를 발급받거나 인터넷뱅킹으로 하루에 300만원 이상 이체 시 1채널(PC)에서 이뤄지는 본인 인증 과정을
+													2채널(휴대폰SMS인증, ARS인증)로 확대하여 안전하게 이용하실 수 있습니다.</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
 				</div>
 
 
