@@ -1,0 +1,3445 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.double_box.toggle .top').click(function(){
+				$(this).toggleClass('active');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="납부내역조회"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<div class="account_info_box">
+					<a href="#;" onclick="openModal('layerAccount'),this">
+						<span class="bank">
+							<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
+						</span>
+						<div class="info">
+							<strong>스마트 e-Postbank 예금</strong>
+							<p>100057-02-000010</p>
+						</div>
+					</a>
+				</div>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">납부구분</span>
+							<p class="tf txt_gray">국세</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">상세구분</span>
+							<p class="tf txt_gray">국세/전파사용료</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<div class="input_items mt_2">
+					<span class="check_item type_btn">
+						<input type="radio" name="lb_period" id="lb_period_1" checked>
+						<label for="lb_period_1">1개월</label>
+					</span>
+					<span class="check_item type_btn">
+						<input type="radio" name="lb_period" id="lb_period_2">
+						<label for="lb_period_2">3개월</label>
+					</span>
+					<span class="check_item type_btn">
+						<input type="radio" name="lb_period" id="lb_period_3">
+						<label for="lb_period_3">6개월</label>
+					</span>
+					<a href="#;" class="btn btn_md btn_outline_default btn_search" onclick="openModal('layer_bottom',this)">상세조회</a>
+				</div>
+				<!-- s: 조회결과 -->
+				<div class="section">
+					<h2 class="tit1">조회결과</h2>
+					<div class="clfx">
+						<div class="f_l">조회기간 <span class="txt_normal">2021.02.03 - 2021.03.04</span></div>
+						<div class="f_r">조회시간 <span class="txt_normal">2021년 05월 18일 18시 15분40초</span>
+							<a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a>
+						</div>
+					</div>
+					<div class="double_box mt_2">
+						<a href="#;" class="btm btm_link" onclick="openModal('layer01',this)">
+							<div>
+								<div class="l">징수과목</div>
+								<div class="r">신고분</div>
+							</div>
+							<div>
+								<div class="l">징수기관</div>
+								<div class="r">국세청 부산지방 국세</div>
+							</div>
+							<div>
+								<div class="l">납부기관</div>
+								<div class="r">부천소사로우체국</div>
+							</div>
+							<div>
+								<div class="l">납부금액</div>
+								<div class="r">40,000원</div>
+							</div>
+							<div>
+								<div class="l">납부일</div>
+								<div class="r">2021.05.31</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- e: 조회결과 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>조회</span></a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: Modal popup 납부내역 상세조회(국세/전파사용료) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(국세/전파사용료) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(항만수수료) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom02');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(항만수수료) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(특허수수료) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom03">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom03');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(특허수수료) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(지방세) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom04">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom04');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(지방세) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(환경개선부담금) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom05">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom05');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(환경개선부담금) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(세외수입) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom06">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom06');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(세외수입) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(지로-조회납부) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom07">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">지로번호입력 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="지로번호 입력">
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호(고객번호) <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom07');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(지로-조회납부) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(지로-입력납부) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom08">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">지로번호입력 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="지로번호 입력">
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호(고객번호) <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom08');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(지로-입력납부) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(지로-자동이체) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom09">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">지로번호입력 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="지로번호 입력">
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호(고객번호) <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom09');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(지로-자동이체) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(경찰청범칙금) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom10">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom10');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(경찰청범칙금) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(법무부국고금) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom11">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom11');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(법무부국고금) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(국민연금) -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="layer_bottom12">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">주민(사업자)등록번호</label>
+											<p class="txt_lg">00000</p>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk1" id="chk1-2" disabled>
+											<label for="chk1-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom12');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(국민연금) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(사회보험료) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom13">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" required>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom13');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(사회보험료) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(전기요금) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom14">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item active">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" required>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom14');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(전기요금) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(KT통신요금) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom15">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk15" id="chk15-1" checked>
+											<label for="chk15-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호</label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력">
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk15" id="chk15-2" disabled>
+											<label for="chk15-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="input2_1">전화번호 <span class="req">필수항목</span></label>
+											<div class="input_items">
+												<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;"
+													onclick="openModal('layerOption')">02</a>
+												<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력" disabled>
+												<button type="button" class="btn btn_icon btn_reset">
+													<i class="ico ico_reset"></i>
+													<span class="sr_only">초기화</span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<p class="txt_guide">유선전화만 입력</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom15');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(KT통신요금) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(상하수도요금) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom16">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">조회구분</h3>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk16" id="chk16-1" checked>
+											<label for="chk16-1">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자수용가번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자수용가번호 입력" required>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk16" id="chk16-2" disabled>
+											<label for="chk16-2">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">전자납부번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="전자납부번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2 disabled">
+									<div class="tf_item_body">
+										<span class="check_item single">
+											<input type="radio" name="chk16" id="chk16-3" disabled>
+											<label for="chk16-3">선택</label>
+										</span>
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">고객번호(서울시)</label>
+											<input type="text" id="lb_tf_1_3" class="tf"placeholder="고객번호 입력" disabled>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom16');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(상하수도요금) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(아파트관리비) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom17">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">세부납부정보</h3>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">아파트수납기관코드 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="코드 입력" required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_md btn_round btn_darkgray">아파트(기관)코드</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2">
+									<div class="tf_item_body">
+										<div class="input_area ml_2">
+											<label class="lab" for="lb_tf_1_3">관리소 계좌번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="'-'없이 입력" required>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom17');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(아파트관리비) -->
+
+			<!-- s: Modal popup 납부내역 상세조회(대학등록금) -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer_bottom18">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">납부내역 상세조회</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<h3 class="tit2">조회기간</h3>
+							<div class="tf_double">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date">시작일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_date2">종료일 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly
+												required>
+										</div>
+										<div class="btn_area">
+											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+												<i class="ico ico_datepicker"></i>
+												<span class="sr_only">달력</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">고지구분</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">학교선택</h3>
+								<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">고지구분</span>
+											<p class="tf">전체</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">학생번호</h3>
+								<div class="tf_item mt_2">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_3">학생번호 <span class="req">필수항목</span></label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="'-없이' 입력" required>
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mt_5">
+								<h3 class="tit2">학생명</h3>
+								<div class="tf_item mt_2">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_3">학생명</label>
+											<input type="text" id="lb_tf_1_3" class="tf" placeholder="'-없이' 입력">
+											<button type="button" class="btn btn_icon btn_reset">
+												<i class="ico ico_reset"></i>
+												<span class="sr_only">초기화</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer_bottom18');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 납부내역 상세조회(대학등록금) -->
+
+
+
+			<!-- s: Modal popup 상세보기(국세/전파사용료) -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(국세/전파사용료)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">세목</div>
+										<div class="r">등록세(면허)</div>
+									</div>
+									<div>
+										<div class="l">징수기관</div>
+										<div class="r">국세청 중부지방국세청 용인세무서 징수관</div>
+									</div>
+									<div>
+										<div class="l">회계연도</div>
+										<div class="r">2021 년</div>
+									</div>
+									<div>
+										<div class="l">주민(사업자)등록번호</div>
+										<div class="r">000000000000</div>
+									</div>
+									<div>
+										<div class="l">전문관리번호</div>
+										<div class="r">0710G5D2C282</div>
+									</div>
+									<div>
+										<div class="l">납부기한</div>
+										<div class="r">2021.05.31</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(국세/전파사용료) -->
+
+			<!-- s: Modal popup 상세보기(항만수수료) -->
+			<div class="modal_popup popup hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(항만수수료)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer02',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">징수기관</div>
+										<div class="r">국세청 중부지방국세청 용인세무서 징수관</div>
+									</div>
+									<div>
+										<div class="l">회계연도</div>
+										<div class="r">2021 년</div>
+									</div>
+									<div>
+										<div class="l">주민(사업자)등록번호</div>
+										<div class="r">000000000000</div>
+									</div>
+									<div>
+										<div class="l">전문관리번호</div>
+										<div class="r">0710G5D2C282</div>
+									</div>
+									<div>
+										<div class="l">지자체</div>
+										<div class="r">지자체</div>
+									</div>
+									<div>
+										<div class="l">세목</div>
+										<div class="r">항만수수료</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">체납</div>
+									</div>
+									<div>
+										<div class="l">납부기한</div>
+										<div class="r">2021.05.31</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(항만수수료) -->
+
+			<!-- s: Modal popup 상세보기(특허수수료) -->
+			<div class="modal_popup popup hide" data-popup="layer03">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(특허수수료)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer03',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">징수기관</div>
+										<div class="r">국세청 중부지방국세청 용인세무서 징수관</div>
+									</div>
+									<div>
+										<div class="l">회계연도</div>
+										<div class="r">2021 년</div>
+									</div>
+									<div>
+										<div class="l">주민(사업자)등록번호</div>
+										<div class="r">000000000000</div>
+									</div>
+									<div>
+										<div class="l">전문관리번호</div>
+										<div class="r">0710G5D2C282</div>
+									</div>
+									<div>
+										<div class="l">지자체</div>
+										<div class="r">지자체</div>
+									</div>
+									<div>
+										<div class="l">세목</div>
+										<div class="r">항만수수료</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">체납</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">납부기한</div>
+										<div class="r">2021.05.31</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(특허수수료) -->
+
+			<!-- s: Modal popup 상세보기(지방세) -->
+			<div class="modal_popup popup hide" data-popup="layer04">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(지방세)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer04',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">주민등록번호</div>
+										<div class="r">650529*******</div>
+									</div>
+									<div>
+										<div class="l">납기후 기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">과세대상</div>
+										<div class="r">성능개선 테스트 자료</div>
+									</div>
+									<div>
+										<div class="l">청구기관</div>
+										<div class="r">경기도성남시</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납기내 기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">세목</div>
+										<div class="r">주민세(재산분)</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top active"><a href="#;">납기내금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">본세</div>
+										<div class="r">27,810원</div>
+									</div>
+									<div>
+										<div class="l">도시계획세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">공동시설세/지역자원시설세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">지방교육세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">농어촌특별세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">27,810 원</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top"><a href="#;">납기후 금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">본세</div>
+										<div class="r">27,810원</div>
+									</div>
+									<div>
+										<div class="l">도시계획세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">공동시설세/지역자원시설세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">지방교육세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">농어촌특별세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">27,810 원</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer04');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(지방세) -->
+
+			<!-- s: Modal popup 상세보기(환경개선부담금) -->
+			<div class="modal_popup popup hide" data-popup="layer05">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(환경개선부담금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer05',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">주민등록번호</div>
+										<div class="r">650529*******</div>
+									</div>
+									<div>
+										<div class="l">납기후 기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">과세대상</div>
+										<div class="r">성능개선 테스트 자료</div>
+									</div>
+									<div>
+										<div class="l">청구기관</div>
+										<div class="r">경기도성남시</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납기내 기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">세목</div>
+										<div class="r">주민세(재산분)</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top active"><a href="#;">납기내금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">국세</div>
+										<div class="r">27,810원</div>
+									</div>
+									<div>
+										<div class="l">시도세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">시군구세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">부가가치세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">분납이자</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">27,810 원</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top"><a href="#;">납기후 금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">국세</div>
+										<div class="r">27,810원</div>
+									</div>
+									<div>
+										<div class="l">시도세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">시군구세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">부가가치세</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">분납이자</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">27,810 원</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(환경개선부담금) -->
+
+			<!-- s: Modal popup 상세보기(세외수입) -->
+			<div class="modal_popup popup hide" data-popup="layer06">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(세외수입)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer06',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">주민등록번호</div>
+										<div class="r">650529*******</div>
+									</div>
+									<div>
+										<div class="l">납기후 기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">과세대상</div>
+										<div class="r">성능개선 테스트 자료</div>
+									</div>
+									<div>
+										<div class="l">청구기관</div>
+										<div class="r">경기도성남시</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납기내 기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">세목</div>
+										<div class="r">주민세(재산분)</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top active"><a href="#;">납기내금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">부담금</div>
+										<div class="r">27,810원</div>
+									</div>
+									<div>
+										<div class="l">부담금</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">27,810 원</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top"><a href="#;">납기후 금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">부담금</div>
+										<div class="r">27,810원</div>
+									</div>
+									<div>
+										<div class="l">부담금</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">27,810 원</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer06');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(세외수입) -->
+
+			<!-- s: Modal popup 상세보기(지로-조회납부) -->
+			<div class="modal_popup popup hide" data-popup="layer07">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(지로-납부)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer07',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">지로번호</div>
+										<div class="r">01261</div>
+									</div>
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납부년월(회차)</div>
+										<div class="r">2019.11</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">체납</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">납부기한</div>
+										<div class="r">2021.05.31</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer07');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(지로-조회납부) -->
+
+			<!-- s: Modal popup 상세보기(지로-입력납부) -->
+			<div class="modal_popup popup hide" data-popup="layer08">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(지로-납부)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer08',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">지로번호</div>
+										<div class="r">01261</div>
+									</div>
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납부년월(회차)</div>
+										<div class="r">2019.11</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">체납</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">납부기한</div>
+										<div class="r">2021.05.31</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer08');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(지로-입력납부) -->
+
+			<!-- s: Modal popup 상세보기(지로-자동이체) -->
+			<div class="modal_popup popup hide" data-popup="layer09">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(지로-자동이체)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer09',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">지로번호</div>
+										<div class="r">01261</div>
+									</div>
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">청구기관</div>
+										<div class="r">㈜가톨릭신문사</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납부년월(회차)</div>
+										<div class="r">2019.11</div>
+									</div>
+									<div>
+										<div class="l">자동이체일</div>
+										<div class="r">2019.11.18</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">체납</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">납부기한</div>
+										<div class="r">2021.05.31</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer09');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(지로-자동이체) -->
+
+			<!-- s: Modal popup 상세보기(경찰청범칙금) -->
+			<div class="modal_popup popup hide" data-popup="layer10">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(경찰청범칙금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer10',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">청구기관</div>
+										<div class="r">경기도성남시</div>
+									</div>
+									<div>
+										<div class="l">과금종류</div>
+										<div class="r">운전자범칙금</div>
+									</div>
+									<div>
+										<div class="l">세목코드</div>
+										<div class="r">1256561</div>
+									</div>
+									<div>
+										<div class="l">주민(사업자)등록번호</div>
+										<div class="r">650529*******</div>
+									</div>
+									<div>
+										<div class="l">세입징수관 계좌번호</div>
+										<div class="r">1256561</div>
+									</div>
+									<div>
+										<div class="l">소계정항목</div>
+										<div class="r">0</div>
+									</div>
+									<div>
+										<div class="l">회계년도</div>
+										<div class="r">2021 년</div>
+									</div>
+									<div>
+										<div class="l">전문관리번호</div>
+										<div class="r">0710G5D47FF1</div>
+									</div>
+									<div>
+										<div class="l">납기내기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">납기내금액</div>
+										<div class="r">40,000 원</div>
+									</div>
+									<div>
+										<div class="l">납기후기한</div>
+										<div class="r">2021.06.30</div>
+									</div>
+									<div>
+										<div class="l">납기후금액</div>
+										<div class="r">40,000 원</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">00000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">00000000000</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top active"><a href="#;">납기내금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">과세원인 일시</div>
+										<div class="r">00:00:00</div>
+									</div>
+									<div>
+										<div class="l">위반일시</div>
+										<div class="r">00:00:00</div>
+									</div>
+									<div>
+										<div class="l">위반 차량번호</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">위반장소</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">위반내용</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">법령근거</div>
+										<div class="r">-</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top"><a href="#;">납기후 금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">과세원인 일시</div>
+										<div class="r">00:00:00</div>
+									</div>
+									<div>
+										<div class="l">위반일시</div>
+										<div class="r">00:00:00</div>
+									</div>
+									<div>
+										<div class="l">위반 차량번호</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">위반장소</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">위반내용</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">법령근거</div>
+										<div class="r">-</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer10');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(경찰청범칙금) -->
+
+			<!-- s: Modal popup 상세보기(법무부국고금) -->
+			<div class="modal_popup popup hide" data-popup="layer11">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(법무부국고금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer11',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">회계연도</div>
+										<div class="r">2021년</div>
+									</div>
+									<div>
+										<div class="l">납기내 기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기내 금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">청구기관</div>
+										<div class="r">대검찰청 부산고등검찰청 창원지방검찰청</div>
+									</div>
+									<div>
+										<div class="l">과금종류</div>
+										<div class="r">벌금</div>
+									</div>
+									<div>
+										<div class="l">주민(사업자)등록번호</div>
+										<div class="r">00000000000000</div>
+									</div>
+									<div>
+										<div class="l">전문관리번호</div>
+										<div class="r">0710G5D4DE51</div>
+									</div>
+									<div>
+										<div class="l">납기내 기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기내 금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">납기후 기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기후 금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer11');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(법무부국고금) -->
+
+			<!-- s: Modal popup 상세보기(국민연금) -->
+			<div class="modal_popup popup hide" data-popup="layer12">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(국민연금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer12',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납부자번호</div>
+										<div class="r">6007011869710</div>
+									</div>
+									<div>
+										<div class="l">납기구분</div>
+										<div class="r">납기내 기한</div>
+									</div>
+									<div>
+										<div class="l">납기내 기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기내 금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">납기후 기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기후 금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer12');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(국민연금) -->
+
+			<!-- s: Modal popup 상세보기(사회보험료) -->
+			<div class="modal_popup popup hide" data-popup="layer13">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(사회보험료)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer13',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">납부자번호</div>
+										<div class="r">6007011869710</div>
+									</div>
+									<div>
+										<div class="l">납기구분</div>
+										<div class="r">납기내 기한</div>
+									</div>
+									<div>
+										<div class="l">납기내 기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기내 금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">납기후 기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기후 금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer13');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(사회보험료) -->
+
+			<!-- s: Modal popup 상세보기(전기요금) -->
+			<div class="modal_popup popup hide" data-popup="layer14">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(전기요금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer14',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">정상분</div>
+									</div>
+									<div>
+										<div class="l">납기구분</div>
+										<div class="r">납기내 기한</div>
+									</div>
+									<div>
+										<div class="l">부과년월</div>
+										<div class="r">1993.08</div>
+									</div>
+									<div>
+										<div class="l">납기기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+									<div>
+										<div class="l">납부일</div>
+										<div class="r">2019.12.31</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer14');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(전기요금) -->
+
+			<!-- s: Modal popup 상세보기(KT통신요금) -->
+			<div class="modal_popup popup hide" data-popup="layer15">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(KT통신요금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer15',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">전자납부번호</div>
+										<div class="r">0126180572203593656</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">정상분</div>
+									</div>
+									<div>
+										<div class="l">납기구분</div>
+										<div class="r">납기내 기한</div>
+									</div>
+									<div>
+										<div class="l">부과년월</div>
+										<div class="r">1993.08</div>
+									</div>
+									<div>
+										<div class="l">납기기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">40,000원</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer15');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(KT통신요금) -->
+
+			<!-- s: Modal popup 상세보기(상하수도요금) -->
+			<div class="modal_popup popup hide" data-popup="layer16">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(상하수도요금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer16',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">지로번호</div>
+										<div class="r">100001</div>
+									</div>
+									<div>
+										<div class="l">납세자</div>
+										<div class="r">이남용</div>
+									</div>
+									<div>
+										<div class="l">고지구분</div>
+										<div class="r">정상분</div>
+									</div>
+									<div>
+										<div class="l">부과년월</div>
+										<div class="r">1993.08</div>
+									</div>
+									<div>
+										<div class="l">주소</div>
+										<div class="r">서울시 마포구 상암동</div>
+									</div>
+									<div>
+										<div class="l">납기내기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">납기후기한</div>
+										<div class="r">2019.12.31</div>
+									</div>
+									<div>
+										<div class="l">체납기간</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">납기구분</div>
+										<div class="r">납기내 기한</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">00000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">00000000000</div>
+									</div>
+									<div>
+										<div class="l">납부금액</div>
+										<div class="r">53,400원</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top active"><a href="#;">납기내금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">상하수도요금</div>
+										<div class="r">35,760원</div>
+									</div>
+									<div>
+										<div class="l">하수도요금</div>
+										<div class="r">10,500원</div>
+									</div>
+									<div>
+										<div class="l">지하수요금</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">물이용부담금</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">53,400 원</div>
+									</div>
+								</div>
+							</div>
+							<div class="double_box mt_2 toggle">
+								<div class="top"><a href="#;">납기후 금액</a></div>
+								<div class="btm">
+									<div>
+										<div class="l">상하수도요금</div>
+										<div class="r">35,760원</div>
+									</div>
+									<div>
+										<div class="l">하수도요금</div>
+										<div class="r">10,500원</div>
+									</div>
+									<div>
+										<div class="l">지하수요금</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">물이용부담금</div>
+										<div class="r">0원</div>
+									</div>
+									<div>
+										<div class="l">납부금액합계</div>
+										<div class="r">53,400 원</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer16');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(상하수도요금) -->
+
+			<!-- s: Modal popup 상세보기(아파트관리비) -->
+			<div class="modal_popup popup hide" data-popup="layer17">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(아파트관리비)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer17',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">아파트명</div>
+										<div class="r">제일프라자</div>
+									</div>
+									<div>
+										<div class="l">아파트코드</div>
+										<div class="r">28901</div>
+									</div>
+									<div>
+										<div class="l">주소</div>
+										<div class="r">(목종)원판파인코 감항 전화장다788주너 39</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">0000000000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+
+									<div>
+										<div class="l">전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">수납가능여부</div>
+										<div class="r">수납완료</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer17');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(아파트관리비) -->
+
+			<!-- s: Modal popup 상세보기(대학등록금) -->
+			<div class="modal_popup popup hide" data-popup="layer18">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세보기(대학등록금)</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer18',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_2">
+							<div class="txt_sm txt_r">조회시간 2021년 05월 18일 18시 15분 40초 <a href="#;" class="btn_refresh sm"><span class="sr_only">새로고침</span></a></div>
+							<div class="double_box mt_2">
+								<div class="btm">
+									<div>
+										<div class="l">학교</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">학생번호</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">학생명</div>
+										<div class="r">-</div>
+									</div>
+									<div>
+										<div class="l">항목(등록금)</div>
+										<div class="r">350,700원</div>
+									</div>
+									<div>
+										<div class="l">총 납부금액</div>
+										<div class="r">350,700원</div>
+									</div>
+									<div>
+										<div class="l">출금계좌번호</div>
+										<div class="r">000000000</div>
+									</div>
+									<div>
+										<div class="l">예금주 전화번호</div>
+										<div class="r">000000000</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer18');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal popup 상세보기(대학등록금) -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
