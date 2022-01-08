@@ -73,3 +73,62 @@ $(document).on('click', '.btn_period', function () {
 	$(this).addClass('active').attr('title', '선택됨')
 		.siblings('.btn_period').removeClass('active').removeAttr('title');
 });
+
+// 입력폼 : 슬라이더
+(function ($) {
+	$.fn.formRange = function (opts) {
+		return this.each(function () {
+			let options = $.extend({}, $.fn.formRange.defaults, opts || {});
+			const $el = $(this),
+				$range = $('.form_range_form', $el),
+				max = $range.attr('max'),
+				min = $range.attr('min');
+
+			// event
+			if (!$('.form_range_value', $el).length) {
+				$el.append('<div class="form_range_value"></div>');
+			}
+			rangeSetting($range, options.unitName, max, min);
+
+			if (options.minShow == true) {
+				$el.append('<div class="form_range_min"></div>');
+				$('.form_range_min', $el).text(min.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + options.unitName);
+			} else {
+				$('.form_range_min', $el).remove();
+			}
+
+			if (options.maxShow == true) {
+				$el.append('<div class="form_range_max"></div>');
+				$('.form_range_max', $el).text(max.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + options.unitName);
+			} else {
+				$('.form_range_max', $el).remove();
+			}
+
+			if (!(options.minShow && options.minShow)) {
+				$el.css('padding-bottom', 0);
+			}
+
+			$el.on('input', function () {
+				rangeSetting($range, options.unitName, max, min);
+			});
+		});
+
+		function rangeSetting(range, unit, max, min) {
+			const $range = range,
+				$value = $range.next('.form_range_value');
+			let val = Number($range.val()),
+				gague = ((val - min) / (max - min) * 100) + '%';
+			$value.text($range.val().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + unit);
+			$value.css('left', gague);
+		}
+	};
+
+	$.fn.formRange.defaults = {
+		unitName: '만원',
+		minShow: true,
+		maxShow: true,
+	};
+})(jQuery);
+$(function () {
+	$('.form_range').formRange();
+});
