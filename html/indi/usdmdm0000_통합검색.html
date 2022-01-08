@@ -23,6 +23,21 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+			// script 추가 2022-01-04(화) 
+			$(document).on('click', '.total_search a', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').attr('title', '선택됨').parent().siblings().find('>a').removeClass().removeAttr(
+					'title');
+
+				if (tg != 'total') {
+					$('[data-sub-tab^="sub"]').hide();
+					$('[data-sub-tab=' + tg + ']').show();
+				} else {
+					$('.total_wrap > .total_account').show();
+				}
+			});
+
 			$('.total_price').click(function () {
 				var tit = $(this).attr('title');
 				$(this).parents('.total_account').toggleClass('active');
@@ -120,21 +135,23 @@
 				</div>
 
 				<div class="section">
-					<div class="tab_menu_type3">
+					<!-- s: class 추가 2022-01-04 수정-->
+					<div class="tab_menu_type3 total_search">
 						<ul>
-							<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>통합 검색</span></a></li>
+							<li><a href="#;" class="current" data-tab-tg="total"><span>전체</span></a></li>
 							<li><a href="#;" data-tab-tg="sub_tab2"><span>메뉴</span></a></li>
 							<li><a href="#;" data-tab-tg="sub_tab3"><span>금융상품몰</span></a></li>
 							<li><a href="#;" data-tab-tg="sub_tab4"><span>웹페이지</span></a></li>
 							<li><a href="#;" data-tab-tg="sub_tab5"><span>FAQ</span></a></li>
 						</ul>
 					</div>
+					<!-- e: class 추가 2022-01-04 수정 -->
 				</div>
 
-				<!-- s: 통합검색 -->
-				<div class="section" data-sub-tab="sub_tab1">
+				<!-- s: 통합검색 2022-01-04 수정 -->
+				<div class="section total_wrap">
 					<!-- s: 메뉴 -->
-					<div class="total_account active">
+					<div class="total_account active" data-sub-tab="sub_tab2">
 						<div class="tbl_tit">
 							<div class="tit_left">
 								<h3 class="tit1">메뉴</h3>
@@ -179,7 +196,7 @@
 					<!-- e: 메뉴 -->
 
 					<!-- s: 금융상품몰 -->
-					<div class="total_account active mt_12">
+					<div class="total_account active mt_12" data-sub-tab="sub_tab3">
 						<div class="tbl_tit">
 							<div class="tit_left">
 								<h3 class="tit1">금융상품몰</h3>
@@ -308,7 +325,7 @@
 					<!-- e: 금융상품몰 -->
 
 					<!-- s: 웹페이지 -->
-					<div class="total_account mt_12">
+					<div class="total_account mt_12" data-sub-tab="sub_tab4">
 						<div class="tbl_tit">
 							<div class="tit_left">
 								<h3 class="tit1">웹페이지</h3>
@@ -358,7 +375,7 @@
 					<!-- e: 웹페이지 -->
 
 					<!-- s: FAQ(자주하는 질문) -->
-					<div class="total_account mt_12">
+					<div class="total_account mt_12" data-sub-tab="sub_tab5">
 						<div class="tbl_tit">
 							<div class="tit_left">
 								<h3 class="tit1">FAQ(자주하는 질문)</h3>
@@ -399,7 +416,7 @@
 					<!-- e: FAQ(자주하는 질문) -->
 
 					<!-- s: 검색결과가 없을 때 -->
-					<div class="total_account mt_12">
+					<div class="total_account mt_12" data-sub-tab="default">
 						<div class="tbl_tit">
 							<div class="tit_left">
 								<h3 class="tit1">FAQ(자주하는 질문)</h3>
@@ -419,9 +436,7 @@
 					</div>
 					<!-- e: 검색결과가 없을 때 -->
 				</div>
-				<!-- e: 통합검색 -->
-
-
+				<!-- e: 통합검색 2022-01-04 수정 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
