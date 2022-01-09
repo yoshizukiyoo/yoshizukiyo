@@ -35,21 +35,20 @@
 			<!-- s: 본문 -->
 			<nav class="tab_menu tab_menu1 mb_0">
 				<ul class="tab_list">
-					<li class="on"><a href="sbpigr01at_공과금_지로_지로납부_조회납부_지로번호입력.html"><span>조회납부</span></a></li>
-					<li><a href="sbpigr01bt_공과금_지로_지로납부_입력납부_정보입력.html"><span>입력납부</span></a></li>
+					<li class="on"><a href="#;"><span>조회납부</span></a></li>
+					<li><a href="#;"><span>입력납부</span></a></li>
 				</ul>
 			</nav>
 
 			<div class="container p_4">
-				<!-- s: 현재 단계 표시 -->
+				<!-- s: 현재 단계 표시 2022-01-09 수정 -->
 				<ul class="input_step">
-					<li><span class="num">1</span><span class="txt">지로번호 입력</span></li>
+					<li><span class="num">1</span><span class="txt">조회</span></li>
 					<li><span class="num">2</span><span class="txt">정보입력</span></li>
-					<li><span class="num">3</span><span class="txt">납부정보</span></li>
-					<li class="on"><span class="num">4</span><span class="txt">입력확인</span></li>
-					<li><span class="num">5</span><span class="txt">납부완료</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">입력확인</span></li>
+					<li><span class="num">4</span><span class="txt">납부완료</span></li>
 				</ul>
-				<!-- e: 현재 단계 표시 -->
+				<!-- e: 현재 단계 표시 2022-01-09 수정 -->
 				<h2 class="tit1">입력확인</h2>
 				<div class="double_box mt_2">
 					<div class="btm">
@@ -88,23 +87,7 @@
 					</div>
 				</div>
 
-				<div class="section">
-					<h2 class="tit1">정보입력</h2>
-					<div class="account_info_box">
-						<a href="#;" onclick="openModal('layerAccount'),this">
-							<span class="bank">
-								<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
-							</span>
-							<div class="info">
-								<strong>스마트 e-Postbank 예금</strong>
-								<p>100057-02-000010</p>
-								<div class="price">
-									<span>출금가능금액</span>
-									<strong>2,345,900 원</strong>
-								</div>
-							</div>
-						</a>
-					</div>
+				<div class="mt_4">
 					<a href="#;" class="tf_item mt_2" onclick="openModal('pwd_full_popup');return false;">
 						<div class="tf_item_body">
 							<div class="input_area">
@@ -118,41 +101,127 @@
 						</div>
 					</a>
 					<p class="txt_guide">비밀번호 5회이상 오류시 거래 제한</p>
-					<div class="tf_item mt_2">
-						<div class="tf_item_body">
-							<div class="input_area">
-								<label class="lab" for="lb_tf_1_2">납부금액</label>
-								<input type="text" id="lb_tf_1_2" class="tf" value="40,000원">
-							</div>
-						</div>
-					</div>
-					<div class="tf_item mt_2">
-						<div class="tf_item_body">
-							<div class="input_area">
-								<label class="lab" for="input2_1">예금주 전화번호 <span class="req">필수항목</span></label>
-								<div class="input_items">
-									<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 73px;" onclick="openModal('layerOption')">010</a>
-									<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력" value="1234-5678">
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
+				<!-- s: 보안카드 입력 -->
+				<div class="section">
+					<h2 class="tit1">보안카드 입력</h2>
+					<div class="security_box">
+						<div>
+							<strong>[55] 앞 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 앞 2자리">
+							</div>
+						</div>
+						<div>
+							<strong>[55] 뒤 2자리</strong>
+							<div class="con">
+								<input type="password" maxlength="2" title="[XX] 뒤 2자리">
+							</div>
+						</div>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: 보안카드 입력 -->
+
+				<!-- s: OTP 입력 -->
+				<div class="section">
+					<h2 class="tit1">OTP 입력</h2>
+					<div class="otp_box">
+						<a href="#;" onclick="openModal('otp_pwd_popup', this);return false;">
+							<i class="on"></i><i></i><i></i><i></i><i></i><i></i>
+						</a>
+					</div>
+					<p class="mt_2 bul_notice">보안카드 5회 연속오류(통합OTP는 10회, 디지털 OTP는 5회)시 서비스가 제한됩니다.</p>
+				</div>
+				<!-- e: OTP 입력 -->
 			</div>
 
-			<!-- s: 하단 고정 영역 -->
+			<!-- s: 하단 고정 영역 2022-01-09 수정 -->
 			<div class="bottom_fixed_area">
 				<div class="btn_group btn_group_flex">
 					<!-- 비활성화시 .btn_disabled 추가 -->
-					<a href="#;" class="btn btn_xl btn_default">
-						<span>취소</span>
-					</a>
-					<a href="sbpigr01cs_공과금_지로_지로납부_조회납부_전자서명.html" class="btn btn_xl btn_primary">
+					<a href="#;" class="btn btn_xl btn_primary">
 						<span>납부</span>
 					</a>
 				</div>
 			</div>
-			<!-- e: 하단 고정 영역 -->
+			<!-- e: 하단 고정 영역 2022-01-09 수정 -->
+
+			<!-- s: Modal Popup 결재선조회 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">결재선조회</h2>
+						<button type="button" class="btn btn_close_popup" onclick="closeModal('layer01',this);">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 결재선조회 -->
+
+			<!-- s: OTP 암호입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="otp_pwd_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">디지털 OTP</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">디지털 OTP 보안인증을 진행합니다.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+									<span class="certi_time">02:59</span>
+								</div>
+							</div>
+							<div class="btn_group btn_bottom_fixed mt_0">
+								<a href="#;" class="btn btn_md btn_round btn_default">
+									<span>인증번호 재입력</span>
+								</a>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								디지털 OTP앱에서 생성한 6자리 번호를 입력해 주세요
+							</p>
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary">인증요청</button>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('otp_pwd_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('otp_pwd_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: OTP 암호입력 팝업 -->
 
 			<!-- s: 비밀번호 입력 팝업 -->
 			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
@@ -185,7 +254,8 @@
 					</div>
 					<div class="popup_footer keypad">
 						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('pwd_full_popup');">취소</button>
 							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
 						</div>
 						<!-- s: 보안 키패드 영역 -->

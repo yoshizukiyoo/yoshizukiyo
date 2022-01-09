@@ -33,6 +33,16 @@
 		<header class="header" data-page-title="자동이체신청"></header>
 		<div id="content">
 			<!-- s: 본문 -->
+
+			<!-- s: tab 추가 2022-01-09 수정 -->
+			<nav class="tab_menu tab_menu1 mb_0">
+				<ul class="tab_list">
+					<li class="on"><a href="#;"><span>자동이체신청</span></a></li>
+					<li><a href="#;"><span>자동이체 조회/변경/해지</span></a></li>
+				</ul>
+			</nav>
+			<!-- e: tab 추가 2022-01-09 수정 -->
+
 			<div class="container p_4">
 				<!-- s: 현재 단계 표시 -->
 				<ul class="input_step">
@@ -42,11 +52,13 @@
 					<li><span class="num">4</span><span class="txt">등록완료</span></li>
 				</ul>
 				<!-- e: 현재 단계 표시 -->
+
 				<h2 class="tit1">약관동의</h2>
 				<div class="box box_border">
 					<div class="txt_normal txt_c">[자동계좌이체] 약관</div>
 					<ul class="num_list txt_gray mt_2">
-						<li>앞면 본인(예금주)이 지급하여야 할 요금에 대하여 우체국앞으로 청구가 있는 경우 별도의 통지 없이 본인의 지정계좌에서 징수의뢰기관이 지정하는 납기일(휴일인 경우 익영업일)에 출금 대체 납부하여 주십시요.</li>
+						<li>앞면 본인(예금주)이 지급하여야 할 요금에 대하여 우체국앞으로 청구가 있는 경우 별도의 통지 없이 본인의 지정계좌에서 징수의뢰기관이 지정하는 납기일(휴일인 경우 익영업일)에 출금 대체
+							납부하여 주십시요.</li>
 					</ul>
 				</div>
 
@@ -65,18 +77,132 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
 
-			<!-- s: 하단 고정 영역 -->
+			<!-- s: 하단 고정 영역 2022-01-09 수정 -->
 			<div class="bottom_fixed_area">
 				<div class="btn_group btn_group_flex">
 					<!-- 비활성화시 .btn_disabled 추가 -->
-					<a href="sbpigr02as_공과금_지로_자동이체신청_자동이체_정보입력.html" class="btn btn_xl btn_primary">
+					<a href="#;" class="btn btn_xl btn_primary">
 						<span>확인</span>
 					</a>
 				</div>
 			</div>
-			<!-- e: 하단 고정 영역 -->
+			<!-- e: 하단 고정 영역 2022-01-09 수정 -->
+
+			<!-- s: 비밀번호 입력 팝업 -->
+			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">비밀번호 입력</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">4자리 숫자를 입력해 주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txt_sm txt_c mt_4 txt_gray">
+								<span class="txt_red d_b txt_normal">비밀번호 오류(1/5)</span>
+								4자리 숫자를 입력해 주세요.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default"
+								onclick="closeModal('pwd_full_popup');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('pwd_full_popup');">확인</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 비밀번호 입력 팝업 -->
+
+			<!-- s: Modal Popup 지로번호 검색 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">지로번호 검색</h2>
+					</div>
+					<div class="popup_body pb_8">
+						<div class="container">
+							<div class="tf_item">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label for="lb_address_group" class="lab">지로번호로 찾기</label>
+										<input type="text" id="lb_address_group" class="tf" value="전체" readonly>
+									</div>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_icon" onclick="openModal('layerOption', this);">
+											<i class=" ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item search_item mt_2">
+								<input type="text" class="tf" title="지로번호 입력" placeholder="지로번호 검색">
+								<a href="#;"><span class="sr_only">검색</span></a>
+							</div>
+							<div class="section">
+								<div class="tbl">
+									<table>
+										<caption class="sr_only">지로번호 검색 표로 지로번호, 기관명(납부자번호 자리수) 정보 제공</caption>
+										<colgroup>
+											<col style="width: 30%;">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">지로번호</th>
+												<th scope="col">기관명(납부자번호 자리수)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>0000000</td>
+												<td class="txt_l">
+													<a href="#;" class="btn_arr">㈜가톨릭 신문사(11)</a>
+												</td>
+											</tr>
+											<tr>
+												<td>0000000</td>
+												<td class="txt_l">
+													<a href="#;" class="btn_arr">㈜삼천리(9)</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: Modal Popup 지로번호 검색 -->
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
