@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="비대면 서류제출"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">약관동의</span></li>
+					<li class="on"><span class="num">5</span><span class="txt">정보입력</span></li>
+				</ul>
+				<p>아래의 증빙서류를 제출하시면<br>심사 후 요청하신 업무를 처리해 드립니다.</p>
+
+				<!-- s: 서류 제출 우체국 -->
+				<div class="mt_5">
+					<h2 class="tit1">서류 제출 우체국 <span class="titr_req req">필수항목</span></h2>
+					<div class="tf_item mt_3 active">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tel">서류 제출 우체국</label>
+								<input type="text" id="lb_tel" class="tf" value="" placeholder="우체국명을 입력주세요." required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray">우체국검색</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 서류 제출 우체국 -->
+
+				<!-- s: 요청하는 서비스(요약) -->
+				<div class="mt_5">
+					<h2 class="tit1">요청하는 서비스(요약) <span class="titr_req req">필수항목</span></h2>
+					<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">서비스 구분</span>
+								<p class="tf">퇴직급여 계좌대월 재약정·해지</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<div class="tf_item mt_3 active">
+						<div class="tf_item_body">
+							<div class="input_area pt_0">
+								<textarea class="tf" id="lb_content" rows="4" title="요청하는 서비스 입력"
+									placeholder="요청하는 서비스 내용을 입력하세요."></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 요청하는 서비스(요약) -->
+
+				<!-- s: 업무 요청내용 -->
+				<div class="mt_5">
+					<h2 class="tit1">업무 요청내용 <span class="titr_req req">필수항목</span></h2>
+					<div class="tf_item mt_3 active">
+						<div class="tf_item_body">
+							<div class="input_area pt_0">
+								<textarea class="tf" id="lb_content" rows="4" title="요청하는 서비스 입력"
+									placeholder="요청하는 서비스 내용을 입력하세요."></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 업무 요청내용 -->
+
+				<!-- s: 서류 촬영 및 사진첨부 -->
+				<div class="section">
+					<div class="fx_lr">
+						<div class="l">
+							<h2 class="tit1">서류 촬영 및 제출 <span class="titr_req req">필수항목</span>
+								<a href="#;" class="ml_1" data-toggle-btn="tooltip2">
+									<i class="ico ico_help"></i>
+									<span class="sr_only">도움말</span>
+								</a>
+								<!-- 툴팁 레이어 -->
+								<div class="tooltip" data-toggle-content="tooltip2">
+									<div class="tooltip_body">
+										<ul class="list list1">
+											<li>최대 5장의 사진을 제출 할 수 있습니다.</li>
+											<li>서류의 내용이 잘 보이도록 촬영해 주세요.</li>
+											<li>제출서류에 개인실명번호(주민등록번호)가 표기된 경우에는 뒷번호 7자리를 종이로 가리거나 지우고 제출해 주세요</li>
+										</ul>
+									</div>
+									<button type="button" class="btn btn_icon btn_close_tooltip">
+										<i class="ico ico_close_sm"></i>
+										<span class="sr_only">닫기</span>
+									</button>
+								</div>
+							</h2>
+						</div>
+						<div class="r txt_lg txt_normal">
+							<span class="txt_bold">1</span> / 5
+						</div>
+					</div>
+					<div class="img_pic_box">
+						<div class="l">
+							<ul>
+								<li><a href="#;" class="btn_pic_add"><span class="sr_only">사진 첨부</span></a></li>
+								<li><a href="#;" class="btn_pic_cmr"><span class="sr_only">사진 촬영</span></a></li>
+							</ul>
+						</div>
+						<div class="r">
+							<ul class="pic_list">
+								<li>
+									<img src="/resources/img/content/img_pic_temp.gif" alt="">
+									<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+								</li>
+								<li>
+									<img src="/resources/img/content/img_pic_temp.gif" alt="">
+									<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+								</li>
+								<li>
+									<img src="/resources/img/content/img_pic_temp.gif" alt="">
+									<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+								</li>
+								<li>
+									<img src="/resources/img/content/img_pic_temp.gif" alt="">
+									<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+								</li>
+								<li>
+									<img src="/resources/img/content/img_pic_temp.gif" alt="">
+									<a href="#;" class="btn_pic_remove"><span class="sr_only">사진 삭제</span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- e: 서류 촬영 및 사진첨부 -->
+
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>제출하기</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 서류 제출 comfirm 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer00">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_body pb_4">
+						<div class="container txt_c">
+							<p>모든 약관 내용을 확인하고 동의해야 합니다.</p>
+							<p class="mt_2">담당자의 검토 후 업무처리가 진행되므로 다소 시간이 소모됩니다.</p>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer00');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer00');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 서류 제출 comfirm 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
