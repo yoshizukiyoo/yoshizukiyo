@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 탭메뉴 활성화
+			$('.service_tab a').on('click', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">서비스 이용절차</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box hsm_service first_section">
+					<strong class="txt_lg">보안토큰(HSM) 서비스란?</strong>
+					<p class="txt_gray">내부에CPU와 메모리 등이 장착되어 있어 외부위협으로부터 공동인증서(개인 키포함)를 안전하게 보호할 수 있는 스마트카드, USB토큰 등의 휴대가능한
+						저장장치입니다.</p>
+				</div>
+
+				<div class="section">
+					<h3 class="tit1">보안토큰(HSM)</h3>
+					<ul class="list list1">
+						<li>내부에 CPU와 메모리 등이 장착되어 있어 외부위협으로부터 공동인증서(개인키 포함)를 안전하게 보호할 수 있는 스마트카드, USB토큰 등의 휴대가능한 저장장치</li>
+						<li>인터넷뱅킹 이용시 보안토큰을 사용하면 보안1등급의 이체한도 적용</li>
+						<li>보안토큰을 사용하려면 반드시 전용 구동프로그램을 설치 한 후 사용가능</li>
+					</ul>
+				</div>
+
+				<div class="mt_10">
+					<h3 class="tit1">보안토큰 구동프로그램 설치 방법</h3>
+					<ul class="list list1">
+						<li>안전등급 수준의 이체한도를 적용받으려면 반드시 보안토큰(HSM)에 인증서를 직접 발급 받아 사용하여야 함
+							<ul class="list list3">
+								<li>하드디스크 또는 이동식디스크에 저장한 인증서를 보안토큰(HSM)에 복사후 사용하는 경우 이체한도 변경불가</li>
+								<li>인터넷뱅킹을 제외한 폰뱅킹 및 VM모바일뱅킹, 스마트폰뱅킹으로 거래하는 경우 기존이체한도 유지</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 service_tab mt_12">
+					<ul>
+						<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>보안토큰에 인증서 발급받기</span></a></li>
+						<li><a href="#;" data-tab-tg="sub_tab2"><span>보안토큰에 저장한 인증서 사용하기</span></a></li>
+					</ul>
+				</div>
+
+				<!-- s: sub_tab1 -->
+				<div class="mt_12" data-sub-tab="sub_tab1">
+					<div class="box p_10 pt_9">
+						<ol class="online_certi_step col_3">
+							<li>
+								<div class="tit">
+									<span class="num">01</span>
+									<h4 class="txt_normal">공동인증서 발급/재발급 4단계에서 저장 매체를 보안토큰으로 선택</h4>
+								</div>
+								<div class="txt_c mt_3">
+									<img src="/resources/img/content/img_hsm_step01.gif" alt="공동인증서 발급/재발급 4단계에서 저장매체를 보안토큰으로 선택">
+								</div>
+							</li>
+							<li>
+								<div class="tit">
+									<span class="num">02</span>
+									<h4 class="txt_normal">구동프로그램 설치 정보선택</h4>
+								</div>
+								<div class="txt_c mt_5">
+									<img src="/resources/img/content/img_hsm_step02.gif" alt="구동프로그램 설치 정보선택">
+								</div>
+							</li>
+							<li>
+								<div class="tit">
+									<span class="num">03</span>
+									<h4 class="txt_normal">보안토큰 비밀번호 입력</h4>
+								</div>
+								<div class="txt_c mt_5">
+									<img src="/resources/img/content/img_hsm_step03.gif" alt="보안토큰 비밀번호 입력">
+								</div>
+								<ul class="list list1 mt_6">
+									<li>보안토큰 비밀번호는 구동프로그램에서 설정/변경 가능</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<!-- e: sub_tab1 -->
+
+				<!-- s: sub_tab2 -->
+				<div class="mt_12" data-sub-tab="sub_tab2" style="display: none;">
+					<div class="box p_10 pt_9">
+						<ol class="online_certi_step col_3">
+							<li>
+								<div class="tit">
+									<span class="num">01</span>
+									<h4 class="txt_normal">공동인증서 발급/재발급 4단계에서 저장 매체를 보안토큰으로 선택</h4>
+								</div>
+								<div class="txt_c mt_3">
+									<img src="/resources/img/content/img_hsm_step04.gif" alt="공동인증서 발급/재발급 4단계에서 저장매체를 보안토큰으로 선택">
+								</div>
+							</li>
+							<li>
+								<div class="tit">
+									<span class="num">02</span>
+									<h4 class="txt_normal">구동프로그램 설치 정보선택</h4>
+								</div>
+								<div class="txt_c mt_5">
+									<img src="/resources/img/content/img_hsm_step05.gif" alt="구동프로그램 설치 정보선택">
+								</div>
+								<ul class="list list1 mt_6">
+									<li>설치된 구동프로그램이 없을 경우 해당 드라이버가 보이지 않음</li>
+								</ul>
+							</li>
+							<li>
+								<div class="tit">
+									<span class="num">03</span>
+									<h4 class="txt_normal">보안토큰 비밀번호 입력</h4>
+								</div>
+								<div class="txt_c mt_5">
+									<img src="/resources/img/content/img_hsm_step06.gif" alt="보안토큰 비밀번호 입력">
+								</div>
+								<ul class="list list1 mt_6">
+									<li>보안토큰 비밀번호는 구동프로그램에서 설정/변경 가능</li>
+								</ul>
+							</li>
+							<li>
+								<div class="tit">
+									<span class="num">04</span>
+									<h4 class="txt_normal">인증서 선택 후 로그인 또는 전자서명 완료
+									</h4>
+								</div>
+								<div class="txt_c mt_5">
+									<img src="/resources/img/content/img_hsm_step07.gif" alt="인증서 선택 후 로그인 또는 전자서명 완료">
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<!-- e: sub_tab2 -->
+
+
+
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
