@@ -22,7 +22,17 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		//
+		$(document).ready(function () {
+			// 탭메뉴 활성화
+			$(document).on('click', '[data-tab-tg]', function (e) {
+				e.preventDefault;
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				// obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+		});
 	</script>
 </head>
 
@@ -52,45 +62,442 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				<div class="first_section box">
-					<ul class="list list1">
-						<li>패키지 설치가 필요한 경우 고객센터&gt;이용안내&gt;패키지자료실로 이동하세요.</li>
-					</ul>
-				</div>
+				<div data-sub-tab="sub_main">
+					<div class="first_section box">
+						<ul class="list list1">
+							<li>패키지 설치가 필요한 경우 <a href="ccuipz0001_고객센터_이용안내_패키지자료실.html" class="link brown"
+									title="해당 페이지를 벗어나게 됩니다.">고객센터&gt;이용안내&gt;패키지자료실</a> 로 이동하세요.</li>
+						</ul>
+					</div>
 
-				<div class="section">
-					<div class="tbl">
-						<table>
-							<caption class="sr_only">보안프로그램 조치안내 표로 번호, 제목 정보 제공</caption>
-							<colgroup>
-								<col style="width: 17%">
-								<col>
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">번호</th>
-									<th scope="col">제목</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td class="txt_l"><a href="#;">키보드 입력 안되는 경우 조치 안내</a></td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td class="txt_l"><a href="#;">(엣지, 크롬 등 멀티브라우저) 키보드 보안 프로그램 설치가 안되는 경우(반복설치 등) 조치 안내</a></td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td class="txt_l"><a href="#;">(엣지 브라우저) 한글 입력이 안되는 경우 조치 안내</a></td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="section">
+						<ul class="pt_service security">
+							<li class="bg01 pb_0">
+								<h4 class="tit">윈도우10, 인터넷익스플로러(IE)</h4>
+								<p class="desc">키보드 입력 안되는 경우 조치 안내<br><br></p>
+								<div class="txt_c">
+									<a href="#;" class="btn btn_white_link" data-tab-tg="sub_tab01">바로가기</a>
+								</div>
+							</li>
+							<li class="bg02 pb_0">
+								<h4 class="tit">엣지, 크롬 등 멀티브라우저</h4>
+								<p class="desc">키보드 보안 프로그램 설치가 안되는 경우
+									(반복설치 등) 조치 안내</p>
+								<div class="txt_c">
+									<a href="#;" class="btn btn_white_link" data-tab-tg="sub_tab02">바로가기</a>
+								</div>
+							</li>
+							<li class="bg03 pb_0">
+								<h4 class="tit">엣지 브라우저</h4>
+								<p class="desc">한글 입력이 안되는 경우 조치 안내<br><br></p>
+								<div class="txt_c">
+									<a href="#;" class="btn btn_white_link" data-tab-tg="sub_tab03">바로가기</a>
+								</div>
+							</li>
+						</ul>
 					</div>
 				</div>
-				
+
+				<!-- s: tab01 키보드 입력 -->
+				<div data-sub-tab="sub_tab01" style="display: none;">
+					<div class="first_section security_solution bg01">
+						<div class="l">
+							<strong class="txt_lg txt_darkprimary">윈도우10, 인터넷 익스플로러(IE)에서 인터넷뱅킹 이용시</strong>
+							<p class="txt_lg txt_medium">키보드 입력 안되는 경우 조치방법 알림</p>
+						</div>
+						<div class="r">
+							<a href="#;" class="btn btn_md btn_back" data-tab-tg="sub_main">뒤로가기</a>
+						</div>
+					</div>
+
+					<div class="section">
+						<h4 class="tit3">장애원인 : <span class="txt_normal">윈도우 10의 대규모 업데이트로 OS내부 구조가 변경되어 이를 이용하는 키보드 보안 프로그램이 정상적으로
+								동작하지 않은 오류 발생</span></h4>
+					</div>
+
+					<div class="section">
+						<h4 class="tit3">조치방법 : <span class="txt_normal">키보드보안(TouchEnNxKey) 프로그램 재설치 후 PC 재부팅</span></h4>
+					</div>
+
+					<div class="section">
+						<ol class="online_certi_step">
+							<li class="one_step">
+								<div class="tit">
+									<span class="num">01</span>
+									<h4 class="txt_normal"><a href="#;" class="btn btn_download_navy mr_1">키보드보안 재설치 프로그램 다운로드</a> 클릭
+									</h4>
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">02</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">실행</span> 클릭</h4>
+								</div>
+								<div class="box txt_c p_10">
+									<img src="/resources/img/content/img_security_solution09.gif" alt="실행 버튼 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">03</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">재설치</span> 클릭</h4>
+								</div>
+								<div class="box txt_c p_10">
+									<img src="/resources/img/content/img_security_solution10.gif" alt="재설치 버튼 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">04</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">예</span> 클릭</h4>
+								</div>
+								<div class="box txt_c p_10">
+									<img src="/resources/img/content/img_security_solution11.gif" alt="예 버튼 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">05</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">확인, 종료</span> 클릭</h4>
+								</div>
+								<div class="box txt_c p_10">
+									<img src="/resources/img/content/img_security_solution12.gif" alt="확인, 종료 버튼 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">06</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">PC 재부팅</span> 실시</h4>
+								</div>
+								<ul class="list list1 pl_3">
+									<li>재설치 후 반드시 PC를재부팅해야 정상적으로 설치가 완료됩니다.</li>
+								</ul>
+								<div class="box p_10 mt_4 txt_c">
+									<a href="#;" class="btn btn_download_navy">키보드보안 재설치 프로그램 다운로드</a>
+									<p class="mt_5">키보드보안프로그램 재설치 및 PC 재부팅 후에도 키보드입력 불가 시<br>
+										<span class="d_i_b border_b bdr_btm_line">키보드보안프로그램 고객센터(라온시큐어, 1644-4128)</span>로 문의하여 주시기 바랍니다.
+									</p>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<!-- e: tab01 키보드 입력 -->
+
+				<!-- s: tab02 키보드 보안프로그램 -->
+				<div data-sub-tab="sub_tab02" style="display: none;">
+					<div class="first_section security_solution bg02">
+						<div class="l">
+							<strong class="txt_lg txt_darkprimary">엣지, 크롬 등 멀티브라우저에서 인터넷뱅킹 이용 시</strong>
+							<p class="txt_lg txt_medium">키보드 보안 프로그램 설치가 안되는 경우(반복설치 등) 조치안내</p>
+						</div>
+						<div class="r">
+							<a href="#;" class="btn btn_md btn_back" data-tab-tg="sub_main">뒤로가기</a>
+						</div>
+					</div>
+
+					<div class="section">
+						<h4 class="tit3">장애원인 : <span class="txt_normal">브라우저 확장 프로그램 미설치로 인한 반복설치 유도</span></h4>
+					</div>
+
+					<div class="section">
+						<h4 class="tit3">조치방법 : <span class="txt_normal">브라우저 확장 프로그램 추가 설치</span></h4>
+					</div>
+
+					<div class="section">
+						<ol class="online_certi_step">
+							<li class="one_step">
+								<div class="tit">
+									<span class="num">01</span>
+									<h4 class="txt_normal">우체국인터넷뱅킹 접속<span class="txt_darkprimary">(www.epostbank.go.kr)</span>하여 로그인 클릭
+										시 <span class="txt_darkprimary">키보드보안 보안프로그램 설치 화면</span>으로 이동 됨</h4>
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">02</span>
+									<h4 class="txt_normal">브라우저 확장 기능 설치 팝업화면의 <span class="txt_darkprimary">“등록하기”</span> 클릭</h4>
+								</div>
+								<ul class="list list1 pl_3">
+									<li>설치사유 : 최신버전 엣지 브라우저는 크롬 엔진을 사용하고 있어 크롬 extension 설치 필요</li>
+								</ul>
+								<div class="box p_10 mt_4 txt_c">
+									<img src="/resources/img/content/img_security_solution01.gif" alt="브라우저 확장 기능 설치 등록하기">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">03</span>
+									<h4 class="txt_normal">화면 상단의 안내팝업<span class="txt_darkprimary">(다른 스토어의 확장 허용)</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution02.gif" alt="화면 상단의 안내팝업(다른 스토어의 확장 허용) 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">04</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“다른 스토어의 확장 허용”</span> 팝업에서 <span
+											class="txt_darkprimary">“허용”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution03.gif" alt="“다른 스토어의 확장 허용” 팝업에서 “허용” 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">05</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“Chome에 추가”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution04.gif" alt="“Chome에 추가” 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">06</span>
+									<h4 class="txt_normal">“TouchEn PC보안 확장”팝업에서 <span class="txt_darkprimary">“확장추가”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution05.gif" alt="“TouchEn PC보안 확장”팝업에서 “확장추가” 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">07</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“동기화켜기”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution06.gif" alt="“동기화켜기” 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">08</span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">설치 완료 팝업창의 “확인”</span> 클릭 후 인터넷뱅킹 홈페이지 이동 후 로그인
+									</h4>
+								</div>
+								<ul class="list list1 pl_3">
+									<li>로그인화면으로 이동 시 설치 완료</li>
+								</ul>
+								<div class="box p_10 mt_4 txt_c">
+									<img src="/resources/img/content/img_security_solution07.gif"
+										alt="설치 완료 팝업창의 “확인” 클릭 후 인터넷뱅킹 홈페이지 이동 후 로그인">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num">09</span>
+									<h4 class="txt_normal">정상설치 여부 확인</h4>
+								</div>
+								<ul class="list list1 pl_3">
+									<li>로그인화면에서 아이디로그인의 <span class="txt_darkprimary">아이디 입력란 클릭</span> 시 화면 오른쪽 하단 <i
+											class="ico ico_key_protect"></i> <span class="txt_darkprimary">키보드보안 동작 중(Ver 1.0.0.75)</span> 확인
+										가능
+										<ul class="list list3">
+											<li>단말 설정에 따라 <span class="txt_darkprimary">아이콘이 나타나지 않을 수도 있으며</span> 인터넷뱅킹 거래 정상 진행시 설치완료 상태임
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<div class="box p_10 mt_4 txt_c">
+									<img src="/resources/img/content/img_security_solution08.gif" alt="정상설치 여부 확인">
+									<p class="mt_2">조치후에도 동일현상 반복 시<br>
+										<span class="d_i_b border_b bdr_btm_line">키보드보안프로그램 고객센터(라온시큐어, 1644-4128)</span>로 문의하여 주시기 바랍니다.
+									</p>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<!-- e: tab02 키보드 보안프로그램 -->
+
+				<!-- s: tab03 한글입력 -->
+				<div data-sub-tab="sub_tab03" style="display: none;">
+					<div class="first_section security_solution bg03">
+						<div class="l">
+							<p class="txt_lg txt_medium mt_0">엣지 브라우저에서 한글 입력이 안되는 경우 조치 안내</p>
+						</div>
+						<div class="r">
+							<a href="#;" class="btn btn_md btn_back" data-tab-tg="sub_main">뒤로가기</a>
+						</div>
+					</div>
+
+					<div class="section">
+						<h4 class="tit3">장애원인 : <span class="txt_normal">구버전 엣지브라우저의 내부 오류로 키보드보안 프로그램의 정상적으로 동작하지 않아 한글 입력이
+								안되는현상</span></h4>
+					</div>
+
+					<div class="section">
+						<div class="flex_box fx_justify_left fx_align_base">
+							<h4 class="tit3 mr_1">조치방법 :</h4>
+							<div>
+								<p class="txt_normal txt_lg">edge 브라우저 최신버전 재설치</p>
+								<span class="txt_gray">* 브라우저 확장 프로그램 추가 미설치 상태인 경우 추가 설치 필요</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="section">
+						<h3 class="tit1">1. edge 브라우저 최신버전 설치</h3>
+						<ol class="online_certi_step">
+							<li class="one_step">
+								<div class="tit">
+									<span class="num num_ex">01- <span>1</span></span>
+									<h4 class="txt_normal">마이크로소프트 홈페이지에서 새 Micofsoft Edge <span class="txt_darkprimary">“다운로드”</span> 클릭
+									</h4>
+								</div>
+								<ul class="list list1 pl_3">
+									<li>마이크로소프트 홈페이지 이동(https://www.microsoft.com.ko-kr.edge)</li>
+								</ul>
+								<div class="box mt_4 p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution13.gif"
+										alt="마이크로소프트 홈페이지에서 새 Micofsoft Edge 다운로드 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">01- <span>2</span></span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“닫은 후 계속”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution14.gif" alt="닫은 후 계속 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">01- <span>3</span></span>
+									<h4 class="txt_normal">설치 진행</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution15.gif" alt="설치 진행">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">01- <span>4</span></span>
+									<h4 class="txt_normal">완료</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution16.gif" alt="설치 완료">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">01- <span>5</span></span>
+									<h4 class="txt_normal">우체국인터넷뱅킹 접속(www.epostbank.go.kr)하여 <span class="txt_darkprimary">로그인</span> 클릭
+										시</h4>
+								</div>
+								<ul class="pl_2">
+									<li>1. <span class="txt_darkprimary">로그인 화면</span>으로 이동 시 → 거래 진행하여 한글 입력 여부 확인</li>
+									<li>2. <span class="txt_darkprimary">키보드보안 보안프로그램 설치 화면</span>으로 이동 시 → 다음 절차(2. 브라우저 확장 프로그램 설치) 진행
+									</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<div class="section">
+						<h3 class="tit1">2.브라우저 확장프로그램 설치</h3>
+						<ol class="online_certi_step">
+							<li class="one_step">
+								<div class="tit">
+									<span class="num num_ex">02-<span>1</span></span>
+									<h4 class="txt_normal">브라우저 확장 기능 설치 팝업화면의 <span class="txt_darkprimary">“등록하기”</span> 클릭</h4>
+								</div>
+								<ul class="list list1 pl_3">
+									<li>설치사유 : 최신버전 엣지 브라우저는 크롬 엔진을 사용하고 있어 크롬 extension 설치 필요
+									</li>
+								</ul>
+								<div class="box p_10 mt_4 txt_c">
+									<img src="/resources/img/content/img_security_solution17.gif" alt="브라우저 확장 기능 설치 팝업화면의 등록하기 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">02-<span>2</span></span>
+									<h4 class="txt_normal">화면 상단의 안내팝업<span class="txt_darkprimary">(다른 스토어의 확장 허용)</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution18.gif" alt="화면 상단의 안내팝업 (다른 스토어의 확장 허용) 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">02-<span>3</span></span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“다른 스토어의 확장 허용”</span> 팝업에서 <span
+											class="txt_darkprimary">“허용”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution19.gif" alt="다른 스토어의 확장 허용 팝업에서 허용 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">02-<span>4</span></span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“Chome에 추가”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution20.gif" alt="Chome에 추가 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">02-<span>5</span></span>
+									<h4 class="txt_normal">“TouchEn PC보안 확장”팝업에서 <span class="txt_darkprimary">“확장추가”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution21.gif" alt="확장추가 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">02-<span>6</span></span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“동기화켜기”</span> 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution22.gif" alt="동기화켜기 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">02-<span>7</span></span>
+									<h4 class="txt_normal"><span class="txt_darkprimary">“확인”</span> 클릭 후 인터넷뱅킹 홈페이지 접속 → 로그인 클릭</h4>
+								</div>
+								<div class="box p_10 txt_c">
+									<img src="/resources/img/content/img_security_solution23.gif" alt="확인 클릭 후 인터넷뱅킹 홈페이지 접속 → 로그인 클릭">
+								</div>
+							</li>
+							<li class="one_step mt_16">
+								<div class="tit">
+									<span class="num num_ex">02-<span>8</span></span>
+									<h4 class="txt_normal">정상설치 여부 확인</h4>
+								</div>
+								<ul class="list list1 pl_3">
+									<li>로그인화면에서 아이디로그인의 <span class="txt_darkprimary">아이디 입력란 클릭</span> 시 화면 오른쪽 하단 <i
+											class="ico ico_key_protect"></i> <span class="txt_darkprimary">키보드보안 동작 중(Ver 1.0.0.75)</span> 확인
+										가능
+										<ul class="list list3">
+											<li>단말 설정에 따라 <span class="txt_darkprimary">아이콘이 나타나지 않을 수도 있으며</span> 인터넷뱅킹 거래 정상 진행시 설치완료 상태임
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<div class="box p_10 mt_4 txt_c">
+									<img src="/resources/img/content/img_security_solution23.gif" alt="정상설치 여부 확인">
+									<p class="mt_2">조치후에도 동일현상 반복 시<br>
+										<span class="d_i_b border_b bdr_btm_line">키보드보안프로그램 고객센터(라온시큐어, 1644-4128)</span>로 문의하여 주시기 바랍니다.
+									</p>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<!-- e: tab03 한글입력 -->
+
 				<!-- e: 본문 -->
+
+
 			</div>
 		</article>
 		<footer class="footer"></footer>

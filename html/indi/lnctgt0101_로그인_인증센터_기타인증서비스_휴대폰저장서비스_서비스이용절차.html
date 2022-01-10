@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 탭메뉴 활성화
+			$('.service_tab a').on('click', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">서비스 이용절차</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="box first_section">
+					<strong class="txt_lg">휴대폰저장 서비스란?</strong>
+					<p class="txt_gray">인터넷 뱅킹에서 사용되는 인증서를 휴대폰에 저장해 두었다가, 본인의 인증서가 저장되어 있지 않은 PC에서(PC방 등) 휴대폰에 저장된 인증서를 불러와 인터넷뱅킹을
+						사용할 수 있도록 하는 유료서비스 입니다.
+						<button type="button" class="btn btn_xs btn_outline_default ml6">휴대폰에 인증서 저장하기</button>
+					</p>
+				</div>
+
+				<div class="tab_menu_type1 service_tab mt_12">
+					<ul>
+						<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>1. 휴대폰에 인증서 저장</span></a></li>
+						<li><a href="#;" data-tab-tg="sub_tab2"><span>2. 휴대폰 인증서 사용</span></a></li>
+						<li><a href="#;" data-tab-tg="sub_tab3"><span>3. 인증서 관리</span></a></li>
+					</ul>
+				</div>
+
+				<!-- s: sub_tab1 -->
+				<div class="mt_12" data-sub-tab="sub_tab1">
+					<div>
+						<h3 class="tit1">휴대폰 인증서 서비스 가입</h3>
+						<ul class="list list1">
+							<li>PC → 휴대폰으로 무선인터넷을 통하여 인증서를 저장합니다.</li>
+							<li>인증서는 안전한 방법으로 이동됩니다. <br>휴대폰 인증번호를 이용한 휴대폰사용자 본인확인, PC와 휴대폰간의 End-to-End 암호화</li>
+						</ul>
+					</div>
+
+					<div class="section">
+						<h3 class="tit1">인증서저장순서</h3>
+						<ol class="cmp_step phone_certi">
+							<li class="bg01">휴대폰에 인증서 저장</li>
+							<li class="bg02">휴대폰 인증서 사용</li>
+							<li class="bg03">인증서 관리</li>
+							<li class="bg04">서비스 체험하기</li>
+						</ol>
+					</div>
+
+					<div class="section">
+						<h3 class="tit1">서비스사용이 가능한 휴대폰</h3>
+						<ul class="list list1">
+							<li>2002년 이후에 생산된 칼라액정 휴대폰은 일반적으로 사용이 가능하며, 휴대폰 게임을 다운로드 받을 수 있는 단말기면 본 서비스도 가능합니다. 이용 가능한 휴대폰에 대한 자세한 문의는
+								해당 통신사 콜센터로 문의하시기 바랍니다.</li>
+						</ul>
+					</div>
+
+					<div class="box section">
+						<dl>
+							<dt>참고사항</dt>
+							<dd>
+								<ul class="list list2">
+									<li>휴대폰에 설치된 인증서저장/전송 프로그램을 삭제하시거나 새로 다운로드를 받은 경우, 저장된 인증서가 삭제 됩니다. <br>이 경우 PC -> 휴대폰으로 인증서를 다시 저장
+										하셔야 합니다.</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- e: sub_tab1 -->
+
+				<!-- s: sub_tab2 -->
+				<div class="mt_12" data-sub-tab="sub_tab2" style="display: none;">
+					<div>
+						<h3 class="tit1">휴대폰 인증서 서비스 가입</h3>
+						<ul class="list list1">
+							<li>PC → 휴대폰으로 무선인터넷을 통하여 인증서를 저장합니다.</li>
+							<li>인증서는 안전한 방법으로 이동됩니다. <br>휴대폰 인증번호를 이용한 휴대폰사용자 본인확인, PC와 휴대폰간의 End-to-End 암호화</li>
+						</ul>
+					</div>
+
+					<div class="section">
+						<h3 class="tit1">인증서저장순서</h3>
+						<ol class="cmp_step phone_certi">
+							<li class="bg05">PC에서 수행</li>
+							<li class="bg06">PC에서 수행</li>
+							<li class="bg07">휴대폰에서 수행</li>
+							<li class="bg08">PC에서 수행</li>
+						</ol>
+					</div>
+
+					<div class="section">
+						<h3 class="tit1">서비스사용이 가능한 휴대폰</h3>
+						<ul class="list list1">
+							<li>2002년 이후에 생산된 칼라액정 휴대폰은 일반적으로 사용이 가능하며, 휴대폰 게임을 다운로드 받을 수 있는 단말기면 본 서비스도 가능합니다. 이용 가능한 휴대폰에 대한 자세한 문의는
+								해당 통신사 콜센터로 문의하시기 바랍니다.</li>
+						</ul>
+					</div>
+
+					<div class="box section">
+						<dl>
+							<dt>참고사항</dt>
+							<dd>
+								<ul class="list list2">
+									<li>휴대폰에 설치된 인증서저장/전송 프로그램을 삭제하시거나 새로 다운로드를 받은 경우, 저장된 인증서가 삭제 됩니다. <br>이 경우 PC -> 휴대폰으로 인증서를 다시 저장
+										하셔야 합니다.</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- e: sub_tab2 -->
+
+				<!-- s: sub_tab3 -->
+				<div class="mt_12" data-sub-tab="sub_tab3" style="display: none;">
+					<div>
+						<h3 class="tit1">인증서관리</h3>
+						<div>
+							<h4 class="tit3">휴대폰에 저장된 인증서 조회 / 삭제 방법</h4>
+							<ul class="list list1 mt_4">
+								<li>휴대폰에 설치한 휴대폰인증서 서비스 UBIkey 실행 > 메뉴항목 중 ‘인증서관리‘ 선택</li>
+								<li>인증서관리를 선택 - 저장된 인증서 목록이 나타납니다. 이중, 삭제를 원하는 항목을 선택하고 삭제 버튼을 선택 휴대폰인증서비스를 계속 이용하시려면 기간이 만료된 인증서나 재발급
+									등의 사유로 사용 불가한 인증서는 삭제하고 유효한 인증서를 다시 휴대폰에 저장하셔야 합니다.</li>
+							</ul>
+						</div>
+
+						<div class="section">
+							<h4 class="tit3">휴대폰에 저장된UBIkey 프로그램 찾는 방법</h4>
+							<div class="tbl_data tbl_row_data mt_5">
+								<table>
+									<caption class="sr_only">통신사별 휴대폰에 저장된UBIkey 프로그램 찾는 방법 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 25%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">피처폰 SKT 이용고객</th>
+											<td>휴대폰에서 Nate 선택> (m)playon(마법사보관함) 선택> 휴대폰 인증서 서비스(UBIkey)</td>
+										</tr>
+										<tr>
+											<th scope="row">피처폰 KT 이용고객</th>
+											<td>휴대폰에서 multipack/Show 선택> 다운로드센터/다운로드팩 > 휴대폰 인증서 서비스(UBIkey)</td>
+										</tr>
+										<tr>
+											<th scope="row">피처폰 LG U+ 이용고객</th>
+											<td>휴대폰에서 ez-i/LG U+ 선택 > DownTown > 휴대폰 인증서 서비스(UBIkey)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="box section">
+						<dl>
+							<dt>참고사항</dt>
+							<dd>
+								<ul class="list list2">
+									<li>휴대폰인증서 APP 또는 VM(인증서관리프로그램)을 삭제할 경우, 인증서도 함께 삭제됩니다.<br>
+										인증서가 삭제된 경우, 하드디스크에 있는 인증서를 다시 저장하시면 됩니다.</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- e: sub_tab3 -->
+
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
