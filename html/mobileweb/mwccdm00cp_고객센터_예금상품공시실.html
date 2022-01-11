@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".topbtn_box li").click(function () {
+				if (!$(this).closest("li").hasClass("on")) {
+					$(".topbtn_box li").removeClass("on");
+					$(this).closest("li").addClass("on");
+				} else {
+					$(this).closest("li").removeClass("on");
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_mobileweb.html" data-page-title="고객센터"></header>
+		<div id="content">
+			<button type="button" class="btn btn_md btn_primary ml_2" onclick="openModal('layer01')">예금상품 공시실</button>
+			<!-- s: 본문 -->
+
+			<!-- s: 예금상품 공시실 팝업 -->
+			<div class=" modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">예금상품 공시실</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container mb_4">
+
+							<div class="board_search mt_4">
+								<input type="text" class="tf" title="상품명을 입력하세요" placeholder="상품명을 입력하세요.">
+								<a href="#;" class="btn_search">
+									<span class="sr_only">검색</span>
+								</a>
+							</div>
+
+							<ul class="topbtn_box mt_2">
+								<li class="on"><a href="#;">판매 중인 상품</a></li>
+								<li><a href="#;">판매 중지된 상품</a></li>
+							</ul>
+
+							<div class="section mt_9">
+								<h2 class="tit1">판매 중인 상품 41개</h2>
+								<div class="tbl tbl_p_8px">
+									<table>
+										<caption class="sr_only">판매 중인 상품</caption>
+										<colgroup>
+											<col>
+											<col style="width: 40%;">
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">구분</th>
+												<th scope="col">상품명</th>
+												<th scope="col" class="pl_1 pr_1">최종<br>등록일</th>
+												<th scope="col" class="pl_1 pr_1">공시<br>정보</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_between">적금</td>
+												<td class="txt_l txt_between">모바일푸르니적금</td>
+												<td class="pl_1 pr_1 txt_between">2021.09.01</td>
+												<td class="pl_1 pr_1">
+													<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+														onclick="openModal('layer02')">보기</a>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_between">입출금</td>
+												<td class="txt_l txt_between">우체국&nbsp;건설하나로통장</td>
+												<td class="pl_1 pr_1 txt_between">2020.08.03</td>
+												<td class="pl_1 pr_1">
+													<a href="#;" class="btn btn_sm btn_round btn_outline_default"
+														onclick="openModal('layer02')">보기</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 예금상품 공시실 팝업 -->
+
+			<!-- s: 예금상품 공시실 상세보기 팝업 -->
+			<div class=" modal_popup popup hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">예금상품 공시실</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container mt_4 mb_4">
+							<h2 class="tit1">우체국 건설하나로 통장</h2>
+							<div class="f_r txt_col_333 txt_sm">
+								최종등록일 <span class="txt_normal">2021.08.03</span>
+							</div>
+							<div class="tbl mt_8">
+								<table>
+									<caption class="sr_only">우체국 건설하나로 통장</caption>
+									<colgroup>
+										<col>
+										<col style="width: 33.33%">
+										<col style="width: 33.33%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">시행일</th>
+											<th scope="col">약관</th>
+											<th scope="col">상품설명서</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>2021.07.01</td>
+											<td>
+												<a href="#;" class="btn btn_sm btn_round btn_outline_default pl_2 pr_2">다운로드</a>
+											</td>
+											<td>
+												<a href="#;" class="btn btn_sm btn_round btn_outline_default pl_2 pr_2">다운로드</a>
+											</td>
+										</tr>
+										<tr>
+											<td>2021.05.28</td>
+											<td>
+												<a href="#;" class="btn btn_sm btn_round btn_outline_default pl_2 pr_2">다운로드</a>
+											</td>
+											<td>
+												<a href="#;" class="btn btn_sm btn_round btn_outline_default pl_2 pr_2">다운로드</a>
+											</td>
+										</tr>
+										<tr>
+											<td>2021.08.03</td>
+											<td>
+												<a href="#;" class="btn btn_sm btn_round btn_outline_default pl_2 pr_2">다운로드</a>
+											</td>
+											<td>
+												<a href="#;" class="btn btn_sm btn_round btn_outline_default pl_2 pr_2">다운로드</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="bottom_fixed_area">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_xl btn_primary" onclick="closeModal('layer02')">
+								<span>목록으로 돌아가기</span>
+							</a>
+						</div>
+					</div>
+
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 예금상품 공시실 상세보기 팝업 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

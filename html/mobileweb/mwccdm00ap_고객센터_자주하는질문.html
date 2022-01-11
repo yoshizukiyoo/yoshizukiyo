@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".fc_faq_box > ul > li strong").click(function () {
+				if (!$(this).closest("li").hasClass("on")) {
+					$(this).closest("li").addClass("on");
+					$(this).next().slideDown();
+				} else {
+					$(this).closest("li").removeClass("on");
+					$(this).next().slideUp();
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_mobileweb.html" data-page-title="고객센터"></header>
+		<div id="content">
+			<button type="button" class="btn btn_md btn_primary ml_2" onclick="openModal('layer01')">자주하는 질문</button>
+			<!-- s: 본문 -->
+
+			<!-- s: 자주하는 질문 팝업 -->
+			<div class=" modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">자주하는 질문</h2>
+					</div>
+					<div class="popup_body">
+						<nav class="tab_menu tab_menu1">
+							<ul class="tab_list">
+								<li class="on" style="min-width: 33.33%;"><a href="#"><span>스마트뱅킹</span></a></li>
+								<li style="min-width: 33.33%;"><a href="#"><span>예금</span></a></li>
+								<li style="min-width: 33.33%;"><a href="#"><span>보험</span></a></li>
+							</ul>
+						</nav>
+
+						<div class="container mb_4">
+							<h2 class="sr_only">스마트뱅킹</h2>
+
+							<div class="board_search">
+								<input type="text" class="tf" title="질문 검색" placeholder="질문을 검색해 보세요.">
+								<a href="#;" class="btn_search">
+									<span class="sr_only">검색</span>
+								</a>
+							</div>
+
+							<!-- s: 자주하는 질문 2차 분류 -->
+							<nav class="tab_menu tab_menu2 menu2_type1 col_drop mt_2 mb_2">
+								<ul class="tab_list">
+									<li class="on"><a href="#"><span class="txt_sm">앱(APP) 관련</span></a></li>
+									<li><a href="#"><span class="txt_sm">공동인증서 관련</span></a></li>
+									<li><a href="#"><span class="txt_sm">PostPay</span></a></li>
+									<li><a href="#"><span class="txt_sm">퍼즐 적금</span></a></li>
+									<li><a href="#"><span class="txt_sm">비대면 계좌 개설</span></a></li>
+								</ul>
+							</nav>
+							<!-- e: 자주하는 질문 2차 분류 -->
+
+							<!-- s: 자주하는 질문 목록 -->
+							<div class="section mt_2">
+								<h3 class="sr_only">앱(APP) 관련</h3>
+								<div class="fc_faq_box">
+									<ul class="txt_h_2">
+										<li>
+											<strong class="txt_lg">PostPay(우체국페이)는 주로 어떤 서비스를 제공하나요?</strong>
+											<div class="con">
+												<ul class="list list1">
+													<li>
+														이체한도는 보안등급별로 차등화 되어 한도를 설정할 수 있습니다.
+													</li>
+													<li>
+														개인고객 - 안전등급(OTP사용) : 1회 1억/1일 5억, 일반등급(보안카드 사용) : 1회 1천만원/1일 5천만원
+													</li>
+													<li>
+														법인고객 - 안전등급(OTP카드 사용) : 1회 10억/1일 50억 내에서 이체한도를 설정 할 수 있습니다
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<strong class="txt_lg">가입이나 이용금액 등에 제한이 있나요?</strong>
+											<div class="con">
+												<p></p>
+											</div>
+										</li>
+										<li>
+											<strong class="txt_lg">회원가입을 하려면 우체국 창구를 방문해야 하나요?</strong>
+											<div class="con">
+												<p></p>
+											</div>
+										</li>
+										<li>
+											<strong class="txt_lg">송금한 내역의 취소가 가능한가요?</strong>
+											<div class="con">
+												<p></p>
+											</div>
+										</li>
+										<li>
+											<strong class="txt_lg">비회원도 송금서비스 이용이 가능한가요?</strong>
+											<div class="con">
+												<p></p>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- e: 자주하는 질문 목록 -->
+						</div>
+
+						<!-- s: 공통 레이어 로딩 -->
+						<div class="common_layers"></div>
+						<!-- e: 공통 레이어 로딩 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 자주하는 질문 팝업 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

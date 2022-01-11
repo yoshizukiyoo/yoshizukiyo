@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".tab_list li").on("click", function () {
+				num = $(this).index() + 1;
+				$(".container").hide();
+				$(".container" + num).show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_mobileweb.html" data-page-title="고객센터"></header>
+		<div id="content">
+			<button type="button" class="btn btn_md btn_primary ml_2" onclick="openModal('layer01')">고객센터 ARS 서비스</button>
+			<!-- s: 본문 -->
+
+			<!-- s: 고객센터 ARS서비스 팝업 -->
+			<div class=" modal_popup popup show" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">고객센터 ARS 서비스</h2>
+					</div>
+					<div class="popup_body">
+						<nav class="tab_menu tab_menu1">
+							<ul class="tab_list">
+								<li class="on"><a href="#"><span>예금 상담</span></a></li>
+								<li><a href="#"><span>보험 상담</span></a></li>
+							</ul>
+						</nav>
+						<h2 class="sr_only">예금 상담</h2>
+
+						<!-- s: 예금 상담 -->
+						<div class="container container1 mb_4">
+							<!-- s: 예금 ARS 서비스 이용안내 -->
+							<div class="section mt_0">
+								<h3 class="tit1 mb_2">예금 ARS 서비스 이용안내</h3>
+								<ul class="list list1">
+									<li>05:00 ~ 익일 04:00</li>
+								</ul>
+								<ol class="service_step_list">
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												01
+											</strong>
+											<span>
+												<strong>1599-1900, 1588-1900</strong>
+												전화
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												02
+											</strong>
+											<span>
+												<strong>서비스번호</strong>
+												입력
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												03
+											</strong>
+											<span>
+												<strong>개인정보</strong>
+												입력(필요 시)
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												04
+											</strong>
+											<span>
+												<strong>이체비밀번호</strong>
+												입력(필요 시)
+											</span>
+										</div>
+									</li>
+								</ol>
+							</div>
+							<!-- e: 예금 ARS 서비스 이용안내 -->
+
+							<!-- s: 예금 ARS 서비스코드 -->
+							<div class="section mb_16 mt_5">
+								<div class="clfx">
+									<h3 class="f_l tit1 mb_2">ARS 서비스 코드</h3>
+								</div>
+								<ul class="list list1">
+									<li>처리하실 업무에 해당하는 번호를 순서대로 누르세요.<br>사용예시 : 잔액조회 1, 이체비밀번호 변경 6 + 61</li>
+								</ul>
+
+								<div class="arsservicecode">
+									<div class="box box_banner bg_gray txt_c pt_1 pb_1 mt_5">우체국 예금서비스(1599-1900, 1588-1900)</div>
+									<p class="centerline"></p>
+
+									<ul>
+										<li class="box box_border mb_3">
+											<strong>1</strong>
+											<span class="txt_medium">잔액조회</span>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>2</strong>
+											<span class="txt_medium">거래내역 조회</span>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>3</strong>
+											<span class="txt_medium">우체국간 이체</span>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>4</strong>
+											<span class="txt_medium">우체국과 은행간 이체</span>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>5</strong>
+											<span class="txt_medium">체크카드 서비스</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>사용등록</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>이용내역 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>이용한도 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>월별 발생 포인트 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">5</strong><span>팩스/이메일 전송 서비스</span>
+												</li>
+												<li>
+													<strong class="mr_1">9</strong><span>상담사 연결</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>6</strong>
+											<span class="txt_medium">경조금 및 기타 서비스</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>경조금배달, 온라인환 송금 및 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>자동이체, 예약이체 및 지연이체 취소</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>팩스/이메일 전송 서비스</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>만기해지 예상조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">5</strong><span>환율 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">6</strong><span>고객정보관리</span>
+												</li>
+												<li>
+													<strong class="mr_1">7</strong><span>고객맞춤서비스</span>
+												</li>
+												<li>
+													<strong class="mr_1">0</strong><span>상담사 연결</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>#</strong>
+											<span class="txt_medium">쉬운말 서비스</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>쉬운말 잔액조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>쉬운말 입출금 거래내역 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>쉬운말 우체국간 이체</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>쉬운말 우체국과 은행간 이체</span>
+												</li>
+												<li>
+													<strong class="mr_1">0</strong><span>상담사 연결</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>*</strong>
+											<span class="txt_medium">보이스피싱 및 사고신고</span>
+											<ul>
+												<li>
+													<strong class="mr_1">0</strong><span>보이스피싱 피해 신고</span>
+												</li>
+												<li>
+													<strong class="mr_1">1</strong><span>카드 분실신고 및 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>통장/인감 분실신고 및 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>보안카드/OTP분실신고 및 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>자기앞수표 분실신고 및 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">5</strong><span>거래실행번호 분실신고 및 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">6</strong><span>환증서 분실신고 및 조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">7</strong><span>가계수표 분실신고 및 조회</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>0</strong>
+											<span class="txt_medium">상담사 연결</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>분실, 사고신고 상담</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>잔액/거래내역조회, 팩스/이메일 서비스</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>예금 관련 기타 상담</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>인터넷/스마트/폰뱅킹 상담</span>
+												</li>
+												<li>
+													<strong class="mr_1">5</strong><span>카드 상담</span>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								<p class="bul_notice mt_3 txt_gray">서비스 이용 시간은 우체국 사정에 따라 변동될 수 있습니다.</p>
+								<p class="bul_notice mt_1 txt_gray">타은행 이체와 같은 일부 서비스 이용 시 수수료가 발생할 수 있습니다.</p>
+							</div>
+							<!-- e: 예금 ARS 서비스코드 -->
+						</div>
+						<!-- e: 예금 상담 -->
+
+
+						<!-- s: 보험 상담 -->
+						<div class="container container2 mb_4">
+							<!-- s: 보험 ARS 서비스 이용안내 -->
+							<div class="section mt_0">
+								<h3 class="tit1 mb_2">보험 ARS 서비스 이용안내</h3>
+								<ol class="service_step_list">
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												01
+											</strong>
+											<span>
+												<strong>1599-0100</strong>
+												전화
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												02
+											</strong>
+											<span>
+												<strong>서비스번호</strong>
+												입력
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												03
+											</strong>
+											<span>
+												<strong>개인정보</strong>
+												입력(필요 시)
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="box_step">
+											<strong>
+												<small>STEP</small>
+												04
+											</strong>
+											<span>
+												<strong>이체비밀번호</strong>
+												입력(필요 시)
+											</span>
+										</div>
+									</li>
+								</ol>
+							</div>
+							<!-- e: 보험 ARS 서비스 이용안내 -->
+
+							<!-- s: 보험 ARS 서비스코드 -->
+							<div class="section mb_16 mt_5">
+								<div class="clfx">
+									<h3 class="f_l tit1 mb_2">ARS 서비스 코드</h3>
+								</div>
+								<ul class="list list1">
+									<li>처리하실 업무에 해당하는 번호를 순서대로 누르세요.<br>사용예시 : 배당금조회 # + 7, 환급금대출 신청 1 + 1</li>
+								</ul>
+
+								<div class="arsservicecode">
+									<div class="box box_banner bg_gray txt_c pt_1 pb_1 mt_5">우체국 보험서비스(1599-1900)</div>
+									<p class="centerline"></p>
+
+									<ul>
+										<li class="box box_border mb_3">
+											<strong>#</strong>
+											<span class="txt_medium">조회서비스</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>보험료소득공제대상금액조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>환급금대출조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>해약환급금조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">5</strong><span>만기보험금조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">6</strong><span>연금조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">7</strong><span>배당금조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">8</strong><span>휴면보험금조회</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>1</strong>
+											<span class="txt_medium">환급금대출 및 상환</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>환급금대출신청</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>환급금대출원리금상환</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>대출이율조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">0</strong><span>상담사 연결</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>2</strong>
+											<span class="txt_medium">보험료 납입/자동이체</span>
+											<ul>
+												<li class="txt_gray">
+													<strong class="mr_1">1</strong><span>보험료납입</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>보험료 자동이체 신청/변경/해지</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>대출이율조회</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>보험료 세액 공제 및 기타 납입 확인</span>
+												</li>
+												<li>
+													<strong class="mr_1">0</strong><span>상담사 연결</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>3</strong>
+											<span class="txt_medium">만기/배당/휴면보험금 신청</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>만기보험금신청</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>배당금신청</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>휴면보험금신청</span>
+												</li>
+												<li>
+													<strong class="mr_1">0</strong><span>상담사 연결</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>4</strong>
+											<span class="txt_medium">팩스/이메일 수신</span>
+											<ul>
+												<li>
+													<strong class="mr_1">0</strong><span>보험소득공제납입확인서 팩스/이메일 수신</span>
+												</li>
+												<li>
+													<strong class="mr_1">1</strong><span>보험료납입사항팩스/이메일 수신</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>기타납입확인서 팩스/이메일 수신</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>보험금 청구 양식 수신</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>구비서류 팩스/이메일 수신</span>
+												</li>
+												<li>
+													<strong class="mr_1">5</strong><span>서비스코드 수신</span>
+												</li>
+												<li>
+													<strong class="mr_1">6</strong><span>보험금청구 구비서류 문자안내</span>
+												</li>
+												<li>
+													<strong class="mr_1">7</strong><span>보험 유지관련 팩스/이메일 수신</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>0</strong>
+											<span class="txt_medium">보험 상담사 연결</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>환급금 대출</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>보험료납입·자동이체·증명서 고객정보변경</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>수술·입원·실손보험금</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>연금·보험실효부활·계약사항</span>
+												</li>
+												<li>
+													<strong class="mr_1">5</strong><span>해약·만기·배당금·휴면보험금</span>
+												</li>
+											</ul>
+										</li>
+										<li class="box box_border mb_3">
+											<strong>6</strong>
+											<span class="txt_medium">완전판매 모니터링</span>
+											<ul>
+												<li>
+													<strong class="mr_1">1</strong><span>환급금 대출</span>
+												</li>
+												<li>
+													<strong class="mr_1">2</strong><span>보험료납입·자동이체·증명서 고객정보변경</span>
+												</li>
+												<li>
+													<strong class="mr_1">3</strong><span>수술·입원·실손보험금</span>
+												</li>
+												<li>
+													<strong class="mr_1">4</strong><span>연금·보험실효부활·계약사항</span>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+
+								<p class="bul_notice mt_3 txt_gray">서비스 이용 시간은 우체국 사정에 따라 변동될 수 있습니다.</p>
+								<p class="bul_notice mt_1 txt_gray">본인이 아닌 경우 상담에 제한이 있을 수 있습니다.</p>
+								<p class="bul_notice mt_1 txt_gray">ARS 이용 시 통화료가 부과됩니다.</p>
+							</div>
+							<!-- e: 보험 ARS 서비스코드 -->
+						</div>
+						<!-- e: 보험 상담 -->
+
+						<!-- s: 공통 레이어 로딩 -->
+						<div class="common_layers"></div>
+						<!-- e: 공통 레이어 로딩 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 고객센터 ARS서비스 팝업 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
