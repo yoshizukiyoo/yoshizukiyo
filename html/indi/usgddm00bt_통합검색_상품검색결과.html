@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// script 추가 2022-01-04(화) 
+			$(document).on('click', '.total_search a', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').attr('title', '선택됨').parent().siblings().find('>a').removeClass().removeAttr(
+					'title');
+
+				if (tg != 'total') {
+					$('[data-sub-tab^="sub"]').hide();
+					$('[data-sub-tab=' + tg + ']').show();
+				} else {
+					$('.total_wrap > .total_account').show();
+				}
+			});
+
+			$('.total_price').click(function () {
+				var tit = $(this).attr('title');
+				$(this).parents('.total_account').toggleClass('active');
+				if (tit == '그룹 접기') {
+					$(this).attr('title', '그룹 펼치기');
+				} else if (tit == '그룹 펼치기') {
+					$(this).attr('title', '그룹 접기');
+				}
+			});
+
+			$('.btn_view').click(function () {
+				$(this).parents('li').toggleClass('active');
+			});
+
+			$('.qna_list li a').click(function () {
+				var parent = $(this).parent();
+				parent.toggleClass('active');
+				if (parent.hasClass('active')) {
+					$(this).attr('title', '답변 닫기');
+				} else {
+					$(this).attr('title', '답변 보기');
+				}
+				parent.next('.qna_a').toggleClass('on');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">통합 검색</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="first_section">
+					<div class="search_top">
+						<div class="search_form">
+							<div class="selectbox_wrap">
+								<dl title="검색조건 선택">
+									<dt><a href="#none"><span>전체</span></a></dt>
+									<dd>
+										<ul>
+											<li><a href="#none"><span>메뉴</span></a></li>
+											<li><a href="#none"><span>웹페이지</span></a></li>
+											<li><a href="#none"><span>상품</span></a></li>
+											<li><a href="#none"><span>FAQ</span></a></li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<div class="txt">
+								<input type="text" title="검색어 입력" placeholder="검색어를 입력해 주세요.">
+								<button type="submit">
+									<span class="sr_only">검색</span>
+								</button>
+							</div>
+						</div>
+						<!-- 수정: 디자인 변경 2021-12-17 -->
+						<div class="search_word">
+							<dl class="recommend_word">
+								<dt>추천 검색어</dt>
+								<dd><a href="#;">e-Postbank</a></dd>
+								<dd><a href="#;">이웃사랑자유적금</a></dd>
+								<dd><a href="#;">듬뿍우대정기적금</a></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="search_result section">
+					검색어 <strong>'조회'</strong> 에 대한 검색결과 <strong>105건</strong>
+				</div>
+
+				<div class="section">
+					<!-- s: class 추가 2022-01-04 수정-->
+					<div class="tab_menu_type3 total_search">
+						<ul>
+							<li><a href="#;" data-tab-tg="total"><span>전체</span></a></li>
+							<li><a href="#;" class="current" data-tab-tg="sub_tab2"><span>메뉴</span></a></li>
+							<li><a href="#;" data-tab-tg="sub_tab3"><span>금융상품몰</span></a></li>
+							<li><a href="#;" data-tab-tg="sub_tab4"><span>웹페이지</span></a></li>
+							<li><a href="#;" data-tab-tg="sub_tab5"><span>FAQ</span></a></li>
+						</ul>
+					</div>
+					<!-- e: class 추가 2022-01-04 수정 -->
+				</div>
+
+				<!-- s: 통합검색 2022-01-04 수정 -->
+				<div class="section total_wrap">
+					<!-- s: 메뉴 -->
+					<div class="total_account active" data-sub-tab="sub_tab2">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1">메뉴</h3>
+								<span class="post_num ml_1">105</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">
+									<span class="sr_only">접기</span>
+								</button>
+							</div>
+						</div>
+						<ul class="account_con search_menu">
+							<li>
+								<div class="top">
+									<div class="l">
+										<ul class="list list1 txt_default">
+											<li>은행 &gt; 조회 &gt; 다른은행거래내역조회</li>
+										</ul>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_outline_default">이동</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="top">
+									<div class="l">
+										<ul class="list list1 txt_default">
+											<li>기업뱅킹 &gt; 뱅킹정보관리 &gt; 신입금계좌지정서비스 &gt; 신입금계좌지정조회/해지</li>
+										</ul>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_outline_default">이동</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="txt_c mt_4">
+							<button type="button" class="btn btn_more search_more">결과 더보기</button>
+						</div>
+					</div>
+					<!-- e: 메뉴 -->
+
+					<!-- s: 금융상품몰 -->
+					<div class="total_account mt_12" data-sub-tab="sub_tab3" style="display:none">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1">금융상품몰</h3>
+								<span class="post_num ml_1">105</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">
+									<span class="sr_only">접기</span>
+								</button>
+							</div>
+						</div>
+						<ul class="cart_list search_menu border_t0 account_con">
+							<li>
+								<div class="l">
+									<div class="category">
+										<span class="bg_primary">예금</span>
+										<span class="bg_green">적금</span>
+									</div>
+									<div class="tit">
+										<h4>무배당 우체국온라인어린이보험 2007
+											<button type="button" class="ico_item"><span class="sr_only">상품 구분</span></button>
+										</h4>
+										<p>매일저축 및 매주 알림저축 서비스를 통해 소액으로 편리하게 목돈마련이 가능한 디지털 적금</p>
+									</div>
+								</div>
+								<div class="r">
+									<ul>
+										<li>
+											<div class="star">
+												<span>
+													<i class="ico star_primary"></i>
+													<span class="sr_only">평점 1</span>
+												</span>
+												<span>
+													<i class="ico star_primary"></i>
+													<span class="sr_only">평점 2</span>
+												</span>
+												<span>
+													<i class="ico star_gray"></i>
+													<span class="sr_only">평점 3</span>
+												</span>
+												<span>
+													<i class="ico star_gray"></i>
+													<span class="sr_only">평점 4</span>
+												</span>
+												<span>
+													<i class="ico star_gray"></i>
+													<span class="sr_only">평점 5</span>
+												</span>
+											</div>
+											<div class="item_rate">
+												<strong>
+													최고 연 <span class="txt_red">2.05</span>%
+												</strong>
+												<p>기본 연 0.95%</p>
+												<p>(12개월)</p>
+											</div>
+										</li>
+									</ul>
+									<div class="btn_wrap">
+										<button type="button" class="btn btn_sm btn_outline_default bg_lightgray">가입중</button>
+										<a href="#;" class="btn btn_sm btn_outline_default">해지하기</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="l">
+									<div class="category">
+										<span class="bg_primary">예금</span>
+										<span class="bg_green">적금</span>
+									</div>
+									<div class="tit">
+										<h4>무배당 우체국온라인어린이보험 2007
+											<button type="button" class="ico_item"><span class="sr_only">상품 구분</span></button>
+										</h4>
+										<p>매일저축 및 매주 알림저축 서비스를 통해 소액으로 편리하게 목돈마련이 가능한 디지털 적금</p>
+									</div>
+								</div>
+								<div class="r">
+									<ul>
+										<li>
+											<div class="star">
+												<span>
+													<i class="ico star_primary"></i>
+													<span class="sr_only">평점 1</span>
+												</span>
+												<span>
+													<i class="ico star_primary"></i>
+													<span class="sr_only">평점 2</span>
+												</span>
+												<span>
+													<i class="ico star_gray"></i>
+													<span class="sr_only">평점 3</span>
+												</span>
+												<span>
+													<i class="ico star_gray"></i>
+													<span class="sr_only">평점 4</span>
+												</span>
+												<span>
+													<i class="ico star_gray"></i>
+													<span class="sr_only">평점 5</span>
+												</span>
+											</div>
+											<div class="item_rate">
+												<strong>
+													최고 연 <span class="txt_red">2.05</span>%
+												</strong>
+												<p>기본 연 0.95%</p>
+												<p>(12개월)</p>
+											</div>
+										</li>
+									</ul>
+									<div class="btn_wrap">
+										<button type="button" class="btn btn_sm btn_outline_default bg_primary txt_medium border0">신규
+											가입</button>
+										<button type="button" class="btn btn_sm btn_outline_default">장바구니</button>
+										<a href="#;" class="btn btn_sm btn_outline_default">상세정보</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="txt_c mt_4">
+							<button type="button" class="btn btn_more search_more">결과 더보기</button>
+						</div>
+					</div>
+					<!-- e: 금융상품몰 -->
+
+					<!-- s: 웹페이지 -->
+					<div class="total_account mt_12" data-sub-tab="sub_tab4" style="display:none">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1">웹페이지</h3>
+								<span class="post_num ml_1">105</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">
+									<span class="sr_only">접기</span>
+								</button>
+							</div>
+						</div>
+						<ul class="account_con search_menu">
+							<li>
+								<div class="top">
+									<div class="l">
+										<ul class="list list1 txt_default">
+											<li>예금담보대월
+												<div class="txt_sm txt_gray mt_2">우체국예금 이용자가 예금을 담보로 제공하고 가계수표 대월을 이용할수 있는 제도입니다.</div>
+											</li>
+										</ul>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_outline_default">이동</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="top">
+									<div class="l">
+										<ul class="list list1 txt_default">
+											<li>예금담보보험대출
+												<div class="txt_sm txt_gray mt_2">우체국예금의 수신 기능과 우체국보험의 여신 기능을 결합한 것으로 우체국보험 계약자 중 우체국예금 이용자에게 긴급
+													생활 자금을 대출하여 주는 서비스입니다.</div>
+											</li>
+										</ul>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn btn_sm btn_outline_default">이동</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="txt_c mt_4">
+							<button type="button" class="btn btn_more search_more">결과 더보기</button>
+						</div>
+					</div>
+					<!-- e: 웹페이지 -->
+
+					<!-- s: FAQ(자주하는 질문) -->
+					<div class="total_account mt_12" data-sub-tab="sub_tab5" style="display:none">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1">FAQ(자주하는 질문)</h3>
+								<span class="post_num ml_1">105</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">
+									<span class="sr_only">접기</span>
+								</button>
+							</div>
+						</div>
+						<ul class="account_con qna_list border_t0">
+							<li>
+								<div class="qna_q">
+									<a href="#;" title="답변 보기">제 타은행 계좌로 10만원이 입금되었는데, 은행에서는 우체국 인터넷뱅킹으로 이체되었다고 합니다. <br>누가 입금했는지, 입금한 사람과
+										연락할 수 있는 방법이 있을까요?</a>
+								</div>
+								<div class="qna_a">입금받은 계좌번호, 거래일, 금액을 확인하신 후 우체국 금융고객센터(1599-1900, 1588-1900 > 0번 > 1번(예금상담사 연결), 상담시간
+									평일 9:00 ~ 20:00)로 전화주시면 상담사를 통한 중계 요청이 가능합니다.</div>
+							</li>
+							<li>
+								<div class="qna_q">
+									<a href="#;" title="답변 보기">인증서를 PC에 전송 후, PC에서 인증서 암호를 입력하려는데 인증서가 보이지 않아요!</a>
+								</div>
+								<div class="qna_a">
+									<ul class="num_list">
+										<li>인증서 발급기관과 유효기간을 확인해 보시기 바랍니다. 해당사이트에서 사용할 수 없는 인증서이거나 인증서 만료일이 지나 폐기된 인증서는 인증서 PC전송 후 인증서가 보이지
+											않을 수 있습니다. - 은행에서 사용 가능한 인증서: 은행/보험/신용카드용(개인), 범용(개인) </li>
+										<li>해당 사이트의 키보드 보안 프로그램 (ex. AnySign등) 삭제 후 재설치 하여 이용하시기 바랍니다. </li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+						<div class="txt_c mt_4">
+							<button type="button" class="btn btn_more search_more">결과 더보기</button>
+						</div>
+					</div>
+					<!-- e: FAQ(자주하는 질문) -->
+
+					<!-- s: 검색결과가 없을 때 -->
+					<div class="total_account mt_12" data-sub-tab="default" style="display:none">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1">FAQ(자주하는 질문)</h3>
+								<span class="post_num ml_1">105</span>
+							</div>
+							<div class="txt_right">
+								<button type="button" title="그룹 접기" class="total_price">
+									<span class="sr_only">접기</span>
+								</button>
+							</div>
+						</div>
+						<ul class="account_con search_menu no_data">
+							<li>
+								<span>“조회＂에 대한 검색결과가 없습니다.</span>
+							</li>
+						</ul>
+					</div>
+					<!-- e: 검색결과가 없을 때 -->
+				</div>
+				<!-- e: 통합검색 2022-01-04 수정 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
