@@ -23,6 +23,13 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		//
+		$(document).on('click', 'a[href^="#"]', function (event) {
+			event.preventDefault();
+
+			$('html, body').animate({
+				scrollTop: $($.attr(this, 'href')).offset().top - 154
+			}, 500);
+		});
 	</script>
 </head>
 
@@ -74,11 +81,11 @@
 					</div>
 
 					<div class="section">
-						<a href="#;" class="btn btn_md btn_outline_default">nProtect Netizen 방화벽 설치안내</a>
-						<a href="#;" class="btn btn_md btn_outline_default">nProtect Netizen 방화벽 삭제안내</a>
+						<a href="#section1" class="btn btn_md btn_outline_default">nProtect Netizen 방화벽 설치안내</a>
+						<a href="#section2" class="btn btn_md btn_outline_default">nProtect Netizen 방화벽 삭제안내</a>
 					</div>
 
-					<div class="section">
+					<div id="section1" class="section">
 						<h3 class="tit1">설치안내방법</h3>
 						<ol class="online_certi_step">
 							<li class="one_step">
@@ -135,7 +142,7 @@
 						</ol>
 					</div>
 
-					<div class="section">
+					<div id="section2" class="section">
 						<h3 class="tit1">삭제안내방법</h3>
 						<ol class="online_certi_step">
 							<li class="one_step">
