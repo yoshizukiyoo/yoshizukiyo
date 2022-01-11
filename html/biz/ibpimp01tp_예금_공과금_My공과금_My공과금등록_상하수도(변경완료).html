@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">공과금등록/변경/삭제</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<div class="box box_more first_section">
+					<ul class="list list1">
+						<li>공과금을 등록하시면 편리하게 조회, 납부가 가능합니다.</li>
+						<li>공과금을 등록후 변경/삭제가 가능합니다.</li>
+						<li>등록 또는 변경/삭제를 원하시면 해당 버튼을 클릭하십시오.</li>
+					</ul>
+				</div>
+
+				<!-- s: 공과금 목록 -->
+				<div class="section">
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">My공과금 목록이며 공과금, 청구기관명, 전자납부/수용가번호, 납부건수, 납부구분, 납부, 등록/변경/삭제 정보를 제공하고 있습니다.
+							</caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 12%;">
+								<col style="width: 12%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">공과금</th>
+									<th scope="col">청구기관명</th>
+									<th scope="col">전자납부/수용가번호</th>
+									<th scope="col">납부건수</th>
+									<th scope="col">납부구분</th>
+									<th scope="col">납부</th>
+									<th scope="col">등록/변경/삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>지방세</td>
+									<td>경기도 가평군</td>
+									<td></td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a></td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('confirm02', this); return false">등록</a></td>
+								</tr>
+								<tr>
+									<td>환경개선부담금</td>
+									<td>경기도 광명시</td>
+									<td></td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a></td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('confirm01', this); return false">삭제</a></td>
+								</tr>
+								<tr>
+									<td>세외수입</td>
+									<td>전라남도 나주시</td>
+									<td></td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a></td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('confirm02', this); return false">등록</a></td>
+								</tr>
+								<tr>
+									<td>경찰청범칙금</td>
+									<td>경찰청</td>
+									<td></td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a></td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup01_1', this); return false">등록</a></td>
+								</tr>
+								<tr>
+									<td>국민연금</td>
+									<td>국민연금관리공단</td>
+									<td></td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a></td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup02_1', this); return false">변경/삭제</a></td>
+								</tr>
+								<tr>
+									<td>전화요금</td>
+									<td>(주)KT</td>
+									<td>000211112222</td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a> </td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup02_1', this); return false">변경/삭제</a></td>
+								</tr>
+								<tr>
+									<td>전기요금</td>
+									<td>한국전력공사</td>
+									<td>000211112222</td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a></td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup02_1', this); return false">변경/삭제</a></td>
+								</tr>
+								<tr>
+									<td>상하수도요금</td>
+									<td>전국</td>
+									<td>000211112222</td>
+									<td>5건</td>
+									<td>미납</td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default">조회/납부</a></td>
+									<td class="txt_c"><a href="#;" class="btn btn_xs btn_outline_default" onclick="openModal('popup02_1', this); return false">변경/삭제</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- s: 공과금 목록 -->
+
+				<!-- s: 공과등 등록 팝업 -->
+				<div class="modal_popup modal_lg hide" data-popup="popup01_1">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">공과금 등록</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>공과금 등록후 인터넷으로 편리하게 ${공과금}을 납부하실 수 있는 서비스입니다.</li>
+								<li>등록을 원하시면 '등록' 버튼을 클릭하세요</li>
+							</ul>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">공과금 등록 입력 양식이며 공과금, 연금보험료, 납부구분, 납부자번호(주민등록번호), 전자납부번호를 입력하실 수 있습니다.
+									</caption>
+									<colgroup>
+										<col style="width: 30%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">공과금</th>
+											<td>경찰청범칙금</td>
+										</tr>
+										<tr>
+											<th scope="row">연금보험료</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="pop1_check1" id="pop1_check1_1" checked="">
+													<label for="pop1_check1_1">지역연금보험료, 추납보험료, 반납금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="pop1_check1" id="pop1_check1_2">
+													<label for="pop1_check1_2">사업장연금보험료</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">납부구분</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="pop1_check2" id="pop1_check2_1" checked="">
+													<label for="pop1_check2_1">납부자번호</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="pop1_check2" id="pop1_check2_2">
+													<label for="pop1_check2_2">전자납부번호</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">전자납부번호(14자리)</th>
+											<td>
+												<input type="text" class="tf" style="width: 100%;" title="전자납부번호 입력">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup01_1');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary"
+									onclick="closeModal('popup01_1'); openModal('popup01_2')">등록실행</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 공과등 등록 팝업 -->
+
+				<!-- s: 공과등 등록완료 팝업 -->
+				<div class="modal_popup modal_lg hide" data-popup="popup01_2">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">공과금 등록완료</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>${공과금} 공과금 서비스가 정상적으로 등록되었습니다.</li>
+							</ul>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">공과금 등록결과 표이며 공과금 구분, 청구기관, 납부자번호(주민등록번호), 이름 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 30%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">공과금 구분</th>
+											<td>경찰청범칙금</td>
+										</tr>
+										<tr>
+											<th scope="row">청구기관</th>
+											<td>경찰청</td>
+										</tr>
+										<tr>
+											<th scope="row">납부자번호(주민등록번호)</th>
+											<td>00000000000</td>
+										</tr>
+										<tr>
+											<th scope="row">이름</th>
+											<td>가나다</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01_2');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 공과등 등록완료 팝업 -->
+
+				<!-- s: 공과금 변경 팝업 -->
+				<div class="modal_popup modal_lg hide" data-popup="popup02_1">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">국민연금</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>공과금 등록 내역입니다.</li>
+							</ul>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">공과금 변경 입력 양식이며 공과금, 납부구분, 전자납부번호, 전화번호를 입력하실 수 있습니다.</caption>
+									<colgroup>
+										<col style="width: 30%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">공과금 구분</th>
+											<td>국민연금</td>
+										</tr>
+										<tr>
+											<th scope="row">청구기관</th>
+											<td>국민연금관리공단</td>
+										</tr>
+										<tr>
+											<th scope="row">납부자번호(주민등록번호)</th>
+											<td></td>
+										</tr>
+										<tr>
+											<th scope="row">이름</th>
+											<td>사아자</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup02_1');">취소</button>
+								<a href="#;" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('popup02_1'); openModal('confirm01')">삭제</a>
+								<button type="button" class="btn btn_lg btn_primary">변경</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 공과금 변경 팝업 -->
+
+				<!-- s: 공과금 변경완료 팝업 -->
+				<div class="modal_popup modal_lg show" data-popup="popup02_2">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">공과금 변경완료</h3>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>공과금 등록후 인터넷으로 편리하게 상하수도요금을 납부하실 수 있는 서비스입니다.</li>
+								<li>변경을 원하시면 ＇변경실행' 버튼을 클릭하세요</li>
+							</ul>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">공과금 변경결과 표이며 공과금 구분, 청구기관, 전자납부번호(전화번호), 주민(사업자)등록번호 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 30%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">청구기관</th>
+											<td>전국</td>
+										</tr>
+										<tr>
+											<th scope="row">납부구분</th>
+											<td>
+												<span class="check_item ml_1">
+													<input type="radio" name="inputCheck1" id="inputCheck1_1" checked>
+													<label for="inputCheck1_1">전자납부번호</label>
+												</span>
+												<span class="check_item ml_1">
+													<input type="radio" name="inputCheck1" id="inputCheck1_2">
+													<label for="inputCheck1_2">전자수용가번호</label>
+												</span>
+												<span class="check_item ml_1">
+													<input type="radio" name="inputCheck1" id="inputCheck1_3">
+													<label for="inputCheck1_3">고객번호(서울시)</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												전자납부번호
+												<strong class="necessary">*</strong>
+											</th>
+											<td><input type="text" class="tf" style="width: 100%;"></td>
+										</tr>
+										<tr>
+											<th scope="row">
+												전자수용가번호
+												<strong class="necessary">*</strong>
+											</th>
+											<td><input type="text" class="tf" style="width: 100%;" disabled></td>
+										</tr>
+										<tr>
+											<th scope="row">
+												고객번호(서울시)
+												<strong class="necessary">*</strong>
+											</th>
+											<td><input type="text" class="tf" style="width: 100%;" disabled></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('popup02_2');">닫기</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup02_2');">변경실행</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 공과금 변경완료 팝업 -->
+
+				<!-- s: 삭제 confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										해당공과금을 삭제하시겠습니까?
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 삭제 confirm 팝업 -->
+
+				<!-- s: 등록 confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm02">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										해당공과금을 등록하시겠습니까?
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm02');">취소</button>
+								<a href="공과금_My공과금_My공과금등록_공과금변경삭제_상세.html" class="btn btn_md btn_outline_default" onclick="closeModal('confirm02')">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 등록 confirm 팝업 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">안내</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
