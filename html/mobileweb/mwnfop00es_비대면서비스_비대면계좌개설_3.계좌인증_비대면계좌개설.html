@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_mobileweb.html" data-page-title="비대면 계좌 개설"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<ul class="input_step mb_3">
+					<li><span class="num">1</span><span class="txt">본인확인</span></li>
+					<li><span class="num">2</span><span class="txt">신분증인증</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">계좌인증</span></li>
+					<li><span class="num">4</span><span class="txt">약관동의</span></li>
+					<li><span class="num">5</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">6</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">7</span><span class="txt">개설완료</span></li>
+				</ul>
+
+				<p class="txt_lg txt_medium mb_1">다른은행 계좌번호를 통한 인증이 진행됩니다.</p>
+				<p class="txt_light02 txt_gray mb_4">인증할 다른은행 계좌번호를 입력해주세요.</p>
+
+				<div class="mt_6">
+
+					<!-- s: 은행선택 -->
+					<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">은행 <span class="req">필수항목</span></span>
+								<p class="tf">국민은행</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<!-- <p class="txt_guide">은행을 선택해 주세요 </p> -->
+
+
+					<!-- e: 은행선택 -->
+
+					<!-- s: 계좌번호 입력 -->
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_1" class="lab">계좌번호 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_1" class="tf" placeholder="계좌번호를 입력해 주세요" required>
+							</div>
+						</div>
+					</div>
+					<!-- e: 계좌번호 입력 -->
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default" onclick="openModal('alert01');">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('alert02');">다음</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+
+			<!-- s: 계좌개설중단 알림 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">비대면계좌개설을 중단하시겠습니까?</h2>
+					</div>
+					<div class="popup_body pt_4">
+						<div class="container">
+							<p class="txt_normal txt_c">입력하신 정보는 저장되지 않습니다.</p>
+							<p class="bul_notice mt_2 txt_spacing_sm">1시간 이내 개설 프로세스를 다시 시작하시는 경우 신분증 및 계좌 인증 없이 현재 단계부터 진행할 수 있습니다.
+							</p>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('alert01');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert01');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 계좌개설중단 알림 팝업 -->
+
+			<!-- s: 계좌인증 완료 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="alert02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">알림</h2>
+					</div>
+					<div class="popup_body pt_4">
+						<div class="container">
+							<div class="desc">
+								<p>계좌 인증이 완료되었습니다.</p>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert02');">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 계좌인증 완료 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

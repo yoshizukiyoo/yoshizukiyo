@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box').not('.disabled').children('a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_mobileweb.html" data-page-title="비대면계좌개설"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<div class="btn_group ">
+					<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layer01'); return false;">신청 정보 확인</a>
+				</div>
+
+				<!-- s: 신청 정보 확인 팝업 -->
+				<div class="modal_popup popup show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">신청 정보 확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="container p_4">
+								<ul class="input_step">
+									<li><span class="num">1</span><span class="txt">본인확인</span></li>
+									<li><span class="num">2</span><span class="txt">신분증인증</span></li>
+									<li><span class="num">3</span><span class="txt">계좌인증</span></li>
+									<li><span class="num">4</span><span class="txt">약관동의</span></li>
+									<li><span class="num">5</span><span class="txt">신청정보입력</span></li>
+									<li class="on"><span class="num">6</span><span class="txt">신청정보확인</span></li>
+									<li><span class="num">7</span><span class="txt">개설완료</span></li>
+								</ul>
+
+								<div class="double_box mt_4">
+									<div class="btm">
+										<div>
+											<div class="l">이름</div>
+											<div class="r"><strong>홍길동</strong></div>
+										</div>
+										<div>
+											<div class="l">휴대폰번호</div>
+											<div class="r"><strong>010-2222-3456</strong></div>
+										</div>
+									</div>
+									<div class="btm">
+										<div>
+											<div class="l">자택주소</div>
+											<div class="r">인천광역시 서구 승학로 123,<br>101동 101호</div>
+										</div>
+										<div>
+											<div class="l">직장주소</div>
+											<div class="r">미입력</div>
+										</div>
+										<div>
+											<div class="l">이메일주소</div>
+											<div class="r">abcd@email.com</div>
+										</div>
+										<div>
+											<div class="l">우편물수령지</div>
+											<div class="r">자택</div>
+										</div>
+									</div>
+									<div class="btm">
+										<div>
+											<div class="l">통합멤버십</div>
+											<div class="r">신청하지 않음</div>
+											<!-- 선택 약관 미동의 -->
+
+											<!-- <div class="r">신청함</div> -->
+											<!-- 선택 약관 동의 -->
+										</div>
+									</div>
+									<div class="btm">
+										<div>
+											<div class="l">통장비밀번호</div>
+											<div class="r">****</div>
+										</div>
+									</div>
+									<div class="btm">
+										<div>
+											<div class="l">마케팅정보 수신동의</div>
+											<div class="r"><strong>앱PUSH, 이메일</strong></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="popup_footer">
+							<div class="bottom_fixed_area">
+								<div class="btn_group btn_group_flex">
+									<a href="#;" class="btn btn_xl btn_default" onclick="openModal('alert01'); return false;">수정</a>
+									<a href="#;" class="btn btn_xl btn_primary" onclick="closeModal('layer01');">가입 실행</a>
+									<!-- 선택 약관 미동의 -->
+									<!-- <a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">개설 실행</a> -->
+									<!-- 선택 약관 동의 -->
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 신청 정보 확인 팝업 -->
+
+				<!-- s: 신청 정보 수정 안내 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">신청 정보 수정 안내</h2>
+						</div>
+						<div class="popup_body pt_4">
+							<div class="container">
+								<p>기본정보, 설정 등이 아닌,</p>
+								<p class="mt_2">통합멤버십 신청 등은 약관 동의 단계에서 신청을 철회하셔야 합니다.</p>
+								<p class="mt_2">수정할 항목에 맞게 버튼을 눌러주세요.</p>
+							</div>
+						</div>
+						<div class="popup_footer">
+							<div class="btn_group btn_group_flex">
+								<a href="#;" class="btn btn_lg btn_default" onclick="closeModal('alert01'); return false;">약관 동의 수정</a>
+								<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('alert01');">신청정보 수정</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 신청 정보 수정 안내 팝업 -->
+
+				<!-- s: 공통 레이어 로딩 -->
+				<div class="common_layers"></div>
+				<!-- e: 공통 레이어 로딩 -->
+				<!-- e: 본문 -->
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
