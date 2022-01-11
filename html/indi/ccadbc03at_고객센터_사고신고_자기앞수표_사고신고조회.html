@@ -23,7 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.btn_result').click(function(){
+			$('.btn_result').click(function () {
 				$('.btm_result_box').show();
 			});
 		})
@@ -56,11 +56,15 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
+
+				<!-- s: 2022-01-11 SB v1.02 / 내용추가 -->
 				<div class="first_section box">
 					<ul class="list list1">
 						<li>우체국 발행 자기앞수표의 사고등록 유무를 조회할 수 있습니다.</li>
+						<li>조회되지 않은 수표는 미발급된 수표입니다.</li>
 					</ul>
 				</div>
+				<!-- e: 2022-01-11 SB v1.02 / 내용추가 -->
 
 				<div class="section">
 					<div class="tab_menu_type1">
@@ -107,66 +111,154 @@
 					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
 				</div>
 
+				<!-- s: 2022-01-11 SB v1.02 / 테이블 내용 수정 -->
 				<div class="section btm_result_box">
 					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">조회정보 표로 신고일, 수표 발행일, 수표번호, 발행 우체국(기호), 자기앞수표 종류, 연락처, 사고내용, 상태 정보 제공</caption>
+							<caption class="sr_only">조회정보 표이며 사고신고일, 발행일, 수표번호, 자기앞수표 종류, 발행우체국, 수표처리상태, 사고신고국 정보를 제공하고 있습니다.
+							</caption>
 							<colgroup>
-								<col style="width: 10%;">
-								<col style="width: 10%;">
 								<col>
-								<col style="width: 19%;">
-								<col style="width: 13%;">
-								<col style="width: 13%;">
-								<col style="width: 10%;">
-								<col style="width: 10%;">
+								<col>
+								<col>
+								<col style="width: 17%;">
+								<col style="width: 17%;">
+								<col>
+								<col>
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">신고일</th>
-									<th scope="col">수표 발행일</th>
+									<th scope="col">사고신고일</th>
+									<th scope="col">발행일</th>
 									<th scope="col">수표번호</th>
-									<th scope="col">발행 우체국(기호)</th>
 									<th scope="col">자기앞수표 종류</th>
-									<th scope="col">연락처</th>
-									<th scope="col">사고내용</th>
-									<th scope="col">상태</th>
+									<th scope="col">발행우체국</th>
+									<th scope="col">수표처리상태</th>
+									<th scope="col">사고신고국</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td class="txt_c">2021.05.01</td>
-									<td class="txt_c">2020.12.05</td>
-									<td>12345678</td>
-									<td>서울중앙우체국(0710015)</td>
+									<td class="txt_c">2021.09.23</td>
+									<td class="txt_c">2021.09.20</td>
+									<td class="txt_c">
+										<button type="button" class="txt_md txt_thin text_underline"
+											onclick="openModal('layer01', this)">22222353</button>
+									</td>
 									<td>10만원권정액</td>
-									<td>010-xxxx-xxxx</td>
-									<td>분실</td>
-									<td class="txt_c">접수 완료</td>
+									<td>남부산우체국</td>
+									<td class="txt_c">사고</td>
+									<td>999300</td>
 								</tr>
 								<tr>
-									<td class="txt_c">2021.05.01</td>
-									<td class="txt_c">2020.12.05</td>
-									<td>12345678</td>
-									<td>중앙대학우체국(0710015)</td>
+									<td class="txt_c">2021.09.23</td>
+									<td class="txt_c">2021.09.20</td>
+									<td class="txt_c">
+										<button type="button" class="txt_md txt_thin text_underline"
+											onclick="openModal('layer01', this)">22222353</button>
+									</td>
 									<td>10만원권정액</td>
-									<td>010-xxxx-xxxx</td>
-									<td>도난</td>
-									<td class="txt_c">처리 완료</td>
+									<td>남부산우체국</td>
+									<td class="txt_c">사고</td>
+									<td>999300</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="paging">
-						<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
-						<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
-						<strong title="현재 페이지">1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dir next"><span class="sr_only">다음</span></a>
-						<a href="#" class="dir lst"><span class="sr_only">끝</span></a>
+					<div class="mt_4 txt_c">
+						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 				</div>
+				<!-- e: 2022-01-11 SB v1.02 / 테이블 내용 수정 -->
+
+				<!-- s: 2022-01-11 SB v1.02 / 상세보기 팝업 추가 -->
+				<div class="modal_popup modal_md hide" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">상세보기</h3>
+							<button type="button" class="btn btn_close_popup">닫기</button>
+						</div>
+						<div class="popup_body">
+							<div>
+								<h4 class="tit1">상세정보</h4>
+								<div class="box">
+									<ul class="list list1">
+										<li>조회하신 자기앞수표 사고신고 내역입니다.</li>
+									</ul>
+								</div>
+								<div class="tbl_data tbl_row_data mt_4">
+									<table>
+										<caption class="sr_only">사고신고 정보이며 번호, 수표매수, 수표최종번호, 자기앞수표종류, 발행우체국, 연락처 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 20%;">
+											<col>
+											<col style="width: 20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">번호</th>
+												<td>22222353</td>
+												<th scope="row">수표매수</th>
+												<td>01매</td>
+											</tr>
+											<tr>
+												<th scope="row">수표최종번호</th>
+												<td>22222353</td>
+												<th scope="row">자기앞수표종류</th>
+												<td>10만원권</td>
+											</tr>
+											<tr>
+												<th scope="row">발행우체국</th>
+												<td>남부산우체국</td>
+												<th scope="row">연락처</th>
+												<td>010-1212-1212</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tbl_data tbl_row_data mt_4">
+									<table>
+										<caption class="sr_only">사고신고 정보이며 발행일, 사고신고일, 수표처리상태, 사고신고국 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 20%;">
+											<col>
+											<col style="width: 20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">발행일</th>
+												<td>2021.09.23</td>
+												<th scope="row">사고신고일</th>
+												<td>2021.09.23</td>
+											</tr>
+											<tr>
+												<th scope="row">수표처리상태</th>
+												<td>수표분실</td>
+												<th scope="row">수표처리상태</th>
+												<td>사고</td>
+											</tr>
+											<tr>
+												<th scope="row">사고신고국</th>
+												<td colspan="3">999300</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="txt_r mt_4">
+									<a href="#;" class="btn btn_sm btn_outline_default"
+										onclick="$.print('.modal_popup[data-popup=layer01]'); return false;">화면인쇄</a>
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">확인</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 상세보기 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">

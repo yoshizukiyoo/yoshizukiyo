@@ -23,7 +23,9 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			//
+			$('.btn_result').click(function () {
+				$('.btm_result_box').show();
+			});
 		})
 	</script>
 </head>
@@ -37,7 +39,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">가계수표 사고신고 조회</h2>
+				<h2 class="tit_cont">자기앞수표 사고신고 조회</h2>
 
 				<button type="button" class="btn btn_favorite">
 					<i class="ico ico_star_gray"></i>
@@ -55,20 +57,20 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<!-- s: 2022-01-11 SB v1.0 / 내용 수정 -->
+				<!-- s: 2022-01-11 SB v1.02 / 내용추가 -->
 				<div class="first_section box">
 					<ul class="list list1">
-						<li>우체국 발행 가계 수표에 대한 조회 시점의 사고신고 유무 및 수표 상태를 조회할 수 있는 서비스입니다.</li>
+						<li>우체국 발행 자기앞수표의 사고등록 유무를 조회할 수 있습니다.</li>
+						<li>조회되지 않은 수표는 미발급된 수표입니다.</li>
 					</ul>
 				</div>
-				<!-- e: 2022-01-11 SB v1.0 / 내용 수정 -->
+				<!-- e: 2022-01-11 SB v1.02 / 내용추가 -->
 
 				<div class="section">
 					<div class="tab_menu_type1">
 						<ul>
-							<li><a href="고객센터_사고신고_가계수표_사고신고.html">사고신고</a></li>
-							<li><a href="고객센터_사고신고_가계수표_사고신고조회.html" class="current">신고조회</a></li>
-							<li><a href="고객센터_사고신고_가계수표_타행가게수표신고조회.html">타행가계수표 신고조회</a></li>
+							<li><a href="고객센터_사고신고_자기앞수표_사고신고.html">사고신고</a></li>
+							<li><a href="고객센터_사고신고_자기앞수표_사고신고조회.html" class="current">사고신고 조회</a></li>
 						</ul>
 					</div>
 				</div>
@@ -76,7 +78,7 @@
 				<div class="mt_12">
 					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">가계수표 사고신고</caption>
+							<caption class="sr_only">조회정보</caption>
 							<colgroup>
 								<col style="width: 17%;">
 								<col>
@@ -106,68 +108,71 @@
 				</div>
 
 				<div class="btn_tbl_btm btn_data_search">
-					<a href="#;" class="btn btn_xl btn_primary">조회</a>
+					<a href="#;" class="btn btn_xl btn_primary btn_result">조회</a>
 				</div>
 
+				<!-- s: 2022-01-11 SB v1.02 / 테이블 내용 수정 -->
 				<div class="section btm_result_box">
 					<div class="tbl_data tbl_list_data">
 						<table>
-							<caption class="sr_only">가계수표 사고신고 조회내역이며 신고일, 예금주, 계좌번호, 수표번호, 수표상태, 사고내용, 사고해제일 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">조회정보 표이며 사고신고일, 발행일, 수표번호, 자기앞수표 종류, 발행우체국, 수표처리상태, 사고신고국 정보를 제공하고 있습니다.
+							</caption>
 							<colgroup>
-								<col style="width: 12%;">
-								<col style="width: 16%;">
 								<col>
 								<col>
-								<col style="width: 13%;">
-								<col style="width: 13%;">
-								<col style="width: 12%;">
+								<col>
+								<col style="width: 17%;">
+								<col style="width: 17%;">
+								<col>
+								<col>
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">신고일</th>
-									<th scope="col">예금주</th>
-									<th scope="col">계좌번호</th>
+									<th scope="col">사고신고일</th>
+									<th scope="col">발행일</th>
 									<th scope="col">수표번호</th>
-									<th scope="col">수표상태</th>
-									<th scope="col">사고내용</th>
-									<th scope="col">사고해제일</th>
+									<th scope="col">자기앞수표 종류</th>
+									<th scope="col">발행우체국</th>
+									<th scope="col">수표처리상태</th>
+									<th scope="col">사고신고국</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td class="txt_c">2021.09.26</td>
-									<td>나봄미</td>
-									<td>010017-02-526768</td>
-									<td>07000002</td>
-									<td>사고신고</td>
-									<td>수표분실</td>
-									<td class="txt_c">2021.09.28</td>
+									<td class="txt_c">2021.09.23</td>
+									<td class="txt_c">2021.09.20</td>
+									<td class="txt_c">
+										<button type="button" class="txt_md txt_thin text_underline"
+											onclick="openModal('layer01', this)">22222353</button>
+									</td>
+									<td>10만원권정액</td>
+									<td>남부산우체국</td>
+									<td class="txt_c">사고</td>
+									<td>999300</td>
 								</tr>
 								<tr>
-									<td class="txt_c">2021.09.26</td>
-									<td>나봄미</td>
-									<td>010017-02-526768</td>
-									<td>07000002</td>
-									<td>사고신고</td>
-									<td>수표분실</td>
-									<td class="txt_c">2021.09.28</td>
+									<td class="txt_c">2021.09.23</td>
+									<td class="txt_c">2021.09.20</td>
+									<td class="txt_c">
+										<button type="button" class="txt_md txt_thin text_underline"
+											onclick="openModal('layer01', this)">22222353</button>
+									</td>
+									<td>10만원권정액</td>
+									<td>남부산우체국</td>
+									<td class="txt_c">사고</td>
+									<td>999300</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="paging">
-						<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
-						<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
-						<strong title="현재 페이지">1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dir next"><span class="sr_only">다음</span></a>
-						<a href="#" class="dir lst"><span class="sr_only">끝</span></a>
+					<div class="mt_4 txt_c">
+						<button type="button" class="btn btn_more">더보기</button>
 					</div>
 				</div>
+				<!-- e: 2022-01-11 SB v1.02 / 테이블 내용 수정 -->
 
-				<!-- s: 상세보기팝업 -->
-				<div class="modal_popup modal_md hide" data-popup="layer01">
+				<!-- s: 2022-01-11 SB v1.02 / 상세보기 팝업 추가 -->
+				<div class="modal_popup modal_md show" data-popup="layer01">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
@@ -179,13 +184,12 @@
 								<h4 class="tit1">상세정보</h4>
 								<div class="box">
 									<ul class="list list1">
-										<li>조회하신 가계수표 사고신고 내역입니다.</li>
+										<li>조회하신 자기앞수표 사고신고 내역입니다.</li>
 									</ul>
 								</div>
 								<div class="tbl_data tbl_row_data mt_4">
 									<table>
-										<caption class="sr_only">사고신고 정보이며 계좌번호, 수표번호, 예금주, 수표종류명, 수표상태, 교부일, 발행금액, 발행일, 지급일, 지급우체국, 사고신고일,
-											사고해제일, 사고내용 정보를 제공하고 있습니다.</caption>
+										<caption class="sr_only">사고신고 정보이며 번호, 수표매수, 수표최종번호, 자기앞수표종류, 발행우체국, 연락처 정보를 제공하고 있습니다.</caption>
 										<colgroup>
 											<col style="width: 20%;">
 											<col>
@@ -194,44 +198,51 @@
 										</colgroup>
 										<tbody>
 											<tr>
-												<th scope="row">계좌번호</th>
-												<td>010017-02-526768</td>
-												<th scope="row">수표번호</th>
-												<td>07000002</td>
+												<th scope="row">번호</th>
+												<td>22222353</td>
+												<th scope="row">수표매수</th>
+												<td>01매</td>
 											</tr>
 											<tr>
-												<th scope="row">예금주</th>
-												<td>나봄미</td>
-												<th scope="row">수표종류명</th>
-												<td>가계수표</td>
+												<th scope="row">수표최종번호</th>
+												<td>22222353</td>
+												<th scope="row">자기앞수표종류</th>
+												<td>10만원권</td>
 											</tr>
 											<tr>
-												<th scope="row">수표상태</th>
-												<td>사고신고</td>
-												<th scope="row">교부일</th>
+												<th scope="row">발행우체국</th>
+												<td>남부산우체국</td>
+												<th scope="row">연락처</th>
+												<td>010-1212-1212</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tbl_data tbl_row_data mt_4">
+									<table>
+										<caption class="sr_only">사고신고 정보이며 발행일, 사고신고일, 수표처리상태, 사고신고국 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 20%;">
+											<col>
+											<col style="width: 20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">발행일</th>
+												<td>2021.09.23</td>
+												<th scope="row">사고신고일</th>
 												<td>2021.09.23</td>
 											</tr>
 											<tr>
-												<th scope="row">발행금액</th>
-												<td class="txt_r">0원</td>
-												<th scope="row">발행일</th>
-												<td>-</td>
+												<th scope="row">수표처리상태</th>
+												<td>수표분실</td>
+												<th scope="row">수표처리상태</th>
+												<td>사고</td>
 											</tr>
 											<tr>
-												<th scope="row">지급일</th>
-												<td>-</td>
-												<th scope="row">지급우체국</th>
-												<td>-</td>
-											</tr>
-											<tr>
-												<th scope="row">사고신고일</th>
-												<td>2021.09.28</td>
-												<th scope="row">사고해제일</th>
-												<td>2021.09.28</td>
-											</tr>
-											<tr>
-												<th scope="row">사고내용</th>
-												<td colspan="3">수표분실</td>
+												<th scope="row">사고신고국</th>
+												<td colspan="3">999300</td>
 											</tr>
 										</tbody>
 									</table>
@@ -247,7 +258,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- e: 상세보기팝업 -->
+				<!-- e: 상세보기 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
