@@ -220,13 +220,89 @@
 					</div>
 					<div class="tab_menu tab_menu1 width_fix">
 						<ul class="tab_list">
-							<li class="on"><a href="#" title="선택됨"><span>최근이체계좌</span></a></li>
-							<li><a href="#"><span>자주쓰는등록계좌</span></a></li>
-							<li><a href="#"><span>본인계좌</span></a></li>
+							<li class="on"><a href="#account1" title="선택됨"
+									onclick="accountTab('account1');return false;"><span>최근이체계좌</span></a></li>
+							<li><a href="#account2" onclick="accountTab('account2');return false;"><span>자주쓰는등록계좌</span></a></li>
+							<li><a href="#account3" onclick="accountTab('account3');return false;"><span>본인계좌</span></a></li>
 						</ul>
 					</div>
+					<div class="lr_box often_account" style="display: none;">
+						<div class="l">
+							<a href="#;">그룹선택</a>
+						</div>
+						<div class="r">
+
+							<!-- 브라우저 셀렉트 박스
+								<select name="" id="" class="often_select" title="계좌목록 선택">
+								<option value="">전체</option>
+								<option value="">가족</option>
+								<option value="">친구</option>
+							</select> -->
+
+							<!-- s: 디자인 셀렉트박스 -->
+							<div class="selectbox_wrap" style="width: 100px;">
+								<dl>
+									<dt><a href="#none" title="계좌목록 선택"><span>전체</span></a></dt>
+									<dd>
+										<ul>
+											<li><a href="#none"><span>전체</span></a></li>
+											<li><a href="#none"><span>가족</span></a></li>
+											<li><a href="#none"><span>친구</span></a></li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<!-- e: 디자인 셀렉트박스 -->
+						</div>
+					</div>
+					<script>
+						// 계좌정보 탭 메뉴별 활성화
+						function accountTab(id) {
+							$('.often_account').hide();
+
+							if (id == 'account1') { // 최근이체계좌
+								$(this).closest('[data-toggle-content]').toggle();
+								$('[data-account="account1"]').show();
+								$('[data-account="account2"]').hide();
+								$('[data-account="account3"]').hide();
+							} else if (id == 'account2') { // 자주쓰는 등록계좌
+								$('[data-account="account1"]').hide();
+								$('[data-account="account2"]').show();
+								$('[data-account="account3"]').hide();
+								$('.often_account').show();
+							} else { // 본인계좌
+								$('[data-account="account1"]').hide();
+								$('[data-account="account2"]').hide();
+								$('[data-account="account3"]').show();
+							}
+						}
+
+						// 디자인 셀렉트박스
+						$(document).on('click', '.selectbox_wrap dt a', function () {
+							var obj = $(this);
+							$('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
+							obj.parents('.selectbox_wrap').toggleClass('active');
+							return false;
+						});
+						$(document).on('click', '.selectbox_wrap dd a', function () {
+							var obj = $(this);
+							obj.closest('dd').prev().find('>a>span').text(obj.text());
+							obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
+							obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
+							return false;
+						});
+						var win = $(window);
+						var selectBox = $('.selectbox_wrap dt a');
+						win.on("click", function (e) {
+							if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)) {
+								$('.selectbox_wrap').removeClass('active');
+							}
+						});
+					</script>
 					<div class="popup_body">
-						<div class="container">
+
+						<!-- s: 최근이체계좌 -->
+						<div data-account="account1">
 							<ul class="account_tab_list">
 								<li>
 									<a href="#n" class="acc_select">
@@ -295,6 +371,118 @@
 								</li>
 							</ul>
 						</div>
+						<!-- e: 최근이체계좌 -->
+
+						<!-- s: 자주쓰는 등록계좌 -->
+						<div data-account="account2" style="display: none;">
+							<ul class="account_tab_list">
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_post.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<span class="gr_name">친구</span>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_keb.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<span class="gr_name">가족</span>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_shi.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<span class="gr_name">가족</span>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_post.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<span class="gr_name">가족</span>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_post.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+									<span class="gr_name">가족</span>
+								</li>
+							</ul>
+						</div>
+						<!-- e: 자주쓰는 등록계좌 -->
+
+						<!-- s: 본인계좌 -->
+						<div data-account="account3" style="display: none;">
+							<ul class="account_tab_list">
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_post.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_keb.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_shi.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_post.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="#n" class="acc_select">
+										<div class="bk_logo"><img src="../../resources/img/common/ico_bank_post.png" alt="우체국 로고"></div>
+										<div class="acc_info">
+											<span class="acc_name">강하나</span>
+											<span class="acc_num">123456-78-912345</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<!-- e: 본인계좌 -->
+
+
 					</div>
 					<div class="popup_footer">
 						<div class="btn_group btn_group_flex">
