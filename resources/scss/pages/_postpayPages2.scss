@@ -66,9 +66,9 @@
 	padding: 0 4.5px;
 	border-radius: 50%;
 	background: $darkgray;
-	line-height: 15px;
 	font-size: 11px;
 	color: $white;
+	line-height: 15px;
 	vertical-align: bottom;
 }
 
@@ -85,22 +85,6 @@
 		margin-left: 33px;
 		font-size: 18px;
 		letter-spacing: -0.05em;
-	}
-}
-
-.popup_body{
-	.modal_popup{
-		.popup_inner{
-			position: relative;
-			z-index: 1100;
-			-webkit-transition-duration: 0.3s;
-			transition-duration: 0.3s;
-			-webkit-transition-property: -webkit-transform;
-			transition-property: -webkit-transform;
-			transition-property: transform;
-			transition-property: transform, -webkit-transform;
-			background-color: #fff;
-		}
 	}
 }
 
@@ -130,6 +114,20 @@
 	.view_box {
 		margin-bottom: 20px;
 	}
+
+	// 이미 popup 창인데 popup을 또 띄워야할 경우 
+	.has_modal{
+		.modal_alert{
+			.popup_inner{
+				height: auto;
+			}
+		}
+	}
+
+	.ls5{
+		letter-spacing: -0.05em;
+	}
+
 
 	@mixin my_ico{
 		display: inline-block;
@@ -256,8 +254,8 @@
 
 							a {
 								display: block;
-								font-weight: 400;
 								font-size: 11px;
+								font-weight: 400;
 								color: $lightgray;
 								text-decoration: underline;
 							}
@@ -398,8 +396,8 @@
 					span {
 						display: block;
 						font-size: 10px;
-						text-align: center;
 						line-height: 1;
+						text-align: center;
 					}
 				}
 			}
@@ -669,6 +667,14 @@
 		}
 
 		// 전자지갑 - 우체국계좌 연결
+		.top_ico_txt{
+			&.office{
+				&::before{
+					background-image: url(/resources/img/content/top_ico_office.png);
+				}
+			}
+		}
+
 		.toggle_btn_list{
 			letter-spacing: -0.05em;
 
@@ -686,8 +692,8 @@
 					border-radius: 3.5px;
 					font-size: 12px;
 					font-weight: 500;
-					line-height: 1;
 					color: $gray;
+					line-height: 1;
 
 					&.repre{
 						margin-right: 3px;
@@ -710,7 +716,21 @@
 				margin-right: 6px;
 			}
 		}
-
+		.has_modal{
+			.popup_inner{
+				letter-spacing: -0.05em;
+				.desc{
+					font-weight: 400;
+					color: $gray;
+				}
+				.btn_md{
+					padding: 22px 0;
+					&.btn_default{
+						color: $gray;
+					}
+				}
+			}
+		}
 	}
 
 	// 전자지갑 - 포스트페이머니 설정
@@ -1149,8 +1169,8 @@
 					top: 20px;
 					left: 20px;
 					font-size: 18px;
-					color: #fff;
 					font-weight: 500;
+					color: #fff;
 				}
 
 				.qr_area {
@@ -1176,83 +1196,39 @@
 		}
 	}
 
+	// 송금
+
+	&.remit{
+		.rec_info{
+			.tit1{
+				font-size: 18px;
+			}
+			.phone{
+				font-size: 16px;
+				font-weight: 400;
+			}
+			.price{
+				display: flex;
+				align-items: center;
+				>p{
+					margin-right: 6px;
+					font-size: 20px;
+					font-weight: 500;
+					span{
+						font-size: 25px;
+						font-weight: 700;
+						letter-spacing: normal;
+					}
+				}
+			}
+		}
+	}
+
 
 }
 
 
 
-	// 송금
 
-	// .list_phone_book2 {
 
-	// 	li {
-	// 		padding: 19px 0 19px 11px;
-
-	// 		.phone_name {
-	// 			color: #000011;
-	// 			margin-right: 48px;
-	// 		}
-
-	// 		.star {
-	// 			display: inline-block;
-	// 			width: 17px;
-	// 			height: 17px;
-	// 			background-image: url(#{$url-img}/content/ico_star.png);
-	// 			background-size: 17px;
-
-	// 			&.check {
-	// 				background-image: url(#{$url-img}/content/ico_star_sm.png);
-	// 			}
-	// 		}
-	// 	}
-
-	// 	li+li {
-	// 		border-top: 1px solid $border-light;
-	// 	}
-
-	// }
-
-	// .groups_phone_book {
-	// 	background: #ccc;
-
-	// 	li.active a {
-	// 		background: $white;
-	// 		color: $black;
-	// 		font-weight: 500;
-	// 	}
-
-	// 	a {
-	// 		background: rgba($color: #fff, $alpha: 0.3);
-	// 		color: $gray;
-	// 		padding: 5px 26px;
-	// 		border-radius: 15px;
-	// 	}
-	// }
-
-	// .popup_search {
-	// 	position: relative;
-	// 	border: 1px solid $border-base;
-	// 	padding: 14px 52px 14px 20px;
-	// 	border-radius: 4px;
-
-	// 	.tf {
-	// 		font-size: $font-size-lg;
-	// 		font-weight: 400;
-
-	// 		&::placeholder {
-	// 			font-size: $font-size-lg;
-	// 			font-weight: 400;
-	// 		}
-	// 	}
-
-	// 	.btn_search {
-	// 		position: absolute;
-	// 		right: 20px;
-	// 		top: 50%;
-	// 		transform: translateY(-50%);
-	// 		width: 15px;
-	// 		height: 15px;
-	// 		background: url(/resources/img/content/ico_search.png) 50% no-repeat;
-	// 		background-size: 15px;
-	// 	}
-	// }
+	
