@@ -88,6 +88,22 @@
 	}
 }
 
+.popup_body{
+	.modal_popup{
+		.popup_inner{
+			position: relative;
+			z-index: 1100;
+			-webkit-transition-duration: 0.3s;
+			transition-duration: 0.3s;
+			-webkit-transition-property: -webkit-transform;
+			transition-property: -webkit-transform;
+			transition-property: transform;
+			transition-property: transform, -webkit-transform;
+			background-color: #fff;
+		}
+	}
+}
+
 /* postpay 클래스 */
 
 .postpay {
@@ -103,6 +119,7 @@
 	.top_ico_txt {
 		padding-left: 0;
 		align-items: center;
+		letter-spacing: -0.05em;
 		&::before{
 			width: 50px;
 			height: 26px;
@@ -113,6 +130,36 @@
 	.view_box {
 		margin-bottom: 20px;
 	}
+
+	@mixin my_ico{
+		display: inline-block;
+		background-repeat: no-repeat;
+		background-position: center center;
+		vertical-align: middle;
+		overflow: hidden;
+		text-indent: -9999px;
+		text-align: left;
+		background-size: cover;
+	}
+
+	.my_ico{
+		@include my_ico;
+
+		&.calendar_sm{
+			width: 17px;
+			height: 14px;
+			background-image: url(/resources/img/content/ico_calnedar_sm.png);
+			background-size: 17px 14px;
+		}
+		&.wallet_sm{
+			width: 17px;
+			height: 14px;
+			background-image: url(/resources/img/content/ico_wallet_sm.png);
+			background-size: 17px 14px;
+		}
+	}
+
+
 
 	// toggle 인데 스스로도 check 박스이고 안애도 check 일 때
 	.mypg_toggle_list {
@@ -621,6 +668,49 @@
 			margin-top: 23px;
 		}
 
+		// 전자지갑 - 우체국계좌 연결
+		.toggle_btn_list{
+			letter-spacing: -0.05em;
+
+			.d_flex{
+				border-top: 1px solid $border-base;
+				p{
+					font-weight: 400;
+					&.number{
+						letter-spacing: normal;
+					}
+				}
+				.toggle_btn{
+					padding: 5.5px 10.5px;
+					border: 1px solid $border-base;
+					border-radius: 3.5px;
+					font-size: 12px;
+					font-weight: 500;
+					line-height: 1;
+					color: $gray;
+
+					&.repre{
+						margin-right: 3px;
+					}
+
+					&.active{
+						border-color: $black;
+						color: $black;
+					}
+				}
+				&:last-of-type{
+					border-bottom: 1px solid $border-base;
+				}
+			}
+		}
+		.wrap_notice{
+			letter-spacing: -0.05em;
+			.my_ico{
+				transform: translateY(-1px);
+				margin-right: 6px;
+			}
+		}
+
 	}
 
 	// 전자지갑 - 포스트페이머니 설정
@@ -654,6 +744,10 @@
 					justify-content: center;
 				}
 			}
+		}
+
+		.ico_sale{
+			margin-right: 8px;
 		}
 	}
 
