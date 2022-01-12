@@ -23,7 +23,12 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			//
+			$('.tab_menu_type3 a').on('click', function () {
+				var tg = $(this).data('tab-tg');
+				$(this).addClass('current').parent().siblings().children('a').removeClass('current');
+				$('[data-tab-sub]').hide();
+				$('[data-tab-sub=' + tg + ']').show();
+			})
 		})
 	</script>
 </head>
@@ -50,7 +55,7 @@
 						<li><span class="num">3</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
-				
+
 				<div class="first_section box">
 					<ul class="list list1">
 						<li>계좌번호를 확인하시고, "확인"버튼을 선택하시면 사고신고가 됩니다.</li>
@@ -67,7 +72,8 @@
 					</div>
 					<div class="tbl_data tbl_list_data tbl_payment">
 						<table>
-							<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">교육장 및 층별안내 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
+								제공하고 있습니다.</caption>
 							<colgroup>
 								<col>
 								<col style="width: 17%">
@@ -87,6 +93,8 @@
 									<td>
 										<div class="fx_lr fx_align_center">
 											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
+												onclick="openModal('popup01', this);">전체계좌</button>
 										</div>
 									</td>
 									<td class="txt_r">3,100,000</td>
@@ -144,6 +152,199 @@
 					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
 					<a href="고객센터_사고신고_e-Postback예금_사고신고_실행완료.html" class="btn btn_xl btn_primary">확인</a>
 				</div>
+
+				<!-- s: 전체계좌목록 팝업 -->
+				<div class="modal_popup modal_xxl hide" data-popup="popup01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">전체계좌</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tab_menu_type3 mb_4">
+								<ul>
+									<li><a href="#;" class="current" data-tab-tg="sub_tab1"><span>우체국</span></a></li>
+									<li><a href="#;" data-tab-tg="sub_tab2"><span>다른은행</span></a></li>
+								</ul>
+							</div>
+							<div class="tbl_data tbl_list_data tbl_scroll_y" data-tab-sub="sub_tab1">
+								<table>
+									<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 구분 정보를 제공하고 있습니다.</caption>
+									<colgroup>
+										<col style="width: 15%">
+										<col>
+										<col style="width: 23%">
+										<col style="width: 23%">
+										<col style="width: 10%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank예금</td>
+											<td>월급통장</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c"><button type="button" class="btn btn_xs btn_default">선택</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tbl_data tbl_list_data tbl_scroll_y" data-tab-sub="sub_tab2" style="display: none;">
+								<table>
+									<caption class="sr_only">계좌선택 표로 은행명, 예금상품명, 계좌별칭, 계좌번호, 구분 정보제공</caption>
+									<colgroup>
+										<col style="width: 15%">
+										<col>
+										<col style="width: 23%">
+										<col style="width: 23%">
+										<col style="width: 10%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">은행명</th>
+											<th scope="col">예금상품명</th>
+											<th scope="col">계좌별칭</th>
+											<th scope="col">계좌번호</th>
+											<th scope="col">구분</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>다른은행</td>
+											<td>e-Postbank 예금</td>
+											<td>우리가족여행계좌</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank 예금</td>
+											<td>우리가족여행계좌</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank 예금</td>
+											<td>우리가족여행계좌</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank 예금</td>
+											<td>우리가족여행계좌</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank 예금</td>
+											<td>우리가족여행계좌</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+										<tr>
+											<td>우체국</td>
+											<td>e-Postbank 예금</td>
+											<td>우리가족여행계좌</td>
+											<td>010017-02-191237</td>
+											<td class="txt_c">
+												<button type="button" class="btn btn_xs btn_default">선택</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 전체계좌목록 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
