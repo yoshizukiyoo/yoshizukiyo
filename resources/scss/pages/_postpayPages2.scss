@@ -124,8 +124,39 @@
 		}
 	}
 
+	// 양 옆으로 나뉘어진 리스트
+	.double_box{
+		&.type2{
+			li{
+				line-height: 1;
+				&+li{
+					margin-top: 20px;
+				}
+				.r{
+					font-weight: 400;
+				}
+			}
+		}
+	}
+
 	.ls5{
 		letter-spacing: -0.05em;
+	}
+
+	.highlight{
+		position: relative;
+		z-index: 0;
+		&::after{
+			content: '';
+			display: inline-block;
+			position: absolute;
+			left: -1px;
+			right: -1px;
+			bottom: 3px;
+			height: 5px;
+			background: #fad973;
+			z-index: -1;
+		}
 	}
 
 
@@ -731,6 +762,43 @@
 				}
 			}
 		}
+
+		// 전자지갑 - 포스트페이머니 충전
+		&.charge{
+			.box{
+				&.info{
+					background: $bg-lightprimary;
+				}
+			}
+			.tf_item{
+				&.transparent{
+					padding: 0 12px;
+					background: none;
+					border: none;
+					border-radius: 0;
+					.tf_item_body{	
+						min-height: 50px;
+						border-bottom: 1px solid $black;
+						font-size: 23px;
+						input{
+							height: 50px;
+							&::placeholder{
+								font-size: 23px;
+								font-weight: 500;
+							}
+						}
+					}
+				}
+			}
+			.wrap_btn{
+				.btn{
+					width: 100%;
+					&+.btn_lg{
+						margin-left: 10px;
+					}
+				}
+			}
+		}
 	}
 
 	// 전자지갑 - 포스트페이머니 설정
@@ -1202,6 +1270,9 @@
 		.rec_info{
 			.tit1{
 				font-size: 18px;
+				.ico{
+					margin-right: 5px;
+				}
 			}
 			.phone{
 				font-size: 16px;
