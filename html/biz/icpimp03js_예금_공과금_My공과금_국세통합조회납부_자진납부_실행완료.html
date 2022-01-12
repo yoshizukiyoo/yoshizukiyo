@@ -23,10 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			//조회 결과 버튼
-			$('.btn_result').click(function () {
-				$('.btm_result_box').show();
-			});
+
 		});
 	</script>
 </head>
@@ -40,76 +37,113 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">납부내역조회</h2>
-
-				<!-- <button type="button" class="btn btn_favorite">
-					<i class="ico ico_star_gray"></i>
-					<span class="sr_only">마이메뉴 등록</span>
-				</button> -->
-				<!--
-				<button type="button" class="btn btn_favorite">
-					<i class="ico ico_star_primary"></i>
-					<span class="sr_only">마이메뉴 해제</span>
-				</button>
-				-->
-				<!-- e: 본문 헤더 -->
+				<h2 class="tit_cont">국고 통합 조회/납부</h2>
 			</div>
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<div class="box first_section">
-					<ul class="list list1">
-						<li>도움말 영역</li>
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">조회</span></li>
+						<li><span class="num">2</span><span class="txt">정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">입력확인</span></li>
+						<li class="on"><span class="num">4</span><span class="txt">실행완료</span></li>
 					</ul>
 				</div>
 
-				<!-- s: 조회정보입력 -->
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>국세 자진납부가 아래와 같이 처리되었습니다.</li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 section">
+					<ul>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_즉시납부_조회.html">즉시납부</a></li>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_예약납부_조회.html">예약납부</a></li>
+						<li><a href="예금_공과금_My공과금_국세통합조회납부_자진납부_조회.html" class="current">자진납부</a></li>
+					</ul>
+				</div>
+
+				<!-- s: 실행결과 -->
 				<div class="section">
 					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">아파트거주자 납부내역조회 결과 표로 출금 계좌번호, 관리소 계좌번호, 관리소 예금주명, 납부자 동호수, 납부금액, 연락처 정보 제공
-							</caption>
+							<caption class="sr_only">자진납부 정보 표이며 납세자명, 회계연도, 납세자번호, 징수관계좌번호, 전자납부번호, 납부기한, 본세, 교육세, 농특세, 가산금 정보를 제공하고
+								있습니다.</caption>
 							<colgroup>
+								<col style="width: 17%;">
+								<col>
 								<col style="width: 17%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">출금 계좌번호</th>
-									<td>010017-02-687159</td>
+									<th scope="row">납세자명</th>
+									<td>홍길동</td>
+									<th scope="row">회계연도</th>
+									<td>2021년</td>
 								</tr>
 								<tr>
-									<th scope="row">관리소 계좌번호</th>
-									<td>100073-01-004137</td>
+									<th scope="row">납세자번호</th>
+									<td>000000*******</td>
+									<th scope="row">징수관계좌번호</th>
+									<td>028419</td>
 								</tr>
 								<tr>
-									<th scope="row">관리소 예금주명</th>
-									<td>나봄미</td>
+									<th scope="row">전자납부번호</th>
+									<td>0000000000000000000</td>
+									<th scope="row">납부기한</th>
+									<td>2021.10.20</td>
 								</tr>
 								<tr>
-									<th scope="row">납부자 동호수</th>
-									<td>0101동 0101호</td>
+									<th scope="row">본세</th>
+									<td class="txt_r">10,000원</td>
+									<th scope="row">교육세</th>
+									<td class="txt_r">0원</td>
 								</tr>
+
 								<tr>
-									<th scope="row">납부금액</th>
-									<td class="txt_r">100,000</td>
-								</tr>
-								<tr>
-									<th scope="row">연락처</th>
-									<td>010-1004-1004</td>
+									<th scope="row">농특세</th>
+									<td class="txt_r">0원</td>
+									<th scope="row">가산금</th>
+									<td class="txt_r">0원</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<div class="tbl_data tbl_row_data mt_4">
+						<table>
+							<caption class="sr_only">자진납부 정보 표이며 출금계좌번호, 납부금액 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">출금계좌번호</th>
+									<td>0000000000000000000</td>
+									<th scope="row">납부금액</th>
+									<td class="txt_r">10,000원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="mt_4 txt_r">
+						<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
+						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
+						<a href="#" class="btn btn_sm btn_outline_default">납부내역조회</a>
+					</div>
 				</div>
-				<!-- e: 조회정보입력 -->
-				<div class="mt_4 txt_r">
-					<button type="button" class="btn btn_sm btn_outline_default">납부확인증</button>
-				</div>
+				<!-- e: 실행결과 -->
 
 				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_primary btn_result">확인</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="예금_공과금_My공과금_국세통합조회납부_자진납부_조회.html" class="btn btn_xl btn_primary">확인</a>
 				</div>
 
 				<!-- s: alert 팝업 -->
@@ -135,7 +169,8 @@
 							<div class="btn_group">
 								<button type="button" class="btn btn_md btn_outline_default"
 									onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -178,7 +213,6 @@
 				<!-- e: 본문 -->
 			</div>
 		</article>
-
 		<footer class=" footer"></footer>
 	</div>
 </body>
