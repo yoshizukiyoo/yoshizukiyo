@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_mobileweb.html" data-page-title="금융상품계산기"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<!-- s: 금융상품계산기 :목표금액 -->
+			<nav class="tab_menu tab_menu1">
+				<ul class="tab_list">
+					<li><a href="#;"><span>예금만기액</span></a></li>
+					<li><a href="#"><span>적금만기액</span></a></li>
+					<li class="on"><a href="#"><span>목표금액</span></a></li>
+				</ul>
+			</nav>
+
+			<div class="container cont_calc">
+				<h2 class="sr_only">목표금액</h2>
+				<div class="top_ico_txt ico4 border">
+					<p>
+						<span>목표 금액과 기간으로, 우체국 적금에 가입할 때, 매월 납입해야 하는 적금액을 확인해드려요.</span>
+					</p>
+				</div>
+
+				<p class="txt_guide txt_r txt_default mt_2">
+					조회기준 : <span>2021.09.04 14:24:42</span>
+				</p>
+
+				<a href="#;" class="tf_item mt_1" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">상품종류 <span class="req">필수항목</span></span>
+							<p class="tf">인터넷2040+&alpha;자유적금</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+
+				<div class="tf_item mt_2 active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_1">목표 금액<span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_1" class="tf" placeholder="금액을 입력하세요." required>
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide txt_md pb_1 mt_0">
+					100,000원 ~ 10,000,000원
+				</p>
+
+				<div class="tf_item mt_2 active focus">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">계약기간<span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" required value="24 개월">
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide txt_md mt_0">
+					6개월 ~ 24개월
+				</p>
+
+				<div class="section mt_8 mb_10">
+					<h3 class="tit1">과세 등 기타 상세 조건 설정</h3>
+					<div class="input_items line2">
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_1">
+							<label for="lb_setting_1">개인 일반 과세</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_2">
+							<label for="lb_setting_2">개인 세금우대</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_3">
+							<label for="lb_setting_3">개인 비과세</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_setting" id="lb_setting_4" checked>
+							<label for="lb_setting_4">직접 설정</label>
+						</span>
+					</div>
+
+					<!-- 금융계산기 직접 설정 조건(예금만기액, 적금만기액) -->
+					<div class="tf_item mt_4">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_around01">과세코드 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_around01" class="tf" required value="개인거주자">
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray"
+									onclick="openModal('layercodePop', this);">과세코드</a>
+							</div>
+						</div>
+					</div>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">과세구분 <span class="req">필수항목</span></span>
+								<p class="tf">일반과세</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">가입구분 <span class="req">필수항목</span></span>
+								<p class="tf">창구가입</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">거래자구분 <span class="req">필수항목</span></span>
+								<p class="tf">기타 개인</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">소득자구분 <span class="req">필수항목</span></span>
+								<p class="tf">주민등록번호 부여자</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">기간구분 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">납입주기 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">회전주기 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">이자지급구분 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">이율적용방법 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">추가금리 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">연금지급주기 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<!-- 금융계산기 직접 설정 조건(월불입액) -->
+					<div class="tf_item mt_4">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_around02">과세코드 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_around02" class="tf" required value="개인거주자">
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray"
+									onclick="openModal('layercodePop', this);">과세코드</a>
+							</div>
+						</div>
+					</div>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">과세구분 <span class="req">필수항목</span></span>
+								<p class="tf">일반과세</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">가입구분 <span class="req">필수항목</span></span>
+								<p class="tf">창구가입</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">납입주기 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">추가금리 <span class="req">필수항목</span></span>
+								<p class="tf"> </p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>계산하기</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+			<!-- e: 금융상품계산기 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
