@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $btmmunuSlide = $('.btm_menu_wrap');
+			$btmmunuSlide.slick({
+				//slide: 'li',
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				slidesToShow: 4.5,
+				slidesToScroll: 4.5,
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="통합이용조회">
+		</header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="postpay total_inquiry">
+				<div class="box_control">
+					<a href="#" class="month_prev"><span class="sr_only">이전달</span></a>
+					<span class="month_tit">2021</span>
+					<a href="#" class="month_next"><span class="sr_only">다음달</span></a>
+				</div>
+
+				<div class="container">
+					<div class="inquiry_date">
+						<span class="sr_only">조회일자</span>
+						<em class="txt_normal">2021.01</em>
+					</div>
+
+					<div class="tbl">
+						    
+						<!-- 가로 스크롤 필요시 최소 너비 지정 (미사용시 제거) -->
+						    <table style="min-width: 500px;">
+							        <caption class="sr_only">${표제목}</caption>
+							        <colgroup>
+								            
+								<col style="width: 33.3%;">
+								            
+								<col style="width: 33.3%;">
+								            
+								<col>
+								        </colgroup>
+							        <thead>
+								            <tr>
+									                <th scope="col">항목</th>
+									                <th scope="col">항목</th>
+									                <th scope="col">항목</th>
+									            </tr>
+								        </thead>
+							        <tbody>
+								            <tr>
+									                <th scope="row">항목</th>
+									                <td>내용</td>
+									                <td>내용</td>
+									            </tr>
+								            <tr>
+									                <th scope="row">항목</th>
+									                <td>내용</td>
+									                <td>내용</td>
+									            </tr>
+								        </tbody>
+							    </table>
+					</div>
+				</div>
+
+				<!-- s: 하단 고정 메뉴 -->
+				<div class="bottom_fixed_area btm_menu">
+					<div class="fixed_area_inner">
+						<p class="txt_xs pl_4"><span class="txt_m">#</span>거래메모를 클릭하면 해당 메모 이용내역을 볼 수 있어요.</p>
+						<div class="btm_menu_wrap">
+							<div class="btm_menu_li"><a href="#" class="btn_menu">결제</a></div>
+							<div class="btm_menu_li"><a href="#" class="btn_menu">결제</a></div>
+							<div class="btm_menu_li"><a href="#" class="btn_menu">결제</a></div>
+							<div class="btm_menu_li"><a href="#" class="btn_menu">결제</a></div>
+							<div class="btm_menu_li"><a href="#" class="btn_menu">결제</a></div>
+							<div class="btm_menu_li"><a href="#" class="btn_menu">결제</a></div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 하단 고정 메뉴 -->
+			</div>
+
+			<!-- s: 주민등록번호 뒷자리 입력 팝업 -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="popup01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">소득공제 신청</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4">
+							<strong class="txt_xl d_b txt_c">주민등록번호 뒷자리를 입력해주세요.</strong>
+							<div class="tf_item mt_3 btm_sheet_pwd">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<div class="password_masking active">
+											<i></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+											<i class="bg_gray"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('popup01');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('popup01');">소득공제
+								신청</button>
+						</div>
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+				</div>
+			</div>
+			<!-- e: 주민등록번호 뒷자리 입력 팝업 -->
+			<!-- e: 본문 -->
+		</div>
+
+
+		<!-- s: 공통 레이어 로딩 -->
+		<div class="common_layers"></div>
+		<!-- e: 공통 레이어 로딩 -->
+
+	</div>
+	<!-- e: 본문 -->
+	</div>
+	</div>
+</body>
+
+</html>
