@@ -159,6 +159,77 @@
 		}
 	}
 
+	// 테두리와 바탕색이 없는 투명한 입력창, 지우기 버튼 있음
+	.tf_item{
+		&.transparent{
+			padding: 0 12px;
+			background: none;
+			border: none;
+			border-radius: 0;
+			.tf_item_body{	
+				min-height: 50px;
+				border-bottom: 1px solid $black;
+				font-size: 23px;
+				.input_area{
+					padding-top: 0;
+					input{
+						height: 50px;
+						font-size: 30px;
+						font-weight: 700;
+						&::placeholder{
+							font-size: 23px;
+							font-weight: 500;
+						}
+					}
+					.btn_reset{
+						top: 50%;
+						right: 0;
+						width: 20px;
+						height: 20px;
+						margin-top: 0;
+						transform: translateY(-50%);
+						.ico_reset{
+							top: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// 버튼 + 체크박스 2개
+	.wrap_btn_check{
+		.btn{
+			width: 100%;
+		}
+		.d_flex{
+			justify-content: unset;
+			.input_items{
+				width: 50%;
+				margin: 0;
+				padding-left: 5px;
+			}
+		}
+	}
+
+	// 송금 영역 반으로 걸쳐진 bottom sheet
+	.modal_bottom_sheet{
+
+		&.half_fixed{
+
+			.pop_header{
+				font-size: 13px;
+			}
+		
+			&.hide{
+				top: calc(100vh - 180px);
+				opacity: 1;
+				align-items: unset;
+				visibility: unset;
+			}
+		}
+	}
+
 
 	@mixin my_ico{
 		display: inline-block;
@@ -770,26 +841,6 @@
 					background: $bg-lightprimary;
 				}
 			}
-			.tf_item{
-				&.transparent{
-					padding: 0 12px;
-					background: none;
-					border: none;
-					border-radius: 0;
-					.tf_item_body{	
-						min-height: 50px;
-						border-bottom: 1px solid $black;
-						font-size: 23px;
-						input{
-							height: 50px;
-							&::placeholder{
-								font-size: 23px;
-								font-weight: 500;
-							}
-						}
-					}
-				}
-			}
 			.wrap_btn{
 				.btn{
 					width: 100%;
@@ -1268,6 +1319,20 @@
 
 	&.remit{
 		.rec_info{
+			>.d_flex{
+				margin-bottom: 15px; /* 아닐 수 있음*/
+				justify-content: unset;
+				.tit1{
+					margin-bottom: 0;
+					margin-right: 12px;
+				}
+				.input_items{
+					margin: 0;
+					.check_item{
+						color: $black;
+					}
+				}
+			}
 			.tit1{
 				font-size: 18px;
 				.ico{
@@ -1293,7 +1358,29 @@
 				}
 			}
 		}
+		.name_check{
+			.example{
+				display: block;
+			}
+			.name{
+				font-size: 24px;
+			}
+			.tf_item_body{
+				.input_area{
+					input{
+						font-size: 16px;
+						&::placeholder{
+							font-size: 16px;
+							color: $gray;
+						}
+					}
+				}
+			}
+		}
 	}
+
+
+
 
 
 }
