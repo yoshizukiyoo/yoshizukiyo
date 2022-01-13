@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		// 약관 탭메뉴 
+		function clauseList(id, obj) {
+			$('[data-clause]').hide();
+			$(obj).addClass('current').parent().siblings().find('>a').removeClass('current');
+			$('[data-clause=' + id + ']').show();
+		}
+
+		// PDF 뷰어 박스 실행
+		function checkAgree(obj) {
+			if ($(obj).is(':checked')) {
+				$('.pdf_viewer').show();
+				$('.clause_info_txt').hide();
+			}
+
+			$('.clause_list').addClass('scroll');
+		}
+
+		// PDF 뷰어 닫기
+		function closePdf() {
+			$('.pdf_viewer').hide();
+			$('.clause_info_txt').show();
+			$('.clause_list').removeClass('scroll');
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">예금상품 가입</h2>
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<!-- s: 우체국통합멤버십 안내 팝업 -->
+				<div class="modal_popup modal_alert show" data-popup="layerSampleLg">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">우체국통합멤버십 안내</h2>
+						</div>
+						<div class="popup_body">
+							<div>
+								<p><strong>우체국 우편 &amp; 금융 통합 멤버십!</strong></p>
+								<p>우체국 멤버십 서비스로 매일 특별한 혜택을 누려보세요.</p>
+							</div>
+							<div class="onboarding">
+								<div class="top">
+									<p>우체국 서비스 이용하면<br><strong>매일매일 쌓이는 포인트</strong></p>
+								</div>
+								<div class="capture_slide">
+									<div><a href="#n">개발 완료 화면 캡처 화면</a></div>
+									<div><a href="#n">개발 완료 화면 캡처 화면</a></div>
+									<div><a href="#n">개발 완료 화면 캡처 화면</a></div>
+									<div><a href="#n">개발 완료 화면 캡처 화면</a></div>
+									<div><a href="#n">개발 완료 화면 캡처 화면</a></div>
+								</div>
+								<script>
+									$('.capture_slide').slick({
+										lidesToShow: 1,
+										slidesToScroll: 1,
+										arrows: false,
+										dots: true
+									});
+								</script>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleLg');">멤버십 가입
+									동의</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 우체국통합멤버십 안내 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
