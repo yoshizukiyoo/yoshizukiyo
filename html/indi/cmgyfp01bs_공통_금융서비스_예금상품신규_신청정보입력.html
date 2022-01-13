@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">예금상품 가입</h2>
+
+				<!-- <button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button> -->
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">약관동의</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">신청정보입력</span></li>
+						<li><span class="num">3</span><span class="txt">신청정보확인</span></li>
+						<li><span class="num">4</span><span class="txt">신청완료</span></li>
+					</ul>
+				</div>
+
+				<div class="first_section box">
+					<ul class="list list1">
+						<li>준비물: 사용 등록된 보안매체(보안카드, OTP, 디지털OTP사용 휴대폰 등), 전자서명용 공동인증서(또는 금융인증서 등)</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">신청정보입력</h3>
+						</div>
+						<div class="txt_right">
+							<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+							<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+						</div>
+					</div>
+					<div class="st_box">가입금액은 100만원 이상 5천만원 이하 입니다. 가입일(재예치일)부터 만기일(재예치일) 1개월 이전까지 총2회 보너스입금(추가 입금) 서비스 이용 가능하며,
+						추가 입금액은 최소 100만원 이상으로, 추가 입금 이후 총액이 최고 가입금액(과세가입은 5,000만원, 비과세가입은 고객설정금액) 이내여야 합니다. </div>
+				</div>
+
+				<div class="section">
+					<h4 class="tit3">출금 계좌 정보</h4>
+					<div class="tbl_data tbl_list_data tbl_payment">
+						<table>
+							<caption class="sr_only">출금 계좌 정보 표이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
+								제공하고 있습니다.</caption>
+							<colgroup>
+								<col>
+								<col style="width: 17%">
+								<col style="width: 17%">
+								<col style="width: 17%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">출금계좌번호 | 출금은행 | 계좌별칭(상품명)</th>
+									<th scope="col">잔액(원)</th>
+									<th scope="col">출금가능금액(원)</th>
+									<th scope="col">1일 송금가능금액(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="fx_lr fx_align_center">
+											<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
+											<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
+												onclick="openModal('popup01', this);">전체계좌조회</button>
+										</div>
+									</td>
+									<td class="txt_r">3,100,000</td>
+									<td class="txt_r">100,000</td>
+									<td class="txt_r">10,000,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">출금 계좌 정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">계좌비밀번호 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf" title="계좌비밀번호 입력" style="width: 350px;">
+										<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="mt_13">
+					<h4 class="tit3">가입 금액</h4>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">가입 금액</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">가입 금액(원) <strong class="necessary">*</strong></th>
+									<td>
+										<div class="trans_money">
+											<input type="text" class="tf txt_r" title="이체금액 입력"> 영 원
+											<span class="ml6 txt_darkgray">※ 매수금액은 최소 10,000원 이상 입력하셔야 합니다.</span>
+											<div class="btn_trans_money">
+												<button type="button" class="btn btn_sm btn_default">1만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<div class="tooltip_txt inline_block">
+											세제지원신청
+											<i class="ico ico_warning_red"></i>
+											<span class="sr_only">용어 설명</span>
+											<div class="tooltip tooltip_sm tooltip_right" tabindex="0">
+												<div class="txt_normal mb_1">이자 및 배당소득에 대해 비과세 하는 세제지원 금융상품을 비과세 종합저축이라고 한다.</div>
+												<ul class="list list1">
+													<li>가입요건 : 만 65세 이상 거주자, 장애인, 독립유공자와 그 유족 또는 가족, 상이자,<br>기초생활보장제도에 따른 수급권자, 고엽제후유의증환자,
+														518민주화운동부상자</li>
+													<li>가입한도 : 5,000원</li>
+												</ul>
+											</div>
+										</div>
+									</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1-1" checked>
+											<label for="chk1-1">미신청</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1-2">
+											<label for="chk1-2">비과세종합저축</label>
+										</span>
+										<div class="btn_inline_box ml_2">
+											<button type="button" class="btn btn_md btn_outline_default"
+												onclick="openModal('layer02',this)">한도조회</button>
+										</div>
+										<span class="ml6">※ 한도조회 클릭 후 잔여한도금액이 있는 경우에만 세제지원신청이 가능합니다.</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="mt_13">
+					<h4 class="tit3">계좌 비밀번호 설정</h4>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">계좌 비밀번호 설정</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">계좌 비밀번호 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="password" class="tf" title="계좌 비밀번호 입력" style="width:300px;">
+									</td>
+									<th scope="row">계좌 비밀번호 확인 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="password" class="tf" title="계좌 비밀번호 확인 입력" style="width:300px;">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="mt_13">
+					<h4 class="tit3">가입 기간 및 이율 정보</h4>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">가입 기간 및 이율 정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">가입 기준 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk2" id="chk2-1" checked>
+											<label for="chk2-1">월단위</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk2" id="chk2-2">
+											<label for="chk2-2">일단위</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">가입개월수/만기일자 <strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<div class="selectbox_wrap" style="width: 150px;">
+											<dl>
+												<dt><a href="#none" title="${조건} 선택"><span>12개월</span></a>
+												</dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>12개월</span></a></li>
+														<li><a href="#none"><span>12개월</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<input type="text" class="tf tf_datepicker" style="width: 170px;">
+										<span class="ml6">※ 가입개월수 선택 시 만기일자가 자동 입력됩니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">적용 이율</th>
+									<td colspan="3">1.7%
+										<span class="ml6">※ 적용 이율은 가입개월수를 변경하면 자동 재계산됩니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">기본이율</th>
+									<td>0.7%</td>
+									<th scope="row">우대이율</th>
+									<td>1.0%
+										<ul class="list list1 sm mt_1">
+											<li class="flex_box">
+												<div class="l">인터넷우대</div>
+												<div class="r">0.1%</div>
+											</li>
+											<li class="flex_box">
+												<div class="l">최우수/급여이체 우대</div>
+												<div class="r">0.8%</div>
+											</li>
+											<li class="flex_box">
+												<div class="l">전환 우대</div>
+												<div class="r">0.1%</div>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">이율적용방식</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-1" checked>
+											<label for="chk3-1">확정금리형</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk3" id="chk3-2">
+											<label for="chk3-2">1년확정형</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">이자지급방식</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk4" id="chk4-1" checked>
+											<label for="chk4-1">월이자지급</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk4" id="chk4-2">
+											<label for="chk4-2">만기일시지급</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">재예치 약정</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk5" id="chk5-1" checked>
+											<label for="chk5-1">미약정</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk5" id="chk5-2">
+											<label for="chk5-2">원금</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="chk5" id="chk5-3">
+											<label for="chk5-3">원금+이자</label>
+										</span>
+										<span class="ml_2 v_mid">※ 비과세 가입은 원리금(원금+이자) 재예치 신청이 불가능합니다.</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="mt_13">
+					<h4 class="tit3">기타정보</h4>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">기타정보</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">마케팅 정보 수신 여부</th>
+									<td>
+										<span class="check_item square">
+											<input type="checkbox" name="chk6" id="chk6-1" checked>
+											<label for="chk6-1">앱PUSH</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="chk6" id="chk6-2">
+											<label for="chk6-2">문자(SMS)</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="chk6" id="chk6-3">
+											<label for="chk6-3">VMS(음성)</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="chk6" id="chk6-4">
+											<label for="chk6-4">이메일</label>
+										</span>
+										<span class="check_item square">
+											<input type="checkbox" name="chk6" id="chk6-5">
+											<label for="chk6-5">우편(DM)
+											</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">추천 우체국</th>
+									<td>
+										<input type="text" class="tf" title="추천인 입력" style="width:300px;">
+										<a href="#;" class="btn btn_md btn_outline_default ml6">추천인 검색</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">취소</a>
+					<a href="#;" class="btn btn_xl btn_primary">입력 정보 확인</a>
+				</div>
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
