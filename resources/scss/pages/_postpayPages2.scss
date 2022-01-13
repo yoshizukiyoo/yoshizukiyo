@@ -242,6 +242,49 @@
 		line-height: 1;
 	}
 
+	// notice 문장 아이콘 시계로 변경
+	.bul_notice{
+		&.timer{
+			padding-left: 18px;
+			&::before{
+				top: 0;
+				width: 12px;
+				height: 12px;
+				background: url(/resources/img/common/ico_timer_sm.png) no-repeat center / 12px;
+			}
+		}
+	}
+
+	// check 아이콘이 들어간 radio box
+	.check_item{
+		&.type_btn{
+			input{
+				&+label{
+					justify-content: start;
+					.ico {
+						margin-left: 10px;
+						margin-right: 6px;
+						background-image: url(../../../resources/img/common/ico_check_off.png);
+					}
+				}
+				&:checked+label .ico {
+					background-image: url(../../../resources/img/common/ico_check_on.png);
+				}
+			}
+			&.two_line{
+				label{
+					height: auto;
+					padding: 12.5px 0 !important;
+					line-height: 1;
+					span{
+						display: block;
+						margin-top: 5px;
+					}
+				}
+			}
+		}
+	}
+
 
 	@mixin my_ico{
 		display: inline-block;
@@ -1026,19 +1069,6 @@
 						}
 					}
 
-					.check_item.type_btn input+label {
-						justify-content: start;
-	
-						.ico {
-							margin-left: 10px;
-							margin-right: 6px;
-							background-image: url(../../../resources/img/common/ico_check_off.png);
-						}
-					}
-	
-					.check_item.type_btn input:checked+label .ico {
-						background-image: url(../../../resources/img/common/ico_check_on.png);
-					}
 				}
 	
 				.tit1 {
@@ -1398,20 +1428,22 @@
 
 	&.delivery{
 
-		.arrive_time{
-			display: inline;
-			position: relative;
-			padding-left: 16px;
-			line-height: 1;
-			.ico_timer_sm{
-				position: absolute;
-				top: 4px;
-				left: 0;
+		.timer_wrap{
+			display: flex;
+			justify-content: end;
+			.bul_notice{
+				&.timer{
+					font-size: 11px;
+					line-height: 1;
+					.arrive{
+						display: block;
+						margin-top: 3px;
+					}
+				}
 			}
-			.arrive{
-				display: inline-block;
-				margin-top: 3px;
-			}
+		}
+		.input_items{
+			margin: 0;
 		}
 
 	}
