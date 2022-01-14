@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			// 보내는 분 휴대전화 번호 박스
+			$('.sms_phone_check input[type=radio]').change(function () {
+				if ($(this).val() == 'sms_phone1') {
+					$('[data-sms-phone=phone1]').show();
+					$('[data-sms-phone=phone2]').hide();
+				} else {
+					$('[data-sms-phone=phone1]').hide();
+					$('[data-sms-phone=phone2]').show();
+				}
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">즉시이체</h2>
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+
+
+				<!-- s: 증명서발급  팝업 -->
+				<div class="modal_popup modal_xl show" data-popup="transfer_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">증명서발급</h3>
+						</div>
+						<div class="popup_body">
+							<div class="tbl_tit">
+								<div class="txt_right">
+									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									<button type="button" class="btn btn_xs btn_outline_default ml_3"
+										onclick="$.print('.modal_popup[data-popup=transfer_popup]');">화면인쇄</button>
+								</div>
+							</div>
+
+							<!-- s: 증명서 발급 영역 -->
+							<div class="mt_5" style="height:500px;background: #000; color: #fff;">
+								증명서 발급 영역
+							</div>
+							<!-- e: 증명서 발급 영역 -->
+
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 증명서발급 팝업 -->
+
+
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
