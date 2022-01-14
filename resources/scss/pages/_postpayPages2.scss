@@ -1,6 +1,6 @@
 // 포스트페이2
 
-// 헤더
+/* postpay header */
 
 @mixin orange_dot {
 	display: inline-block;
@@ -11,8 +11,6 @@
 	color: #f46e16;
 	text-indent: -9999px;
 }
-
-// postpay header
 
 .titlebar {
 	&.postpay {
@@ -65,32 +63,20 @@
 				border-radius: 50px;
 			}
 		}
-		.popup_num {
-			display: inline-block;
-			min-width: 16px;
-			height: 16px;
-			margin-left: 5px;
-			padding: 0 4.5px;
-			border-radius: 50%;
-			background: $darkgray;
-			font-size: 11px;
-			color: $white;
-			line-height: 15px;
-			vertical-align: bottom;
-		}
 	}
 }
-
-
-// 풀팝업 안의 datepicker
-.popup{
-	>.modal_popup{
-		&.modal_datepicker{
-			.popup_inner{
-				height: unset;
-			}
-		}
-	}
+.black_num {
+	display: inline-block;
+	min-width: 16px;
+	height: 16px;
+	margin-left: 5px;
+	padding: 0 4.5px;
+	border-radius: 50%;
+	background: $darkgray;
+	font-size: 11px;
+	color: $white;
+	line-height: 15px;
+	vertical-align: bottom;
 }
 
 /* postpay 클래스 */
@@ -110,14 +96,9 @@
 		letter-spacing: -0.05em;
 		&::before{
 			width: 50px;
+			height: auto;
 			background-position: center top;
 		}
-		// &.standard{
-		// 	&::before{
-		// 		width: 50px;
-		// 		height: 50px;
-		// 	}
-		// }
 	}
 
 	.view_box {
@@ -129,16 +110,6 @@
 			margin-left: 0 !important;
 		}
 	}
-
-	// 이미 popup 창인데 popup을 또 띄워야할 경우 
-	.has_modal{
-		.modal_alert{
-			.popup_inner{
-				height: auto;
-			}
-		}
-	}
-
 
 	// 양 옆으로 나뉘어진 리스트
 	.double_box{
@@ -163,6 +134,9 @@
 	}
 	.ls0{
 		letter-spacing: 0;
+	}
+	.lh1{
+		line-height: 1;
 	}
 
 	.highlight{
@@ -336,8 +310,6 @@
 		}
 	}
 
-
-
 	// toggle 인데 스스로도 check 박스이고 안애도 check 일 때
 	.mypg_toggle_list {
 
@@ -461,6 +433,7 @@
 			}
 		}
 	}
+
 	// input 줄에 설명이 함께 들어갈 때 사용
 	.wrap_input_double{
 		.tf_item{
@@ -474,6 +447,140 @@
 			}
 		}
 	}
+
+	// 탭 메뉴인데 비어있는 부분이 있을 때
+
+	.tab_list{
+		&.ghost{
+			li{
+				flex: 1;
+				.black_num{
+					display: inline-block;
+					height: 16px;
+					padding: 0 4.5px;
+				}
+			}
+		}
+	}
+
+	// 원형 이미지 프로세스
+	.circle_process{
+		li{
+			text-align: center;
+			line-height: 1;
+			flex: 1;
+			.tit2{
+				margin-bottom: 3.5px;
+			}
+			.circle{
+				position: relative;
+				width: 50px;
+				height: 50px;
+				margin: 0 auto;
+				border-radius: 50%;
+				img{
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+				&::after{
+					content: '';
+					display: inline-block;
+					position: absolute;
+					left: 100%;
+					right: -200%;
+					top: 50%;
+					transform: translateY(-50%);
+					height: 3px;
+				}
+			}
+			
+			&.first{
+				.circle{
+					background: $primary;
+					img{
+						width: 24px;
+						height: 24px;
+					}
+					&::after{
+						background: $primary;
+					}
+				}
+			}
+			&.second{
+				.circle{
+					background: $white;
+					border: 3px solid $primary;
+					img{
+						width: 29px;
+						height: 23px;
+					}
+					&::after{
+						left: 105%;
+						right: -215%;
+						background: $btn-xl-disable2;
+					}
+				}
+			}
+			&.third{
+				.circle{
+					background: $btn-xl-disable2;
+					img{
+						width: 20px;
+						height: 23px;
+					}
+				}
+			}
+		}
+	}
+
+	// 송금 완료 중 요약 정보
+	.rec_info{
+		>.d_flex{
+			margin-bottom: 15px; /* 아닐 수 있음*/
+			justify-content: unset;
+			.tit1{
+				margin-bottom: 0;
+				margin-right: 12px;
+			}
+			.input_items{
+				margin: 0;
+				.check_item{
+					color: $black;
+				}
+			}
+		}
+		.tit1{
+			font-size: 18px;
+			&.highlight{
+				display: inline-block;
+				margin-bottom: 0;
+				transform: translateY(1px);
+			}
+		}
+		.ico_person{
+			margin-right: 5px;
+		}
+		.price{
+			display: flex;
+			align-items: center;
+			>p{
+				margin-right: 6px;
+				font-size: 20px;
+				font-weight: 500;
+				span{
+					font-size: 25px;
+					font-weight: 700;
+					letter-spacing: normal;
+				}
+			}
+			.state{
+				transform: translateY(2px);
+			}
+		}
+	}
+
 
 	// 페이지별 css
 
@@ -826,17 +933,20 @@
 	&.wallet {
 
 		// 전자지갑 - 오픈뱅킹 연결
-
-		.openbank::before {
-			height: 36px;
-			background-image: url(/resources/img/content/top_ico_bank.png);
-			background-size: 50px 36px;
+		.top_ico_txt{
+			&.openbank{
+				&::before{ 
+					height: 40px;
+					background-image: url(/resources/img/content/top_ico_bank.png);
+				}
+			}
 		}
 
 		// 전자지갑 - 카드 연결
 		.top_ico_txt{
 			&.card{
-				&::before{
+				&::before{ 
+					height: 35px;
 					background-image: url(/resources/img/content/top_ico_card.png);
 				}
 			}
@@ -849,6 +959,7 @@
 		.top_ico_txt{
 			&.office{
 				&::before{
+					height: 33px;
 					background-image: url(/resources/img/content/top_ico_office.png);
 				}
 			}
@@ -938,7 +1049,6 @@
 				&::before{
 					height: 36px;
 					background-image: url(/resources/img/content/top_ico_postmoney.png);
-					background-size: 50px 36px;
 				}
 			}
 		}
@@ -1388,45 +1498,6 @@
 				padding: 0;
 			}
 		}
-		.rec_info{
-			>.d_flex{
-				margin-bottom: 15px; /* 아닐 수 있음*/
-				justify-content: unset;
-				.tit1{
-					margin-bottom: 0;
-					margin-right: 12px;
-				}
-				.input_items{
-					margin: 0;
-					.check_item{
-						color: $black;
-					}
-				}
-			}
-			.tit1{
-				font-size: 18px;
-				.ico{
-					margin-right: 5px;
-				}
-			}
-			.price{
-				display: flex;
-				align-items: center;
-				>p{
-					margin-right: 6px;
-					font-size: 20px;
-					font-weight: 500;
-					span{
-						font-size: 25px;
-						font-weight: 700;
-						letter-spacing: normal;
-					}
-				}
-				.state{
-					transform: translateY(2px);
-				}
-			}
-		}
 		.name_check{
 			.example{
 				display: block;
@@ -1455,6 +1526,7 @@
 		.top_ico_txt{
 			&.truck{
 				&::before{
+					height: 38px;
 					background-image: url(/resources/img/content/top_ico_delivery.png);
 				}
 			}
@@ -1474,14 +1546,60 @@
 				}
 			}
 		}
+
 		.input_items{
 			margin: 0;
 		}
 
+		.under{
+			display: flex;
+			flex-direction: column;
+			min-height: 50vh;
+			.tab_menu{
+				position: relative;
+				.tab_list{
+					margin-top: 32.5px;
+				}
+				.btn{
+					position: absolute;
+					top: 11.5px;
+					right: 20px;
+				}
+			}
+			.tab_cont{
+				position: relative;
+				flex: 1;
+				.timer_wrap{
+					position: absolute;
+					right: 20px;
+					bottom: 20px;
+				}
+			}
+		}
+
+		.box_inquiry{
+			background: $white;
+			.box_label{
+				&.gray{
+					background: $border-base;
+				}
+			}
+			.list_inquiry{
+				.name{
+					.highlight{
+						margin-left: 5px;
+						vertical-align: middle;
+					}
+				}
+				.lab_status{
+					&.btn_round{
+						border-radius: 10px;
+					}
+				}
+			}
+		} 
 
 	}
-
-	// box-shadow: 0px 4px 10px -4px rgb(0 0 0 / 10%);
 
 
 
