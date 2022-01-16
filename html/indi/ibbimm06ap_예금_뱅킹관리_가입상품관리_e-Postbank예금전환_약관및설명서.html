@@ -23,6 +23,28 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		// 
+		function clauseList(id, obj) {
+			$('[data-clause]').hide();
+			$(obj).addClass('current').parent().siblings().find('>a').removeClass('current');
+			$('[data-clause=' + id + ']').show();
+		}
+
+		// PDF 뷰어 박스 실행
+		function checkAgree(obj) {
+			if ($(obj).is(':checked')) {
+				$('.pdf_viewer').show();
+				$('.clause_info_txt').hide();
+			}
+
+			$('.clause_list').addClass('scroll');
+		}
+
+		// PDF 뷰어 닫기
+		function closePdf() {
+			$('.pdf_viewer').hide();
+			$('.clause_info_txt').show();
+			$('.clause_list').removeClass('scroll');
+		}
 	</script>
 </head>
 
@@ -177,102 +199,136 @@
 					<a href="#;" class="btn btn_xl btn_primary">다음</a>
 				</div>
 
-				<!-- s: 상품설명서 팝업 -->
-				<div class="modal_popup modal_alert hide" data-popup="manualcheck">
+				<!-- s: 약관 및 설명서 확인 팝업 -->
+				<div class="modal_popup modal_alert show" data-popup="layerSampleLg">
 					<div class="dimed"></div>
-					<div class="popup_inner" tabindex="0" style="width:650px;">
+					<div class="popup_inner" tabindex="0">
 						<div class="popup_header">
 							<h2 class="popup_tit">약관 및 설명서 확인</h2>
 						</div>
-						<div class="popup_body type02">
-							<div class="top">
+						<div class="popup_body p_0">
+							<div class="pl_10 pr_10 pt_8">
 								<div class="tab_menu_type3">
 									<ul>
 										<li><a href="#;" class="current" title="선택됨"><span>e-Postbank 예금전환</span></a></li>
+										</li>
 									</ul>
 								</div>
-								<ul class="list_check">
-									<li>
-										<div class="l">
-											<span class="check_item circle">
-												<input type="checkbox" name="inputCheck5" value="" id="inputCheck5_1">
-												<label for="inputCheck5_1" class="txt_666 txt_light">[필수] 상품설명서</label>
-											</span>
-										</div>
-										<div class="r">
-											<a href="#;" class="btn btn_xs btn_outline_default">저장하기</a>
-										</div>
-									</li>
-									<li>
-										<div class="l">
-											<span class="check_item circle">
-												<input type="checkbox" name="inputCheck5" value="" id="inputCheck5_2">
-												<label for="inputCheck5_2" class="txt_666 txt_light">[필수] 예금약관</label>
-											</span>
-										</div>
-										<div class="r">
-											<a href="#;" class="btn btn_xs btn_outline_default">저장하기</a>
-										</div>
-									</li>
-								</ul>
-							</div>
 
-							<div class="bottom">
+								<!-- s: 다드림통장 약관 목록 -->
+								<div class="pt_5 pb_7" data-clause="clause_box1">
+									<ul class="clause_list">
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="clause1_1" onchange="checkAgree(this);">
+													<label for="clause1_1">[필수] 핵심설명서</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="clause1_2" onchange="checkAgree(this);">
+													<label for="clause1_2">[필수] 이용약관</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="clause1_3" onchange="checkAgree(this);">
+													<label for="clause1_3">[필수] 상품설명서</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+									</ul>
+								</div>
+								<!-- e: 다드림통장 약관 목록 -->
 
-								<div class="tab_cont">
-									<div class="int_page">
+								<!-- s: 우체국멤버십 약관 목록 -->
+								<div class="pt_5 pb_7" data-clause="clause_box2" style="display: none;">
+									<ul class="clause_list">
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck2_1" onchange="checkAgree(this);">
+													<label for="inputCheck2_1">우체국 멤버십 핵심 설명서</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck2_2" onchange="checkAgree(this);">
+													<label for="inputCheck2_2">우체국 멤버십 이용 약관</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck3_3" onchange="checkAgree(this);">
+													<label for="inputCheck3_3">개인정보제공동의</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+									</ul>
+								</div>
+								<!-- e: 우체국멤버십 약관 목록 -->
 
-										<div class="sec">
-											<div class="ico_tit ico1">금융소비자보호법에 따라 약관 및 설명서 확인이 필요해요.</div>
-											<div class="pl_8">약관 및 상품설명서의 내용 중 반드시 확인하셔야 할 중요한<br>사항은 가입 전 확인사항에서 다시 한번 알려드려요.</div>
-										</div>
-
-										<div class="sec">
-											<div class="ico_tit ico2">확인 방법은 아래 두가지 중 한가지를 선택할 수 있어요.</div>
-											<ul class="list pl_8">
-												<li>① 약관명 앞 체크박스를 선택<br>→ 약관 파일 표시되며 바로 확인</li>
-												<li>② 약관명 옆 [저장하기] 버튼, 하단 [전체 저장] 버튼 선택<br>→ 선택한 약관 파일 또는 전체 약관 파일을 고객님의 스마트폰에
-													내려받아 확인</li>
+								<div class="clause_info_txt">
+									<p class="alert_clause_txt">
+										<strong>금융소비자보호법에 따라<br>약관 및 설명서 확인이 필요해요.</strong>
+									</p>
+									<ul>
+										<li><strong>약관 및 상품설명서의 내용 중 반드시 확인하셔야 할 중요한 사항은 가입 전 확인사항에서 다시 한번 알려드려요.</strong></li>
+										<li>
+											<strong>확인 방법은 아래 두가지 중 한가지를 선택할 수 있어요.</strong>
+											<ul>
+												<li>
+													① 약관명 앞 체크박스를 선택<br>
+													<span>약관 파일 표시되며 바로 확인</span>
+												</li>
+												<li>
+													② 약관명 옆 [저장하기] 버튼, 하단 [전체 저장] 버튼 선택<br>
+													<span>선택한 약관 파일 또는 전체 약관 파일을 고객님의 스마트폰에 내려받아 확인</span>
+												</li>
 											</ul>
-										</div>
-
-										<div class="btn_group">
-											<button type="button" class="btn btn_lg btn_outline_default"
-												onclick="closeModal('#manualcheck');">전체저장</button>
-											<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('#manualcheck');">모두
-												확인했어요</button>
-										</div>
-
-									</div>
-
-									<!-- <div class="content">
-									1
+										</li>
+									</ul>
 								</div>
-								<div class="content">
-									2
-								</div> -->
-								</div>
-
 							</div>
 
+							<!-- s: PDF 뷰어 -->
+							<div class="pdf_viewer">
+								<div class="inner">
+									PDF 뷰어 영역
+								</div>
+								<a href="#;" class="btn_pdf_close" onclick="closePdf();return false;"><span
+										class="sr_only">닫기</span></a>
+							</div>
+							<!-- e: PDF 뷰어 -->
 
-							<!-- <script>
-								$(document).on('click', ".tab_box input", function () {
-									var idx = $(this).parents('.row_box').index();
-									if ($(this).is(":checked")) {
-										$(".tab_box .row_box").removeClass('active');
-										$(this).parents('.row_box').addClass('active');
-										$(".tab_cont .content").eq(idx).addClass('active');
-									}
-								})
-							</script> -->
-
-
+						</div>
+						<div class="popup_footer txt_c bg_color_none">
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('layerSampleLg');">전체
+									저장</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleLg');">모두
+									확인했어요</button>
+							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 상품설명서 팝업 -->
+				<!-- e: 약관 및 설명서 확인 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
