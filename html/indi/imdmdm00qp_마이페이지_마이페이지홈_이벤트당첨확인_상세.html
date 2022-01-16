@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.account_arr').click(function () {
+				var tit = $(this).attr('title');
+				$(this).parents('.account_tab').toggleClass('active');
+				if (tit == '그룹 접기') {
+					$(this).attr('title', '그룹 펼치기');
+				} else if (tit == '그룹 펼치기') {
+					$(this).attr('title', '그룹 접기');
+				}
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">마이페이지</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+
+				<!-- Modal Popup : 이벤트 당첨 확인 -->
+				<div class="modal_popup modal_500 show" data-popup="layer08">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">이벤트 당첨 확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="event_view_top">
+								<div class="l">
+									<h4>우체국 체크카드와 함께하는 힐링 파도타기 여름 EVENT</h4>
+									<p>2021.07.23 12:11</p>
+								</div>
+								<div class="r">
+									<span class="evt_icon black">발표</span>
+									<a href="#;" class="btn_pd_share ml_1"><span class="sr_only">공유하기</span></a>
+								</div>
+							</div>
+							<!-- s: 상세 내용 -->
+							<div class="mt_4 pb_10">
+								<div class="txt_c mb_4">
+									<a href="#;" class="btn_win_check">당첨 확인</a>
+								</div>
+								<div class="event_view_txt">
+									<img src="/resources/img/content/img_event_view.gif" alt="">
+									시니어 싱글벙글 정기예금 이벤트를 진행합니다.<br>
+									많은 참여 바랍니다.<br>
+									출시 이벤트 : 2021.05.28(금) ~ 07.31(토)
+								</div>
+							</div>
+							<!-- e: 상세 내용 -->
+							<div class="btn_group">
+								<a href="#;" class="btn btn_lg btn_outline_default" onclick="closeModal('layer08');">목록으로
+									돌아가기</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 이벤트 당첨 확인 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+
+	</div>
+</body>
+
+</html>
