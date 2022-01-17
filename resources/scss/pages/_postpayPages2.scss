@@ -270,8 +270,8 @@
 			&.two_line{
 				label{
 					height: auto;
-					padding: 12.5px 0 !important;
-					line-height: 1;
+					padding: 12px 0 !important;
+					line-height: 1.2;
 					.add_line{
 						display: block;
 						margin-top: 5px;
@@ -434,6 +434,20 @@
 		}
 	}
 
+	// 검색인데 라벨이 위아래로 있을 때
+	.board_search{
+		border-radius: 8px;
+		&.double{
+			label{
+				font-size: 13px;
+			}
+			.btn_search{
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
 	// input 줄에 설명이 함께 들어갈 때 사용
 	.wrap_input_double{
 		.tf_item{
@@ -449,7 +463,6 @@
 	}
 
 	// 탭 메뉴인데 비어있는 부분이 있을 때
-
 	.tab_list{
 		&.ghost{
 			li{
@@ -580,6 +593,43 @@
 			}
 		}
 	}
+
+	// 팝업 하단 중 패딩이 있는 버튼이 두개일 때
+	.btn_group{
+		&.btn_group_flex{
+			> .btn{
+				&+.btn{
+					margin-left: 10px !important;
+				}
+			}
+		}
+	}
+
+	// 그림자
+	.shadow{
+		position: relative;
+		z-index: 1;
+		box-shadow: 0px 4px 10px -4px rgba(0, 0, 0, .1);
+		background-color: $white;
+	}
+
+	.border_list{
+		&.select{
+			li{
+				position: relative;
+				> .btn{
+					position: absolute;
+					top: 15px;
+					right:0;
+					font-weight: 400;
+				}
+				&:first-of-type{
+					border-top: none;
+				}
+			}
+		}
+	}
+
 
 
 	// 페이지별 css
@@ -1597,10 +1647,184 @@
 					}
 				}
 			}
-		} 
+		}
 
+		.rec_info{
+			position: relative;
+			> .day{
+				position: absolute;
+				right: 20px;
+			}
+		}
+
+		.card_sel{
+			> *{
+				height: 70px;
+				padding: 14px 20px;
+				flex: 1;
+				&:last-child{
+					margin-left: 10px;
+				}
+			}
+			> .board_search{
+				display: flex;
+				flex-direction: column;
+				label{
+					padding-bottom: 6px;
+				}
+				input{
+					padding: 0;
+				}
+			}
+		}
+		.border_list{
+			&.select{
+				& + .tit2{
+					color: $darkgray;
+				}
+			}
+		}
+
+		.bg_lightgray{
+			&.ls5{
+				color: $gray;
+			}
+		}
+		.txt_area{
+			position: relative;
+			padding-bottom: 30px;
+			.txt_amt{
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+			}
+			textarea{
+				white-space: unset;
+				overflow-y: auto;
+			}
+		}
+		.img_wrap{
+			&.user_sample{
+				position: relative;
+				.user_word{
+					// display: inline-block;
+					position: absolute;
+					left: 50%;
+					top: 45%;
+					transform: translateX(-50%);
+					width: 80%;
+					height: 72px;
+					font-size: 3.5vw;
+					font-weight: 500;
+					color: $gray;
+					text-align: center;
+					overflow-y: auto;
+				}
+			}
+		}
+		.modal_bottom_sheet{
+			.btn{
+				.ico_chevron_right_sm{
+					margin-left: 6px;
+					margin-top: -1px;
+					transform: rotate(90deg);
+				}
+			}
+		}
+
+		.row_input{
+			.toggle_hide{
+				&.full{
+					flex: 1;
+				}
+			}
+			.check_item{
+				&.type_btn{
+					label{
+						width: 70px;
+						height: 70px;
+						justify-content: center;
+					}
+				}
+			}
+		}
 	}
 
+	// 송금받기
+	&.receive{
+
+		.top_ico_txt{
+			&.hand{
+				&::before{
+					height: 36px;
+					background-image: url(/resources/img/content/top_ico_receive.png);
+				}
+			}
+		}
+
+		.btn_round{
+			&.arrow{
+				font-weight: 400;
+			}
+		}
+		.ico_chevron_right_sm{
+			width: 6px;
+			height: 10px;
+			margin-left: 15px;
+			transform: rotate(90deg);
+		}
+
+		.summary{
+			text-align: center;
+			line-height: 1;
+			.name{
+				font-size: 12px;
+				font-weight: 400;
+				.ico_person{
+					width: 10px;
+					height: 12px;
+					margin-right: 3.5px;
+					transform: translateY(-1.5px);
+				}
+			}
+			.date{
+				font-size: 12px;
+				color: #777;
+			}
+			.price{
+				display: inline-block;
+				position: relative;
+				font-size: 23px;
+				font-weight: 400;
+				span{
+					font-size: 30px;
+					font-weight: 700;
+				}
+				button{
+					position: absolute;
+					left: calc(100% + 10px);
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+			.new_yellow{
+				.btn{
+					padding: 13px;
+					border-radius: 8px;
+					background: #ffd64a;
+					white-space: unset;
+					flex: 1;
+					&+.btn{
+						margin-left: 10px;
+					}
+					span{
+						width: 65%;
+					}
+				}
+			}
+		}
+
+	}
 
 
 
