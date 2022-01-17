@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $postpaySlide = $('.postpay_bottom_list');
+			$postpaySlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				centerMode: false,
+				slidesToShow: 4
+			});
+			$('.wrapper').css('padding-bottom', '0px');
+
+			var screen = $('html').height();
+			var upper = $('.shadow').height();
+			var under = screen - upper - 136;
+			$('.under').css({'minHeight':under});
+
+			var $homeSlide = $('.home_slide');
+			$homeSlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				dots: true,
+				// centerMode: true,
+				// centerPadding:50,
+				slidesToShow: 1,
+
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay_type7.html" data-page-title="송금">
+		</header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="postpay remit_home bg_lightgray">
+
+				<!-- s: 계좌 및 메뉴 -->
+				<div class="p_4 shadow">
+					<div class="home_slide">
+						<div class="account_info office">
+							<div class="container">
+								<p class="price"><span>436,900</span>원</p>
+								<div class="d_flex aie">
+									<p>우체국계좌 4210</p>
+									<button>최근결제</button>
+								</div>
+							</div>
+							<div class="d_flex btn_wrap">
+								<button type="button">
+									<i class="ico"></i>
+									송금
+								</button>
+								<button type="button">
+									<i class="ico"></i>
+									결제
+								</button>
+							</div>
+						</div>
+						<div class="account_info">your content</div>
+					</div>
+				</div>
+				<!-- e: 계좌 및 메뉴 -->
+
+				<!-- s: 계좌 및 메뉴 -->
+				<ul class="menu_list">
+					<li>
+						<a href="#;">
+							<span></span>
+							<p>전화번호송금</p>
+						</a>
+					</li>
+				</ul>
+				<!-- e: 계좌 및 메뉴 -->
+
+				<!-- s: 최근 송금 이력 -->
+				<div class="under">
+					회색 영역
+				</div>
+				<!-- e: 최근 송금 이력 -->
+
+				<!-- s: 하단 슬라이딩 메뉴 -->
+				<div class="bottom_fixed_area">
+					<div class="postpay_bottom">
+						<div class="container">
+							<div class="postpay_bottom_slider_area">
+								<ul class="postpay_bottom_list">
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit purse on">전자지갑</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit calendar">금융캘린더</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit pay">결제</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit remittance">QR송금</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit event">이벤트중</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit inquiry">통합이용조회</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 하단 슬라이딩 메뉴 -->
+
+				<!-- s: 공통 레이어 로딩 -->
+				<div class="common_layers"></div>
+				<!-- e: 공통 레이어 로딩 -->
+			</div>
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
