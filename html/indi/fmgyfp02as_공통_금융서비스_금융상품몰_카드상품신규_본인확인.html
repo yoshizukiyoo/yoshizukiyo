@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="체크카드 발급"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">본인확인</span></li>
+					<li><span class="num">2</span><span class="txt">약관동의</span></li>
+					<li><span class="num">3</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">4</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">신청완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+				<ul class="list list1">
+					<li>고객님의 소중한 정보 제공을 위해 본인 확인 절차가 진행됩니다.</li>
+					<li>이름과 주민등록번호 입력 후 휴대폰 본인 인증을 해주세요.</li>
+				</ul>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">이름 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="이름 입력" required>
+						</div>
+					</div>
+				</div>
+				<div class="mt_2">
+					<div class="tf_double mt_2">
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">주민등록번호 앞자리</span>
+									<input type="text" id="lb_tf_1_3" class="tf" placeholder="placeholder" value="0000000">
+								</div>
+							</div>
+						</div>
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">주민등록번호 뒷자리</span>
+									<input type="password" id="lb_tf_1_3" class="tf" placeholder="placeholder" value="*******">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<p class="txt_c txt_invalid txt_normal txt_sm">이름, 주민등록번호는 필수 입력 사항 입니다.</p>
+				<div class="btn_group btn_group_flex mt_6">
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('certi_phone',this)">휴대폰 본인 인증</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 사전 확인 사항 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">사전 확인 사항</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<p class="top_ico_txt bg_setting">카드 발급 전 연락처와 주소 정보 등 개인 정보 변경 여부를 확인 해 주세요.</p>
+
+							<!-- s: 연락처 -->
+							<div class="indi_info_box mt_7">
+								<h2 class="indi_tit bg_con_add">연락처</h2>
+								<div class="double_box mt_2">
+									<div class="btm">
+										<div>
+											<div class="l">자택</div>
+											<div class="r">02-1234-1234</div>
+										</div>
+										<div>
+											<div class="l">직장</div>
+											<div class="r">미등록</div>
+										</div>
+										<div>
+											<div class="l">휴대폰</div>
+											<div class="r">010-1234-1234</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 연락처 -->
+
+							<!-- s: 주소 -->
+							<div class="indi_info_box mt_3">
+								<h2 class="indi_tit bg_addr">주소</h2>
+								<div class="double_box mt_2">
+									<div class="btm">
+										<div>
+											<div class="l">자택</div>
+											<div class="r">서울시 노원구 한글비석로 12 1234동 1234호</div>
+										</div>
+										<div>
+											<div class="l">직장</div>
+											<div class="r">전라남도 나주시 상야4길 22 대양스퀘어 516호(빛가람동)</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 연락처 -->
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_outline_default">수정</a>
+							<a href="#;" class="btn btn_lg btn_primary">변경 없어요</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 사전 확인 사항 -->
+
+			<!-- s: 휴대폰 인증 팝업 -->
+			<div class="modal_popup popup hide" data-popup="certi_phone">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">휴대폰 인증</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4 pb_6">
+							<!-- s: 약관동의 -->
+							<h2 class="tit1">휴대폰인증 이용약관을 동의해주세요.</h2>
+							<div class="double_box terms_box mt_6">
+								<div class="top">
+									<span class="check_item txt_medium">
+										<input type="checkbox" name="" id="all_chk">
+										<label for="all_chk">[필수] 아래 서비스 이용약관 모두 동의</label>
+									</span>
+								</div>
+								<div class="btm">
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk1" checked>
+												<label for="chk1">본인확인서비스 이용약관</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms01', this)">약관보기</button>
+										</div>
+									</div>
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk2">
+												<label for="chk2">개인정보수집 및 이용동의</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms02', this)">약관보기</button>
+										</div>
+									</div>
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk3">
+												<label for="chk3">고유식별정보 처리 동의</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms03', this)">약관보기</button>
+										</div>
+									</div>
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk4">
+												<label for="chk4">통신사 이용약관 동의</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms04', this)">약관보기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 약관동의 -->
+
+							<!-- s: 통신사 선택 -->
+							<div class="mt_2">
+								<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">통신사 <span class="req">필수항목</span></span>
+											<p class="tf">SK</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<!-- e: 통신사 선택 -->
+
+							<!-- s: 휴대폰 번호 입력 -->
+							<div class="mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="input2_1">휴대폰 번호 <span class="req">필수항목</span></label>
+											<div class="input_items">
+												<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 93px;"
+													onclick="openModal('layerOption')">010</a>
+												<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 휴대폰 번호 입력 -->
+
+							<!-- s: SMS인증번호 입력 -->
+							<div class="mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_3">SMS인증번호 <span class="req">필수항목</span></label>
+											<input type="password" id="lb_tf_1_3" class="tf" placeholder="6자리 인증번호 입력" value="" required>
+										</div>
+										<span class="certi_time">02:59</span>
+									</div>
+								</div>
+								<div class="txt_r mt_1">
+									<a href="#;" class="btn btn_sm btn_round btn_default">인증번호 재요청 <i
+											class="ico ico_chevron_right_sm ml_1"></i></a>
+								</div>
+								<!-- Validation Check 문구 -->
+								<!-- <p class="mt_1 txt_invalid">인증번호가 일치하지 않습니다.</p> -->
+								<!-- <p class="mt_1 txt_invalid">인증번호 유효기간이 경과하였습니다. 재요청을 해주세요.</p> -->
+							</div>
+							<p class="bul_notice mt_4">인증요청후 인증번호 유효시간은 3분입니다. 인증시간 경과시 인증요청을 다시 해주세요.</p>
+							<!-- e: SMS인증번호 입력 -->
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('certi_phone');">
+								인증요청
+								<!-- validation check 문구  -->
+								<!-- 인증번호 확인 -->
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 휴대폰 인증 팝업 -->
+
+			<!-- s: 휴대폰번호변경 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">휴대폰번호를 변경해 주세요.</h2>
+					</div>
+					<div class="popup_body pb_4">
+						<div class="container">
+							<div>
+								<span class="txt_normal txt_spacing_sm">홍길동님, 회원정보에 등록된 휴대폰번호와 방금 본인 인증한 번호가 다릅니다.</span>
+							</div>
+
+							<div class="mt_4 txt_xs txt_spacing_sm txt_break">
+								기존 회원의 신규 신청은 회원 정보에 등록된 휴대폰번호와 본인 인증한 휴대폰번호가 일치해야 합니다.
+							</div>
+
+							<div class="box bg_lightgray mt_4 txt_spacing_sm">
+								<div class="fx_lr">
+									<div class="l txt_gray">등록된 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+								<div class="fx_lr">
+									<div class="l txt_gray">인증한 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+							</div>
+
+							<div class="mt_4">
+								<span class="txt_medium txt_spacing_sm">회원정보의 휴대폰번호를 본인 인증한 번호로 변경하시겠습니까?</span>
+							</div>
+
+							<div class="mt_4 txt_c">
+								<span class="txt_invalid txt_xs txt_spacing_sm">아니오를 선택하시면 신규 신청이 중단되며,<br>이전페이지로 돌아갑니다.</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer02');">아니오</button>
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('layer02'); openModal('layer03')">예</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 휴대폰번호변경 팝업 -->
+
+			<!-- s: 휴대폰번호변경 완료 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer03">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">고객정보 변경이 완료되었습니다.</h2>
+					</div>
+					<div class="popup_body pb_4">
+						<div class="container">
+							<div class="box bg_lightgray txt_spacing_sm">
+
+								<div class="fx_lr">
+									<div class="l txt_gray">변경 전 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+								<div class="fx_lr">
+									<div class="l txt_gray">변경 후 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+							</div>
+
+							<div class="mt_4 txt_c">
+								<span class="txt_medium txt_spacing_sm">확인 버튼을 누르시면, 진행하시던 신규 업무를 이어서 진행하실 수 있습니다.</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 휴대폰번호변경 완료 팝업 -->
+
+			<!-- s: 우체국 계좌 없음 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer04">
+				<div class="dimed"></div>
+				<div class="popup_inner popup_inner2">
+					<div class="popup_header">
+						<h3 class="popup_tit"><i class="ico ico_notice_yellow"></i> 우체국 계좌가 없습니다.</h3>
+					</div>
+					<div class="popup_body pb_4">
+						<div class="container">
+							<div>
+								<p class="txt_normal">우체국체크카드는 우체국 입출금통장이 있어야 발급 가능합니다.</p>
+								<p class="txt_normal mt_3">우체국 입출금통장을 먼저 만들어주세요.<br>아래 버튼을 선택하시면 통장과 체크카드를 같이 만들 수 있습니다.</p>
+							</div>
+
+							<div class="mt_2 txt_c">
+								<span class="txt_red2 txt_10px txt_spacing_sm txt_normal">비대면 계좌 개설은 신분증과 은행계좌인증이 필요합니다.</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default txt_md" onclick="closeModal('layer04');">취소</button>
+							<button type="button" class="btn btn_lg btn_primary txt_md" onclick="closeModal('layer04');">계좌
+								개설</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 우체국 계좌 없음 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

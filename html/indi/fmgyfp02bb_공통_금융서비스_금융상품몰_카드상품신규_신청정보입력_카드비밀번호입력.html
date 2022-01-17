@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="체크카드 발급"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li><span class="num">1</span><span class="txt">본인확인</span></li>
+					<li><span class="num">2</span><span class="txt">약관동의</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">4</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">신청완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<!--
+					UI 인터랙션(작성상태 별 class 명칭)
+					
+					1. 작성중 class명 : active
+					2. 작성완료 clssa명 : write_complete
+					3. 작성대기 class 명 : disabled
+				-->
+
+				<!-- s: 고객기본정보 -->
+				<div class="toggle_box">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">기본정보</h2>
+					</a>
+					<div class="toggle_con">
+
+						<!-- s: 이름 입력 -->
+						<div class="tf_item disabled">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="inp1_1" class="lab">이름 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_1" class="tf" value="홍길동" readonly>
+								</div>
+							</div>
+						</div>
+						<!-- e: 이름 입력 -->
+
+						<!-- s: 휴대폰 번호 입력 -->
+						<div class="tf_item mt_2 disabled">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="inp1_2" class="lab">휴대폰 번호 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_2" class="tf" value="010-2222-3456" readonly>
+								</div>
+							</div>
+						</div>
+						<!-- e: 휴대폰 번호 입력 -->
+
+						<!-- s: 자택전화번호 입력 -->
+						<div class="tf_item mt_2">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="inp1_2" class="lab">자택전화번호</label>
+									<input type="text" id="inp1_2" class="tf" value="02-2222-3456">
+								</div>
+							</div>
+						</div>
+						<!-- e: 자택주소 입력 -->
+
+						<!-- s: 영문성명 입력 -->
+						<div class="tf_item mt_2">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label for="inp1_2" class="lab">영문성명(English Name) <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_2" class="tf" value="Hong Gildong">
+								</div>
+							</div>
+						</div>
+						<!-- e: 영문성명 입력 -->
+
+						<!-- s: 생년월일 입력 -->
+						<div class="tf_item active mt_2">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="lb_date">생년월일 <span class="req">필수항목</span></label>
+									<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10.04" readonly=""
+										required="">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+										<i class="ico ico_datepicker"></i>
+										<span class="sr_only">달력</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="mt_2">
+							<div class="input_items">
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="chk1" id="chk1_1" checked>
+									<label for="chk1_1">양력</label>
+								</span>
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="chk1" id="chk1_2">
+									<label for="chk1_2">음력</label>
+								</span>
+							</div>
+						</div>
+						<!-- e: 생년월일 입력 -->
+
+						<!-- s: 자택주소 -->
+						<div class="tf_item mt_2 active">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="inp1_4">자택주소 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_4" class="tf" placeholder="주소 검색으로 주소 입력">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_md btn_round btn_darkgray d_i_f">주소검색</a>
+								</div>
+							</div>
+						</div>
+						<!-- e: 자택주소 -->
+
+						<!-- s: 직장주소 -->
+						<div class="tf_item mt_2 active">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="inp1_4">직장주소 <span class="req">필수항목</span></label>
+									<input type="text" id="inp1_4" class="tf" placeholder="주소 검색으로 주소 입력">
+								</div>
+								<div class="btn_area">
+									<a href="#;" class="btn btn_md btn_round btn_darkgray d_i_f">주소검색</a>
+								</div>
+							</div>
+						</div>
+						<!-- e: 직장주소 -->
+
+						<!-- s: 이메일 주소 -->
+						<div class="tf_item mt_2 active">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="inp1_5">이메일 주소 <span class="req">필수항목</span></label>
+									<div class="input_items">
+										<input type="email" id="inp1_5" class="tf tf_email_id" placeholder="이메일 아이디" value="test1234"
+											title="이메일 아이디">
+										<span class="text">@</span>
+										<a href="#;" class="opt tf_email_domain" title="이메일 도메인"
+											onclick="openModal('layerSelect02');">hanmail.net</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- e: 이메일 주소 -->
+
+						<!-- s: 우편물 수령지 -->
+						<div class="mt_4">
+							<h3 class="tit2">우편물수령지<span class="req">필수항목</span></h3>
+							<div class="input_items">
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="chk1" id="chk1_1" checked="">
+									<label for="chk1_1">자택</label>
+								</span>
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="chk1" id="chk1_2">
+									<label for="chk1_2">직장</label>
+								</span>
+							</div>
+						</div>
+						<!-- e: 우편물 수령지 -->
+
+					</div>
+				</div>
+				<!-- e: 고객기본정보 -->
+
+				<!-- s: 카드발급적합성정보 -->
+				<div class="toggle_box disabled">
+					<a href="#;">
+						<h2 class="tit1 mb_0">카드발급적합성정보</h2>
+					</a>
+					<div class="toggle_con">
+						<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">연간소득 <span class="req">필수항목</span></span>
+									<p class="tf">6백만원 초과 ~ 5천만원 이하</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
+							</div>
+						</a>
+						<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">신용점수 <span class="req">필수항목</span></span>
+									<p class="tf">600점 이하</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- e: 카드발급적합성정보 -->
+
+				<!-- s: 카드설정 -->
+				<div class="toggle_box write_complete">
+					<a href="#;">
+						<h2 class="tit1 mb_0">카드설정</h2>
+					</a>
+					<div class="toggle_con">
+						<a href="#;" class="tf_item" onclick="openModal('layer02', this);return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<div class="lab">카드 비밀번호 <span class="req">필수항목</span></div>
+									<div class="password_masking">
+										<i></i><i></i><i></i><i></i>
+									</div>
+								</div>
+							</div>
+						</a>
+						<div class="mt_2">
+							<span class="check_item txt_lg">
+								<input type="checkbox" id="lb_agreement" checked>
+								<label for="lb_agreement">체크카드 비밀번호를 동일하게 설정합니다.</label>
+							</span>
+						</div>
+
+						<div class="mt_4">
+							<h3 class="tit2">체크카드 결제 계좌<span class="req">필수항목</span></h3>
+							<div class="tf_item mt_3 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">계좌번호 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="우체국 입출금 계좌번호 입력" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a href="#;" class="tf_item mt_2" onclick="openModal('pwd_full_popup', this);return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<div class="lab">계좌 비밀번호 <span class="req">필수항목</span></div>
+									<div class="password_masking">
+										<i></i><i></i><i></i><i></i>
+									</div>
+								</div>
+							</div>
+						</a>
+
+						<div class="mt_4">
+							<div class="lr_box">
+								<h3 class="tit2 mb_0 l">체크카드 이용한도 <span class="req">필수항목</span></h3>
+								<a href="#;" class="r btn btn_sm btn_round btn_darkgray" onclick="openModal('rangeBottomSheet',this)">한도
+									변경</a>
+							</div>
+							<div class="tf_double mt_2 before_none">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_3_1">일 한도</label>
+											<input type="text" id="lb_tf_3_1" class="tf" placeholder="placeholder" value="일600만원">
+										</div>
+									</div>
+								</div>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_3_2">월 한도</label>
+											<input type="password" id="lb_tf_3_2" class="tf" placeholder="placeholder" value="월2,000만원">
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="bul_notice mt_1">1일 5,000만원, 월 한도 5,000만원까지 변경 가능</p>
+						</div>
+
+						<div class="mt_4">
+							<h3 class="tit2 mb_0 l">이용내역 안내서(명세서) 수령 방법</h3>
+							<div class="input_items mt_2">
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement1_1" checked>
+									<label for="lb_agreement1_1">자택</label>
+								</span>
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement1_2">
+									<label for="lb_agreement1_2">직장</label>
+								</span>
+							</div>
+							<div class="input_items">
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement1_3">
+									<label for="lb_agreement1_3">이메일</label>
+								</span>
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement1_4">
+									<label for="lb_agreement1_4">받지 않음</label>
+								</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- e: 카드설정 -->
+
+				<!-- s: 카드부가서비스 -->
+				<div class=" toggle_box checked">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">카드부가서비스</h2>
+					</a>
+					<div class="toggle_con">
+
+						<div>
+							<h3 class="tit2 mb_0 l">카드 사용 알림 서비스</h3>
+							<a href="#;" class="tf_item mt_3" onclick="openModal('layerSelect'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<span class="lab">알림 방법 선택 <span class="req">필수항목</span></span>
+										<p class="tf">[전체 결제] 스마트뱅킹앱 PUSH알림(무료)</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+							<ul class="list list2 list_flex txt_normal mt_3">
+								<li>
+									<div class="l">잔액 표시</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle1_1" checked>
+												<label for="btn_toggle1_1">
+													<span class="check_y">표시</span>
+													<span class="check_n">미표시</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="mt_2">
+									<div class="l">스마트뱅킹앱 PUSH알림</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle1_2">
+												<label for="btn_toggle1_2">
+													<span class="check_y">동의</span>
+													<span class="check_n">미동의</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<p class="bul_notice mt_2">이용대금명세서를 E-mail로 수령 시 문자서비스(SMS) 및 카카오알림톡 서비스 이용료가 면제됩니다.</p>
+							<ul class="list list2 list_flex txt_normal mt_3">
+								<li>
+									<div class="l">선불교통카드기능</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle2_1" checked>
+												<label for="btn_toggle2_1">
+													<span class="check_y">신청</span>
+													<span class="check_n">미신청</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="mt_2">
+									<div class="l">해외원화결제(DCC) 차단서비스</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle2_2" checked>
+												<label for="btn_toggle2_2">
+													<span class="check_y">신청</span>
+													<span class="check_n">미신청</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<ul class="list list2 list_flex txt_normal mt_3">
+								<li>
+									<div class="l">다드림포인트 제공 동의</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle3_1" checked>
+												<label for="btn_toggle3_1">
+													<span class="check_y">동의</span>
+													<span class="check_n">미동의</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<p class="bul_notice mt_2">결제계좌가 다드림통장인 경우에만 포인트가 제공됩니다.</p>
+							<ul class="list list2 list_flex txt_normal mt_3">
+								<li class="mt_2">
+									<div class="l">휴일재해보장보험</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle3_2" checked>
+												<label for="btn_toggle3_2">
+													<span class="check_y">동의</span>
+													<span class="check_n">미동의</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<p class="bul_notice mt_2">휴일재해보장보험 동의 시 발급 후 3개월 이내(발급월 포함)에 15만원 이상의 이용실적이 있는 경우 자동 가입 됩니다.</p>
+						</div>
+
+					</div>
+				</div>
+				<!-- e: 카드부가서비스 -->
+
+				<!-- s: 카드배송정보 -->
+				<div class=" toggle_box checked">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">카드배송정보</h2>
+					</a>
+					<div class="toggle_con">
+
+						<div>
+							<h3 class="tit2 mb_0 l">카드 수령지 <span class="req">필수항목</span></h3>
+							<div class="input_items mt_2">
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement5_1" checked>
+									<label for="lb_agreement5_1">자택</label>
+								</span>
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement5_2">
+									<label for="lb_agreement5_2">직장</label>
+								</span>
+							</div>
+						</div>
+
+						<div class="mt_4">
+							<h3 class="tit2 mb_0 l">카드 수령인 <span class="req">필수항목</span></h3>
+							<div class="input_items mt_2">
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement6_1" checked>
+									<label for="lb_agreement6_1">본인</label>
+								</span>
+								<span class="check_item type_btn simple_chk">
+									<input type="radio" name="card_check" id="lb_agreement6_2">
+									<label for="lb_agreement6_2">제3자</label>
+								</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- e: 카드배송정보 -->
+
+				<!-- s: 기타 정보 -->
+				<div class="toggle_box checked">
+					<a href="#;" class="active">
+						<h2 class="tit1 mb_0">기타 정보</h2>
+					</a>
+					<div class="toggle_con">
+
+						<h3 class="tit2">[선택] 마케팅 정보 수신 설정</h3>
+						<div class="container">
+							<ul class="list list2 list_flex txt_normal spacing_mt_1">
+								<li>
+									<div class="l">앱 PUSH</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle1" checked="">
+												<label for="btn_toggle1">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">문자(SMS)</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle2">
+												<label for="btn_toggle2">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">VMS(음성)</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle3">
+												<label for="btn_toggle3">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">이메일</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle4" checked="">
+												<label for="btn_toggle4">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="l">우편(DM)</div>
+									<div class="r">
+										<div class="btn_switch switc_style1">
+											<div class="switch" style="width: 76px;">
+												<input type="checkbox" id="btn_toggle5">
+												<label for="btn_toggle5">
+													<span class="check_y">수신</span>
+													<span class="check_n">미수신</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="mt_4">
+							<h3 class="tit2">[선택] 관리정보</h3>
+							<div class="tf_item mt_3 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">카드관리국 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="카드관리국을 입력해주세요." required>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tel">모집자</label>
+										<input type="text" id="lb_tel" class="tf" value="홍길동">
+									</div>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_md btn_round btn_darkgray"
+											onclick="openModal('layerSampleBottomSheet'); return false;">모집자 검색</a>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item mt_2 active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_tf_1_2">가입 경로 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_tf_1_2" class="tf" placeholder="가입 경로를 입력해주세요." value="우체국 모바일웹" required>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- e: 기타 정보 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_default">이전</a>
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('layer01', this); return false;">입력 확인</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 카드 비밀번호 입력 팝업 -->
+			<div class="modal_popup modal_bottom_sheet show" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">카드 비밀번호를 입력해 주세요.</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_6 pb_6">
+							<a href="#;" class="tf_item invalid">
+								<div class="tf_item_body">
+									<div class="input_area pt_0">
+										<!-- 비밀번호 입력 후 멀티클래스 active 추가 <div class="password_masking active"> -->
+										<div class="password_masking gray fx_justify_center">
+											<!-- 자릿수에 맞춰 <i></i> 추가 -->
+											<i></i><i></i><i></i><i></i>
+										</div>
+									</div>
+								</div>
+							</a>
+							<p class="bul_notice_red txt_invalid mt_1">재입력 비밀번호가 일치하지 않습니다.</p>
+						</div>
+					</div>
+					<div class="popup_footer keypad">
+						<!-- s: 보안 키패드 영역 -->
+						<div class="txt_c">키패드 영역</div>
+						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- s: 카드 비밀번호 입력 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

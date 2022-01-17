@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="펀드 신규 매수"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">약관동의</span></li>
+					<li><span class="num">2</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">3</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">매수 신청 완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<!-- s: 필수 및 선택 약관 -->
+				<div class="double_box double_box2 terms_box2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk1" id="all_chk1">
+							<label for="all_chk1">전체 동의</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div class="bg_lightgray box txt_gray txt_lg txt_normal txt_c">
+							[채권형][매우낮은위험]키움단기국공채증권자투자신탁제1호[채권]Ce
+						</div>
+						<div class="mt_4">
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_1" checked>
+									<label for="chk1_1">[필수] 핵심 설명서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_2">
+									<label for="chk1_2">[필수] 집합투자규약</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_3">
+									<label for="chk1_3" class="d_i_b">[필수] 투자설명서</label>
+								</span>
+							</div>
+							<div class="r fx_align_start">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_4">
+									<label for="chk1_4">[필수] 간이설명서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 필수 및 선택 약관 -->
+
+				<!-- s: 가입 전 중요 사항 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk2" id="all_chk2">
+							<label for="all_chk2">가입 전 중요 사항 확인</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_1" checked>
+									<label for="chk2_1">펀드 상품의 중요한 사항</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-1', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_2" checked>
+									<label for="chk2_2">펀드 투자 유의 사항</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-2', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_3">
+									<label for="chk2_3">불법 탈법 차명거래 금지 설명 확인서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-3', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 가입 전 중요 사항 -->
+
+				<!-- s: 약관확인 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium txt_break txt_black">
+							<input type="checkbox" name="chk3" id="chk3">
+							<label for="chk3">본인은 약관 및 상품설명서를 제공받고 펀드상품 의 중요한 사항을 충분히 이해하며 본 상품에 가입함을 확인합니다.</label>
+						</span>
+					</div>
+				</div>
+				<!-- e: 약관확인 -->
+
+				<!-- s: 약관 및 상품설명서 받기 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk4" id="all_chk4">
+							<label for="all_chk4">약관 및 상품설명서 받기</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_1" checked>
+									<label for="chk4_1">이메일</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_1" class="tf" value="abcd@naver.com">
+								</div>
+							</div>
+						</div>
+						<p class="txt_guide">이메일주소가 맞는지 확인하시기 바랍니다.</p>
+						<div class="mt_2">
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_2">
+									<label for="chk4_2">문자(SMS)</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md disabled mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_2" class="tf" value="010-1234-5678" disabled readonly>
+								</div>
+							</div>
+						</div>
+						<p class="bul_notice mt_2">이메일, 문자 중 하나를 필수 선택하여 약관 및 상품설명서를 교부받으셔야 합니다.</p>
+					</div>
+				</div>
+				<!-- e: 약관 및 상품설명서 받기 -->
+				<p class="mt_1 txt_gray"> 자본시장과 금융투자업에 관한 법에 의거해서 투자신탁설명서를 교부받으셔야 하며, 인터넷 가입 시에도 해당 설명서를 확인하셔야 합니다.</p>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>다음</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 약관 및 설명서 확인 팝업 -->
+			<div class="modal_popup popup hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">약관 및 설명서 확인</h2>
+					</div>
+					<div class="popup_body">
+						<nav class="tab_menu tab_menu1">
+							<ul class="tab_list flex_eq">
+								<li class="on"><a href="#tab_cont1"><span>키움단기국공채증권자...</span></a></li>
+								<li><a href="#tab_cont2"><span>한국투자크레딧포커스...</span></a></li>
+							</ul>
+						</nav>
+
+						<!-- s: tab_cont1 상품1 -->
+						<div class="tab_cont" id="tab_cont1">
+							<div class="container scroll_container mb_10">
+								<div class="scroll_track">
+									<div class="scroll_content">
+										<div class="fx_lr">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_1">
+													<label for="pop_chk1_1">[필수] 핵심설명서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_2">
+													<label for="pop_chk1_2">[필수] 집합투자규약</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_3">
+													<label for="pop_chk1_3">[필수] 투자설명서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk1" id="pop_chk1_4">
+													<label for="pop_chk1_4">[필수] 간이설명서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- s: 약관 및 상품설명서 확인 -->
+							<div class="container pb_4">
+								<div class="box box_border box_narrow bg_lightgray">
+									<div class="txt_c">
+										<i class="ico ico_notice_lg"></i>
+										<p class=mt_2><strong class="txt_normal">금융소비자보호법에 따라<br>약관 및 설명서 확인이 필요해요.</strong></p>
+									</div>
+
+									<div class="mt_4">
+										<ul class="list list2 spacing_mt_4">
+											<li>약관 및 상품설명서의 내용 중 반드시 확인하셔 야 할 중요한 사항은 가입 전 확인사항에서 다시 한번 알려드려요.</li>
+											<li>확인 방법은 아래 두가지 중 한가지를 선택할 수 있어요.
+												<ul>
+													<li>
+														① 약관명 앞 체크박스를 선택<br>
+														→ 약관 파일 표시되며 바로 확인
+													</li>
+													<li>
+														② 약관명 옆 [저장하기] 버튼, 하단 [전체 저장] 버튼 선택<br>
+														→ 선택한 약관 파일 또는 전체 약관 파일을 고객님의 스마트폰에 내려받아 확인
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: 약관 및 상품설명서 확인 -->
+
+							<!-- s: PDF 뷰어 -->
+							<div class="pt_4">
+								<div class="slide_sheet box box_gradient_gray">
+									<button type="button" class="btn btn_slide">접기</button>
+									<div class="pdf_viewer mt_6">
+										<div style="height: 600px;">PDF 뷰어 영역</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: PDF 뷰어 -->
+						</div>
+						<!-- e: tab_cont1 상품1 -->
+
+						<!-- s: tab_cont2 상품2 -->
+						<div class="tab_cont" id="tab_cont2">
+							<div class="container scroll_container">
+								<div class="scroll_track" style="max-height: none">
+									<div class="scroll_content">
+										<div class="fx_lr">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk2" id="pop_chk2_1">
+													<label for="pop_chk2_1">우체국 멤버십 핵심 설명서</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk2" id="pop_chk2_2">
+													<label for="pop_chk2_2">우체국 멤버십 이용 약관</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+										<div class="fx_lr mt_3">
+											<div class="l">
+												<span class="check_item">
+													<input type="checkbox" name="pop_chk2" id="pop_chk2_3">
+													<label for="pop_chk2_3">개인정보제공동의</label>
+												</span>
+											</div>
+											<div class="r">
+												<a href="#;" class="btn btn_sm btn_round btn_default">저장하기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- s: PDF 뷰어 -->
+							<div class="pt_4">
+								<div class="slide_sheet box box_gradient_gray">
+									<button type="button" class="btn btn_slide">접기</button>
+									<div class="pdf_viewer mt_6">
+										<div style="height: 600px;">PDF 뷰어 영역</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: PDF 뷰어 -->
+						</div>
+						<!-- e: tab_cont2 상품2 -->
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer01');">전체 저장</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">모두 확인했어요</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 약관 및 설명서 확인 팝업 -->
+
+			<!-- s: 가입 전 중요 사항 확인 팝업 -->
+			<div class="modal_popup popup show" data-popup="layer02-1">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">가입 전 중요 사항 확인</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container scroll_container mt_6">
+							<div class="scroll_track" style="max-height: none;">
+								<div class="scroll_content">
+									<div class="fx_lr">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox1" id="chkbox1_1" checked>
+												<label for="chkbox1_1">펀드 상품의 중요한 사항</label>
+											</span>
+										</div>
+									</div>
+									<div class="fx_lr mt_3">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox1" id="chkbox1_2">
+												<label for="chkbox1_2">펀드 투자 시 유의 사항</label>
+											</span>
+										</div>
+									</div>
+									<div class="fx_lr mt_3">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox1" id="chkbox1_3">
+												<label for="chkbox1_3">불법 탈법 차명거래 금지 설명 확인서</label>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- s: 펀드 상품의 중요한 사항 -->
+						<div class="pt_8">
+							<div class="slide_sheet box box_gradient_gray">
+								<button type="button" class="btn btn_slide">접기</button>
+								<div class="pdf_viewer mt_6">
+									<h3 class="tit1 txt_c terms_tit">펀드 상품의 중요한 사항</h3>
+									<div>
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk4" id="pop_chk4-1" checked>
+											<label for="pop_chk4-1">상품의 명칭 및 유형을 확인하고 이해했습니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk4" id="pop_chk4-2">
+											<label for="pop_chk4-2">상품 투자 시 투자원금의 손실 가능성 및 투자위험성에 대해 확인하고 이해했습니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk4" id="pop_chk4-3">
+											<label for="pop_chk4-3">상품의 특징, 운용전략에 대해 확인하고 이해했습니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk4" id="pop_chk4-4">
+											<label for="pop_chk4-4">상품의 기준일, 기준가, 수익률 집계 방식, 규모 등에 대해 확인하고 이해했습니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk4" id="pop_chk4-5">
+											<label for="pop_chk4-5">상품의 환매 방법, 수수료, 기준가, 기준일에 대해 확인하고 이해했습니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk4" id="pop_chk4-6">
+											<label for="pop_chk4-6">상품의 각종 보수, 수수료, 비용 및 과세에 대해 확인하고 이해했습니다.</label>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- e: 펀드 상품의 중요한 사항 -->
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02-1');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 가입 전 중요 사항 확인 팝업 -->
+
+			<!-- s: 가입 전 중요 사항 확인 팝업 -->
+			<div class="modal_popup popup hide" data-popup="layer02-2">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">가입 전 중요 사항 확인</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container scroll_container mt_6">
+							<div class="scroll_track" style="max-height: none;">
+								<div class="scroll_content">
+									<div class="fx_lr">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox2" id="chkbox2_1" checked>
+												<label for="chkbox2_1">펀드 상품의 중요한 사항</label>
+											</span>
+										</div>
+									</div>
+									<div class="fx_lr mt_3">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox2" id="chkbox2_2" checked>
+												<label for="chkbox2_2">펀드 투자 시 유의 사항</label>
+											</span>
+										</div>
+									</div>
+									<div class="fx_lr mt_3">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox2" id="chkbox2_3">
+												<label for="chkbox2_3">불법 탈법 차명거래 금지 설명 확인서</label>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- s: 펀드 투자 시 유의 사항 -->
+						<div class="pt_8">
+							<div class="slide_sheet box box_gradient_gray">
+								<button type="button" class="btn btn_slide">접기</button>
+								<div class="pdf_viewer mt_6">
+									<h3 class="tit1 txt_c terms_tit">펀드 투자 시 유의 사항</h3>
+									<div>
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk5" id="pop_chk5-1" checked>
+											<label for="pop_chk5-1">본 상품은 자본시장과 금융투자업에 관한 법률에 의해 수탁회사를 통해 관리하고 있으며, 운용결과에 따른 손실은 우체국에서 책임지지
+												않습니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk5" id="pop_chk5-2">
+											<label for="pop_chk5-2">이 금융투자상품(집합투자증권)은 실적배당상품으로 그 수익이나 원금을 보장하지 않습니다. 다만, 투자자예탁금의 경우는 국가에서 전액
+												지급을 보장합니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk5" id="pop_chk5-3">
+											<label for="pop_chk5-3">본 상품정보에서 제공하는 수익률정보는 과거의 수익률 정보로서 투자자의 투자 시점의 수익률과는 관계가 없으며, 그 수익률을 보장하지
+												않습니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk5" id="pop_chk5-4">
+											<label for="pop_chk5-4">본 상품의 환매 신청 시 약관에서 정한 환매 거래 기준 시간에 따라 처리되며, 기준시간에 따라 실제 환매가 이루어진 경우에는 취소가
+												불가합니다.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk5" id="pop_chk5-5">
+											<label for="pop_chk5-5">신규매수예약의 경우에는 신청후 익영업일 결제시 잔액이 부족한 경우 정상매수가 처리되지 않을 수 있습니다. 익영업일 이전 계좌 잔액을
+												예약금 이상으로 유지하세요.</label>
+										</span>
+									</div>
+									<div class="mt_1">
+										<span class="check_item simple_primary">
+											<input type="checkbox" name="pop_chk5" id="pop_chk5-6">
+											<label for="pop_chk5-6">펀드의 회계기간 종료에 따라 발생하는 수익금은 고객의 별도 요청이 없는 경우 재투자합니다.</label>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- e: 펀드 투자 시 유의 사항 -->
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02-2');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 가입 전 중요 사항 확인 팝업 -->
+
+			<!-- s: 가입 전 중요 사항 확인 팝업 -->
+			<div class="modal_popup popup hide" data-popup="layer02-3">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">가입 전 중요 사항 확인</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container scroll_container mt_6">
+							<div class="scroll_track" style="max-height: none;">
+								<div class="scroll_content">
+									<div class="fx_lr">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox3" id="chkbox3_1" checked>
+												<label for="chkbox3_1">펀드 상품의 중요한 사항</label>
+											</span>
+										</div>
+									</div>
+									<div class="fx_lr mt_3">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox3" id="chkbox3_2" checked>
+												<label for="chkbox3_2">펀드 투자 시 유의 사항</label>
+											</span>
+										</div>
+									</div>
+									<div class="fx_lr mt_3">
+										<div class="l">
+											<span class="check_item">
+												<input type="checkbox" name="chkbox3" id="chkbox3_3" checked>
+												<label for="chkbox3_3">불법 탈법 차명거래 금지 설명 확인서</label>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- s: 불법 탈법 차명거래 금지 설명 확인서 -->
+						<div class="pt_8">
+							<div class="slide_sheet box box_gradient_gray">
+								<button type="button" class="btn btn_slide">접기</button>
+								<div class="pdf_viewer mt_6">
+									<h3 class="tit1 txt_c terms_tit">불법 탈법 차명거래 금지 설명 확인서</h3>
+									<div>「금융실명거래 및 비밀보장에 관한 법률」 제3조 제3항에 따라 누구든지 불법재산의 은닉, 자금세탁행위, 공중협박자금조달행위 및 강제 집행의 면탈, 그 밖의 목적으로 타인의
+										실명으로 금융거래를 하여서는 아니되며, 이를 위반시 5년 이하의 징역 또는 5천만원 이하의 벌금에 처해질 수 있습니다. 본인은 위 안내에 대하여 같은 법 제3조 제6항에 따라
+										안내를
+										받고, 충분히 이해하였음을 확인합니다. </div>
+								</div>
+							</div>
+						</div>
+						<!-- e: 불법 탈법 차명거래 금지 설명 확인서 -->
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02-3');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 가입 전 중요 사항 확인 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

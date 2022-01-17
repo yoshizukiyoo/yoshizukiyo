@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="예금상품 가입"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">본인확인</span></li>
+					<li><span class="num">2</span><span class="txt">약관동의</span></li>
+					<li><span class="num">3</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">4</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">5</span><span class="txt">개설완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+				<h2 class="tit1">본인 확인</h2>
+				<!-- s: 이름입력 -->
+				<div class="tf_item">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label for="inp1_1" class="lab">이름 <span class="req">필수항목</span></label>
+							<input type="text" id="inp1_1" class="tf" placeholder="이름을 입력해주세요.">
+						</div>
+					</div>
+				</div>
+				<!-- e: 이름입력 -->
+				<!-- s: 주민등록번호 입력 -->
+				<div class="tf_double mt_2">
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">주민등록번호 앞자리 <span class="req">필수항목</span></span>
+								<input type="text" id="lb_tf_1_1" class="tf" placeholder="placeholder" value="0000000">
+							</div>
+						</div>
+					</div>
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">주민등록번호 뒷자리 <span class="req">필수항목</span></span>
+								<input type="password" id="lb_tf_1_2" class="tf" placeholder="placeholder" value="*******">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 주민등록번호 입력 -->
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<p class="txt_c txt_invalid txt_normal txt_sm">이름, 주민등록번호는 필수 입력 사항 입니다.</p>
+				<div class="btn_group btn_group_flex mt_6">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('certi_phone',this)">
+						<span>휴대폰 본인 인증</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 사전 확인 사항 -->
+			<div class="modal_popup popup hide" data-popup="popup01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">사전 확인 사항</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4 pb_10">
+							<div>
+								<h3 class="tit1">1.[필수] 본인명의의 휴대폰을 가지고 계신가요?</h3>
+								<div class="input_items">
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk3_1" id="pop_chk3_1_1">
+										<label for="pop_chk3_1_1">예</label>
+									</span>
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk3_1" id="pop_chk3_1_2">
+										<label for="pop_chk3_1_2">아니오</label>
+									</span>
+								</div>
+								<p class="bul_notice_red mt_4 txt_gray">본인 명의 휴대폰이 없는 경우 비대면으로 계좌 개설을 할 수 없습니다.</p>
+							</div>
+
+							<div class="mt_8">
+								<h3 class="tit1">2. [필수] 주민등록증이나 운전면허증을 가지고 계신가요?</h3>
+								<div class="input_items">
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk3_2" id="pop_chk3_2_1">
+										<label for="pop_chk3_2_1">예</label>
+									</span>
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk3_2" id="pop_chk3_2_2">
+										<label for="pop_chk3_2_2">아니오</label>
+									</span>
+								</div>
+								<p class="bul_notice_red mt_4 txt_gray">비대면계좌개설은 신분증이 반드시 필요합니다. 주민등록증 또는 운전면허증 촬영을 통한 본인 확인 절차가 진행됩니다.
+									신분증을 반드시 준비해주세요.</p>
+							</div>
+
+							<div class="mt_8">
+								<h3 class="tit1">3. [필수] 최근 1달 이내에 우체국 또는 다른 은행에서 입출금을 통장을 만든 적이 있으신가요?</h3>
+								<div class="input_items">
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk3_3" id="pop_chk3_3_1">
+										<label for="pop_chk3_3_1">예</label>
+									</span>
+									<span class="check_item type_btn_round">
+										<input type="radio" name="pop_chk3_3" id="pop_chk3_3_2">
+										<label for="pop_chk3_3_2">아니오</label>
+									</span>
+								</div>
+								<p class="bul_notice_red mt_4 txt_gray">입출금통장은 전 금융기관에서 20영업일 이내 1개만 개설이 가능합니다.</p>
+							</div>
+
+							<div class="section">
+								<h3 class="tit1">유의사항</h3>
+								<ul class="list list1">
+									<li>우체국 입출금 통장을 개설한 날로부터 20 영업일 동안 당/타행에서 추가 입출금통장을 개설할 수 없습니다.</li>
+									<li>비대면 실명확인을 통한 입출금통장은 한도제한계좌로 개설됩니다. <br>
+										(일일출금 및 이체한도: 100만원, 1인1계좌만 보유 가능)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary">통장 만들기</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 사전 확인 사항 -->
+
+			<!-- s: 비대면 실명확인 안내 -->
+			<div class="modal_popup popup hide" data-popup="popup02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h1 class="popup_tit">비대면 실명확인 안내</h1>
+						<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_3 pb_4">
+							<p class="guide_top_txt guide_top_open mb_3 height">입출금 통장 개설에는 비대면 실명확인이
+								필요합니다.
+							</p>
+							<div class="box bg_lightgray">
+								<dl>
+									<dt>비대면실명확인이란? </dt>
+									<dd class="txt_gray">
+										은행 창구에 직접 가지 않아도 입출금 통장을 개설할
+										수 있도록, 디지털 방식으로 신분증 인증, 계좌 인증을
+										통해 본인 인증을 하는 것입니다.
+									</dd>
+								</dl>
+							</div>
+
+							<h2 class="tit1 mt_7">준비물</h2>
+							<ul class="box_row_list mb_4">
+								<li>
+									<i class="ico ico_acc_prep01"></i>
+									<strong>본인명의<br>휴대폰</strong>
+								</li>
+								<li>
+									<i class="ico ico_acc_prep02"></i>
+									<strong>신분증</strong>
+								</li>
+								<li>
+									<i class="ico ico_acc_prep03"></i>
+									<strong>본인명의<br>은행계좌번호</strong>
+								</li>
+							</ul>
+
+							<h2 class="tit1 mt_7">비대면 실명확인 절차</h2>
+							<ol class="step_col_list height">
+								<li>
+									<strong>
+										<small>step</small>
+										01
+									</strong>
+									<dl>
+										<dt>휴대폰 본인 확인</dt>
+										<dd>본인명의 휴대폰 인증</dd>
+									</dl>
+								</li>
+								<li>
+									<strong>
+										<small>step</small>
+										02
+									</strong>
+									<dl>
+										<dt>신분증 인증</dt>
+										<dd>주민등록증 또는 운전면허증 촬영 확인</dd>
+									</dl>
+								</li>
+								<li>
+									<strong>
+										<small>step</small>
+										03
+									</strong>
+									<dl>
+										<dt>계좌 인증</dt>
+										<dd>본인 명의 다른 은행 계좌 인증<br>
+											<span class="txt_default">※ 다른 금융기관 계좌가 없는 경우 영상통화 인증 진행 가능</span>
+										</dd>
+									</dl>
+								</li>
+							</ol>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_default">취소</a>
+							<a href="#;" class="btn btn_lg btn_primary">통장 개설</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 비대면 실명확인 안내 -->
+
+			<!-- s: 휴대폰 인증 팝업 -->
+			<div class="modal_popup popup hide" data-popup="certi_phone">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">휴대폰 인증</h2>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+					<div class="popup_body">
+						<div class="container pt_4 pb_6">
+							<!-- s: 약관동의 -->
+							<h2 class="tit1">휴대폰인증 이용약관을 동의해주세요.</h2>
+							<div class="double_box terms_box mt_6">
+								<div class="top">
+									<span class="check_item txt_medium">
+										<input type="checkbox" name="" id="all_chk">
+										<label for="all_chk">[필수] 아래 서비스 이용약관 모두 동의</label>
+									</span>
+								</div>
+								<div class="btm">
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk1" checked>
+												<label for="chk1">본인확인서비스 이용약관</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms01', this)">약관보기</button>
+										</div>
+									</div>
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk2">
+												<label for="chk2">개인정보수집 및 이용동의</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms02', this)">약관보기</button>
+										</div>
+									</div>
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk3">
+												<label for="chk3">고유식별정보 처리 동의</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms03', this)">약관보기</button>
+										</div>
+									</div>
+									<div>
+										<div class="l">
+											<span class="check_item simple_primary">
+												<input type="checkbox" name="" id="chk4">
+												<label for="chk4">통신사 이용약관 동의</label>
+											</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn_more txt_darkprimary txt_md"
+												onclick="openModal('terms04', this)">약관보기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 약관동의 -->
+
+							<!-- s: 통신사 선택 -->
+							<div class="mt_2">
+								<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<span class="lab">통신사 <span class="req">필수항목</span></span>
+											<p class="tf">SK</p>
+										</div>
+										<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<!-- e: 통신사 선택 -->
+
+							<!-- s: 휴대폰 번호 입력 -->
+							<div class="mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="input2_1">휴대폰 번호 <span class="req">필수항목</span></label>
+											<div class="input_items">
+												<a href="#;" class="opt" title="전화번호 국번 선택" style="width: 93px;"
+													onclick="openModal('layerOption')">010</a>
+												<input type="text" id="input2_1" class="tf pl_3" title="국번을 제외한 전화번호" placeholder="번호입력">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 휴대폰 번호 입력 -->
+
+							<!-- s: SMS인증번호 입력 -->
+							<div class="mt_2">
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="lb_tf_1_3">SMS인증번호 <span class="req">필수항목</span></label>
+											<input type="password" id="lb_tf_1_3" class="tf" placeholder="6자리 인증번호 입력" value="" required>
+										</div>
+										<span class="certi_time">02:59</span>
+									</div>
+								</div>
+								<div class="txt_r mt_1">
+									<a href="#;" class="btn btn_sm btn_round btn_default">인증번호 재요청 <i
+											class="ico ico_chevron_right_sm ml_1"></i></a>
+								</div>
+								<!-- Validation Check 문구 -->
+								<!-- <p class="mt_1 txt_invalid">인증번호가 일치하지 않습니다.</p> -->
+								<!-- <p class="mt_1 txt_invalid">인증번호 유효기간이 경과하였습니다. 재요청을 해주세요.</p> -->
+							</div>
+							<p class="bul_notice mt_4">인증요청후 인증번호 유효시간은 3분입니다. 인증시간 경과시 인증요청을 다시 해주세요.</p>
+							<!-- e: SMS인증번호 입력 -->
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('certi_phone');">
+								인증요청
+								<!-- validation check 문구  -->
+								<!-- 인증번호 확인 -->
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 휴대폰 인증 팝업 -->
+
+			<!-- s: 휴대폰번호변경 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">휴대폰번호를 변경해 주세요.</h2>
+					</div>
+					<div class="popup_body pb_4">
+						<div class="container">
+							<div>
+								<span class="txt_normal txt_spacing_sm">홍길동님, 회원정보에 등록된 휴대폰번호와 방금 본인 인증한 번호가 다릅니다.</span>
+							</div>
+
+							<div class="mt_4 txt_xs txt_spacing_sm txt_break">
+								기존 회원의 신규 신청은 회원 정보에 등록된 휴대폰번호와 본인 인증한 휴대폰번호가 일치해야 합니다.
+							</div>
+
+							<div class="box bg_lightgray mt_4 txt_spacing_sm">
+								<div class="fx_lr">
+									<div class="l txt_gray">등록된 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+								<div class="fx_lr">
+									<div class="l txt_gray">인증한 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+							</div>
+
+							<div class="mt_4">
+								<span class="txt_medium txt_spacing_sm">회원정보의 휴대폰번호를 본인 인증한 번호로 변경하시겠습니까?</span>
+							</div>
+
+							<div class="mt_4 txt_c">
+								<span class="txt_invalid txt_xs txt_spacing_sm">아니오를 선택하시면 신규 신청이 중단되며,<br>이전페이지로 돌아갑니다.</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer01');">아니오</button>
+							<button type="button" class="btn btn_lg btn_primary"
+								onclick="closeModal('layer01'); openModal('layer02')">예</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 휴대폰번호변경 팝업 -->
+
+			<!-- s: 휴대폰번호변경 완료 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">고객정보 변경이 완료되었습니다.</h2>
+					</div>
+					<div class="popup_body pb_4">
+						<div class="container">
+							<div class="box bg_lightgray txt_spacing_sm">
+
+								<div class="fx_lr">
+									<div class="l txt_gray">변경 전 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+								<div class="fx_lr">
+									<div class="l txt_gray">변경 후 휴대폰번호</div>
+									<div class="r">010-1***-5678</div>
+								</div>
+							</div>
+
+							<div class="mt_4 txt_c">
+								<span class="txt_medium txt_spacing_sm">확인 버튼을 누르시면, 진행하시던 신규 업무를 이어서 진행하실 수 있습니다.</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 휴대폰번호변경 완료 팝업 -->
+
+			<!-- s: 개설이력 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer03">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">최근 통장 새로 만드셨어요.</h2>
+					</div>
+					<div class="popup_body pb_5">
+						<div class="container">
+							<div>
+								<span class="txt_normal">입출금통장은 한달(20 영업일) 이내 여러 개를 만들 수 없어요.</span>
+								(20 영업일 이내 전 금융기관 합산 1개만 허용)
+							</div>
+
+							<!-- s: 개설이력 -->
+							<div class="box bg_lightgray mt_4">
+								<strong class="d_b txt_c">우리은행</strong>
+								<ul class="list list1">
+									<li>개설일 : 2021.10.12</li>
+								</ul>
+							</div>
+							<!-- e: 개설이력 -->
+
+							<div class="txt_c mt_2">
+								<span class="txt_medium">11월 9일(화요일)</span> 부터<br>
+								새 입출금 통장을 만들 수 있어요.
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer03');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 개설이력 팝업 -->
+
+			<!-- s: 계좌보유중 팝업 -->
+			<div class="modal_popup modal_alert hide" data-popup="layer04">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">우체국 계좌가 있어요.</h2>
+					</div>
+					<div class="popup_body pb_4">
+						<div class="container">
+							<div class="box bg_lightgray txt_spacing_sm">
+								<strong class="d_b txt_c">우체국 보통예금</strong>
+								<ul class="list list1">
+									<li>개설일 : 2021.10.12</li>
+									<li>마지막 거래일 : 2021.08.01 10:00</li>
+									<li>전자금융 : 스마트뱅킹 이용중</li>
+								</ul>
+
+							</div>
+
+							<div class="mt_4">
+								<span class="txt_spacing_sm">선택하신 상품으로 전환 가입하시겠습니까?</span>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer04');">신규 개설</button>
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer04');">전환 신청</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 계좌보유중 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

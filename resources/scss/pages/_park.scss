@@ -289,7 +289,7 @@
 					margin-top: 6px;
 				}
 
-				.r {
+				>.r {
 					white-space: nowrap;
 				}
 			}
@@ -2879,52 +2879,69 @@
 	word-break: break-all;
 }
 
-.input_items.fund {
-	flex-wrap: wrap;
-	font-size: 0;
-	margin: 0;
+.input_items {
+	&.fund {
+		flex-wrap: wrap;
+		font-size: 0;
+		margin: 0;
 
-	.type_btn {
-		width: calc(50% - 3px);
-		flex: none;
-		margin-left: 0 !important;
-		margin-right: 5px;
-		margin-top: 5px;
+		.type_btn {
+			width: calc(50% - 3px);
+			flex: none;
+			margin-left: 0 !important;
+			margin-right: 5px;
+			margin-top: 5px;
 
-		&:nth-child(2n) {
-			margin-right: 0;
-		}
-
-		&:nth-child(-n+2) {
-			margin-top: 0;
-		}
-
-		input {
-			+label {
-				position: relative;
-				justify-content: normal;
-				padding: 0 14px !important;
-				height: 40px;
-
-				&:before {
-					content: '';
-					display: inline-block;
-					width: 20px;
-					height: 20px;
-					background-repeat: no-repeat;
-					background-position: 0 0;
-					background-image:url(#{$url-img}/common/ico_check_off.png);
-					background-size: 20px auto;
-					margin-right: 5px;
-				}
+			&:nth-child(2n) {
+				margin-right: 0;
 			}
 
-			&:checked+label:before {
-				background-image:url(#{$url-img}/common/ico_check_on.png);
+			&:nth-child(-n+2) {
+				margin-top: 0;
+			}
+
+			input {
+				+label {
+					position: relative;
+					justify-content: normal;
+					padding: 0 14px !important;
+					height: 40px;
+
+					&:before {
+						content: '';
+						display: inline-block;
+						width: 20px;
+						height: 20px;
+						background-repeat: no-repeat;
+						background-position: 0 0;
+						background-image:url(#{$url-img}/common/ico_check_off.png);
+						background-size: 20px auto;
+						margin-right: 5px;
+					}
+				}
+
+				&:checked+label:before {
+					background-image:url(#{$url-img}/common/ico_check_on.png);
+				}
 			}
 		}
 	}
 
+	&.type02 {
+		.type_btn {
+			flex: 1;
+			margin-right: 5px;
+
+			&:nth-child(2n) {
+				margin-right: 5px;
+			}
+
+			&:nth-child(3n) {
+				margin-right: 0;
+				margin-top: 0;
+			}
+		}
+	}
 }
 
 .seller_list {
@@ -3188,6 +3205,7 @@
 			background-image: url(#{$url-img}/content/ico_personal_certi01.png);
 			background-size: 37px;
 			background-position: 12px 50%;
+			min-height: 55px;
 		}
 
 		&.bg02 {
@@ -3363,5 +3381,40 @@
 				}
 			}
 		}
+	}
+}
+
+.card_complete {
+	&.ico_deposit {
+		h2 {
+			background: url(#{$url-img}/content/ico_complete_deposit.png) 0 2px no-repeat;
+			background-size: 23px;
+		}
+	}
+
+	&.ico_fund {
+		h2 {
+			background: url(#{$url-img}/content/ico_complete_fund.png) 0 5px no-repeat;
+			background-size: 19px;
+		}
+	}
+}
+
+.guide_top_open.height {
+	min-height: 37px;
+}
+
+.step_col_list.height {
+	>li {
+		height: auto;
+		min-height: 75px;
+	}
+}
+
+.top_ico_txt {
+	&.bg_fund:before {
+		width: 32px;
+		height: 31px;
+		background-image: url(#{$url-img}/content/ico_mypage_fund.png);
 	}
 }
