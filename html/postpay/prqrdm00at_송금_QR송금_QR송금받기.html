@@ -13,12 +13,30 @@
 	<script src="/resources/js/jquery-3.3.1.js"></script>
 	<script src="/resources/js/jquery-ui.js"></script>
 	<script src="/resources/js/ui_global.js"></script>
+	<script src="/resources/js/slick.js"></script>
 
 	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
 	<script src="/resources/js/ui_layout_setting.js"></script>
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
+		$(document).ready(function () {
+			// var $box_qr = $('.box_qr');
+			// $box_qr.slick({
+			// 	infinite: true,
+			// 	centerMode: true,
+			// 	centerPadding: '-0',
+			// 	focusOnSelect: true,
+			// 	arrows: false,
+			// 	draggable: true,
+			// 	slidesToScroll: 1,
+			// 	slidesToShow: 1,
+			// 	infinite: false,
+			// 	speed: 500,
+			// 	index: 2,
+			// })
+
+		});
 	</script>
 </head>
 
@@ -32,30 +50,65 @@
 				<div class="container mt_4">
 					<p class="top_ico_txt qr_code">계좌번호 전달 없이 내 계좌 QR코드로 간편하게 송금 받고 보내 보세요.</p>
 				</div>
+
 				<nav class="tab_menu tab_menu1 mt_4">
 					<ul class="tab_list">
-						<li class="on"><a href="#"><span>받기</span></a></li>
-						<li><a href="#"><span>보내기</span></a></li>
+						<li class="on"><a href="#tab_cont1"><span>받기</span></a></li>
+						<li><a href="#tab_cont2"><span>보내기</span></a></li>
 					</ul>
 				</nav>
 
-				<div style="height: 600px;background-color: #ddd;">
-					qr area
-				</div>
+				<!-- s: tab_cont1 -->
+				<div class="tab_cont pt_2" id="tab_cont1">
+					<div class="container">
 
-				<div class="container">
-					<a href="#;" class="tf_item mt_3 bg_lightgray" onclick="openModal('layerOption'); return false;">
-						<div class="tf_item_body">
-							<div class="input_area">
-								<p class="tf">자택</p>
-							</div>
-							<div class="btn_area">
-								<i class="ico ico_chevron_down_md"></i>
-								<span class="sr_only">선택</span>
+						<div class="box_qr">
+							<div class="qr_frame">
+								<span class="txt_darkprimary qr_status">최근</span>
+								<img src="/resources/img/content/img_app_qr.gif" alt="">
+								<a href="#;" class="btn_close">
+									<i class="ico ico_reset"></i>
+									<span class="sr_only">닫기</span>
+								</a>
+								<div class="d_flex mt_2">
+									<div class="l">
+										<span class="check_item">
+											<input type="checkbox" name="chk1" id="all_chk1" disabled>
+											<label for="all_chk1">받을 금액:20,000원</label>
+										</span>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn_qr_share"><span class="sr_only">공유</span></a>
+									</div>
+								</div>
 							</div>
 						</div>
-					</a>
+
+						<div class="accout mt_12">
+							<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+								<div class="tf_item_body">
+									<div class="input_area d_flex">
+										<p class="pay_info txt_normal">우체국(123456789)</p>
+										<p class="pay_info txt_normal">210,000원</p>
+									</div>
+									<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+									</div>
+								</div>
+							</a>
+						</div>
+
+					</div>
 				</div>
+				<!-- e: tab_cont1 -->
+
+				<!-- s: tab_cont2 -->
+				<div class="tab_cont" id="tab_cont2">
+					<h3 class="sr_only">보내기</h3>
+					<div class="container">tab_cont2</div>
+				</div>
+				<!-- e: tab_cont2 -->
 
 				<!-- s: 하단 고정 영역 -->
 				<div class="bottom_fixed_area">
