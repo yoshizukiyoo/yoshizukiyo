@@ -29,21 +29,25 @@
 			$('[data-clause=' + id + ']').show();
 		}
 
-		// PDF 뷰어 박스 실행
-		function checkAgree(obj) {
+		// 뷰어 박스 실행
+		function checkAgree(obj, id) {
 			if ($(obj).is(':checked')) {
 				$('.layer_viewer').show();
-				$('.clause_info_txt').hide();
 			}
 
-			$('.clause_list').addClass('scroll');
+			$('[data-important').hide();
+
+			if (id == 'important1') {
+				$('[data-important=important1]').show();
+			} else {
+				$('[data-important=important2]').show();
+			}
 		}
 
-		// PDF 뷰어 닫기
+		// 뷰어 닫기
 		function closePdf() {
 			$('.layer_viewer').hide();
 			$('.clause_info_txt').show();
-			$('.clause_list').removeClass('scroll');
 		}
 	</script>
 </head>
@@ -64,48 +68,65 @@
 			<div class="cont_body">
 				<!-- s: 본문 -->
 
-				<!-- s: 우체국통합멤버십 안내 팝업 -->
+				<!-- s: 가입 전 중요 사항 확인 팝업 -->
 				<div class="modal_popup modal_alert show" data-popup="layerSampleLg">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header">
-							<h2 class="popup_tit">우체국통합멤버십 안내</h2>
+							<h2 class="popup_tit">가입 전 중요 사항 확인</h2>
 						</div>
 						<div class="popup_body">
-							<div class="ico_top_tit post_member">
-								<p><strong>우체국 우편 &amp; 금융 통합 멤버십!</strong></p>
-								<p class="mt_1">우체국 멤버십 서비스로 매일 특별한 혜택을 누려보세요.</p>
+							<div class="ico_top_tit card_addr">
+								<p><strong>카드 발급 전 연락처와 주소 정보 등 개인 정보 변경 여부를 확인 해 주세요.</strong></p>
 							</div>
-							<div class="onboarding">
-								<div class="bor_top">
-									<p>우체국 서비스 이용하면<br><strong>매일매일 쌓이는 포인트</strong></p>
-								</div>
-								<div class="capture_slide">
-									<div><a href="#n"><img src="/resources/img/content/img_onboarding.gif" alt=""></a></div>
-									<div><a href="#n"><img src="/resources/img/content/img_onboarding.gif" alt=""></a></div>
-									<div><a href="#n"><img src="/resources/img/content/img_onboarding.gif" alt=""></a></div>
-									<div><a href="#n"><img src="/resources/img/content/img_onboarding.gif" alt=""></a></div>
-									<div><a href="#n"><img src="/resources/img/content/img_onboarding.gif" alt=""></a></div>
-								</div>
-								<script>
-									// 팝업 슬라이드 설정
-									$('.capture_slide').slick({
-										lidesToShow: 1,
-										slidesToScroll: 1,
-										arrows: false,
-										dots: true
-									});
-								</script>
+
+							<!-- s: 연락처 -->
+							<div class="indi_info mt_7">
+								<h3 class="indi_tit bg_indi_phone">연락처</h3>
+								<ul class="indi_list mt_3">
+									<li>
+										<div class="l">자택</div>
+										<div class="r">02-1234-1234</div>
+									</li>
+									<li>
+										<div class="l">직장</div>
+										<div class="r">미등록</div>
+									</li>
+									<li>
+										<div class="l">휴대폰</div>
+										<div class="r">02-1234-1234</div>
+									</li>
+								</ul>
 							</div>
-							<div class="btn_group mt_8">
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleLg');">멤버십 가입
-									동의</button>
+							<!-- e: 연락처 -->
+
+							<!-- s: 연락처 -->
+							<div class="indi_info mt_7">
+								<h3 class="indi_tit bg_indi_addr">주소</h3>
+								<ul class="indi_list mt_3">
+									<li>
+										<div class="l">자택</div>
+										<div class="r">서울시 노원구 한글비석로 12 1234동 1234호</div>
+									</li>
+									<li>
+										<div class="l">직장</div>
+										<div class="r">전라남도 나주시 상야4길 22 대양스퀘어 516호(빛가람동)</div>
+									</li>
+								</ul>
+							</div>
+							<!-- e: 연락처 -->
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('layerSampleLg');">수정</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleLg');">변경
+									없어요</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 우체국통합멤버십 안내 팝업 -->
+				<!-- e: 가입 전 중요 사항 확인 팝업 -->
 
 				<!-- e: 본문 -->
 			</div>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		// 약관 탭메뉴 
+		function clauseList(id, obj) {
+			$('[data-clause]').hide();
+			$(obj).addClass('current').parent().siblings().find('>a').removeClass('current');
+			$('[data-clause=' + id + ']').show();
+		}
+
+		// 뷰어 박스 실행
+		function checkAgree(obj, id) {
+			if ($(obj).is(':checked')) {
+				$('.layer_viewer').show();
+			}
+			$('.clause_list').addClass('scroll');
+			$('[data-important').hide();
+
+			if (id == 'important1') {
+				$('[data-important=important1]').show();
+			} else if (id == 'important2') {
+				$('[data-important=important2]').show();
+			} else {
+				$('[data-important=important3]').show();
+			}
+		}
+
+		// 뷰어 닫기
+		function closePdf() {
+			$('.layer_viewer').hide();
+			$('.clause_info_txt').show();
+			$('.clause_list').removeClass('scroll');
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">예금상품 가입</h2>
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<!-- s: 가입 전 중요 사항 확인 팝업 -->
+				<div class="modal_popup modal_alert show" data-popup="layerSampleLg">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">가입 전 중요 사항 확인</h2>
+						</div>
+						<div class="popup_body p_0 pb_8">
+							<div class="pl_10 pr_10 pt_4">
+
+								<!-- s: 중요사항 목록 -->
+								<div class="pt_5 pb_7">
+									<ul class="clause_list">
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck1_1" onchange="checkAgree(this, 'important1');"
+														checked>
+													<label for="inputCheck1_1">카드 계약 체결 중요한 사항</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck1_2" onchange="checkAgree(this, 'important2');">
+													<label for="inputCheck1_2">체크카드 약관 중요 내용</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck1_3" onchange="checkAgree(this, 'important3');">
+													<label for="inputCheck1_3">소비자 보호를 위한 안내 사항</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+									</ul>
+								</div>
+								<!-- e: 중요사항 목록 -->
+
+							</div>
+
+							<!-- s: 중요 사항 뷰어 -->
+							<div class="layer_viewer" style="display: block;">
+								<div class="inner">
+									<!-- s: 카드 계약 체결 중요한 사항 -->
+									<div data-important="important1" style="display: block;">
+										<h3 class="tit_pin mb_5">카드 계약 체결 중요한 사항</h3>
+										카드 계약 체결 중요한 사항 표시
+									</div>
+									<!-- e: 카드 계약 체결 중요한 사항 -->
+
+									<!-- s: 체크카드 약관 중요 내용 -->
+									<div data-important="important2" style="display: none;">
+										<h3 class="tit_pin mb_5">체크카드 약관 중요 내용</h3>
+										<p>
+											체크카드 약관 중요 내용 표시
+										</p>
+									</div>
+									<!-- e: 체크카드 약관 중요 내용 -->
+
+									<!-- s: 소비자 보호를 위한 안내 사항 -->
+									<div data-important="important3" style="display: none;">
+										<h3 class="tit_pin mb_5">소비자 보호를 위한 안내 사항</h3>
+										<p>
+											소비자 보호를 위한 안내 사항 표시
+										</p>
+									</div>
+									<!-- e: 소비자 보호를 위한 안내 사항 -->
+								</div>
+								<a href="#;" class="btn_pdf_close" onclick="closePdf();return false;"><span
+										class="sr_only">닫기</span></a>
+							</div>
+							<!-- e: 중요 사항 뷰어 -->
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleLg');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 가입 전 중요 사항 확인 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
