@@ -79,6 +79,17 @@
 	vertical-align: bottom;
 }
 
+//풀팝업 안의 datepicker
+body{
+	&.popup{
+		> .modal_datepicker{
+				.popup_inner{
+					height: unset;
+			}
+		}
+	}
+}
+
 /* postpay 클래스 */
 
 .postpay {
@@ -270,8 +281,8 @@
 			&.two_line{
 				label{
 					height: auto;
-					padding: 12.5px 0 !important;
-					line-height: 1;
+					padding: 12px 0 !important;
+					line-height: 1.2;
 					.add_line{
 						display: block;
 						margin-top: 5px;
@@ -434,6 +445,20 @@
 		}
 	}
 
+	// 검색인데 라벨이 위아래로 있을 때
+	.board_search{
+		border-radius: 8px;
+		&.double{
+			label{
+				font-size: 13px;
+			}
+			.btn_search{
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
 	// input 줄에 설명이 함께 들어갈 때 사용
 	.wrap_input_double{
 		.tf_item{
@@ -449,7 +474,6 @@
 	}
 
 	// 탭 메뉴인데 비어있는 부분이 있을 때
-
 	.tab_list{
 		&.ghost{
 			li{
@@ -581,6 +605,42 @@
 		}
 	}
 
+	// 팝업 하단 중 패딩이 있는 버튼이 두개일 때
+	
+	.btn_group_flex{
+		&.margin_10{
+			> .btn{
+				&+.btn{
+					margin-left: 10px !important;
+				}
+			}
+		}
+	}
+
+	// 그림자
+	.shadow{
+		position: relative;
+		z-index: 1;
+		box-shadow: 0px 4px 10px -4px rgba(0, 0, 0, .1);
+		background-color: $white;
+	}
+
+	.border_list{
+		&.select{
+			li{
+				position: relative;
+				> .btn{
+					position: absolute;
+					top: 15px;
+					right:0;
+					font-weight: 400;
+				}
+				&:first-of-type{
+					border-top: none;
+				}
+			}
+		}
+	}
 
 	// 페이지별 css
 
@@ -1562,8 +1622,8 @@
 				}
 				.btn{
 					position: absolute;
-					top: 11.5px;
 					right: 20px;
+					bottom: 13px;
 				}
 			}
 			.tab_cont{
@@ -1597,12 +1657,230 @@
 					}
 				}
 			}
-		} 
+		}
+
+		.rec_info{
+			position: relative;
+			> .day{
+				position: absolute;
+				right: 20px;
+			}
+		}
+
+		.card_sel{
+			> *{
+				height: 70px;
+				padding: 14px 20px;
+				flex: 1;
+				&:last-child{
+					margin-left: 10px;
+				}
+			}
+			> .board_search{
+				display: flex;
+				flex-direction: column;
+				label{
+					padding-bottom: 6px;
+				}
+				input{
+					padding: 0;
+				}
+			}
+		}
+		.border_list{
+			&.select{
+				& + .tit2{
+					color: $darkgray;
+				}
+			}
+		}
+
+		.bg_lightgray{
+			&.ls5{
+				color: $gray;
+			}
+		}
+		.txt_area{
+			position: relative;
+			padding-bottom: 30px;
+			.txt_amt{
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+			}
+			textarea{
+				white-space: unset;
+				overflow-y: auto;
+			}
+		}
+		.img_wrap{
+			&.user_sample{
+				position: relative;
+				.user_word{
+					// display: inline-block;
+					position: absolute;
+					left: 50%;
+					top: 45%;
+					transform: translateX(-50%);
+					width: 80%;
+					height: 72px;
+					font-size: 3.5vw;
+					font-weight: 500;
+					color: $gray;
+					text-align: center;
+					overflow-y: auto;
+				}
+			}
+		}
+		.modal_bottom_sheet{
+			.btn{
+				.ico_chevron_right_sm{
+					margin-left: 6px;
+					margin-top: -1px;
+					transform: rotate(90deg);
+				}
+			}
+		}
+
+		.row_input{
+			.full{
+					flex: 1;
+			}
+			
+			.check_item{
+				&.type_btn{
+					label{
+						width: 70px;
+						height: 70px;
+						justify-content: center;
+					}
+				}
+			}
+		}
+	}
+
+	// 송금받기
+	&.receive{
+
+		.top_ico_txt{
+			&.hand{
+				&::before{
+					height: 36px;
+					background-image: url(/resources/img/content/top_ico_receive.png);
+				}
+			}
+		}
+
+		.btn_round{
+			&.arrow{
+				height: 30px;
+				font-weight: 400;
+			}
+		}
+		.ico_chevron_right_sm{
+			width: 6px;
+			height: 10px;
+			margin-left: 15px;
+			transform: rotate(90deg);
+		}
+
+		.summary{
+			text-align: center;
+			line-height: 1;
+			.name{
+				font-size: 12px;
+				font-weight: 400;
+				.ico_person{
+					width: 10px;
+					height: 12px;
+					margin-right: 3.5px;
+					transform: translateY(-1.5px);
+				}
+			}
+			.date{
+				font-size: 12px;
+				color: #777;
+			}
+			.price{
+				display: inline-block;
+				position: relative;
+				font-size: 23px;
+				font-weight: 400;
+				span{
+					font-size: 30px;
+					font-weight: 700;
+				}
+				button{
+					position: absolute;
+					left: calc(100% + 10px);
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+			.new_yellow{
+				.btn{
+					padding: 13px;
+					border-radius: 8px;
+					background: #ffd64a;
+					white-space: unset;
+					flex: 1;
+					&+.btn{
+						margin-left: 10px;
+					}
+					.ico{
+						width: 25%;
+						&.office{
+							width: 35px;
+							height: 26px;
+							background: url(/resources/img/content/img_btn_yellow_01.png) no-repeat center / cover;
+						}
+						&.postpay{
+							width: 29px;
+							height: 30px;
+							background: url(/resources/img/content/img_btn_yellow_02.png) no-repeat center / cover;
+						}
+					}
+				}
+			}
+		}
 
 	}
 
+	// 송금 홈
+
+	&.remit_home{
+		.home_slide{
+			.slick-list {
+				margin:0 -5px;
+				overflow: unset;
+				.slick-slide {
+					margin:0 5px;
+				}
+			}
+		}
+	}
+	.account_info{
+		padding: 12px;
+		border-radius: 9px;
+		.price{
+			font-size: 20px;
+			font-weight: 400;
+			span{
+				font-size: 26px;
+				font-weight: 700;
+			}
+		}
+		.d_flex{
+			&.aie{
+				align-items: end;
+			}
+		}
 
 
+		&.office{
+			background: #ffd549;
+		}
+	}
 
 
 }

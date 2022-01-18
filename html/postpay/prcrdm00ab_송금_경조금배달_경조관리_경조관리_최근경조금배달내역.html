@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function() {
+			var checkBox = $('.row_input .check_item input');
+			var label = $('.row_input .check_item label');
+
+			label.click(function(){
+				if(checkBox.is(':checked') == true){
+					label.text('반복 안함');
+				} else if(checkBox.is(':checked') == false) {
+					label.text('반복')
+				}
+			});
+
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+
+		<div class="popup_header">
+			<h2 class="popup_tit">새 경조 등록</h2>
+		</div>
+		<div class="popup_body">
+
+			<!-- s: 본문 --> 
+			<div class="postpay delivery container pb_4 ls5">
+
+				<div class="form_wrap mt_2">
+
+					<!-- s: 이름 -->
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">받는 분 이름 <span class="req">필수항목</span></span>
+								<input type="text" id="lb_tf_1_3" class="tf" value="김가을" title="받는 분 이름 입력" required>
+							</div>
+							<div class="btn_area">
+									<a href="#;" class="btn btn_md btn_round btn_darkgray"
+											onclick="openModal('layerDelivery'); return false;">최근 배달에서 선택</a>
+							</div>
+						</div>
+					</div>
+					<!-- e: 이름 -->
+
+					<!-- s: 주소 -->
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_address2">받는 분 주소 <span class="req">필수항목</span></label>
+								<input type="text" class="tf" id="lb_address2" value="58217" title="우편번호 입력" required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray">우편번호</a>
+							</div>
+						</div>
+						<div class="tf_item_footer txt_normal">
+							<p>전라남도 나주시 상야 3길8</p>
+							<p>A동 626호(빛가람동, 중흥s클래스메가티움 2차)</p>
+						</div>
+					</div>
+					<!-- e: 주소 -->
+
+					<!-- s: 연락처 -->
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">받는 분 연락처 <span class="req">필수항목</span></span>
+								<input type="text" id="lb_tf_1_3" class="tf ls0" value="010-7777-1234" title="받는 분 연락처 입력" required>
+							</div>
+						</div>
+					</div>
+					<!-- e: 연락처 -->
+
+					<!-- s: 배달 금액 -->
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">배달 금액 <span class="req">필수항목</span></span>
+								<input type="text" id="lb_tf_1_3" class="tf ls0" value="100.000원" title="배달 금액 입력" required>
+							</div>
+						</div>
+					</div>
+					<!-- e: 배달 금액 -->
+
+					<!-- s: 배달일 -->
+					<div class="row_input d_flex mt_2">
+						<div class="full">
+							<div class="tf_item">
+								<div class="tf_item_body">
+										<div class="input_area">
+												<label class="lab" for="lb_date2">배달일 <span class="req">필수항목</span></label>
+												<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.12.25" required>
+										</div>
+										<div class="btn_area">
+												<!-- 데이트피커 호출 함수 openDatepicker(this) -->
+												<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+														<i class="ico ico_datepicker"></i>
+														<span class="sr_only">달력</span>
+												</a>
+										</div>
+								</div>
+							</div>
+						</div>
+						<div class="check_item type_btn">
+							<input type="checkbox" id="inputCheck">
+							<label for="inputCheck">반복 안함</label>
+						</div>
+					</div>
+					<!-- e: 배달일 -->
+
+					<!-- s: 양력 / 음력 -->
+					<div class="input_items mt_2">
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_period" id="lb_period_1" checked>
+							<label for="lb_period_1">
+								<i class="ico ico_check_on"></i>
+								<p>양력</p>
+							</label>
+						</span>
+						<span class="check_item type_btn">
+							<input type="radio" name="lb_period" id="lb_period_2">
+							<label for="lb_period_2">
+								<i class="ico ico_check_on"></i>
+								<p>음력</p>
+							</label>
+						</span>
+					</div>
+					<!-- e: 양력 / 음력 -->
+
+					<!-- s: 경조구분 -->
+					<div class="mt_2">
+						<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+							<div class="tf_item_body">
+									<div class="input_area">
+											<span class="lab">경조 구분 <span class="req">필수항목</span></span>
+											<p class="tf">축하</p>
+									</div>
+									<div class="btn_area">
+											<i class="ico ico_chevron_down_md"></i>
+											<span class="sr_only">선택</span>
+									</div>
+							</div>
+						</a>
+					</div>
+					<!-- e: 경조구분 -->
+
+					<!-- s: 메모 -->
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">메모 <span class="req">필수항목</span></span>
+								<input type="text" id="lb_tf_1_3" class="tf ls0" title="메모 입력" placeholder="내용을 입력하세요." required>
+							</div>
+						</div>
+					</div>
+					<!-- e: 메모 -->
+
+				</div>
+
+				<!-- s: Modal popup 최근 배달 내역 -->
+				<div class="modal_popup modal_bottom_sheet show" data-popup="layerDelivery">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h2 class="popup_tit">최근 배달 내역</h2>
+						</div>
+						<div class="popup_body">
+							<div class="container">
+
+								<!-- s: 배달 내역 목록 -->
+								<div>
+									<div class="box_inquiry mt_4">
+										<div class="box_label gray">
+											<span class="sr_only">경조 구분</span>
+											<i class="txt_label">축하</i>
+										</div>
+										<div class="list_inquiry">
+											<div>
+												<div class="r">
+													<span class="sr_only">승인일시</span>
+													<span class="date">2021.10.15 14:25</span>
+												</div>
+											</div>
+											<div class="title">
+												<div class="l">
+													<span class="sr_only">이름</span>
+													<strong class="name"><i class="ico ico_person"></i><span class="highlight">김가을</span></strong>
+												</div>
+												<div class="r">
+													<span class="sr_only">송금액</span>
+													<span class="won"><em class="amount">100,000</em>원</span>
+												</div>
+											</div>
+											<div>
+												<span class="sr_only">주소</span>
+												<span>전라남도 나주시 교육길 18 메가티움 2차 A동 541호 (빛가람동)</span>
+											</div>
+										</div>
+									</div>
+									<div class="box_inquiry mt_4">
+										<div class="box_label gray">
+											<span class="sr_only">경조 구분</span>
+											<i class="txt_label">축하</i>
+										</div>
+										<div class="list_inquiry">
+											<div>
+												<div class="r">
+													<span class="sr_only">승인일시</span>
+													<span class="date">2021.10.15 14:25</span>
+												</div>
+											</div>
+											<div class="title">
+												<div class="l">
+													<span class="sr_only">이름</span>
+													<strong class="name"><i class="ico ico_person"></i><span class="highlight">김가을</span></strong>
+												</div>
+												<div class="r">
+													<span class="sr_only">송금액</span>
+													<span class="won"><em class="amount">100,000</em>원</span>
+												</div>
+											</div>
+											<div>
+												<span class="sr_only">주소</span>
+												<span>전라남도 나주시 교육길 18 메가티움 2차 A동 541호 (빛가람동)</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- e: 배달 내역 목록 -->
+
+								<div class="txt_c mt_2">
+									<a href="#;" class="btn btn_sm btn_round btn_default">
+										<span>배달 내역 더 보기</span>
+										<i class="ico ico_chevron_right_sm"></i>
+									</a>
+								</div>
+								<p class="bul_notice txt_gray mt_12">경조금배달 내역에서 경조배달정보를 그대로 복사하여 빠른 경조금배달 신청이 가능해요.</p>
+							
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: Modal popup 최근 배달 내역 -->
+
+			</div>
+			<!-- e: 본문 -->
+
+		</div>
+
+		<div class="popup_footer">
+			<div class="btn_group btn_group_flex">
+				<button type="button" class="btn btn_lg btn_primary" onclick="">
+					등록
+				</button>
+			</div>
+		</div>
+
+		<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+	</div>
+
+				
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>

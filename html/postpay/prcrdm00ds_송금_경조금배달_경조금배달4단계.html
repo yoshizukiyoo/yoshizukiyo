@@ -19,6 +19,19 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
+		$(document).ready(function() {
+				$('.input_area textarea').on('keyup', function() {
+					$('.txt_amt').html($(this).val().length+"/100");
+	
+					if($(this).val().length > 100) {
+							$(this).val($(this).val().substring(0, 100));
+							$('.txt_amt').html("100 / 100");
+					}
+					
+					var txtCon = $(this).val();
+					$('.user_word').text(txtCon);
+				});
+		});
 	</script>
 </head>
 
@@ -30,7 +43,7 @@
 		<div id="content">
 
 			<!-- s: 본문 --> 
-			<div class="postpay delivery container pb_4 ls5">
+			<div class="postpay delivery container">
 
 				<div class="timer_wrap">
 					<p class="bul_notice timer">4시간 54분 15초 내 신청 시 
@@ -38,17 +51,106 @@
 					</p>
 				</div>
  
-				<h3 class="tit1 mt_2 mb_0">경조 카드 선택</h3>
+				<h2 class="tit1 mt_2 mb_0">경조 카드 선택</h2>
 
-				<div class="form_wrap mt_2">
-
-					<!-- s: 수신여부 -->
-					<div class="input_items mt_2">
-
+				<!-- s: case 1) 구분 선택 상단-->
+				<div class="d_flex card_sel mt_2">
+					<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+								<div class="input_area">
+										<span class="lab">구분 <span class="req">필수항목</span></span>
+										<p class="tf">결혼</p>
+								</div>
+								<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+								</div>
+						</div>
+					</a>
+					<div class="board_search double lh1">
+						<label for="double_search">경조문구 검색</label>
+						<input type="text" id="double_search" class="tf" title="검색 입력" placeholder="검색어 입력">
+						<a href="#;" class="btn_search">
+							<span class="sr_only">검색</span>
+						</a>
 					</div>
-					<!-- e: 수신여부 -->
-
 				</div>
+				<!-- e: case 1) 구분 선택 상단 -->
+
+				<!-- s: case 1) 구분 선택 -문구 리스트 -->
+				<ul class="border_list select">
+					<li>
+						<h3 class="tit2 lh1">위로</h3>
+						<p>삼가 조의를 드립니다.</p>
+						<button type="button" class="btn btn_outline_default btn_sm btn_round">선택</button>
+					</li>
+					<li>
+						<h3 class="tit2 lh1">결혼</h3>
+						<p>결혼을 축하하며 두 분의 앞날에 행복이 함께하시기를 기원합니다.</p>
+						<button type="button" class="btn btn_outline_default btn_sm btn_round">선택</button>
+					</li>
+					<li>
+						<h3 class="tit2 lh1">결혼</h3>
+						<p>결혼을 축하하며 서로 존중하고 더 많은 사랑 나누는 부부 되시기 바랍니다.</p>
+						<button type="button" class="btn btn_outline_default btn_sm btn_round">선택</button>
+					</li>
+				</ul>
+				<!-- e: case 1) 구분 선택 -문구 리스트 -->
+
+				<h3 class="tit2 mt_6">경조카드 미리보기</h3>
+				<div class="img_wrap">
+					<img src="/resources/img/content/img_cong_sample.jpg" alt="결혼카드 - 새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.">
+				</div>
+				<div class="box bg_lightgray mt_2 ls5">실물 경조카드에 선택하신 경조문구가 인쇄되어 현금과 함께 배송됩니다.</div>
+
+				<!-- s: case 2) 직접 입력 상단 -->
+				<div class="d_flex card_sel mt_2">
+					<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+								<div class="input_area">
+										<span class="lab">구분 <span class="req">필수항목</span></span>
+										<p class="tf">직접입력</p>
+								</div>
+								<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+								</div>
+						</div>
+					</a>
+					<a href="#;" class="tf_item" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+								<div class="input_area">
+										<span class="lab">카드 종류 <span class="req">필수항목</span></span>
+										<p class="tf">결혼</p>
+								</div>
+								<div class="btn_area">
+										<i class="ico ico_chevron_down_md"></i>
+										<span class="sr_only">선택</span>
+								</div>
+						</div>
+					</a>
+				</div>
+				<!-- e: case 2) 직접 입력 상단 -->
+
+				<!-- s: case 2) 입력 창 -->
+				<div class="tf_item mt_3 txt_area">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_content">경조문구 <span class="req">필수항목</span></label>
+							<textarea class="tf" id="lb_content" rows="4"
+								placeholder="최대 100자까지 입력 가능합니다."></textarea>
+						</div>
+					</div>
+					<p class="txt_amt txt_gray">0/100</p>
+				</div>
+				<!-- e: case 2) 입력 창 -->
+
+				<h3 class="tit2 mt_6">경조카드 미리보기</h3>
+				<div class="img_wrap user_sample">
+					<img src="/resources/img/content/img_cong_sample_bg.jpg" alt="결혼카드">
+					<p class="user_word">새 식구 맞으심을 축하하며 화목한 가정 이루시기를 기원합니다.</p>
+				</div>
+				<div class="box bg_lightgray mt_2 ls5">실물 경조카드에 선택하신 경조문구가 인쇄되어 현금과 함께 배송됩니다.</div>
 
 				<!-- s: 하단 고정 영역 -->
 				<div class="bottom_fixed_area p_4">
