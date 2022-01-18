@@ -23,6 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+
 			var $postpaySlide = $('.postpay_bottom_list');
 			$postpaySlide.slick({
 				draggable: true,
@@ -34,25 +35,33 @@
 				centerMode: false,
 				slidesToShow: 4
 			});
+
 			$('.wrapper').css('padding-bottom', '0px');
 
 			var screen = $('html').height();
-			var upper = $('.shadow').height();
-			var under = screen - upper - 136;
+			var under = screen - 486; /*(350 + 136)*/
+
 			$('.under').css({'minHeight':under});
 
-			var $homeSlide = $('.home_slide');
+			var $homeSlide = $('.service_list_area');
 			$homeSlide.slick({
 				draggable: true,
 				arrows: false,
 				infinite: false,
 				autoplay: false,
 				dots: true,
-				// centerMode: true,
-				// centerPadding:50,
-				slidesToShow: 1,
-
+				slidesToShow: 1
 			});
+
+			var $personSlide = $('.persons_slide');
+			$personSlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				slidesToShow: 4
+			});
+
 		});
 	</script>
 </head>
@@ -66,46 +75,198 @@
 			<div class="postpay remit_home bg_lightgray">
 
 				<!-- s: 계좌 및 메뉴 -->
-				<div class="p_4 shadow">
-					<div class="home_slide">
-						<div class="account_info office">
-							<div class="container">
-								<p class="price"><span>436,900</span>원</p>
-								<div class="d_flex aie">
-									<p>우체국계좌 4210</p>
-									<button>최근결제</button>
+				<div class="container pt_4 shadow">
+
+					<div class="service_slider_area">
+						<ul class="service_list_area home_slide">
+							<li class="service_slider office">
+								<div class="pl_2 pr_2">
+									<p class="price"><span>436,900</span>원</p>
+									<div class="d_flex aie">
+										<p class="account">우체국계좌 <span class="num">4210</span></p>
+										<button>최근결제</button>
+									</div>
 								</div>
-							</div>
-							<div class="d_flex btn_wrap">
-								<button type="button">
-									<i class="ico"></i>
-									송금
-								</button>
-								<button type="button">
-									<i class="ico"></i>
-									결제
-								</button>
-							</div>
-						</div>
-						<div class="account_info">your content</div>
+								<div class="d_flex btn_wrap">
+									<a type="button" class="btn">
+										<i class="ico ico_remit"></i>
+										송금
+									</a>
+									<a type="button" class="btn">
+										<i class="ico ico_qr_sm"></i>
+										결제
+									</a>
+								</div>
+							</li>
+							<li class="service_slider two">
+								<div class="pl_2 pr_2">
+									<p class="price"><span>436,900</span>원</p>
+									<div class="d_flex aie">
+										<p class="account">우체국계좌 <span class="num">4210</span></p>
+										<button>최근결제</button>
+									</div>
+								</div>
+								<div class="d_flex btn_wrap">
+									<a type="button" class="btn">
+										<i class="ico ico_remit"></i>
+										송금
+									</a>
+									<a type="button" class="btn">
+										<i class="ico ico_qr_sm"></i>
+										결제
+									</a>
+								</div>
+							</li>
+							<li class="service_slider three">
+								<div class="pl_2 pr_2">
+									<p class="price"><span>436,900</span>원</p>
+									<div class="d_flex aie">
+										<p class="account">우체국계좌 <span class="num">4210</span></p>
+										<button>최근결제</button>
+									</div>
+								</div>
+								<div class="d_flex btn_wrap">
+									<a type="button" class="btn">
+										<i class="ico ico_remit"></i>
+										송금
+									</a>
+									<a type="button" class="btn">
+										<i class="ico ico_qr_sm"></i>
+										결제
+									</a>
+								</div>
+							</li>
+						</ul>
 					</div>
+
+					<!-- s: 계좌 및 메뉴 -->
+					<ul class="remit_menu_list mt_5">
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_01.png" alt="#">
+								<p>전화번호송금</p>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_02.png" alt="#">
+								<p>계좌송금</p>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_03.png" alt="#">
+								<p>QR송금</p>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_04.png" alt="#">
+								<p>경조금배달</p>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_05.png" alt="#">
+								<p>더치페이</p>
+							</a>
+						</li>
+					</ul>
+					<!-- e: 계좌 및 메뉴 -->
+
 				</div>
 				<!-- e: 계좌 및 메뉴 -->
 
-				<!-- s: 계좌 및 메뉴 -->
-				<ul class="menu_list">
-					<li>
-						<a href="#;">
-							<span></span>
-							<p>전화번호송금</p>
-						</a>
-					</li>
-				</ul>
-				<!-- e: 계좌 및 메뉴 -->
-
 				<!-- s: 최근 송금 이력 -->
-				<div class="under">
-					회색 영역
+				<div class="under pb_16">
+					
+					<!-- s: 탭메뉴 -->
+					<nav class="tab_menu tab_menu1 mb_0 mt_4">
+						<ul class="tab_list">
+							<li class="on"><a href="#tab_cont1"><span>최근</a></li>
+							<li><a href="#tab_cont2"><span>자주</span></a></li>
+						</ul>
+					</nav>
+					<!-- e: 탭메뉴 -->
+
+					<!-- s: 탭 컨텐츠 (최근) -->
+					<div class="tab_cont" id="tab_cont1">
+						<ul class="persons_list not_slide">
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>김길동</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>김길동</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>나희선</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>이우정</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- e: 탭 컨텐츠 (최근) -->
+
+					<!-- s: 탭 컨텐츠 (자주) -->
+					<div class="tab_cont" id="tab_cont2">
+						<ul class="persons_list persons_slide">
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>김길동</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>나희선</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>이우정</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>김길동</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>나희선</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border">
+									<i class="ico ico_person"></i>
+									<span>이우정</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="box box_border add">
+									<i class="ico ico_plus_sm"></i>
+								</a>
+							</li>
+						</ul>	
+					</div>
+					<!-- e: 탭 컨텐츠 (자주) -->
 				</div>
 				<!-- e: 최근 송금 이력 -->
 
