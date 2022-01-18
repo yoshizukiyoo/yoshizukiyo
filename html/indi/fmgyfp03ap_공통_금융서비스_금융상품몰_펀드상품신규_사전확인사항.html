@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="펀드 신규 매수"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">약관동의</span></li>
+					<li><span class="num">2</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">3</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">매수 신청 완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<!-- s: 필수 및 선택 약관 -->
+				<div class="double_box double_box2 terms_box2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk1" id="all_chk1">
+							<label for="all_chk1">전체 동의</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div class="bg_lightgray box txt_gray txt_lg txt_normal txt_c">
+							[채권형][매우낮은위험]키움단기국공채증권자투자신탁제1호[채권]Ce
+						</div>
+						<div class="mt_4">
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_1" checked>
+									<label for="chk1_1">[필수] 핵심 설명서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_2">
+									<label for="chk1_2">[필수] 집합투자규약</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_3">
+									<label for="chk1_3" class="d_i_b">[필수] 투자설명서</label>
+								</span>
+							</div>
+							<div class="r fx_align_start">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_4">
+									<label for="chk1_4">[필수] 간이설명서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 필수 및 선택 약관 -->
+
+				<!-- s: 가입 전 중요 사항 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk2" id="all_chk2">
+							<label for="all_chk2">가입 전 중요 사항 확인</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_1" checked>
+									<label for="chk2_1">펀드 상품의 중요한 사항</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-1', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_2" checked>
+									<label for="chk2_2">펀드 투자 유의 사항</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-2', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_3">
+									<label for="chk2_3">불법 탈법 차명거래 금지 설명 확인서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-3', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 가입 전 중요 사항 -->
+
+				<!-- s: 약관확인 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium txt_break txt_black">
+							<input type="checkbox" name="chk3" id="chk3">
+							<label for="chk3">본인은 약관 및 상품설명서를 제공받고 펀드상품 의 중요한 사항을 충분히 이해하며 본 상품에 가입함을 확인합니다.</label>
+						</span>
+					</div>
+				</div>
+				<!-- e: 약관확인 -->
+
+				<!-- s: 약관 및 상품설명서 받기 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk4" id="all_chk4">
+							<label for="all_chk4">약관 및 상품설명서 받기</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_1" checked>
+									<label for="chk4_1">이메일</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_1" class="tf" value="abcd@naver.com">
+								</div>
+							</div>
+						</div>
+						<p class="txt_guide">이메일주소가 맞는지 확인하시기 바랍니다.</p>
+						<div class="mt_2">
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_2">
+									<label for="chk4_2">문자(SMS)</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md disabled mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_2" class="tf" value="010-1234-5678" disabled readonly>
+								</div>
+							</div>
+						</div>
+						<p class="bul_notice mt_2">이메일, 문자 중 하나를 필수 선택하여 약관 및 상품설명서를 교부받으셔야 합니다.</p>
+					</div>
+				</div>
+				<!-- e: 약관 및 상품설명서 받기 -->
+				<p class="mt_1 txt_gray"> 자본시장과 금융투자업에 관한 법에 의거해서 투자신탁설명서를 교부받으셔야 하며, 인터넷 가입 시에도 해당 설명서를 확인하셔야 합니다.</p>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>다음</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 사전 확인 사항 팝업 -->
+			<div class="modal_popup popup show" data-popup="layer03">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">사전 확인 사항</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<p class="top_ico_txt bg_fund">펀드 투자는 투자자 성향 분석 후 성향에 맞는 펀드에 투자하셔야 합니다. </p>
+							<!-- s: 금융소비자 불이익 사항 -->
+							<div class="toggle_box">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">금융소비자 불이익 사항</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="box bg_lightgray">
+										<p class="txt_gray">취약금융소비자가 금융투자상품을 가입하는 경우 상품의 주요 특성에 대한 설명에 앞서 금융소비자의 불이익 사항을 우선적으로 설명받으실 수 있습니다.
+										</p>
+									</div>
+									<div class="mt_4">
+										<h3 class="tit1">고객님은 취약 금융소비자입니까?</h3>
+										<div class="input_items">
+											<span class="check_item type_btn_round">
+												<input type="radio" name="pop_chk3_1" id="pop_chk3_1_1" checked>
+												<label for="pop_chk3_1_1">예</label>
+											</span>
+											<span class="check_item type_btn_round">
+												<input type="radio" name="pop_chk3_1" id="pop_chk3_1_2">
+												<label for="pop_chk3_1_2">아니오</label>
+											</span>
+										</div>
+										<p class="bul_notice txt_gray mt_1">취약금융소비자 : 금융상품에 대한 전문적인 이해가 부족한 만 65세 이상 고령자, 은퇴자, 주부 등</p>
+									</div>
+									<div class="mt_8">
+										<h3 class="tit1">만 65세 이상, 은퇴자, 주부 등에 해당하는지 금융기관에서 정보를 수집하는 것을 동의하시겠습니까? </h3>
+										<div class="input_items fund">
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_2" id="pop_chk3_2_1" checked>
+												<label for="pop_chk3_2_1">동의</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_2" id="pop_chk3_2_2">
+												<label for="pop_chk3_2_2">동의안함</label>
+											</span>
+										</div>
+										<p class="bul_notice txt_gray mt_1">동의하실 경우 다른 상품정보보다 우선하여 금융소비자 불이익 사항을 우선 설명을 받으실 수 있으며, 동의하지 않는다면
+											일반적인 금융상품 판매 절차가 진행됩니다.</p>
+									</div>
+									<div class="mt_8">
+										<h3 class="tit1">고객님은 어느 항목에 해당되십니까?</h3>
+										<div class="input_items fund">
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_3" id="pop_chk3_3_1" checked>
+												<label for="pop_chk3_3_1">만 65세 이상</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_3" id="pop_chk3_3_2">
+												<label for="pop_chk3_3_2">은퇴자</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_3" id="pop_chk3_3_3">
+												<label for="pop_chk3_3_3">주부</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_3" id="pop_chk3_3_4">
+												<label for="pop_chk3_3_4" class="pt_1 pb_1">기타 (우선 설명 희망자)</label>
+											</span>
+										</div>
+										<p class="bul_notice txt_gray mt_1">취약금융소비자 : 금융상품에 대한 전문적인 이해가 부족한 만 65세 이상 고령자, 은퇴자, 주부 등</p>
+									</div>
+									<div class="double_box terms_box mt_4">
+										<div class="top">
+											<span class="check_item txt_medium">
+												<input type="checkbox" name="" id="all_chk">
+												<label for="all_chk">금융소비자의 불이익 사항</label>
+											</span>
+										</div>
+										<div class="btm">
+											<div>
+												<div class="l">
+													<span class="check_item simple_primary">
+														<input type="checkbox" name="" id="chk1" checked>
+														<label for="chk1">투자상품은 예금자보호법에 따라 예금보험공사가 보호하지 않습니다.</label>
+													</span>
+												</div>
+											</div>
+											<div>
+												<div class="l">
+													<span class="check_item simple_primary">
+														<input type="checkbox" name="" id="chk2">
+														<label for="chk2">투자상품은 운용실적에 따라 이익 또는 손실이 발생할 수 있으며 그 결과는 투자자에게 귀속됩니다. 손실 가능 범위는 최대 원금의
+															100%까지이나 투자대상자산 등에 따라 달라질 수 있습니다.</label>
+													</span>
+												</div>
+											</div>
+											<div>
+												<div class="l">
+													<span class="check_item simple_primary">
+														<input type="checkbox" name="" id="chk3">
+														<label for="chk3">정해진 환매(중도해지)수수료 징수 기간 이내에 환매(중도해지)하는 경우 환매(중도해지)수수료가 발생할 수 있습니다.</label>
+													</span>
+												</div>
+											</div>
+											<div>
+												<div class="l">
+													<span class="check_item simple_primary">
+														<input type="checkbox" name="" id="chk4">
+														<label for="chk4">가입을 결정하시기 전에 투자대상, 투자위험, 환매(중도해지)방법 및 보수 등에 관하여 (간이)투자설명서 또는 운용자산 상품설명서를
+															반드시 읽어보시기 바랍니다.</label>
+													</span>
+												</div>
+											</div>
+											<div>
+												<div class="l">
+													<span class="check_item simple_primary">
+														<input type="checkbox" name="" id="chk5">
+														<label for="chk5">기타 비용의 발생 여부 등에 따라 실제 투자자가 부담하는 보수 및 비용은 달라질 수 있습니다.</label>
+													</span>
+												</div>
+											</div>
+											<div>
+												<div class="l">
+													<span class="check_item simple_primary">
+														<input type="checkbox" name="" id="chk6">
+														<label for="chk6">과거의 운용실적이 미래의 수익을 보장하지 않습니다.</label>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<p class="mt_2 txt_gray">본인은 금융소비자 불이익사항에 대하여 우선적으로 설명을 모두 들었습니다.</p>
+									<div class="mt_3">
+										<div class="input_items fund">
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_4" id="pop_chk3_4_1" checked>
+												<label for="pop_chk3_4_1">확인</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk3_4" id="pop_chk3_4_2">
+												<label for="pop_chk3_4_2">확인안함</label>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- e: 금융소비자 불이익 사항 -->
+
+							<!-- s: 투자자 성향 대비 상품 적합 확인 -->
+							<div class="toggle_box checked">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">투자자 성향 대비 상품 적합 확인</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="card_complete ico_fund">
+										<h2 class="txt_lg">키움단기국공채증권자투자 신탁 제1호[채권]Ce</h2>
+									</div>
+									<!-- s: case 상품 적합 -->
+									<div class="fund_pd_info mt_4">
+										<div class="box box_border txt_c">
+											<p class="txt_sm txt_gray">투자성향정보</p>
+											<strong class="txt_lg mt_1">3등급<br>위험 중립형</strong>
+										</div>
+										<div class="box box_border txt_c ml_2">
+											<p class="txt_sm txt_gray">상품위험등급</p>
+											<strong class="txt_lg mt_1">6등급<br>매우낮은위험</strong>
+										</div>
+										<span class="type green">적합</span>
+									</div>
+									<div class="mt_4 bg_lightgray p_4">
+										<h3 class="tit1">홍길동님의 투자성향분석정보</h3>
+										<ul class="list list1">
+											<li>투자성향분석일: 2021년 8월 18일</li>
+											<li class="mt_0">정보만기일: 2023년 8월 18일</li>
+										</ul>
+										<div class="double_box fund_info mt_2 bg_white">
+											<div class="top txt_c">
+												<h4 class="tit1">위험 중립형</h4>
+												<p class="txt_l txt_gray txt_sm txt_light">투자손실의 위험성을 감안하여 투자원금의 손실을 일정부분 감내하면서 채권혼합형, 채권형 펀드에
+													주로 투자하여
+													평균이상의 시장수익률을 기대하는 투자자 유형</p>
+											</div>
+											<div class="btm txt_c txt_gray txt_sm">
+												투자 가능 펀드: <strong>보통위험(4등급 이상)</strong>
+											</div>
+										</div>
+									</div>
+									<!-- e: case 상품 적합 -->
+
+									<!-- s: case 상품 부적합 -->
+									<div class="fund_pd_info mt_4">
+										<div class="box box_border txt_c">
+											<p class="txt_sm txt_gray">투자성향정보</p>
+											<strong class="txt_lg mt_1">3등급<br>위험 중립형</strong>
+										</div>
+										<div class="box box_border txt_c ml_2">
+											<p class="txt_sm txt_gray">상품위험등급</p>
+											<strong class="txt_lg mt_1">6등급<br>매우낮은위험</strong>
+										</div>
+										<span class="type red">부적합</span>
+									</div>
+									<div class="mt_4 bg_lightgray p_4">
+										<p class="txt_sm txt_gray">고객님의 투자성향보다 위험도가 높은 금융투자상품은 우정사업본부가 투자권유를 할 수 없으므로, 본인 판단 하에 투자여부를 결정하셔야
+											합니다.</p>
+									</div>
+									<p class="mt_3 txt_gray">투자자의 성향에 비해 고위험 상품에 투자하는 경우에는 예상보다 큰 폭의 원금손실이 발생할 수 있으며, 투자 손익에 대한 책임은 모두
+										본인에게 귀속 됩니다.</p>
+									<div class="mt_8">
+										<h3 class="tit1">본 투자자 확인 내용에 동의하시겠습니까?</h3>
+										<div class="input_items fund">
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk6" id="pop_chk6_1" checked>
+												<label for="pop_chk6_1">동의</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="pop_chk6" id="pop_chk6_2">
+												<label for="pop_chk6_2">동의안함</label>
+											</span>
+										</div>
+										<a href="#;" class="btn btn_md btn_round btn_full btn_primary mt_4"
+											onclick="openModal('layer04',this)">투자자 성향 분석 진행</a>
+									</div>
+									<!-- e: case 상품 부적합 -->
+									<div class="mt_1 txt_gray">
+										<p class="bul_notice">투자자 성향 정보는 고객님의 상품선택에 도움을 드리기 위한 정보입니다. 투자 시 유의 바랍니다.</p>
+										<p class="bul_notice mt_1">투자성향에 관계없이 고객님의 자유의사에 따라 매수를 진행할 수 있습니다.</p>
+										<p class="bul_notice mt_1">펀드 상품의 특성에 따른 원금손실이 발생할 수 있습니다. 투자 시 이 점 유의 바랍니다.</p>
+									</div>
+								</div>
+							</div>
+							<!-- e: 투자자 성향 대비 상품 적합 확인 -->
+
+							<!-- s: 매매 기준가 적용일 확인 -->
+							<div class="toggle_box checked">
+								<a href="#;" class="active">
+									<h3 class="tit1 mb_0">매매 기준가 적용일 확인</h3>
+								</a>
+								<div class="toggle_con">
+									<div class="tbl">
+										<table>
+											<caption class="sr_only">매매 기준가 적용일 확인 표로 매입신청일, 기준가 적용일, 매입일 정보 제공</caption>
+											<colgroup>
+												<col style="width: 33.3%;">
+												<col style="width: 33.3%;">
+												<col>
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">매입신청일</th>
+													<th scope="col">기준가 적용일</th>
+													<th scope="col">매입일</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="txt_normal">2021.10.12<br><span class="txt_light">15:30 이전</span></td>
+													<td class="txt_normal">2021.10.13</td>
+													<td class="txt_normal">2021.10.14</td>
+												</tr>
+												<tr>
+													<td class="txt_normal">2021.10.12<br><span class="txt_light">15:30 경과</span></td>
+													<td class="txt_normal">2021.10.14</td>
+													<td class="txt_normal">2021.10.15</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="mt_1 txt_gray">
+										<p class="bul_notice">매입 신청 기준 시간은 매수 신청 완료 시간으로 처리됩니다.</p>
+										<p class="bul_notice mt_1">펀드의 매매는 당일 즉시 처리가 없습니다. 매수 신청 시 매수신청액을 투자자예탁금계정에 예치 후 영업일기준에 따라 펀드계좌로
+											입금(실매수)처리됩니다.
+										</p>
+									</div>
+									<div class="mt_6">
+										<h3 class="tit2">현재 펀드 기준가 적용 및 매입 기준</h3>
+										<div class="img_box">
+											<img src="/resources/img/content/img_fund_standard.png" alt="">
+										</div>
+										<p class="bul_notice mt_1 txt_gray">2영업일은 신청일 기준 다음 영업일로 다음날이 법정 공휴일인 경우 그 다음 영업일을 말합니다.
+											<br>예: 금요일 신청 → 2영업일: 다음주 월요일</p>
+									</div>
+								</div>
+							</div>
+							<!-- e: 매매 기준가 적용일 확인 -->
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+							<button type="button" class="btn btn_lg btn_primary">펀드 투자 진행</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 사전 확인 사항 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

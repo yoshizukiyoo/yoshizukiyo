@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.toggle_box a').click(function () {
+				$(this).toggleClass('active');
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="펀드 신규 매수"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">약관동의</span></li>
+					<li><span class="num">2</span><span class="txt">신청정보입력</span></li>
+					<li><span class="num">3</span><span class="txt">신청정보확인</span></li>
+					<li><span class="num">4</span><span class="txt">매수 신청 완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<!-- s: 필수 및 선택 약관 -->
+				<div class="double_box double_box2 terms_box2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk1" id="all_chk1">
+							<label for="all_chk1">전체 동의</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div class="bg_lightgray box txt_gray txt_lg txt_normal txt_c">
+							[채권형][매우낮은위험]키움단기국공채증권자투자신탁제1호[채권]Ce
+						</div>
+						<div class="mt_4">
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_1" checked>
+									<label for="chk1_1">[필수] 핵심 설명서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_2">
+									<label for="chk1_2">[필수] 집합투자규약</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_3">
+									<label for="chk1_3" class="d_i_b">[필수] 투자설명서</label>
+								</span>
+							</div>
+							<div class="r fx_align_start">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk1" id="chk1_4">
+									<label for="chk1_4">[필수] 간이설명서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 필수 및 선택 약관 -->
+
+				<!-- s: 가입 전 중요 사항 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk2" id="all_chk2">
+							<label for="all_chk2">가입 전 중요 사항 확인</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_1" checked>
+									<label for="chk2_1">펀드 상품의 중요한 사항</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-1', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_2" checked>
+									<label for="chk2_2">펀드 투자 유의 사항</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-2', this)">확인</button>
+							</div>
+						</div>
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk2" id="chk2_3">
+									<label for="chk2_3">불법 탈법 차명거래 금지 설명 확인서</label>
+								</span>
+							</div>
+							<div class="r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer02-3', this)">보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 가입 전 중요 사항 -->
+
+				<!-- s: 약관확인 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium txt_break txt_black">
+							<input type="checkbox" name="chk3" id="chk3">
+							<label for="chk3">본인은 약관 및 상품설명서를 제공받고 펀드상품 의 중요한 사항을 충분히 이해하며 본 상품에 가입함을 확인합니다.</label>
+						</span>
+					</div>
+				</div>
+				<!-- e: 약관확인 -->
+
+				<!-- s: 약관 및 상품설명서 받기 -->
+				<div class="double_box terms_box mt_2">
+					<div class="top">
+						<span class="check_item txt_medium">
+							<input type="checkbox" name="chk4" id="all_chk4">
+							<label for="all_chk4">약관 및 상품설명서 받기</label>
+						</span>
+					</div>
+					<div class="btm">
+						<div>
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_1" checked>
+									<label for="chk4_1">이메일</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_1" class="tf" value="abcd@naver.com">
+								</div>
+							</div>
+						</div>
+						<p class="txt_guide">이메일주소가 맞는지 확인하시기 바랍니다.</p>
+						<div class="mt_2">
+							<div class="l">
+								<span class="check_item simple_primary">
+									<input type="checkbox" name="chk4" id="chk4_2">
+									<label for="chk4_2">문자(SMS)</label>
+								</span>
+							</div>
+						</div>
+						<div class="tf_item tf_item_md disabled mt_2">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" name="chk4" id="inp_chk4_2" class="tf" value="010-1234-5678" disabled readonly>
+								</div>
+							</div>
+						</div>
+						<p class="bul_notice mt_2">이메일, 문자 중 하나를 필수 선택하여 약관 및 상품설명서를 교부받으셔야 합니다.</p>
+					</div>
+				</div>
+				<!-- e: 약관 및 상품설명서 받기 -->
+				<p class="mt_1 txt_gray"> 자본시장과 금융투자업에 관한 법에 의거해서 투자신탁설명서를 교부받으셔야 하며, 인터넷 가입 시에도 해당 설명서를 확인하셔야 합니다.</p>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>다음</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 투자자성향분석 팝업 -->
+			<div class="modal_popup popup show" data-popup="layer04">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit txt_spacing_sm">투자자성향분석</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container p_4">
+							<p class="top_ico_txt bg_fund">펀드 투자는 투자자 성향 분석 후 성향에 맞는 펀드에 투자하셔야 합니다. </p>
+							<div class="mt_6">
+								<div class="survey_tit"><span>Ⅰ.</span>다음 질문은 투자자의 재무적 상황을 파악하기 위한 질문입니다.</div>
+								<ul class="survey_list mt_3">
+									<li>
+										<div class="q"><strong>1</strong>연령대는 어떻게 되십니까? (만 나이 기준, 법인 생략)</div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item check">
+													<input type="radio" name="survey_chk1" id="survey_chk1-1" checked>
+													<label for="survey_chk1-1">만19세<br> 이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk1" id="survey_chk1-2">
+													<label for="survey_chk1-2">20대</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk1" id="survey_chk1-3">
+													<label for="survey_chk1-3">30대</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk1" id="survey_chk1-4">
+													<label for="survey_chk1-4">40대</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk1" id="survey_chk1-5">
+													<label for="survey_chk1-5">50대</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk1" id="survey_chk1-6">
+													<label for="survey_chk1-6">60대이상</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>2</strong>연소득 현황은 얼마나 되십니까?(법인은 매출액 기준)</div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item check">
+													<input type="radio" name="survey_chk2" id="survey_chk2-1" checked>
+													<label for="survey_chk2-1">3천만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk2" id="survey_chk2-2">
+													<label for="survey_chk2-2">5천만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk2" id="survey_chk2-3">
+													<label for="survey_chk2-3">7천만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk2" id="survey_chk2-4">
+													<label for="survey_chk2-4">9천만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk2" id="survey_chk2-5">
+													<label for="survey_chk2-5">9천만원<br>초과</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>3</strong>현재 총 자산은 얼마나 되십니까?</div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item check">
+													<input type="radio" name="survey_chk3" id="survey_chk3-1" checked>
+													<label for="survey_chk3-1">1억<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk3" id="survey_chk3-2">
+													<label for="survey_chk3-2">5억<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk3" id="survey_chk3-3">
+													<label for="survey_chk3-3">10억<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk3" id="survey_chk3-4">
+													<label for="survey_chk3-4">20억<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk3" id="survey_chk3-5">
+													<label for="survey_chk3-5">20억<br>초과</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>4</strong>현재 부채는 얼마나 되십니까? (전 금융기관)</div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item check">
+													<input type="radio" name="survey_chk4" id="survey_chk4-1" checked>
+													<label for="survey_chk4-1">부채없음</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk4" id="survey_chk4-2">
+													<label for="survey_chk4-2">3천만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk4" id="survey_chk4-3">
+													<label for="survey_chk4-3">5천만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk4" id="survey_chk4-4">
+													<label for="survey_chk4-4">1억<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk4" id="survey_chk4-5">
+													<label for="survey_chk4-5">1억<br>초과</label>
+												</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="mt_8">
+								<div class="survey_tit"><span>Ⅱ.</span>다음은 금융투자상품의 투자경험 및 금융지식에 대한 이해도를 파악하기 위한 질문입니다.</div>
+								<ul class="survey_list mt_3">
+									<li>
+										<div class="q"><strong>5</strong>다음 중 고객님의 투자경험은 어떻습니까? (중복체크가능)</div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item block mt_0">
+													<input type="checkbox" id="survey_chk5-1" checked>
+													<label for="survey_chk5-1">은행 예·적금, 국채, 지방채, 보증채, MMF, CMA 등</label>
+												</span>
+												<span class="check_item block">
+													<input type="checkbox" id="survey_chk5-2">
+													<label for="survey_chk5-2">금융채, 신용도가 높은 회사채, 채권형 펀드, 원금보장형 ELF(ELS), ELD 등</label>
+												</span>
+												<span class="check_item block">
+													<input type="checkbox" id="survey_chk5-3">
+													<label for="survey_chk5-3">신용도 중간 등급의 회사채, 원금의 일부만 보장되는 ELF(ELS), 혼합형펀드 등</label>
+												</span>
+												<span class="check_item block">
+													<input type="checkbox" id="survey_chk5-4">
+													<label for="survey_chk5-4">신용도가 낮은 회사채, 주식, 원금이 비보장 ELF(ELS), 시장수익률 수준의 수익을 추구하는 주식형 펀드
+														등</label>
+												</span>
+												<span class="check_item block">
+													<input type="checkbox" id="survey_chk5-5">
+													<label for="survey_chk5-5">ELW, 선물옵션, 시장수익률 이상의 수익을 추구하는 주식형펀드, 파생상품에 투자하는 펀드, 주식신용거래
+														등</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>6</strong>유사한 금융투자상품 투자경험 기간은 얼마나 되십니까? </div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item check">
+													<input type="radio" name="survey_chk6" id="survey_chk6-1" checked>
+													<label for="survey_chk6-1">투자경험<br>없음</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk6" id="survey_chk6-2">
+													<label for="survey_chk6-2">1년미만</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk6" id="survey_chk6-3">
+													<label for="survey_chk6-3">3년미만</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk6" id="survey_chk6-4">
+													<label for="survey_chk6-4">5년미만</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk6" id="survey_chk6-5">
+													<label for="survey_chk6-5">5년이상</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>7</strong>유사한 금융투자상품 투자경험 기간은 얼마나 되십니까? </div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item check">
+													<input type="radio" name="survey_chk7" id="survey_chk7-1" checked>
+													<label for="survey_chk7-1">투자경험<br>없음</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk7" id="survey_chk7-2">
+													<label for="survey_chk7-2">연간</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk7" id="survey_chk7-3">
+													<label for="survey_chk7-3">분기당</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk7" id="survey_chk7-4">
+													<label for="survey_chk7-4">월간</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk7" id="survey_chk7-5">
+													<label for="survey_chk7-5">주당</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>8</strong>금융투자상품의 (연간) 취득 및 처분 금액은 어떻게 되십니까?</div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item check">
+													<input type="radio" name="survey_chk8" id="survey_chk8-1" checked>
+													<label for="survey_chk8-1">투자경험<br>없음</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk8" id="survey_chk8-2">
+													<label for="survey_chk8-2">1백만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk8" id="survey_chk8-3">
+													<label for="survey_chk8-3">5백만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk8" id="survey_chk8-4">
+													<label for="survey_chk8-4">5천만원<br>이하</label>
+												</span>
+												<span class="check_item check">
+													<input type="radio" name="survey_chk8" id="survey_chk8-5">
+													<label for="survey_chk8-5">5천만원<br>초과</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>9</strong>과거 투자했던 상품의 취득 및 처분 목적은 무엇입니까?</div>
+										<div class="mt_3">
+											<div class="chk_wrap half">
+												<span class="check_item mt_0">
+													<input type="radio" name="survey_chk9" id="survey_chk9-1" checked>
+													<label for="survey_chk9-1">투자경험 없음</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk9" id="survey_chk9-2">
+													<label for="survey_chk9-2">생활자금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk9" id="survey_chk9-3">
+													<label for="survey_chk9-3">주택자금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk9" id="survey_chk9-4">
+													<label for="survey_chk9-4">노후자금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk9" id="survey_chk9-5">
+													<label for="survey_chk9-5">여유자금</label>
+												</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="q"><strong>10</strong>고객님께서 금융투자상품에 대한 본인의 지식수준이 어느 정도라고 생각하십니까?</div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item block mt_0">
+													<input type="radio" name="survey_chk10" id="survey_chk10-1" checked>
+													<label for="survey_chk10-1">① 파생상품을 포함한 대부분의 금융투자상품의 구조 및 위험을 이해하고 있음</label>
+												</span>
+												<span class="check_item block">
+													<input type="radio" name="survey_chk10" id="survey_chk10-2">
+													<label for="survey_chk10-2">② 널리 알려진 금융투자상품(주식, 채권 및 펀드 등)의 구조 및 위험을 깊이 있게 이해하고 있음</label>
+												</span>
+												<span class="check_item block">
+													<input type="radio" name="survey_chk10" id="survey_chk10-3">
+													<label for="survey_chk10-3">③ 널리 알려진 금융투자상품(주식, 채권 및 펀드 등)의 구조 및 위험을 일정 부분 이해하고 있음</label>
+												</span>
+												<span class="check_item block">
+													<input type="radio" name="survey_chk10" id="survey_chk10-4">
+													<label for="survey_chk10-4">④ 금융투자상품에 투자해 본 경험이 없음</label>
+												</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="mt_8">
+								<div class="survey_tit"><span>Ⅲ.</span>다음은 투자자의 투자성과에 대한 기대치를 파악하기 위한 질문입니다.</div>
+								<ul class="survey_list mt_3">
+									<li>
+										<div class="q"><strong>11</strong>현재 투자하는 자금의 향후 사용목적은 무엇입니까?</div>
+										<div class="mt_3">
+											<div class="chk_wrap half">
+												<span class="check_item mt_0">
+													<input type="radio" name="survey_chk11" id="survey_chk11-1" checked>
+													<label for="survey_chk11-1">생활자금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk11" id="survey_chk11-2">
+													<label for="survey_chk11-2">주택자금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk11" id="survey_chk11-3">
+													<label for="survey_chk11-3">노후자금</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk11" id="survey_chk11-4">
+													<label for="survey_chk11-4">여유자금</label>
+												</span>
+											</div>
+										</div>
+										<p class="mt_1 txt_gray">※ ③번 답변 선택 그리고 60대 이상인 경우 “안정형” 투자성향으로 분류되며, 매우낮은위험 (최저위험)상품만 가입 가능</p>
+									</li>
+									<li>
+										<div class="q"><strong>12</strong>투자수익 및 위험에 대한 태도는 어느 것에 해당합니까? </div>
+										<div class="mt_3">
+											<div class="chk_wrap">
+												<span class="check_item block mt_0">
+													<input type="radio" name="survey_chk12" id="survey_chk12-1" checked>
+													<label for="survey_chk12-1">① 투자수익을 고려하나 원금보존이 더 중요</label>
+												</span>
+												<span class="check_item block">
+													<input type="radio" name="survey_chk12" id="survey_chk12-2">
+													<label for="survey_chk12-2">② 원금보존을 고려하나 투자수익이 더 중요</label>
+												</span>
+												<span class="check_item block">
+													<input type="radio" name="survey_chk12" id="survey_chk12-3">
+													<label for="survey_chk12-3">③ 손실위험이 있더라도 투자수익이 중요</label>
+												</span>
+											</div>
+										</div>
+										<p class="mt_1 txt_gray">※ ①번 답변 선택 시 “안정형” 투자성향으로 분류되며, 매우낮은위험(최저위험)상품만 가입 가능</p>
+									</li>
+									<li>
+										<div class="q"><strong>13</strong>현재 투자하는 자금의 기대 이익 및 손실 감내 수준은 무엇입니까? </div>
+										<div class="mt_3">
+											<div class="chk_wrap half">
+												<span class="check_item mt_0">
+													<input type="radio" name="survey_chk13" id="survey_chk13-1" checked>
+													<label for="survey_chk13-1">① 원금의 ±5% 범위</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk13" id="survey_chk13-2">
+													<label for="survey_chk13-2">② 원금의 ±10% 범위</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk13" id="survey_chk13-3">
+													<label for="survey_chk13-3">③ 원금의 ±20% 범위</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk13" id="survey_chk13-4">
+													<label for="survey_chk13-4">④ 원금의 ±20% 초과</label>
+												</span>
+											</div>
+										</div>
+										<p class="mt_1 txt_gray">※ ①번 답변 선택 시 “안정형” 투자성향으로 분류되며, 매우낮은위험(최저위험)상품만 가입 가능</p>
+									</li>
+									<li>
+										<div class="q"><strong>14</strong>현재 투자하는 자금의 투자 예정기간은 얼마나 되십니까?</div>
+										<div class="mt_3">
+											<div class="chk_wrap half">
+												<span class="check_item mt_0">
+													<input type="radio" name="survey_chk14" id="survey_chk14-1" checked>
+													<label for="survey_chk14-1">① 3년 이상</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk14" id="survey_chk14-2">
+													<label for="survey_chk14-2">② 2년 이상~3년 미만</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk14" id="survey_chk14-3">
+													<label for="survey_chk14-3">③ 1년 이상~2년 미만</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk14" id="survey_chk14-4">
+													<label for="survey_chk14-4">④ 6개월 이상~1년 미만</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="survey_chk14" id="survey_chk14-5">
+													<label for="survey_chk14-5">⑤ 6개월 미만</label>
+												</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer04');">투자자 성향 분석</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 투자자성향분석 팝업 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
