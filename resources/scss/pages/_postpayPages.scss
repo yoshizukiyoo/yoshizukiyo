@@ -63,9 +63,16 @@
 }
 
 .list_row {
+	position: relative;
+	left: 50%;
+	transform: translateX(-80px);
 	display: block;
 	width: 180px;
-	margin: 20px auto 0;
+	margin-top: 20px;
+
+	.txt_xs {
+		padding-left: 5px;
+	}
 }
 
 .join_wrap {
@@ -114,56 +121,102 @@
 		&.terms_box {
 			.top {
 				padding: 13px 16px;
+
+				.check_item {
+					&>input[type=checkbox]+label {
+						color: $black;
+					}
+				}
+			}
+		}
+
+		.btm {
+			padding: 17px 20px;
+		}
+	}
+
+	.box_narrow {
+		&>.txt_c {
+			p {
+				line-height: 1.4;
 			}
 		}
 	}
 
-	a {
-		&.bg_lightgray {
+	.toggle_con {
+		.check_item {
+			&>input[type=checkbox]+label {
+				color: $black;
+			}
+		}
+	}
+}
+
+a {
+	&.bg_lightgray {
+		display: block;
+		padding: 13px 19px;
+	}
+}
+
+.toggle_box {
+
+	.input_items {
+		flex-wrap: wrap;
+		width: 100%;
+		padding-top: 20px;
+		margin: 0;
+
+		.check_item {
+			flex: 1 1 40%;
+
+		}
+	}
+
+	&>a {
+		padding: 17px 30px 17px 0;
+
+		&.active {
+			padding-bottom: 17px;
+		}
+	}
+}
+
+.toggle_check_wrap {
+	display: block;
+	text-align: left;
+
+	.bul_notice {
+		margin-top: 10px;
+		color: $gray;
+		font-weight: 200;
+	}
+}
+
+.chk_toggle {
+	&>div {
+		margin-top: 20px;
+
+		&>strong {
 			display: block;
 		}
 	}
 
-	.toggle_box {
-		.input_items {
-			flex-wrap: wrap;
-			width: 100%;
-			padding-top: 15px;
-			margin: 0;
+	&.hide {
+		display: none;
+	}
+}
 
-			.check_item {
-				flex: 1 1 40%;
-
-			}
+.scroll_container {
+	.check_item {
+		input[type=checkbox]+label {
+			color: $black;
 		}
 	}
 
-	.toggle_check_wrap {
-		display: block;
-		text-align: left;
-
-		.bul_notice {
-			margin-top: 10px;
-			color: $gray;
-			font-weight: 200;
-		}
+	.btn_sm {
+		padding: 0 12px;
 	}
-
-	.chk_toggle {
-		&>div {
-			margin-top: 20px;
-
-			&>strong {
-				display: block;
-			}
-		}
-
-		&.hide {
-			display: none;
-		}
-	}
-
-
 }
 
 .info_membership {
@@ -464,32 +517,49 @@
 	}
 
 	.box_qr {
-		//width: 100%;
-		//height: 320px;
 		margin: 0 auto;
 
-		.slick-list {
-			overflow: visible;
-		}
+		.slick-slider {
+			position: relative;
+			display: block;
 
-		.slick-slide {
-			opacity: .6;
-			transform: scale(.8);
-
-			&.slick-center {
+			.slick-track {
 				position: relative;
-				transform: scale(1);
-				opacity: 1;
+				top: 0;
+				left: 0;
+				display: block;
+				transform: translate3d(0, 0, 0);
+			}
+
+			.slick-list {
+				position: relative;
+				display: block;
+				margin: 0;
+				padding: 0;
+				overflow: visible;
+				transform: translate3d(0, 0, 0);
 			}
 		}
 
 
+
+		.slick-slide {
+			position: relative;
+			opacity: .6;
+			transform: scale(.8);
+
+			&.slick-center {
+				display: block;
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
 	}
 
 	.qr_frame {
 		position: relative;
 		display: block;
-		width: 280px;
+		width: 280px !important;
 		padding: 0 20px 20px;
 		margin: 0 auto;
 		background-color: $white;
@@ -561,11 +631,6 @@
 	}
 }
 
-// 풀받고 지워야함 (공통)
-.shadow {
-	box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.07);
-}
-
 .top_ico_txt {
 	&.remit_accept {
 
@@ -611,7 +676,6 @@
 				&.lab_status {
 					padding: 0 6px;
 					margin-top: -3px;
-					margin-left: 5px;
 					background-color: #777;
 					color: $white;
 					font-style: normal;
@@ -622,4 +686,61 @@
 		}
 	}
 
+}
+
+.border_list {
+	&>li {
+		&.fav_li {
+			padding: 0;
+
+			&:first-child {
+				border-top: 0;
+			}
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			.check_item {
+				width: 100%;
+				font-size: 16px;
+
+				>input[type=checkbox]+label {
+					padding-left: 0;
+					background-image: url(#{$url-img}/content/ico_star.png);
+					background-position: right;
+				}
+
+				input[type=checkbox]:checked+label {
+					background-image: url(#{$url-img}/content/ico_star_primary.png);
+				}
+			}
+
+			label {
+				display: block;
+				padding: 20px 0;
+				color: $black;
+
+				em {
+					padding-left: 40px;
+					font-style: normal;
+				}
+			}
+		}
+	}
+}
+
+.favorit_wrap {
+	.scroll_menu_box {
+		margin: 0 -20px;
+		background-color: #ccc;
+	}
+
+	.board_search {
+		&>input {
+			color: #666;
+			font-size: 16px;
+			font-weight: 200;
+		}
+	}
 }
