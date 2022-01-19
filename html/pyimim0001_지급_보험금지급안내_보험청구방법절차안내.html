@@ -23,8 +23,16 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$(".ins_product_accordion h3").click(function () {
-				$(this).toggleClass("on");
+			$(".ins_product_accordion button").click(function () {
+				var accBtn = $(this).parent();
+				if (!accBtn.hasClass("on")) {
+					accBtn.addClass('on').siblings().removeClass('on');
+					accBtn.next().slideDown('slow');
+					accBtn.siblings('h3').next().slideUp('slow');
+				} else {
+					accBtn.removeClass('on');
+					accBtn.not('on').next('.content').slideUp('slow');
+				}
 			})
 		});
 	</script>
