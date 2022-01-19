@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('input:checkbox[id="inputCheck1_1"]').change(function () {
+				if ($(this).is(":checked")) {
+					$('.self').css('display', 'none')
+				} else {
+					$('.self').css('display', 'flex')
+				}
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay_type3.html" data-page-title="새 더치페이"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="postpay">
+				<div class="container mb_4">
+
+					<!-- s: 더치페이 명칭 -->
+					<div class="form_area mt_3">
+						<div class="label_area clfx mb_2">
+							<label class="lab f_l txt_medium txt_lg" for="lb_tf_1_1">더치페이 명칭 <span class="req">필수항목</span></label>
+							<a href="#" class="btn btn_default btn_round btn_sm f_r"
+								onclick="openModal('historyBottomSheet'); return false;">최근 결제에서 선택</a>
+						</div>
+						<div class="tf_item">
+							<div class="tf_item_body">
+								<div class="input_area pt_0">
+									<input type="text" id="lb_tf_1_1" class="tf" placeholder="더치페이 명칭 입력(최대 10글자)"
+										title="더치페이 명칭 입력(최대 10글자)" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- e: 더치페이 명칭 -->
+
+				</div>
+
+				<!-- s: 인풋 텍스트 입력시 나타나는 바텀 버튼 -->
+				<div class="bottom_fixed_area">
+					<div class="container">
+						<div class="btn_group btn_group_flex btn_group_margin mb_2">
+							<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+							<button type="button" class="btn btn_lg btn_primary">입력완료</button>
+						</div>
+					</div>
+				</div>
+				<!-- e: 인풋 텍스트 입력시 나타나는 바텀 버튼 -->
+
+				<!-- s: 페이지 기본 바텀 버튼 -->
+				<div class="bottom_fixed_area">
+					<div class="container">
+						<div class="btn_group btn_group_flex btn_group_margin mb_2">
+							<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+							<button type="button" class="btn btn_lg btn_primary">다음</button>
+						</div>
+					</div>
+				</div>
+				<!-- e: 페이지 기본 바텀 버튼 -->
+
+				<!-- s: Modal popup 바텀시트 -->
+				<div class="modal_popup modal_bottom_sheet hide" data-popup="historyBottomSheet">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h2 class="popup_tit">최근 결제 내역</h2>
+						</div>
+						<div class="popup_body">
+							<div class="container">
+								<ul class="history_list">
+									<li>
+										<a href="#">
+											<div class="l">
+												<span class="name">올리브영 가산디지털점</span>
+												<span class="date d_b">2021.9.11 14:25</span>
+											</div>
+											<div clss="r">
+												<span class="pay"><span class="num">-30,800</span>원</span>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="l">
+												<span class="name">올리브영 가산디지털점</span>
+												<span class="date d_b">2021.9.11 14:25</span>
+											</div>
+											<div clss="r">
+												<span class="pay"><span class="num">-30,800</span>원</span>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="l">
+												<span class="name">올리브영 가산디지털점</span>
+												<span class="date d_b">2021.9.11 14:25</span>
+											</div>
+											<div clss="r">
+												<span class="pay"><span class="num">-30,800</span>원</span>
+											</div>
+										</a>
+									</li>
+								</ul>
+								<button type="button" class="btn btn_sm btn_default btn_round btn_more_dutch">더치페이 내역 더 보기</button>
+								<div class="notice_area mt_4">
+									<i class="ico ico_notice"></i>
+									<span class="txt_gray pl_1">더치페이 내역에서 더치페이 정보를 그대로 복사하여 빠른 더치페이 요청이 가능해요.</span>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: Modal popup 바텀시트 -->
+
+				<!-- s: 공통 레이어 로딩 -->
+				<div class="common_layers"></div>
+				<!-- e: 공통 레이어 로딩 -->
+
+			</div>
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
