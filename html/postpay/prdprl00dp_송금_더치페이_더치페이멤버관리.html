@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $memberSlide = $('.sel_member');
+			$memberSlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				fade: false,
+				slidesToShow: 4,
+  			slidesToScroll: 1,
+				variableWidth: true
+			});
+
+			var $scroll_menu_list = $('.scroll_menu_list');
+			$scroll_menu_list.slick({
+				draggable: true,
+				arrows: true,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				centerMode: false,
+				slidesToShow: 4
+			});
+
+			$('.scroll_menu_li').eq(0).addClass('on');
+			$('.scroll_menu_li>.btn').click(function () {
+				if ($(this).parent().hasClass('on')) {
+					$('.on').removeClass('on');
+					$(this).parent().addClass('on');
+				} else {
+					$('.on').removeClass('on');
+					$(this).parent().addClass('on');
+				};
+			});
+
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+
+		<div class="popup_header">
+			<h2 class="popup_tit">더치페이 멤버 관리</h2>
+		</div>
+		<div class="popup_body">
+
+			<div class="postpay dutch_member new_group">
+			<!-- [D] 옵션에 따라 내용이 바뀜
+				- 기존 그룹일 때 클래스명 : existing
+				- 새로운 그룹일 때 클래스명 : new_group -->
+
+				<!-- s: 상단 그림자 영역 -->
+				<div class="shadow container pb_6">
+
+					<!-- s: option 선택 -->
+					<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body single">
+							<div class="input_area">
+								<p class="tf">점심멤버</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<!-- e: option 선택 -->
+
+					<!-- s: option 1 기존 멤버 그룹 -->
+					<div class="existing">
+						<div class="wrap_tit d_flex mt_2">
+							<p class="tit1 mb_0"><span>3</span>/20명</p>
+							<p class="ls5">최대 20명까지 지정 가능해요</p>
+						</div>
+						<ul class="sel_member mt_2">
+							<li>
+								<span class="tit2 mb_0">홍길동</span>
+								<button type="button" class="my_ico close_btn">멤버 삭제</button>
+							</li>
+							<li>
+								<span class="tit2 mb_0">나희선</span>
+								<button type="button" class="my_ico close_btn">멤버 삭제</button>
+							</li>
+							<li>
+								<span class="tit2 mb_0">이포페</span>
+								<button type="button" class="my_ico close_btn">멤버 삭제</button>
+							</li>
+						</ul>
+					</div>
+					<!-- e: option 1 기존 멤버 그룹 -->
+
+					<!-- s: option 2 새 멤버 그룹 -->
+					<div class="new_group">
+
+						<!-- [D] 새 멤버 그룹을 선택하면 나타나는 입력창 -->
+						<!-- s: 그룹명 입력 -->
+						<div class="tf_item mt_2">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">멤버그룹 명칭 <span class="req">필수항목</span></span>
+									<input type="text" id="lb_tf_1_3" class="tf" placeholder="멤버 그룹명 입력(최대 10글자)" required>
+								</div>
+							</div>
+						</div>
+						<!-- e: 그룹명 입력 -->
+
+						<!-- s: 선택된 멤버 목록 -->
+						<div class="wrap_tit d_flex mt_2">
+							<p class="tit1 mb_0"><span>3</span>/20명</p>
+							<p class="ls5">최대 20명까지 지정 가능해요</p>
+						</div>
+
+						<!-- [D] 아무것도 선택하지 않았을 때 class : no_sel -->
+						<div class="no_sel">
+							<p class="before_sel mb_2 txt_c"><i class="my_ico talk"></i> 아래 전화번호에서 원하는 멤버를 선택하세요.</p>
+							<ul class="sel_member mt_2">
+								<li>
+									<span class="tit2 mb_0">홍길동</span>
+									<button type="button" class="my_ico close_btn">멤버 삭제</button>
+								</li>
+							</ul>
+						</div>
+						<!-- e: 선택된 멤버 목록 -->
+					</div>
+					<!-- e: option 2 새 멤버 그룹 -->
+
+				</div>
+				<!-- e: 상단 그림자 영역 -->
+
+				<!-- s: 하단 영역 -->
+				<div class="p_4 pt_6">
+
+					<!-- s: option 1 멤버 목록 -->
+					<div class="existing">
+						<ul class="member_list type2 lh1">
+							<li>
+								<span class="number">1</span>
+								<p class="name tit1 mb_0 txt_normal">홍길동</p>
+								<p class="phone txt_lg txt_normal">010-1234-5678</p>
+							</li>
+							<li>
+								<span class="number">2</span>
+								<p class="name tit1 mb_0 txt_normal">나희선</p>
+								<p class="phone txt_lg txt_normal">010-1234-5678</p>
+							</li>
+							<li>
+								<span class="number">3</span>
+								<p class="name tit1 mb_0 txt_normal">이포페</p>
+								<p class="phone txt_lg txt_normal">010-1234-5678</p>
+							</li>
+						</ul>
+						
+					</div>
+					<!-- e: option 1 멤버 목록 -->
+
+					<!-- s: option 2 새 멤버 추가 (주소록) -->
+					<div class="new_group">
+						<div class="favorit_wrap">
+							<ul class="border_list">
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_01" checked>
+										<label for="favItem1_01">
+											<span>김길동</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_02">
+										<label for="favItem1_02">
+											<span>강명길</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_03" checked>
+										<label for="favItem1_03">
+											<span>나희선</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_04">
+										<label for="favItem1_04">
+											<span>김아름</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_05">
+										<label for="favItem1_05">
+											<span>권공공</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_06">
+										<label for="favItem1_06">
+											<span>김동철</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_07">
+										<label for="favItem1_07">
+											<span>이길동</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_08">
+										<label for="favItem1_08">
+											<span>이우정</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_09">
+										<label for="favItem1_09">
+											<span>고길동</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_10">
+										<label for="favItem1_10">
+											<span>이산이</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+								<li class="fav_li">
+									<div class="check_item">
+										<input type="checkbox" id="favItem1_11">
+										<label for="favItem1_11">
+											<span>김푸름</span>
+											<em>010-0000-0000</em>
+										</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- e: option 2 새 멤버 추가 (주소록) -->
+
+					<!-- [D] 전화번호부에 없는 번호를 추가할 때 : class명 no_list -->
+					<div class="address p_4 pt_6">
+						<div class="caution_add txt_c lh1">
+							<span class="my_ico caution">알림</span>
+							<p class="mt_3">전화번호부에 없는 번호입니다.</p>
+							<p class="tit1 mt_7 mb_4">해당 번호를 멤버로 등록하시겠습니까?</p>
+							<button type="button" class="btn btn_lg btn_outline_default" onclick="openModal('layer02');">멤버 추가</button>
+						</div>
+					</div>
+
+				</div>
+				<!-- e: 하단 영역 -->
+
+				
+
+
+
+
+				
+				<!-- s: Modal popup 바텀시트 샘플 -->
+				<div class="modal_popup modal_bottom_sheet hide" data-popup="layer02">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h2 class="popup_tit ls5">멤버추가</h2>
+						</div>
+						<div class="popup_body">
+							<div class="container pt_6 pb_4">
+								<p class="txt_c txt_bold phone">010-5678-7895</p>
+								<div class="tf_item mt_4">
+									<div class="tf_item_body single">
+											<div class="input_area">
+													<input type="text" id="" class="tf txt_gray" placeholder="이름을 입력하세요">
+											</div>
+									</div>
+								</div>
+								<p class="bul_notice mt_4 ls5">전화번호부에는 추가되지 않고 더치페이 멤버로만 등록됩니다.</p>
+							</div>
+						</div>
+						<div class="popup_footer">
+							<div class="btn_group btn_group_flex">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleFull');">멤버로 추가</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: Modal popup 바텀시트 샘플 -->
+
+
+			</div>
+
+		</div>
+		<div class="popup_footer">
+			<div class="fixed_menu_wrap favorit_wrap">
+					<div class="scroll_menu_box">
+						<a href="#" class="arrow prev">
+							<span class="sr_only">이전</span>
+						</a>
+						<ul class="scroll_menu_list clfx">
+							<li class="scroll_menu_li">
+								<button type="button" class="btn">전체</button>
+							</li>
+							<li class="scroll_menu_li">
+								<button type="button" class="btn">가족</button>
+							</li>
+							<li class="scroll_menu_li">
+								<button type="button" class="btn">친구들</button>
+							</li>
+							<li class="scroll_menu_li">
+								<button type="button" class="btn">회사동료</button>
+							</li>
+							<li class="scroll_menu_li">
+								<button type="button" class="btn">회사동료</button>
+							</li>
+							<li class="scroll_menu_li">
+								<button type="button" class="btn">회사동료</button>
+							</li>
+						</ul>
+						<a href="#" class="arrow next">
+							<span class="sr_only">다음</span>
+						</a>
+					</div>
+					<div class="board_search mt_4">
+						<input type="text" class="tf" title="이름, 전화번호 검색 입력" placeholder="이름, 전화번호로 검색">
+						<a href="#;" class="btn_search">
+							<span class="sr_only">검색</span>
+						</a>
+					</div>
+					<div class="btn_group btn_group_flex mt_4">
+						<a type="button" class="btn btn_lg btn_primary" onclick="openModal('layer01');">멤버 저장</a>
+						<!-- [D] 새 멤버 그룹 생성시 "멤버 선택 저장" -->
+						<!-- <a type="button" class="btn btn_lg btn_primary" onclick="openModal('layer01');">멤버 선택 저장</a> -->
+					</div>
+			</div>
+		</div>
+
+		<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+	</div>
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>

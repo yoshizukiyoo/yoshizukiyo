@@ -96,6 +96,15 @@ body{
 
 	/* 공통 */
 
+	// .my_tab_cont{
+	// 	visibility: hidden;
+	// }
+	// .my_tab_cont{
+	// 	&.active{
+	// 		visibility: visible;
+	// 	}
+	// }
+
 	.view_box .tit.share_view {
     padding-right: 40px;
 	}
@@ -327,6 +336,27 @@ body{
 			height: 14px;
 			background-image: url(/resources/img/content/ico_wallet_sm.png);
 			background-size: 17px 14px;
+		}
+		&.wallet_sm{
+			width: 17px;
+			height: 14px;
+			background-image: url(/resources/img/content/ico_wallet_sm.png);
+			background-size: 17px 14px;
+		}
+		&.close_btn{
+			width: 20px;
+			height: 20px;
+			background-image: url(/resources/img/content/ico_close_btn.png);
+		}
+		&.caution{
+			width: 35px;
+			height: 30px;
+			background-image: url(/resources/img/content/ico_caution.png);
+		}
+		&.talk{
+			width: 17px;
+			height: 15px;
+			background-image: url(/resources/img/content/ico_talk.png);
 		}
 	}
 
@@ -577,6 +607,8 @@ body{
 
 	// 송금 완료 중 요약 정보
 	.rec_info{
+		line-height: 1;
+		padding: 27px 24px;
 		>.d_flex{
 			margin-bottom: 15px; /* 아닐 수 있음*/
 			justify-content: unset;
@@ -592,8 +624,11 @@ body{
 			}
 		}
 		.tit1{
-			font-size: 18px;
-			&.highlight{
+			font-size: 16px;
+			font-weight: 400;
+			.highlight{
+				font-size: 18px;
+				font-weight: 500;
 				display: inline-block;
 				margin-bottom: 0;
 				transform: translateY(1px);
@@ -658,7 +693,7 @@ body{
 		}
 	}
 
-	// input 라벨X 삭제버튼O
+	// input 라벨X 일 때
 	.tf_item_body{
 		&.single{
 			min-height: 20px;
@@ -671,6 +706,7 @@ body{
 	.cal_box{
 		font-size: 16px;
 		font-weight: 400;
+		padding: 18px 28px;
 		.calc{
 			display: flex;
 			align-items: center;
@@ -698,6 +734,14 @@ body{
 					}
 				}
 			}
+			.part{
+				padding-left: 6px;
+				padding-right: 9px;
+				.num{
+					font-size: 19px;
+					font-weight: 700;
+				}
+			}
 			.code{
 				margin-right: 15px;
 				&+.num{
@@ -713,6 +757,19 @@ body{
 		}
 		.num{
 			font-weight: 700;
+		}
+
+		// 간격이 좁은 경우
+		&.narrow{
+			.code{
+				margin-right: 8px;
+			}
+			.result{
+				.num{
+					margin-left: 6px;
+					font-size: 19px;
+				}
+			}
 		}
 	}
 
@@ -751,6 +808,42 @@ body{
 				font-weight: 500;
 				span{
 					font-weight: 700;
+				}
+			}
+		}
+
+		&.type2{
+			.phone{
+				padding-left: 20px;
+				flex: 1;
+				text-align: center;
+			}
+		}
+	}
+
+	.modal_bottom_sheet{
+		&.name_check{
+			.example{
+				display: block;
+			}
+			.name{
+				font-size: 24px;
+			}
+			.tf_item{
+				&.transparent{
+					width: 250px;
+					margin: 0 auto;
+				}
+			}
+			.tf_item_body{
+				.input_area{
+					input{
+						font-size: 16px;
+						&::placeholder{
+							font-size: 16px;
+							color: $gray;
+						}
+					}
 				}
 			}
 		}
@@ -1700,24 +1793,38 @@ body{
 				padding: 0;
 			}
 		}
-		.name_check{
-			.example{
-				display: block;
-			}
-			.name{
-				font-size: 24px;
-			}
-			.tf_item_body{
-				.input_area{
-					input{
-						font-size: 16px;
-						&::placeholder{
-							font-size: 16px;
-							color: $gray;
-						}
+
+		.preview{
+			display: flex;
+			> div{
+				flex: 1;
+				visibility: hidden;
+				&.show{
+					visibility: visible;
+				}
+				&.book_view{
+					margin-left: 10px;
+					border: 1px solid $border-base;
+					border-radius: 8px;
+					.tf_item{
+						border-radius: 0;
+						background: none;
+					}
+					> div{
+						padding-right: 12px;
+						border: none;
+					}
+					> a{
+						border-width: 1px 0 0 0;
+						padding-top: 7px;
+						padding-bottom: 7px;
 					}
 				}
+				&.card_view{
+					padding: 0 5px;
+				}
 			}
+
 		}
 	}
 
@@ -2100,7 +2207,7 @@ body{
 	.persons_list{
 		margin: 10px;
 		li{
-			margin: 10px;
+			margin-right: 10px;
 			.box{
 				display: flex;
 				flex-direction: column;
@@ -2122,17 +2229,101 @@ body{
 		&.not_slide{
 		display: flex;
 		flex-wrap: wrap;
-		li{
-			flex: 1;
-		}
+			li{
+				margin-right: 16px;
+			}
 		}
 	}
 
-	// 더치페이 복사하기
-	// &.dutchcopy{
+	// 더치페이 받는 분 이름 변경
 
 
-	// }
+	// 더치페이 멤버관리
+	&.dutch_member{
+
+		&.existing{
+			.existing{
+				display: block;
+			}
+			.new_group{
+				display: none;
+			}
+		}
+		&.new_group{
+			.existing{
+				display: none;
+			}
+			.new_group{
+				display: block;
+			}
+		}
+
+
+		.wrap_tit{
+			justify-content: start;
+			.tit1{
+				margin-left: 6px;
+			}
+			.ls5{
+				margin-left: 12px;
+				font-size: 13px;
+				color: #666;
+			}
+		}
+		
+		.sel_member{
+			.slick-list {
+				// margin: 0 -5px;
+				height: 36px;
+				.slick-track{
+					top: 1px;
+					.slick-slide {
+						margin: 0 5px;
+					}
+				}
+			}
+			li{
+				position: relative;
+				// min-width: 85px;
+				padding: 0 18px;
+				border: 2px solid $primary;
+				border-radius: 17.5px;
+				text-align: center;
+				.tit2{
+					line-height: 31px;
+				}
+				.my_ico{
+					position: absolute;
+					top: -3px;
+					right: -6px;
+				}
+			}
+		}
+
+		.address{
+			display: none;
+			&.no_list{
+					display: block;
+			}
+		}
+		.before_sel{
+			margin-top: 14px;
+			display: none;
+		}
+		.no_sel{
+			.before_sel{
+				display: block;
+			}
+			.sel_member{
+				display: none;
+			}
+		}
+		.modal_bottom_sheet{
+			.phone{
+				font-size: 24px;
+			}
+		}
+	}
 }
 
 
