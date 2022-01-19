@@ -21,29 +21,43 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.scroll_menu_list>li>button').click(function () {
-				if ($('.scroll_menu_list>li').hasClass('on')) {
-					$('.scroll_menu_list>li').removeClass('on');
-					$(this).parent().addClass('on');
-				} else {
-					$('.scroll_menu_list>li').removeClass('on');
-					$(this).addClass('on');
-				}
-				$('.scroll_menu_list').each(function () {
-					var _width = $(this).width(),
-						_length = $(this).length,
-						_index = $(this).find('.on').index();
-
-					$('.scroll_menu_box').scrollLeft((_width / _length) * _index);
-				});
+			var $personSlide = $('.persons_slide');
+			$personSlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				slidesToShow: 4.5,
+				slidesToScroll: 4.5,
 			});
 
+			var $scroll_menu_list = $('.scroll_menu_list');
+			$scroll_menu_list.slick({
+				draggable: true,
+				arrows: true,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				centerMode: false,
+				slidesToShow: 4
+			});
 
+			$('.scroll_menu_li').eq(0).addClass('on');
+			$('.scroll_menu_li>.btn').click(function () {
+				if ($(this).parent().hasClass('on')) {
+					$('.on').removeClass('on');
+					$(this).parent().addClass('on');
+				} else {
+					$('.on').removeClass('on');
+					$(this).parent().addClass('on');
+				};
+			});
 		});
 	</script>
 </head>
 
-<body class="popup">
+<body class="modal_popup popup">
 	<div class="popup_inner">
 		<div class="popup_header">
 			<h1 class="popup_tit">전화번호부</h1>
@@ -84,7 +98,7 @@
 							<div class="check_item">
 								<input type="checkbox" id="favItem1_04">
 								<label for="favItem1_04">
-									<span>김아름아름</span>
+									<span>김아름</span>
 									<em>010-0000-0000</em>
 								</label>
 							</div>
@@ -138,7 +152,7 @@
 							<div class="check_item">
 								<input type="checkbox" id="favItem1_10">
 								<label for="favItem1_10">
-									<span>이산</span>
+									<span>이산이</span>
 									<em>010-0000-0000</em>
 								</label>
 							</div>
@@ -165,7 +179,7 @@
 							<div class="check_item">
 								<input type="checkbox" id="favItem1_13">
 								<label for="favItem1_13">
-									<span>강봄</span>
+									<span>강봄봄</span>
 									<em>010-0000-0000</em>
 								</label>
 							</div>
@@ -195,7 +209,10 @@
 		<div class="popup_footer">
 			<div class="fixed_menu_wrap favorit_wrap">
 				<div class="scroll_menu_box">
-					<ul class="scroll_menu_list">
+					<a href="#" class="arrow prev">
+						<span class="sr_only">이전</span>
+					</a>
+					<ul class="scroll_menu_list clfx">
 						<li class="scroll_menu_li">
 							<button type="button" class="btn">전체</button>
 						</li>
@@ -208,13 +225,67 @@
 						<li class="scroll_menu_li">
 							<button type="button" class="btn">회사동료</button>
 						</li>
+						<li class="scroll_menu_li">
+							<button type="button" class="btn">회사동료</button>
+						</li>
+						<li class="scroll_menu_li">
+							<button type="button" class="btn">회사동료</button>
+						</li>
 					</ul>
+					<a href="#" class="arrow next">
+						<span class="sr_only">다음</span>
+					</a>
 				</div>
 				<div class="board_search mt_4">
 					<input type="text" class="tf" title="이름, 전화번호 검색 입력" placeholder="이름, 전화번호로 검색">
 					<a href="#;" class="btn_search">
 						<span class="sr_only">검색</span>
 					</a>
+				</div>
+				<div class="postpay">
+					<ul class="persons_list persons_slide">
+						<li>
+							<a href="#" class="box box_border">
+								<i class="ico ico_person"></i>
+								<span>김길동</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="box box_border">
+								<i class="ico ico_person"></i>
+								<span>나희선</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="box box_border">
+								<i class="ico ico_person"></i>
+								<span>이우정</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="box box_border">
+								<i class="ico ico_person"></i>
+								<span>김길동</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="box box_border">
+								<i class="ico ico_person"></i>
+								<span>나희선</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="box box_border">
+								<i class="ico ico_person"></i>
+								<span>이우정</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="box box_border add">
+								<i class="ico ico_plus_sm"></i>
+							</a>
+						</li>
+					</ul>
 				</div>
 				<div>
 					<!-- 송금홈 공통 붙여넣어야 함. -->

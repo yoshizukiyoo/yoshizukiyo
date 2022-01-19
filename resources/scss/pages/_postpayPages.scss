@@ -508,92 +508,15 @@ a {
 
 		&.qr_code {
 
+			padding-left: 15px;
+			padding-right: 15px;
+
 			&::before {
 				width: 31px;
 				height: 36px;
 				background-image: url(/resources/img/content/ico_qrcode.png);
 			}
 		}
-	}
-
-	.box_qr {
-		margin: 0 auto;
-
-		.slick-slider {
-			position: relative;
-			display: block;
-
-			.slick-track {
-				position: relative;
-				top: 0;
-				left: 0;
-				display: block;
-				transform: translate3d(0, 0, 0);
-			}
-
-			.slick-list {
-				position: relative;
-				display: block;
-				margin: 0;
-				padding: 0;
-				overflow: visible;
-				transform: translate3d(0, 0, 0);
-			}
-		}
-
-
-
-		.slick-slide {
-			position: relative;
-			opacity: .6;
-			transform: scale(.8);
-
-			&.slick-center {
-				display: block;
-				transform: scale(1);
-				opacity: 1;
-			}
-		}
-	}
-
-	.qr_frame {
-		position: relative;
-		display: block;
-		width: 280px !important;
-		padding: 0 20px 20px;
-		margin: 0 auto;
-		background-color: $white;
-		border: 1px solid #ddd;
-		border-radius: 16px;
-
-
-		.qr_status {
-			display: block;
-			padding: 10px 0;
-			font-size: 13px;
-		}
-
-		img {
-			display: block;
-			width: 100%;
-
-		}
-
-		.btn_close {
-			position: absolute;
-			top: -10px;
-			right: -10px;
-		}
-
-		.btn_qr_share {
-			display: block;
-			width: 32px;
-			height: 32px;
-			background: url(#{$url-img}/content/btn_card_share.gif) no-repeat 0 0;
-			background-size: 32px;
-		}
-
-
 	}
 
 	.accout {
@@ -627,6 +550,67 @@ a {
 					padding: 0 10px;
 				}
 			}
+		}
+	}
+
+	.qr_box {
+		.qr_box_inner {
+			display: table;
+			table-layout: fixed;
+			width: 100%;
+			border-collapse: collapse;
+			padding: 10px !important;
+
+			.qr_item {
+				display: block;
+				position: relative;
+				float: left;
+				width: 280px I !important;
+				padding: 0 27px 20px;
+				margin: 0 auto;
+				background-color: $white;
+				border: 1px solid #ddd;
+				border-radius: 16px;
+
+				>span {
+					display: block;
+					padding-top: 10px;
+					padding-bottom: 5px;
+				}
+			}
+
+			.btn {
+				&.btn_qr_close {
+					display: block;
+					position: absolute;
+					top: -5px;
+					right: -5px;
+					width: 20px;
+					height: 20px;
+					background: url(/resources/img/content/btn_qr_close.png) no-repeat center center;
+					background-size: cover;
+				}
+			}
+
+			.btn_share {
+				display: inline-flex;
+				width: 32px;
+				height: 32px;
+				background: url(/resources/img/content/ico_share.png) no-repeat center center;
+				background-size: cover;
+			}
+
+			//슬릭 수정
+
+			.slick-slide {
+				width: 280px !important;
+				margin: 0 10px;
+			}
+
+			.slick-list {
+				overflow: visible;
+			}
+
 		}
 	}
 }
@@ -706,7 +690,7 @@ a {
 				font-size: 16px;
 
 				>input[type=checkbox]+label {
-					padding-left: 0;
+					padding-left: 5px;
 					background-image: url(#{$url-img}/content/ico_star.png);
 					background-position: right;
 				}
@@ -718,7 +702,7 @@ a {
 
 			label {
 				display: block;
-				padding: 20px 0;
+				padding: 15px 0;
 				color: $black;
 
 				em {
@@ -732,15 +716,85 @@ a {
 
 .favorit_wrap {
 	.scroll_menu_box {
+		position: relative;
+		padding-right: 20px;
+		padding-left: 20px;
 		margin: 0 -20px;
+		overflow: visible;
 		background-color: #ccc;
+
+		.scroll_menu_list {
+			//width: 100%;
+			padding: 10px 5px;
+
+			.scroll_menu_li {
+				//display: inline-block;
+				background-color: #dbdbdb;
+				border-radius: 15px;
+
+				&.on {
+					background-color: #fff;
+				}
+
+				.btn {
+					display: block;
+					width: 100%;
+					height: 30px;
+					//padding: 0px 20px;
+					text-align: center;
+					line-height: 30px;
+				}
+			}
+
+			.slick-list {
+				margin: 0 -5px;
+			}
+
+			.slick-slide {
+				margin: 0 5px;
+			}
+		}
 	}
 
-	.board_search {
-		&>input {
-			color: #666;
-			font-size: 16px;
-			font-weight: 200;
+	.slick-arrow {
+		position: absolute;
+		top: 0;
+		display: inline-block;
+		width: 20px;
+		height: 50px;
+		z-index: 1;
+		text-indent: -9999px;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		&.slick-prev {
+			left: -20px;
+			background-image: url(/resources/img/content/ico_arrow_prev.png);
+
 		}
+
+		&.slick-next {
+			right: -20px;
+			background-image: url(/resources/img/content/ico_arrow_next.png);
+		}
+	}
+
+	.postpay {
+		&>.persons_list {
+			margin: 10px 0px;
+
+			li {
+				margin: 0;
+			}
+		}
+
+	}
+}
+
+.board_search {
+	&>input {
+		color: #666;
+		font-size: 16px;
+		font-weight: 200;
 	}
 }
