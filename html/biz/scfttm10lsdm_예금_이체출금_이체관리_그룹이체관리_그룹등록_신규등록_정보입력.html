@@ -82,9 +82,48 @@
 							</button>
 						</div>
 					</div>
+
+					<!-- s: 20220118 수정사항반영 // 계좌바로가기 버튼 추가 -->
+					<script>
+						function accountTab(id) {
+							$('.often_account').hide();
+							$('[data-popup="account_bottom_sheet"] .tab_list > li').removeClass('on');
+
+							if (id == 'account1') { // 최근이체계좌
+								$(this).closest('[data-toggle-content]').toggle();
+								$('[data-popup="account_bottom_sheet"] .tab_list > li').eq(0).addClass('on');
+								$('[data-account="account1"]').show();
+								$('[data-account="account2"]').hide();
+								$('[data-account="account3"]').hide();
+
+							} else if (id == 'account2') { // 자주쓰는 등록계좌
+								$('[data-popup="account_bottom_sheet"] .tab_list > li').eq(1).addClass('on');
+								$('[data-account="account1"]').hide();
+								$('[data-account="account2"]').show();
+								$('[data-account="account3"]').hide();
+								$('.often_account').show();
+							} else { // 본인계좌
+								$('[data-popup="account_bottom_sheet"] .tab_list > li').eq(2).addClass('on');
+								$('[data-account="account1"]').hide();
+								$('[data-account="account2"]').hide();
+								$('[data-account="account3"]').show();
+							}
+						}
+					</script>
+
+					<div class="btn_group btn_group_flex mt_2">
+						<a href="#" class="btn btn_md btn_default"
+							onclick="openModal('account_bottom_sheet', this); accountTab('account1'); return false;">최근이체계좌</a>
+						<a href="#" class="btn btn_md btn_default"
+							onclick="openModal('account_bottom_sheet', this); accountTab('account2'); return false;">자주쓰는등록계좌</a>
+						<a href="#" class="btn btn_md btn_default"
+							onclick="openModal('account_bottom_sheet', this); accountTab('account3'); return false;">본인계좌</a>
+					</div>
+					<!-- e: 20220118 수정사항반영 // 계좌바로가기 버튼 추가 -->
+
 					<ul class="list list_transfer_info slider spacing_mt_2 mt_2">
 						<li>
-							<div class="con sliding">
+							<div class="con">
 								<div>
 									<div class="l">
 										<span class="num">1</span>
@@ -535,27 +574,6 @@
 						</div>
 					</div>
 					<script>
-						// 계좌정보 탭 메뉴별 활성화
-						function accountTab(id) {
-							$('.often_account').hide();
-
-							if (id == 'account1') { // 최근이체계좌
-								$(this).closest('[data-toggle-content]').toggle();
-								$('[data-account="account1"]').show();
-								$('[data-account="account2"]').hide();
-								$('[data-account="account3"]').hide();
-							} else if (id == 'account2') { // 자주쓰는 등록계좌
-								$('[data-account="account1"]').hide();
-								$('[data-account="account2"]').show();
-								$('[data-account="account3"]').hide();
-								$('.often_account').show();
-							} else { // 본인계좌
-								$('[data-account="account1"]').hide();
-								$('[data-account="account2"]').hide();
-								$('[data-account="account3"]').show();
-							}
-						}
-
 						// 디자인 셀렉트박스
 						$(document).on('click', '.selectbox_wrap dt a', function () {
 							var obj = $(this);
