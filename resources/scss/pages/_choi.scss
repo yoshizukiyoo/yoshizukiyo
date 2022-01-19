@@ -295,6 +295,10 @@ $font-size-xm : 18px !default;
 	letter-spacing: $letter-spacing-base !important;
 }
 
+.txt_spacing_sm {
+	letter-spacing: -1px !important;
+}
+
 $txt_demigray : #666 !important;
 
 .txt_demigray {
@@ -1604,6 +1608,53 @@ a.link {
 	&.tab_scroll_x {
 		>ul {
 			overflow-x: scroll;
+		}
+	}
+
+	&.col_4 {
+		>ul {
+			width: 100%;
+			flex-wrap: wrap;
+
+			>li {
+				flex: 0 0 25%;
+				text-align: center;
+
+				&:nth-child(n+5) {
+					>a {
+						border-bottom-style: solid;
+					}
+				}
+			}
+		}
+	}
+
+	>ul {
+		&.row_add {
+			border-bottom: none;
+
+			>li {
+				>a {
+					padding: 0 30px;
+				}
+			}
+		}
+
+		>li {
+			&.bdr_btm {
+				>a {
+					&::after {
+						content: "";
+						position: absolute;
+						width: 100%;
+						height: 1px;
+						background-color: #eee;
+
+						left: 0;
+						bottom: -1px;
+					}
+				}
+			}
 		}
 	}
 }
