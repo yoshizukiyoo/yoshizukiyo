@@ -12,6 +12,7 @@
 	<!-- JavaScript -->
 	<script src="/resources/js/jquery-3.3.1.js"></script>
 	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
 	<script src="/resources/js/ui_global.js"></script>
 
 	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
@@ -19,6 +20,36 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
+			$(document).ready(function () {
+				var $guideSlide = $('.guide_slider');
+				$guideSlide.slick({
+					arrows: true,
+					draggable: false,
+					slidesToScroll: 1,
+					infinite: false,
+					false: true,
+					fade: false,
+					prevArrow: $('.slick-prev'),
+					nextArrow: $('.slick-next'),
+					dots: false,
+					speed: 500,
+					autoplay: true,
+					autoplaySpeed: 4000,
+			})
+
+			$(".use_guide .btn_ctrl > button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$guideSlide.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play").text("시작");
+					$(this).parent().find('.ico').addClass('off');
+				} else {
+					$guideSlide.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause").text("정지");
+					$(this).parent().find('.ico').removeClass('off');
+				}
+			});
+
+		});
 	</script>
 </head>
 
@@ -46,11 +77,11 @@
 					<div class="service_area mt_8">
 						<ul class="service_list">
 							<li class="service_list_cont">
-								<a href="#">
+								<a href="#" onclick="openModal('layerGuide01');">
 									<div>
 										<span class="txt_medium list_tit barcode">
 											<span class="txt_sm txt_gray">우체국계좌, 체크카드로</span>
-											<span>모임 만들기</span>
+											<span>간편 결제하기</span>
 										</span>
 									</div>
 								</a>
@@ -78,6 +109,55 @@
 				</div>
 			</div>
 			<!-- e: 본문 -->
+
+			<!-- s: 간편 결제하기 -->
+			<div class="modal_popup modal_guide hide" data-popup="layerGuide01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+
+					<!--  s: 가이드 타이틀 -->
+					<div class="popup_header">
+						<h2 class="popup_tit">간편 결제하기</h2>
+					</div>
+					<!--  e: 가이드 타이틀 -->
+
+					<div class="popup_body">
+
+						<div class="use_guide">
+							<div class="guide_slider">
+								<div class="item">
+									<!-- s:  이미지 영역 -->
+									<img src="/resources/img/content/slide_sample2.jpg" alt="">
+									<!-- e:  이미지 영역 -->
+								</div>
+
+								<div class="item">
+									<!-- s:  이미지 영역 -->
+									<img src="/resources/img/content/slide_sample2.jpg" alt="#">
+									<!-- e:  이미지 영역 -->
+								</div>
+							</div>
+
+							<button type="button" class="slick-arrow slick-prev">prev</button>
+							<button type="button" class="slick-arrow slick-next">next</button>
+
+							<!-- s: 하단 버튼 영역 -->
+							<div class="btn_ctrl">
+								<i class="ico ico_slide_status"></i>
+								<button type="button" class="btn_pause">정지</button>
+								<div class="right">
+									<button type="button" class="slick-arrow slick-prev">prev</button>
+									<button type="button" class="slick-arrow slick-next">next</button>
+								</div>
+							</div>
+							<!-- e: 하단 버튼 영역 -->
+
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 간편 결제하기 -->
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
