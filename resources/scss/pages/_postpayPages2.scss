@@ -132,6 +132,7 @@ body{
 
 	.view_box {
 		margin-bottom: 20px;
+		letter-spacing: 0;
 	}
 
 	.check_item{
@@ -150,6 +151,7 @@ body{
 				}
 				.r{
 					font-weight: 400;
+					letter-spacing: 0;
 				}
 			}
 		}
@@ -356,6 +358,16 @@ body{
 			width: 13px;
 			height: 13px;
 			background-image: url(/resources/img/content/cercle_down.png);
+		}
+		&.has_point{
+			background-image: url(/resources/img/content/ico_point_check1.png);
+			width:39px;
+			height: 27px;
+		}
+		&.end_point{
+			background-image: url(/resources/img/content/ico_point_check5.png);
+			width:31px;
+			height: 27px;
 		}
 	}
 
@@ -619,10 +631,20 @@ body{
 				margin: 0;
 				.check_item{
 					color: $black;
+					label{
+						min-height: 21px;
+						line-height: 21px;
+					}
+				}
+			}
+			&.has_check{
+				.tit1{
+					height: 23px;
 				}
 			}
 		}
 		.tit1{
+			// height: 23px;
 			font-size: 16px;
 			font-weight: 400;
 			.highlight{
@@ -632,12 +654,18 @@ body{
 				margin-bottom: 0;
 				transform: translateY(1px);
 			}
+			&.mb_0{
+				&+span{
+					letter-spacing: 0;
+				}
+			}
 		}
 		.ico_person{
 			margin-right: 5px;
 		}
 		.price{
 			display: flex;
+			margin-top: 3px;
 			align-items: center;
 			>p{
 				margin-right: 6px;
@@ -651,6 +679,14 @@ body{
 			}
 			.state{
 				transform: translateY(2px);
+			}
+		}
+		>p{
+			&.mt_3{
+				letter-spacing: 0;
+				&+p{
+					letter-spacing: 0;
+				}
 			}
 		}
 	}
@@ -805,6 +841,7 @@ body{
 			.price{
 				font-size: 19px;
 				font-weight: 500;
+				letter-spacing: 0;
 				span{
 					font-weight: 700;
 				}
@@ -816,6 +853,7 @@ body{
 				padding-left: 20px;
 				flex: 1;
 				text-align: center;
+				letter-spacing: 0;
 			}
 		}
 	}
@@ -848,6 +886,49 @@ body{
 		}
 	}
 
+	// 송금 영역의 연락처 사람 네모 리스트
+
+	.persons_list{
+		margin: 10px;
+		li{
+			margin-right: 10px;
+			.box{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 60px;
+				height: 60px;
+				padding: 0;
+				border-radius: 13px;
+				span{
+					margin-top: 3px;
+					font-weight: 400;
+				}
+				&.add{
+					background: $border-base;
+				}
+			}
+		}
+		&.not_slide{
+		display: flex;
+		flex-wrap: wrap;
+			li{
+				margin-right: 16px;
+			}
+		}
+	}
+
+	.remit_notice{
+		.txt_r{
+			&.txt_gray{
+				letter-spacing: 0;
+			}
+		}
+	}
+
+
+
 	// 페이지별 css
 
 	// 마이홈 - 알림함
@@ -872,6 +953,7 @@ body{
 						font-size: 12px;
 						color: $gray;
 						line-height: 1;
+						letter-spacing: 0;
 					}
 	
 					a {
@@ -1665,6 +1747,55 @@ body{
 
 	}
 
+	//마이홈 - 포인트 박스
+	&.point_box{
+		.top_ico_txt{
+			&.org{
+				&::before{
+					width: 31px;
+					height: 32px;
+				}
+			}
+		}
+		.coupon_check{
+			li{
+				padding: 16px 0;
+				.tit{
+					font-size: 13px;
+					font-weight: 400;
+					color: $darkgray;
+					.my_ico{
+						margin-right: 4px;
+						vertical-align: bottom;
+					}
+				}
+				.point{
+					font-size: 18px;
+					font-weight: 700;
+				}
+			}
+		}
+		.check_item{
+			&.tac{
+				label{
+					justify-content: center;
+				}
+			}
+
+		}
+		.point_result_list{
+			.plus{	
+				color: #0000ff;
+			}
+			.minus{
+				color: #dd3927;
+			}
+		}
+
+	}
+
+
+
 	// 고객센터 - 우체국 서비스 - 앱 서비스 목록
 
 	&.app_guide {
@@ -1916,6 +2047,7 @@ body{
 			> .day{
 				position: absolute;
 				right: 20px;
+				letter-spacing: 0;
 			}
 		}
 
@@ -2124,6 +2256,7 @@ body{
 					font-size: 20px;
 					font-weight: 400;
 					line-height: 1.3;
+					letter-spacing: -0.01em;
 					span{
 						font-size: 26px;
 						font-weight: 700;
@@ -2205,42 +2338,6 @@ body{
 			}
 		}
 	}
-
-	// 송금 홈 : 공통
-
-	.persons_list{
-		margin: 10px;
-		li{
-			margin-right: 10px;
-			.box{
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				width: 60px;
-				height: 60px;
-				padding: 0;
-				border-radius: 13px;
-				span{
-					margin-top: 3px;
-					font-weight: 400;
-				}
-				&.add{
-					background: $border-base;
-				}
-			}
-		}
-		&.not_slide{
-		display: flex;
-		flex-wrap: wrap;
-			li{
-				margin-right: 16px;
-			}
-		}
-	}
-
-	// 더치페이 받는 분 이름 변경
-
 
 	// 더치페이 멤버관리
 	&.dutch_member{
