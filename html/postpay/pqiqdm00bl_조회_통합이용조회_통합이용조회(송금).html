@@ -23,365 +23,201 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			var $postpaySlide = $('.slide_menu');
-			$postpaySlide.slick({
+			var $totalUseSlide = $('.swiper_box');
+			$totalUseSlide.slick({
+				arrows: true,
+				//variableWidth: true,
 				draggable: true,
-				arrows: false,
+				slidesToScroll: 1,
 				infinite: false,
-				slidesToShow: 4.5,
-				slidesToScroll: 4.5,
+				false: true,
+				fade: false,
+				dots: false,
+				speed: 500,
+				autoplay: false,
+				autoplaySpeed: 4000,
 			});
-			$('.slide_menu_li>a').click(function (e) {
-				e.preventDefault();
-				if ($(this).hasClass('active')) {
-					$('.active').removeClass('active');
-					$(this).addClass('active');
-				} else {
-					$('.active').removeClass('active');
-					$(this).addClass('active');
-				};
-			});
-
 		});
 	</script>
 </head>
 
 <body>
 	<div class="wrapper">
-		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="통합이용조회">
-		</header>
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="통합이용조회"></header>
 		<div id="content">
+
 			<!-- s: 본문 -->
+			<div class="container p_0 pt_4">
+				<div class="swiper_box">
 
-			<div class="postpay total_inquire">
-				<div class="box_control">
-					<a href="#" class="month_prev"><span class="sr_only">이전달</span></a>
-					<span class="month_tit">2021.10</span>
-					<a href="#" class="month_next"><span class="sr_only">다음달</span></a>
+					<!-- s: 목록 -->
+					<div>
+						<div class="top">
+							<h2>2021.10</h2>
+						</div>
+						<div class="list_scroll">
+							<div class="guide">
+								<!-- s: 조회 결과 있음 -->
+								<span>다른 일자 이용내역이 있어요. 아래로 스크롤하면 추가 확인 가능해요.</span>
+								<!-- e: 조회 결과 있음 -->
+								<!-- s: 스크롤 후 마지막에 도래한 경우 -->
+								<!-- <span>10월 이용 내역이 모두 조회되었어요.</span> -->
+								<!-- e: 스크롤 후 마지막에 도래한 경우 -->
+							</div>
+							<ol class="list">
+								<li>
+									<strong class="date">15일</strong>
+									<div class="box box_border">
+										<div class="top_util">
+											<span class="status">경조금배달</span>
+											<span class="days">2021.10.15 14:25</span>
+										</div>
+										<div class="list_info">
+											<strong>김가을</strong>
+											<strong>100,000원</strong>
+										</div>
+										<p class="address">전라남도 나주시 교육길 18 메가티움 2차 A동 541호(빛가람동)</p>
+										<div class="bottom_util">
+											<ul class="hash">
+												<li class="ml_2"><a href="#;">#취업축하</a></li>
+											</ul>
+											<div class="btn_group">
+												<span class="btn_xs btn_default txt_gray"><a href="#;">송금요청</a></span><span
+													class="btn_xs btn_outline_default btn_round ml_1"><a href="#;">송금취소</a></span>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="mt_3">
+									<strong class="date">12일</strong>
+									<div class="box box_border">
+										<div class="top_util">
+											<span class="status">전화번호송금</span>
+											<span class="days">2021.10.12 10:25</span>
+										</div>
+										<div class="list_info">
+											<strong>김전화(*7958)</strong>
+											<strong>142,000원</strong>
+										</div>
+										<div class="bottom_util">
+											<ul class="hash">
+												<li class="ml_2"><a href="#;">#전화번호송금</a></li>
+											</ul>
+											<div class="btn_group">
+												<span class="btn_xs btn_default yellow"><a href="#;">송금요청</a></span>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="mt_2">
+									<div class="box box_border">
+										<div class="top_util">
+											<span class="status green">QR송금</span>
+											<span class="days">2021.10.12 10:25</span>
+										</div>
+										<div class="list_info">
+											<strong>김길동</strong>
+											<strong>+100,000원</strong>
+										</div>
+										<div class="bottom_util">
+											<ul class="hash">
+												<li class="ml_2"><a href="#;">#QR송금받기</a></li>
+											</ul>
+											<div class="btn_group">
+												<span class="btn_xs btn_default txt_gray"><a href="#;">결제완료</a></span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ol>
+						</div>
+					</div>
+					<!-- e: 목록 -->
+					<!-- s: 목록 : 이용내역 없음 -->
+					<div>
+						<div class="top">
+							<h2 class="txt_c d_i_b">2021.11</h2>
+						</div>
+						<div class="container txt_c pt_7">
+							<strong><i class="ico ico_error"></i><span class="d_b txt_18px txt_normal mt_3">이용 내역이 없어요</span></strong>
+							<a href="#;" class="btn btn_md btn_outline_default btn_round txt_medium mt_6">이전달 보기</a>
+						</div>
+					</div>
+					<!-- e: 목록 : 이용내역 없음 -->
 				</div>
-				<!-- s: 이용 내역 없는 경우 -->
-				<div class="mt_8">
-					<div class="caution_box txt_lg">이용 내역이 없습니다.</div>
-					<div class="txt_c mt_6">
-						<a href="#;" class="btn btn_md btn_round btn_outline_default">이전달 보기</a>
-					</div>
+
+				<!-- s: 하단 고정 메세지 -->
+				<div class="footer_message">
+					<img src="/resources/img/content/ico_guide01.png" alt=""><span>거래내역명을 선택하면 나만의 거래 메모를<br>등록해서 소비통계에 활용할 수
+						있어요.</span>
 				</div>
-				<!-- e: 이용 내역 없는 경우 -->
+				<!-- e: 하단 고정 메세지 -->
 
-				<!-- s: 이용 내역 있는 경우 -->
-				<div class="box_alret bg_lightprimary">
-					<!-- [D] 조회 결과 있음. 최근 거래일 외 내역이 있을 경우  -->
-					<p>다른 일자 이용내역이 있어요. 아래로 스크롤하면 추가 확인 가능해요.</p>
-					<!-- [D] 스크롤 후 마지막에 도래한 경우 -->
-					<p>10월 이용 내역이 모두 조회되었어요. </p>
-				</div>
-
-				<div class="container pb_4">
-					<div class="inquiry_date">
-						<span class="sr_only">조회일자</span>
-						<em class="txt_normal">15일</em>
-					</div>
-
-					<!-- s: 경조금배달 -->
-					<div class="box_inquiry">
-						<div class="box_label transfer">
-							<span class="sr_only">이용내역 조회 표시 항목</span>
-							<i class="txt_label">경조금배달</i>
-						</div>
-						<div class="list_inquiry">
-							<div>
-								<div class="r">
-									<span class="sr_only">승인일시</span>
-									<span class="date">2021.10.15 14:25</span>
-								</div>
-							</div>
-							<div class="title">
-								<div class="l">
-									<span class="sr_only">적요</span>
-									<strong class="name">김가을</strong>
-								</div>
-								<div class="r">
-									<span class="sr_only">입금, 출금 혹은 송금액</span>
-									<span class="won"><em class="amount">100,000</em>원</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">주소</span>
-									<p class="address">전라남도 나주시 교육길 18 메가티움 2차 A동 541호 (빛가람동)</p>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">거래 메모</span>
-									<span class="add_memo">#취업축하</span><span class="add_memo">#취업축하</span><span
-										class="add_memo">#취업축하</span>
-								</div>
-								<div class="r">
-									<span class="lab_status bg_lightgray">송금요청</span>
-									<a href="#;" class="btn btn_xs btn_round btn_outline_default" onclick="openModal('layer01')">송금취소</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- e: 경조금배달 -->
-
-					<!-- s: 전화번호 송금 -->
-					<div class="box_inquiry mt_3">
-						<div class="box_label transfer">
-							<span class="sr_only">이용내역 조회 표시 항목</span>
-							<i class="txt_label">전화번호 송금</i>
-						</div>
-						<div class="list_inquiry">
-							<div>
-								<div class="r">
-									<span class="sr_only">승인일시</span>
-									<span class="date">2021.10.15 14:25</span>
-								</div>
-							</div>
-							<div class="title">
-								<div class="l">
-									<span class="sr_only">적요</span>
-									<strong class="name">김전화(*7958)</strong>
-								</div>
-								<div class="r">
-									<span class="sr_only">입금, 출금 혹은 송금액</span>
-									<span class="won"><em class="amount">50,000</em>원</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">거래 메모</span>
-									<span class="add_memo">#전화번호 송금</span><span class="add_memo">#모임회비</span>
-								</div>
-								<div class="r">
-									<span class="lab_status bg_lightyellow">송금요청</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- e: 전화번호 송금 -->
-
-					<!-- s: 간편결제 -->
-					<div class="box_inquiry mt_3">
-						<div class="box_label payment">
-							<span class="sr_only">이용내역 조회 표시 항목</span>
-							<i class="txt_label">간편결제</i>
-						</div>
-						<div class="list_inquiry">
-							<div>
-								<div class="r">
-									<span class="sr_only">승인일시</span>
-									<span class="date">2021.10.15 14:25</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">결제수단</span>
-									<span class="date">우체국계좌(5245)</span>
-								</div>
-							</div>
-							<div class="title">
-								<div class="l">
-									<span class="sr_only">적요</span>
-									<strong class="name">김전화(*7958)</strong>
-								</div>
-								<div class="r">
-									<span class="sr_only">입금, 출금 혹은 송금액</span>
-									<span class="won"><em class="amount">50,000</em>원</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">거래 메모</span>
-									<span class="add_memo">#계좌결제</span><span class="add_memo">#생활비</span>
-								</div>
-								<div class="r">
-									<span class="lab_status bg_lightgray">결제완료</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- e: 간편결제 -->
-
-					<!-- s: qr 송금 -->
-					<div class="box_inquiry mt_3">
-						<div class="box_label qr_transfer">
-							<span class="sr_only">이용내역 조회 표시 항목</span>
-							<i class="txt_label">QR송금</i>
-						</div>
-						<div class="list_inquiry">
-							<div>
-								<div class="r">
-									<span class="sr_only">승인일시</span>
-									<span class="date">2021.10.15 14:25</span>
-								</div>
-							</div>
-							<div class="title">
-								<div class="l">
-									<span class="sr_only">적요</span>
-									<strong class="name">김전화(*7958)</strong>
-								</div>
-								<div class="r">
-									<span class="sr_only">입금, 출금 혹은 송금액</span>
-									<span class="won"><em class="amount">+100,000</em>원</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">거래 메모</span>
-									<span class="add_memo">#QR송금받기</span>
-								</div>
-								<div class="r">
-									<span class="lab_status bg_lightgray">결제완료</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- e: qr 송금 -->
-
-					<!-- s: 모임회비 -->
-					<div class="box_inquiry mt_3">
-						<div class="box_label dues">
-							<span class="sr_only">이용내역 조회 표시 항목</span>
-							<i class="txt_label">모임회비</i>
-						</div>
-						<div class="list_inquiry">
-							<div>
-								<div class="r">
-									<span class="sr_only">승인일시</span>
-									<span class="date">2021.10.15 14:25</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">회비내용</span>
-									<span class="date">같이크루즈 1/3명 완료</span>
-								</div>
-							</div>
-							<div class="title">
-								<div class="l">
-									<span class="sr_only">적요</span>
-									<strong class="name">마지막 추가 회비</strong>
-								</div>
-								<div class="r">
-									<span class="sr_only">입금, 출금 혹은 송금액</span>
-									<span class="won"><em class="amount">+100,000</em>원</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">거래 메모</span>
-									<span class="add_memo">#같이크루즈</span>
-								</div>
-								<div class="r">
-									<span class="lab_status bg_lightgray">납부완료</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- e: 모임회비 -->
-
-					<!-- s: 더치페이 -->
-					<div class="box_inquiry mt_3">
-						<div class="box_label dues">
-							<span class="sr_only">이용내역 조회 표시 항목</span>
-							<i class="txt_label">더치페이</i>
-						</div>
-						<div class="list_inquiry">
-							<div>
-								<div class="r">
-									<span class="sr_only">승인일시</span>
-									<span class="date">2021.10.15 14:25</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">회비내용</span>
-									<span class="date">같이크루즈 1/3명 완료</span>
-								</div>
-							</div>
-							<div class="title">
-								<div class="l">
-									<span class="sr_only">적요</span>
-									<strong class="name">마지막 추가 회비</strong>
-								</div>
-								<div class="r">
-									<span class="sr_only">입금, 출금 혹은 송금액</span>
-									<span class="won"><em class="amount">+100,000</em>원</span>
-								</div>
-							</div>
-							<div>
-								<div class="l">
-									<span class="sr_only">거래 메모</span>
-									<span class="add_memo">#같이크루즈</span>
-								</div>
-								<div class="r">
-									<span class="lab_status bg_lightgray">납부완료</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- e: 더치페이 -->
-
-
-
-					<!-- s: 하단 고정 메뉴 -->
-					<div class="bottom_fixed_area">
-						<div class="btm_slide_menu">
-							<p class="txt_gray txt_xs ml_1"><span class="txt_sm">#</span>거래메모를 클릭하면 해당 메모 이용내역을 볼 수 있어요.</p>
-							<ul class="slide_menu">
-								<li class="slide_menu_li"><a href="#" class="active">결제</a></li>
-								<li class="slide_menu_li"><a href="#">송금</a></li>
-								<li class="slide_menu_li"><a href="#">모임</a></li>
-								<li class="slide_menu_li"><a href="#">더치페이</a></li>
-								<li class="slide_menu_li"><a href="#">제로페이</a></li>
-								<li class="slide_menu_li"><a href="#">소득공제</a></li>
-								<li class="slide_menu_li"><a href="#">교통카드</a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- e: 하단 고정 메뉴 -->
-
-				</div>
-				<!-- e: 이용 내역 있는 경우 -->
-
-				<!-- s: 송금취소얼럿 popup -->
-				<div class="modal_popup modal_alert hide" data-popup="layer01">
+				<!-- s: 하단 고정영역 -->
+				<div class="modal_popup modal_bottom_sheet no_dimed show">
 					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_body">
-							<div class="container">
-								<div class="desc txt_l">
-									<p class="txt_lg txt_bold">송금 취소합니다.</p>
-									<p class="mt_2">송금 취소하면, 취소 내역이 받는 사람에<br>게도 안내가 됩니다.</p>
-								</div>
-							</div>
+					<div class="popup_inner" tabindex="0" style="box-shadow: 0 -3px 15px 0 rgb(0 0 0 / 13%);">
+						<div class="popup_body p_4 pt_5 pb_3">
+							<!-- s: 거래메모 검색 전 -->
+							<p class="txt_gray txt_12px"># 거래메모를 클릭하면 해당 메모 이용내역을 볼 수 있어요.</p>
+							<!-- e: 거래메모 검색 전 -->
+							<!-- s: 거래메모 검색 후 -->
+							<!-- <div class="reset_box">#
+									<span>계좌결제<button type="reset" class="btn btn_icon ml_1"><i class="ico ico_reset"></i><span
+												class="sr_only">삭제</span></button></span>
+									<span>출장경비<button type="reset" class="btn btn_icon ml_1"><i class="ico ico_reset"></i><span
+												class="sr_only">삭제</span></button></span>
+								</div> -->
+							<!-- e: 거래메모 검색 후 -->
 						</div>
-						<div class="popup_footer">
-							<div class="btn_group btn_group_flex">
-								<button type="button" class="btn btn_lg btn_default" onclick="closeModal('layer01');">취소</button>
-								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">송금 취소
-									실행</button>
+						<div class="popup_footer pr_0">
+							<div class="btn_group">
+								<div class="btn_group_slide">
+									<span class="check_item type_btn">
+										<input type="radio" name="btn_on" id="btn01">
+										<label for="btn01">결제</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="btn_on" id="btn02" checked>
+										<label for="btn02">송금</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="btn_on" id="btn03">
+										<label for="btn03">모임</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="btn_on" id="btn04">
+										<label for="btn04">더치페이</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="btn_on" id="btn05">
+										<label for="btn05">제로페이</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="btn_on" id="btn06">
+										<label for="btn06">교통카드</label>
+									</span>
+									<span class="check_item type_btn">
+										<input type="radio" name="btn_on" id="btn07">
+										<label for="btn07">소득공제</label>
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- e: 송금취소얼럿 popup -->
+				<!-- e: 하단 고정영역 -->
+
 
 			</div>
 
 			<!-- e: 본문 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
 		</div>
-
-
-		<!-- s: 공통 레이어 로딩 -->
-		<div class="common_layers"></div>
-		<!-- e: 공통 레이어 로딩 -->
-
-	</div>
-	<!-- e: 본문 -->
-	</div>
 	</div>
 </body>
 

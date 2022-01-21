@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $totalUseSlide = $('.swiper_box');
+			$totalUseSlide.slick({
+				arrows: true,
+				//variableWidth: true,
+				draggable: true,
+				slidesToScroll: 1,
+				infinite: false,
+				false: true,
+				fade: false,
+				dots: false,
+				speed: 500,
+				autoplay: false,
+				autoplaySpeed: 4000,
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="통합이용조회"></header>
+		<div id="content">
+
+			<!-- s: 본문 -->
+			<div class="container p_0 pt_4">
+				<div class="swiper_box">
+
+					<!-- s: 목록 -->
+					<div>
+						<div class="top">
+							<h2>2021.10</h2>
+						</div>
+						<div class="list_scroll">
+							<div class="guide">
+								<!-- s: 조회 결과 있음 -->
+								<!-- <span>다른 일자 이용내역이 있어요. 아래로 스크롤하면 추가 확인 가능해요.</span> -->
+								<!-- e: 조회 결과 있음 -->
+								<!-- s: 스크롤 후 마지막에 도래한 경우 -->
+								<span>10월 이용 내역이 모두 조회되었어요.</span>
+								<!-- e: 스크롤 후 마지막에 도래한 경우 -->
+							</div>
+							<ol class="list">
+								<li>
+									<strong class="date">02일</strong>
+									<div class="box box_border">
+										<div class="top_util">
+											<span class="status pink">더치페이</span>
+											<span class="days">2021.10.15 14:25</span>
+										</div>
+										<p class="group txt_default">점심밥벗 1/3명 완료</p>
+										<div class="list_info">
+											<strong>1102점심값</strong>
+											<strong>12,000원</strong>
+										</div>
+										<div class="bottom_util">
+											<ul class="hash">
+												<li class="ml_2"><a href="#;">#점심밥벗</a></li>
+											</ul>
+											<div class="btn_group">
+												<span class="btn_xs btn_default txt_gray">납부완료</span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ol>
+						</div>
+					</div>
+					<!-- e: 목록 -->
+					<!-- s: 목록 : 이용내역 없음 -->
+					<div>
+						<div class="top">
+							<h2>2021.11</h2>
+						</div>
+						<div class="container txt_c pt_7">
+							<strong><i class="ico ico_error"></i><span class="d_b txt_18px txt_normal mt_3">이용 내역이 없어요</span></strong>
+							<a href="#;" class="btn btn_md btn_outline_default btn_round txt_medium mt_6">이전달 보기</a>
+						</div>
+					</div>
+					<!-- e: 목록 : 이용내역 없음 -->
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 메세지 -->
+			<div class="footer_message">
+				<img src="/resources/img/content/ico_guide01.png" alt=""><span>거래내역명을 선택하면 나만의 거래 메모를<br>등록해서 소비통계에 활용할 수
+					있어요.</span>
+			</div>
+			<!-- e: 하단 고정 메세지 -->
+
+			<!-- s: 하단 고정영역 -->
+			<div class="modal_popup modal_bottom_sheet no_dimed show">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0" style="box-shadow: 0 -3px 15px 0 rgb(0 0 0 / 13%);">
+					<div class="popup_body p_4 pt_5 pb_3">
+						<!-- s: 거래메모 검색 전 -->
+						<p class="txt_gray txt_12px"># 거래메모를 클릭하면 해당 메모 이용내역을 볼 수 있어요.</p>
+						<!-- e: 거래메모 검색 전 -->
+						<!-- s: 거래메모 검색 후 -->
+						<!-- <div class="reset_box">#
+							<span>계좌결제<button type="reset" class="btn btn_icon ml_1"><i class="ico ico_reset"></i><span
+										class="sr_only">삭제</span></button></span>
+							<span>출장경비<button type="reset" class="btn btn_icon ml_1"><i class="ico ico_reset"></i><span
+										class="sr_only">삭제</span></button></span>
+						</div> -->
+						<!-- e: 거래메모 검색 후 -->
+					</div>
+					<div class="popup_footer pr_0">
+						<div class="btn_group">
+							<div class="btn_group_slide">
+								<span class="check_item type_btn">
+									<input type="radio" name="btn_on" id="btn01">
+									<label for="btn01">결제</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="btn_on" id="btn02">
+									<label for="btn02">송금</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="btn_on" id="btn03">
+									<label for="btn03">모임</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="btn_on" id="btn04" checked>
+									<label for="btn04">더치페이</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="btn_on" id="btn05">
+									<label for="btn05">제로페이</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="btn_on" id="btn06">
+									<label for="btn06">교통카드</label>
+								</span>
+								<span class="check_item type_btn">
+									<input type="radio" name="btn_on" id="btn07">
+									<label for="btn07">소득공제</label>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 하단 고정영역 -->
+
+			<!-- e: 본문 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+		</div>
+	</div>
+</body>
+
+</html>
