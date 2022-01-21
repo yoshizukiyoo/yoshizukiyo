@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.jab_item a').click(function () {
+				const tg = $(this).closest(".jab_item");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+				}
+			});
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="popup_tit txt_lg_18">직업검색</h1>
+			<button type="button" class="btn btn_close_popup">닫기</button>
+		</div>
+		<div class="popup_body">
+			<div class="container pt_4 pb_4">
+
+				<div class="first_section mt_0">
+					<div class="search_area">
+						<form action="#;">
+							<fieldset>
+								<legend class="sr_only">직업검색</legend>
+								<div class="form_addr_search">
+									<input type="text" class="tf txt_normal" title="직업검색" placeholder="직업명을 검색해 주세요.">
+									<button type="submit" class="btn btn_sm">
+										<i class="ico ico_search_gray_sm"></i>
+										<span class="sr_only">검색</span>
+									</button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+
+					<!-- s: 직업명 -->
+					<div class="section mt_3">
+						<p class="txt_md txt_w3">직업명을 검색하거나 아래 직업 분류에서 찾아보세요. </p>
+						<div class="search_jab">
+							<ul class="jab_list">
+								<li class="jab_item">
+									<a href="#" onclick="openModal('layer01', this);">
+										경영
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										사무
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										공무원
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										영업
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										연구
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										설계
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										전문직
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										교사
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										예술
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										방송
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										주부
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										건축
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										농업
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										제조
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										컴퓨터
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										개발
+									</a>
+								</li>
+								<li class="jab_item">
+									<a href="#">
+										학생
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- e: 직업명 -->
+				</div>
+			</div>
+
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layer01">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">상세 직업 선택
+						</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list1 jab_modal_list">
+								<li class="jab_item">
+									<a href="#;">경영지원 사무직 관리</a>
+								</li>
+								<li class="jab_item">
+									<a href="#;">연구 사무직 관리자 </a>
+								</li>
+								<li class="jab_item">
+									<a href="#;">교육 사무직 관리자 </a>
+								</li>
+								<li class="jab_item">
+									<a href="#;">법률 사무직 관리자 (로펌대표 등) </a>
+								</li>
+								<li class="jab_item">
+									<a href="#;">경찰 사무직 관리자 (경무관 이상) </a>
+								</li>
+								<li class="jab_item">
+									<a href="#;">경찰 사무직 관리자 (총경-경위)</a>
+								</li>
+								<li class="jab_item">
+									<a href="#;">소방 사무직 관리자 (소방감 이상) </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>
