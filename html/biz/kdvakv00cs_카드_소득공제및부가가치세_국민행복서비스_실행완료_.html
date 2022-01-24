@@ -22,7 +22,9 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		//
+		$(document).ready(function () {
+			//
+		});
 	</script>
 </head>
 
@@ -35,7 +37,7 @@
 		<article id="content">
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
-				<h2 class="tit_cont">포인트 기부하기</h2>
+				<h2 class="tit_cont">국민행복서비스</h2>
 				<!-- e: 본문 헤더 -->
 			</div>
 
@@ -50,51 +52,47 @@
 				</div>
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>포인트 기부신청이 아래와 같이 처리되었습니다.</li>
+						<li>국민행복 서비스 신청 처리가 완료 되었습니다.</li>
 					</ul>
 				</div>
 
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">우체국포인트 기부신청 내용</h3>
+							<h3 class="tit1">국민행복 서비스 신청 결과 정보</h3>
 						</div>
 					</div>
-					<div class="tbl_data tbl_list_data">
+					<div class="tbl_data tbl_row_data">
 						<table>
-							<caption class="sr_only">우체국포인트 기부신청 내용 표로 구분, 내용 정보 제공</caption>
+							<caption class="sr_only">국민행복 서비스 신청 결과 정보 표로 서비스신청접수번호, 바우쳐 포인트 점수, 바우쳐 유효일자 정보 제공</caption>
 							<colgroup>
 								<col style="width: 16%">
 								<col>
+								<col style="width: 16%">
+								<col>
+								<col style="width: 16%">
+								<col>
 							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">구분</th>
-									<th scope="col">내용</th>
-								</tr>
-							</thead>
 							<tbody>
 								<tr>
-									<td class="txt_normal">기부 포인트</td>
-									<td>100 포인트</td>
+									<th scope="row">서비스신청접수번호</th>
+									<td></td>
+									<th scope="row">바우쳐 포인트 점수</th>
+									<td></td>
+									<th scope="row">바우쳐 유효일자</th>
+									<td></td>
 								</tr>
-								<tr>
-									<td class="txt_normal">기부단체명</td>
-									<td>기아대책</td>
-								</tr>
-								<tr>
-									<td class="txt_normal">기부단체 계좌번호</td>
-									<td>010017-01-023678</td>
-								</tr>
-
 							</tbody>
 						</table>
 					</div>
 				</div>
 
 				<div class="btn_tbl_btm">
-					<a href="카드_포인트_포인트기부_포인트기부하기_정보입력.html" class="btn btn_xl btn_primary">확인</a>
+					<a href="#;" class="btn btn_xl btn_outline_default">조회화면으로이동</a>
 				</div>
+
+
+				<!-- e: 조회 결과 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
@@ -111,14 +109,12 @@
 								<div class="cont">
 									<!-- s: alert 메세지 입력 영역 -->
 									<p>
-										alert 메세지 입력 영역
+										대상자 자격 점검이 정상 및 임신확인서 등록 정보가 확인 되었습니다.
 									</p>
 									<!-- e: alert 메세지 입력 영역 -->
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('alert_popup');">취소</button>
 								<button type="button" class="btn btn_md btn_outline_default"
 									onclick="closeModal('alert_popup');">확인</button>
 							</div>
@@ -133,7 +129,7 @@
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
 						<div class="popup_header txt_l">
-							<h2 class="popup_tit">확인</h2>
+							<h2 class="popup_tit">웹 페이지 메시지</h2>
 						</div>
 						<div class="popup_body">
 							<div class="alert_cont">
@@ -143,7 +139,7 @@
 								<div class="cont">
 									<!-- s: confirm 메세지 입력 영역 -->
 									<p>
-										컨펌 메세지 입력 영역
+										청소년산모 임신출산 의료비 지원 신청을 위해 건보공단이 보유하고 있는 신청인의 주민등록상 주소지 (시도/시군구) 정보 제공에 동의하십니까?
 									</p>
 									<!-- e: confirm 메세지 입력 영역 -->
 								</div>
@@ -152,7 +148,38 @@
 								<button type="button" class="btn btn_md btn_outline_default"
 									onclick="closeModal('confirm_popup');">취소</button>
 								<button type="button" class="btn btn_md btn_outline_default"
-									onclick="closeModal('confirm_popup');">확인</button>
+									onclick="closeModal('confirm_popup'); openModal('confirm_popup02');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup02">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">웹 페이지 메시지</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										만 19세 이하 청소년 산모에게 지원되는 "청소년산모 임신출산 의료비 지원사업" 신청을 위해 동 신청 정보를 사회보장정보원에 제공하는 것에 동의하십니까?
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<a href="카드_소득공제및부가가치세_국민행복서비스_입력확인.html" class="btn btn_md btn_outline_default">확인</a>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
