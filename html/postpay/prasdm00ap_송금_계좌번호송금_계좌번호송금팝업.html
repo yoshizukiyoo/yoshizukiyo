@@ -29,58 +29,81 @@
 
 			<!-- s: 본문 -->
 			<div class="postpay remit pb_12">
-				<div class="container mt_4">
-					<a href="#;" class="tf_item" onclick="openModal('layerOption',this); return false;">
-						<div class="tf_item_body">
-							<div class="input_area">
-								<span class="lab">은행 <span class="req">필수항목</span></span>
-								<p class="tf">은행 선택</p>
-							</div>
-							<div class="btn_area">
-								<i class="ico ico_chevron_down_md"></i>
-								<span class="sr_only">선택</span>
-							</div>
-						</div>
-					</a>
-					<div class="tf_item mt_2">
-						<div class="tf_item_body">
-							<div class="input_area">
-								<label class="lab" for="lb_tf_101">계좌번호 <span class="req">필수항목</span></label>
-								<input type="text" id="lb_tf_101" class="tf" placeholder="계좌번호 입력" title="계좌번호 입력" required>
+				<div class="p_4 pb_6 has_modal">
+
+					<!-- s: 받는 사람 정보 요약 -->
+					<div class="rec_info box bg_lightgray">
+						<div class="d_flex mb_1">
+							<h2 class="tit1 "><i class="ico ico_person"></i><span class="highlight">공대리</span></h2>
+							<div class="input_items">
+								<span class="check_item check">
+									<input type="checkbox" id="lb_agreement1" checked>
+									<label for="lb_agreement1">실명확인</label>
+								</span>
 							</div>
 						</div>
+						<p class="txt_lg txt_normal">신한은행<span class="ml_2">0381235852666</span></p>
+
+						<div class="tf_item mt_4 transparent">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<input type="text" id="price" class="tf" title="송금 금액 입력" value="50,000" required>
+									<button type="button" class="btn btn_icon btn_reset">
+										<i class="ico ico_reset"></i>
+										<span class="sr_only">초기화</span>
+									</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- e: 받는 사람 정보 요약 -->
+
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_primary">확인</button>
 					</div>
 
-					<div class="mt_2">
-						<div class="check_item toggle_check_wrap">
-							<input type="checkbox" name="chk1" id="chk1_1">
-							<label for="chk1_1">송금 일자를 지정합니다.</label>
-							<div class="sub_check_item list mt_2">
-								<div class="tf_item">
-									<div class="tf_item_body">
-										<div class="input_area">
-											<label class="lab" for="lb_date">송금예약일 <span class="req">필수항목</span></label>
-											<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.12.06" readonly
-												required>
-										</div>
-										<div class="btn_area">
-											<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
-												<i class="ico ico_datepicker"></i>
-												<span class="sr_only">달력</span>
+					<!-- s: 하단 고정 입력창 -->
+					<div class="modal_popup modal_bottom_sheet half_fixed no_dimed hide" data-popup="postPayWallet01">
+						<div class="dimed"></div>
+						<div class="popup_inner pt_4 pb_3">
+							<div class="popup_body pb_0">
+								<div class="postpay">
+									<div class="postpay_bottom_popup">
+										<div class="container">
+
+											<div class="d_flex pop_header">
+												<p>송금한도 일 <span>3,000,000</span>원</p>
+												<p class="txt_normal">수수료 무료</p>
+											</div>
+
+											<!-- s: 계좌 선택 -->
+											<a href="#;" class="tf_item mt_2" onclick="openModal('postPayWallet01',this); openModal('layerOption',this); return false;">
+												<div class="tf_item_body">
+													<div class="input_area">
+														<p class="pay_info txt_normal">우체국(123456789)</p>
+														<p class="pay_info txt_normal">210,000원</p>
+													</div>
+													<div class="btn_area">
+														<i class="ico ico_chevron_down_md"></i>
+														<span class="sr_only">계좌 선택</span>
+													</div>
+												</div>
 											</a>
+											<!-- e: 계좌 선택 -->
+
+											<!-- s: 보안 키패드 영역 -->
+											<div class="txt_c mt_4">키패드 영역</div>
+											<!-- e: 보안 키패드 영역 -->
+
 										</div>
 									</div>
 								</div>
-								<p class="bul_notice">예약일이 우체국 휴무일일 경우 익일 처리됩니다.</p>
 							</div>
 						</div>
 					</div>
+					<!-- e: 하단 고정 입력창 -->
 
-					<div class="mt_4">
-						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_primary">다음</button>
-						</div>
-					</div>
 				</div>
 			</div>
 			<!-- e: 본문 -->

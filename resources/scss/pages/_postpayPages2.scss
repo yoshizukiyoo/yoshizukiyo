@@ -114,6 +114,10 @@ body {
 
 	/* 공통 */
 
+	.mt_1_5{
+		margin-top: 7.5px !important;
+	}
+
 	.view_box .tit.share_view {
 		padding-right: 40px;
 	}
@@ -131,14 +135,17 @@ body {
 	}
 
 	.top_ico_txt {
-		padding-left: 0;
+		&.ais{
+			padding-left: 0;
+			align-items: start;
 
-		// letter-spacing: -0.05em;
-		&::before {
-			width: 50px;
-			height: auto;
-			background-position: center top;
+			&::before {
+				width: 50px;
+				height: auto;
+				background-position: center top;
+			}
 		}
+
 	}
 
 	.view_box {
@@ -165,6 +172,11 @@ body {
 				.r {
 					font-weight: 400;
 					letter-spacing: 0;
+				}
+			}
+			&.narrow{
+				li+li{
+					margin-top: 17px;
 				}
 			}
 		}
@@ -320,6 +332,7 @@ body {
 			}
 
 			&.two_line {
+				margin: 0;
 				label {
 					height: auto;
 					padding: 12px 0 !important;
@@ -587,6 +600,9 @@ body {
 	}
 
 	// 원형 이미지 프로세스
+	.procss_wrap{
+		padding: 22px 20px 12px 20px;
+	}
 	.circle_process {
 		li {
 			text-align: center;
@@ -629,7 +645,7 @@ body {
 
 					img {
 						width: 24px;
-						height: 24px;
+						height: 25px;
 					}
 
 					&::after {
@@ -672,7 +688,8 @@ body {
 	// 송금 완료 중 요약 정보
 	.rec_info {
 		line-height: 1;
-		padding: 27px 24px;
+		// 전화번호송금(연락처는 p_4 줬음)
+		padding: 25px 24px;
 
 		>.d_flex {
 			margin-bottom: 15px;
@@ -715,6 +732,9 @@ body {
 				display: inline-block;
 				margin-bottom: 0;
 				transform: translateY(1px);
+				&::after{
+					bottom: -1px;
+				}
 			}
 
 			&.mb_0 {
@@ -904,7 +924,7 @@ body {
 			align-items: center;
 			justify-content: space-between;
 			position: relative;
-			padding: 20px 20px 20px 55px;
+			padding: 17px 20px 17px 55px;
 
 			&+li {
 				border-top: 1px solid $border-base;
@@ -913,7 +933,7 @@ body {
 			.number {
 				display: inline-block;
 				position: absolute;
-				left: 15px;
+				left: 20px;
 				top: 50%;
 				transform: translateY(-50%);
 				width: 25px;
@@ -923,7 +943,7 @@ body {
 				font-weight: 400;
 				color: $white;
 				text-align: center;
-				line-height: 25px;
+				line-height: 23px;
 			}
 
 			.name {
@@ -965,6 +985,7 @@ body {
 				&.transparent {
 					width: 250px;
 					margin: 0 auto;
+					padding: 0;
 				}
 			}
 
@@ -986,10 +1007,10 @@ body {
 	// 송금 영역의 연락처 사람 네모 리스트
 
 	.persons_list {
-		margin: 10px;
+		margin: 20px;
 
 		li {
-			margin-right: 10px;
+			margin-right: 10px !important;
 
 			.box {
 				display: flex;
@@ -1015,10 +1036,6 @@ body {
 		&.not_slide {
 			display: flex;
 			flex-wrap: wrap;
-
-			li {
-				margin-right: 16px;
-			}
 		}
 	}
 
@@ -2064,12 +2081,6 @@ body {
 
 	&.remit {
 
-		.tf_item {
-			&.transparent {
-				padding: 0;
-			}
-		}
-
 		.preview {
 			display: flex;
 
@@ -2107,8 +2118,15 @@ body {
 					padding: 0 5px;
 				}
 			}
-
 		}
+		ul{
+			>.bul_notice{
+				&+.bul_notice{
+					margin-top: 7px;
+				}
+			}
+		}
+
 	}
 
 	// 송금 - 경조금배달
@@ -2313,6 +2331,16 @@ body {
 				}
 			}
 		}
+
+		ul{
+			li{
+				&.bul_notice{
+					&+.bul_notice{
+						margin-top: 7.5px;
+					}
+				}
+			}
+		}
 	}
 
 	// 송금받기
@@ -2466,6 +2494,7 @@ body {
 
 						.state {
 							padding: 5px;
+							border: none;
 							border-radius: 3px;
 							background: $orange;
 							font-size: 11px;
@@ -2543,25 +2572,25 @@ body {
 	// 더치페이 멤버관리
 	&.dutch_member {
 
-		&.existing {
-			.existing {
-				display: block;
-			}
+		// &.existing {
+		// 	.existing {
+		// 		display: block;
+		// 	}
 
-			.new_group {
-				display: none;
-			}
-		}
+		// 	.new_group {
+		// 		display: none;
+		// 	}
+		// }
 
-		&.new_group {
-			.existing {
-				display: none;
-			}
+		// &.new_group {
+		// 	.existing {
+		// 		display: none;
+		// 	}
 
-			.new_group {
-				display: block;
-			}
-		}
+		// 	.new_group {
+		// 		display: block;
+		// 	}
+		// }
 
 
 		.wrap_tit {
@@ -2612,17 +2641,30 @@ body {
 			}
 		}
 
-		.address {
-			display: none;
+		// .address {
+		// 	display: none;
 
-			&.no_list {
-				display: block;
+		// 	&.no_list {
+		// 		display: block;
+		// 	}
+		// }
+
+		.address{
+			.mt_3{
+				font-size: 18px;
+			}
+			.btn_lg{
+				padding-left: 50px;
+				padding-right: 50px;
 			}
 		}
 
 		.before_sel {
 			margin-top: 14px;
 			display: none;
+			.my_ico{
+				transform: translateY(-2px);
+			}
 		}
 
 		.no_sel {
