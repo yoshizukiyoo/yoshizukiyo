@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.chat_header li.on a').attr('title', '선택됨')
+			$('.chat_header li a').on('click', function () {
+				$(this).attr('title', '선택됨').parent().addClass('on').siblings().removeClass('on').children().removeAttr(
+					'title');
+			});
+		});
+	</script>
+</head>
+
+<body class="popup">
+	<div class="popup_inner bg_lightprimary">
+		<div class="popup_header">
+			<h1 class="popup_tit">모임 대화하기</h1>
+		</div>
+		<div class="popup_body">
+			<!-- 
+				message
+				상대방 메세지 : left
+				내가 보내는 메세지 : me
+				일반 초대 메세지 : notice
+			-->
+			<div class="chat_header">
+				<ul>
+					<li class="on"><a href="#">같이크루즈</a></li>
+					<li><a href="#">윌고기</a></li>
+					<li><a href="#">엄마생일</a></li>
+					<li><a href="#">윌고기</a></li>
+				</ul>
+			</div>
+			<div class="chat_content">
+				<time datetime="2021-10-10" class="date">2021년 10월 10일</time>
+
+				<div class="message notice_txt">
+					<p>“엄마생일” 모임 대화방이 열렸어요.</p>
+					<p>홍길동님이 홍봄님을 초대했어요. </p>
+					<p>홍길동님이 홍여름님을 초대했어요.</p>
+				</div>
+
+				<div class="message notice">
+					<div class="balloon">
+						<em class="titie">첫번째 회비</em>
+						<strong class="price">100,000원씩</strong>
+						<span class="txt_medium"><strong>5</strong>명 중 <strong>3</strong>명 완료</span>
+						<a href="#" class="btn btn_sm btn_round">회비 보냄</a>
+					</div>
+				</div>
+
+				<!-- s: 상대방 메세지 -->
+				<div class="message left">
+					<span class="user chat_left">홍겨울</span>
+					<div class="balloon">
+						<span>텍스트 메세지 좌우간격 30 </span>
+					</div>
+					<div class="balloon">
+						<span>텍스트 메세지 좌우간격 30 최대길이 540~~
+							두줄일때 위아래 20 line-height 44
+						</span>
+					</div>
+					<time datetime="07:00">07:00</time>
+				</div>
+				<!-- e: 상대방 메세지 -->
+
+
+				<div class="message me">
+					<div class="balloon">
+						<span>내가보내는 메세지</span>
+					</div>
+					<time datetime="07:00">07:00</time>
+				</div>
+
+			</div>
+			<div class="chat_fixed_bottom bottom_fixed_area">
+				<p class="txt_guide_notice">
+					<span class="bul_notice">대화는 앱PUSH 알림 동의한 경우에만 가능해요.</span>
+				</p>
+				<div class="chat_form_area">
+					<form action="#" class="chat_form">
+						<textarea title="메세지 입력" placeholder="메세지 입력"></textarea>
+						<button type="button" class="btn btn_submit"><i class="ico ico_arr_up"></i>
+							입력</button>
+					</form>
+				</div>
+				<div class="chat_info">
+					<span class="user_info">
+						<span class="box box_round box_round_1">
+							<strong class="user_name">흥봄1</strong>
+						</span>
+						<span class="box box_round box_round_2">
+							<strong class="user_name">여름</strong>
+						</span>
+						<span class="box box_round box_round_3">
+							<strong class="user_name">가을</strong>
+						</span>
+						<span class="box box_round box_round_4">
+							<strong class="user_name">겨울</strong>
+						</span>
+					</span>
+					<span class="box box_round_lg">
+						<strong>더치페이</strong>
+						<i class="ico ico_equal"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>

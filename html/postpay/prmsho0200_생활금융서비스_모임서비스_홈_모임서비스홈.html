@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		//셀렉트박스
+		$(document).on('click', '.selectbox_wrap dt a', function () {
+			var obj = $(this);
+			$('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
+			obj.parents('.selectbox_wrap').toggleClass('active');
+			return false;
+		});
+		$(document).on('click', '.selectbox_wrap dd a', function () {
+			var obj = $(this);
+			obj.closest('dd').prev().find('>a>span').text(obj.text());
+			obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
+			obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
+			return false;
+		});
+		var win = $(window);
+		var selectBox = $('.selectbox_wrap dt a');
+		win.on("click", function (e) {
+			if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)) {
+				$('.selectbox_wrap').removeClass('active');
+			}
+		});
+
+		$(document).ready(function () {
+			var $postpaySlide = $('.postpay_bottom_list');
+			$postpaySlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				centerMode: false,
+				slidesToShow: 4
+			});
+
+			$('.postpay_slider').each(function () {
+				if ($('.postpay_slider > div').length > 1) {
+					$(this).not('.slick-initialized').slick({
+						// autoplay: true,
+						variableWidth: true,
+						speed: 300,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						infinite: true,
+						arrows: false,
+						dots: true,
+						accessibility: false,
+					});
+				}
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper  bg_lightgray">
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="금융캘린더"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="finance_calendar postpay mb_0">
+
+				<!-- s: 모임서비스 슬라이더 -->
+				<div class="postpay_top pb_5  pt_4">
+					<div class="postpay_slider">
+						<div>
+							<div class="service_top service_item bg_purple">
+								<div class="service_top_tit ml_2">
+									<div class="tit txt_medium">
+										<a href="#" calss="tit_link">
+											같이크루즈
+										</a>
+									</div>
+									<!-- s: 관리자 모드 일 때 -->
+									<div class="division manage">관리자</div>
+									<!-- e: 관리자 모드 일 때 -->
+									<!-- s: 회원 모드 일 때 
+								<div class="division">회원</div>
+								 e: 회원 모드 일 때 -->
+								</div>
+								<div class="target mb_2">
+									<div class="target_date">
+										목표일 : <span class="num">2021.10.23</span>
+									</div>
+									<div class="target_amount txt_medium">
+										<span class="num txt_bold">58,000,000</span>원
+									</div>
+								</div>
+								<div class="btn_group">
+									<button class="btn con_btn">대화</button>
+									<!-- s: 관리자 모드 일 때 -->
+									<button class="btn rem_btn">송금</button>
+									<!-- e: 관리자 모드 일 때 -->
+									<!-- s: 회원 모드 일 때
+								<button class="btn rem_btn rem_btn2">회비납부</button>
+											e: 회원 모드 일 때 -->
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<div class="service_top service_item bg_purple">
+								<div class="service_top_tit ml_2">
+									<div class="tit txt_medium">
+										<a href="#" calss="tit_link">
+											같이크루즈
+										</a>
+									</div>
+									<!-- s: 관리자 모드 일 때 -->
+									<div class="division manage">관리자</div>
+									<!-- e: 관리자 모드 일 때 -->
+									<!-- s: 회원 모드 일 때 
+								<div class="division">회원</div>
+								 e: 회원 모드 일 때 -->
+								</div>
+								<div class="target mb_2">
+									<div class="target_date">
+										목표일 : <span class="num">2021.10.23</span>
+									</div>
+									<div class="target_amount txt_medium">
+										<span class="num txt_bold">58,000,000</span>원
+									</div>
+								</div>
+								<div class="btn_group">
+									<button class="btn con_btn">대화</button>
+									<!-- s: 관리자 모드 일 때 -->
+									<button class="btn rem_btn">송금</button>
+									<!-- e: 관리자 모드 일 때 -->
+									<!-- s: 회원 모드 일 때
+								<button class="btn rem_btn rem_btn2">회비납부</button>
+											e: 회원 모드 일 때 -->
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<div class="service_top service_item bg_purple">
+								<div class="service_top_tit ml_2">
+									<div class="tit txt_medium">
+										<a href="#" calss="tit_link">
+											같이크루즈
+										</a>
+									</div>
+									<!-- s: 관리자 모드 일 때 -->
+									<div class="division manage">관리자</div>
+									<!-- e: 관리자 모드 일 때 -->
+									<!-- s: 회원 모드 일 때 
+								<div class="division">회원</div>
+								 e: 회원 모드 일 때 -->
+								</div>
+								<div class="target mb_2">
+									<div class="target_date">
+										목표일 : <span class="num">2021.10.23</span>
+									</div>
+									<div class="target_amount txt_medium">
+										<span class="num txt_bold">58,000,000</span>원
+									</div>
+								</div>
+								<div class="btn_group">
+									<button class="btn con_btn">대화</button>
+									<!-- s: 관리자 모드 일 때 -->
+									<button class="btn rem_btn">송금</button>
+									<!-- e: 관리자 모드 일 때 -->
+									<!-- s: 회원 모드 일 때
+								<button class="btn rem_btn rem_btn2">회비납부</button>
+											e: 회원 모드 일 때 -->
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- e: 모임서비스 슬라이더 -->
+
+				<div class="fn_calendar">
+					<div class="cal_header">
+
+						<div class="cal_l">
+
+							<!-- s: 디자인 셀렉트 -->
+							<div class="selectbox_wrap" style="width: 120px;">
+								<dl>
+									<dt><a href="#none" title="계좌목록 선택"><span>2021.10</span></a></dt>
+									<dd>
+										<ul>
+											<li><a href="#none"><span>2021.10</span></a></li>
+											<li><a href="#none"><span>2021.09</span></a></li>
+											<li><a href="#none"><span>2021.08</span></a></li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<!-- e: 디자인 셀렉트 -->
+						</div>
+
+						<div class="cal_r">
+							<ul class="tab_cal">
+								<li class="on"><a href="#">모임</a></li>
+							</ul>
+						</div>
+
+					</div>
+					<div class="cal_body">
+						<table>
+							<colgroup>
+								<col style="width:14.2857%">
+								<col style="width:14.2857%">
+								<col style="width:14.2857%">
+								<col style="width:14.2857%">
+								<col style="width:14.2857%">
+								<col style="width:14.2857%">
+								<col style="width:14.2857%">
+							</colgroup>
+							<thead>
+								<th scope="col">일</th>
+								<th scope="col">월</th>
+								<th scope="col">화</th>
+								<th scope="col">수</th>
+								<th scope="col">목</th>
+								<th scope="col">금</th>
+								<th scope="col">토</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="day"></span>
+									</td>
+									<td>
+										<span class="day"></span>
+									</td>
+									<td>
+										<span class="day"></span>
+									</td>
+									<td>
+										<span class="day"></span>
+									</td>
+									<td>
+										<span class="day"></span>
+									</td>
+									<td>
+										<span class="day">1</span>
+									</td>
+									<td>
+										<span class="day">2</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="day">3</span>
+									</td>
+									<td>
+										<span class="day">4</span>
+									</td>
+									<td>
+										<span class="day bg_lightorange">5</span>
+										<small class="event">회비내는날</small>
+									</td>
+									<td>
+										<span class="day bg_darkblue">6</span>
+										<small class="event">회비내는날</small>
+									</td>
+									<td>
+										<span class="day">7</span>
+									</td>
+									<td>
+										<span class="day">8</span>
+									</td>
+									<td>
+										<span class="day">9</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="day">10</span>
+									</td>
+									<td>
+										<span class="day bg_lightgreen">11</span>
+										<small class="event">회비내는날</small>
+									</td>
+									<td>
+										<span class="day">12</span>
+									</td>
+									<td>
+										<span class="day">13</span>
+									</td>
+									<td>
+										<span class="day">14</span>
+									</td>
+									<td>
+										<span class="day d_day">15</span>
+										<small class="event">깨는 날</small>
+									</td>
+									<td>
+										<span class="day">16</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="day">17</span>
+									</td>
+									<td>
+										<span class="day">18</span>
+									</td>
+									<td>
+										<span class="day">19</span>
+									</td>
+									<td>
+										<span class="day">20</span>
+									</td>
+									<td>
+										<span class="day">21</span>
+									</td>
+									<td>
+										<span class="day">22</span>
+									</td>
+									<td>
+										<span class="day">23</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="day">24</span>
+									</td>
+									<td>
+										<span class="day today">25</span>
+									</td>
+									<td>
+										<span class="day">26</span>
+									</td>
+									<td>
+										<span class="day">27</span>
+									</td>
+									<td>
+										<span class="day">28</span>
+									</td>
+									<td>
+										<span class="day">29</span>
+									</td>
+									<td>
+										<span class="day">30</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="day">31</span>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="box_memo">
+							<p class="bul_notice mt_3 mb_3">회비 내는날 표시 날짜를 선택하면 바로 회비를 낼 수 있어요.
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area postpay">
+				<div class="postpay_bottom">
+					<div class="container">
+						<div class="postpay_bottom_slider_area">
+							<ul class="postpay_bottom_list">
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit purse on">전자지갑</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit calendar">금융캘린더</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit pay">결제</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit remittance">QR송금</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit event">이벤트중</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit inquiry">통합이용조회</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

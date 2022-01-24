@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		//셀렉트박스
+		$(document).on('click', '.selectbox_wrap dt a', function () {
+			var obj = $(this);
+			$('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
+			obj.parents('.selectbox_wrap').toggleClass('active');
+			return false;
+		});
+		$(document).on('click', '.selectbox_wrap dd a', function () {
+			var obj = $(this);
+			obj.closest('dd').prev().find('>a>span').text(obj.text());
+			obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
+			obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
+			return false;
+		});
+		var win = $(window);
+		var selectBox = $('.selectbox_wrap dt a');
+		win.on("click", function (e) {
+			if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)) {
+				$('.selectbox_wrap').removeClass('active');
+			}
+		});
+
+		$(document).ready(function () {
+
+			//하단 슬라이더
+			var $postpaySlide = $('.postpay_bottom_list');
+			$postpaySlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				centerMode: false,
+				slidesToShow: 4
+			});
+
+			//달력
+			$('.finance_calendar').each(function () {
+				$('.wrapper').css('padding-bottom', '0px');
+				$('.cal_header .tab_cal li.on a').attr('title', '선택됨');
+				$('.cal_body > div').eq($('.tab_cal li.on').index()).show();
+				$('.finance_body > div').eq($('.tab_cal li.on').index()).show();
+			});
+
+			function tabCurrent() {
+				$('.cal_body table .day').on('click', function () {
+					var currentBtn = $(this).parent().addClass('on');
+					$('.cal_body table td').not(currentBtn).removeClass("on");
+
+					var offset = $('.cal_body .box_memo').offset();
+
+					$('.cal_body .box_memo .box_inner').slideDown(
+						'fast');
+
+					$('html').animate({
+						scrollTop: offset.top
+					}, 400);
+				})
+			};
+
+			tabCurrent();
+			$('.cal_header .tab_cal li a').on('click', function () {
+				$(this).attr('title', '선택됨').parent().addClass('on').siblings().removeClass('on').children().removeAttr(
+					'title');
+				$('.finance_body > div').eq($(this).parent().index()).show().siblings().hide();
+				$('.cal_body > div').eq($(this).parent().index()).show().siblings().hide();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="금융캘린더"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="finance_calendar">
+
+				<!-- s: 상단 고정영역 -->
+				<div class="finance_header">
+
+					<span class="total_price">
+						<em>이번달 <span class="txt_medium">총소비</span></em>
+						<span><strong class="txt_highlighter">853,970</strong>원</span>
+					</span>
+
+					<a href="#" class="link_gray">
+						<span class="txt_gray txt_medium">소비통계</span>
+						<i class="ico ico_chevron_right_sm_gray"></i>
+					</a>
+
+				</div>
+				<!-- e: 상단 고정영역 -->
+
+				<div class="fn_calendar">
+					<!-- s: 상단 선택영역 -->
+					<div class="cal_header">
+
+						<div class="cal_l">
+
+							<!-- s: 디자인 셀렉트 -->
+							<div class="selectbox_wrap" style="width: 120px;">
+								<dl>
+									<dt><a href="#none" title="계좌목록 선택"><span>2021.10</span></a></dt>
+									<dd>
+										<ul>
+											<li><a href="#none"><span>2021.10</span></a></li>
+											<li><a href="#none"><span>2021.09</span></a></li>
+											<li><a href="#none"><span>2021.08</span></a></li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<!-- e: 디자인 셀렉트 -->
+						</div>
+
+						<div class="cal_r">
+							<ul class="tab_cal">
+								<li class="on"><a href="#">결제</a></li>
+								<li><a href="#">모임</a></li>
+								<li><a href="#">계좌</a></li>
+							</ul>
+						</div>
+
+					</div>
+					<!-- e: 상단 선택영역 -->
+
+					<!-- s: 캘린더 -->
+					<div class="cal_body">
+
+						<div class="hide">
+							<table>
+								<colgroup>
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+								</colgroup>
+								<thead>
+									<th scope="col">일</th>
+									<th scope="col">월</th>
+									<th scope="col">화</th>
+									<th scope="col">수</th>
+									<th scope="col">목</th>
+									<th scope="col">금</th>
+									<th scope="col">토</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+											<span class="day">1</span>
+										</td>
+										<td>
+											<span class="day">2</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">3</span>
+										</td>
+										<td>
+											<span class="day">4</span>
+										</td>
+										<td>
+											<span class="day">5</span>
+											<small class="price">-114,980</small>
+										</td>
+										<td>
+											<span class="day">6</span>
+											<small class="price">+114,980</small>
+										</td>
+										<td>
+											<span class="day">7</span>
+										</td>
+										<td>
+											<span class="day">8</span>
+										</td>
+										<td>
+											<span class="day">9</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">10</span>
+										</td>
+										<td>
+											<span class="day">11</span>
+										</td>
+										<td>
+											<span class="day">12</span>
+										</td>
+										<td>
+											<span class="day">13</span>
+										</td>
+										<td>
+											<span class="day">14</span>
+										</td>
+										<td>
+											<span class="day">15</span>
+										</td>
+										<td>
+											<span class="day">16</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">17</span>
+										</td>
+										<td>
+											<span class="day">18</span>
+										</td>
+										<td>
+											<span class="day">19</span>
+										</td>
+										<td>
+											<span class="day">20</span>
+										</td>
+										<td>
+											<span class="day">21</span>
+										</td>
+										<td>
+											<span class="day">22</span>
+										</td>
+										<td>
+											<span class="day">23</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">24</span>
+										</td>
+										<td>
+											<span class="day today">25</span>
+											<small class="price">+114,980</small>
+										</td>
+										<td>
+											<span class="day">26</span>
+										</td>
+										<td>
+											<span class="day">27</span>
+										</td>
+										<td>
+											<span class="day">28</span>
+										</td>
+										<td>
+											<span class="day">29</span>
+										</td>
+										<td>
+											<span class="day">30</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">31</span>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+									</tr>
+								</tbody>
+
+							</table>
+
+							<div class="box_memo">
+								<div class="box_inner">
+									<span class="date">19일 화요일</span>
+
+									<ul class="fn_list">
+										<li>
+											<div class="flex_con_group">
+												<span>
+													<span class="box_round">
+														<i class="ico ico_fn_cash"></i>
+													</span>
+													<span>
+														<em>자작나무</em>
+														<span class="tag">회식</span>
+													</span>
+												</span>
+												<span class="price">
+													<strong>8,410</strong>
+													원
+												</span>
+											</div>
+										</li>
+										<li>
+											<div class="flex_con_group">
+												<span>
+													<span class="box_round">
+														<i class="ico ico_fn_cash"></i>
+													</span>
+													<span>
+														<em>자작나무</em>
+														<span class="tag">회식</span>
+													</span>
+												</span>
+												<span class="price">
+													<strong>8,410</strong>
+													원
+												</span>
+											</div>
+										</li>
+										<li>
+											<div class="flex_con_group">
+												<span>
+													<span class="box_round">
+														<i class="ico ico_fn_cash"></i>
+													</span>
+													<span>
+														<em>하나로마트</em>
+														<span class="tag">식비</span>
+													</span>
+												</span>
+												<span class="price">
+													<strong>8,410</strong>
+													원
+												</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="hide">
+							<table>
+								<colgroup>
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+								</colgroup>
+								<thead>
+									<th scope="col">일</th>
+									<th scope="col">월</th>
+									<th scope="col">화</th>
+									<th scope="col">수</th>
+									<th scope="col">목</th>
+									<th scope="col">금</th>
+									<th scope="col">토</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<span class="day"></span>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+											<span class="day">1</span>
+										</td>
+										<td>
+											<span class="day">2</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">3</span>
+										</td>
+										<td>
+											<span class="day">4</span>
+										</td>
+										<td>
+											<span class="day bg_lightorange">5</span>
+											<small class="event">회비내는날</small>
+										</td>
+										<td>
+											<span class="day bg_darkblue">6</span>
+											<small class="event">회비내는날</small>
+										</td>
+										<td>
+											<span class="day">7</span>
+										</td>
+										<td>
+											<span class="day">8</span>
+										</td>
+										<td>
+											<span class="day">9</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">10</span>
+										</td>
+										<td>
+											<span class="day bg_lightgreen">11</span>
+											<small class="event">회비내는날</small>
+										</td>
+										<td>
+											<span class="day">12</span>
+										</td>
+										<td>
+											<span class="day">13</span>
+										</td>
+										<td>
+											<span class="day">14</span>
+										</td>
+										<td>
+											<span class="day d_day">15</span>
+											<small class="event">깨는 날</small>
+										</td>
+										<td>
+											<span class="day">16</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">17</span>
+										</td>
+										<td>
+											<span class="day">18</span>
+										</td>
+										<td>
+											<span class="day">19</span>
+										</td>
+										<td>
+											<span class="day">20</span>
+										</td>
+										<td>
+											<span class="day">21</span>
+										</td>
+										<td>
+											<span class="day">22</span>
+										</td>
+										<td>
+											<span class="day">23</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">24</span>
+										</td>
+										<td>
+											<span class="day today">25</span>
+										</td>
+										<td>
+											<span class="day">26</span>
+										</td>
+										<td>
+											<span class="day">27</span>
+										</td>
+										<td>
+											<span class="day">28</span>
+										</td>
+										<td>
+											<span class="day">29</span>
+										</td>
+										<td>
+											<span class="day">30</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">31</span>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div class="box_memo">
+								<p class="bul_notice mb_3">회비 내는날 표시 날짜를 선택하면 바로 회비를 낼 수 있어요.
+								</p>
+								<div class="box_inner show">
+									<span class="date">19일 화요일</span>
+
+									<ul class="fn_list">
+										<li>
+											<div class="flex_con_group">
+												<span>
+													<span class="box_round">
+														<i class="ico ico_fn_card"></i>
+													</span>
+													<span>
+														<em>10월 회비</em>
+														<small>같이크루즈</small>
+													</span>
+												</span>
+												<span>
+													<span class="pr_1">
+														<span class="block price">
+															<strong>8,410</strong>
+															원
+														</span>
+														<span class="block txt_r txt_sml mt_1">
+															<strong class="txt_light">4</strong>/4명
+														</span>
+													</span>
+													<a href="#;" class="btn btn_sm btn_round bg_gray">납부하기</a>
+												</span>
+
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="hide">
+							<table>
+								<colgroup>
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+									<col style="width:14.2857%">
+								</colgroup>
+								<thead>
+									<th scope="col">일</th>
+									<th scope="col">월</th>
+									<th scope="col">화</th>
+									<th scope="col">수</th>
+									<th scope="col">목</th>
+									<th scope="col">금</th>
+									<th scope="col">토</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+											<span class="day">1</span>
+										</td>
+										<td>
+											<span class="day">2</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">3</span>
+										</td>
+										<td>
+											<span class="day">4</span>
+										</td>
+										<td>
+											<span class="day">5</span>
+											<small class="price txt_red">-114,980</small>
+										</td>
+										<td>
+											<span class="day">6</span>
+											<small class="price txt_blue">+114,980</small>
+										</td>
+										<td>
+											<span class="day">7</span>
+										</td>
+										<td>
+											<span class="day">8</span>
+										</td>
+										<td>
+											<span class="day">9</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">10</span>
+										</td>
+										<td>
+											<span class="day">11</span>
+										</td>
+										<td>
+											<span class="day">12</span>
+										</td>
+										<td>
+											<span class="day">13</span>
+										</td>
+										<td>
+											<span class="day">14</span>
+										</td>
+										<td>
+											<span class="day">15</span>
+										</td>
+										<td>
+											<span class="day">16</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">17</span>
+										</td>
+										<td>
+											<span class="day">18</span>
+										</td>
+										<td>
+											<span class="day">19</span>
+										</td>
+										<td>
+											<span class="day">20</span>
+										</td>
+										<td>
+											<span class="day">21</span>
+										</td>
+										<td>
+											<span class="day">22</span>
+										</td>
+										<td>
+											<span class="day">23</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">24</span>
+										</td>
+										<td>
+											<span class="day today">25</span>
+											<small class="price txt_blue">+114,980</small>
+										</td>
+										<td>
+											<span class="day">26</span>
+										</td>
+										<td>
+											<span class="day">27</span>
+										</td>
+										<td>
+											<span class="day">28</span>
+										</td>
+										<td>
+											<span class="day">29</span>
+										</td>
+										<td>
+											<span class="day">30</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="day">31</span>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+										<td>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+
+					</div>
+					<!-- e: 캘린더 -->
+				</div>
+
+				<div class="finance_body">
+					<!-- s : 결제 -->
+					<div>
+						<ul class="fn_list bd_gray">
+							<li>
+								<div class="flex_con_group">
+									<em class="tit">정기수입</em>
+									<span><strong class="txt_blue">10,150,000</strong>원</span>
+								</div>
+							</li>
+							<li>
+								<div class="flex_con_group">
+									<em class="tit">정기지출</em>
+									<span><strong class="txt_red">10,150,000</strong>원</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- e : 결제 -->
+
+					<!-- s : 모임 -->
+					<div>
+						<span class="flex_con_group pt_2">
+							<em class="tit txt_lg txt_medium">매달 내는 회비</em>
+							<span>총 <strong>1,000,000</strong>원</span>
+						</span>
+						<ul class="fn_list mt_5">
+							<li>
+								<div class="flex_con_group">
+									<span>
+										<span class="box_round bg_pink">
+											<i class="ico ico_fn_user"></i>
+										</span>
+										<span>
+											<em class="tit">
+												같이 크루즈
+											</em>
+											<strong class="total_price">58,000,000원</strong>
+										</span>
+									</span>
+									<span class="v_center">
+										<strong>10,150,000</strong>원
+									</span>
+								</div>
+							</li>
+							<li>
+								<div class="flex_con_group">
+									<span>
+										<span class="box_round bg_lightgreen">
+											<i class="ico ico_fn_user"></i>
+										</span>
+										<span>
+											<em class="tit">
+												같이 크루즈
+											</em>
+											<strong class="total_price">58,000,000원</strong>
+										</span>
+									</span>
+									<span class="v_center">
+										<strong>10,150,000</strong>원
+									</span>
+								</div>
+							</li>
+							<li>
+								<div class="flex_con_group">
+									<span>
+										<span class="box_round bg_lightblue">
+											<i class="ico ico_fn_user"></i>
+										</span>
+										<span>
+											<em class="tit">
+												같이 크루즈
+											</em>
+											<strong class="total_price">58,000,000원</strong>
+										</span>
+									</span>
+									<span class="v_center">
+										<strong>10,150,000</strong>원
+									</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- e : 모임 -->
+
+					<!-- s : 계좌 -->
+					<div>
+						<ul class="fn_list bd_gray">
+							<li>
+								<div class="flex_con_group">
+									<em class="tit">이번달 출금</em>
+									<span class="txt_lg"><strong class="txt_red">450,000</strong>원</span>
+								</div>
+							</li>
+							<li>
+								<div class="flex_con_group">
+									<em class="tit">이번달 입금</em>
+									<span class="txt_lg"><strong class="txt_blue">10,150,000</strong>원</span>
+								</div>
+							</li>
+							<li>
+								<div class="flex_con_group">
+									<em class="tit">매월 자동이체</em>
+									<span><strong>5</strong>건</span>
+								</div>
+								<ul class="inner_list mt_4">
+									<li>
+										<div class="flex_con_group">
+											<span class="block">
+												<span class="box_round">
+													<span>26</span>
+												</span>
+												<em class="inline_block">공과금</em>
+											</span>
+											<strong class="txt_light">건강보험</strong>
+										</div>
+									</li>
+									<li>
+										<div class="flex_con_group">
+											<span class="block">
+												<span class="box_round">
+													<span>31</span>
+												</span>
+												<em class="inline_block">공과금</em>
+											</span>
+											<strong class="txt_light">오피스텔관리비</strong>
+										</div>
+									</li>
+									<li>
+										<div class="flex_con_group">
+											<span class="block">
+												<span class="box_round">
+													<span>31</span>
+												</span>
+												<em class="inline_block">예약충전</em>
+											</span>
+											<strong class="txt_light">본인2123</strong>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- e : 계좌 -->
+
+				</div>
+
+			</div>
+
+			<!-- s: 하단 슬라이더 영역 -->
+			<div class="bottom_fixed_area postpay">
+				<div class="postpay_bottom">
+					<div class="container">
+						<div class="postpay_bottom_slider_area">
+							<ul class="postpay_bottom_list">
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit purse on">전자지갑</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit calendar">금융캘린더</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit pay">결제</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit remittance">QR송금</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit event">이벤트중</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit inquiry">통합이용조회</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 하단 슬라이더 영역 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>

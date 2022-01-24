@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $postpaySlide = $('.postpay_bottom_list');
+			$postpaySlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				centerMode: false,
+				slidesToShow: 4
+			});
+
+			$('.card_list .btn_select').on('click', function () {
+
+
+
+				if (!$(this).hasClass('on')) {
+					$(this).addClass('on').parents('.card_item').siblings('.card_item').children().find('.on').removeClass(
+						'on');
+					$(this).parents('.card_item').animate({
+						'margin-top': '-55px'
+					}).siblings('.card_item').animate({
+						'margin-top': '0'
+					})
+				} else {
+					$(this).removeClass('on');
+					$(this).parents('.card_item').animate({
+						'margin-top': '0'
+					});
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="전자지갑"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 전자지갑 -->
+			<div class="wallet_setting">
+				<div class="card_wrap">
+					<ul class="card_list">
+						<!-- 클래스별 색상 변경
+
+								충전 : charge 
+								카드 : card
+								기본 : default
+						-->
+						<li class="card_item card_item_1 charge">
+							<div>
+								<span class="card_cash"><strong>10000</strong>캐시</span>
+
+								<div class="card_info">
+									<em><u>충전계좌</u>우체국 계좌 <span>4021</span></em>
+									<a href="#;" class="btn btn_round bg_white">+ 충전</a>
+								</div>
+
+								<div class="btn_group">
+									<a href="#" class="btn"><i class="ico ico_wallet_transfer mr_1"></i>송금</a>
+									<a href="#" class="btn"><i class="ico ico_wallet_qr mr_1"></i>결제</a>
+								</div>
+								<a href="#" class="btn btn_select"><span>해제</span></a>
+							</div>
+						</li>
+						<li class="card_item card_item_2 default">
+							<div>
+
+								<span class="card_cash"><strong>10000</strong>캐시</span>
+
+								<div class="card_info">
+									<em>우체국 계좌 <span>4021</span></em>
+									<span class="status">최근결제</span>
+								</div>
+
+								<div class="btn_group">
+									<a href="#" class="btn"><i class="ico ico_wallet_transfer mr_1"></i>송금</a>
+									<a href="#" class="btn"><i class="ico ico_wallet_qr mr_1"></i>결제</a>
+								</div>
+								<a href="#" class="btn btn_select"><span>해제</span></a>
+							</div>
+						</li>
+						<li class="card_item card_item_3 card">
+							<div>
+								<span class="left">
+									<span class="img">
+										<img src="/resources/img/content/img_card_sample.gif" alt="">
+									</span>
+
+									<strong class="card_num">우체국 영리한체크카드 6061</strong>
+								</span>
+								<span class="right">
+									<span class="box_round_lg">
+										<i class="ico ico_wallet_qr"></i>
+										결제
+									</span>
+								</span>
+								<a href="#" class="btn btn_select"><span>해제</span></a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="setting_area">
+					<ul class="set_list">
+						<li class="item side">
+
+							<span>
+								<!-- 이미지 사이즈 : 46 * 32 -->
+								<span class="img">
+									<img src="/resources/img/content/logo_zeropay@2x.png" alt="">
+								</span>
+								<strong class="tit">제로페이</strong>
+							</span>
+							<span>
+								<a href="#" title="새창 열림" target="_blank" class="w_link">
+									결제
+									<i class="ico ico_chevron_right_sm_gray ml_1"></i>
+								</a>
+								<a href="#" title="새창 열림" target="_blank" class="w_link">
+									상품권
+									<i class="ico ico_chevron_right_sm_gray ml_1"></i>
+								</a>
+							</span>
+							<a href="#" class="btn btn_close">삭제</a>
+
+						</li>
+						<li class="item">
+
+							<span class="img">
+								<img src="/resources/img/content/ico_meeting_lg.png" alt="">
+							</span>
+							<dl>
+								<dt class="tit">모임서비스</dt>
+								<dd class="desc">포스트페이로 같이 모으고 같이 쓰자</dd>
+							</dl>
+
+							<a href="#" class="btn btn_close">삭제</a>
+
+						</li>
+						<li class="txt_c">
+							<span class="set_guide_txt">
+								전자지갑 구성을 자유롭게 할 수 있어요.
+							</span>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<!-- e: 전자지갑 -->
+
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area postpay">
+				<div class="postpay_bottom">
+					<div class="container">
+						<div class="postpay_bottom_slider_area">
+							<ul class="postpay_bottom_list">
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit purse on">전자지갑</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit calendar">금융캘린더</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit pay">결제</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit remittance">QR송금</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit event">이벤트중</span>
+									</a>
+								</li>
+								<li class="postpay_bottom_slider">
+									<a href="#">
+										<span class="tit inquiry">통합이용조회</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
