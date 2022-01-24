@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<!-- s: 새 모임 만들기 -->
+
+<body class="popup">
+	<div class="popup_inner">
+		<div class="popup_header">
+			<h1 class="popup_tit txt_s18">새 모임 만들기</h1>
+			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
+		</div>
+		<div class="popup_body">
+			<div class="container pb_12">
+
+				<div class="section mt_4">
+					<div class="tf_item mt_4">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label for="inp1_1" class="lab">모임 이름 <span class="req">필수항목</span></label>
+								<input type="text" id="inp1_1" class="tf" placeholder="모임 이름(최대 10글자)">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section mt_9">
+					<h2 class="tit1 mb_3">회비 걷을 계좌 <span class="req">필수항목</span></h2>
+					<div class="account_info_box">
+						<a href="#;" class="pl_3 pb_3" onclick="openModal('layerOption')">
+							<span class="bank">
+								<img src="/resources/img/content/ico_epost02.png" alt="우체국">
+							</span>
+							<div class="info">
+								<strong class="name">2040+a 저축예금(모임통장)</strong>
+								<p>000000-00-000000</p>
+								<div class="price">
+									<span>출금가능금액</span>
+									<strong>1,023,2340 원</strong>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="notice_aera mb_4">
+						<p class="box box_round mt_2 p_4 pt_3 pb_3 txt_gray bg_lightprimary">
+							<span class="pl_0">선택한 계좌가 급여계좌 또는 대출상환계좌일 경우 주의가 필요해요.</span>
+						</p>
+						<p class="mt_1 txt_gray"><i class="ico ico_notice mr_1"></i>
+							<span>모임서비스 이용 통장은 전환 이후 회원들에게 잔액, 입출금내역 등이 공개됩니다.
+							</span>
+						</p>
+					</div>
+
+					<div class="btn_area mt_2">
+						<a href="#;" class="btn btn_xl btn_outline_default btn_round_type ">
+							<i class="ico ico_passbook2"></i>
+							<span>신규 입출금 통장 만들기</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="section mt_9">
+					<h2 class="tit2 mt_8 mb_2 clfx">목표일 설정
+						<span class="check_switch f_r">
+							<input type="checkbox" id="chk1" checked>
+							<label for="chk1">
+								<span class="txt_uncheck">미사용</span>
+								<span class="txt_checked">사용</span>
+							</label>
+						</span>
+					</h2>
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_date">목표일 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_date" class="tf" placeholder="같이 모아서 사용할 날짜" required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+									<i class="ico ico_datepicker"></i>
+									<span class="sr_only">달력</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="postpay cancel mt_9">
+					<h2 class="tit1 mb_2"><i class="ico ico_document_check"></i> 만들기 전 꼭 확인해주세요.</h2>
+					<ul class="box box_border check_list check_list_type02">
+						<li class="tf_item_body">
+							<span class="check_item txt_default">
+								<input type="checkbox" id="check1" checked>
+								<label for="check1">회원들에게는 잔액 및 거래내역이 공개됩니다.
+								</label>
+							</span>
+						</li>
+						<li class="tf_item_body">
+							<span class="check_item txt_default">
+								<input type="checkbox" id="check2" checked>
+								<label for="check2">회비 걷는 계좌는 중도에 변경할 수 없고 모임 해지만 가능합니다.
+								</label>
+							</span>
+						</li>
+						<li class="tf_item_body">
+							<span class="check_item txt_default">
+								<input type="checkbox" id="check3" checked>
+								<label for="check3">계좌 1개에 1개의 모임서비스만 만들 수 있습니다.
+								</label>
+							</span>
+						</li>
+						<li class="tf_item_body">
+							<span class="check_item txt_default">
+								<input type="checkbox" id="check4">
+								<label for="check4">참여자 초대 및 탈퇴 권한은 개설자에게 있습니다.
+								</label>
+							</span>
+						</li>
+						<li class="tf_item_body">
+							<span class="check_item txt_default">
+								<input type="checkbox" id="check5">
+								<label for="check5">모임 회비 통장의 지급, 해지 등의 권한은 개설자에게 있습니다.
+								</label>
+							</span>
+						</li>
+						<li class="tf_item_body">
+							<span class="check_item txt_default">
+								<input type="checkbox" id="check6">
+								<label for="check6">관리자 및 회원의 계정 상태에 따라 이용이 제한될 수 있습니다.
+								</label>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="popup_footer pt_4">
+			<div class="btn_group btn_group_flex">
+				<a href="#;" class="btn btn_lg btn_outline_default" onclick="closeModal('layer01');">취소</a>
+				<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">만들기</a>
+			</div>
+		</div>
+	</div>
+	<!-- e: 새 모임 만들기 -->
+
+
+	<!-- s: 공통 레이어 로딩 -->
+	<div class="common_layers"></div>
+	<!-- e: 공통 레이어 로딩 -->
+</body>
+
+</html>

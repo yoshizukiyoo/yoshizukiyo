@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>[팝업] 현재화면명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('input').click(function () {
+				var Parent = $(this).parent('span').parent('div').parent('li');
+				if (!$(this).is(":checked")) {
+					Parent.children('.tit_ico').addClass('off');
+				} else {
+					Parent.children('.tit_ico').removeClass('off');
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay_type3.html" data-page-title="전자금융약정">
+		</header>
+		<div id="content">
+
+			<!-- s: 본문 -->
+			<!-- s: 전자금융약정 -->
+			<div class="container pb_6">
+				<div class="section mt_3">
+					<ul>
+						<li class="clfx">
+							<div class="f_l">
+								<span class="check_item txt_medium">
+									<input type="checkbox" name="chk1" id="chk1_1">
+									<label class="lh_20" for="chk1_1">[필수] 전자금융거래 기본 약관</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</li>
+
+						<li class="clfx mt_2">
+							<div class="f_l">
+								<span class="check_item txt_medium">
+									<input type="checkbox" name="chk2" id="chk1_2">
+									<label class="lh_20" for="chk1_2">[필수] 전자금융서비스 이용약관</label>
+								</span>
+							</div>
+							<div class="f_r">
+								<button type="button" class="btn_more txt_darkprimary txt_md"
+									onclick="openModal('layer01', this)">보기</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="section mt_8">
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tel">전자금융 ID<span class="req">필수항목</span></label>
+								<input type="text" id="lb_tel" class="tf txt_gray" placeholder="영문+숫자 6~13자리 입력" required>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray">중복확인</a>
+								<!-- 사용 가능 ID -->
+								<!-- <a href="#;" class="btn btn_md btn_round btn_darkgray">사용가능</a> -->
+							</div>
+						</div>
+					</div>
+					<p class="txt_guide txt_red mt_1"> 사용할 수 없는 ID입니다. </p>
+
+
+					<div class="tf_item mt_2 disabled">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_5">약정 계좌번호<span class="req">필수항목</span></label>
+								<input type="text" id="lb_tf_1_5" class="tf" value="10005702000010" disabled>
+							</div>
+						</div>
+					</div>
+
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<div class="lab">계좌 비밀번호 <span class="req">필수항목</span></div>
+								<div class="password_masking mask_darkgray">
+									<i></i><i></i><i></i><i></i>
+								</div>
+							</div>
+							<div class="btn_area">
+								<a href="#;" class="btn btn_md btn_round btn_darkgray">비밀번호 확인</a>
+								<!-- 비밀번호 정상 -->
+								<!-- <a href="#;" class="btn btn_md btn_round btn_darkgray">확인 완료</a> -->
+								<!-- 비밀번호 오류 N/5 -->
+								<!-- <a href="#;" class="btn btn_md btn_round btn_darkgray">오류 1/5</a> -->
+							</div>
+						</div>
+					</div>
+					<p class="txt_guide txt_red mt_1">비밀번호 5회 이상 오류 시 거래 제한됩니다. </p>
+				</div>
+
+				<div class="section mt_6">
+					<h2 class="tit1 mb_0">전자금융 이용 채널
+						<a href="#;" data-toggle-btn="tooltip1">
+							<i class="ico ico_help"></i>
+							<span class="sr_only">도움말</span>
+						</a>
+					</h2>
+					<!-- s: 도움말 영역 -->
+					<div class="tooltip" data-toggle-content="tooltip1">
+						<div class="tooltip_body">
+							<strong>전자금융 이용 채널</strong>
+							<p class="txt_gray mb_1">
+								우체국 전자금융에는 인터넷뱅킹, 스마트뱅킹, 기업뱅킹, 포스트페이가 있습니다.</p>
+							<p>
+								사용하시는 앱에 따라 이용 채널 설정할 수 있습니다. 포스트페이 앱에서 계좌 조회 등 서비스 이용을 위해서는 포스트페이 채널을 추가 하셔야 합니다.
+							</p>
+						</div>
+						<button type="button" class="btn btn_icon btn_close_tooltip">
+							<i class="ico ico_close_sm"></i>
+							<span class="sr_only">닫기</span>
+						</button>
+					</div>
+					<!-- e: 도움말 영역 -->
+
+					<div class="box box_border mt_3 pt_2 pb_3">
+						<ul class="set_channel">
+							<li class="clfx">
+								<!-- 미사용시 .tit_ico off 추가 -->
+								<div class="f_l tit_ico">
+									<strong class="tit2 mb_0"><i class="ico ico_set_postpay"></i> 포스트페이<span
+											class="req">필수항목</span></strong>
+								</div>
+								<div class="f_r">
+									<span class="check_switch">
+										<input type="checkbox" id="inputCheckSwitch1" checked>
+										<label for="inputCheckSwitch1">
+											<span class="txt_uncheck">미사용</span>
+											<span class="txt_checked">사용</span>
+										</label>
+									</span>
+								</div>
+							</li>
+							<li class="clfx">
+								<!-- 미사용시 .tit_ico off 추가 -->
+								<div class="f_l tit_ico off">
+									<strong class="tit2 mb_0"><i class="ico ico_set_internet"></i>인터넷뱅킹</strong>
+								</div>
+								<div class="f_r">
+									<span class="check_switch">
+										<input type="checkbox" id="inputCheckSwitch2">
+										<label for="inputCheckSwitch2">
+											<span class="txt_uncheck">미사용</span>
+											<span class="txt_checked">사용</span>
+										</label>
+									</span>
+								</div>
+							</li>
+							<li class="clfx">
+								<!-- 미사용시 .tit_ico off 추가 -->
+								<div class="f_l tit_ico">
+									<strong class="tit2 mb_0"><i class="ico ico_set_smartbank"></i>스마트뱅킹</strong>
+								</div>
+								<div class="f_r">
+									<span class="check_switch">
+										<input type="checkbox" id="inputCheckSwitch3" checked>
+										<label for="inputCheckSwitch3">
+											<span class="txt_uncheck">미사용</span>
+											<span class="txt_checked">사용</span>
+										</label>
+									</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="section mt_16 txt_sm txt_c txt_red">
+					<!-- 계좌비밀번호 입력 후 비밀번호 확인 하지 않은 경우 -->
+					<p>계좌 비밀번호 확인을 해주세요.</p>
+					<!-- 전자금융ID 입력을 하지 않은 경우 -->
+					<p>전자금융ID를 등록해 주세요.</p>
+					<!-- 전자금융ID 입결 후 중복체크를 하지 않은 경우 -->
+					<p>전자금융ID 중복 확인을 해 주세요.</p>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<!-- 비활성화시 .btn_disabled 추가 -->
+					<a href="#;" class="btn btn_xl btn_primary">
+						<span>약정 실행</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- e: 전자금융약정 -->
+			<!-- e: 본문 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+		</div>
+	</div>
+</body>
+
+</html>
