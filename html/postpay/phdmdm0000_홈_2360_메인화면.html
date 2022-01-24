@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			var $postpaySlide = $('.postpay_bottom_list');
+			$postpaySlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				fade: false,
+				dots: false,
+				centerMode: false,
+				slidesToShow: 4
+			});
+
+			$('.wrapper').css('padding-bottom', '0px');
+
+			var screen = $('html').height();
+			var under = screen - 420;
+			$('.under').css({'minHeight':under});
+
+			var $homeSlide = $('.service_list_area');
+			$homeSlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				dots: true,
+				slidesToShow: 1
+			});
+
+			var $personSlide = $('.persons_slide');
+			$personSlide.slick({
+				draggable: true,
+				arrows: false,
+				infinite: false,
+				autoplay: false,
+				// slidesToShow: 4.5,
+  			slidesToScroll: 1,
+				variableWidth: true
+			});
+
+			$('.tab_list>li>a').on('click', function () {
+				$personSlide.slick("setPosition");
+			});
+
+			//달력
+				$('.finance_calendar').each(function () {
+				$('.wrapper').css('padding-bottom', '0px');
+				$('.cal_header .tab_cal li.on a').attr('title', '선택됨');
+				$('.cal_body > div').eq($('.tab_cal li.on').index()).show();
+				$('.finance_body > div').eq($('.tab_cal li.on').index()).show();
+			});
+
+			function tabCurrent() {
+				$('.cal_body table .day').on('click', function () {
+					var currentBtn = $(this).parent().addClass('on');
+					$('.cal_body table td').not(currentBtn).removeClass("on");
+
+					var offset = $('.cal_body .box_memo').offset();
+
+					$('.cal_body .box_memo .box_inner').slideDown(
+						'fast');
+
+					$('html').animate({
+						scrollTop: offset.top
+					}, 400);
+				})
+			};
+
+			tabCurrent();
+			$('.cal_header .tab_cal li a').on('click', function () {
+				$(this).attr('title', '선택됨').parent().addClass('on').siblings().removeClass('on').children().removeAttr(
+					'title');
+				$('.finance_body > div').eq($(this).parent().index()).show().siblings().hide();
+				$('.cal_body > div').eq($(this).parent().index()).show().siblings().hide();
+			});
+			
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay_type8.html" data-page-title="포스트페이">
+		</header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="postpay home main bg_lightgray">
+
+				<!-- s: 상단 계좌 및 메뉴 -->
+				<div class="container pt_2 shadow">
+
+					<div class="ad">
+						<span class="alert_img"></span>새로워진 포스트페이 <strong>200% 활용법</strong><span class="ico ico_chevron_right_sm">페이지로 이동</span>
+					</div>
+
+					<!-- s: 슬라이드 -->
+					<div class="service_slider_area">
+						<ul class="service_list_area home_slide">
+							<li class="service_slider office">
+								<div class="pl_2 pr_2">
+									<p class="price"><span>436,900</span> 원</p>
+									<div class="d_flex">
+										<p class="account">우체국계좌 <span class="num">4210</span></p>
+										<span class="state">최근결제</span>
+									</div>
+								</div>
+								<div class="d_flex btn_wrap">
+									<button class="btn">
+										<i class="ico ico_remit"></i>
+										송금
+									</button>
+									<button role="button" class="btn">
+										<i class="ico ico_qr_sm"></i>
+										결제
+									</button>
+								</div>
+							</li>
+							<li class="service_slider postmoney">
+								<div class="pl_2 pr_2">
+									<p class="price"><span>10,000</span> 캐시</p>
+									<div class="d_flex">
+										<p class="account arrow"><span class="charge_from">충전계좌</span> 우체국 <span class="num">4210</span></p>
+										<span class="charge btn btn_round"><i class="ico ico_plus_sm"></i>충전</span>
+									</div>
+								</div>
+								<div class="d_flex btn_wrap">
+									<button class="btn">
+										<i class="ico ico_remit"></i>
+										송금
+									</button>
+									<button role="button" class="btn">
+										<i class="ico ico_qr_sm"></i>
+										결제
+									</button>
+								</div>
+							</li>
+							<li class="service_slider meeting">
+								<div class="pl_2 pr_2">
+									<p class="price"><span>1,000,000</span> 원</p>
+									<div class="d_flex aie">
+										<p class="account">같이여행가자 <span class="num">6050</span></p>
+										<ul class="circle_members">
+											<li><img src="/resources/img/content/circle_member_01.png" alt="감감"></li>
+											<li><img src="/resources/img/content/circle_member_02.png" alt="배동"></li>
+											<li><img src="/resources/img/content/circle_member_03.png" alt="공식"></li>
+											<li><img src="/resources/img/content/circle_member_03.png" alt="심심"></li>
+											<li class="add"><img src="/resources/img/content/plus_gray.png" alt="멤버 추가"></li>
+										</ul>
+									</div>
+								</div>
+								<div class="d_flex btn_wrap">
+									<button class="btn">
+										<i class="ico ico_remit"></i>
+										송금
+									</button>
+									<button role="button" class="btn">
+										<i class="ico ico_pushtalk"></i>
+										푸시톡
+									</button>
+								</div>
+							</li>
+							<li class="service_slider card">
+								<div class="pl_2">
+									<div class="card_wrap">
+										<img src="/resources/img/content/card_sample.png" alt="우체국 영리한 체크카드">
+									</div>
+									<div class="d_flex aie">
+										<p class="account lh1">우체국영리한체크카드 <span class="num">6011</span></p>
+									</div>
+								</div>
+								<button class="circle_btn">
+									<i class="ico ico_qr_sm"></i>
+									<span>결제</span>
+								</button>
+							</li>
+							<li class="service_slider traffic">
+								<div class="d_flex aie">
+									<div class="pl_2">
+										<p class="price"><span>50,000</span>원</p>
+										<div class="d_flex">
+											<p class="account">선불교통카드 <span class="num">6050</span></p>
+										</div>
+									</div>
+									<img src="/resources/img/content/home_slide_bg_01.png" class="mr_3 mb_2" alt="#">
+								</div>
+								<div class="d_flex btn_wrap">
+									<button class="btn">
+										<i class="ico ico_home_plus"></i>
+										충전
+									</button>
+									<button role="button" class="btn">
+										<i class="ico ico_nfc_thumb"></i>
+										NFC
+									</button>
+								</div>
+							</li>
+							<li class="service_slider membership">
+								<div class="d_flex aie">
+									<div class="pl_2">
+										<p class="price"><span>10,253</span>p</p>
+										<div class="d_flex">
+											<p class="account">우체국 멤버십 <span class="num">6050</span></p>
+										</div>
+									</div>
+									<img src="/resources/img/content/home_slide_bg_02.png" class="mr_3 mb_2" alt="#">
+								</div>
+								<div class="d_flex btn_wrap">
+									<button role="button" class="btn">
+										<i class="ico ico_qr_sm"></i>
+										결제
+									</button>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- e: 슬라이드 -->
+
+					<!-- s: 메뉴 목록 -->
+					<ul class="remit_menu_list type_2 mt_5">
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_06.png" alt="#">
+								<p>같이크루즈</p>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_06.png" alt="#">
+								<p>월고기</p>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/img/content/post_menu_07.png" alt="#">
+								<p>교통카드</p>
+							</a>
+						</li>
+					</ul>
+					<!-- e: 메뉴 목록 -->
+
+				</div>
+				<!-- e: 상단 계좌 및 메뉴 -->
+
+				<!-- s: 하단 주간 달력 -->
+				<div class="under pb_16">
+					<div class="container">
+						<ul class="fn_list bd_gray">
+							<li>
+								<span class="date mb_3">최근 이용내역</span>
+								<div class="flex_con_group">
+									<span>
+										<span class="box_round">
+											<i class="ico ico_fn_cash"></i>
+										</span>
+										<span>
+											<em>올리브영 가산디지털점</em>
+											<small class="tag">10/26(목) 12:35</small>
+										</span>
+									</span>
+									<span class="price">
+										<strong>-30,800</strong>
+										원
+									</span>
+								</div>
+							</li>
+						</ul>
+						<div class="fn_calendar">
+							<div class="cal_body">
+								<table>
+									<colgroup>
+										<col style="width:14.2857%">
+										<col style="width:14.2857%">
+										<col style="width:14.2857%">
+										<col style="width:14.2857%">
+										<col style="width:14.2857%">
+										<col style="width:14.2857%">
+										<col style="width:14.2857%">
+									</colgroup>
+									<thead>
+										<th scope="col">일</th>
+										<th scope="col">월</th>
+										<th scope="col">화</th>
+										<th scope="col">수</th>
+										<th scope="col">목</th>
+										<th scope="col">금</th>
+										<th scope="col">토</th>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<span class="day">7</span>
+												<small class="price">+43,269</small>
+											</td>
+											<td>
+												<span class="day">8</span>
+											</td>
+											<td>
+												<span class="day">9</span>
+											</td>
+											<td>
+												<span class="day today">10</span>
+											</td>
+											<td>
+												<span class="day">11</span>
+											</td>
+											<td>
+												<span class="day">12</span>
+												<small class="price">+102,710</small>
+											</td>
+											<td>
+												<span class="day">13</span>
+											</td>
+										</tr>
+									</tbody>
+	
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- e: 하단 주간 달력 -->
+
+				<!-- s: 하단 슬라이딩 메뉴 -->
+				<div class="bottom_fixed_area bg_delete">
+					<div class="postpay_bottom">
+						<div class="container">
+							<div class="postpay_bottom_slider_area">
+								<ul class="postpay_bottom_list">
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit purse on">전자지갑</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit calendar">금융캘린더</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit pay">결제</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit remittance">QR송금</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit event">이벤트중</span>
+										</a>
+									</li>
+									<li class="postpay_bottom_slider">
+										<a href="#">
+											<span class="tit inquiry">통합이용조회</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 하단 슬라이딩 메뉴 -->
+
+				<!-- s: 공통 레이어 로딩 -->
+				<div class="common_layers"></div>
+				<!-- e: 공통 레이어 로딩 -->
+			</div>
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
