@@ -318,9 +318,13 @@ $(document).on('click', '.btn_allmenu', function (e) {
 	setTimeout(function () {
 		$('body').toggleClass('allmenu_open');
 	}, 100);
+	setTimeout(function () {
+		$('.allmenu_inner').attr('tabindex', '0').focus();
+	}, 300);
 }).on('click', '.btn_allmenu_close, .allmenu .dimed', function (e) {
 	e.preventDefault();
 	$('body').removeClass('allmenu_open');
+	$('.btn_allmenu').focus();
 });
 
 // 다이렉트 헤더 내 토글리스트
