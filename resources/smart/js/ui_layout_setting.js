@@ -146,6 +146,10 @@ function openDatepicker(opener, target) {
 			$('body').append('<div class="modal_popup modal_datepicker hide" data-popup="layerDatepicker"><div class="dimed"></div><div class="popup_inner"><div class="popup_body"></div><button type="button" class="btn btn_close_popup">닫기</button></div></div>');
 			$('#ui-datepicker-div').appendTo('[data-popup=layerDatepicker] .popup_body');
 			openModal('layerDatepicker');
+			setTimeout(datepickerAddCaption, 200);
+		},
+		onChangeMonthYear: function () {
+			setTimeout(datepickerAddCaption, 200);
 		},
 		onClose: function () {
 			closeModal('layerDatepicker');
@@ -153,6 +157,14 @@ function openDatepicker(opener, target) {
 			this.focus();
 		}
 	}).datepicker('show');
+}
+
+function datepickerAddCaption() {
+	$('.ui-datepicker-prev, .ui-datepicker-next').attr('href', '#;');
+	$('.ui-datepicker-calendar').prepend('<caption>달력</caption>');
+	$('.ui-state-active').attr('title', '선택됨');
+	$('.ui-datepicker-today a').attr('title', '오늘');
+	$('.ui-datepicker-today .ui-state-active').attr('title', '오늘(선택됨)');
 }
 
 // 모달 레이어
