@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 로그인 페이지 전용 class
+			$('#content').addClass('login_pg');
+		});
+
+		// 휴대폰본인인증 로그인 팝업 호출
+		function mobilePopup(obj) {
+			if ($(obj).is(':checked') == true) {
+				openModal('mobile_popup', obj);
+			}
+		};
+		$(document).ready(function () {
+			$('.btn_group .btn_primary').click(function () {
+				$(this).parents('.modal_popup').removeClass('show').addClass('hide');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">로그인</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#;" class="btn btn_lg btn_primary" onclick="openModal('mobileSms_popup', this);">휴대폰 본인인증 SMS 인증</a>
+
+
+				<!-- s: 휴대폰 본인인증 인증 팝업 -->
+				<div class="modal_popup modal_sm hide" data-popup="mobileSms_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">휴대폰본인 인증</h3>
+						</div>
+						<div class="popup_body">
+							<p class="txt_cert_top">휴대폰으로 전송된 인증번호를 <br>입력하시고 인증확인 버튼을 누르세요. </p>
+							<div class="tbl_row2 mt_3">
+								<table>
+									<caption class="sr_only">휴대폰본인인증</caption>
+									<colgroup>
+										<col style="width: 160px">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">SMS 인증번호</th>
+											<td class="pr_4">
+												<label for="tf-smsan" class="sr_only">인증번호 6자리를 입력해주세요.</label>
+												<input id="tf-smsan" type="text" class="tf error" title="sms인증번호 입력"
+													placeholder="인증번호 6자리를 입력해주세요." style="width: 100%;">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+								<button type="button" class="btn btn_lg btn_primary "
+									onclick="closeModal('mobileSms_popup')">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 휴대폰 본인인증 인증 팝업 -->
+
+
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
