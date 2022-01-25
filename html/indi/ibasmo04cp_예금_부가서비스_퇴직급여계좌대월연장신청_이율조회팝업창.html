@@ -38,17 +38,6 @@
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
 				<h2 class="tit_cont">퇴직급여 계좌대월 연장신청</h2>
-
-				<button type="button" class="btn btn_favorite">
-					<i class="ico ico_star_gray"></i>
-					<span class="sr_only">마이메뉴 등록</span>
-				</button>
-				<!--
-				<button type="button" class="btn btn_favorite">
-					<i class="ico ico_star_primary"></i>
-					<span class="sr_only">마이메뉴 해제</span>
-				</button>
-				-->
 				<!-- e: 본문 헤더 -->
 			</div>
 
@@ -151,7 +140,8 @@
 											<input type="radio" name="chk2" id="chk2-2">
 											<label for="chk2-2">단기 COFIX 3.1%</label>
 										</span>
-										<a href="#;" class="btn btn_md btn_outline_default ml_3">이율조회</a>
+										<a href="#;" class="btn btn_md btn_outline_default ml_3"
+											onclick="openModal('layer01',this)">이율조회</a>
 										<span class="ml6">※ 금리 기준 일자: 2021.12.12</span>
 									</td>
 								</tr>
@@ -238,7 +228,6 @@
 					<a href="#;" class="btn btn_xl btn_primary">다음</a>
 				</div>
 
-
 				<div class="box section">
 					<dl>
 						<dt>참고사항</dt>
@@ -251,6 +240,124 @@
 					</dl>
 				</div>
 
+				<!-- Modal Popup: 이율 조회 -->
+				<div class="modal_popup modal_lg show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">이율조회</h2>
+						</div>
+						<div class="popup_body">
+							<ul class="list list1">
+								<li>단기 COFIX금리는 시행일이전 2013.12월 금리부터 조회됩니다.</li>
+								<li>조회기간은 최대 18개월까지 조회가능합니다.</li>
+								<li>공시기준일 : CD금리(매월26일자), 단기COFIX(전월 마지막주 제3영업일)</li>
+							</ul>
+							<div class="tbl_row2 mt_4">
+								<table>
+									<caption class="sr_only">이율조회</caption>
+									<colgroup>
+										<col style="width: 18%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">조회구분</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="pop_chk1" id="pop_chk1-1" checked>
+													<label for="pop_chk1-1">퇴직급여</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="pop_chk1" id="pop_chk1-2">
+													<label for="pop_chk1-2">별정국퇴직급여</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">조회기간</th>
+											<td>
+												<div class="datepicker_box">
+													<input type="text" class="tf tf_datepicker" title="시작 날짜 선택">
+													<input type="text" class="tf tf_datepicker" title="종료 날짜 선택">
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_tbl_btm mt_10">
+								<a href="#;" class="btn btn_lg btn_primary">조회</a>
+							</div>
+							<div class="mt_10">
+								<div class="tbl_tit">
+									<div class="tit_left">
+										<h3 class="tit1">대월금리별 이율 조회결과</h3>
+									</div>
+									<div class="txt_right">
+										<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
+										<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
+									</div>
+								</div>
+								<div class="tbl_data tbl_list_data">
+									<table>
+										<caption class="sr_only">이율조회</caption>
+										<colgroup>
+											<col style="width: 10%;">
+											<col style="width: 23%;">
+											<col>
+											<col>
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col" rowspan="2">순번</th>
+												<th scope="col" rowspan="2">적용년월</th>
+												<th scope="col" colspan="2">CD금리</th>
+												<th scope="col" colspan="2">단기COFIX</th>
+											</tr>
+											<tr>
+												<th scope="col">약정이율</th>
+												<th scope="col">연체이율</th>
+												<th scope="col">약정이율</th>
+												<th scope="col">연체이율</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_c">1</td>
+												<td>2021년 04월</td>
+												<td class="txt_r">3.08%</td>
+												<td class="txt_r">9.08%</td>
+												<td class="txt_r">2.8%</td>
+												<td class="txt_r">8.8%</td>
+											</tr>
+											<tr>
+												<td class="txt_c">2</td>
+												<td>2021년 05월</td>
+												<td class="txt_r">3.08%</td>
+												<td class="txt_r">9.08%</td>
+												<td class="txt_r">2.8%</td>
+												<td class="txt_r">8.8%</td>
+											</tr>
+											<tr>
+												<td class="txt_c">3</td>
+												<td>2021년 06월</td>
+												<td class="txt_r">3.08%</td>
+												<td class="txt_r">9.08%</td>
+												<td class="txt_r">2.8%</td>
+												<td class="txt_r">8.8%</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 예금담보이율 조회 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
