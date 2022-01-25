@@ -318,9 +318,13 @@ $(document).on('click', '.btn_allmenu', function (e) {
 	setTimeout(function () {
 		$('body').toggleClass('allmenu_open');
 	}, 100);
+	setTimeout(function () {
+		$('.allmenu_inner').attr('tabindex', '0').focus();
+	}, 300);
 }).on('click', '.btn_allmenu_close, .allmenu .dimed', function (e) {
 	e.preventDefault();
 	$('body').removeClass('allmenu_open');
+	$('.btn_allmenu').focus();
 });
 
 // 다이렉트 헤더 내 토글리스트
@@ -365,8 +369,17 @@ function scrVertical(_obj) {
 	})
 }
 
-$(document).on('click', '.untact_menu > li > a', function(e){
+$(document).on('click', '.untact_menu > li > a', function (e) {
 	e.preventDefault();
 	$('.untact_menu > li > a').not($(this)).removeClass('active').siblings('.detail').slideUp('fast');
 	$(this).toggleClass('active').siblings('.detail').slideToggle('fast');
 })
+
+// 레이어 옵션선택 활성화항목 접근성 개선
+$(function () {
+	setTimeout(function () {
+		$('.opt_list .active').each(function () {
+			$(this).attr('title', '선택됨');
+		});
+	}, 200);
+});
