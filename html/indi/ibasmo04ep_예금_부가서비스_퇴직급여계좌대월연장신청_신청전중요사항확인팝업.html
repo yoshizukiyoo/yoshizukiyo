@@ -22,9 +22,33 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			//
-		});
+		// 약관 탭메뉴 
+		function clauseList(id, obj) {
+			$('[data-clause]').hide();
+			$(obj).addClass('current').parent().siblings().find('>a').removeClass('current');
+			$('[data-clause=' + id + ']').show();
+		}
+
+		// 뷰어 박스 실행
+		function checkAgree(obj, id) {
+			if ($(obj).is(':checked')) {
+				$('.layer_viewer').show();
+			}
+
+			$('[data-important').hide();
+
+			if (id == 'important1') {
+				$('[data-important=important1]').show();
+			} else {
+				$('[data-important=important2]').show();
+			}
+		}
+
+		// 뷰어 닫기
+		function closePdf() {
+			$('.layer_viewer').hide();
+			$('.clause_info_txt').show();
+		}
 	</script>
 </head>
 
@@ -164,23 +188,76 @@
 					<a href="#;" class="btn btn_xl btn_primary">조회</a>
 				</div>
 
-				<!-- s: 로딩 팝업 -->
-				<div class="modal_popup modal_alert show" data-popup="layerSampleAlert">
+				<!-- s: 신청 전 중요 사항 확인 팝업 -->
+				<div class="modal_popup modal_alert show" data-popup="layerSampleLg">
 					<div class="dimed"></div>
-					<div class="popup_inner" tabindex="0" style="width: 450px;">
-						<div class="popup_body">
-							<div class="loader mt_8 mb_11"></div>
-							<p class="txt_c txt_lg">
-								<strong>고객님의 신용정보조회가 진행중입니다.</strong>
-							</p>
-							<p class="mt_2 txt_c">
-								다소 시간이 소요됩니다.<br>
-								잠시만 기다려주세요.
-							</p>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h2 class="popup_tit">가입 전 중요 사항 확인</h2>
 						</div>
+						<div class="popup_body p_0 pb_8">
+							<div class="pl_10 pr_10 pt_4">
+
+								<!-- s: 중요사항 목록 -->
+								<div class="pt_5 pb_7">
+									<ul class="clause_list pb_6">
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck1_1" onchange="checkAgree(this, 'important1');"
+														checked="">
+													<label for="inputCheck1_1">대월계좌연장 관련 중요한 사항</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+										<li>
+											<div class="l">
+												<span class="check_item circle">
+													<input type="checkbox" name="" id="inputCheck1_2" onchange="checkAgree(this, 'important2');">
+													<label for="inputCheck1_2">확인 사항 2</label>
+												</span>
+											</div>
+											<div class="r"><a href="#" class="btn btn_xs btn_outline_default">저장하기</a></div>
+										</li>
+									</ul>
+								</div>
+								<!-- e: 중요사항 목록 -->
+
+							</div>
+
+							<!-- s: 중요 사항 뷰어 -->
+							<div class="layer_viewer" style="display: block;">
+								<div class="inner">
+									<!-- s: 대월계좌연장 관련 중요한 사항 -->
+									<div data-important="important1" style="display: block;">
+										<h3 class="tit_pin mb_5">대월계좌연장 관련 중요한 사항</h3>
+										<ul class="list list1">
+											<li>상품설명서 내 기준금리 일자는 약정서 작성일자로 자동 기입니다.</li>
+											<li>다른은행에 3천만원을 초과하는 신용대출이 있을 경우 연장 신청이 불가능합니다.</li>
+										</ul>
+									</div>
+									<!-- e: 대월계좌연장 관련 중요한 사항 -->
+
+									<!-- s: 확인 사항 2 -->
+									<div data-important="important2" style="display: none;">
+										<h3 class="tit_pin mb_5">확인 사항 2</h3>
+									</div>
+									<!-- e: 확인 사항 2 -->
+								</div>
+								<a href="#;" class="btn_pdf_close" onclick="closePdf();return false;"><span
+										class="sr_only">닫기</span></a>
+							</div>
+							<!-- e: 중요 사항 뷰어 -->
+
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerSampleLg');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
 				</div>
-				<!-- e: 로딩 팝업 -->
+				<!-- e: 신청 전 중요 사항 확인 팝업 -->
 
 				<!-- s: alert 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
