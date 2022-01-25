@@ -333,3 +333,12 @@ $(document).on('click', '.direct_ongoing_list dt a', function (e) {
 	$(this).parent('dt').next('dd').slideToggle('fast').siblings('dd').slideUp('fast');
 	$(this).parent('dt').toggleClass('on').siblings('dt').removeClass('on');
 });
+
+// 레이어 옵션선택 활성화항목 접근성 개선
+$(function () {
+	setTimeout(function () {
+		$('.opt_list .active').each(function () {
+			$(this).attr('title', '선택됨');
+		});
+	}, 200);
+});
