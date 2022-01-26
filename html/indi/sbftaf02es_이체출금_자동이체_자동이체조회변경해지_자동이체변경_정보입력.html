@@ -62,7 +62,8 @@
 					</div>
 					<!-- s: 이체금액 입력 -->
 					<div class="account_amount mt_8">
-						<div class=inner>
+						<!-- s: 이체종류: 일반(입출식예금), 타행(당일출금), 월불입성(적립성예금) -->
+						<div class="inner">
 							<a href="#n" onclick="openModal('amount_keypad', this); return false;">
 								<div class="amount_label">
 									<span>금액 <strong class="req">필수항목</strong></span>
@@ -78,7 +79,27 @@
 								<span class="sr_only">초기화</span>
 							</button>
 						</div>
-						<p class="mt_1">나의 이체한도 : 1회 3,000,000원 / 1일 3,000,000원</p>
+						<!-- e: 이체종류: 일반(입출식예금), 타행(당일출금), 월불입성(적립성예금) -->
+
+						<!-- s: 이체종류: 매일 -->
+						<div class="inner mt_4">
+							<a href="#n" onclick="openModal('amount_keypad02', this); return false;">
+								<div class="amount_label">
+									<span>금액 <strong class="req">필수항목</strong></span>
+								</div>
+								<div class="amount_area">
+									<span class="txt_amt1">4,123,000</span>
+									<span class="txt_amt2">원</span>
+									<span class="txt_amt3">사백일십이만삼천원</span>
+								</div>
+							</a>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+						<!-- e: 이체종류: 매일 -->
+						<p class="mt_1">출금가능금액 : 21,215,998원, 1일이체한도 3,000,000원</p>
 						<!-- Validation Check 문구 -->
 						<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
 					</div>
@@ -130,6 +151,7 @@
 						</div>
 					</a>
 
+					<!-- s: 이체종류: 일반(입출식예금), 타행(당일출금), 매일(매일모아e-적금) -->
 					<div class="mt_4">
 						<div class="flex_box">
 							<div class="l">
@@ -192,6 +214,66 @@
 							</div>
 						</a>
 					</div>
+					<!-- e: 이체종류: 일반(입출식예금), 타행(당일출금), 매일(매일모아e-적금) -->
+
+					<!-- s: 이체종류: 월불입성(적립성예금) -->
+					<div class="mt_4">
+						<div class="flex_box">
+							<div class="l">
+								<h3 class="tit2">자동이체기간<span class="req">필수항목</span></h3>
+							</div>
+							<div class="r fx_align_start">
+								<a href="#;" class="btn btn_sm btn_round btn_default"
+									onclick="openModal('tip_bottom_sheet', this); return false;"><i class="ico ico_tip_sm mr_1"></i>
+									참고사항</a>
+							</div>
+						</div>
+						<div class="tf_double">
+							<div class="tf_item">
+								<div class="tf_item_body">
+									<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="2021.10." readonly
+										required>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+											<i class="ico ico_datepicker"></i>
+											<span class="sr_only">달력</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item">
+								<div class="tf_item_body">
+									<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.10." readonly
+										required>
+									<div class="btn_area">
+										<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+											<i class="ico ico_datepicker"></i>
+											<span class="sr_only">달력</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mt_1">
+							<span class="check_item">
+								<input type="checkbox" name="chk1" id="chk1_1">
+								<label for="chk1_1">기간제한없음</label>
+							</span>
+						</div>
+						<a href="#;" class="tf_item mt_1" onclick="openModal('layerOption', this); return false;">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<span class="lab">자동이체일 <span class="req">필수항목</span></span>
+									<p class="tf">매월 9일</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- e: 이체종류: 월불입성(적립성예금) -->
 				</div>
 
 				<div class="section">
@@ -556,7 +638,7 @@
 			</div>
 			<!-- e: 은행/증권사 검색결과 팝업 -->
 
-			<!-- s: 이체금액 bottom sheet -->
+			<!-- s: 이체금액 - 이체종류: 일반(입출식예금), 타행(당일출금), 월불입성(적립성예금) bottom sheet -->
 			<div class="modal_popup modal_bottom_sheet hide no_dimed" data-popup="amount_keypad">
 				<div class="dimed"></div>
 				<div class="popup_inner" tabindex="0">
@@ -578,6 +660,34 @@
 						<!-- s: 보안 키패드 영역 -->
 						<div class="txt_c">키패드 영역</div>
 						<!-- e: 보안 키패드 영역 -->
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 이체금액 bottom sheet -->
+
+			<!-- s: 이체금액 - 이체종류: 매일 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide no_dimed" data-popup="amount_keypad02">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">얼마를 보낼까요?</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<div class="money_select type02">
+								<a href="#n" class="on">1천</a>
+								<a href="#n">2천</a>
+								<a href="#n">3천</a>
+								<a href="#n">4천</a>
+								<a href="#n">5천</a>
+								<a href="#n">6천</a>
+								<a href="#n">7천</a>
+								<a href="#n">8천</a>
+								<a href="#n">9천</a>
+								<a href="#n">1만</a>
+							</div>
+						</div>
 					</div>
 					<button type="button" class="btn btn_close_popup">닫기</button>
 				</div>
