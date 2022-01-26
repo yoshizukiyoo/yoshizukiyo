@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 레이팝업 경조인사문선택 탭메뉴 활성화
+			$('.card_select a').on('click', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="card_select_"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+
+			// 레이팝업 경조인사문 직접입력 탭메뉴 활성화
+			$('.card_write a').on('click', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="card_write"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">타행 경조금배달</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+						<li><span class="num">2</span><span class="txt">입력확인</span></li>
+						<li><span class="num">3</span><span class="txt">실행완료</span></li>
+					</ul>
+				</div>
+
+				<div class="first_section box">
+					<ul class="list list1">
+						<li>경조금 인터넷결제 서비스란? <br>우체국 인터넷 뱅킹에서 회원 가입없이 경조금을 송금할 수 있는 서비스 입니다. </li>
+						<li>우체국 인터넷뱅킹 약정 고객은 인증서 로그인 한 후 예금/경조금 배달 서비스에서 이용하십시요. </li>
+					</ul>
+				</div>
+
+				<div class="tab_menu_type1 section">
+					<ul>
+						<li><a href="#;" class="current">타행송금신청</a></li>
+						<li><a href="#;">타행송금결과조회</a></li>
+						<li><a href="#;">타행송금취소</a></li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<ul class="list list1">
+						<li>경조카드와 경조환증서(우체국에서 현금 교환할 수 있는 증서)를 받는 분 주소지로 배달해 드립니다. </li>
+						<li>송금액 및 수수료 결제는 하단의 우체국 배달정보를 확인(등록)하신 후 제휴사의 결제시스템에서 결제은행 정보를 등록하시면 됩니다. </li>
+						<li>송금한도(건당) : 300,000원(최소한도 : 160원) </li>
+						<li>송금수수료(건당) : 3,500원 </li>
+						<li>경조금 배달기준(영업일 기준) : 당일(D) 17:00까지 접수된 건에 한하여 익일(D+1) 익일특급우편으로 배달되며, 17:00시 이후 접수된 건은 익익일(D+2) 배달됩니다.
+						</li>
+						<li>영업일은 월요일부터 금요일이며 공휴일 제외 </li>
+						<li>받는 분의 주소가 예식장, 장례식장의 경우는 경조금 배달을 이용하실 수 없습니다. </li>
+						<li>새주소(도로명주소)의 표기법
+							<ul class="list list3">
+								<li>기본주소 : 시·도 + 시·군·구 + 읍·면 + 도로명 + 지하여부 + 건물번호</li>
+								<li>상세주소 : 상세주소(동·호수 등) + 참고항목(법정동, 건물/아파트/상호 명칭 등)</li>
+							</ul>
+						</li>
+						<li>도로명주소 현행화 작업시간(평일 06:20 ~ 06:40)에는 경조금 송금 거래가 안될 수 있습니다.</li>
+					</ul>
+				</div>
+
+				<!-- s: 보내는분 정보입력 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">보내는 분</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">보내는 분 정보 입력양식이며 보내는분 성명, 주소, 문자메시지수신여부, 전화번호를 입력하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">보내는분 성명
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="text" class="tf" title="보내는분 성명 입력" style="width: 350px;">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">주소
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="address_form">
+											<div class="zip_code">
+												<input type="text" class="tf" title="우편번호 입력" disabled style="width: 148px;">
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default"
+														onclick="openModal('zipcode_popup', this);">우편번호검색</a>
+												</div>
+											</div>
+											<div class="add1"><input type="text" class="tf" placeholder="도로명주소 예시) 서울종로구 세종대로 166"
+													title="도로명주소 예시) 서울종로구 세종대로 166" disabled style="width: 700px"></div>
+											<div class="add2"><input type="text" class="tf" placeholder="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)"
+													title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" style="width: 700px"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">문자메시지수신(무료)<br>배달완료 시 1회 발송 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="selectbox_wrap" style="width: 420px;">
+											<dl title="조건 선택">
+												<dt><a href="#none"><span>(N) 수신안함</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>(N) 수신안함</span></a></li>
+														<li><a href="#none"><span>(Y) 수신함</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호 <strong class="necessary">*</strong></th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>010</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+											<span class="ml6">반송시 안내를 위해 입력 바랍니다.</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 보내는분 정보입력 -->
+
+				<!-- s: 받는분 정보입력 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">받는 분</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">받는 분 정보 입력양식이며 받는 분 성명, 전화번호, 주소 정보를 입력하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">받는 분 성명
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="text" class="tf" title="받는 분 성명 입력" style="width: 350px;">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">전화번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="phone_number">
+											<div class="selectbox_wrap" style="width: 93px;">
+												<dl title="조건 선택">
+													<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+													<dd>
+														<ul>
+															<li><a href="#none"><span>010</span></a></li>
+															<li><a href="#none"><span>010</span></a></li>
+														</ul>
+													</dd>
+												</dl>
+											</div>
+											<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px"></div>
+											<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px"></div>
+											<span class="ml6">반송시 안내를 위해 입력 바랍니다.</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">주소
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="address_form">
+											<div class="zip_code">
+												<input type="text" class="tf" title="우편번호 입력" disabled style="width: 148px;">
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default"
+														onclick="openModal('zipcode_popup', this);">우편번호검색</a>
+												</div>
+											</div>
+											<div class="add1"><input type="text" class="tf" placeholder="도로명주소 예시) 서울종로구 세종대로 166"
+													title="도로명주소 예시) 서울종로구 세종대로 166" disabled style="width: 700px"></div>
+											<div class="add2"><input type="text" class="tf" placeholder="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)"
+													title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)" style="width: 700px"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 받는분 정보입력 -->
+
+				<!-- s: 반송은행 정보입력 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">반송 은행</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">반송 은행 정보 입력양식이며 반송 은행, 반송계좌번호 정보를 입력하실 수 있습니다.</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">반송 은행
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 350px;">
+											<dl title="반송 은행 선택">
+												<dt><a href="#;"><span>선택하십시오.</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>은행1</span></a></li>
+														<li><a href="#;"><span>은행2</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">반송계좌번호
+										<strong class="necessary">*</strong>
+									</th>
+									<td>
+										<input type="text" class="tf" style="width: 620px;" title="반송계좌번호 입력"
+											placeholder="‘- 없이 입력’과 반송시 우편환수수료 공제 후 반송계좌로 입금됩니다.">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 반송은행 정보입력 -->
+
+				<!-- s: 송금정보입력 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">송금정보</h3>
+						</div>
+						<div class="txt_right">
+							<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">송금정보 입력 양식이며 배달구분, 보내는 금액, 경조인사문 입력, 경조인사문 구분, 경조인사문 , 경조카드 미리보기 정보를 제공하고 있습니다.
+							</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">배달구분
+										<strong class="necessary">*</strong>
+									</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="chk1" id="chk1_1" checked>
+											<label for="chk1_1">배달구분</label>
+										</span>
+										<span class="ml6">(수수료 : 3,500원)</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										보내는 금액
+										<strong class="necessary">*</strong>
+									</th>
+									<td colspan="3">
+										<div class="trans_money">
+											<input type="text" class="tf" title="보내는 금액 입력">
+											<div class="btn_trans_money">
+												<button type="button" class="btn btn_sm btn_default">1만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">50만</button>
+												<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">경조인사문 입력<strong class="necessary">*</strong></th>
+									<td colspan="3">
+										<button type="button" class="btn btn_sm btn_outline_default"
+											onclick="openModal('layer05', this);">경조인사문선택 </button>
+										<button type="button" class="btn btn_sm btn_outline_default"
+											onclick="openModal('layer06', this);">직접입력 </button>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">경조인사문 구분</th>
+									<td>결혼</td>
+									<th scope="row">경조인사문</th>
+									<td>결혼을 축하하며 복된 가정 이루기 바랍니다.</td>
+								</tr>
+								<tr>
+									<th scope="row">경조카드 미리보기</th>
+									<td colspan="3">
+										<div class="greeting_card bg01">
+											<strong>결혼축하카드</strong>
+											<p>새 식구 맞으심을 축하하며 화목한 가정<br> 이루시기를 기원합니다.</p>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 송금정보입력 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="#;" class="btn btn_xl btn_primary">확인</a>
+				</div>
+
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">은행별 안내</h3>
+						</div>
+					</div>
+					<div class="tbl_data tbl_list_data">
+						<table>
+							<caption class="sr_only">은행별 안내 표이며 은행명, 이용시간, 법인계좌사용여부, 송금취소시 당일환불 여부 정보를 제공하고 있습니다.</caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">은행명</th>
+									<th scope="col">이용시간</th>
+									<th scope="col">법인계좌사용여부</th>
+									<th scope="col">송금취소시<br>당일환불 여부</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_c">1</td>
+									<td class="txt_c">경남은행</td>
+									<td class="txt_c">00:00~24:00</td>
+									<td rowspan="17" class="txt_c">○</td>
+									<td rowspan="17" class="txt_c">당일</td>
+								</tr>
+								<tr>
+									<td class="txt_c">2</td>
+									<td class="txt_c">광주은행</td>
+									<td class="txt_c border_r">00:00~23:55</td>
+								</tr>
+								<tr>
+									<td class="txt_c">3</td>
+									<td class="txt_c">국민은행</td>
+									<td class="txt_c border_r">00:00~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">4</td>
+									<td class="txt_c">기업은행</td>
+									<td class="txt_c border_r">00:00~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">5</td>
+									<td class="txt_c">농협은행</td>
+									<td class="txt_c border_r">00:30~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">6</td>
+									<td class="txt_c">대구은행</td>
+									<td class="txt_c border_r">01:00~24:00 <br>(휴일 07:00~24:00)</td>
+								</tr>
+								<tr>
+									<td class="txt_c">7</td>
+									<td class="txt_c">부산은행</td>
+									<td class="txt_c border_r">00:10~23:50</td>
+								</tr>
+								<tr>
+									<td class="txt_c">8</td>
+									<td class="txt_c">수협은행</td>
+									<td class="txt_c border_r">00:30~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">9</td>
+									<td class="txt_c">신한은행</td>
+									<td class="txt_c border_r">00:00~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">10</td>
+									<td class="txt_c">우리은행</td>
+									<td class="txt_c border_r">00:00~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">11</td>
+									<td class="txt_c">전북은행</td>
+									<td class="txt_c border_r">00:10~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">12</td>
+									<td class="txt_c">SC제일은행</td>
+									<td class="txt_c border_r">00:00~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">13</td>
+									<td class="txt_c">제주은행</td>
+									<td class="txt_c border_r">00:20~23:55</td>
+								</tr>
+								<tr>
+									<td class="txt_c">14</td>
+									<td class="txt_c">하나은행</td>
+									<td class="txt_c border_r">01:15~23:55</td>
+								</tr>
+								<tr>
+									<td class="txt_c">15</td>
+									<td class="txt_c">한국씨티은행</td>
+									<td class="txt_c border_r">00:00~24:00</td>
+								</tr>
+								<tr>
+									<td class="txt_c">16</td>
+									<td class="txt_c">새마을금고</td>
+									<td class="txt_c border_r">00:00~23:30</td>
+								</tr>
+								<tr>
+									<td class="txt_c">17</td>
+									<td class="txt_c">신협중앙회</td>
+									<td class="txt_c border_r">00:10~23:50</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- s: 우편번호 검색 팝업 -->
+				<div class="modal_popup modal_sm hide line_popup" data-popup="zipcode_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">우편번호검색</h3>
+						</div>
+						<div class="popup_body">
+							<div class="zipcode_search">
+								<input type="text" title="우편번호 입력" placeholder="우편번호 검색란 입니다.">
+								<button type="button"><span class="sr_only">검색</span></button>
+							</div>
+							<div class="txt_info_zipcode">
+								<ul class="list list1">
+									<li>
+										도로명, 건물명, 지번에 대해서 통합검색이 가능합니다.
+										<div class="address_example">
+											<div class="box_l"><span>검색방법</span></div>
+											<div class="box_r">
+												<ul>
+													<li>
+														<span>도로명 + 건물번호</span>
+														예) 도움로 19
+													</li>
+													<li>
+														<span>건물명</span>
+														예) 나주시 00아파트
+													</li>
+													<li>
+														<span>읍/면/동/리 + 지번</span>
+														예) 어진동 307-19
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="mt_4">
+										도로명주소 및 국가기초구역에 대한 자세한 안내는 <a href="#;" target="_blank" class="txt_normal"
+											title="새창으로 열림">도로명주소안내시스템</a>을 참고하시기 바랍니다.
+									</li>
+								</ul>
+							</div>
+							<!-- s: 우편번호 검색결과 목록 -->
+							<div class="zipcode_search_result">
+								<div class="tbl_data tbl_list_data">
+									<table>
+										<caption class="sr_only">우편번호 검색 목록이며 우편번호, 주소 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 26%">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">우편번호</th>
+												<th scope="col">주소</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<!-- s: 20220125 수정사항반영 / 조회결과없음 case 추가 -->
+											<tr>
+												<td colspan="2" class="txt_c">검색된 결과가 없습니다.</td>
+											</tr>
+											<!-- e: 20220125 수정사항반영 / 조회결과없음 case 추가 -->
+
+											<tr>
+												<td class="txt_c">25272</td>
+												<td>
+													<a href="#n">
+														강원도 횡성군 강림면 태종로 12 (강림리)<br>
+														강원도 횡성군 강림면 강림리 869
+													</a>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">25272</td>
+												<td>
+													<a href="#n">
+														강원도 횡성군 강림면 태종로 12 (강림리)<br>
+														강원도 횡성군 강림면 강림리 869
+													</a>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">25272</td>
+												<td>
+													<a href="#n">
+														강원도 횡성군 강림면 태종로 12 (강림리)<br>
+														강원도 횡성군 강림면 강림리 869
+													</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- e: 우편번호 검색결과 목록 -->
+
+							<!-- s: 주소 등록 -->
+							<div class="address_write" style="display: none;">
+								<div class="tbl_row2">
+									<table>
+										<caption class="sr_only">상세주소 입력 양식이며 상세주소, 참고항목 정보를 제공하고 있습니다.</caption>
+										<colgroup>
+											<col style="width: 21%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">우편번호</th>
+												<td><input type="text" class="tf" value="25272" disabled style="width: 80px"></td>
+											</tr>
+											<tr>
+												<th scope="row">기본주소</th>
+												<td><input type="text" class="tf" value="강원도 횡성군 강림면 태종로 12 (강림리)" disabled
+														style="width: 100%;"></td>
+											</tr>
+											<tr>
+												<th scope="row">상세주소</th>
+												<td><input type="text" class="tf" value="테스트 임의작성" style="width: 100%;"></td>
+											</tr>
+											<tr>
+												<th scope="row">참고항목</th>
+												<td><input type="text" class="tf" value="(강림리)" style="width: 100%;"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- e: 주소 등록 -->
+							<div class="paging">
+								<a href="#" class="dir fst"><span class="sr_only">처음</span></a>
+								<a href="#" class="dir prev"><span class="sr_only">이전</span></a>
+								<strong title="현재 페이지">1</strong>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+								<a href="#" class="dir next"><span class="sr_only">다음</span></a>
+								<a href="#" class="dir lst"><span class="sr_only">끝</span></a>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('zipcode_popup');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('zipcode_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 우편번호 검색 팝업 -->
+
+				<!-- Modal Popup : 경조인사문 -->
+				<div class="modal_popup modal_md show line_popup" data-popup="layer05">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">경조인사문</h3>
+						</div>
+						<div class="popup_body">
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>결혼, 축하, 위로, 조위 등 경조사별로 격식에 맞는 477종류의 다양한 인사문입니다.</li>
+									<li>경조카드는 선택하신 인사문에 따라 자동 선택되어 배달됩니다.</li>
+								</ul>
+							</div>
+							<div class="tab_menu_type3 sm mt_6 card_select">
+								<ul>
+									<li><a href="#;" class="current" data-tab-tg="card_select_tab1"><span>결혼</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab2"><span>축하</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab3"><span>위로</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab4"><span>조위</span></a></li>
+								</ul>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab1">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 진심으로 축하합니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>두 사람의 소중한 결합을 축하하며 더없이…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>댁내에 경사 맞으심을 축하하며 해복한 가정…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>새 식구 맞으심을 축하하며 화목한 가정 이루…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">닫기</button>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab2" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">닫기</button>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab3" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">닫기</button>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab4" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 진심으로 축하합니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05');">닫기</button>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 경조인사문 -->
+
+				<!-- Modal Popup : 경조인사문 자주쓰는 경조문 -->
+				<div class="modal_popup modal_md hide line_popup" data-popup="layer05-1">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">경조인사문</h3>
+						</div>
+						<div class="popup_body">
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>결혼, 축하, 위로, 조위 등 경조사별로 격식에 맞는 477종류의 다양한 인사문입니다.</li>
+									<li>경조카드는 선택하신 인사문에 따라 자동 선택되어 배달됩니다.</li>
+								</ul>
+							</div>
+							<div class="tab_menu_type3 sm mt_6 card_select">
+								<ul>
+									<li><a href="#;" data-tab-tg="card_select_tab1"><span>결혼</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab2"><span>축하</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab3"><span>위로</span></a></li>
+									<li><a href="#;" data-tab-tg="card_select_tab4"><span>조위</span></a></li>
+									<li><a href="#;" class="current" data-tab-tg="card_select_tab5"><span>자주쓰는 경조문</span></a></li>
+								</ul>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab1" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 진심으로 축하합니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>두 사람의 소중한 결합을 축하하며 더없이…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>댁내에 경사 맞으심을 축하하며 해복한 가정…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>새 식구 맞으심을 축하하며 화목한 가정 이루…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05-1');">닫기</button>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab2" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05-1');">닫기</button>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab3" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05-1');">닫기</button>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab4" style="display:none;">
+								<div class="popup_search_box">
+									<input type="text" class="tf" title="인사문 입력" placeholder="인사문 검색">
+									<button type="button" class="ico_search_bold"><span class=" sr_only">검색하기</span></button>
+								</div>
+								<div class="tbl_data tbl_row_data mt_2">
+									<table>
+										<caption class="sr_only">경조인사문</caption>
+										<colgroup>
+											<col style="width: 15%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 복된 가정 이루기 바랍니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 두 분의 앞날에 행복이 함께…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 축하하며 서로 존중하고 더 많은 사랑…</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">조위</td>
+												<td>
+													<div class="flex_box txt_over">
+														<div class="l">
+															<span>결혼을 진심으로 축하합니다.</span>
+														</div>
+														<div class="r">
+															<a href="#;" class="btn btn_sm btn_default">선택</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer05-1');">닫기</button>
+								</div>
+							</div>
+							<div class="mt_4 tab_sub" data-sub-tab="card_select_tab5">
+								<h3 class="tit2">자주쓰는 경조문</h3>
+								<div class="tbl_data tbl_list_data tbl_scroll_y">
+									<table>
+										<caption class="sr_only">경조문 관리</caption>
+										<colgroup>
+											<col style="width: 16%">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">구분</th>
+												<th scope="col">경조인사문</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box">
+														<div class="l">축하드려요</div>
+														<div class="r">
+															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
+															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
+															<button type="button" class="btn btn_xs btn_default"
+																onclick="openModal('alert_popup', this);">삭제</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">결혼</td>
+												<td>
+													<div class="flex_box">
+														<div class="l">행복하세요</div>
+														<div class="r">
+															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
+															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
+															<button type="button" class="btn btn_xs btn_default">삭제</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">축하</td>
+												<td>
+													<div class="flex_box">
+														<div class="l">꿈을 이루셨네요</div>
+														<div class="r">
+															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
+															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
+															<button type="button" class="btn btn_xs btn_default">삭제</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="txt_c">위로</td>
+												<td>
+													<div class="flex_box">
+														<div class="l">힘내세요</div>
+														<div class="r">
+															<button type="button" class="btn btn_xs btn_outline_default">선택</button>
+															<button type="button" class="btn btn_xs btn_outline_default">수정</button>
+															<button type="button" class="btn btn_xs btn_default">삭제</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<h3 class="tit2">자주쓰는 인사문 등록</h3>
+								<div class="tbl_row2">
+									<table>
+										<caption class="sr_only">경조문구 관리</caption>
+										<colgroup>
+											<col style="width: 25%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">구분</th>
+												<td>
+													<span class="check_item">
+														<input type="radio" name="chk3" id="chk3_1" checked>
+														<label for="chk3_1">결혼</label>
+													</span>
+													<span class="check_item">
+														<input type="radio" name="chk3" id="chk3_2">
+														<label for="chk3_2">축하</label>
+													</span>
+													<span class="check_item">
+														<input type="radio" name="chk3" id="chk3_3">
+														<label for="chk3_3">위로</label>
+													</span>
+													<span class="check_item">
+														<input type="radio" name="chk3" id="chk3_4">
+														<label for="chk3_4">호위</label>
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row" class="v_top">경조문구</th>
+												<td>
+													<textarea name="" id="" class="tf" title="경조문구 입력"></textarea>
+													<div class="mt_1">/ 200Byte (최대 한글 100자, 영/숫자 200자)</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn_group">
+									<a href="#;" class="btn btn_lg btn_outline_default" onclick="closeModal('layer05-1');">닫기</a>
+									<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('layer05-1');">수정</a>
+									<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('layer05-1');">등록</a>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 경조인사문  자주쓰는 경조문 -->
+
+				<!-- Modal Popup : 경조인사문 직접입력 -->
+				<div class="modal_popup modal_md hide line_popup" data-popup="layer06">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">경조인사문</h3>
+						</div>
+						<div class="popup_body">
+							<div class="popup_box_gray">
+								<ul class="list list1">
+									<li>경조인사문 입력시 첫 라인의 첫 칸을 띄우지 말고 입력하여 주시기 바랍니다.</li>
+									<li>경조카드에 인쇄되는 인사문은 총 3줄, 200바이트까지 입력 가능합니다.</li>
+									<li>줄바꿈은 엔터를 누르시거나 마우스로 입력하실 칸을 선택하시면 됩니다.</li>
+									<li>특수문자( &lt; &gt; " ' )는 입력할 수 없습니다.</li>
+								</ul>
+							</div>
+							<div class="tbl_row2 mt_4">
+								<table>
+									<caption class="sr_only">경조인사문 직접입력</caption>
+									<colgroup>
+										<col style="width: 25%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">구분</th>
+											<td>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_1" checked>
+													<label for="chk3_1">결혼</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_2">
+													<label for="chk3_2">축하</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_3">
+													<label for="chk3_3">위로</label>
+												</span>
+												<span class="check_item">
+													<input type="radio" name="chk3" id="chk3_4">
+													<label for="chk3_4">호위</label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="pl_0 pr_0">
+												<textarea name="" id="" class="tf" placeholder="41자 / 200 자 (최대 한글 100자, 영/숫자 200자)"
+													title="41자 / 200 자 (최대 한글 100자, 영/숫자 200자)"></textarea>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<span class="check_item square mt_2">
+								<input type="checkbox" name="chk_ok" id="chk_ok">
+								<label for="chk_ok">자주쓰는 인사문 등록</label>
+							</span>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default"
+									onclick="closeModal('layer06');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer06');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 경조인사문 직접입력 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
