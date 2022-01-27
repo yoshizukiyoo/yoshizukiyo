@@ -22,7 +22,7 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function () {
 			$('.account_arr').click(function () {
 				var tit = $(this).attr('title');
 				$(this).parents('.account_tab').toggleClass('active');
@@ -32,6 +32,14 @@
 					$(this).attr('title', '그룹 접기');
 				}
 			});
+
+			$('input[name="noti_chk"]').on('change', function () {
+				if ($(this).is(':checked')) {
+					$(this).closest('.noti_chkbox_type2').addClass('on');
+				} else {
+					$(this).closest('.noti_chkbox_type2').removeClass('on')
+				}
+			})
 		})
 	</script>
 </head>
@@ -62,7 +70,7 @@
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-				
+
 
 				<!-- Modal Popup : 알림 종류 설정 -->
 				<div class="modal_popup modal_500 show" data-popup="layer05-1">
@@ -72,13 +80,15 @@
 							<h3 class="popup_tit">알림 종류 설정</h3>
 						</div>
 						<div class="popup_body">
+
+							<!-- s: 20220127 디자인 수정 -->
 							<div class="flex_box">
-								<div class="l">스마트뱅킹 앱 PUSH 알림 같이 받기</div>
+								<div class="l tit_arr_sm">스마트뱅킹 앱 PUSH 알림 같이 받기</div>
 								<div class="r">
 									<div class="btn_mouse_toggle txt_toggle">
 										<div class="switch mr_0">
-											<input type="checkbox" id="noti_chk" checked>
-											<label for="noti_chk">
+											<input type="checkbox" id="noti_chk_toggle" checked>
+											<label for="noti_chk_toggle">
 												<span class="first">미수신</span>
 												<span class="last">수신</span>
 											</label>
@@ -86,34 +96,44 @@
 									</div>
 								</div>
 							</div>
-							<div class="box bg_lightgray mt_3 noti_chkbox">
+							<div class="mt_3 noti_chkbox_type2">
 								<span class="check_item circle">
-									<input type="checkbox" name="" id="noti_chk1" checked>
+									<input type="checkbox" name="noti_chk" id="noti_chk1">
 									<label for="noti_chk1">전체</label>
 								</span>
+							</div>
+							<div class="mt_3 noti_chkbox_type2 on">
 								<span class="check_item circle">
-									<input type="checkbox" name="" id="noti_chk2">
+									<input type="checkbox" name="noti_chk" id="noti_chk2" checked>
 									<label for="noti_chk2">입출금푸시알림
 										<span class="txt_sm txt_lightgray">통장에 입출금이 발생하면 무료로 알려드립니다.</span>
 									</label>
 								</span>
+							</div>
+							<div class="mt_3 noti_chkbox_type2 on">
 								<span class="check_item circle">
-									<input type="checkbox" name="" id="noti_chk3">
+									<input type="checkbox" name="noti_chk" id="noti_chk3" checked>
 									<label for="noti_chk3">마케팅푸시알림
 										<span class="txt_sm txt_lightgray">알림을 off로 설정 시 금융상품 추천, 이벤트, 혜택 등의 안내가 어려울 수 있어요.</span>
 									</label>
 								</span>
+							</div>
+							<div class="mt_3 noti_chkbox_type2">
 								<span class="check_item circle">
-									<input type="checkbox" name="" id="noti_chk4">
+									<input type="checkbox" name="noti_chk" id="noti_chk4">
 									<label for="noti_chk4">기타푸시알림
 										<span class="txt_sm txt_lightgray">더치페이, 비대면설제출, 펀드수익률 등 기타 업무관련 알림 설정</span>
 									</label>
 								</span>
+							</div>
+							<div class="mt_3 noti_chkbox_type2">
 								<span class="check_item circle disabled">
-									<input type="checkbox" name="" id="noti_chk5" disabled>
+									<input type="checkbox" name="noti_chk" id="noti_chk5" disabled>
 									<label for="noti_chk5">기업 결재 정보(기업 전용)</label>
 								</span>
 							</div>
+							<!-- e: 20220127 디자인 수정 -->
+
 							<div class="btn_group">
 								<a href="#;" class="btn btn_xl btn_primary" onclick="closeModal('layer05-1');">설정 저장</a>
 							</div>
@@ -144,8 +164,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('alert_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -174,8 +196,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">취소</button>
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('confirm_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
