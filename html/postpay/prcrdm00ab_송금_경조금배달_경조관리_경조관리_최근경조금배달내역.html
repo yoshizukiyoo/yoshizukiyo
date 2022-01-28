@@ -19,14 +19,14 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function () {
 			var checkBox = $('.row_input .check_item input');
 			var label = $('.row_input .check_item label');
 
-			label.click(function(){
-				if(checkBox.is(':checked') == true){
+			label.click(function () {
+				if (checkBox.is(':checked') == true) {
 					label.text('반복 안함');
-				} else if(checkBox.is(':checked') == false) {
+				} else if (checkBox.is(':checked') == false) {
 					label.text('반복')
 				}
 			});
@@ -43,7 +43,7 @@
 		</div>
 		<div class="popup_body">
 
-			<!-- s: 본문 --> 
+			<!-- s: 본문 -->
 			<div class="postpay delivery container pb_4 ">
 
 				<div class="form_wrap mt_2">
@@ -56,8 +56,8 @@
 								<input type="text" id="lb_tf_1_3" class="tf" value="김가을" title="받는 분 이름 입력" required>
 							</div>
 							<div class="btn_area">
-									<a href="#;" class="btn btn_md btn_round btn_darkgray"
-											onclick="openModal('layerDelivery',this); return false;">최근 배달에서 선택</a>
+								<a href="#;" class="btn btn_md btn_round btn_darkgray"
+									onclick="openModal('layerDelivery',this); return false;">최근 배달에서 선택</a>
 							</div>
 						</div>
 					</div>
@@ -85,8 +85,8 @@
 					<div class="tf_item mt_2">
 						<div class="tf_item_body">
 							<div class="input_area">
-								<span class="lab">받는 분 연락처 <span class="req">필수항목</span></span>
-								<input type="text" id="lb_tf_1_3" class="tf ls0" value="010-7777-1234" title="받는 분 연락처 입력" required>
+								<label class="lab" for="lb_phone">받는 분 연락처 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_phone" class="tf ls0" value="010-7777-1234" title="받는 분 연락처 입력" required>
 							</div>
 						</div>
 					</div>
@@ -96,8 +96,8 @@
 					<div class="tf_item mt_2">
 						<div class="tf_item_body">
 							<div class="input_area">
-								<span class="lab">배달 금액 <span class="req">필수항목</span></span>
-								<input type="text" id="lb_tf_1_3" class="tf ls0" value="100.000원" title="배달 금액 입력" required>
+								<label class="lab" for="lb_price">배달 금액 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_price" class="tf ls0" value="100.000원" title="배달 금액 입력" required>
 							</div>
 						</div>
 					</div>
@@ -108,17 +108,17 @@
 						<div class="full">
 							<div class="tf_item">
 								<div class="tf_item_body">
-										<div class="input_area">
-												<label class="lab" for="lb_date2">배달일 <span class="req">필수항목</span></label>
-												<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.12.25" required>
-										</div>
-										<div class="btn_area">
-												<!-- 데이트피커 호출 함수 openDatepicker(this) -->
-												<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
-														<i class="ico ico_datepicker"></i>
-														<span class="sr_only">달력</span>
-												</a>
-										</div>
+									<div class="input_area">
+										<label class="lab" for="lb_date2">배달일 <span class="req">필수항목</span></label>
+										<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2021.12.25" required>
+									</div>
+									<div class="btn_area">
+										<!-- 데이트피커 호출 함수 openDatepicker(this) -->
+										<a href="#;" class="btn btn_icon" onclick="openDatepicker(this); return false;">
+											<i class="ico ico_datepicker"></i>
+											<span class="sr_only">달력</span>
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -156,14 +156,14 @@
 					<div class="mt_2">
 						<a href="#;" class="tf_item" onclick="openModal('layerOption',this); return false;">
 							<div class="tf_item_body">
-									<div class="input_area">
-											<span class="lab">경조 구분 <span class="req">필수항목</span></span>
-											<p class="tf">축하</p>
-									</div>
-									<div class="btn_area">
-											<i class="ico ico_chevron_down_md"></i>
-											<span class="sr_only">선택</span>
-									</div>
+								<div class="input_area">
+									<span class="lab">경조 구분 <span class="req">필수항목</span></span>
+									<p class="tf">축하</p>
+								</div>
+								<div class="btn_area">
+									<i class="ico ico_chevron_down_md"></i>
+									<span class="sr_only">선택</span>
+								</div>
 							</div>
 						</a>
 					</div>
@@ -173,8 +173,8 @@
 					<div class="tf_item mt_2">
 						<div class="tf_item_body">
 							<div class="input_area">
-								<span class="lab">메모 <span class="req">필수항목</span></span>
-								<input type="text" id="lb_tf_1_3" class="tf ls0" title="메모 입력" placeholder="내용을 입력하세요." required>
+								<label for="lb_memo" class="lab">메모 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_memo" class="tf ls0" title="메모 입력" placeholder="내용을 입력하세요." required>
 							</div>
 						</div>
 					</div>
@@ -211,7 +211,8 @@
 												<div class="title">
 													<div class="l">
 														<span class="sr_only">이름</span>
-														<strong class="name"><i class="ico ico_person"></i><span class="highlight">김가을</span></strong>
+														<strong class="name"><i class="ico ico_person"></i><span
+																class="highlight">김가을</span></strong>
 													</div>
 													<div class="r">
 														<span class="sr_only">송금액</span>
@@ -241,7 +242,8 @@
 												<div class="title">
 													<div class="l">
 														<span class="sr_only">이름</span>
-														<strong class="name"><i class="ico ico_person"></i><span class="highlight">김가을</span></strong>
+														<strong class="name"><i class="ico ico_person"></i><span
+																class="highlight">김가을</span></strong>
 													</div>
 													<div class="r">
 														<span class="sr_only">송금액</span>
@@ -266,7 +268,7 @@
 									</a>
 								</div>
 								<p class="bul_notice txt_gray mt_11">경조금배달 내역에서 경조배달정보를 그대로 복사하여 빠른 경조금배달 신청이 가능해요.</p>
-							
+
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -290,7 +292,7 @@
 		<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
 	</div>
 
-				
+
 	<!-- s: 공통 레이어 로딩 -->
 	<div class="common_layers"></div>
 	<!-- e: 공통 레이어 로딩 -->
