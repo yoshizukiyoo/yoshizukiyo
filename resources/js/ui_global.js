@@ -27,13 +27,16 @@ $(function () {
 		if ($cont.hasClass('tooltip')) {
 			var contTop = $btn.offset().top + $btn.outerHeight();
 			$cont.css('top', contTop);
-			$cont.appendTo('#content');
+			$cont.appendTo('#content').attr('tabindex', '0').focus();
 		};
 	});
 
 	// 툴팁 닫기
 	$('.btn_close_tooltip').click(function () {
+		var btnName = $(this).closest('[data-toggle-content]').data('toggle-content');
+		var $btn = $('[data-toggle-btn=' + btnName + ']');
 		$(this).closest('[data-toggle-content]').toggle();
+		$btn.focus();
 	});
 });
 
@@ -132,3 +135,40 @@ $(document).on('click', '.btn_period', function () {
 $(function () {
 	$('.form_range').formRange();
 });
+
+// 스크롤 이벤트
+(function ($) {
+	$.fn.scrollEvent = function (opts) {
+		return this.each(function () {
+			let options = $.extend({}, $.fn.scrollEvent.defaults, opts || {});
+			const $el = $(this);
+
+			if (options.height) {
+				$el.css('max-height', options.height);
+			} else {
+				options.height = $el.height();
+			}
+
+			$el.css('overflow-y', 'auto');
+
+			// event
+			$el.on('scroll', function () {
+				if (options.bottomEvent) {
+					if ($el[0].scrollHeight - $el.scrollTop() == options.height) {
+						options.bottomEvent.call();
+					}
+				}
+				if (options.topEvent) {
+					if ($el.scrollTop() == 0) {
+						options.topEvent.call();
+					}
+				}
+			});
+		});
+	};
+
+	$.fn.scrollEvent.defaults = {
+		bottomEvent: function () {},
+		topEvent: function () {}
+	};
+})(jQuery);

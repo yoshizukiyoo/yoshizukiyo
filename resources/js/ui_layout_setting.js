@@ -165,6 +165,8 @@ function datepickerAddCaption() {
 	$('.ui-state-active').attr('title', '선택됨');
 	$('.ui-datepicker-today a').attr('title', '오늘');
 	$('.ui-datepicker-today .ui-state-active').attr('title', '오늘(선택됨)');
+	$('.ui-datepicker-year').attr('title', '년');
+	$('.ui-datepicker-month').attr('title', '월');
 }
 
 // 모달 레이어
