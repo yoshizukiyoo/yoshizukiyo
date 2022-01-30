@@ -1851,7 +1851,8 @@
 							<div class="inner">
 								<div class="col_item examples">
 									<div class="input_items">
-										<a href="#;" class="opt" title="옵션 선택" onclick="openModal('layerOption', this); return false;">text</a>
+										<a href="#;" class="opt" title="옵션 선택"
+											onclick="openModal('layerOption', this); return false;">text</a>
 										<a href="#;" class="opt" title="옵션 선택"
 											onclick="openModal('layerOption', this); return false;">emaildomain.net</a>
 									</div>
@@ -2120,7 +2121,6 @@
 					<div class="guide_section">
 						<h3 class="tit_guide" id="formRange">
 							슬라이더형 폼
-							<i class="badge"></i>
 						</h3>
 
 						<h4 class="tit1 mt_10">기본형 .form_range</h4>
@@ -2179,7 +2179,6 @@
 						<h3 class="tit_guide" id="modal_popup">
 							모달 팝업
 							<small class="txt_primary">.modal_popup</small>
-							<i class="badge"></i>
 						</h3>
 						<div class="box_html_guide">
 							<ul class="list list1">
@@ -2478,6 +2477,109 @@
 									</ul>
 								</div>
 								<!-- e: 보안 숫자 키패드 --></pre>
+							</div>
+						</div>
+					</div>
+
+					<div class="guide_section">
+						<h3 class="tit_guide" id="scrollEvent">
+							스크롤 이벤트
+							<i class="badge"></i>
+						</h3>
+
+						<p class="mb_2">스크롤을 특정 영역의 맨 위 또는 맨 바닥까지 내렸을 때 함수 호출 .scrollEvent()</p>
+						<div class="cont_row horizontal">
+							<div class="inner">
+								<div class="col_item examples">
+									<div class="tbl" id="scroll_event_example">
+										<table>
+											<caption class="sr_only">전체계좌 목록이며 은행명, 예금상품명, 계좌별칭, 계좌번호, 대표계좌설정, 구분 정보를 제공하고 있습니다.</caption>
+											<colgroup>
+												<col style="width: 16%">
+												<col style="width: 23%">
+												<col style="width: 18%">
+												<col style="width: 19%">
+												<col style="width: 13%">
+												<col>
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">은행명</th>
+													<th scope="col">보험상품명</th>
+													<th scope="col">계좌별칭</th>
+													<th scope="col">계좌번호</th>
+													<th scope="col">대표계좌설정</th>
+													<th scope="col">구분</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>우체국</td>
+													<td>e-Postbank보험</td>
+													<td>월급통장</td>
+													<td>010017-02-191237</td>
+													<td class="txt_c"> <button class="btn btn_xs btn_outline_default">해제</button> </td>
+													<td class="txt_c"> <button class="btn btn_xs btn_default">선택</button> </td>
+												</tr>
+												<tr>
+													<td>우체국</td>
+													<td>e-Postbank보험</td>
+													<td>월급통장</td>
+													<td>010017-02-191237</td>
+													<td class="txt_c"> <button class="btn btn_xs btn_outline_default">해제</button> </td>
+													<td class="txt_c"> <button class="btn btn_xs btn_default">선택</button> </td>
+												</tr>
+												<tr>
+													<td>우체국</td>
+													<td>e-Postbank보험</td>
+													<td>월급통장</td>
+													<td>010017-02-191237</td>
+													<td class="txt_c"> <button class="btn btn_xs btn_outline_default">해제</button> </td>
+													<td class="txt_c"> <button class="btn btn_xs btn_default">선택</button> </td>
+												</tr>
+												<tr>
+													<td>우체국</td>
+													<td>e-Postbank보험</td>
+													<td>월급통장</td>
+													<td>010017-02-191237</td>
+													<td class="txt_c"> <button class="btn btn_xs btn_outline_default">해제</button> </td>
+													<td class="txt_c"> <button class="btn btn_xs btn_default">선택</button> </td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<script>
+										$('#scroll_event_example').scrollEvent({
+											height: 300,
+											bottomEvent: function () {
+												alert('바닥');
+											},
+											topEvent: function () {
+												alert('맨위');
+											}
+										});
+									</script>
+								</div>
+								<div class="col_item codes">
+									<pre class="brush:html" title="HTML">
+										&lt;!-- 세로 스크롤 이벤트가 필요한 컨테이너에 아이디 지정 --&gt;
+										&lt;div id="scroll_event_example"&gt;
+											contents
+										&lt;/div&gt;</pre>
+
+									<br>
+
+									<pre class="brush:js" title="js">
+										$('#scroll_event_example').scrollEvent({
+											height: 300,				// 최대 높이 지정 (CSS에 중복 정의되어 있을 시 생략 가능)
+											bottomEvent: function () {	// 스크롤 바닥 호출 함수 사용자 정의
+												alert('바닥');
+											},
+											topEvent: function () {		// 스크롤 맨 위 호출 함수 사용자 정의
+												alert('맨위');
+											}
+										});</pre>
+								</div>
 							</div>
 						</div>
 					</div>
