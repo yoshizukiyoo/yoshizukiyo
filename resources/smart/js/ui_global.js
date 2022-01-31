@@ -27,13 +27,16 @@ $(function () {
 		if ($cont.hasClass('tooltip')) {
 			var contTop = $btn.offset().top + $btn.outerHeight();
 			$cont.css('top', contTop);
-			$cont.appendTo('#content');
+			$cont.appendTo('#content').attr('tabindex', '0').focus();
 		};
 	});
 
 	// 툴팁 닫기
 	$('.btn_close_tooltip').click(function () {
+		var btnName = $(this).closest('[data-toggle-content]').data('toggle-content');
+		var $btn = $('[data-toggle-btn=' + btnName + ']');
 		$(this).closest('[data-toggle-content]').toggle();
+		$btn.focus();
 	});
 });
 
