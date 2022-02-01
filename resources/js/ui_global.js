@@ -37,7 +37,7 @@ $(function () {
 
 // 화면 크기 변경시에 축소
 function resizeApply() {
-	var minWidth = 1300;
+	var minWidth = 1390;
 	var body = document.getElementsByTagName('body')[0];
 	if (window.innerWidth < minWidth) {
 		body.style.zoom = (window.innerWidth / minWidth);
