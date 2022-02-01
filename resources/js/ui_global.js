@@ -30,18 +30,21 @@ $(document).on('click', '.box_more .btn_more_white', function () {
 	}
 });
 
-//화면 크기 변경시에 축소
-function resizeApply() {
-	var minWidth = 1300;
-	var body = document.getElementsByTagName('body')[0];
-	if (window.innerWidth < minWidth) {
-		body.style.zoom = (window.innerWidth / minWidth);
-	} else {
-		body.style.zoom = 1;
+// 화면 크기 변경시에 축소
+$(function () {
+	function resizeApply() {
+		var minWidth = 1300;
+		var body = document.getElementsByTagName('body')[0];
+		if (window.innerWidth < minWidth) {
+			body.style.zoom = (window.innerWidth / minWidth);
+		} else {
+			body.style.zoom = 1;
+		}
 	}
-}
-window.onload = function () {
-	window.addEventListener('resize', function () {
-		resizeApply();
-	});
-}
+	window.onload = function () {
+		window.addEventListener('resize', function () {
+			resizeApply();
+		});
+	}
+	resizeApply();
+});
