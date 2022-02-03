@@ -418,6 +418,14 @@ $demiprimary: #fbe59b !default;
 				@include box_default(19px, 19px);
 			}
 		}
+
+		&.dropdown {
+			>li {
+				position: relative;
+				padding-bottom: 35px;
+				overflow-y: hidden;
+			}
+		}
 	}
 
 	&.list_card {
@@ -1004,6 +1012,69 @@ h3.tit2 {
 .tit1 {
 	.lab_status {
 		margin-top: -3px;
+	}
+}
+
+//탭메뉴
+.tab_menu {
+	&.tab_menu4 {
+		>.tab_list {
+			display: flex;
+			text-align: center;
+			line-height: 1.2;
+			font-size: 13px;
+
+			>li {
+				position: relative;
+				display: inline-block;
+				flex: 1 1 50%;
+
+				background-color: #e5e5e5;
+
+				border-radius: 8px 8px 0 0;
+				border-width: 1px;
+				border-style: solid solid none solid;
+				border-color: #ddd;
+
+				color: #555;
+
+				&::before {
+					content: "";
+					position: absolute;
+					width: calc(100% + 2px);
+					height: 1px;
+					background-color: #333;
+
+					left: -1px;
+					bottom: 0;
+					z-index: 40;
+				}
+
+				&.on {
+					background-color: #fff;
+
+					border-color: #333;
+
+					color: #111;
+					font-weight: 500;
+
+					&::before {
+						display: none;
+					}
+				}
+
+				>a {
+					display: block;
+
+					>span {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						height: 40px;
+					}
+				}
+			}
+		}
 	}
 }
 
