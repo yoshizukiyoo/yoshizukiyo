@@ -97,7 +97,7 @@ function inputStatus() {
 		if ($('.input_area .tf, .input_area .opt', this).length > 1 || $('.input_area :input', this).length > 1) {
 			$container.addClass('active');
 		} else if (!$('.lab:input', $container)) {
-			console.log(111);
+			// console.log(111);
 		} else if ($tf.length == 1) {
 			var text = Boolean($tf.val()) || Boolean($tf.attr('placeholder'));
 			$container.toggleClass('active', text);
@@ -134,8 +134,9 @@ $(function () {
 });
 
 // 데이트피커 + 모달레이어
+var $target;
+
 function openDatepicker(opener, target) {
-	var $target;
 	if (target == undefined) {
 		$target = $(opener).closest('.tf_item').find('.tf').eq(0);
 	} else {
@@ -145,7 +146,7 @@ function openDatepicker(opener, target) {
 		beforeShow: function () {
 			$('body').append('<div class="modal_popup modal_datepicker hide" data-popup="layerDatepicker"><div class="dimed"></div><div class="popup_inner"><div class="popup_body"></div><button type="button" class="btn btn_close_popup">닫기</button></div></div>');
 			$('#ui-datepicker-div').appendTo('[data-popup=layerDatepicker] .popup_body');
-			openModal('layerDatepicker');
+			openModal('layerDatepicker', modalOpener);
 			setTimeout(datepickerAddCaption, 200);
 		},
 		onChangeMonthYear: function () {
@@ -154,7 +155,7 @@ function openDatepicker(opener, target) {
 		onClose: function () {
 			closeModal('layerDatepicker');
 			$('[data-popup=layerDatepicker]').remove();
-			this.focus();
+			$(opener).focus();
 		}
 	}).datepicker('show');
 }
@@ -191,7 +192,9 @@ $(document).on('click', 'a.js_layer_open', function (e) {
 	openModal(tg, $(this));
 	e.preventDefault();
 }).on('click', '.modal_popup .btn_close_popup, .modal_popup .dimed', function () {
-	if ($(this).hasClass('remove')) {
+	if ($(this).closest('.modal_popup').hasClass('modal_datepicker')) {
+		$target.datepicker('hide');
+	} else if ($(this).hasClass('remove')) {
 		$(this).closest('.modal_popup').remove();
 	} else {
 		var target = $(this).closest('.modal_popup').attr('data-popup');
@@ -244,7 +247,7 @@ function closeModal(_target) {
 			bodyScroll(false);
 		}
 		tg.addClass('hide').removeClass('show');
-		if ($(modalOpener).length) {
+		if ($(modalOpener).length && !tg.hasClass('modal_datepicker')) {
 			$(modalOpener).focus();
 		}
 		// 레이어 해시 제거
