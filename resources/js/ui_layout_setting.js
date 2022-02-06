@@ -20,7 +20,7 @@ $(function () {
 		// if ($.isFunction(window.scrollbar)) scrollbar();
 	});
 	$('.breadcrumb').load('/html/_inc-breadcrumb.html .breadcrumb > *', function () {
-		// if ($.isFunction(window.scrollbar)) scrollbar();
+		if ($.isFunction(window.breadcrumbSetting)) breadcrumbSetting();
 	});
 	$('.footer').load('/html/_inc-footer.html .footer > *', function () {
 		// if ($.isFunction(window.toTop)) toTop();
@@ -494,14 +494,24 @@ $(document).on('click', '.btn_quick_close', function () {
 });
 
 // Breadcrumb
+function breadcrumbSetting() {
+	$('.breadcrumb_list>li>a').each(function () {
+		$(this).attr('title', '펼치기');
+		if ($(this).parent('li').hasClass('on')) {
+			$(this).attr('title', '접기');
+		}
+	});
+}
+
 $(document).on('click', '.breadcrumb_list>li>a', function (e) {
 	if ($(this).next('.sub_list_wrap').length) {
 		e.preventDefault();
-		$(this).parent('li').toggleClass('on').siblings('li').removeClass('on');
+		$(this).attr('title', $(this).attr('title') == '펼치기' ? "접기" : "펼치기")
+			.parent('li').toggleClass('on').siblings('li').removeClass('on').children('a').attr('title', '펼치기');
 	}
 }).on('keydown', '.breadcrumb_list ul>li:last-child>a', function (e) {
 	if (e.keyCode == 9 && !e.shiftKey) {
-		$('.breadcrumb_list>li').removeClass('on');
+		$('.breadcrumb_list>li').removeClass('on').children('a').attr('title', '펼치기');
 	}
 });
 $(document).on('mousedown', function (e) {
