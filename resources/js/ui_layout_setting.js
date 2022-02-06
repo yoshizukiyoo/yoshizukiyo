@@ -63,31 +63,66 @@ $(function () {
 
 // 데이트피커
 $(function () {
-	$('.tf_datepicker').wrap('<span class="datepicker"></span>').datepicker({
-		dateFormat: 'yy.mm.dd',
-		changeMonth: true,
-		changeYear: true,
-		showMonthAfterYear: true,
-		showOn: "button",
-		buttonText: "날짜 선택",
-		buttonImage: "/resources/img/common/ico_datepicker.png",
-		buttonImageOnly: false,
+	$('.tf_datepicker').each(function () {
 
-		// 추가 옵션
-		showButtonPanel: false,
-		closeText: "닫기",
+		var titleText = "달력";
+		if ($(this).attr('title')) {
+			console.log($(this).attr('title'));
+			titleText = $(this).attr('title') + " " + titleText;
+		} else if ($(this).attr('id')) {
+			console.log($(this).attr('id'));
+			titleText = $('label[for="' + $(this).attr('id') + '"]').text() + " " + titleText;
+		}
 
-		// 한글화
-		prevText: '이전 달',
-		nextText: '다음 달',
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-		dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		yearSuffix: '년',
+		$(this)
+			.wrap('<span class="datepicker"></span>')
+			.datepicker({
+				dateFormat: 'yy.mm.dd',
+				changeMonth: true,
+				changeYear: true,
+				showMonthAfterYear: true,
+				showOn: "button",
+				buttonText: titleText,
+				buttonImage: "/resources/img/common/ico_datepicker.png",
+				buttonImageOnly: false,
+
+				// 추가 옵션
+				showButtonPanel: true,
+				closeText: "닫기",
+
+				// 한글화
+				prevText: '이전 달',
+				nextText: '다음 달',
+				monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+				dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+				dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+				yearSuffix: '년',
+				beforeShow: function () {
+					setTimeout(datepickerAddCaption, 100);
+				},
+				onChangeMonthYear: function () {
+					setTimeout(datepickerAddCaption, 100);
+				},
+				onClose: function () {
+					$(this).next('.ui-datepicker-trigger').focus();
+				},
+			})
+			.next('.ui-datepicker-trigger').children('img').removeAttr('title');
 	});
 });
+
+function datepickerAddCaption() {
+	$('.ui-datepicker-prev, .ui-datepicker-next').attr('href', '#;');
+	$('.ui-datepicker-calendar').prepend('<caption>달력</caption>');
+	$('.ui-state-active').attr('title', '선택됨');
+	$('.ui-datepicker-today a').attr('title', '오늘');
+	$('.ui-datepicker-today .ui-state-active').attr('title', '오늘(선택됨)');
+	$('.ui-datepicker-year').attr('title', '년');
+	$('.ui-datepicker-month').attr('title', '월');
+	$('#ui-datepicker-div').find('a').first().focus();
+}
 
 // 일반 레이어
 $(function () {
