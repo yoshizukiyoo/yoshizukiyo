@@ -351,26 +351,64 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 	$('[data-sub-tab=' + tg + ']').show();
 });
 
-// 디자인 셀렉트박스
-$(document).on('click', '.selectbox_wrap dt a', function () {
-	var obj = $(this);
-	$('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
-	obj.parents('.selectbox_wrap').toggleClass('active');
-	return false;
-});
-$(document).on('click', '.selectbox_wrap dd a', function () {
-	var obj = $(this);
-	obj.closest('dd').prev().find('>a>span').text(obj.text());
-	obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
-	obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
-	return false;
-});
-var win = $(window);
-var selectBox = $('.selectbox_wrap dt a');
-win.on("click", function (e) {
-	if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)) {
-		$('.selectbox_wrap').removeClass('active');
-	}
+// 커스텀 셀렉트
+(function ($) {
+	$.fn.customSelect = function () {
+
+		$(document).on('mousedown', function (e) {
+			if (!$(e.target).closest('.selectbox_wrap').length) {
+				$('.selectbox_wrap.active dt a').each(function () {
+					if ($(this).attr('title') != undefined) {
+						$(this).attr('title', $(this).attr('title').replace('접기', '펼치기'))
+					}
+				});
+				$('.selectbox_wrap.active').removeClass('active');
+			}
+		});
+
+		return this.each(function () {
+			const $el = $(this);
+			const $btn = $('dt a', this);
+			const $listItem = $('dd a', this);
+
+			let addText = $el.hasClass('active') ? '접기' : '펼치기';
+			let title = $btn.attr('title');
+			if (title != undefined) {
+				title = title + ' ' + addText;
+			}
+
+			if ($el.hasClass('disabled')) {
+				$btn.removeAttr('href');
+			} else {
+				$btn.attr('title', title);
+
+				$btn.click(function (e) {
+					e.preventDefault();
+					const $otherBtn = $('.selectbox_wrap').not($el).find('dt a');
+					$('.selectbox_wrap').not($el).removeClass('active')
+					$otherBtn.attr('title', $otherBtn.attr('title').replace('접기', '펼치기'));
+
+					$el.toggleClass('active');
+					if ($el.hasClass('active')) {
+						$btn.attr('title', $btn.attr('title').replace('펼치기', '접기'));
+					} else {
+						$btn.attr('title', $btn.attr('title').replace('접기', '펼치기'));
+					}
+				});
+
+				$listItem.click(function (e) {
+					e.preventDefault();
+					$btn.children('span').text($(this).text());
+					$el.toggleClass('active').removeClass('error');
+					$el.closest('td').find('> .error_info').hide();
+					$btn.attr('title', $btn.attr('title').replace('접기', '펼치기')).focus();
+				});
+			}
+		});
+	};
+})(jQuery);
+$(function () {
+	$('.selectbox_wrap').customSelect();
 });
 
 // 
