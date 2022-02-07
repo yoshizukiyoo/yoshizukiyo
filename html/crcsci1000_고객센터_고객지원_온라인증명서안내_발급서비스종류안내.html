@@ -23,7 +23,17 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+			$('.accordion_list button').on('click', function () {
+				var currentBtn = $(this).parent('dt');
+				if (!currentBtn.hasClass('on')) {
+					currentBtn.toggleClass('on').next().slideDown('fast');
+					$(this).next().children('span').text('닫기')
+				} else {
 
+					currentBtn.removeClass('on').next().slideUp('fast');
+					$(this).next().children('span').text('열기')
+				}
+			})
 		});
 	</script>
 </head>
@@ -34,137 +44,296 @@
 		<div id="content">
 			<!-- s: 본문 -->
 
+			<!-- 마크업 수정 : 2022-02-03 -->
 			<div class="container pt_4">
 				<div class="box box_border">
 					<ul class="list list1">
 						<li>우체국 보험에서는 고객님의 편의를 위하여 창구를 직접 방문하지 않고 인터넷으로 증명서를 발급받을 수 있는 인터넷증명서 발급서비스를 실시합니다.</li>
-						<li>증명서 발급관련 문의사항은 우체국 금융 고객센터(1588-1900)를 이용해주시기 바랍니다.</li>
+						<li>증명서 발급관련 문의사항은 우체국 금융 고객센터(1599-0100)를 이용해주시기 바랍니다.</li>
 					</ul>
 				</div>
+				<div class="accordion_list">
+					<dl>
+						<dt>
+							<button type="button" class="acc_tit">증명서 발급</button>
+							<span class="btn">
+								<i class="ico"></i>
+								<span class="sr_only">열기</span>
+							</span>
+						</dt>
+						<dd>
+							<div class="tbl mb_1">
+								<table>
+									<caption class="sr_only">증명서 발급</caption>
+									<colgroup>
+										<col style="width: 40%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">서비스명</th>
+											<th scope="col">증명서</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>소득공제용납입내역서</td>
+											<td>소득공제용 보험료 납입 증명서</td>
+										</tr>
+										<tr>
+											<td>용도별납입내역서</td>
+											<td>보험료 납입 증명서</td>
+										</tr>
+										<tr>
+											<td>통화별납입내역서</td>
+											<td>보험료 납입 증명서</td>
+										</tr>
+										<tr>
+											<td>영문가입증명서</td>
+											<td>우체국보험 가입증서</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</dd>
+					</dl>
 
-				<h3 class="tit1 mt_4">증명서 발급</h3>
-				<div class="tbl mt_4 mb_6">
-					<table>
-						<caption class="sr_only">증명서 발급</caption>
-						<colgroup>
-							<col style="width: 40%;">
-							<col>
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">서비스명</th>
-								<th scope="col">증명서</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>소득공제용납입내역서</td>
-								<td>소득공제용 보험료 납입 증명서</td>
-							</tr>
-							<tr>
-								<td>용도별납입내역서</td>
-								<td>보험료 납입 증명서</td>
-							</tr>
-							<tr>
-								<td>통화별납입내역서</td>
-								<td>보험료 납입 증명서</td>
-							</tr>
-							<tr>
-								<td>영문가입증명서</td>
-								<td>우체국보험 가입증서</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<h3 class="tit1 mt_4">보험료납입</h3>
-				<div class="tbl mt_4 mb_6">
-					<table>
-						<caption class="sr_only">증명서 발급</caption>
-						<colgroup>
-							<col style="width: 40%;">
-							<col>
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">서비스명</th>
-								<th scope="col">증명서</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>보험료납입</td>
-								<td>보험료영수증</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<h3 class="tit1 mt_4">대출서비스</h3>
-				<div class="tbl mt_4 mb_6">
-					<table>
-						<caption class="sr_only">대출서비스</caption>
-						<colgroup>
-							<col style="width: 40%;">
-							<col>
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">서비스명</th>
-								<th scope="col">증명서</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>환급금대출</td>
-								<td>환급금대출 내역서</td>
-							</tr>
-							<tr>
-								<td>대출원금상환</td>
-								<td>환급금대출원금 상환영수증</td>
-							</tr>
-							<tr>
-								<td>대출이자상환</td>
-								<td>환급금대출이자 상환영수증</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<h3 class="tit1 mt_4">보험금지급</h3>
-				<div class="tbl mt_4 mb_6">
-					<table>
-						<caption class="sr_only">보험금지급</caption>
-						<colgroup>
-							<col style="width: 45%;">
-							<col>
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">서비스명</th>
-								<th scope="col">증명서</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>보험금지급(만기)</td>
-								<td>(만기보험금) 지급내역서</td>
-							</tr>
-							<tr>
-								<td>보험금지급(연금)</td>
-								<td>(연금) 지급내역서</td>
-							</tr>
-							<tr>
-								<td>보험금지급(생존)</td>
-								<td>(생존보험금) 지급내역서</td>
-							</tr>
-							<tr>
-								<td>보험금지급(휴면)</td>
-								<td>(휴면보험금) 지급내역서</td>
-							</tr>
-							<tr>
-								<td>배당금지급</td>
-								<td>배당금지급내역서</td>
-							</tr>
-						</tbody>
-					</table>
+					<dl>
+						<dt>
+							<button type="button" class="acc_tit">보험관리 서비스</button>
+							<span class="btn">
+								<i class="ico"></i>
+								<span class="sr_only">열기</span>
+							</span>
+						</dt>
+						<dd>
+							<strong class="tit2 block">조회</strong>
+							<div class="tbl">
+								<table>
+									<caption class="sr_only">보험관리 서비스 조회</caption>
+									<colgroup>
+										<col style="width: 40%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">서비스명</th>
+											<th scope="col">증명서</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>기지급내역</td>
+											<td>기지급내역서</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<strong class="tit2 mt_5 block">계약사항변경</strong>
+							<div class="tbl mb_1">
+								<table>
+									<caption class="sr_only">보험관리 서비스 계약사항변경</caption>
+									<colgroup>
+										<col style="width: 40%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">서비스명</th>
+											<th scope="col">증명서</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>보험금감액</td>
+											<td>보험금감액 정산내역서</td>
+										</tr>
+										<tr>
+											<td>청약철회</td>
+											<td>청약철회 정산내역서</td>
+										</tr>
+										<tr>
+											<td>특약해지</td>
+											<td>특약해지 정산내역서</td>
+										</tr>
+										<tr>
+											<td>기간변경</td>
+											<td>기간변경 정산내역서</td>
+										</tr>
+										<tr>
+											<td>연금변경</td>
+											<td>연금형태및개시연령변경 정산내역서</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</dd>
+					</dl>
+
+					<dl>
+						<dt>
+							<button type="button" class="acc_tit">보험료 납입 서비스</button>
+							<span class="btn">
+								<i class="ico"></i>
+								<span class="sr_only">열기</span>
+							</span>
+						</dt>
+						<dd>
+							<div class="tbl mb_1">
+								<table>
+									<caption class="sr_only">보험료 납입 서비스</caption>
+									<colgroup>
+										<col style="width: 40%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">서비스명</th>
+											<th scope="col">증명서</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>보험료납입</td>
+											<td>보험료영수증</td>
+										</tr>
+										<tr>
+											<td>실시간보험료납입</td>
+											<td>실시간보험료납입 납입내역서</td>
+										</tr>
+										<tr>
+											<td>보험료추가납입</td>
+											<td>파워적립보험/온라인저축보험 납입내역서</td>
+										</tr>
+										<tr>
+											<td>보험료추가납입</td>
+											<td>연금저축보험 납입내역서</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</dd>
+					</dl>
+
+					<dl>
+						<dt>
+							<button type="button" class="acc_tit">보험금 지급 서비스</button>
+							<span class="btn">
+								<i class="ico"></i>
+								<span class="sr_only">열기</span>
+							</span>
+						</dt>
+						<dd>
+							<div class="tbl mb_1">
+								<table>
+									<caption class="sr_only">보험금 지급 서비스</caption>
+									<colgroup>
+										<col style="width: 45%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">서비스명</th>
+											<th scope="col">증명서</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>보험금지급청구</td>
+											<td>보험지급청구 지급내역서</td>
+										</tr>
+										<tr>
+											<td>자녀보험금신청</td>
+											<td>자녀보험금 지급내역서</td>
+										</tr>
+										<tr>
+											<td>만기보험금지급</td>
+											<td>만기보험금 지급내역서</td>
+										</tr>
+										<tr>
+											<td>연금지급</td>
+											<td>연금지급개시 지급내역서</td>
+										</tr>
+										<tr>
+											<td>연금지급</td>
+											<td>연금 지급내역서</td>
+										</tr>
+										<tr>
+											<td>생존보험금지급</td>
+											<td>생존보험금 지급내역서</td>
+										</tr>
+										<tr>
+											<td>휴면보험금</td>
+											<td>휴면보험금 지급내역서</td>
+										</tr>
+										<tr>
+											<td>배당금지급</td>
+											<td>배당금 지급내역서</td>
+										</tr>
+										<tr>
+											<td>해약환급금지급</td>
+											<td>해약환급금 지급내역서</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</dd>
+					</dl>
+
+					<dl>
+						<dt>
+							<button type="button" class="acc_tit">대출서비스</button>
+							<span class="btn">
+								<i class="ico"></i>
+								<span class="sr_only">열기</span>
+							</span>
+						</dt>
+						<dd>
+							<div class="tbl mb_1">
+								<table>
+									<caption class="sr_only">대출서비스</caption>
+									<colgroup>
+										<col style="width: 40%;">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">서비스명</th>
+											<th scope="col">증명서</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>환급금대출신청</td>
+											<td>환급금대출신청 내역서</td>
+										</tr>
+										<tr>
+											<td>환급금대출상환</td>
+											<td>원금상환 내역서</td>
+										</tr>
+										<tr>
+											<td>환급금대출상환</td>
+											<td>이자상환 내역서</td>
+										</tr>
+										<tr>
+											<td>환급금대출상환</td>
+											<td>이자부분상환 내역서</td>
+										</tr>
+										<tr>
+											<td>자동대출상환</td>
+											<td>자동대출원금상환 내역서</td>
+										</tr>
+										<tr>
+											<td>자동대출상환</td>
+											<td>자동대출이자상환 내역서</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</dd>
+					</dl>
+
 				</div>
 			</div>
 

@@ -21,9 +21,20 @@
 	<script src="/resources/js/ui_layout_setting.js"></script>
 
 	<!-- 페이지 개별 스크립트 -->
+	<!-- s : 마크업 수정 : 2022-02-04 -->
 	<script>
 		$(document).ready(function () {
+			$('.accordion_list button').on('click', function () {
+				var currentBtn = $(this).parent('dt');
+				if (!currentBtn.hasClass('on')) {
+					currentBtn.toggleClass('on').next().slideDown('fast');
+					$(this).next().children('span').text('닫기')
+				} else {
 
+					currentBtn.removeClass('on').next().slideUp('fast');
+					$(this).next().children('span').text('열기')
+				}
+			})
 		});
 	</script>
 </head>
@@ -33,247 +44,152 @@
 		<header class="header" data-page-title="개인정보보호"></header>
 		<div id="content">
 			<!-- s: 본문 -->
-
-			<nav class="tab_menu tab_menu1">
-				<ul class="tab_list tab_list2">
-					<li><a href="#"><span>개인(신용)정보 수집 이용 및<br>제공관련 고객 권리 안내문</span></a></li>
-					<li class="on"><a href="#"><span>개인(신용)정보 수집 이용 제공<br>동의서(금융거래 설정 등)</span></a></li>
-					<li><a href="#"><span>개인(신용)정보 수집 이용 제공<br>동의서(상품서비스 안내 등)</span></a></li>
-					<li><a href="#"><span>마케팅 연락중지 및 동의 철회</span></a></li>
-				</ul>
-			</nav>
-
 			<div class="container mt_4">
-
-				<h2 class="sr_only">개인(신용)정보 수집 이용 제공 동의서(금융거래 설정 등)</h2>
-
-				<div class="section mt_0">
-					<p class="tit2">
-						우체국 금융거래와 관련하여 우체국과 본인의 개인(신용)정보를 수집·이용하거나 제3자에게 제공하고자 하는 경우에는 「개인정보 보호법」 제15조 제1항 제1호, 제17조 제1항 제1호, 제23조
-						제1호, 제24조 제1항 제1호, 「신용정보의 이용 및 보호에 관한 법률」 제32조 제1항, 제33조 및 제34조에 따라 본인의 동의를 얻어야 합니다. 이에 본인은 우체국이 아래의 내용과 같이
-						본인의 개인(신용)정보를 수집·이용 또는 제공하는 것에 동의합니다.
-					</p>
-					<ul class="list list1">
-						<li>
-							금융거래라 함은 우체국예금·우편환·우편대체업무 및 그에 따른 부가서비스, 전자금융서비스, 제휴업무 등과 관련된 거래를 의미합니다.
-						</li>
+				<!-- s : 마크업 수정 : 2022-02-04 -->
+				<nav class="tab_menu tab_menu2 mb_9">
+					<ul class="tab_list tab_list2">
+						<ul class="tab_list tab_list2">
+							<li><a href="cruipp00at_고객센터_이용안내_개인정보보호_개인(신용)정보수집이용및제공관련고객권리안내문.html"><span>개인(신용)정보 수집 이용 및<br>제공관련 고객
+										권리
+										안내문</span></a></li>
+							<li class="on"><a href="cruipp00bt_고객센터_이용안내_개인정보보호_개인(신용)정보수집이용제공동의서(금융거래설정등).html"><span>개인(신용)정보 수집 이용
+										제공<br>동의서(금융거래 설정 등)</span></a></li>
+							<li><a href="cruipp00ct_고객센터_이용안내_개인정보보호_개인(신용)정보수집이용제공동의서(상품서비스안내등).html"><span>개인(신용)정보 수집 이용
+										제공<br>동의서(상품서비스 안내 등)</span></a></li>
+							<li><a href="cruipp00dt_고객센터_이용안내_개인정보보호_마케팅연락중지및동의철회.html"><span>마케팅 연락중지 및 동의 철회</span></a>
+							</li>
+						</ul>
 					</ul>
+				</nav>
+
+				<h3 class="sr_only">개인(신용)정보 수집 이용 제공 동의서(금융거래 설정 등)</h3>
+
+				<strong>우체국 금융거래와 관련하여 우체국과 본인의 개인(신용)정보를 수집·이용하거나 제3자에게 제공하고자 하는 경우에는 「개인정보 보호법」 제15조 제1항 제1호, 제17조 제1항 제1호,
+					제23조
+					제1호, 제24조 제1항 제1호, 「신용정보의 이용 및 보호에 관한 법률」 제32조 제1항, 제33조 및 제34조에 따라 본인의 동의를 얻어야 합니다. 이에 본인은 우체국이 아래의 내용과 같이
+					본인의 개인(신용)정보를 수집·이용 또는 제공하는 것에 동의합니다.</strong>
+
+				<ul class="list list1 mt_2">
+					<li>금융거래라 함은 우체국예금·우편환·우편대체업무 및 그에 따른 부가서비스, 전자금융서비스, 제휴업무 등과 관련된 거래를 의미합니다.</li>
+				</ul>
+
+				<div class="accordion_list mt_10">
+					<dl>
+						<dt>
+							<button type="button" class="acc_tit">수집·이용에 관한사항</button>
+							<span class="btn">
+								<i class="ico"></i>
+								<span class="sr_only">열기</span>
+							</span>
+						</dt>
+						<dd>
+							<ul class="list list1">
+								<li><b>고객의 개인(신용)정보는 고객이 동의한 목적을 위하여만 수집·이용 및 제공됩니다. 필수적 정보에 대한 수집·이용 및 제공은 계약의
+										체결 및 이행을 위하여 필수`적이므로, 위 사항에 동의하셔야만 (금융)거래 관계의 설정 및 유지가 가능합니다. 반면 선택적 정보에 대한 수집·이용 및 제공에 대하여는 거부하실 수
+										있으며, 다만 동의하지 않으실 경우 (금융)거래 조건 등에 불이익을 받으실 수 있습니다.</b>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+
+					<dl>
+						<dt>
+							<button type="button" class="acc_tit">
+								제공에 관한사항
+								<span class="btn">
+									<i class="ico"></i>
+									<span class="sr_only">열기</span>
+								</span>
+							</button>
+						</dt>
+						<dd>
+							<h4 class="tit2">제공받는 자</h4>
+							<ul class="list list1">
+								<li><b>신용정보집중기관 및 신용조회회사에 대한 제공</b>
+									<ul class="list list1">
+										<li>신용정보집중기관(전국은행연합회, 여신금융협회 등), 신용조회회사(NICE신용평가정보㈜ 등)</li>
+									</ul>
+								</li>
+								<li><b>제휴기관(업체)에 대한 제공</b>
+									<ul class="list list1">
+										<li>공동인증서발급(한국정보인증), 모바일뱅킹서비스 업무(SKT, KT, LGU+, 금융결제원, 스탠다드네트웍스), 입출금통지서비스 업무(SKT, 스탠다드네트웍스)</li>
+									</ul>
+								</li>
+								<li><b>수탁기관(업체)에 대한 제공</b>
+									<ul class="list list1">
+										<li>우체국 금융거래 관련 상담업무(우체국 보험 고객센터) 등</li>
+										<li>우체국은 수탁(제휴)업체에게 개인(신용)정보를 제공할 경우, 업무수행에 필요한 최소한의
+											정보만을 제공하며, 수탁(제휴)업체의 추가·변경 및 제공 목적의 세부적 내용은 우체국보험 홈페이지(www.epostbank.kr)에서 확인하실 수 있습니다.
+										</li>
+									</ul>
+								</li>
+							</ul>
+
+							<h4 class="tit2 mt_5">제공받는 자의 이용 목적</h4>
+							<ul class="list list1">
+								<li><b>신용정보집중기관 및 신용조회회사에 대한 제공</b>
+									<ul class="list list1">
+										<li>본인의 신용을 판단하기 위한 자료로 활용하거나 공공기관에서 정책자료로 활용</li>
+									</ul>
+								</li>
+								<li><b>수탁업체에 대한 제공</b>
+									<ul class="list list1">
+										<li>금융거래의 설정&middot;유지&middot;이행&middot;관리 등에 필요한 경우로서 위탁받은 업무의 수행</li>
+									</ul>
+								</li>
+							</ul>
+
+							<h4 class="tit2 mt_5 mt_5">제공할 개인정보의 항목</h4>
+							<ul class="list list1">
+								<li><b>신용정보집중기관 및 신용조회회사에 대한 제공</b>
+									<ul class="list list1">
+										<li>본인의 신용을 판단하기 위한 자료로 활용하거나 공공기관에서 정책자료로 활용</li>
+									</ul>
+								</li>
+								<li><b>수탁업체에 대한 제공</b>
+									<ul class="list list1">
+										<li>금융거래의 설정·유지·이행·관리 등에 필요한 경우로서 위탁받은 업무의 수행
+										</li>
+									</ul>
+								</li>
+							</ul>
+
+							<h4 class="tit2 mt_5">제공할 개인정보의 항목</h4>
+							<ul class="list list1">
+								<li>신용정보집중기관 및 신용조회회사에 대한 제공</li>
+								<li>수탁업체에 대한 제공</li>
+							</ul>
+
+							<h4 class="tit2 mt_5">제공받은 자의 개인정보 보유·이용 기간</h4>
+							<ul class="list list1">
+								<li>개인(신용)정보는 제공된 날로부터 동의 철회시 또는 제공된 목적을 달성할 때까지 보유·이용됩니다. 동의 철회 또는 제공된 목적 달성 후에는 위에 기재된 이용 목적과 관련된 금융사고
+									조사, 분쟁 해결, 민원처리, 법령상 의무이행을 위하여 필요한 범위 내에서만 보유·이용됩니다.
+								</li>
+							</ul>
+
+							<h4 class="tit2 mt_5">동의를 거부할 권리 및 동의를 거부할 경우의 불이익</h4>
+							<ul class="list list1">
+								<li>위 개인(신용)정보의 제공에 관한 동의는 계약의 체결 및 이행을 위하여 필수적이므로, 위 사항에 동의하셔야만 금융거래관계의 설정 및 유지가 가능합니다.
+								</li>
+							</ul>
+
+							<h4 class="tit2 mt_5">제공 동의여부</h4>
+							<ul class="list list1">
+								<li>우체국이 위와 같이 본인의 개인(신용)정보를 제공하는 것
+								</li>
+							</ul>
+
+							<h4 class="tit2 mt_5">고유식별정보 동의여부</h4>
+							<ul class="list list1">
+								<li>우체국이 위 목적으로 다음과 같은 본인의 고유식별정보를 수집·이용하는 것에 동의합니다.
+									<ul class="list list3">
+										<li>고유식별정보: [주민등록번호, 여권번호, 외국인등록번호 및 영주증 번호]</li>
+									</ul>
+								</li>
+							</ul>
+						</dd>
+					</dl>
 				</div>
-
-				<!-- s : 수집·이용에 관한사항 영역 -->
-				<div class="section mt_9">
-					<div class="clfx">
-						<h3 class="f_l tit1">수집·이용에 관한사항</h3>
-					</div>
-
-					<div class="tbl">
-						<table style="min-width: 800px;">
-							<caption class="sr_only">수집·이용에 관한사항</caption>
-							<colgroup>
-								<col style="width: 20%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row" class="v_mid">수집·이용 목적</th>
-									<td>
-										<ul class="list list1 txt_medium txt_default">
-											<li>금융거래관계의 설정 여부 판단</li>
-											<li>금융거래관계의 설정·유지·이행·관리</li>
-											<li>금융사고 조사, 분쟁 해결, 민원 처리</li>
-											<li>법령상 의무이행 등</li>
-										</ul>
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">수집·이용할 항목</th>
-									<td class="text_container2">
-										<p class="tit2 tit2_orange2 ml_2">필수적 정보</p>
-										<ul class="list list1 txt_default">
-											<li class="txt_medium">개인식별정보
-												<ul class="list list1 txt_light txt_default">
-													<li>성명, 주민등록번호 등 고유식별정보, 국적, 직업, 주소, 전자우편 주소, 전화번호, 휴대전화번호 등 연락처</li>
-												</ul>
-											</li>
-											<li class="txt_medium">금융거래정보
-												<ul class="list list1 txt_light">
-													<li class="txt_default">상품종류, 계좌번호, 거래조건(이자율, 만기, 담보 등), 거래일시, 금액 등 거래 설정 및 내역 정보</li>
-													<li class="txt_default">고객ID, 접속일시, IP주소, 이용 전화번호 등 전자금융거래법에 따른 수집 정보</li>
-													<li class="txt_default">입출금통지, 현금카드, 체크카드, UbiTouch, 자동화기기 통장 등의 설정 및 내역 정보</li>
-												</ul>
-											</li>
-											<li class="txt_medium">신용평가를 위한 정보(여신거래에 한정)
-												<ul class="list list1 txt_light">
-													<li class="txt_default">신용능력정보: 재산·채무·소득의 총액, 납세실적</li>
-													<li class="txt_default">신용도판단정보: 연체, 대위변제, 대지급, 부도, 관련인 발생사실 등</li>
-												</ul>
-											</li>
-										</ul>
-										<p class="tit2 tit2_orange2 ml_2 mt_4">선택적 정보</p>
-										<ul class="list list1 txt_default">
-											<li class="txt_medium">개인식별정보 외에 거래(가입)신청서에 기재된 정보 또는 고객이 제공한 정보
-												<ul class="list list1 txt_light">
-													<li class="txt_default">주거 및 가족사항, 거주기간, 세대구성, 결혼여부 등</li>
-												</ul>
-											</li>
-										</ul>
-										<p class="txt_medium">※ 본 동의 이전에 발생한 개인정보도 포함됩니다.</p>
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">보유·이용 기간</th>
-									<td>
-										위 개인(신용)정보는 수집·이용에 관한 동의일로부터 금융거래 종료일까지 위 이용목적을 위하여 보유·이용됩니다. 단, 금융거래 종료일 후에는 금융사고 조사, 분쟁 해결, 민원처리,
-										법령상 의무이행 및 우체국의 리스크 관리업무만을 위하여 보유·이용됩니다.
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">동의를 거부할 권리 및 동의를 거부할 경우의 불이익</th>
-									<td>
-										위 개인(신용)정보 중 필수적 정보의 수집·이용에 관한 동의는 계약의 체결 및 이행을 위하여 필수적이므로, 위 사항에 동의하셔야만 금융거래관계의 설정 및 유지가 가능합니다. 위
-										개인신용정보 중 선택적 정보의 수집·이용에 관한 동의는 거부하실 수 있으며, 다만 동의하지 않으시는 경우 금융거래 조건 등에 불이익을 받으실 수 있습니다.
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">수집·이용 동의 여부</th>
-									<td>우체국이 위와 같이 본인의 개인(신용)정보를 수집·이용하는 것에 동의합니다.
-										<ul class="list list1 txt_medium">
-											<li class="txt_default">필수적 정보</li>
-											<li class="txt_default mt_0">선택적 정보</li>
-										</ul>
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">고유식별정보 동의여부</th>
-									<td>우체국이 위 목적으로 다음과 같은 본인의 고유식별정보를 수집·이용하는 것에 동의합니다.
-										<ul class="list list1 txt_medium">
-											<li class="txt_default">고유식별정보: [주민등록번호, 여권번호, 외국인등록번호 및 영주증 번호]</li>
-										</ul>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- e : 수집·이용에 관한사항 영역 -->
-
-				<!-- s : 제공에 관한사항 영역 -->
-				<div class="section mt_9 mb_16">
-					<div class="clfx">
-						<h3 class="f_l tit1">제공에 관한사항</h3>
-					</div>
-
-					<div class="tbl">
-						<table style="min-width: 800px;">
-							<caption class="sr_only">제공에 관한사항</caption>
-							<colgroup>
-								<col style="width: 20%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row" class="v_mid">제공받는 자</th>
-									<td>
-										<ul class="list list1 txt_medium txt_default">
-											<li>신용정보집중기관 및 신용조회회사에 대한 제공
-												<ul class="list list1 txt_light">
-													<li class="txt_default">신용정보집중기관(전국은행연합회, 여신금융협회 등), 신용조회회사(NICE신용평가정보㈜ 등)</li>
-												</ul>
-											</li>
-											<li>제휴기관(업체)에 대한 제공
-												<ul class="list list1 txt_light">
-													<li class="txt_default">공동인증서발급(한국정보인증), 모바일뱅킹서비스 업무(SKT, KT, LGU+, 금융결제원, 스탠다드네트웍스), 입출금통지서비스
-														업무(SKT, 스탠다드네트웍스)</li>
-												</ul>
-											</li>
-											<li>수탁기관(업체)에 대한 제공
-												<ul class="list list1 txt_light txt_default">
-													<li>우체국 금융거래 관련 상담업무(우체국금융고객센터) 등</li>
-													<li>
-														우체국은 수탁(제휴)업체에게 개인(신용)정보를 제공할 경우, 업무수행에 필요한 최소한의 정보만을 제공하며, 수탁(제휴)업체의 추가·변경 및 제공 목적의 세부적
-														내용은 우체국예금보험 홈페이지(www.epostbank.kr)에서 확인하실 수 있습니다.
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">제공받는 자의 이용 목적</th>
-									<td>
-										<ul class="list list1 txt_medium txt_default">
-											<li>신용정보집중기관 및 신용조회회사에 대한 제공
-												<ul class="list list1 txt_light">
-													<li class="txt_default">본인의 신용을 판단하기 위한 자료로 활용하거나 공공기관에서 정책자료로 활용</li>
-												</ul>
-											</li>
-											<li>수탁업체에 대한 제공
-												<ul class="list list1 txt_light">
-													<li class="txt_default">금융거래의 설정·유지·이행·관리 등에 필요한 경우로서 위탁받은 업무의 수행</li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">제공할 개인정보의 항목</th>
-									<td>
-										<ul class="list list1 txt_medium txt_default">
-											<li>신용정보집중기관 및 신용조회회사에게 제공되는 개인(신용)정보의 항목
-												<ul class="list list1 txt_light">
-													<li class="txt_default">개인식별정보, 금융거래정보, 신용능력정보, 신용평가를 위한 정보</li>
-												</ul>
-											</li>
-											<li>수탁업체에 대해 제공되는 개인(신용)정보의 항목
-												<ul class="list list1 txt_light">
-													<li class="txt_default">수집·이용에 동의한 정보 중 위탁업무 목적달성을 위해 필요한 정보에 한함</li>
-												</ul>
-											</li>
-										</ul>
-										<p class="txt_medium">※ 본 동의 이전에 수집된 개인(신용)정보도 포함됩니다.</p>
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">제공받은 자의 개인정보 보유·이용 기간</th>
-									<td>
-										개인(신용)정보는 제공된 날로부터 동의 철회시 또는 제공된 목적을 달성할 때까지 보유·이용됩니다. 동의 철회 또는 제공된 목적 달성 후에는 위에 기재된 이용 목적과 관련된 금융사고
-										조사, 분쟁 해결, 민원처리, 법령상 의무이행을 위하여 필요한 범위 내에서만 보유·이용됩니다.
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">동의를 거부할 권리 및 동의를 거부할 경우의 불이익</th>
-									<td>
-										위 개인(신용)정보의 제공에 관한 동의는 계약의 체결 및 이행을 위하여 필수적이므로, 위 사항에 동의하셔야만 금융거래관계의 설정 및 유지가 가능합니다.
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">제공 동의여부</th>
-									<td>
-										우체국이 위와 같이 본인의 개인(신용)정보를 제공하는 것
-									</td>
-								</tr>
-
-								<tr>
-									<th scope="row" class="v_mid">고유식별정보 동의여부</th>
-									<td>
-										우체국이 위 목적으로 다음과 같은 본인의 고유식별정보를 제공하는 것<br>고유식별정보 : [주민등록번호, 여권번호, 외국인등록번호 및 영주증 번호]
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- e : 제공에 관한사항 영역 -->
 			</div>
 
 			<!-- s: 공통 레이어 로딩 -->
