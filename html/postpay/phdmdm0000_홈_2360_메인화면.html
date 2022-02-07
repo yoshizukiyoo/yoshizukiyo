@@ -70,26 +70,10 @@
 			});
 
 			//달력
-			$('.finance_calendar').each(function () {
-				$('.wrapper').css('padding-bottom', '0px');
-				$('.cal_header .tab_cal li.on a').attr('title', '선택됨');
-				$('.cal_body > div').eq($('.tab_cal li.on').index()).show();
-				$('.finance_body > div').eq($('.tab_cal li.on').index()).show();
-			});
-
 			function tabCurrent() {
 				$('.cal_body table .day').on('click', function () {
 					var currentBtn = $(this).parent().addClass('on');
 					$('.cal_body table td').not(currentBtn).removeClass("on");
-
-					var offset = $('.cal_body .box_memo').offset();
-
-					$('.cal_body .box_memo .box_inner').slideDown(
-						'fast');
-
-					$('html').animate({
-						scrollTop: offset.top
-					}, 400);
 				})
 			};
 
@@ -97,8 +81,6 @@
 			$('.cal_header .tab_cal li a').on('click', function () {
 				$(this).attr('title', '선택됨').parent().addClass('on').siblings().removeClass('on').children().removeAttr(
 					'title');
-				$('.finance_body > div').eq($(this).parent().index()).show().siblings().hide();
-				$('.cal_body > div').eq($(this).parent().index()).show().siblings().hide();
 			});
 
 
