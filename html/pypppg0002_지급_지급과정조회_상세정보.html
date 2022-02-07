@@ -23,7 +23,16 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			$('.in_detail .btn_more').click(function () {
+				const tg = $(this).closest(".in_detail");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+					$(this).children('span').text('열림');
+				} else {
+					tg.removeClass("on");
+					$(this).children('span').text('닫음');
+				}
+			})
 		});
 	</script>
 </head>
@@ -32,79 +41,79 @@
 	<div class="wrapper">
 		<header class="header" data-page-title="지급진행조회"></header>
 		<div id="content">
-
+			<!-- s: 마크업 수정 : 2022-02-07 -->
 			<!-- s: 보상처리 현황 영역 -->
-			<div class="contract_detail">
-				<strong class="list_name">[실손] 상해 : 통원</strong>
-				<span class="evidence_contract pt_0">
-					<span class="blit">
-						<span class="lab_status type6 mt_3 mb_2">지급&nbsp;/&nbsp;심사&nbsp;의뢰판정</span>
-						<!-- s : case 2 : 청구완료
-						<span class="lab_status type2 mt_3 mb_2">청구완료</span>
-						e : case 2 : 청구완료-->
-					</span>
-					<span class="info">
-						<span>
-							<span>2021061513500256122662</span>
-						</span>
-					</span>
-				</span>
-
-				<div class="in_detail box bg_lightgray">
-					<span>
-						<em>접수일자</em>
-						<strong>2021.07.20</strong>
-					</span>
-
-					<!-- s : case 2 : 청구완료 -->
-					<span>
-						<em>지급일자</em>
-						<strong>2021.07.21</strong>
-					</span>
-					<span>
-						<em>지급보험금</em>
-						<strong>300,000원</strong>
-					</span>
-					<!-- e : case 2 : 청구완료 -->
-
-					<span>
-						<em>접수담당자</em>
-						<strong>황승미(061-231-0481)</strong>
-					</span>
-					<span>
-						<em>접수센터</em>
-						<strong>전남지급센터</strong>
-					</span>
+			<div class="container pt_4">
+				<div class="contract_list pt_0 pb_0">
+					<ul>
+						<li class="contract_item">
+							<strong class="list_name">[실손] 상해 : 통원</strong>
+							<span class="evidence_contract">
+								<span class="blit">
+									<span class="lab_status type6">지급&nbsp;/&nbsp;심사&nbsp;의뢰판정</span>
+									<!-- s : case 2 : 청구완료
+							<span class="lab_status type2 mt_3 mb_2">청구완료</span>
+							e : case 2 : 청구완료-->
+								</span>
+								<span class="info">
+									<span>
+										<span>2021061513500256122662</span>
+									</span>
+								</span>
+							</span>
+							<div class="in_detail detail_round bg_lightgray">
+								<span>
+									<em>접수일</em>
+									<strong>2021.07.20</strong>
+								</span>
+								<!-- s : case 2 : 청구완료 -->
+								<span>
+									<em>지급일</em>
+									<strong>2021.07.21</strong>
+								</span>
+								<span>
+									<em>지급보험금</em>
+									<strong>300,000원</strong>
+								</span>
+								<!-- e : case 2 : 청구완료 -->
+								<span>
+									<em>접수담당자</em>
+									<strong>황승미(061-231-0481)</strong>
+								</span>
+								<span>
+									<em>접수센터</em>
+									<strong>전남지급센터</strong>
+								</span>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<!-- e: 보상처리 현황 영역 -->
 
-			<div class="container pt_4 pb_16">
+			<div class="container pb_16">
 				<!-- s: 신청자정보 영역 -->
-				<div>
+				<div class="section">
 					<h2 class="tit1">신청자 정보</h2>
-					<div class="tbl">
-						<table>
-							<caption class="sr_only">신청자 정보</caption>
-							<colgroup>
-								<col style="width: 35%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">이름</th>
-									<td class="txt_l">나봄미(010-4562-1234)</td>
-								</tr>
-								<tr>
-									<th scope="row">생년월일</th>
-									<td class="txt_l">650923-*******</td>
-								</tr>
-								<tr>
-									<th scope="row">보험금 청구계좌</th>
-									<td class="txt_l">우체국 01001702191237 나봄미</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="contract_list pt_0 pb_0">
+						<ul class="table_type">
+							<li class="contract_item">
+								<span class="in_detail alignment">
+									<span>
+										<em>이름</em>
+										<strong>나봄미(010-4562-1234)</strong>
+									</span>
+									<span>
+										<em>생년월일</em>
+										<strong>650923-*******</strong>
+									</span>
+									<span>
+										<em>보험금 청구계좌</em>
+										<strong>우체국 01001702191237 나봄미</strong>
+									</span>
+								</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<!-- e: 신청자정보 영역 -->
@@ -112,57 +121,46 @@
 				<!-- s: 청구접수내용 영역 -->
 				<div class="section">
 					<h2 class="tit1">청구접수내용</h2>
-					<div class="tbl tbl_data tbl_row_data">
-						<table>
-							<caption class="sr_only">청구접수내용</caption>
-							<colgroup>
-								<col style="width: 35%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">청구유형</th>
-									<td class="txt_l">실손</td>
-								</tr>
-								<tr>
-									<th scope="row">발생원인</th>
-									<td class="txt_l">기타</td>
-								</tr>
-								<tr>
-									<th scope="row">청구사유</th>
-									<td class="txt_l">통원, 입원</td>
-								</tr>
-								<tr>
-									<th scope="row">진단명</th>
-									<td class="txt_l">손목골절</td>
-								</tr>
-								<tr>
-									<th scope="row">사고일시</th>
-									<td class="txt_l">2021.08.15</td>
-								</tr>
-								<tr>
-									<th scope="row">사고장소</th>
-									<td class="txt_l">사무실</td>
-								</tr>
-								<tr>
-									<th scope="row">사고경위</th>
-									<td class="txt_l">업무 중 물체가 손목에 떨어짐</td>
-								</tr>
-								<tr>
-									<th scope="row" class="v_mid">지급청구서</th>
-									<td class="txt_l txt_xs">
-										<div>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item top_none">
+								<span class="in_detail toggle alignment" style="height:60px;">
+									<span>
+										<em>청구유형</em>
+										<strong class="txt_light">실손</strong>
+									</span>
+									<span>
+										<em>발생원인</em>
+										<strong class="txt_light">기타</strong>
+									</span>
+									<span>
+										<em>청구사유</em>
+										<strong class="txt_light">통원, 입원</strong>
+									</span>
+									<span>
+										<em>진단명</em>
+										<strong class="txt_light">손목골절</strong>
+									</span>
+									<span>
+										<em>사고일시</em>
+										<strong class="txt_light">사무실</strong>
+									</span>
+									<span>
+										<em>사고경위</em>
+										<strong class="txt_light">업무 중 물체가 손목에 떨어짐
+										</strong>
+									</span>
+									<span>
+										<em>지급청구서</em>
+										<strong class="txt_light">
 											<a href="#;" class="btn btn_sm btn_round btn_outline_default">청구신청서 다운로드</a>
-											<p class="pl_1 pb_1"><strong>첨부일자</strong> 2021.05.30</p>
-										</div>
-										<div>
-											<a href="#;" class="btn btn_sm btn_round btn_outline_default">청구신청서 다운로드</a>
-											<p class="pl_1"><strong>첨부일자</strong> 2021.05.24</p>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+											<span>첨부일 2021.05.30</span>
+										</strong>
+									</span>
+									<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<!-- e: 청구접수내용 영역 -->
@@ -170,28 +168,27 @@
 				<!-- s: case 2 청구완료 : 보험금지급내역 영역 -->
 				<div class="section">
 					<h2 class="tit1">보험금지급내역</h2>
-					<div class="tbl tbl_data tbl_row_data">
-						<table>
-							<caption class="sr_only">보험금지급내역</caption>
-							<colgroup>
-								<col style="width: 35%;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">보험상품</th>
-									<td class="txt_l">무배당에버리치상해보험</td>
-								</tr>
-								<tr>
-									<th scope="row" class="v_mid">보상담보</th>
-									<td class="txt_l">이륜자동차 운전 및 탑승중 재해 부담보 특약</td>
-								</tr>
-								<tr>
-									<th scope="row">지급보험금</th>
-									<td class="txt_l">300,000원</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item top_none">
+								<span class="in_detail alignment">
+									<span>
+										<em>보험상품</em>
+										<strong>무배당에버리치상해보험</strong>
+									</span>
+									<span>
+										<em>보상담보</em>
+										<strong>이륜자동차 운전 및 탑승중 재해 부담보 특약
+										</strong>
+									</span>
+									<span>
+										<em>지급보험금</em>
+										<strong>300,000 원
+										</strong>
+									</span>
+								</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<!-- e: case 2 청구완료 : 보험금지급내역 영역 -->
@@ -250,16 +247,25 @@
 				<!-- s: case 3 서류보완 : 심사진행결과 영역 -->
 				<div class="section">
 					<h2 class="tit1">심사진행결과</h2>
-					<div class="box bg_lightgray pt_4 pb_4 mt_2">
-						<p class="bul_notice_red bul_arrow_bold txt_invalid">서류보완 요청내용</p>
-						<ul class="list list1 mt_1">
-							<li>진료비 세부내역서를 보완해주세요. 2021.05.24</li>
-							<li>진단서를 보완해주세요. 2021.05.24</li>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item top_none">
+								<span class="in_detail toggle alignment" style="height:90px;">
+									<span>
+										<em>서류보완 요청내용</em>
+										<strong>
+											<span>진료비 세부내역서를 보완해주세요. 2021.05.24</span>
+											<span>진단서를 보완해주세요. 2021.05.24</span>
+										</strong>
+									</span>
+									<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								</span>
+							</li>
 						</ul>
 					</div>
 				</div>
 				<!-- e: case 3 서류보완 : 심사진행결과 영역 -->
-
+				<!-- e: 마크업 수정 : 2022-02-07 -->
 
 
 				<!-- s: 하단 고정 영역 -->
