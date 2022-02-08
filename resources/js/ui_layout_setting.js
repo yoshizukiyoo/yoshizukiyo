@@ -67,10 +67,8 @@ $(function () {
 
 		var titleText = "달력";
 		if ($(this).attr('title')) {
-			console.log($(this).attr('title'));
 			titleText = $(this).attr('title') + " " + titleText;
 		} else if ($(this).attr('id')) {
-			console.log($(this).attr('id'));
 			titleText = $('label[for="' + $(this).attr('id') + '"]').text() + " " + titleText;
 		}
 
@@ -429,11 +427,8 @@ $(function () {
 // }
 
 // GNB
-$(document).on('mouseenter focusin', '.header .gnb>ul>li>a', function () {
-	var obj = $(this);
-	obj.addClass('current').parent().siblings().find('>a').removeClass();
-	obj.next().addClass('open').parent().siblings().find('.layer_memu_box').removeClass('open');
-	//$('.quick_menu_wrap').addClass('quick_hidden');
+$(document).on('mouseenter click', '.header .gnb>ul>li>a', function (e) {
+	gnbOpen($(this));
 });
 $(document).on('mouseleave', '#gnb', function () {
 	gnbClose();
@@ -443,6 +438,12 @@ $(document).on('keydown', '#gnb>ul>li:last-child>.layer_memu_box>.menu_wrap>.men
 		gnbClose();
 	}
 });
+
+function gnbOpen(lnb) {
+	var obj = lnb;
+	obj.addClass('current').parent().siblings().find('>a').removeClass();
+	obj.next().addClass('open').parent().siblings().find('.layer_memu_box').removeClass('open');
+}
 
 function gnbClose() {
 	$('.gnb>ul>li>a').removeClass();
@@ -459,12 +460,14 @@ $(document).on('click', '.btn_allmenu > button', function () {
 
 function menuBox(box) {
 	$('.result_box > div').hide();
-	$('.btn_mymenu_box > a').removeClass('current');
+	$('.btn_mymenu_box > a').removeClass('current').removeAttr('title');
 
 	if (box == 'lately') { // 최근이용 메뉴 열기
 		$('.lately_result_box').show();
+		$('.btn_mymenu_box .btn_lately').attr('title', '선택됨');
 	} else if (box == 'my') { // MY메뉴 열기
 		$('.mymenu_result_box').show();
+		$('.btn_mymenu_box .btn_my').attr('title', '선택됨');
 	} else { // 메뉴 검색결과 열기
 		$('.menu_search_box').show();
 	}
@@ -517,7 +520,7 @@ $(document).on('click', '.btn_mymenu_box > a', function () {
 // 전체 메뉴 탭메뉴
 $(document).on('click', '.tab_all_menu a', function () {
 	var menuId = $(this).data('layer-tab');
-	$(this).addClass('current').parent().siblings().find('>a').removeClass('current');
+	$(this).addClass('current').attr('title', '선택됨').parent().siblings().find('>a').removeClass('current').removeAttr('title');
 	$('.tab_sub_menu[data-menu-box="' + menuId + '"]').show().siblings().hide();
 	return false;
 });
