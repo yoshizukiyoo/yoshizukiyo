@@ -23,7 +23,16 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			$('.in_detail .btn_more').click(function () {
+				const tg = $(this).closest(".in_detail");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+					$(this).children('.txt_sm').text('열림');
+				} else {
+					tg.removeClass("on");
+					$(this).children('.txt_sm').text('닫힘');
+				}
+			});
 		});
 	</script>
 </head>
@@ -35,7 +44,6 @@
 			<!-- s: 본문 -->
 
 			<div class="container pt_4">
-
 				<div class="clfx mb_3">
 					<div class="f_r">
 						<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
@@ -45,72 +53,94 @@
 					</div>
 				</div>
 
-				<ul class="counseling_list">
-					<li>
-						<strong>(무)우체국온라인어린이보험 2007</strong>
-						<span class="data">가입일자:2021.10.30</span>
-					</li>
-					<li>
-						<div class="txt_view">복잡한 절차없이 간편하게 가입 되서 좋았어요.
-							<a href="#" class="btn">
-								<img class="img_close" src="../resources/img/content/ico_closed.png" alt="닫기">
-							</a>
-							<p>
-								<span class="data">2021.10.25</span>
-							</p>
-						</div>
-					</li>
-				</ul>
-
-				<ul class="counseling_list">
-					<li>
-						<strong>(무)우체국온라인보험</strong>
-						<span class="data">가입일자:2021.10.30</span>
-					</li>
-					<li>
-						<div class="txt_view">믿을수있는우체국에서 보장하는 보험이라 좋아요 좋아요 좋아요 좋아요 좋아요
-							<a href="#" class="btn">
-								<img class="img_close" src="../resources/img/content/ico_closed.png" alt="닫기">
-							</a>
-							<p>
-								<span class="data">2021.10.25</span>
-							</p>
-						</div>
-					</li>
-				</ul>
-
-				<ul class="counseling_list">
-					<li>
-						<strong>(무)우체국온라인보험</strong>
-						<span class="data">가입일자:2021.10.30</span>
-					</li>
-					<li>
-						<p>상품후기를 작성해주세요.</p>
-						<div class="btn_group btn_group_flex">
-							<button type="button" class="btn btn_lg btn_outline_default">상품후기작성</button>
-						</div>
-					</li>
-				</ul>
-
-				<ul class="counseling_list">
-					<li>
-						<strong>(무)우체국온라인보험</strong>
-						<span class="data">가입일자:2021.10.30</span>
-					</li>
-					<li>
-						<span class="txt_gray txt_sm d_b">내용</span>
-						<textarea class="content_txt txt_type1" style="height:125px;">
-상품 후기를 입력해주세요.
-						</textarea>
-						<span class="d_b txt_l txt_sm txt_gray">
-							<span class="txt_blue">0</span>/200자
-						</span>
-						<div class="btn_group btn_group_flex pb_2">
-							<button type="button" class="btn btn_lg btn_outline_default">취소</button>
-							<button type="button" class="btn btn_lg btn_primary">상품후기등록</button>
-						</div>
-					</li>
-				</ul>
+				<!-- s: 마크업수정 2022-02-08 -->
+				<div class="section mt_0 mb_16">
+					<div class="review_list">
+						<ul>
+							<li>
+								<dl class="list_text_lab2">
+									<dt class="txt_lg txt_medium">(무)우체국온라인보험</dt>
+									<dd class="txt_md pt_3 pb_3">
+										<span>가입일자 : 2021.10.30</span>
+										<span class="f_r">후기 작성일 : 2021.10.25</span>
+									</dd>
+									<dd class="txt_sm">복잡한 절차없이 간편하게 가입 되서 좋았어요.</dd>
+								</dl>
+							</li>
+							<li>
+								<dl class="list_text_lab2">
+									<dt class="txt_lg txt_medium">(무)우체국온라인보험</dt>
+									<dd class="txt_md pt_3 pb_3">
+										<span>가입일자 : 2021.10.30</span>
+										<span class="f_r">후기 작성일 : 2021.10.25</span>
+									</dd>
+									<dd class="txt_sm">믿을수있는우체국에서 보장하는 보험이라 좋아요 좋아요 좋아요 좋아요 좋아요</dd>
+								</dl>
+							</li>
+							<li class="in_detail toggle">
+								<dl class="list_text_lab2">
+									<dt class="txt_lg txt_medium">상품명 상품명 상품명</dt>
+									<dd class="txt_md pt_3 pb_3">
+										<span>가입일자:2021.10.30</span>
+										<span class="f_r">후기작성일:2021.06.01</span>
+									</dd>
+									<dd class="txt_sm">
+										가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기
+										내용입니다. 가입후기 내용입니다.
+									</dd>
+								</dl>
+								<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								<a href="#;" class="btn btn_close_sm"><span class="sr_only">닫기</span></a>
+							</li>
+							<li class="in_detail toggle">
+								<dl class="list_text_lab2">
+									<dt class="txt_lg txt_medium">상품명 상품명 상품명 상품명 상품명 상품명 상품명 상품명 상품명</dt>
+									<dd class="txt_md pt_3 pb_3">
+										<span>가입일자:2021.10.30</span>
+										<span class="f_r">후기작성일:2021.06.01</span>
+									</dd>
+									<dd class="txt_sm">가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다.
+										가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기 내용입니다. 가입후기
+										내용입니다. 가입후기 내용입니다.</dd>
+								</dl>
+								<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								<a href="#;" class="btn btn_close_sm"><span class="sr_only">닫기</span></a>
+							</li>
+							<li class="in_detail toggle">
+								<dl class="list_text_lab2">
+									<dt class="txt_lg txt_medium">상품명 상품명 상품명 상품명 상품명 상품명 상품명 상품명 상품명</dt>
+									<dd class="txt_md pt_3 pb_3">
+										<span>가입일자:2021.10.30</span>
+									</dd>
+									<dd class="txt_sm">상품후기를 작성해주세요</dd>
+									<dd class="btn_group btn_group_flex">
+										<button type="button" class="btn btn_lg btn_outline_default">상품후기작성</button>
+									</dd>
+								</dl>
+								<a href="#;" class="btn btn_close_sm"><span class="sr_only">닫기</span></a>
+							</li>
+						</ul>
+					</div>
+					<ul class="counseling_list line_type">
+						<li>
+							<strong>(무)우체국온라인보험</strong>
+							<span class="data">가입일자:2021.10.30</span>
+						</li>
+						<li>
+							<span class="txt_gray txt_sm d_b">내용</span>
+							<textarea class="content_txt txt_type1" style="height:125px;">상품 후기를 입력해주세요.
+							</textarea>
+							<span class="d_b txt_l txt_sm txt_gray">
+								<span class="txt_blue">0</span>/200자
+							</span>
+							<div class="btn_group btn_group_flex pb_2">
+								<button type="button" class="btn btn_lg btn_outline_default">취소</button>
+								<button type="button" class="btn btn_lg btn_primary">상품후기등록</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- e: 마크업수정 2022-02-08 -->
 			</div>
 		</div>
 	</div>
