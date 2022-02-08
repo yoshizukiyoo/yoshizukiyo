@@ -21,9 +21,19 @@
 	<script src="/resources/js/ui_layout_setting.js"></script>
 
 	<!-- 페이지 개별 스크립트 -->
+
 	<script>
 		$(document).ready(function () {
-
+			$('.in_detail .btn_more').click(function () {
+				const tg = $(this).closest(".in_detail");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+					$(this).children('span').text('열림');
+				} else {
+					tg.removeClass("on");
+					$(this).children('span').text('닫음');
+				}
+			})
 		});
 	</script>
 </head>
@@ -34,29 +44,31 @@
 		<div id="content">
 			<!-- s: 본문 -->
 			<div class="container pt_4 mb_16">
+				<!-- s: 마크업 수정 : 2022-02-08 -->
 
 				<!-- s: 현재 단계 표시 -->
 				<ul class="input_step">
-					<li><span class="num">1</span><span class="txt">보험선택</span></li>
-					<li><span class="num">2</span><span class="txt">정보입력</span></li>
-					<li><span class="num">3</span><span class="txt">입력확인</span></li>
-					<li class="on"><span class="num">4</span><span class="txt">처리완료</span></li>
+					<li><span class="num">1</span><span class="txt">정보입력</span></li>
+					<li><span class="num">2</span><span class="txt">입력확인</span></li>
+					<li class="on"><span class="num">3</span><span class="txt">처리완료</span></li>
 				</ul>
 				<!-- e: 현재 단계 표시 -->
 
 				<div class="complete_txt">
 					<strong>
-						보험청약철회 <span>완료</span>
+						기간변경이 <span class="txt_medium">완료</span>되었습니다.
 					</strong>
+					<p>정산내역 증명서는 “증명서발급”을 클릭하여 확인할 수 있습니다.
+					</p>
 				</div>
 
 				<!-- s: 기간변경 보험 영역 -->
 				<h2 class="tit1 mt_2">기간변경 신청보험</h2>
 				<div class="contract_list p_0">
 					<ul>
-						<li class="box box_border">
+						<li class="contract_item">
 
-							<strong class="list_name txt_normal">(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</strong>
+							<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),종합형](갱신형)</strong>
 
 							<span class="evidence_contract">
 								<span class="blit">
@@ -72,18 +84,24 @@
 								</span>
 							</span>
 
-							<span class="in_detail">
+							<div class="in_detail detail_round bg_lightgray">
 								<span>
 									<em>계약자 / 피보험자</em>
 									<strong class="txt_light">나봄미 / 나봄미</strong>
 								</span>
-							</span>
-
-							<div class="btn_group length">
-								<!-- 비활성화시 .btn_disabled 추가 -->
-								<a href="#;" class="btn btn_md btn_round btn_darkgray">증명서발급</a>
+								<span>
+									<em>최종납월</em>
+									<strong class="txt_light">2021.05</strong>
+								</span>
+								<span>
+									<em>1회보험료</em>
+									<strong class="txt_light">22,000 원</strong>
+								</span>
+								<div class="btn_group length">
+									<!-- 비활성화시 .btn_disabled 추가 -->
+									<a href="#;" class="btn btn_md btn_round btn_darkgray">증명서발급</a>
+								</div>
 							</div>
-
 						</li>
 					</ul>
 				</div>
@@ -91,7 +109,7 @@
 
 				<!-- s: 기간변경 내역 영역 -->
 				<div class="section">
-					<h2 class="tit1">특약해지 내역</h2>
+					<h2 class="tit1">변경내역 확인</h2>
 					<div class="contract_list p_0">
 						<ul>
 							<li class="contract_item">
@@ -182,45 +200,42 @@
 						<!-- s: 정산내역 영역 -->
 						<div class="section">
 							<h2 class="tit1">정산내역</h2>
+							<div class="contract_list pt_0">
+								<ul>
+									<li class="contract_item">
+										<div class="tit_align">
+											<div class="list_name">지급계</div>
+											<div class="total_price pt_0 pb_0 txt_r">
+												<strong>0</strong>원
+											</div>
+										</div>
+										<span class="in_detail alignment toggle " style="height:60px;">
+											<span>
+												<em>공제계</em>
+												<strong class="txt_light">0 원</strong>
+											</span>
+											<span>
+												<em>세금계</em>
+												<strong class="txt_light">0 원</strong>
+											</span>
+											<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+										</span>
+									</li>
+								</ul>
 
-							<div class="tbl mt_3">
-								<table>
-									<caption class="sr_only">기간변경 정산내역에 대한 표</caption>
-									<colgroup>
-										<col style="width: 35%;">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">지급계</th>
-											<td class="txt_l">0원</td>
-										</tr>
-										<tr>
-											<th scope="row">공제계</th>
-											<td class="txt_l">0원</td>
-										</tr>
-										<tr>
-											<th scope="row">세금계</th>
-											<td class="txt_l">0원</td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="total_price">
+									실지급금액 :
+									<strong>0</strong>원
+								</div>
 							</div>
-
 						</div>
 						<!-- e: 정산내역 영역 -->
-
-						<div class="total_price">
-							실지급액 :
-							<strong>1,993,600</strong>원
-						</div>
-
 					</div>
 				</div>
 
 			</div>
 			<!-- e: 본문  -->
-
+			<!-- e: 마크업 수정 : 2022-02-08 -->
 			<!-- s: 하단 고정 영역 -->
 			<div class="bottom_fixed_area">
 				<div class="btn_group btn_group_flex">

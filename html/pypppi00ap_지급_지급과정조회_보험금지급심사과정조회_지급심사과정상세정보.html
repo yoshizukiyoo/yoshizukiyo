@@ -20,7 +20,16 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			// 이곳에 정의
+			$('.in_detail .btn_more').click(function () {
+				const tg = $(this).closest(".in_detail");
+				if (!tg.hasClass('on')) {
+					tg.addClass("on");
+					$(this).children('span').text('열림');
+				} else {
+					tg.removeClass("on");
+					$(this).children('span').text('닫음');
+				}
+			})
 		});
 	</script>
 </head>
@@ -33,239 +42,246 @@
 		</div>
 		<div class="popup_body">
 			<div class="container pt_4 pb_4">
-
+				<!-- s: 마크업 수정 : 2022-02-08 -->
 				<!-- s: 기본정보 영역 -->
-				<h2 class="popup_tit2">기본정보</h2>
-				<span class="blit">
-					<span>00001</span>
-					<span class="lab_status outline_lightgray ml_2">부지급종결</span>
-				</span>
+				<div class="section mt_0">
+					<h2 class="tit1">기본정보</h2>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item blit_history">
+								<div class="list_name">00001
+									<span class="btn_area ml_1 clfx">
+										<span class="blit f_r">
+											<span class="lab_status outline_type1 txt_default">부지급종결</span>
+										</span>
+									</span>
+								</div>
 
-				<div class="tbl mt_3">
-					<table>
-						<caption class="sr_only">기본정보</caption>
-						<colgroup>
-							<col style="width: 40%;">
-							<col>
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="row">피보험자명</th>
-								<td>나봄미(650923-*******)</td>
-							</tr>
-							<tr>
-								<th scope="row">수익자명</th>
-								<td>나수익(650923-*******)</td>
-							</tr>
-							<tr>
-								<th scope="row">심사부서</th>
-								<td>우체국 지원단</td>
-							</tr>
-							<tr>
-								<th scope="row">보험종류</th>
-								<td>(무)실손2종종합</td>
-							</tr>
-							<tr>
-								<th scope="row">사고일자</th>
-								<td>2021. 08. 15</td>
-							</tr>
-							<tr>
-								<th scope="row">처리상태</th>
-								<td>심사완료(지급)</td>
-							</tr>
-							<tr>
-								<th scope="row">진단/수술일자</th>
-								<td>2021. 08. 15</td>
-							</tr>
-							<tr>
-								<th scope="row">지급사유발생일</th>
-								<td>2021. 08. 15</td>
-							</tr>
-							<tr>
-								<th scope="row">퇴원일자</th>
-								<td>2021. 08. 15</td>
-							</tr>
-							<tr>
-								<th scope="row">청구국</th>
-								<td>우체국금융개발원지급</td>
-							</tr>
-							<tr>
-								<th scope="row">청구등록일</th>
-								<td>2021. 08. 15</td>
-							</tr>
-							<tr>
-								<th scope="row">청구등록자</th>
-								<td>공오삼</td>
-							</tr>
-							<tr>
-								<th scope="row">조사의뢰일</th>
-								<td>&minus;</td>
-							</tr>
-							<tr>
-								<th scope="row">조사자</th>
-								<td>&minus;</td>
-							</tr>
-							<tr>
-								<th scope="row">조사완료일</th>
-								<td>&minus;</td>
-							</tr>
-							<tr>
-								<th scope="row">심사접수일</th>
-								<td>2021. 09. 15</td>
-							</tr>
-							<tr>
-								<th scope="row">심사자</th>
-								<td>공오삼</td>
-							</tr>
-							<tr>
-								<th scope="row">심사완료일</th>
-								<td>2021. 09. 15</td>
-							</tr>
-							<tr>
-								<th scope="row">지급항목</th>
-								<td>통원처방조제비(재해)</td>
-							</tr>
-							<tr>
-								<th scope="row">확정보험금</th>
-								<td>72,000원</td>
-							</tr>
-							<tr>
-								<th scope="row">이체 SNS</th>
-								<td>N</td>
-							</tr>
-						</tbody>
-					</table>
+								<span class="in_detail toggle alignment" style="height:60px;">
+									<span>
+										<em>피보험자명</em>
+										<strong class="txt_light">나봄미(650923-*******)</strong>
+									</span>
+									<span>
+										<em>수익자명</em>
+										<strong class="txt_light">나수익(650923-*******)</strong>
+									</span>
+									<span>
+										<em>심사부서</em>
+										<strong class="txt_light">우체국 지원단</strong>
+									</span>
+									<span>
+										<em>보험종류</em>
+										<strong class="txt_light">(무)실손2종종합</strong>
+									</span>
+									<span>
+										<em>사고일시</em>
+										<strong class="txt_light">2021.08.15 00:00 </strong>
+									</span>
+									<span>
+										<em>처리상태</em>
+										<strong class="txt_light">심사완료(지급)</strong>
+									</span>
+									<span>
+										<em>진단/수술일자</em>
+										<strong class="txt_light">2021.08.15</strong>
+									</span>
+									<span>
+										<em>지급사유발생일</em>
+										<strong class="txt_light">2021.08.15</strong>
+									</span>
+									<span>
+										<em>퇴원일자</em>
+										<strong class="txt_light">2021.08.15</strong>
+									</span>
+									<span>
+										<em>청구국</em>
+										<strong class="txt_light">우체국금융개발원지급</strong>
+									</span>
+									<span>
+										<em>청구등록일</em>
+										<strong class="txt_light">2021.08.15</strong>
+									</span>
+									<span>
+										<em>청구등록자</em>
+										<strong class="txt_light">공오삼</strong>
+									</span>
+									<span>
+										<em>조사의뢰일</em>
+										<strong class="txt_light">&minus;</strong>
+									</span>
+									<span>
+										<em>조사자</em>
+										<strong class="txt_light">&minus;</strong>
+									</span>
+									<span>
+										<em>조사완료일</em>
+										<strong class="txt_light">&minus;</strong>
+									</span>
+									<span>
+										<em>심사접수일</em>
+										<strong class="txt_light">2021. 09. 15</strong>
+									</span>
+									<span>
+										<em>심사자</em>
+										<strong class="txt_light">공오삼</strong>
+									</span>
+									<span>
+										<em>심사완료일</em>
+										<strong class="txt_light">2021.09.15</strong>
+									</span>
+									<span>
+										<em>지급항목</em>
+										<strong class="txt_light">통원처방조제비(재해)</strong>
+									</span>
+									<span>
+										<em>확정보험금</em>
+										<strong class="txt_light">72,000 원</strong>
+									</span>
+									<span>
+										<em>이체 SMS</em>
+										<strong class="txt_light">N</strong>
+									</span>
+									<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<!-- e: 기본정보 영역 -->
 
 				<!-- s: 청구내용 영역 -->
-				<h2 class="popup_tit2">청구내용</h2>
-				<div class="tbl mt_3">
-					<table>
-						<caption class="sr_only">청구내용</caption>
-						<colgroup>
-							<col style="width: 40%;">
-							<col>
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="row">사고유형</th>
-								<td>통원</td>
-							</tr>
-							<tr>
-								<th scope="row">사고내용</th>
-								<td>&minus;</td>
-							</tr>
-							<tr>
-								<th scope="row">질병유형</th>
-								<td>일반재해</td>
-							</tr>
-							<tr>
-								<th scope="row" class="v_mid">질병코드</th>
-								<td>W01 : 미끌림, 걸림 및 헛디딤에 의한 동일 면상에서의 전도</td>
-							</tr>
-							<tr>
-								<th scope="row">재해질병코드</th>
-								<td>&minus;</td>
-							</tr>
-							<tr>
-								<th scope="row">참조질병코드</th>
-								<td>&minus;</td>
-							</tr>
-							<tr>
-								<th scope="row">청구사유코드</th>
-								<td>5010 : 통원</td>
-							</tr>
-							<tr>
-								<th scope="row">확정사유코드</th>
-								<td>5010 : 통원처방조제비(재해)</td>
-							</tr>
-							<tr>
-								<th scope="row">약정보험금</th>
-								<td>90,000원</td>
-							</tr>
-							<tr>
-								<th scope="row">확정보험금</th>
-								<td>72,000원</td>
-							</tr>
-							<tr>
-								<th scope="row">실수령자</th>
-								<td>김밤밤(010-4567-1234)</td>
-							</tr>
-						</tbody>
-					</table>
+				<div class="section">
+					<h2 class="tit1">청구내용</h2>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item top_none">
+								<span class="in_detail toggle alignment" style="height:60px;">
+									<span>
+										<em>사고유형</em>
+										<strong class="txt_light">통원</strong>
+									</span>
+									<span>
+										<em>사고내용</em>
+										<strong class="txt_light">&minus;</strong>
+									</span>
+									<span>
+										<em>질병유형</em>
+										<strong class="txt_light">일반재해</strong>
+									</span>
+									<span>
+										<em>질병코드</em>
+										<strong class="txt_light">W01 : 미끌림, 걸림 및 헛디딤에 의한 동일 면상에서의 전도
+										</strong>
+									</span>
+									<span>
+										<em>재해질병코드</em>
+										<strong class="txt_light">&minus; </strong>
+									</span>
+									<span>
+										<em>참조질병코드</em>
+										<strong class="txt_light">&minus;</strong>
+									</span>
+									<span>
+										<em>청구사유코드</em>
+										<strong class="txt_light">5010 : 통원</strong>
+									</span>
+									<span>
+										<em>확정사유코드</em>
+										<strong class="txt_light">5010 : 통원처방조제비(재해)</strong>
+									</span>
+									<span>
+										<em>약정보험금</em>
+										<strong class="txt_light">90,000 원</strong>
+									</span>
+									<span>
+										<em>확정보험금</em>
+										<strong class="txt_light">72,000 원</strong>
+									</span>
+									<span>
+										<em>실수령자</em>
+										<strong class="txt_light">해차애(010-4562-4562)</strong>
+									</span>
+									<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<!-- e: 청구내용 영역 -->
 
 				<!-- s: 보험금청구 상세내역 영역 -->
-				<h2 class="popup_tit2">보험금청구 상세내역</h2>
-				<div class="tbl mt_3">
-					<table>
-						<caption class="sr_only">보험금청구 상세내역</caption>
-						<colgroup>
-							<col style="width: 40%;">
-							<col>
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="row">보장상품코드</th>
-								<td>J1814</td>
-							</tr>
-							<tr>
-								<th scope="row">보장상품명</th>
-								<td>(무)실손2종종합</td>
-							</tr>
-							<tr>
-								<th scope="row">대표지급사유</th>
-								<td>통원</td>
-							</tr>
-							<tr>
-								<th scope="row">상세지급사유</th>
-								<td>통원처방조제비(재해)</td>
-							</tr>
-							<tr>
-								<th scope="row">약정보험금</th>
-								<td>90,000원</td>
-							</tr>
-							<tr>
-								<th scope="row">증감금액</th>
-								<td>18,000원</td>
-							</tr>
-							<tr>
-								<th scope="row">확정보험금</th>
-								<td>72,000원</td>
-							</tr>
-						</tbody>
-					</table>
+				<div class="section">
+					<h2 class="tit1">보험금청구 상세내역</h2>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item top_none">
+								<span class="in_detail toggle alignment" style="height:60px;">
+									<span>
+										<em>보장상품코드</em>
+										<strong class="txt_light">J1814</strong>
+									</span>
+									<span>
+										<em>보장상품명</em>
+										<strong class="txt_light">(무)실손2종종합</strong>
+									</span>
+									<span>
+										<em>대표지급사유</em>
+										<strong class="txt_light">통원</strong>
+									</span>
+									<span>
+										<em>상세지급사유</em>
+										<strong class="txt_light">통원처방조제비(재해)
+										</strong>
+									</span>
+									<span>
+										<em>약정보험금</em>
+										<strong class="txt_light">90,000 원</strong>
+									</span>
+									<span>
+										<em>증감금액</em>
+										<strong class="txt_light">18,000 원</strong>
+									</span>
+									<span>
+										<em>확정보험금</em>
+										<strong class="txt_light">72,000 원</strong>
+									</span>
+									<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<!-- e: 보험금청구 상세내역 영역 -->
 
 				<!-- s: 이체정보 영역 -->
-				<h2 class="popup_tit2">이체정보</h2>
-				<div class="tbl mt_3">
-					<table>
-						<caption class="sr_only">이체정보</caption>
-						<colgroup>
-							<col style="width: 40%;">
-							<col>
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="row">이체은행</th>
-								<td>우체국</td>
-							</tr>
-							<tr>
-								<th scope="row">이체계좌번호</th>
-								<td>01001702191237</td>
-							</tr>
-							<tr>
-								<th scope="row">예금주</th>
-								<td>김밤밤</td>
-							</tr>
-						</tbody>
-					</table>
+				<div class="section">
+					<h2 class="tit1">이체정보</h2>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item top_none">
+								<span class="in_detail toggle alignment" style="height:60px;">
+									<span>
+										<em>이체은행</em>
+										<strong class="txt_light">우체국</strong>
+									</span>
+									<span>
+										<em>이체계좌번호</em>
+										<strong class="txt_light">01001702191237</strong>
+									</span>
+									<span>
+										<em>예금주</em>
+										<strong class="txt_light">김밤밤</strong>
+									</span>
+
+									<a href="#;" class="btn btn_more circle"><span class="sr_only">열기</span></a>
+								</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<!-- e: 이체정보 영역 -->
+				<!-- e: 마크업 수정 : 2022-02-08 -->
 			</div>
 		</div>
 
