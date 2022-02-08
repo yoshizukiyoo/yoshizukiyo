@@ -204,6 +204,10 @@ $(document).on('click', 'a.js-layer_open', function (e) {
 	}
 });
 
+$.fn.hasScrollBarY = function () {
+	return (this.prop("scrollHeight") == 0 && this.prop("clientHeight") == 0) || (this.prop("scrollHeight") > this.prop("clientHeight"));
+};
+
 function openModal(_target, _opener) {
 	var tg = $('.modal_popup[data-popup=' + _target + ']');
 	tg.removeClass('dim_hide');
@@ -218,6 +222,9 @@ function openModal(_target, _opener) {
 		}, 100);
 		setTimeout(function () {
 			$('.popup_inner', tg).attr('tabindex', '0').focus();
+			if ($('.popup_body', tg).hasScrollBarY()) {
+				$('.popup_body', tg).attr('tabindex', '0');
+			}
 			tg.scrollTop(0);
 		}, 300);
 	}
