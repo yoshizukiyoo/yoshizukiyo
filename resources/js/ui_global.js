@@ -22,7 +22,8 @@ $(function () {
 
 $(document).on('click', '.box_more .btn_more_white', function () {
 	if ($(this).closest(".box_more").hasClass("new_controlls")) {
-		$(this).parent('.box_more').hasClass('opened') ? $(this).text('계약정보 상세보기') : $(this).text('상세보기 닫기');
+		// $(this).parent('.box_more').hasClass('opened') ? $(this).text('계약정보 상세보기') : $(this).text('상세보기 닫기');
+		$(this).parent('.box_more').hasClass('opened') ? $(this).text('계약정보 상세보기') : $(this).text('접기');
 		$(this).parent('.box_more').toggleClass('opened');
 	} else {
 		$(this).parent('.box_more').hasClass('opened') ? $(this).text('더보기') : $(this).text('접기');
