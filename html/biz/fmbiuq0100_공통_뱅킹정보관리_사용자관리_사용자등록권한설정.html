@@ -27,10 +27,13 @@
 				$(this).parent().toggleClass('active');
 			})
 
+			/* s: 20220208 */
 			$('.btn_submenu').click(function () {
-				$('.sub_toggle').hide();
-				$(this).parent().find('.sub_toggle').show();
+				var toggleCon = $(this).parent().find('.sub_toggle');
+				$('.sub_toggle').not(toggleCon).hide();
+				toggleCon.fadeToggle('fast');
 			})
+			/* e: 20220208 */
 
 			$('.btn_close_tooltip').click(function () {
 				$(this).parent().hide();
@@ -56,6 +59,7 @@
 					<li>사용자 등록 후 결재단계설정에서 결재자(등록자, 확인자, 승인자, 전결자)로 지정하실 수 있습니다.</li>
 					<li>본 서비스는 우체국에서 다단계결재에 대한 사전 서면동의를 하신 고객님만 이용하실 수 있습니다.</li>
 				</ul>
+				<!-- s: 20220208 -->
 				<div class="section">
 					<h2 class="tit1">사용자 목록</h2>
 					<ul class="card_info_list user_list chk mt_4">
@@ -71,10 +75,6 @@
 								<div class="f_r">
 									<button type="button" class="btn btn_submenu"><span class="sr_only">세부 메뉴</span></button>
 									<div class="sub_toggle">
-										<button type="button" class="btn btn_icon btn_close_tooltip">
-											<i class="ico ico_close_sm"></i>
-											<span class="sr_only">닫기</span>
-										</button>
 										<div>
 											<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
 											<a href="#;" onclick="openModal('layer04',this)">사용자정보수정</a>
@@ -103,10 +103,6 @@
 								<div class="f_r">
 									<button type="button" class="btn btn_submenu"><span class="sr_only">세부 메뉴</span></button>
 									<div class="sub_toggle">
-										<button type="button" class="btn btn_icon btn_close_tooltip">
-											<i class="ico ico_close_sm"></i>
-											<span class="sr_only">닫기</span>
-										</button>
 										<div>
 											<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
 											<a href="#;" onclick="openModal('layer04',this)">사용자정보수정</a>
@@ -135,10 +131,6 @@
 								<div class="f_r">
 									<button type="button" class="btn btn_submenu"><span class="sr_only">세부 메뉴</span></button>
 									<div class="sub_toggle">
-										<button type="button" class="btn btn_icon btn_close_tooltip">
-											<i class="ico ico_close_sm"></i>
-											<span class="sr_only">닫기</span>
-										</button>
 										<div>
 											<a href="#;" onclick="openModal('layer01',this)">상세정보</a>
 											<a href="#;" onclick="openModal('layer04',this)">사용자정보수정</a>
@@ -157,6 +149,7 @@
 						</li>
 					</ul>
 				</div>
+				<!-- e: 20220208 -->
 			</div>
 
 			<!-- s: 하단 고정 영역 -->
