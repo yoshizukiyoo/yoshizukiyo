@@ -50,3 +50,13 @@ window.onload = function () {
 		resizeApply();
 	});
 }
+
+// 웹 접근성 보완
+$(function () {
+	setTimeout(function () {
+		// 대체텍스트 추가
+		$('.necessary').each(function () {
+			$(this).attr('aria-label', '필수');
+		});
+	}, 200);
+});
