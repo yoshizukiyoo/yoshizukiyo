@@ -27,16 +27,16 @@
 			$('#content').addClass('login_pg');
 
 			// 탭메뉴 활성화
-			$('.tab_menu_type1 a').on('click', function() {
+			$('.tab_menu_type1 a').on('click', function () {
 				var obj = $(this);
 				var data = obj.attr('data-tab-tg');
 
 				obj.addClass('current').parent().siblings().find('>a').removeClass();
-				if(data == 'indi_login') { // 개인 고객 탭 활성화
+				if (data == 'indi_login') { // 개인 고객 탭 활성화
 					$('[data-login-box="indi_login"]').show();
 					$('.login_certificate .btn_more_white').show();
 					$('[data-login-box="biz_login"]').hide();
-				} else {  // 기업 고객 탭 활성화
+				} else { // 기업 고객 탭 활성화
 					$('[data-login-box="indi_login"]').hide();
 					$('.login_certificate .btn_more_white').hide();
 					$('[data-login-box="biz_login"]').show();
@@ -45,11 +45,11 @@
 			});
 
 			//로그인 방법 박스 확장
-			$('.login_certificate .btn_more_white').on('click', function() {
+			$('.login_certificate .btn_more_white').on('click', function () {
 				var obj = $(this);
 				var data = obj.attr('data-btn-cert');
-				
-				if(data == 'off') {
+
+				if (data == 'off') {
 					$('[data-cert="id_login"]').show();
 					obj.addClass('on').text('접기').attr('data-btn-cert', 'on');
 				} else {
@@ -61,35 +61,35 @@
 
 		// 자동팝업 설정을 1개 초과시 레이어팝업 호출
 		function autoPopup(obj) {
-			if($(obj).is(':checked') == true) {
+			if ($(obj).is(':checked') == true) {
 				openModal('auto_popup', obj);
 			}
 		}
 
 		// 개인 스마트인증 1단계 레이어팝업 호출
 		function smartCertPopup(obj) {
-			if($(obj).is(':checked') == true) {
+			if ($(obj).is(':checked') == true) {
 				openModal('smart_step1_popup', obj);
 			}
 		}
 
 		// 개인 PASS인증서 로그인 팝업 호출
 		function passCertPopup(obj) {
-			if($(obj).is(':checked') == true) {
+			if ($(obj).is(':checked') == true) {
 				openModal('pass_login_popup', obj);
 			}
 		}
 
 		// 개인고객 로그인 팝업 호출
 		function indiLoginPopup(obj) {
-			if($(obj).is(':checked') == true) {
+			if ($(obj).is(':checked') == true) {
 				openModal('indi_popup', obj);
 			}
 		}
 
 		// 기업고객 로그인 팝업 호출
 		function bizLoginPopup(obj) {
-			if($(obj).is(':checked') == true) {
+			if ($(obj).is(':checked') == true) {
 				openModal('biz_popup', obj);
 			}
 		}
@@ -350,7 +350,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('auto_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('auto_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -379,8 +380,10 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('site_popup');">취소</button>
-								<a href="http://phishing-keeper.fss.or.kr/" target="_blank" title="새창으로 이동합니다" class="btn btn_md btn_outline_default" onclick="closeModal('site_popup');">확인</a>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('site_popup');">취소</button>
+								<a href="http://phishing-keeper.fss.or.kr/" target="_blank" title="새창으로 이동합니다"
+									class="btn btn_md btn_outline_default" onclick="closeModal('site_popup');">확인</a>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -411,7 +414,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('smart_error_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('smart_error_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -462,7 +466,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary btn_full" onclick="smartCertStep2();">스마트인증 로그인</button>
+								<button type="button" class="btn btn_lg btn_primary btn_full" onclick="smartCertStep2();">스마트인증
+									로그인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -490,8 +495,10 @@
 									<div class="smart_cert_qr"><img src="/resources/img/content/img_qrcode.gif" alt="스마트인증 QR코드"></div>
 								</div>
 								<div class="btn_group">
-									<button type="button" class="btn btn_lg btn_outline_default btn_w168" onclick="closeModal('smart_step2_popup');">취소</button>
-									<button type="button" class="btn btn_lg btn_primary btn_w168" onclick="smartCertError();">인증확인</button>
+									<button type="button" class="btn btn_lg btn_outline_default btn_w168"
+										onclick="closeModal('smart_step2_popup');">취소</button>
+									<button type="button" class="btn btn_lg btn_primary btn_w168"
+										onclick="smartCertError();">인증확인</button>
 								</div>
 								<div class="txt_push_info">
 									<p class="txt_warning">스마트뱅킹 PUSH 알림 설정이 되어 있지 않으면 PUSH 알림이 도착하지 않을 수 있습니다.</p>
@@ -628,7 +635,8 @@
 								<a href="#;" class="btn_cert_arrow">자세히보기</a>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_lg btn_primary btn_full" onclick="passCertError();">PASS인증서 로그인</button>
+								<button type="button" class="btn btn_lg btn_primary btn_full" onclick="passCertError();">PASS인증서
+									로그인</button>
 							</div>
 							<div class="txt_pass_war">
 								<p class="txt_warning">로그인 후 일반거래 전자서명(인증)은 스마트인증으로 진행됩니다.</p>
@@ -662,7 +670,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('pass_error_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('pass_error_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
@@ -684,7 +693,7 @@
 										PASS인증이란?
 										<ul>
 											<li>
-												본인확인기관인 통신사 PASS앱을 이용해 보다 안전하고 간편하게 본인확인 및 로그인을 
+												본인확인기관인 통신사 PASS앱을 이용해 보다 안전하고 간편하게 본인확인 및 로그인을
 												할 수 있는 서비스 입니다.
 											</li>
 										</ul>
@@ -739,7 +748,8 @@
 											</td>
 										</tr>
 										<tr>
-											<td><input type="password" class="tf" title="비밀번호 입력" placeholder="비밀번호를 입력하세요." style="width: 100%;"></td>
+											<td><input type="password" class="tf" title="비밀번호 입력" placeholder="비밀번호를 입력하세요."
+													style="width: 100%;"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -777,7 +787,8 @@
 											</td>
 										</tr>
 										<tr>
-											<td><input type="password" class="tf" title="비밀번호 입력" placeholder="비밀번호를 입력하세요." style="width: 100%;"></td>
+											<td><input type="password" class="tf" title="비밀번호 입력" placeholder="비밀번호를 입력하세요."
+													style="width: 100%;"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -813,7 +824,8 @@
 								</div>
 							</div>
 							<div class="btn_group">
-								<button type="button" class="btn btn_md btn_outline_default" onclick="closeModal('login_error_popup');">확인</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('login_error_popup');">확인</button>
 							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
