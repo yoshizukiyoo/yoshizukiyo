@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var $guideSlide = $('.guide_slider');
+			$guideSlide.slick({
+				arrows: true,
+				draggable: false,
+				slidesToScroll: 1,
+				infinite: false,
+				false: true,
+				fade: false,
+				prevArrow: $('.slick-prev'),
+				nextArrow: $('.slick-next'),
+				dots: false,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 4000,
+			})
+
+			$(".use_guide .btn_ctrl > button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$guideSlide.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play").text("시작");
+					$(this).parent().find('.ico').addClass('off');
+				} else {
+					$guideSlide.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause").text("정지");
+					$(this).parent().find('.ico').removeClass('off');
+				}
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay_type3.html" data-page-title="
+		스마트뱅킹 이용 안내">
+		</header>
+		<div id="content">
+
+			<!-- s: 본문 -->
+			<div class="container pt_4 pb_6">
+				<div class="postpay use_guide">
+
+					<!-- s: 상단 안내-->
+					<div class="service">
+						<div class="easy_certi_top serivce_guide04">
+							<p class="txt_normal">우체국 금융과 함께하면 더 편리한<br>
+								우체국 우편 서비스</p>
+						</div>
+					</div>
+					<!-- e: 상단 안내 -->
+
+					<!-- s: 메뉴 목록 -->
+					<div class="service_area mt_8">
+						<ul class="service_list">
+							<li class="service_list_cont list_item">
+								<a href="#" onclick="openModal('layerGuide01',this);">
+									<span class="list_tit">
+										<span class="img">
+											<i class="ico ico_app_service01"></i>
+										</span>
+										<strong>
+											<small>우체국 우편</small>
+											사전 접수 하기
+										</strong>
+									</span>
+								</a>
+							</li>
+							<li class="service_list_cont list_item">
+								<a href="#">
+									<span class="list_tit">
+										<span class="img">
+											<i class="ico ico_app_service02"></i>
+										</span>
+										<strong>
+											<small>우체국 방문번호표 스마트폰으로,</small>
+											모바일번호표 발급하기
+											<small class="txt_side">feat. 스마트뱅킹</small>
+										</strong>
+									</span>
+								</a>
+							</li>
+							<li class="service_list_cont list_item">
+								<a href="#">
+									<span class="list_tit">
+										<span class="img">
+											<i class="ico ico_app_service03"></i>
+										</span>
+										<strong>
+											<small>우체국포인트 P-point</small>
+											우편서비스 결제하기
+											<small class="txt_side">feat. 포스트페이</small>
+										</strong>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- e: 메뉴 목록 -->
+
+				</div>
+			</div>
+			<!-- e: 본문 -->
+
+			<!-- s: 간편 결제하기 -->
+			<div class="modal_popup modal_guide hide" data-popup="layerGuide01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+
+					<!--  s: 가이드 타이틀 -->
+					<div class="popup_header">
+						<h2 class="popup_tit">간편 결제하기</h2>
+					</div>
+					<!--  e: 가이드 타이틀 -->
+
+					<div class="popup_body">
+
+						<div class="use_guide">
+							<div class="guide_slider">
+								<div class="item">
+									<!-- s:  이미지 영역 -->
+									<img src="/resources/img/content/slide_sample2.jpg" alt="">
+									<!-- e:  이미지 영역 -->
+								</div>
+
+								<div class="item">
+									<!-- s:  이미지 영역 -->
+									<img src="/resources/img/content/slide_sample2.jpg" alt="#">
+									<!-- e:  이미지 영역 -->
+								</div>
+							</div>
+
+							<button type="button" class="slick-arrow slick-prev">prev</button>
+							<button type="button" class="slick-arrow slick-next">next</button>
+
+							<!-- s: 하단 버튼 영역 -->
+							<div class="btn_ctrl">
+								<i class="ico ico_slide_status"></i>
+								<button type="button" class="btn_pause">정지</button>
+								<div class="right">
+									<button type="button" class="slick-arrow slick-prev">prev</button>
+									<button type="button" class="slick-arrow slick-next">next</button>
+								</div>
+							</div>
+							<!-- e: 하단 버튼 영역 -->
+
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 간편 결제하기 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+		</div>
+	</div>
+</body>
+
+</html>
