@@ -23,31 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$(".billing_list > div h3").click(function () {
-				$(this).toggleClass("on");
-			});
-
-			$(".chk_controll .single input").click(function () {
-				if ($(this).prop('checked') == true) {
-					$(this).closest(".chk_controll").removeClass("disabled");
-					$(this).closest(".chk_controll").find("input[type='text']").attr("disabled", false)
-				} else {
-					$(this).closest(".chk_controll").addClass("disabled");
-					$(this).closest(".chk_controll").find("input[type='text']").attr("disabled", true)
-				}
-			});
-
-			$(".accident_chk li button").click(function () {
-
-				if (!$(this).hasClass("on")) {
-					$(this).addClass("on");
-					$(this).text("예")
-				} else {
-					$(this).removeClass("on");
-					$(this).text("아니오")
-				}
-			});
-
+			//
 		});
 	</script>
 </head>
@@ -70,258 +46,210 @@
 					<li><span class="num">7</span><span class="txt">청약완료</span></li>
 				</ul>
 				<!-- e: 현재 단계 표시 -->
-				<ul>
-					<li class="ex_mark">
-						가입설계일과 청약일이 다를 경우 보험나이의 증가, 적용기초율의 변동 등의 사유로 보험료가 변동될 수 있습니다.
-					</li>
-					<li class="ex_mark">
-						보험료가 변동된 경우에는 보험모집인을 통해 다시 상담받으시기 바랍니다.
-					</li>
-				</ul>
+
+				<!-- s: 마크업수정 2022-02-09 -->
+				<!-- s: 계약관계자 영역 -->
 				<div class="section">
-					<div class="billing_list">
-
-						<!-- s: 주계약사항 영역 -->
-						<div>
-							<h3 class="tit2" data-toggle-btn="billing0">주계약사항</h3>
-
-							<div class="content" data-toggle-content="billing0">
-								<div class="tbl">
-									<table>
-										<caption class="sr_only">주계약사항 정보표</caption>
-										<colgroup>
-											<col style="width: 35%;">
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row">보험종류</th>
-												<td>한의원 이용주계약사항</td>
-											</tr>
-											<tr>
-												<th scope="row">주계약가입금액</th>
-												<td>3,000 만원</td>
-											</tr>
-											<tr>
-												<th scope="row">1회 보험료</th>
-												<td>8,000 원</td>
-											</tr>
-											<tr>
-												<th scope="row">보험기간</th>
-												<td>10 년</td>
-											</tr>
-											<tr>
-												<th scope="row">납입기간</th>
-												<td>전기납</td>
-											</tr>
-											<tr>
-												<th scope="row">납입주기</th>
-												<td>월납</td>
-											</tr>
-											<tr>
-												<th scope="row">연금개시나이</th>
-												<td>해당없음</td>
-											</tr>
-											<tr>
-												<th scope="row">연금지급형태</th>
-												<td>해당없음</td>
-											</tr>
-											<tr>
-												<th scope="row">세금우대</th>
-												<td>해당없음</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+					<div class="clfx">
+						<div class="f_l">
+							<h2 class="tit1">계약관계자</h2>
 						</div>
-						<!-- e: 주계약사항 영역 -->
-
-						<!-- s: 특약 영역 -->
-						<div>
-							<h3 class="tit2" data-toggle-btn="billing1">특약</h3>
-
-							<div class="content" data-toggle-content="billing1">
-								<div class="tbl">
-									<table>
-										<caption class="sr_only">특약1 정보표</caption>
-										<colgroup>
-											<col style="width: 35%;">
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row">특약1</th>
-												<td class="">한의원 이용특약</td>
-											</tr>
-											<tr>
-												<th scope="row">가입금액</th>
-												<td>3,000 만원</td>
-											</tr>
-											<tr>
-												<th scope="row">1회 보험료</th>
-												<td>8,000 원</td>
-											</tr>
-											<tr>
-												<th scope="row">보험기간</th>
-												<td>10 년</td>
-											</tr>
-											<tr>
-												<th scope="row">납입기간</th>
-												<td>전기납</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<div class="tbl mt_2">
-									<table>
-										<caption class="sr_only">특약2 정보표</caption>
-										<colgroup>
-											<col style="width: 35%;">
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row">특약2</th>
-												<td class="">어린이 보호구역</td>
-											</tr>
-											<tr>
-												<th scope="row">가입금액</th>
-												<td>3,000 만원</td>
-											</tr>
-											<tr>
-												<th scope="row">1회 보험료</th>
-												<td>8,000 원</td>
-											</tr>
-											<tr>
-												<th scope="row">보험기간</th>
-												<td>10 년</td>
-											</tr>
-											<tr>
-												<th scope="row">납입기간</th>
-												<td>전기납</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="contract_list">
-									<div class="total_price round_color mt_1">
-										주계약 + 특약보험료
-										<strong>1,993,600</strong>원
-									</div>
-								</div>
-							</div>
+						<div class="f_r">
+							<a href="#;" class="btn btn_sm btn_round btn_default" onclick="openModal('layerNotice', this);">
+								<i class="ico ico_help_sm"></i>
+								<span>알려드립니다</span>
+							</a>
 						</div>
-						<!-- e: 특약 영역 -->
-
-						<!-- s: 계약관계자 영역 -->
-						<div>
-							<h3 class="tit2" data-toggle-btn="billing2">계약관계자</h3>
-
-							<div class="content" data-toggle-content="billing2">
-								<div class="tbl mb_1">
-									<table>
-										<caption class="sr_only">특약 정보</caption>
-										<colgroup>
-											<col style="width: 30%">
-											<col>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row">피보험자</th>
-												<td>안밤밤</td>
-											</tr>
-											<tr>
-												<th scope="row">수익자</th>
-												<td>
-													만기-생존시 (아무개) <br>
-													입원-장애시 (홍길동)
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<ul>
-									<li class="ex_mark">
-										만기 및 생존 시 수익자는 계약자, 입원 및 장해 시 수익자는 피보험자, 사망시 수익자는 법정 상속인으로 지정됩니다.
-									</li>
-									<li class="ex_mark">
-										전자청약 완료 후 계약자(피보험자) 본인이 직접 우체국 내방(영업시간내)하여 수익자 변경을 신청할 수 있습니다.
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- e: 계약관계자 영역 -->
-
-						<!-- s: 실제 소유자 확인 영역 -->
-						<div>
-							<h3 class="tit2" data-toggle-btn="billing3">실제 소유자 확인</h3>
-
-							<div class="content" data-toggle-content="billing3">
-								<h4 class="tit2">본인확인</h4>
-								<div class="input_items mt_2 mb_5">
-									<span class="check_item type_btn_round">
-										<input type="radio" name="self_YN1" id="lb_Y_1" checked>
-										<label for="lb_Y_1">예</label>
-									</span>
-									<span class="check_item type_btn_round">
-										<input type="radio" name="self_YN1" id="lb_N_1">
-										<label for="lb_N_1">아니오</label>
-									</span>
-								</div>
-
-								<div class="tf_item mt_3 disabled">
-									<div class="tf_item_body">
-										<div class="input_area">
-											<label class="lab" for="user_name">
-												실제 소유자 성명
-											</label>
-											<input type="text" id="user_name" class="tf" placeholder="" value="나보미" required disabled>
-										</div>
-									</div>
-								</div>
-								<div class="middle_bar mb_1">
-									<div class="tf_item disabled active">
-										<div class="tf_item_body">
-											<div class="input_area">
-												<label class="lab" for="lb_date">주민등록번호 앞자리</label>
-												<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="910101" required
-													disabled>
-											</div>
-										</div>
-									</div>
-									<div class="tf_item disabled active mt_0">
-										<div class="tf_item_body">
-											<div class="input_area">
-												<label class="lab" for="lb_date2">주민등록번호 뒷자리</label>
-												<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="2******" required
-													disabled>
-											</div>
-										</div>
-									</div>
-								</div>
-								<ul>
-									<li class="ex_mark">
-										실제 소유자란 고객을 최종적으로 지배하거나 통제하는 자연인, 즉 해당 금융거래의 궁극적 혜택을 보는 개인을 말합니다.
-									</li>
-									<li class="ex_mark">
-										타인을 위해 거래하고 있다고 의심되거나 실제 소유자가 따로 존재한다고 고객 스스로 밝힌 경우 실제 소유자의 신원(성명, 주민등록번호)을 확인합니다.
-									</li>
-									<li class="ex_mark">
-										신원확인 등을 위한 정보의 제공을 거부하는 경우 보험 가입이 거절됩니다.
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- e: 실제 소유자 확인 영역 -->
-
+					</div>
+					<div class="box box_border">
+						<ul>
+							<li class="clfx">
+								<span class="f_l txt_gray">피보험자</span>
+								<strong class="f_r txt_light">나봄미</strong>
+							</li>
+							<li class="clfx mt_1">
+								<span class="f_l txt_gray">만기·생존 시 수익자</span>
+								<strong class="f_r txt_light">나봄미</strong>
+							</li>
+							<li class="clfx mt_1">
+								<span class="f_l txt_gray">입원·장애 시 수익자</span>
+								<strong class="f_r txt_light">나봄미</strong>
+							</li>
+						</ul>
 					</div>
 
-					<div class="btn_group btn_group_flex mt_10">
-						<button type="button" class="btn btn_lg btn_primary">보험FC에게 연락</button>
+					<p class="txt_gray mt_2 bul_1"> 만기 및 생존 시 수익자는 계약자, 입원 및 장해 시 수익자는 피보험자, 사망시 수익자는 법정 상속인으로 지정됩니다.</p>
+					<p class="txt_gray mt_1 bul_1"> 전자청약 완료 후 계약자(피보험자) 본인이 직접 우체국 내방(영업시간내)하여 수익자 변경을 신청할 수 있습니다.</p>
+				</div>
+				<!-- e: 계약관계자 영역 -->
+
+				<!-- s: 주계약정보 영역 -->
+				<div class="section">
+					<h2 class="tit1 mt_8">주계약정보</h2>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item type2">
+								<strong class="list_name txt_normal">(무)우체국실손의료비보험[1종(선택형), 종합형](갱신형)</strong>
+								<span class="in_detail">
+									<span>
+										<em>주계약 가입금액</em>
+										<strong>1,000만원</strong>
+									</span>
+									<span>
+										<em>주계약 보험료</em>
+										<strong>10,660원</strong>
+									</span>
+									<span>
+										<em>보험기간</em>
+										<strong>10년</strong>
+									</span>
+									<span>
+										<em>납입기간</em>
+										<strong>전기납</strong>
+									</span>
+									<span>
+										<em>납입주기</em>
+										<strong>월납</strong>
+									</span>
+									<span>
+										<em>연금개시나이</em>
+										<strong>해당없음</strong>
+									</span>
+									<span>
+										<em>연금지급형태</em>
+										<strong>해당없음</strong>
+									</span>
+									<span>
+										<em>세금우대</em>
+										<strong>해당없음</strong>
+									</span>
+								</span>
+							</li>
+						</ul>
 					</div>
 				</div>
+				<!-- e: 주계약정보 영역 -->
+
+				<!-- s: 특약정보 영역 -->
+				<div class="section">
+					<h2 class="tit1">특약정보</h2>
+					<div class="contract_list pt_0 pb_0">
+						<ul>
+							<li class="contract_item type2">
+								<strong class="list_name txt_normal">무배당 재해치료특II 2007</strong>
+								<span class="in_detail">
+									<span>
+										<em>가입금액</em>
+										<strong>10,000,000원</strong>
+									</span>
+									<span>
+										<em>보험료</em>
+										<strong>4,600원</strong>
+									</span>
+									<span>
+										<em>보험기간</em>
+										<strong>90세</strong>
+									</span>
+									<span>
+										<em>납입기간</em>
+										<strong>20년</strong>
+									</span>
+								</span>
+							</li>
+							<li class="contract_item type2 mt_2">
+								<strong class="list_name txt_normal">무배당 12대질병입원수술특약(갱신형) 2007</strong>
+								<span class="in_detail">
+									<span>
+										<em>가입금액</em>
+										<strong>10,000,000원</strong>
+									</span>
+									<span>
+										<em>보험료</em>
+										<strong>3,300원</strong>
+									</span>
+									<span>
+										<em>보험기간</em>
+										<strong>90세</strong>
+									</span>
+									<span>
+										<em>납입기간</em>
+										<strong>10년</strong>
+									</span>
+								</span>
+							</li>
+						</ul>
+					</div>
+
+					<p class="txt_lg sum">주계약 + 특약 1회보험료<span class="num txt_bold">21,660</span>원</p>
+				</div>
+				<!-- e: 특약정보 영역 -->
+
+				<!-- s: 실제 소유자 확인 영역 -->
+				<div class="section">
+					<h3 class="tit1">실제 소유자 확인</h3>
+
+					<div class="content">
+						<h4 class="tit2">본인확인</h4>
+						<div class="input_items mt_2 mb_5">
+							<span class="check_item type_btn_round">
+								<input type="radio" name="self_YN1" id="lb_Y_1" checked>
+								<label for="lb_Y_1">예</label>
+							</span>
+							<span class="check_item type_btn_round">
+								<input type="radio" name="self_YN1" id="lb_N_1">
+								<label for="lb_N_1">아니오</label>
+							</span>
+						</div>
+
+						<div class="tf_item mt_3 disabled">
+							<div class="tf_item_body">
+								<div class="input_area">
+									<label class="lab" for="user_name">
+										실제 소유자 이름
+									</label>
+									<input type="text" id="user_name" class="tf" value="나보미" required disabled>
+								</div>
+							</div>
+						</div>
+						<div class="middle_bar mb_1">
+							<div class="tf_item disabled active">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_date">주민등록번호 앞자리</label>
+										<input type="text" id="lb_date" class="tf" placeholder="YYYY.MM.DD" value="910101" required
+											disabled>
+									</div>
+								</div>
+							</div>
+							<div class="tf_item disabled active mt_0">
+								<div class="tf_item_body">
+									<div class="input_area">
+										<label class="lab" for="lb_date2">주민등록번호 뒷자리</label>
+										<input type="text" id="lb_date2" class="tf" placeholder="YYYY.MM.DD" value="*******" required
+											disabled>
+									</div>
+								</div>
+							</div>
+						</div>
+						<ul>
+							<li class="ex_mark">
+								실제 소유자란 고객을 최종적으로 지배하거나 통제하는 자연인, 즉 해당 금융거래의 궁극적 혜택을 보는 개인을 말합니다.
+							</li>
+							<li class="ex_mark">
+								타인을 위해 거래하고 있다고 의심되거나 실제 소유자가 따로 존재한다고 고객 스스로 밝힌 경우 실제 소유자의 신원(성명, 주민등록번호)을 확인합니다.
+							</li>
+							<li class="ex_mark">
+								신원확인 등을 위한 정보의 제공을 거부하는 경우 보험 가입이 거절됩니다.
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- e: 실제 소유자 확인 영역 -->
+
+				<div class="btn_group btn_group_flex mt_10">
+					<button type="button" class="btn btn_lg btn_primary">보험FC에게 연락</button>
+				</div>
+				<!-- s: 마크업수정 2022-02-09 -->
 
 				<div class="btn_group btn_btm_group">
 					<a href="#;" class="btn btn_sm btn_outline_default" onclick="openModal('layerEtcNotice', this);">
@@ -343,6 +271,28 @@
 					</div>
 				</div>
 				<!-- e: 하단 고정 영역 -->
+
+				<!-- s: 마크업수정 2022-02-09 -->
+				<!-- s: 알려드립니다 레이어 팝업 -->
+				<div class="modal_popup modal_bottom_sheet hide" data-popup="layerNotice">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header">
+							<h3 class="popup_tit">알려드립니다.</h3>
+						</div>
+						<div class="popup_body">
+							<div class="container">
+								<ul class="list list1">
+									<li>가입설계일과 청약일이 다를 경우 보험나이의 증가, 적용기초율의 변동 동의 사유로 보험료가 변동될 수 있습니다.</li>
+									<li>보험료가 변동된 경우에는 보험모집인을 통해 다시 상담받으시기 바랍니다.</li>
+								</ul>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 알려드립니다 레이어 팝업 -->
+				<!-- e: 마크업수정 2022-02-09 -->
 
 				<!-- s: 참고사항입니다 레이어 팝업 -->
 				<div class="modal_popup modal_bottom_sheet hide" data-popup="layerEtcNotice">
