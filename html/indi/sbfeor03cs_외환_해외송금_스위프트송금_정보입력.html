@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="Swift송금"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="container p_4">
+				<!-- s: 현재 단계 표시 -->
+				<ul class="input_step">
+					<li class="on"><span class="num">1</span><span class="txt">정보입력</span></li>
+					<li><span class="num">2</span><span class="txt">입력확인</span></li>
+					<li><span class="num">3</span><span class="txt">실행완료</span></li>
+				</ul>
+				<!-- e: 현재 단계 표시 -->
+
+				<h2 class="tit1">송금인정보</h2>
+				<div class="tf_item">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">송금인 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="송금인 입력" required>
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide">보내시는 분의 영문성명 FULL NAME 입력바랍니다.</p>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">전화번호 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="‘-’없이 입력" required>
+						</div>
+					</div>
+				</div>
+				<p class="txt_guide">송금인 연락 가능한 전화번호 반드시 기재바랍니다.</p>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">주소 <span class="req">필수항목</span></label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="주소입력" required>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<input type="text" id="lb_tf_1_2" class="tf" placeholder="국가명 입력">
+					</div>
+				</div>
+				<ul class="mt_1">
+					<li class="bul_notice">송금인주소는 최소 20자 이상 입력하시기 바랍니다. (숫자 포함) *20자 이하일 경우 발송되지 않습니다.</li>
+					<li class="bul_notice">특수문자는 대시(-), 마침표(.), 아포스트로피(‘), 쉼표(,),슬러시(/)만 허용됩니다.</li>
+					<li class="bul_notice">기본주소는 띄어쓰기를 허용하지 않으며, 상세주소는 띄어쓰기를 허용합니다.
+						<ul class="list list2">
+							<li>예시) 전라남도 나주시 정보화길 1 ***호 기본주소 : 1, Jeonbohwa-gil,Naju-siu,Jeollanam-do 상세주소 : ***, SOUTH KOREA</li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#;" class="tf_item mt_3" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">거주성 <span class="req">필수항목</span></span>
+							<p class="tf">선택하세요</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">국적 <span class="req">필수항목</span></span>
+							<p class="tf">선택하세요</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">거래주체성격 <span class="req">필수항목</span></span>
+							<p class="tf">선택하세요</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+				<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<span class="lab">사유코드 <span class="req">필수항목</span></span>
+							<p class="tf">선택하세요</p>
+						</div>
+						<div class="btn_area">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">선택</span>
+						</div>
+					</div>
+				</a>
+
+				<div class="section">
+					<h2 class="tit1">수취인정보</h2>
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">수취인 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_tf_1_2" class="tf" placeholder="수취인 입력" required>
+							</div>
+						</div>
+					</div>
+					<p class="txt_guide">수취인명이 긴 경우 주소란에 이어서 입력하세요.</p>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">전화번호 <span class="req">필수항목</span></label>
+								<input type="text" id="lb_tf_1_2" class="tf" placeholder="‘-’없이 입력" required>
+							</div>
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">주소</label>
+								<input type="text" id="lb_tf_1_2" class="tf" placeholder="주소 입력">
+							</div>
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="국가명 입력">
+						</div>
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="tit1">수취은행</h2>
+					<div class="tf_item">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">입금은행</label>
+								<input type="text" id="lb_tf_1_2" class="tf" value="입금은행 입력">
+							</div>
+						</div>
+					</div>
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">입금은행코드</span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="은행코드 입력">
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">입금계좌번호</label>
+								<input type="text" id="lb_tf_1_2" class="tf" placeholder="입금계좌번호 입력">
+							</div>
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">입금은행주소</label>
+								<input type="text" id="lb_tf_1_2" class="tf" placeholder="주소 입력">
+							</div>
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<!-- 20220207 수정 / label 추가 -->
+							<label class="lab" for="lb_tf_1_2">입금은행 국가명</label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="국가명 입력">
+						</div>
+					</div>
+					<a href="#;" class="tf_item mt_2" onclick="openModal('layerOption'); return false;">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<span class="lab">국가</span>
+								<p class="tf">선택하세요</p>
+							</div>
+							<div class="btn_area">
+								<i class="ico ico_chevron_down_md"></i>
+								<span class="sr_only">선택</span>
+							</div>
+						</div>
+					</a>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<div class="input_area">
+								<label class="lab" for="lb_tf_1_2">통신문</label>
+								<input type="text" id="lb_tf_1_2" class="tf" placeholder="통신문 1">
+							</div>
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="통신문 2">
+						</div>
+					</div>
+					<div class="tf_item mt_2">
+						<div class="tf_item_body">
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="통신문 3">
+						</div>
+					</div>
+					<p class="bul_notice mt_1">23:50 이후에는 취소가 불가하니 입력내용을 다시 한번 확인하여 주시기 바랍니다.</p>
+				</div>
+			</div>
+
+			<!-- s: 하단 고정 영역 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="sbfeor03bs_외환_해외송금_스위프트송금_목록.html" class="btn btn_xl btn_default">
+						<span>취소</span>
+					</a>
+					<a href="sbfeor03ds_외환_해외송금_스위프트송금_입력확인.html" class="btn btn_xl btn_primary">
+						<span>송금 실행</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
