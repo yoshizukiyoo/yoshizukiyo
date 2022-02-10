@@ -35,17 +35,15 @@
 	</script>
 </head>
 
-<body class="popup">
-	<div class="popup_inner">
-		<div class="popup_header">
-			<h1 class="popup_tit">결제</h1>
-			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
-		</div>
-		<div class="popup_body">
-			<!-- s: 콘텐츠 본문-->
+<!-- s: 마크업 변경 : 2022-02-09 풀팝업 > 본문 -->
 
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_postpay.html" data-page-title="포스트페이"></header>
+		<div id="content">
+			<!-- s: 본문 -->
 			<div class="postpay">
-				<div class="container mb_4">
+				<div class="container">
 					<p class="txt_lg txt_medium qr_tit3">QR코드 또는 바코드를 제시해주세요.</p>
 					<p class="qr_tit4">코드를 터치하면 확대하여 제시할 수 있어요.</p>
 					<div class="box box_qr box_qr_postpay">
@@ -75,141 +73,50 @@
 						</button>
 					</div>
 				</div>
+
 				<div class="bottom_fixed_area payment_bottom">
-					<a href="#;" onclick="openModal('postPayBottomSheet', this); return false;">
-						<div class="container">
-							<span class="txt_bold price ls1">436,900<span class="txt_medium">원</span></span>
-							<div class="place">
-								<span class="txt_normal account">우체국계좌<span class="ls25">4210</span></span>
-								<span class="txt_normal btn recent_payment">최근결제</span>
-							</div>
+					<a href="#;" onclick="openModal('postPayBottomSheet', this); return false;" class="popup_pay pt_4 ">
+						<div class="container pay_list mb_4">
+							<span class="btn txt_light">
+								우체국 계좌(1254)<em>최근결제</em>
+							</span>
 						</div>
 					</a>
 				</div>
-				<!-- s: Modal popup 바텀시트 - 결제정보 확인 -->
-				<div class="modal_popup modal_bottom_sheet hide" data-popup="postPayBottomSheet">
-					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_header">
-							<div class="postpay_bottom_header">
-								<h2 class="popup_tit">결제 정보</h2>
-								<span class="postpay_img"><img src="../../resources/img/content/logo_postpay.png" alt="포스트페이"></span>
-							</div>
-						</div>
-						<div class="popup_body">
-							<div class="postpay">
-								<div class="postpay_bottom_popup">
-									<div class="container">
-										<a href="#;" class="tf_item" onclick="openModal('layerOption', this); return false;">
-											<div class="tf_item_body">
-												<div class="input_area">
-													<p class="pay_info txt_normal">우체국(123456789)</p>
-													<p class="pay_info txt_normal ls0">210,000원</p>
-												</div>
 
-												<div class="btn_area">
-													<i class="ico ico_chevron_down_md"></i>
-													<span class="sr_only">선택</span>
-												</div>
-											</div>
-										</a>
-										<div class="pay_price">
-											<p class="txt_normal pay_price_tit">결제할 금액</p>
-											<p class="txt_bold pay_price_cont ls0">10,000<span class="txt_normal">원</span></p>
-										</div>
-										<div class="pay_info_wrap">
-											<div class="pay_info2">
-												<p class="pay_info_tit txt_normal">구매처</p>
-												<p class="pay_info_cont txt_normal">파주 닭국수</p>
-											</div>
-											<div class="pay_info2">
-												<p class="pay_info_tit txt_normal">계좌번호</p>
-												<p class="pay_info_cont txt_normal">우체국 010017-02-191237</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="popup_footer">
-							<div class="btn_group btn_group_flex">
+			</div>
+			<!-- e: 본문 -->
+		</div>
 
-								<button type="button" class="btn btn_lg btn_primary"
-									onclick="openModal('postPayBottomSheet2', this); return false;">송금실행</button>
-							</div>
+		<!-- s: Modal popup 바텀시트 - 결제정보 확인 -->
+		<div class="modal_popup modal_bottom_sheet hide" data-popup="postPayBottomSheet">
+			<div class="dimed"></div>
+			<div class="popup_inner popup_pay">
+				<div class="popup_header">
+					<h2 class="sr_only">결제 정보</h2>
+				</div>
+				<div class="popup_body">
+					<div class="container">
+						<div class="pay_list">
+							<button type="button" class="btn" onclick="closeModal('postPayBottomSheet');">
+								우체국 계좌(1254)<em>최근결제</em>
+							</button>
+							<button type="button" class="btn" onclick="closeModal('postPayBottomSheet');">우리은행 계좌(1243)</button>
+							<button type="button" class="btn" onclick="closeModal('postPayBottomSheet');">P-point (1243)</button>
+							<button type="button" class="btn" onclick="closeModal('postPayBottomSheet');">우체국영리한체크카드
+								(1253)</button>
 						</div>
 					</div>
 				</div>
-				<!-- e: Modal popup 바텀시트 - 결제정보 확인 -->
-
-				<!-- s: Modal popup 바텀시트 - 결제완료 -->
-				<div class="modal_popup modal_bottom_sheet hide" data-popup="postPayBottomSheet2">
-					<div class="dimed"></div>
-					<div class="popup_inner">
-						<div class="popup_header">
-							<div class="postpay_bottom_header">
-								<h2 class="popup_tit">결제 정보</h2>
-								<span class="postpay_img"><img src="../../resources/img/content/logo_postpay.png" alt="포스트페이"></span>
-							</div>
-						</div>
-						<div class="popup_body">
-							<div class="postpay">
-								<div class="postpay_bottom_popup">
-									<div class="container">
-										<div class="pay_done">
-											<i class="ico ico_check_lg_primary"></i>
-											<p class="txt_medium txt_done">결제완료</p>
-										</div>
-										<div class="pay_info_wrap pay_info_wrap2">
-											<div class="pay_info2">
-												<p class="pay_info_tit txt_normal">구매처</p>
-												<p class="pay_info_cont txt_normal">파주 닭국수</p>
-											</div>
-											<div class="pay_info2">
-												<p class="pay_info_tit txt_normal">결제금액</p>
-												<p class="pay_info_cont txt_normal">10,000원</p>
-											</div>
-											<div class="pay_info2">
-												<p class="pay_info_tit txt_normal">결제계좌</p>
-												<p class="pay_info_cont txt_normal">우체국(6789)</p>
-											</div>
-											<div class="pay_info2">
-												<p class="pay_info_tit txt_normal">결제후잔액</p>
-												<p class="pay_info_cont txt_normal">200,000원</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="popup_footer">
-							<div class="btn_group btn_group_flex">
-
-								<button type="button" class="btn btn_lg btn_primary"
-									onclick="closeModal('postPayBottomSheet2');">확인</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- e: Modal popup 바텀시트 샘플 - 결제완료 -->
-				<!-- s: 공통 레이어 로딩 -->
-				<div class="common_layers"></div>
-				<!-- e: 공통 레이어 로딩 -->
-			</div>
-
-			<!-- e: 콘텐츠 본문-->
-		</div>
-		<div class="popup_footer">
-			<div class="btn_group btn_group_flex">
-				<!-- <button type="button" class="btn btn_lg btn_default">취소</button> -->
-				<button type="button" class="btn btn_lg btn_primary">확인</button>
 			</div>
 		</div>
+		<!-- e: Modal popup 바텀시트 - 결제정보 확인 -->
+
+		<!-- s: 공통 레이어 로딩 -->
+		<div class="common_layers"></div>
+		<!-- e: 공통 레이어 로딩 -->
 	</div>
-
-	<!-- s: 공통 레이어 로딩 -->
-	<div class="common_layers"></div>
-	<!-- e: 공통 레이어 로딩 -->
 </body>
+<!-- e: 마크업 변경 : 2022-02-09 풀팝업 > 본문 -->
 
 </html>
