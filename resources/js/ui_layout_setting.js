@@ -12,7 +12,7 @@ $(function () {
 			if ($.isFunction(window.lookupSetting)) lookupSetting();
 		});
 	} else if (headerInc != undefined) {
-		$('.header').load('/html/_inc-mall-header.html .header > *', function () {
+		$('.header').load('/html/' + headerInc + ' .header > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
 	}
@@ -20,7 +20,7 @@ $(function () {
 		// if ($.isFunction(window.scrollbar)) scrollbar();
 	});
 	$('.breadcrumb').load('/html/_inc-breadcrumb.html .breadcrumb > *', function () {
-		// if ($.isFunction(window.scrollbar)) scrollbar();
+		if ($.isFunction(window.breadcrumbSetting)) breadcrumbSetting();
 	});
 	$('.footer').load('/html/_inc-footer.html .footer > *', function () {
 		// if ($.isFunction(window.toTop)) toTop();
@@ -63,31 +63,64 @@ $(function () {
 
 // 데이트피커
 $(function () {
-	$('.tf_datepicker').wrap('<span class="datepicker"></span>').datepicker({
-		dateFormat: 'yy.mm.dd',
-		changeMonth: true,
-		changeYear: true,
-		showMonthAfterYear: true,
-		showOn: "button",
-		buttonText: "날짜 선택",
-		buttonImage: "/resources/img/common/ico_datepicker.png",
-		buttonImageOnly: false,
+	$('.tf_datepicker').each(function () {
 
-		// 추가 옵션
-		showButtonPanel: false,
-		closeText: "닫기",
+		var titleText = "달력";
+		if ($(this).attr('title')) {
+			titleText = $(this).attr('title') + " " + titleText;
+		} else if ($(this).attr('id')) {
+			titleText = $('label[for="' + $(this).attr('id') + '"]').text() + " " + titleText;
+		}
 
-		// 한글화
-		prevText: '이전 달',
-		nextText: '다음 달',
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-		dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		yearSuffix: '년',
+		$(this)
+			.wrap('<span class="datepicker"></span>')
+			.datepicker({
+				dateFormat: 'yy.mm.dd',
+				changeMonth: true,
+				changeYear: true,
+				showMonthAfterYear: true,
+				showOn: "button",
+				buttonText: titleText,
+				buttonImage: "/resources/img/common/ico_datepicker.png",
+				buttonImageOnly: false,
+
+				// 추가 옵션
+				showButtonPanel: true,
+				closeText: "닫기",
+
+				// 한글화
+				prevText: '이전 달',
+				nextText: '다음 달',
+				monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+				dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+				dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+				yearSuffix: '년',
+				beforeShow: function () {
+					setTimeout(datepickerAddCaption, 100);
+				},
+				onChangeMonthYear: function () {
+					setTimeout(datepickerAddCaption, 100);
+				},
+				onClose: function () {
+					$(this).next('.ui-datepicker-trigger').focus();
+				},
+			})
+			.next('.ui-datepicker-trigger').children('img').removeAttr('title');
 	});
 });
+
+function datepickerAddCaption() {
+	$('.ui-datepicker-prev, .ui-datepicker-next').attr('href', '#;');
+	$('.ui-datepicker-calendar').prepend('<caption>달력</caption>');
+	$('.ui-state-active').attr('title', '선택됨');
+	$('.ui-datepicker-today a').attr('title', '오늘');
+	$('.ui-datepicker-today .ui-state-active').attr('title', '오늘(선택됨)');
+	$('.ui-datepicker-year').attr('title', '년');
+	$('.ui-datepicker-month').attr('title', '월');
+	$('#ui-datepicker-div').find('a').first().focus();
+}
 
 // 일반 레이어
 $(function () {
@@ -169,6 +202,10 @@ $(document).on('click', 'a.js-layer_open', function (e) {
 	}
 });
 
+$.fn.hasScrollBarY = function () {
+	return (this.prop("scrollHeight") == 0 && this.prop("clientHeight") == 0) || (this.prop("scrollHeight") > this.prop("clientHeight"));
+};
+
 function openModal(_target, _opener) {
 	var tg = $('.modal_popup[data-popup=' + _target + ']');
 	tg.removeClass('dim_hide');
@@ -183,6 +220,9 @@ function openModal(_target, _opener) {
 		}, 100);
 		setTimeout(function () {
 			$('.popup_inner', tg).attr('tabindex', '0').focus();
+			if ($('.popup_body', tg).hasScrollBarY()) {
+				$('.popup_body', tg).attr('tabindex', '0');
+			}
 			tg.scrollTop(0);
 		}, 300);
 	}
@@ -316,26 +356,64 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 	$('[data-sub-tab=' + tg + ']').show();
 });
 
-// 디자인 셀렉트박스
-$(document).on('click', '.selectbox_wrap dt a', function () {
-	var obj = $(this);
-	$('.selectbox_wrap').not(obj.parents('.selectbox_wrap')).removeClass('active');
-	obj.parents('.selectbox_wrap').toggleClass('active');
-	return false;
-});
-$(document).on('click', '.selectbox_wrap dd a', function () {
-	var obj = $(this);
-	obj.closest('dd').prev().find('>a>span').text(obj.text());
-	obj.parents('.selectbox_wrap').toggleClass('active').removeClass('error');
-	obj.parents('.selectbox_wrap').closest('td').find('> .error_info').hide();
-	return false;
-});
-var win = $(window);
-var selectBox = $('.selectbox_wrap dt a');
-win.on("click", function (e) {
-	if (selectBox.has(e.target).length == 0 && !selectBox.is(e.target)) {
-		$('.selectbox_wrap').removeClass('active');
-	}
+// 커스텀 셀렉트
+(function ($) {
+	$.fn.customSelect = function () {
+
+		$(document).on('mousedown', function (e) {
+			if (!$(e.target).closest('.selectbox_wrap').length) {
+				$('.selectbox_wrap.active dt a').each(function () {
+					if ($(this).attr('title') != undefined) {
+						$(this).attr('title', $(this).attr('title').replace('접기', '펼치기'))
+					}
+				});
+				$('.selectbox_wrap.active').removeClass('active');
+			}
+		});
+
+		return this.each(function () {
+			const $el = $(this);
+			const $btn = $('dt a', this);
+			const $listItem = $('dd a', this);
+
+			let addText = $el.hasClass('active') ? '접기' : '펼치기';
+			let title = $btn.attr('title');
+			if (title != undefined) {
+				title = title + ' ' + addText;
+			}
+
+			if ($el.hasClass('disabled')) {
+				$btn.removeAttr('href');
+			} else {
+				$btn.attr('title', title);
+
+				$btn.click(function (e) {
+					e.preventDefault();
+					const $otherBtn = $('.selectbox_wrap').not($el).find('dt a');
+					$('.selectbox_wrap').not($el).removeClass('active')
+					$otherBtn.attr('title', $otherBtn.attr('title').replace('접기', '펼치기'));
+
+					$el.toggleClass('active');
+					if ($el.hasClass('active')) {
+						$btn.attr('title', $btn.attr('title').replace('펼치기', '접기'));
+					} else {
+						$btn.attr('title', $btn.attr('title').replace('접기', '펼치기'));
+					}
+				});
+
+				$listItem.click(function (e) {
+					e.preventDefault();
+					$btn.children('span').text($(this).text());
+					$el.toggleClass('active').removeClass('error');
+					$el.closest('td').find('> .error_info').hide();
+					$btn.attr('title', $btn.attr('title').replace('접기', '펼치기')).focus();
+				});
+			}
+		});
+	};
+})(jQuery);
+$(function () {
+	$('.selectbox_wrap').customSelect();
 });
 
 // 
@@ -349,11 +427,8 @@ win.on("click", function (e) {
 // }
 
 // GNB
-$(document).on('mouseenter focusin', '.header .gnb>ul>li>a', function () {
-	var obj = $(this);
-	obj.addClass('current').parent().siblings().find('>a').removeClass();
-	obj.next().addClass('open').parent().siblings().find('.layer_memu_box').removeClass('open');
-	//$('.quick_menu_wrap').addClass('quick_hidden');
+$(document).on('mouseenter click', '.header .gnb>ul>li>a', function (e) {
+	gnbOpen($(this));
 });
 $(document).on('mouseleave', '#gnb', function () {
 	gnbClose();
@@ -363,6 +438,12 @@ $(document).on('keydown', '#gnb>ul>li:last-child>.layer_memu_box>.menu_wrap>.men
 		gnbClose();
 	}
 });
+
+function gnbOpen(lnb) {
+	var obj = lnb;
+	obj.addClass('current').parent().siblings().find('>a').removeClass();
+	obj.next().addClass('open').parent().siblings().find('.layer_memu_box').removeClass('open');
+}
 
 function gnbClose() {
 	$('.gnb>ul>li>a').removeClass();
@@ -379,12 +460,14 @@ $(document).on('click', '.btn_allmenu > button', function () {
 
 function menuBox(box) {
 	$('.result_box > div').hide();
-	$('.btn_mymenu_box > a').removeClass('current');
+	$('.btn_mymenu_box > a').removeClass('current').removeAttr('title');
 
 	if (box == 'lately') { // 최근이용 메뉴 열기
 		$('.lately_result_box').show();
+		$('.btn_mymenu_box .btn_lately').attr('title', '선택됨');
 	} else if (box == 'my') { // MY메뉴 열기
 		$('.mymenu_result_box').show();
+		$('.btn_mymenu_box .btn_my').attr('title', '선택됨');
 	} else { // 메뉴 검색결과 열기
 		$('.menu_search_box').show();
 	}
@@ -437,7 +520,7 @@ $(document).on('click', '.btn_mymenu_box > a', function () {
 // 전체 메뉴 탭메뉴
 $(document).on('click', '.tab_all_menu a', function () {
 	var menuId = $(this).data('layer-tab');
-	$(this).addClass('current').parent().siblings().find('>a').removeClass('current');
+	$(this).addClass('current').attr('title', '선택됨').parent().siblings().find('>a').removeClass('current').removeAttr('title');
 	$('.tab_sub_menu[data-menu-box="' + menuId + '"]').show().siblings().hide();
 	return false;
 });
@@ -459,14 +542,24 @@ $(document).on('click', '.btn_quick_close', function () {
 });
 
 // Breadcrumb
+function breadcrumbSetting() {
+	$('.breadcrumb_list>li>a').each(function () {
+		$(this).attr('title', '펼치기');
+		if ($(this).parent('li').hasClass('on')) {
+			$(this).attr('title', '접기');
+		}
+	});
+}
+
 $(document).on('click', '.breadcrumb_list>li>a', function (e) {
 	if ($(this).next('.sub_list_wrap').length) {
 		e.preventDefault();
-		$(this).parent('li').toggleClass('on').siblings('li').removeClass('on');
+		$(this).attr('title', $(this).attr('title') == '펼치기' ? "접기" : "펼치기")
+			.parent('li').toggleClass('on').siblings('li').removeClass('on').children('a').attr('title', '펼치기');
 	}
 }).on('keydown', '.breadcrumb_list ul>li:last-child>a', function (e) {
 	if (e.keyCode == 9 && !e.shiftKey) {
-		$('.breadcrumb_list>li').removeClass('on');
+		$('.breadcrumb_list>li').removeClass('on').children('a').attr('title', '펼치기');
 	}
 });
 $(document).on('mousedown', function (e) {
@@ -502,7 +595,7 @@ $(function () {
 });
 
 function lookupSetting() {
-	if ($('.lookup_container').length) {
+	if ($('.lookup_container:visible').length) {
 		$('#content').css('padding-top', $('.lookup_container').height());
 	}
 }

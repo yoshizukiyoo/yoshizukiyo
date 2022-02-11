@@ -3290,6 +3290,14 @@ caption.sr_only {
   opacity: 0;
 }
 
+.btn_mouse_toggle > .switch > input[type=checkbox]:focus + label {
+  outline: 1px dotted #000;
+}
+
+.btn_mouse_toggle > .switch > input[type=checkbox]:not(:focus-visible) + label {
+  outline: 0;
+}
+
 .btn_mouse_toggle > .switch > input[type=checkbox]:checked + label {
   background: #FF883A;
 }
@@ -3519,6 +3527,17 @@ textarea.tf::placeholder {
   width: 1px;
   height: 1px;
   opacity: 0;
+}
+
+.check_item > input[type=radio]:focus + label,
+.check_item > input[type=checkbox]:focus + label {
+  outline: 1px dotted #000;
+  border-radius: 3px;
+}
+
+.check_item > input[type=radio]:not(:focus-visible) + label,
+.check_item > input[type=checkbox]:not(:focus-visible) + label {
+  outline: 0;
 }
 
 .check_item > input[type=radio] + label {
@@ -3894,16 +3913,6 @@ p.txt_guide {
   background: url(/resources/img/common/ico_arr_up_sm.png) no-repeat 0 0;
 }
 
-.selectbox_wrap.disabled dt::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-}
-
 .selectbox_wrap.disabled a {
   background: #f3f3f3;
 }
@@ -4096,6 +4105,14 @@ input.error {
   width: 1px;
   height: 1px;
   opacity: 0;
+}
+
+.check_switch input:focus + label {
+  outline: 1px dotted #000;
+}
+
+.check_switch input:not(:focus-visible) + label {
+  outline: 0;
 }
 
 .check_switch input:checked + label {
@@ -5675,8 +5692,8 @@ input.error {
 }
 
 #ui-datepicker-div .ui-datepicker-calendar td.ui-datepicker-today a {
-  background-color: #666;
-  color: #fff;
+  line-height: 37px;
+  border: 2px solid #666;
 }
 
 #ui-datepicker-div .ui-datepicker-calendar td a.ui-state-active {
@@ -5687,11 +5704,14 @@ input.error {
 
 #ui-datepicker-div .ui-datepicker-prev,
 #ui-datepicker-div .ui-datepicker-next {
+  display: inline-block;
   margin-top: 6px;
   width: 36px;
   height: 36px;
   background: url(/resources/img/common/ico_cal_arr_left.png) no-repeat center center;
   text-indent: -9999px;
+  font-size: 1px;
+  color: transparent;
   text-align: left;
   overflow: hidden;
 }
@@ -5705,6 +5725,21 @@ input.error {
   float: right;
   margin-right: 50px;
   background-image: url(/resources/img/common/ico_cal_arr_right.png);
+}
+
+#ui-datepicker-div .ui-datepicker-current {
+  display: none;
+}
+
+#ui-datepicker-div .ui-datepicker-close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 26px;
+  height: 26px;
+  background: url(/resources/img/common/ico_close_lg.png) no-repeat;
+  font-size: 1px;
+  color: transparent;
 }
 
 .cont_row {

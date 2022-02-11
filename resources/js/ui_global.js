@@ -51,3 +51,23 @@ window.onload = function () {
 		resizeApply();
 	});
 }
+
+// 웹 접근성 보완
+$(function () {
+	setTimeout(function () {
+		// 대체텍스트 추가
+		$('.necessary').each(function () {
+			$(this).attr('aria-label', '필수');
+		});
+	}, 200);
+});
+
+// 헤더 스크롤시 디자인
+$(window).on('load scroll', function () {
+	var scrollValue = $(document).scrollTop();
+	if (scrollValue) {
+		$('body').addClass('scrolled');
+	} else {
+		$('body').removeClass('scrolled');
+	}
+});
