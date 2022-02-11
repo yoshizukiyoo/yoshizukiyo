@@ -1,5 +1,5 @@
 /* 메인 */
-.header_main {
+.header_global_main {
 	height: $main-header-height;
 	// border-bottom: 0;
 	background-color: transparent;
@@ -13,23 +13,35 @@
 	}
 }
 
+// .sec_home에 스타일링 금지! 메인/서브메인 공통 클래스 입니다.
+// 멀티클래스 추가해서 스타일링해 주세요.
 .sec_home {
-	padding-top: $main-header-height;
+	padding-top: $header-height;
 	background-color: #fff1e8;
+
+	.global_main & {
+		padding-top: $main-header-height;
+	}
+
+	.logged_info_layer {
+		background-color: #ffeaa4;
+
+		.container {
+			position: relative;
+
+			.btn_close_info_layer {
+				position: absolute;
+				right: 0;
+				top: 20px;
+			}
+		}
+	}
 }
 
-.logged_info_layer {
-	background-color: #ffeaa4;
+.sec_home_global {
+	// 대표홈 콘텐츠는 여기에 스타일링해 주세요.
 
-	.container {
-		position: relative;
-
-		.info_cont {}
-
-		.btn_close_info_layer {
-			position: absolute;
-			right: 0;
-			top: 20px;
-		}
+	.info_cont {
+		color: red;
 	}
 }
