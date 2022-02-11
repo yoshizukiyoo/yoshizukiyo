@@ -24,6 +24,15 @@
 	<script>
 		$(document).ready(function () {
 
+			// 로그인 후 알림 레이어 컨트롤
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
 		});
 	</script>
 </head>
@@ -34,13 +43,29 @@
 		<header class="header header_main" data-inc="_inc-header-main.html"></header>
 		<div class="quick_menu_wrap"></div>
 		<article id="content">
-			<!-- s : 메인 본문 -->
+			<!-- s: 메인 본문 -->
 
 			<div class="main_cont main_cont_keyword">
 				<h2 class="sr_only">메인 본문</h2>
 
 				<!-- 첫번째 섹션 .sec_home (헤더 배경색 변경 관련) -->
 				<section class="sec_home">
+
+					<!-- s: 로그인 후 노출 -->
+					<div class="logged_info_layer">
+						<div class="container">
+							<div class="info_cont">
+								<p>레이어 마크업 영역</p>
+								<p>레이어 마크업 영역</p>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_info_layer">
+								<i class="ico ico_close_sm"></i>
+								<span class="sr_only">알림 레이어 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- s: 로그인 후 노출 -->
+
 					<div class="container">
 						<h3>Title1</h3>
 						<p>text</p>
@@ -98,7 +123,7 @@
 					</div>
 				</section>
 			</div>
-			<!-- e : 메인 본문 -->
+			<!-- e: 메인 본문 -->
 		</article>
 		<footer class="footer"></footer>
 	</div>
