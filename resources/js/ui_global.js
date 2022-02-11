@@ -60,3 +60,13 @@ $(function () {
 		});
 	}, 200);
 });
+
+// 헤더 스크롤시 디자인
+$(window).on('load scroll', function () {
+	var scrollValue = $(document).scrollTop();
+	if (scrollValue) {
+		$('body').addClass('scrolled');
+	} else {
+		$('body').removeClass('scrolled');
+	}
+});

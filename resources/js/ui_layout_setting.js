@@ -12,7 +12,7 @@ $(function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
 	} else if (headerInc != undefined) {
-		$('.header').load('/html/_inc-mall-header.html .header > *', function () {
+		$('.header').load('/html/' + headerInc + ' .header > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
 	}
