@@ -61,7 +61,13 @@ $(function () {
 	}, 200);
 });
 
-// 헤더 스크롤시 디자인
+// 메인 헤더 UI (스크롤시 디자인)
+$(function () {
+	if ($('.header_global_main').length) {
+		$('body').addClass('global_main');
+	}
+});
+
 $(window).on('load scroll', function () {
 	var scrollValue = $(document).scrollTop();
 	if (scrollValue) {
