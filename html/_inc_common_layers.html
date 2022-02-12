@@ -44,7 +44,27 @@
 		</div>
 		<h1 class="tit1 mt_6">공통 레이어 모음</h1>
 		<div class="mb_1">
-			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerOption', this); return false;">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerQuickTransfer1', this); return false;">
+				빠른이체 : layerQuickTransfer1
+			</a>
+		</div>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerQuickTransfer2', this); return false;">
+				빠른이체완료 : layerQuickTransfer2
+			</a>
+		</div>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerQuickTransferList', this); return false;">
+				빠른이체목록(작업중) : layerQuickTransferList
+			</a>
+		</div>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_primary" onclick="openModal('layerQuickMenuSetting', this); return false;">
+				퀵메뉴설정 : layerQuickMenuSetting
+			</a>
+		</div>
+		<div class="mb_1">
+			<a href="#;" class="btn btn_md btn_default" onclick="openModal('layerOption', this); return false;">
 				옵션선택 : layerOption
 			</a>
 		</div>
@@ -403,6 +423,374 @@
 			</div>
 		</div>
 		<!-- e: Modal popup 계좌 선택 -->
+
+		<!-- s: 빠른이체 -->
+		<div class="modal_popup modal_bottom_sheet modal_quick_transfer hide" data-popup="layerQuickTransfer1">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="btn_switch_on">빠른이체</h2>
+				</div>
+				<div class="popup_body">
+					<div class="container">
+						<p class="transfer_msg">
+							<strong>김직원</strong>님께<br>
+							<strong>1,000,000원</strong>을 이체하시겠습니까?
+						</p>
+						<div class="double_box fast_transfer">
+							<div class="btm">
+								<div>
+									<div class="l">출금계좌</div>
+									<div class="r">610030-12-000133</div>
+								</div>
+								<div>
+									<div class="l">입금계좌</div>
+									<div class="r">하나 010017-02-191237</div>
+								</div>
+								<div>
+									<div class="l">이체금액</div>
+									<div class="r">1,000,000원</div>
+								</div>
+								<div>
+									<div class="l">수수료</div>
+									<div class="r">
+										<span class="txt_xs txt_gray mr_1">오픈뱅킹계좌등록 면제</span>
+										<span>0원</span>
+									</div>
+								</div>
+								<div>
+									<div class="l">내 통장표시</div>
+									<div class="r">김직원</div>
+								</div>
+								<div>
+									<div class="l">받는분 통장표시</div>
+									<div class="r">(주)모모산업</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="popup_footer">
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_outline_default"
+							onclick="closeModal('layerQuickTransfer1');">아니오</button>
+						<button type="button" class="btn btn_lg btn_primary"
+							onclick="openModal('layerQuickTransfer2', this);">예</button>
+					</div>
+					<p class="bul_notice mt_3">이체 정보를 꼭 다시 한 번 확인해 주세요.</p>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: 빠른이체 -->
+
+		<!-- s: 빠른이체완료 -->
+		<div class="modal_popup modal_bottom_sheet modal_quick_transfer hide" data-popup="layerQuickTransfer2">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="btn_switch_on">빠른이체</h2>
+					<span class="receiver_name">김직원</span>
+				</div>
+				<div class="popup_body">
+					<div class="txt_c mb_3">
+						<i class="ico ico_check_lg_primary"></i>
+					</div>
+					<p class="transfer_msg">
+						<strong>빠른 이체 완료</strong>
+					</p>
+					<div class="container">
+						<div class="double_box fast_transfer">
+							<div class="btm">
+								<div>
+									<div class="l">출금계좌</div>
+									<div class="r">610030-12-000133</div>
+								</div>
+								<div>
+									<div class="l">입금계좌</div>
+									<div class="r">하나 010017-02-191237</div>
+								</div>
+								<div>
+									<div class="l">이체금액</div>
+									<div class="r">1,000,000원</div>
+								</div>
+								<div>
+									<div class="l">수수료</div>
+									<div class="r">
+										<span class="txt_xs txt_gray mr_1">오픈뱅킹계좌등록 면제</span>
+										<span>0원</span>
+									</div>
+								</div>
+								<div>
+									<div class="l">내 통장표시</div>
+									<div class="r">김직원</div>
+								</div>
+								<div>
+									<div class="l">받는분 통장표시</div>
+									<div class="r">(주)모모산업</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="popup_footer">
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_outline_default"
+							onclick="closeModal('layerQuickTransfer2');">확인</button>
+						<button type="button" class="btn btn_lg btn_primary"
+							onclick="openModal('layerQuickTransferList', this);">이체결과조회</button>
+					</div>
+					<p class="bul_notice mt_3">이체 정보를 꼭 다시 한 번 확인해 주세요.</p>
+				</div>
+				<div class="sr_only"><button type="button" class="btn btn_close_popup">닫기</button></div>
+			</div>
+		</div>
+		<!-- e: 빠른이체완료 -->
+
+		<!-- s: 빠른이체목록 -->
+		<div class="modal_popup modal_bottom_sheet modal_quick_transfer_list hide" data-popup="layerQuickTransferList">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="popup_tit">빠른이체</h2>
+				</div>
+				<div class="popup_body">
+					<nav class="tab_menu tab_menu1">
+						<ul class="tab_list">
+							<li class="on"><a href="#tab_transfer_list" title="선택됨"><span>이체목록</span></a></li>
+							<li><a href="#tab_fast_transfer_list"><span>빠른이체목록</span></a></li>
+						</ul>
+					</nav>
+					<div class="container">
+						<div class="tab_cont" id="tab_transfer_list">
+							<h3 class="sr_only">이체목록</h3>
+							<div class="txt_red">TODO : 이체목록 슬라이더 영역1</div>
+						</div>
+						<div class="tab_cont" id="tab_fast_transfer_list">
+							<h3 class="sr_only">빠른이체목록</h3>
+							<div class="txt_red">TODO : 빠른이체목록 슬라이더 영역2</div>
+						</div>
+						<p class="bul_notice mt_4">최근 이체 5건에서 이체 금액이 3백만원 이하 건, 빠른이체 등록이 가능합니다.</p>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: 빠른이체목록 -->
+
+		<!-- s: 퀵메뉴설정 -->
+		<div class="modal_popup modal_bottom_sheet modal_quick_setting hide" data-popup="layerQuickMenuSetting">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="popup_tit">퀵메뉴 설정</h2>
+				</div>
+				<div class="popup_body">
+					<nav class="tab_menu tab_menu1">
+						<ul class="tab_list">
+							<li class="on"><a href="#tab_banking" title="선택됨"><span>뱅킹</span></a></li>
+							<li><a href="#tab_mall"><span>상품몰</span></a></li>
+						</ul>
+					</nav>
+					<div class="container">
+						<div class="tab_cont" id="tab_banking">
+							<h3 class="sr_only">뱅킹</h3>
+							<ul class="quickmenu_list_all">
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item1" checked>
+									<label for="chk_quick_item1">
+										<img src="/resources/img/common/ico_quickmenu1.png" alt="" class="icon">
+										<span>금융리포트</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item2" checked>
+									<label for="chk_quick_item2">
+										<img src="/resources/img/common/ico_quickmenu2.png" alt="" class="icon">
+										<span>My 데이터</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item3" checked>
+									<label for="chk_quick_item3">
+										<img src="/resources/img/common/ico_quickmenu3.png" alt="" class="icon">
+										<span>상품몰</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item4" checked>
+									<label for="chk_quick_item4">
+										<img src="/resources/img/common/ico_quickmenu4.png" alt="" class="icon">
+										<span>AI챗봇</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item5" checked>
+									<label for="chk_quick_item5">
+										<img src="/resources/img/common/ico_quickmenu5.png" alt="" class="icon">
+										<span>전계좌조회</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item6" checked>
+									<label for="chk_quick_item6">
+										<img src="/resources/img/common/ico_quickmenu6.png" alt="" class="icon">
+										<span>출석체크</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item7">
+									<label for="chk_quick_item7">
+										<img src="/resources/img/common/ico_quickmenu7.png" alt="" class="icon">
+										<span>선물하기</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item8">
+									<label for="chk_quick_item8">
+										<img src="/resources/img/common/ico_quickmenu8.png" alt="" class="icon">
+										<span>이벤트</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item9">
+									<label for="chk_quick_item9">
+										<img src="/resources/img/common/ico_quickmenu9.png" alt="" class="icon">
+										<span>신규가이드</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item10">
+									<label for="chk_quick_item10">
+										<img src="/resources/img/common/ico_quickmenu10.png" alt="" class="icon">
+										<span>계좌개설</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item11">
+									<label for="chk_quick_item11">
+										<img src="/resources/img/common/ico_quickmenu11.png" alt="" class="icon">
+										<span>오픈뱅킹</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item12">
+									<label for="chk_quick_item12">
+										<img src="/resources/img/common/ico_quickmenu12.png" alt="" class="icon">
+										<span>설정</span>
+									</label>
+								</li>
+							</ul>
+							<div class="check_item">
+								<input type="checkbox" id="chk_banking">
+								<label for="chk_banking">뱅킹 모든 화면에서 퀵메뉴 표시하기</label>
+							</div>
+						</div>
+						<div class="tab_cont" id="tab_mall">
+							<h3 class="sr_only">상품몰</h3>
+							<ul class="quickmenu_list_all">
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item13">
+									<label for="chk_quick_item13">
+										<img src="/resources/img/common/ico_quickmenu2.png" alt="" class="icon">
+										<span>MY상품</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item14">
+									<label for="chk_quick_item14">
+										<img src="/resources/img/common/ico_quickmenu14.png" alt="" class="icon">
+										<span>금융계산기</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item15">
+									<label for="chk_quick_item15">
+										<img src="/resources/img/common/ico_quickmenu15.png" alt="" class="icon">
+										<span>상품찾기</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item16">
+									<label for="chk_quick_item16">
+										<img src="/resources/img/common/ico_quickmenu4.png" alt="" class="icon">
+										<span>AI챗봇</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item17">
+									<label for="chk_quick_item17">
+										<img src="/resources/img/common/ico_quickmenu17.png" alt="" class="icon">
+										<span>상담하기</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item18">
+									<label for="chk_quick_item18">
+										<img src="/resources/img/common/ico_quickmenu18.png" alt="" class="icon">
+										<span>예금신규</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item19">
+									<label for="chk_quick_item19">
+										<img src="/resources/img/common/ico_quickmenu19.png" alt="" class="icon">
+										<span>펀드신규</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item20">
+									<label for="chk_quick_item20">
+										<img src="/resources/img/common/ico_quickmenu20.png" alt="" class="icon">
+										<span>카드신규</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item21">
+									<label for="chk_quick_item21">
+										<img src="/resources/img/common/ico_quickmenu9.png" alt="" class="icon">
+										<span>신규가이드</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item22">
+									<label for="chk_quick_item22">
+										<img src="/resources/img/common/ico_quickmenu22.png" alt="" class="icon">
+										<span>테마찾기</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item23">
+									<label for="chk_quick_item23">
+										<img src="/resources/img/common/ico_quickmenu23.png" alt="" class="icon">
+										<span>우체국랭킹</span>
+									</label>
+								</li>
+								<li>
+									<input type="checkbox" class="sr_only" id="chk_quick_item24">
+									<label for="chk_quick_item24">
+										<img src="/resources/img/common/ico_quickmenu3.png" alt="" class="icon">
+										<span>상품몰</span>
+									</label>
+								</li>
+							</ul>
+							<span class="check_item">
+								<input type="checkbox" id="chk_mall">
+								<label for="chk_mall">상품몰 모든 화면에서 퀵메뉴 표시하기</label>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="popup_footer">
+					<div class="btn_group btn_group_flex">
+						<button type="button" class="btn btn_lg btn_primary"
+							onclick="closeModal('layerQuickMenuSetting');">설정저장</button>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: 퀵메뉴설정 -->
 	</div>
 </body>
 

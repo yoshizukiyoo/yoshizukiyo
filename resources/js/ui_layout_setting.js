@@ -7,7 +7,8 @@
 
 // 레이아웃 공통 영역 로드
 $(function () {
-	var layersLoading = false;
+	var layersLoading = false,
+		quickbarLoading = false;
 
 	var headerInc = $('.header').data('inc');
 	var pageTitle = $('.header').data('page-title');
@@ -26,12 +27,22 @@ $(function () {
 			runSetting();
 		}
 	});
+	$('.bottom_quickbar').load('/html/_inc_bottom_quickbar.html .bottom_quickbar > *', function (response, stu, xhr) {
+		if (stu == 'success') {
+			quickbarLoading = true;
+			runSetting();
+		}
+	});
 
 	// 페이지 로딩시 기본 세팅
 	function runSetting() {
-		if (layersLoading) {
+		if (layersLoading && quickbarLoading) {
 			tabmenu();
 			inputStatus();
+
+			// 메인 관련
+			quickNavTabbar();
+			quickNavSettingLayer();
 
 			// console.log('실행중');
 		}
@@ -122,6 +133,33 @@ function inputStatus() {
 				$container.toggleClass('active', text);
 			});
 		}
+	});
+}
+
+// 터치 디바이스 체커
+function is_touch_device() {
+	try {
+		document.createEvent("TouchEvent");
+		return true;
+	} catch (e) {
+		return false;
+	}
+}
+
+// 퀵메뉴설정 레이어
+function quickNavSettingLayer() {
+	if (is_touch_device) {
+		$.ajax({
+			async: false,
+			type: 'GET',
+			dataType: 'script',
+			url: '/resources/js/jquery.ui.touch-punch.js'
+		});
+	}
+
+	// 드래그앤 드롭 순서 변경
+	$('.quickmenu_list_all').sortable({
+		placeholder: 'sortable-placeholder'
 	});
 }
 
@@ -334,6 +372,61 @@ $(document).on('click', '.gnb a', function (e) {
 	$(this).attr('title', '선택됨').parent('li').addClass('on')
 		.siblings('li').removeClass('on').children('a').removeAttr('title');
 });
+
+// 메인 퀵메뉴 하단바
+function quickNavTabbar() {
+	const $quickNav = $('.bottom_quickbar'),
+		$handler = $('.quickbar_handler');
+
+	if ($('.bottom_quickbar').length) {
+		$('.wrapper').css('padding-bottom', 80);
+		$quickNav.css('bottom', 80 - $quickNav.outerHeight());
+		$handler.click(function (e) {
+			e.preventDefault();
+			quickNavControl('toggle');
+		});
+		$('.bottom_quickbar').on('scroll touchmove mousewheel', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+		});
+		let mstartY = 0,
+			mendY = 0,
+			startY = 0,
+			endY = 0,
+			range = 30;
+		$quickNav.on('mousedown', function (e) {
+			mstartY = e.pageY;
+		}).on('mouseup', function (e) {
+			mendY = e.pageY;
+			if (mstartY - mendY > range) {
+				quickNavControl('expand');
+			} else if (mendY - mstartY > range) {
+				quickNavControl('collapse');
+			}
+		}).on('touchstart', function (e) {
+			startY = e.originalEvent.changedTouches[0].screenY;
+		}).on('touchend', function (e) {
+			endY = e.originalEvent.changedTouches[0].screenY;
+			if (startY - endY > range) {
+				quickNavControl('expand');
+			} else if (endY - startY > range) {
+				quickNavControl('collapse');
+			}
+		});
+	}
+
+	function quickNavControl(status) {
+		if (status == 'expand') {
+			$quickNav.addClass('opened');
+		} else if (status == 'collapse') {
+			$quickNav.removeClass('opened');
+		} else if (status == 'toggle') {
+			$quickNav.toggleClass('opened');
+		}
+		var text = $quickNav.hasClass('opened') ? '접기' : '펼치기';
+		$handler.children('.sr_only').text(text);
+	}
+}
 
 // 전체메뉴
 $(document).on('click', '.btn_allmenu', function (e) {
