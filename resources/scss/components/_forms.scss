@@ -137,6 +137,20 @@ textarea.tf {
 }
 
 // 체크박스, 라디오버튼
+input {
+
+	&[type=radio],
+	&[type=checkbox] {
+		&.sr_only {
+			&:focus:focus-visible {
+				+label {
+					outline: 1px dotted #000;
+				}
+			}
+		}
+	}
+}
+
 .check_item {
 	display: inline-block;
 	position: relative;
@@ -151,6 +165,13 @@ textarea.tf {
 		width: 1px;
 		height: 1px;
 		opacity: 0;
+
+		&:focus:focus-visible {
+			+label {
+				outline: 1px dotted #000;
+				border-radius: 3px;
+			}
+		}
 	}
 
 	>input[type=radio]+label {

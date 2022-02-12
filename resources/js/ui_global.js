@@ -11,7 +11,7 @@ $(window).on('load scroll', function () {
 });
 
 $(function () {
-	// 하단 고정영역 모달 오픈 여백 확보
+	// 하단 고정 영역 모달 오픈 여백 확보
 	if ($('.bottom_fixed_area').length) {
 		$('.wrapper').css('padding-bottom', $('.bottom_fixed_area').outerHeight());
 	}
