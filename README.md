@@ -13,7 +13,7 @@ http://cea.epost.inseq.co.kr:7789/html/smart/index.html
     - 스마트뱅킹(smart-deposit) : http://ced.epost.inseq.co.kr:7789/html/index.html
     - 스마트보험(smart-insurance) : http://cee.epost.inseq.co.kr:7789/html/index.html
 - 퍼블리싱 산출물 내부망 공유용 SVN 저장소 : http://pms.inseq.co.kr:9000/svn/geistkorea/epost-html (본 PMS 계정 사용)
-
+- 우체국 메인 마크업 가이드 : https://inseq.notion.site/860d55008b3244a3a2f86c0832376fdf
 
 # PMS 사용 안내
 협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
