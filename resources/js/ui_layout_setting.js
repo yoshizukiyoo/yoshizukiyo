@@ -482,8 +482,8 @@ function quickNavTabbar() {
 	const $quickNav = $('.bottom_quickbar'),
 		$handler = $('.quickbar_handler');
 
-	if ($('.bottom_quickbar').length) {
-		$('.wrapper').css('padding-bottom', 80);
+	if ($('.bottom_quickbar:visible').length) {
+		// $('.wrapper').css('padding-bottom', 80);
 		$quickNav.css('bottom', 80 - $quickNav.outerHeight());
 		$handler.click(function (e) {
 			e.preventDefault();
