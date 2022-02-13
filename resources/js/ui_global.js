@@ -12,12 +12,23 @@ $(window).on('load scroll', function () {
 
 $(function () {
 	// 하단 고정 영역 모달 오픈 여백 확보
-	if ($('.bottom_fixed_area:visible').length && $('.bottom_quickbar:visible').length) {
-		var paddingBottom = $('.bottom_fixed_area').outerHeight() + 80;
+	var $fixedBar = $('.bottom_fixed_area:visible'),
+		$quickBar = $('.bottom_quickbar:visible'),
+		paddingBottom = null,
+		quickBarH = 80;
+
+	if ($fixedBar.length && $quickBar.length) {
+		paddingBottom = $fixedBar.outerHeight() + quickBarH;
+		$fixedBar.css('bottom', quickBarH);
+	} else if ($fixedBar.length) {
+		paddingBottom = $fixedBar.outerHeight();
+	} else if ($quickBar.length) {
+		paddingBottom = quickBarH;
+		$fixedBar.css('bottom', quickBarH);
+	}
+
+	if (paddingBottom) {
 		$('.wrapper').css('padding-bottom', paddingBottom);
-		$('.bottom_fixed_area').css('bottom', 80);
-	} else if ($('.bottom_fixed_area').length) {
-		$('.wrapper').css('padding-bottom', $('.bottom_fixed_area').outerHeight());
 	}
 
 	// 토글 버튼
