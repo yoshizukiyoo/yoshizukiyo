@@ -39,6 +39,14 @@ $(function () {
 		if (!globalSetIsRun) {
 			tabmenu();
 			inputStatus();
+
+			if ($('.acc_info_area .check_quick_transfer').length) {
+				$('.acc_info_area .check_quick_transfer').each(function () {
+					quickTransferToggle($(this));
+				}).change(function () {
+					quickTransferToggle($(this));
+				});
+			}
 		}
 	}
 });
@@ -452,6 +460,15 @@ $(document).on('click', '.gnb a', function (e) {
 	$(this).attr('title', '선택됨').parent('li').addClass('on')
 		.siblings('li').removeClass('on').children('a').removeAttr('title');
 });
+
+// 빠른이체 스위치
+function quickTransferToggle(_obj) {
+	if ($('input', _obj).prop('checked')) {
+		$(_obj).closest('.acc_info_area').find('.add_quick').show();
+	} else {
+		$(_obj).closest('.acc_info_area').find('.add_quick').hide();
+	}
+}
 
 // 자주쓰는메뉴
 function favorMenuControl() {

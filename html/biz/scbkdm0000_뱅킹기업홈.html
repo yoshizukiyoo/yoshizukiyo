@@ -25,6 +25,20 @@
 		$(document).ready(function () {
 			// 비주얼 배너 슬라이더
 
+			// 결재함 상세 확인
+			approveBoxToggle();
+			$('#chk_approv_box').change(function () {
+				approveBoxToggle();
+			});
+
+			function approveBoxToggle() {
+				if ($('#chk_approv_box').prop('checked')) {
+					$('.approv_box_body').slideDown('fast');
+				} else {
+					$('.approv_box_body').slideUp('fast');
+				}
+			}
+
 			// 자주쓰는 메뉴
 			favorMenuControl();
 
@@ -35,12 +49,12 @@
 
 <body>
 	<div class="wrapper">
-		<header class="header" data-inc="_inc_header_main.html" data-page-title="우체국 개인 스마트뱅킹"></header>
+		<header class="header" data-inc="_inc_header_main.html" data-page-title="우체국 기업 스마트뱅킹"></header>
 		<div id="content">
 			<!-- s: 본문 -->
 
 			<section class="sec_home">
-				<h2 class="sr_only">개인 홈</h2>
+				<h2 class="sr_only">메인 홈</h2>
 
 				<!-- s: 로그인 전 -->
 				<div>
@@ -48,7 +62,7 @@
 					<div class="welcome_info">
 						<div class="container">
 							<p class="pt_1">
-								<i class="ico ico_quot_primary mr_1"></i>
+								<i class="ico ico_quot_blue mr_1"></i>
 								고객님 오늘도 행복한 하루 되세요!
 							</p>
 						</div>
@@ -70,41 +84,25 @@
 						<div class="container">
 							<p class="welcome">
 								<i class="ico ico_mailbox_md mr_1"></i>
-								<span class="name">홍길동</span>님 안녕하세요!
+								<span class="name">(주)모모산업</span>님 안녕하세요!
 							</p>
 							<p class="last_access">최근접속시간 : 2022-01.22 16:45</p>
 						</div>
 					</div>
 					<!-- e: 인사말 -->
 
-					<!-- s: 알람 레이어 -->
-					<div class="layer_top_alarm">
+					<!-- s: 알람 레이어 : 간편결재설정 전 -->
+					<div class="layer_top_alarm bg_lightgray">
 						<div class="container">
 							<div class="alarm_cont">
-								<!-- s: 알람 레이어 본문 -->
-								<div class="icon">
-									<i class="ico ico_alarm"></i>
-									<h3 class="sr_only">알람</h3>
-								</div>
 								<div class="cont">
-									<div class="status">
-										<p>신청 진행중 <span class="txt_red">1</span>건</p>
-										<a href="#;" class="btn btn_xs btn_round btn_white ml_1">카드발급신청</a>
-									</div>
-									<p class="subject">
-										<strong>우체국 어디서나 하이브리드 체크카드(VISA)</strong>
-									</p>
+									<p class="txt_normal pr_6">(주)모모산업님 간편설정을 하시면 Push alarm을 통해 빠른 결재가 가능합니다.</p>
 									<div class="mt_2">
 										<a href="#;" class="btn btn_md btn_outline_default btn_round">
-											<span>관련 상담 신청</span>
-										</a>
-										<a href="#;" class="btn btn_md btn_primary btn_round ml_1">
-											<i class="ico ico_comment_white"></i>
-											<span>이어서 진행</span>
+											<span>간편결재설정</span>
 										</a>
 									</div>
 								</div>
-								<!-- e: 알람 레이어 본문 -->
 							</div>
 							<button type="button" class="btn btn_icon btn_close_alarm"
 								onclick="$(this).closest('.layer_top_alarm').slideUp('fast');">
@@ -113,21 +111,99 @@
 							</button>
 						</div>
 					</div>
-					<!-- e: 알람 레이어 -->
+					<!-- e: 알람 레이어 : 간편결재설정 전 -->
+
+					<!-- s: 알람 레이어 : 간편결재설정 후 -->
+					<div class="layer_top_alarm">
+						<div class="container">
+							<div class="alarm_cont">
+								<div class="icon">
+									<i class="ico ico_alarm"></i>
+									<h3 class="sr_only">알람</h3>
+								</div>
+								<div class="cont">
+									<div class="status">
+										<span class="btn btn_xs btn_round btn_white mr_1">기업 간편결제 알림</span>
+										<p>2022.08.07 10:37</p>
+									</div>
+									<p class="subject">
+										<strong>김직원님이 급여이체 승인 요청을 하였습니다.</strong>
+									</p>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_md btn_outline_default btn_round">
+											<span>간편결재 설정 변경</span>
+										</a>
+										<a href="#;" class="btn btn_md btn_primary btn_round ml_1">
+											<span>바로 결재하기</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_alarm"
+								onclick="$(this).closest('.layer_top_alarm').slideUp('fast');">
+								<i class="ico ico_close"></i>
+								<span class="sr_only">알람 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- e: 알람 레이어 : 간편결재설정 후 -->
 
 					<!-- s: 계좌 정보 : 홈 -->
 					<section class="acc_info_area acc_info_area_home">
-						<div class="bg"></div>
+						<div class="bg bg_biz_default"></div>
+
+						<!-- s: 결재함 -->
+						<div class="approv_box">
+							<div class="approv_box_header">
+								<div class="left">
+									<h3 class="tit">결재함</h3>
+									<div>
+										확인
+										승인
+										전결
+									</div>
+								</div>
+								<div class="right">
+									<span class="check_switch check_switch_sm">
+										<input type="checkbox" id="chk_approv_box" checked>
+										<label for="chk_approv_box">
+											<span class="sr_only">결재함 상세 확인</span>
+										</label>
+									</span>
+								</div>
+							</div>
+							<div class="approv_box_body">
+								<dl class="my_works">
+									<dt>내 결재 대상 2건</dt>
+									<dd>
+										<ul class="work_list">
+											<li>
+												<a href="#;">
+													급여이체
+												</a>
+											</li>
+											<li>
+												<a href="#;">
+													급여이체
+												</a>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<!-- s: 결재함 -->
+
 						<div class="acc_box">
 							<div class="acc_box_header">
 								<div class="info">
-									<h3 class="tit">스마트e-Postbank예금</h3>
+									<h3 class="tit">기업든든MMDA통장</h3>
 									<p class="acc_num">100081-02-024210</p>
 								</div>
 								<div class="toolbar">
 									<span class="check_switch check_switch_sm check_quick_transfer">
-										<input type="checkbox" id="chk_fast1" checked>
-										<label for="chk_fast1">빠른이체</label>
+										<input type="checkbox" id="chk_quick_transfer">
+										<label for="chk_quick_transfer">빠른이체</label>
 									</span>
 									<a href="#;" class="pl_1 ml_1">
 										<i class="ico ico_submenu"></i>
