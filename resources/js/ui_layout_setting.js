@@ -27,10 +27,10 @@ $(function () {
 	});
 	$('.bottom_quickbar').load('/html/_inc_bottom_quickbar.html .bottom_quickbar > *', function (response, stu, xhr) {
 		if (stu == 'success') {
-			runSetting();
-			globalSetIsRun = true;
 			quickNavTabbar();
 			quickNavSettingLayer();
+			runSetting();
+			globalSetIsRun = true;
 		}
 	});
 
