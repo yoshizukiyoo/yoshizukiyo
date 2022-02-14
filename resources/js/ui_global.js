@@ -29,3 +29,50 @@ $(document).on('click', '.box_more .btn_more_white', function () {
 		$(this).parent('.box_more').toggleClass('opened');
 	}
 });
+
+// 화면 크기 변경 실행
+$(function () {
+	resizeApply();
+});
+
+// 화면 크기 변경시에 축소
+function resizeApply() {
+	var minWidth = 1250;
+	var body = document.getElementsByTagName('body')[0];
+	if (window.innerWidth < minWidth) {
+		body.style.zoom = (window.innerWidth / minWidth);
+	} else {
+		body.style.zoom = 1;
+	}
+}
+window.onload = function () {
+	window.addEventListener('resize', function () {
+		resizeApply();
+	});
+}
+
+// 웹 접근성 보완
+$(function () {
+	setTimeout(function () {
+		// 대체텍스트 추가
+		$('.necessary').each(function () {
+			$(this).attr('aria-label', '필수');
+		});
+	}, 200);
+});
+
+// 메인 헤더 UI (스크롤시 디자인)
+$(function () {
+	if ($('.header_global_main').length) {
+		$('body').addClass('global_main');
+	}
+});
+
+$(window).on('load scroll', function () {
+	var scrollValue = $(document).scrollTop();
+	if (scrollValue) {
+		$('body').addClass('scrolled');
+	} else {
+		$('body').removeClass('scrolled');
+	}
+});
