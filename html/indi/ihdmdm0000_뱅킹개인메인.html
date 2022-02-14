@@ -33,6 +33,85 @@
 				$('body').removeClass('info_layer_opened');
 			});
 
+			// 프로모션 영역 슬라이드 기능
+			var nums = 0;
+			var $mainRollingArea = $('.main_promotion_slide');
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_info .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_info .nums .bar span").css({
+						width: (100 / nums) + "%"
+					})
+					nums = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_info .nums strong").text("0" + (slick + 1));
+				$(".rolling_info .nums .bar span").css({
+					width: ((100 / nums) * (slick + 1)) + "%"
+				})
+			});
+
+			$(".rolling_info").append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_info .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+			// 대표계좌 탭메뉴 별 활성화
+			$('.tab_account > ul a').on('click', function () {
+				var obj = $(this);
+				var dataId = obj.attr('href').split('#')[1];
+				var index = obj.parent().index();
+				$('[data-tab=' + dataId + ']').show().siblings('.tab_info[data-tab]').hide();
+				$('.tab_account > ul').removeClass();
+				obj.attr('title', '현재 선택된 메뉴').parent().siblings().find('>a').removeAttr('title');
+
+				if (dataId == 'tab_box1') {
+					$('.tab_account > ul').addClass('tab tab_on1');
+					$('.bk_acc_money').slick('setPosition');
+				} else if (dataId == 'tab_box2') {
+					$('.tab_account > ul').addClass('tab tab_on2');
+				} else {
+					$('.tab_account > ul').addClass('tab tab_on3');
+				}
+				return false;
+			});
+
+			// 대표계좌 슬라이더
+			$('.bk_acc_money').slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: false,
+				autoplaySpeed: 3000
+			});
+
 		});
 	</script>
 </head>
@@ -106,89 +185,226 @@
 								</em>
 							</div>
 						</div>
-						<script>
-							var nums = 0;
-							var $mainRollingArea = $('.main_promotion_slide');
-							$mainRollingArea.slick({
-								arrows: false,
-								draggable: false,
-								slidesToScroll: 1,
-								slidesToShow: 1,
-								infinite: true,
-								false: true,
-								dots: true,
-								speed: 500,
-								autoplay: true,
-								autoplaySpeed: 3000,
-								customPaging: function (slick, index) {
-									$(".rolling_info .nums > span").text("0" + slick.slideCount);
 
-									$(".rolling_info .nums .bar span").css({
-										width: (100 / nums) + "%"
-									})
-									nums = slick.slideCount;
+						<!-- s: 대표계좌 영역 (로그인 후 노출) -->
+						<div class="account_info">
+							<div class="tab_account">
+								<ul class="tab tab_on1">
+									<li><a href="#tab_box1" title="현재 선택된 메뉴"><span>대표계좌</span></a></li>
+									<li><a href="#tab_box2"><span>총잔액</span></a></li>
+									<li><a href="#tab_box3"><span>접속정보</span></a></li>
+								</ul>
 
-								}
-							}).on('afterChange', function (event, index, slick, currentSlide) {
-								$(".rolling_info .nums strong").text("0" + (slick + 1));
-								$(".rolling_info .nums .bar span").css({
-									width: ((100 / nums) * (slick + 1)) + "%"
-								})
-							});
+								<!-- s: 대표계좌 -->
+								<div class="tab_info" data-tab="tab_box1">
+									<div class="top">
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="account_check1" checked>
+												<label for="account_check1">잔액</label>
+											</span>
+											<a href="#;" class="btn_acc_setting"><span class="sr_only">설정</span></a>
+										</div>
+									</div>
+									<div class="tab_cont">
+										<div class="bk_acc_slide">
+											<button type="button" class="slide_prev" onclick="$('.bk_acc_money').slick('slickPrev');"><span
+													class="sr_only">이전 계좌</span></button>
+											<button type="button" class="slide_next" onclick="$('.bk_acc_money').slick('slickNext');"><span
+													class="
+											sr_only">다음 계좌</span></button>
+											<div class="bk_acc_money">
+												<div>
+													<div class="bk_acc">
+														<strong>우체국다드림통장(베이직)</strong>
+														<span>100081-02-024210</span>
+													</div>
+													<div class="bk_money">
+														<strong>91,393,797</strong>원
+													</div>
+												</div>
+												<div>
+													<div class="bk_acc">
+														<strong>우체국다드림통장(베이직)</strong>
+														<span>100081-02-024210</span>
+													</div>
+													<div class="bk_money">
+														<span>잔액 미표기</span>
+													</div>
+												</div>
+												<div>
+													<div class="bk_acc">
+														<strong>우체국다드림통장(베이직)</strong>
+														<span>100081-02-024210</span>
+													</div>
+													<div class="bk_money">
+														<strong>91,393,797</strong>원
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="bk_acc_btn">
+										<a href="#;">거래내역</a>
+										<a href="#;">즉시이체</a>
+									</div>
+								</div>
+								<!-- e: 대표계좌 -->
 
-							$(".rolling_info").append(
-								'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
-							);
-							$(".rolling_info .btn_ctrl button").on('click', function () {
-								if (!$(this).hasClass("btn_play")) {
-									$mainRollingArea.slick('slickPause');
-									$(this).removeClass("btn_pause").addClass("btn_play");
-									$(this).text("Stop")
-								} else {
-									$mainRollingArea.slick('slickPlay');
-									$(this).removeClass("btn_play").addClass("btn_pause");
-									$(this).text("Play");
+								<!-- s: 총잔액 -->
+								<div class="tab_info" data-tab="tab_box2" style="display: none;">
+									<div class="top">
+										<div class="l">자산 총 잔액</div>
+										<div class="r">
+											<span class="check_switch">
+												<input type="checkbox" id="account_check2" checked>
+												<label for="account_check2">잔액</label>
+											</span>
+										</div>
+									</div>
+									<div class="tab_cont">
+										<div class="bk_money">
+											<strong>91,393,797</strong>원
+										</div>
+										<ul class="exp_list balance_list">
+											<li>
+												<div class="l">예금 계좌수</div>
+												<div class="r">
+													<strong>22</strong>개
+												</div>
+											</li>
+											<li>
+												<div class="l">총 잔액</div>
+												<div class="r">
+													<strong>991,393,700</strong>원
+												</div>
+											</li>
+											<li>
+												<div class="l">펀드 계좌수</div>
+												<div class="r">
+													<strong>0</strong>개
+												</div>
+											</li>
+											<li>
+												<div class="l">총 평가금액</div>
+												<div class="r">
+													<strong>0</strong>원
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="bk_acc_btn">
+										<a href="#;">전계좌조회</a>
+									</div>
+								</div>
+								<!-- e: 총잔액 -->
 
-								}
-							});
-							if ($(".in_rolling .slick-track > div").length < 4) {
-								//$(".rolling_info").hide();
-							}
-						</script>
+								<!-- s: 접속정보 -->
+								<div class="tab_info" data-tab="tab_box3" style="display: none;">
+									<div class="tab_cont">
+										<div class="security_score">
+											<p>
+												보안점수 <em>3</em>/14점
+												<span class="ml_3">보안수준 <strong>주의</strong></span>
+											</p>
+										</div>
+										<ul class="exp_list connect_list">
+											<li>
+												<div class="l">최근 접속일시</div>
+												<div class="r">2021.06.29 11:24:40</div>
+											</li>
+											<li>
+												<div class="l">최근 거래일시</div>
+												<div class="r">2021.05.25 22:12:23</div>
+											</li>
+											<li>
+												<div class="l">현재 접속 IP</div>
+												<div class="r">223.33.184.235</div>
+											</li>
+											<li>
+												<div class="l">인증서 만료일</div>
+												<div class="r">2024.03.22</div>
+											</li>
+										</ul>
+									</div>
+									<div class="bk_acc_btn">
+										<a href="#;">나의 보안수준</a>
+									</div>
+								</div>
+								<!-- e: 접속정보 -->
+
+							</div>
+						</div>
+						<!-- e: 대표계좌 영역 (로그인 후 노출) -->
+
 					</div>
 					<!-- e: 프로모션 영역 -->
 				</section>
 
-				<section class="bg_gray">
-					<!-- [웹접근성] 디자인상 섹션제목이 없을시 숨겨진 헤딩 제공 -->
-					<h3 class="sr_only">${Title2}</h3>
+				<!-- s: 새소식/팝업존 -->
+				<section class="sec_news">
 					<div class="container">
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
+						<div class="l">
+							<h3>새소식</h3>
+							<ul class="new_news_list">
+								<li>
+									<div class="l"><span>이벤트</span></div>
+									<div class="r">
+										<a href="#;">한국조폐공사(지역화폐체크카드) 사용 중단 안내</a>
+										<span>2021.05.24 09:19:57</span>
+									</div>
+								</li>
+								<li>
+									<div class="l"><span>공지</span></div>
+									<div class="r">
+										<a href="#;">한국조폐공사(지역화폐체크카드) 사용 중단 안내 한국조폐공사(지역화폐체크카드) 사용 중단 안내</a>
+										<span>2021.05.24 09:19:57</span>
+									</div>
+								</li>
+								<li>
+									<div class="l"><span>공지</span></div>
+									<div class="r">
+										<a href="#;">한국조폐공사(지역화폐체크카드) 사용 중단 안내 한국조폐공사(지역화폐체크카드) 사용 중단 안내</a>
+										<span>2021.05.24 09:19:57</span>
+									</div>
+								</li>
+								<li>
+									<div class="l"><span>공지</span></div>
+									<div class="r">
+										<a href="#;">한국조폐공사(지역화폐체크카드) 사용 중단 안내</a>
+										<span>2021.05.24 09:19:57</span>
+									</div>
+								</li>
+							</ul>
+							<a href="#;" class="more_link">더보기</a>
+						</div>
+						<div class="r">
+							<div class="popzone">
+								<div>
+									<a href="#;"><img src="/resources/img/main/img_temp_popzone.jpg" alt="이미지 대체텍스트 입력"></a>
+								</div>
+								<div>
+									<a href="#;"><img src="/resources/img/main/img_temp_popzone.jpg" alt="이미지 대체텍스트 입력"></a>
+								</div>
+								<div>
+									<a href="#;"><img src="/resources/img/main/img_temp_popzone.jpg" alt="이미지 대체텍스트 입력"></a>
+								</div>
+							</div>
+							<script>
+								$('.popzone').slick({
+									arrows: false,
+									slidesToScroll: 1,
+									slidesToShow: 1,
+									infinite: true,
+									dots: true,
+									speed: 500,
+									autoplaySpeed: 3000
+								});
+							</script>
+						</div>
 					</div>
 				</section>
-
-				<section>
-					<div class="container">
-						<h3>Title3</h3>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-					</div>
-				</section>
-
+				<!-- e: 새소식/팝업존 -->
 
 			</div>
 
