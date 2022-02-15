@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			// 로그인 후 알림 레이어 컨트롤 (불필요시 삭제)
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
+			$('.foreign_slider').slick({
+				slidesToShow: 5,
+				slidesToScroll: 1,
+				infinite: false,
+				dots: false,
+				autoplay: false,
+				draggable: true,
+				arrows: true
+			});
+
+			$('.tab_menu_type1 a').on('click', function () {
+				var obj = $(this);
+				var tg = obj.data('tab-tg');
+				obj.addClass('current').parent().siblings().find('>a').removeClass();
+				$('[data-sub-tab^="sub_tab"]').hide();
+				$('[data-sub-tab=' + tg + ']').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<div class="main_cont">
+				<h2 class="sr_only">외환 서브메인 본문</h2>
+				<section class="sec_home foreign_sec01">
+
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+					<div class="logged_info_layer" style="display: none;">
+						<div class="container">
+							<div class="info_cont">
+								<p>레이어 마크업 영역</p>
+								<p>레이어 마크업 영역</p>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_info_layer">
+								<i class="ico ico_close_sm"></i>
+								<span class="sr_only">알림 레이어 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+
+					<div class="container">
+						<div class="main_txt">전세계 어느 곳이든 빠르고 간편하게,<br><strong>우체국 외환서비스</strong>가 함께합니다.</div>
+						<div class="foreign_slider_wrap">
+							<div class="l">
+								<h3>우체국<strong>송금 환율</strong></h3>
+							</div>
+							<div class="r">
+								<ul class="foreign_slider">
+									<li>
+										<div class="nation">
+											<span>USD</span>미국
+										</div>
+										<div class="price">1159.00 <span>원</span></div>
+									</li>
+									<li>
+										<div class="nation">
+											<span>JPY</span>일본
+										</div>
+										<div class="price">1052.59 <span>원</span></div>
+									</li>
+									<li>
+										<div class="nation">
+											<span>CHY</span>중국
+										</div>
+										<div class="price">179.01 <span>원</span></div>
+									</li>
+									<li>
+										<div class="nation">
+											<span>EUR</span>유럽연합
+										</div>
+										<div class="price">1376.14 <span>원</span></div>
+									</li>
+									<li>
+										<div class="nation">
+											<span>THB</span>태국
+										</div>
+										<div class="price">35.54 <span>원</span></div>
+									</li>
+									<li>
+										<div class="nation">
+											<span>USD</span>미국
+										</div>
+										<div class="price">1159.00 <span>원</span></div>
+									</li>
+								</ul>
+							</div>
+							<p class="txt_md txt_gray txt_c mt_4">2021.07.16 14:30:50 우체국 송금 환율 기준</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="foreign_sec02">
+					<div class="container clfx">
+						<div class="box">
+							<h3 class="foreign_tit tit01">SWIFT송금<p>전세계 은행으로 외화를 보내고 받기</p>
+							</h3>
+							<div class="mt_6">
+								<a href="#;" class="btn btn_md btn_full btn_outline_default">SWIFT송금</a>
+								<a href="#;" class="btn btn_md btn_full btn_outline_default ml_0 mt_2">SWIFT송금조회/변경/취소/퇴결요청</a>
+								<a href="#;" class="btn btn_md btn_full btn_outline_default ml_0 mt_2">SWIFT환급</a>
+								<a href="#;" class="btn btn_explain mt_6">SWIFT송금 이용 안내</a>
+							</div>
+						</div>
+						<div class="box">
+							<div class="flex_box">
+								<div class="l">
+									<h3 class="foreign_tit tit02">환율정보<span class="ml_3">2021.07.16. 14:30:50 기준</span></h3>
+								</div>
+								<div class="r"><a href="#;" class="btn_more_link">더보기</a></div>
+							</div>
+							<div class="tab_menu_type1 md mt_6">
+								<ul>
+									<li><a href="#;" class="current" title="선택됨" data-tab-tg="sub_tab1">현찰</a></li>
+									<li><a href="#;" data-tab-tg="sub_tab2">송금</a></li>
+								</ul>
+							</div>
+							<div class="tbl_foreign mt_5" data-sub-tab="sub_tab1">
+								<table>
+									<caption class="sr_only">환율정보 현찰 표로 보내실때, 받으실때 정보 제공</caption>
+									<colgroup>
+										<col>
+										<col style="width: 23%">
+										<col style="width: 23%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th><span class="sr_only">국가</span></th>
+											<th scope="col">사실때</th>
+											<th scope="col">파실때</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag01.png" alt="United States 국기">
+													<span class="ml_2">United States</span>
+												</div>
+											</td>
+											<td class="txt_c">1,137.56</td>
+											<td class="txt_c">1,098.44</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag02.png" alt="Japan 국기">
+													<span class="ml_2">Japan</span>
+												</div>
+											</td>
+											<td class="txt_c">1,034.71</td>
+											<td class="txt_c">999.13</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag03.png" alt="China 국기">
+													<span class="ml_2">China</span>
+												</div>
+											</td>
+											<td class="txt_c">183.55</td>
+											<td class="txt_c">166.07</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag04.png" alt="The European Union 국기">
+													<span class="ml_2">The European Union</span>
+												</div>
+											</td>
+											<td class="txt_c">1,382.86</td>
+											<td class="txt_c">1,329.18</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag05.png" alt="Thailand 국기">
+													<span class="ml_2">Thailand</span>
+												</div>
+											</td>
+											<td class="txt_c">37.65</td>
+											<td class="txt_c">33.35</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tbl_foreign mt_5" data-sub-tab="sub_tab2" style="display:none;">
+								<table>
+									<caption class="sr_only">환율정보 송금 표로 보내실때, 받으실때 정보 제공</caption>
+									<colgroup>
+										<col>
+										<col style="width: 23%">
+										<col style="width: 23%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th><span class="sr_only">국가</span></th>
+											<th scope="col">보내실때</th>
+											<th scope="col">받으실때</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag01.png" alt="United States 국기">
+													<span class="ml_2">United States</span>
+												</div>
+											</td>
+											<td class="txt_c">1,137.56</td>
+											<td class="txt_c">1,098.44</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag02.png" alt="Japan 국기">
+													<span class="ml_2">Japan</span>
+												</div>
+											</td>
+											<td class="txt_c">1,034.71</td>
+											<td class="txt_c">999.13</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag03.png" alt="China 국기">
+													<span class="ml_2">China</span>
+												</div>
+											</td>
+											<td class="txt_c">183.55</td>
+											<td class="txt_c">166.07</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag04.png" alt="The European Union 국기">
+													<span class="ml_2">The European Union</span>
+												</div>
+											</td>
+											<td class="txt_c">1,382.86</td>
+											<td class="txt_c">1,329.18</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="flex_container flex_align_center">
+													<img src="/resources/img/main/img_foreign_flag05.png" alt="Thailand 국기">
+													<span class="ml_2">Thailand</span>
+												</div>
+											</td>
+											<td class="txt_c">37.65</td>
+											<td class="txt_c">33.35</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="box">
+							<h3 class="foreign_tit tit03">EuroGiro<p>계좌송금과 환증서 송금</p>
+							</h3>
+							<div class="mt_6">
+								<a href="#;" class="btn btn_md btn_full btn_outline_default">유로지로 송금</a>
+								<a href="#;" class="btn btn_md btn_full btn_outline_default ml_0 mt_2">유로지로송금조회/변경</a>
+								<a href="#;" class="btn btn_md btn_full btn_outline_default ml_0 mt_2">유로지로 송금취소/퇴결요청/퇴결요청취소</a>
+								<a href="#;" class="btn btn_md btn_full btn_outline_default ml_0 mt_2">유로지로환급</a>
+								<a href="#;" class="btn btn_md btn_full btn_outline_default ml_0 mt_2">행방조사청구</a>
+								<a href="#;" class="btn btn_explain mt_6">유로지로 송금이용 안내</a>
+							</div>
+						</div>
+						<div class="box">
+							<h3 class="foreign_tit tit04">환전서비스</h3>
+							<div class="mt_6">
+								<h4 class="point_tit">방문수령서비스</h4>
+								<p class="txt_size18 txt_darkgray txt_normal txt_spacing_xs">우체국과 하나은행 영업점에서 외화를 직접 수령하는 서비스입니다.</p>
+								<p class="txt_gray mt_1">신청가능 채널: 창구/인터넷뱅킹/스마트뱅킹</p>
+							</div>
+							<div class="mt_10">
+								<h4 class="point_tit">외화배달서비스</h4>
+								<p class="txt_size18 txt_darkgray txt_normal txt_spacing_xs">고객님이 지정한 날짜와 장소로 우편서비스를 통해 외화를 직접 배달받는
+									서비스입니다.</p>
+								<p class="txt_gray mt_1">신청가능 채널: 인터넷뱅킹/스마트뱅킹</p>
+							</div>
+							<a href="#;" class="btn btn_explain mt_7">인터넷환전 안내</a>
+							<ul class="foreign_link mt_12">
+								<li>
+									<a href="#;" class="bg01">환전수령장소</a>
+								</li>
+								<li><a href="#;" class="bg02">환전내역조회</a></li>
+							</ul>
+						</div>
+						<div class="box">
+							<h3 class="foreign_tit tit05">특급해외송금<p>(MoneyGram)</p>
+							</h3>
+							<div class="mt_6">
+								<a href="#;" class="btn btn_md btn_full btn_outline_default">특급해외송금</a>
+								<a href="#;" class="btn btn_md btn_full btn_outline_default ml_0 mt_2">특급해외송금조회</a>
+								<a href="#;" class="btn btn_explain mt_6">특급해외송금 이용 안내</a>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
