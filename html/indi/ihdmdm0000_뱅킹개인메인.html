@@ -112,6 +112,35 @@
 				autoplaySpeed: 3000
 			});
 
+			// 팝업존 슬라이더
+			$('.popzone_slide').slick({
+				arrows: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000
+			});
+
+			$('.popzone_slide .slick-dots').wrap('<div class="cus_paging"></div>');
+			$('.cus_paging').append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause"><span class="sr_only">정지</span></button></div>'
+			);
+
+			// 팝업존 정지
+			$(document).on('click', '.popzone_slide .btn_pause', function () {
+				$(this).removeClass().addClass('btn_play').text('시작');
+				$('.popzone_slide').slick('slickPause');
+			});
+
+			// 팝업존 시작
+			$(document).on('click', '.popzone_slide .btn_play', function () {
+				$(this).removeClass().addClass('btn_pause').text('정지');
+				$('.popzone_slide').slick('slickPlay');
+			});
+
 		});
 	</script>
 </head>
@@ -344,9 +373,9 @@
 				<!-- s: 새소식/팝업존 -->
 				<section class="sec_news">
 					<div class="container">
-						<div class="l">
+						<div class="new_news_list">
 							<h3>새소식</h3>
-							<ul class="new_news_list">
+							<ul>
 								<li>
 									<div class="l"><span>이벤트</span></div>
 									<div class="r">
@@ -376,10 +405,10 @@
 									</div>
 								</li>
 							</ul>
-							<a href="#;" class="more_link">더보기</a>
+							<a href="#;" class="more_link" title="새소식 더보기">더보기</a>
 						</div>
-						<div class="r">
-							<div class="popzone">
+						<div class="popzone">
+							<div class="popzone_slide">
 								<div>
 									<a href="#;"><img src="/resources/img/main/img_temp_popzone.jpg" alt="이미지 대체텍스트 입력"></a>
 								</div>
@@ -390,21 +419,79 @@
 									<a href="#;"><img src="/resources/img/main/img_temp_popzone.jpg" alt="이미지 대체텍스트 입력"></a>
 								</div>
 							</div>
-							<script>
-								$('.popzone').slick({
-									arrows: false,
-									slidesToScroll: 1,
-									slidesToShow: 1,
-									infinite: true,
-									dots: true,
-									speed: 500,
-									autoplaySpeed: 3000
-								});
-							</script>
 						</div>
 					</div>
 				</section>
 				<!-- e: 새소식/팝업존 -->
+
+				<!-- s: 우체국금융상품 -->
+				<section class="sec_product">
+					<div class="container">
+						<h3>
+							<span class="txt_bold">많이 찾는</span> 우체국금융상품
+							<span class="best_icon">BEST</span>
+						</h3>
+						<div class="finance_product">
+							<a href="#;">
+								<dl class="bg_dep">
+									<dt><span>예금</span></dt>
+									<dd>챔피언정기예금</dd>
+								</dl>
+							</a>
+							<a href="#;">
+								<dl class="bg_card">
+									<dt><span>카드</span></dt>
+									<dd>우체국 포미 하이브리드 체크카드(VISA)</dd>
+								</dl>
+							</a>
+							<a href="#;">
+								<dl class="bg_fund">
+									<dt><span>펀드</span></dt>
+									<dd>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</dd>
+								</dl>
+							</a>
+							<a href="#;">
+								<dl class="bg_ins">
+									<dt><span>보험</span></dt>
+									<dd>(무)온라인어린이보험</dd>
+								</dl>
+							</a>
+						</div>
+						<a href="#;" class="more_link" title="우체국금융상품 더보기">더보기</a>
+					</div>
+				</section>
+				<!-- e: 우체국금융상품 -->
+
+				<!-- s: 고객센터/APP -->
+				<section class="sec_customer">
+					<div class="container">
+						<div class="dep_cus">
+							<h3>우체국 예금 고객센터</h3>
+							<p>평일 09시~18시 (은행휴무일 제외)</p>
+							<dl>
+								<dt>국내전용</dt>
+								<dd><strong>1599-1900</strong></dd>
+								<dd><strong>1588-1900</strong></dd>
+							</dl>
+						</div>
+						<div class="fin_app">
+							<h3>우체국 금융 APP</h3>
+							<ul>
+								<li><a href="#;" class="app_bk" title="새창으로 열림">스마트뱅킹</a></li>
+								<li><a href="#;" class="app_ins" title="새창으로 열림">스마트보험</a></li>
+								<li><a href="#;" class="app_postpay" title="새창으로 열림">포스트페이</a></li>
+								<li><a href="#;" class="app_member" title="새창으로 열림">우체국멤버십</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<!-- e: 고객센터/APP -->
+
+				<!-- s: 우체국 보험 바로가기 -->
+				<div class="sec_link">
+					<a href="#;" title="새창으로 열림">더욱 든든한 <strong>우체국 보험 바로가기</strong></a>
+				</div>
+				<!-- e: 우체국 보험 바로가기 -->
 
 			</div>
 
