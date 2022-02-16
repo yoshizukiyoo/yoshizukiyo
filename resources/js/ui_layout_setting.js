@@ -28,7 +28,6 @@ $(function () {
 	$('.bottom_quickbar').load('/html/_inc_bottom_quickbar.html .bottom_quickbar > *', function (response, stu, xhr) {
 		if (stu == 'success') {
 			quickNavTabbar();
-			quickNavSettingLayer();
 			runSetting();
 			globalSetIsRun = true;
 		}
@@ -39,7 +38,7 @@ $(function () {
 		if (!globalSetIsRun) {
 			tabmenu();
 			inputStatus();
-
+			quickNavSettingLayer();
 			if ($('.acc_info_area .check_quick_transfer').length) {
 				$('.acc_info_area .check_quick_transfer').each(function () {
 					quickTransferToggle($(this));
