@@ -23,27 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			var button;
 
-			// 툴팁 도움말 레이어 실행
-			$('.help_tooltip > button').on('click', function () {
-				button = $(this);
-				$(this).next().show().focus();
-			});
-
-			// 툴팁 도움말 레이어 닫기
-			$('.tooltip button').on('click', function () {
-				$(this).parent().hide();
-				button.focus();
-			});
-
-			// 외부영역 클릭 시 팝업 닫기
-			$(document).mouseup(function (e) {
-				var LayerPopup = $(".tooltip");
-				if (LayerPopup.has(e.target).length === 0) {
-					LayerPopup.hide();
-				}
-			});
 		});
 	</script>
 </head>
@@ -66,27 +46,34 @@
 				-->
 				<section class="sec_home">
 					<h3 class="sr_only">예금 계좌 정보</h3>
-					<div class="sub_card_info visual_top">
+					<div class="sub_fund_info visual_top">
 						<div class="container">
+							<div class="fund_notice">
+								<div class="l"><a href="#;">우체국 펀드 2개 상품 신규 판매 일시 중단 안내</a></div>
+								<div class="r"><span class="spoqa">2022.01.18 12:33:57</span></div>
+							</div>
 							<div class="total_info_wrap">
 								<div class="total_info">
 									<div class="cus_info">
 										<p>
-											<strong>홍길동</strong>님은 <strong> 카드 2개</strong>를 보유하고 있습니다.
+											<strong>홍길동</strong>님은 <strong> 펀드 2개</strong>를 보유하고 있습니다.
 										</p>
-										<a href="#;" class="btn btn_md btn_outline_default ico_arrow">전체 카드 보기</a>
+										<a href="#;" class="btn btn_md btn_outline_default ico_arrow">전체 펀드 조회</a>
 									</div>
 									<div class="cus_toal_info">
-										<span class="total_tit">이번 달 카드 결제(예정) :</span>
+										<span class="total_tit">펀드 총 자산 :</span>
 										<strong class="total_num">387,210</strong>
 										<div class="btn_mouse_toggle">
 											<div class="switch">
 												<input type="checkbox" id="btn_toggle" checked>
-												<label for="btn_toggle"><span class="sr_only">결재금액 표기 설정</span></label>
+												<label for="btn_toggle"><span class="sr_only">총 자산금액 표기 설정</span></label>
 											</div>
-											<span class="btn_name">결재금액</span>
+											<span class="btn_name">총 자산금액</span>
 										</div>
 									</div>
+								</div>
+								<div class="invest_result">
+									df
 								</div>
 							</div>
 							<div class="info_box_list card_info_box">
@@ -112,12 +99,10 @@
 									<div class="info_cont_box">
 										<div class="inner">
 											<div class="top">
-												<div class="month_money">
-													<span class="mon">
-														<strong>12월</strong>
-														카드이용금액
-													</span>
-												</div>
+												<span class="month_money">
+													<strong>12월</strong>
+													카드이용금액
+												</span>
 											</div>
 											<div class="box_cont">
 												<p class="money_link txt_c">
