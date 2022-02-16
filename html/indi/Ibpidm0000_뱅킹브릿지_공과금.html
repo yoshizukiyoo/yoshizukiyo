@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			// 로그인 후 알림 레이어 컨트롤 (불필요시 삭제)
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<div class="main_cont bg_sub_main">
+				<h2 class="sr_only">외환 서브메인 본문</h2>
+				<div class="alert_info_box">
+					<div class="container">
+						<p class="txt_darkgray txt_size18"><strong class="txt_bold">공과금 납부 가능 시간</strong>이 아닙니다.</p>
+						<p class="txt_darkgray txt_size18 txt_normal mt_2">이용가능시간 : 07:00 ~ 23:30 (토 · 일요일, 공휴일 이용 가능)</p>
+						<p class="txt_gray02 mt_3">단, 대학등록금 납부는 휴일에도 가능하며, 납부 가능 시간은 학교마다 다르므로, 해당 학교로 문의하시기 바랍니다.</p>
+					</div>
+				</div>
+				<section class="sec_home sub_first_section utility_sec01">
+
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+					<div class="logged_info_layer" style="display: none;">
+						<div class="container">
+							<div class="info_cont">
+								<p>레이어 마크업 영역</p>
+								<p>레이어 마크업 영역</p>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_info_layer">
+								<i class="ico ico_close_sm"></i>
+								<span class="sr_only">알림 레이어 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+
+					<div class="container">
+						<div class="sub_top_cont blue">
+							<h3 class="f">My 공과금
+								<span class="menu_info_txt ml_3">My공과금으로 등록하시면 납부 정보 입력 반복 없이 부과된 공과금을 확인하고 즉시 납부 할 수 있어요.</span>
+							</h3>
+							<!-- s: My공과금 등록 전 -->
+							<div class="product_add_cont">
+								<div class="add_txt">하단 등록 가능 공과금 영역에서 공과금 종류를 선택해 [등록] 버튼을 클릭하세요.</div>
+							</div>
+							<!-- e: My공과금 등록 전 -->
+							<!-- s: My공과금 등록 후 -->
+							<div class="product_add_cont" style="display: none;">
+								<ul class="utility_add_list">
+									<li class="bg05">
+										<h4>국민연금</h4>
+										<p class="txt_gray">00000000000000</p>
+										<div class="mt_3">
+											<a href="#;" class="btn btn_sm btn_primary">조회</a>
+											<a href="#;" class="btn btn_sm btn_outline_default">관리</a>
+										</div>
+									</li>
+									<li class="bg07">
+										<h4>전기요금</h4>
+										<p class="txt_gray">우리집</p>
+										<div class="mt_3">
+											<a href="#;" class="btn btn_sm btn_primary">조회</a>
+											<a href="#;" class="btn btn_sm btn_outline_default">관리</a>
+										</div>
+									</li>
+									<li class="bg07">
+										<h4>전기요금</h4>
+										<p class="txt_gray">사무실</p>
+										<div class="mt_3">
+											<a href="#;" class="btn btn_sm btn_primary">조회</a>
+											<a href="#;" class="btn btn_sm btn_outline_default">관리</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- e: My공과금 등록 후 -->
+						</div>
+					</div>
+				</section>
+
+				<section class="utility_sec02 last_sec">
+					<div class="container">
+						<div class="box sub_main_box">
+							<h3 class="tit1">등록 가능 공과금</h3>
+							<ul class="utility_add_list">
+								<li class="bg01">
+									<h4>지방세</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg02">
+									<h4>환경개선부담금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg03">
+									<h4>세외수입</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg04">
+									<h4>경찰청범칙금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg05">
+									<h4>국민연금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg06">
+									<h4>KT통신요금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg07">
+									<h4>전기요금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg08">
+									<h4>상하수도요금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">등록</a>
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="box sub_main_box mt_4">
+							<h3 class="tit1">공과금 조회/납부 바로가기
+								<span class="menu_info_txt ml_3">조회/납부 버튼을 선택하시면 해당 공과금 메뉴로 이동합니다.</span>
+							</h3>
+							<ul class="utility_add_list">
+								<li class="bg09">
+									<h4>지로납부</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg10">
+									<h4>통합 국고</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg01">
+									<h4>통합 지방세</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg11">
+									<h4>법무부국고금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg12">
+									<h4>통합징수보험료</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg13">
+									<h4>고용보험료</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg14">
+									<h4>산재보험료</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg15">
+									<h4>아파트관리비</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+								<li class="bg16">
+									<h4>대학등록금</h4>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_sm btn_outline_default">조회/납부</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="flex_container mt_4">
+							<div class="box sub_main_box flex_item">
+								<h3 class="tit">예약납부조회</h3>
+								<p class="txt_darkgray">공과금을 원하는 날짜에 예약해서 납부해 보세요.</p>
+								<a href="#;" class="btn btn_explain mt_2">예약납부조회/취소 바로가기</a>
+							</div>
+							<div class="box sub_main_box ml_4 flex_item">
+								<h3 class="tit">예약납부조회</h3>
+								<p class="txt_darkgray">각종 생활요금을 자동납부로 쉽게 관리해 보세요.</p>
+								<a href="#;" class="btn btn_explain mt_2">자동이체납부 바로가기</a>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+			</div>
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
