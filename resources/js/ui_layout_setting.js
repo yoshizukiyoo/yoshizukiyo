@@ -401,6 +401,19 @@ $(document).on('click', '.direct_ongoing_list dt a', function (e) {
 	$(this).parent('dt').toggleClass('on').siblings('dt').removeClass('on');
 });
 
+$(document).on('click', '.gnb_area a', function (e) {
+	// 전체메뉴 내 탭
+	e.preventDefault();
+	$('.lnb_title').text($(this).text());
+	$('.gnb_area li').removeClass('on').children('a').removeAttr('title');
+	$(this).parent('li').addClass('on').children('a').attr('title', '선택됨')
+}).on('click', '.lnb_list .btn_favor', function (e) {
+	// 자주쓰는 메뉴 토글
+	e.preventDefault();
+	$(this).attr('title', $(this).attr('title') == '등록됨' ? '' : '등록됨')
+		.children('.ico').toggleClass('ico_star_on ico_star_off');
+});
+
 // 상하 스크롤 블러영역
 $(document).ready(function () {
 	$('.scroll_container').each(function () {
