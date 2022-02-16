@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">계약사항조회</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+				<a href="#agreement_pop" class="btn btn_sm btn_outline_default mt_2"
+					onclick="openModal('agreement_pop', this);">
+					<span>기지급내역 증명서발급</span>
+				</a>
+
+				<!-- s: modal popup -->
+				<!-- 용도별 .modal_alert(600) / 크기별 .modal_xs(400), .modal_sm(600), .modal_md(750), .modal_lg(800), .modal_xl(880), .modal_xxl(1200) -->
+				<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+				<div class="modal_popup modal_xxl modal_xxl2 show" data-popup="agreement_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<!-- 헤더 미사용시 .popup_header 제거 / 타이틀 왼쪽정렬시 멀티클래스 .txt_l 추가 div class="popup_header txt_l" -->
+						<div class="popup_header">
+							<h2 class="popup_tit">기지급내역서</h2>
+						</div>
+						<div class="popup_body p_0">
+							<div class="resurrection_info p_10 pt_6 pb_8">
+								<div class="tit_top mb_0">
+									<h3 class="txt_xl txt_c mb_0">기지급내역서</h3>
+								</div>
+
+								<div class="txt_r mt_2 mb_3">
+									<span class="inpuiry_time txt_gray">정보제공시간 2021년 10월 13일 14시45분46초</span>
+								</div>
+
+								<!-- s: table 영역 -->
+								<div class="tbl_data tbl_complex_data">
+									<table>
+										<caption class="sr_only">기지급내역서 증서정보</caption>
+										<colgroup>
+											<col>
+											<col>
+											<col style="width:35%">
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">증서번호</th>
+												<th scope="col">주보험금</th>
+												<th scope="col">보험종류</th>
+												<th scope="col">계약자번호</th>
+												<th scope="col">계약자명</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_c">70303510512</td>
+												<td class="txt_c">40,000,000</td>
+												<td class="txt_c">하이로정기보험(만기환급형)</td>
+												<td class="txt_c">631025-*******</td>
+												<td class="txt_c">무시우</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tbl_data tbl_complex_data mt_4">
+									<table>
+										<caption class="sr_only">기지급내역서</caption>
+										<colgroup>
+											<col>
+											<col style="width: 8%;">
+											<col>
+											<col>
+											<col style="width: 16%;">
+											<col style="width: 16%;">
+											<col>
+											<col style="width: 10%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">지급일자</th>
+												<th scope="col">구분</th>
+												<th scope="col">지급사유명</th>
+												<th scope="col">지급사유일</th>
+												<th scope="col">지급액</th>
+												<th scope="col">지급국</th>
+												<th scope="col">퇴원일</th>
+												<th scope="col">퇴원여부</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">이체</td>
+												<td class="txt_r">입원</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">260,000원</td>
+												<td class="txt_r">우정사업정보센터</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">O</td>
+											</tr>
+											<tr>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">이체</td>
+												<td class="txt_r">입원</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">260,000원</td>
+												<td class="txt_r">우정사업정보센터</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">O</td>
+											</tr>
+											<tr>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">이체</td>
+												<td class="txt_r">입원</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">260,000원</td>
+												<td class="txt_r">우정사업정보센터</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">O</td>
+											</tr>
+											<tr>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">이체</td>
+												<td class="txt_r">입원</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">260,000원</td>
+												<td class="txt_r">우정사업정보센터</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">O</td>
+											</tr>
+											<tr>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">이체</td>
+												<td class="txt_r">입원</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">260,000원</td>
+												<td class="txt_r">우정사업정보센터</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">O</td>
+											</tr>
+											<tr>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">이체</td>
+												<td class="txt_r">입원</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">260,000원</td>
+												<td class="txt_r">우정사업정보센터</td>
+												<td class="txt_r">2021.03.05</td>
+												<td class="txt_r">O</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- e: table 영역 -->
+
+								<div class="box bg_lightgray2 mt_6 txt_gray box_p_type">
+									<span class="mr_1">주)</span>
+									<ul>
+										<li>1. 본 내역서는 영수증으로 사용할 수 없으며, 거래의 참고용으로만 사용하실 수 있습니다.</li>
+										<li>2. 본 내역서는 기재사항을 임의로 수정하는 경우 무효입니다.</li>
+									</ul>
+								</div>
+							</div>
+							<div class="resurrection_bottom">
+								<p class="txt_c txt_sm txt_darkgray">
+									본 증명서는 인터넷으로 발급되었으며 우체국 예금보험 홈페이지(www.epostbank.go.kr)의<br>
+									증명서검증 메뉴를 통해 문서확인번호로 내용의 진위여부를 발급일부터 180일간 확인할 수 있습니다.
+								</p>
+								<ul class="list list1">
+									<li class="txt_medium txt_sm">문서확인번호 : </li>
+								</ul>
+							</div>
+							<div class="print_btn">
+								<button type="button" class="btn btn_sm btn_outline_default">화면인쇄</button></div>
+						</div>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
