@@ -5649,7 +5649,175 @@ body {
 		// 		display: block;
 		// 	}
 		// }
+		.inner_scroll {
+			padding-bottom: 10px;
+			margin: 0 $spacing;
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
 
+		.btn.bg_lightgray {
+			padding: 0 15px;
+			line-height: 22px;
+			background-color: #e5e5e5;
+		}
+
+		.member_group {
+			display: flex;
+			margin: 0 -5px;
+
+			.member_item {
+				margin: 0 5px;
+				line-height: 0;
+
+				input {
+					appearance: none;
+
+					&:checked {
+						+label {
+							border: 1px solid $black;
+							color: $black;
+						}
+
+					}
+				}
+
+				label {
+					display: inline-block;
+					min-width: 50px;
+					padding: 0 15px;
+					height: 35px;
+					line-height: 32px;
+					border: 1px solid $border-base;
+					border-radius: 4px;
+					color: $gray;
+
+				}
+
+				&.dutch {
+					label {
+						background-color: #fefbe5;
+					}
+				}
+
+				&.meet {
+					label {
+						background-color: #dfe9ff;
+					}
+				}
+			}
+		}
+
+		.member_list_box {
+			position: relative;
+			overflow: hidden;
+
+			.inner_scroll {
+				height: 100%;
+				padding: 0 10px 0 0;
+				margin: 0 -10px 0 0;
+				overflow-y: auto;
+
+				.empty_box {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 100%;
+					text-align: center;
+					transform: translate(-50%, -50%);
+
+					.ico_warning_lg {
+						display: inline-block;
+						width: 40px;
+						height: 40px;
+						background: url(#{$url-img}/content/ico_warning_lg.png) center center no-repeat;
+						background-size: 40px 40px;
+					}
+
+					strong {
+						display: block;
+						margin-top: 10px;
+						font-size: 14px;
+						font-weight: 200;
+						line-height: 16px;
+					}
+				}
+			}
+
+			.txt_guide {
+				position: absolute;
+				left: 50%;
+				bottom: 18px;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				transform: translateX(-50%);
+				color: $red;
+				text-align: center;
+				letter-spacing: -.5px;
+			}
+		}
+
+		.member_set_list {
+			li {
+				position: relative;
+				display: flex;
+
+				>* {
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 18px;
+					;
+				}
+
+				.name {
+					width: 90px;
+					@include text-ellipsis(1, 18px);
+				}
+
+				.btn_close {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 20px;
+					height: 20px;
+					background:url(#{$url-img}/content/ico_close_sm.png) 0 0 no-repeat;
+					background-size: 20px 20px;
+					font-size: 1px;
+					color: transparent;
+				}
+
+				+li {
+					margin-top: 20px;
+				}
+
+				&.list_del {
+					&:after {
+						content: '';
+						position: absolute;
+						left: 0;
+						top: 50%;
+						width: calc(100% - 80px);
+						height: 1px;
+						background-color: $red;
+						transform: translateY(-50%);
+					}
+
+					.name {
+						color: $gray;
+					}
+
+					.phone {
+						color: $gray;
+					}
+
+					.btn_close {
+						background:url(#{$url-img}/content/ico_close_red_sm.png)0 0 no-repeat;
+						background-size: 20px 20px;
+					}
+				}
+			}
+		}
 
 		.wrap_tit {
 			justify-content: start;
@@ -8047,6 +8215,66 @@ $font-size-mxl : 20px;
 			strong {
 				font-size: 26px;
 			}
+		}
+	}
+
+	.flex_group {
+		display: flex;
+		justify-content: space-between;
+
+		.selectbox_area {
+			width: calc(100% - 213px);
+			height: 35px;
+			padding: 6px 20px 0 15px;
+			border: 1px solid $border-base;
+			border-radius: 4px;
+		}
+
+		.tab_cal {
+			&::after {
+				content: '';
+				clear: both;
+				display: block;
+			}
+
+			li {
+				float: left;
+
+				margin-left: 10px;
+				border-radius: 4px;
+
+				.btn_item {
+					input {
+						appearance: none;
+
+						&:checked {
+							+label {
+								border-color: $black;
+								color: $black;
+							}
+						}
+					}
+
+					label {
+						display: inline-block;
+						min-width: 50px;
+						padding: 0 15px;
+						height: 35px;
+						line-height: 32px;
+						border: 1px solid $border-base;
+						text-align: center;
+						border-radius: 4px;
+						vertical-align: middle;
+					}
+
+				}
+			}
+		}
+	}
+
+	&.search_header {
+		+.fn_calendar {
+			padding-top: 160px;
 		}
 	}
 }

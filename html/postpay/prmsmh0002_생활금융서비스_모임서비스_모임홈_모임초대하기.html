@@ -21,31 +21,28 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			var $postpaySlide = $('.slide_menu');
-			$postpaySlide.slick({
-				draggable: true,
-				arrows: true,
-				infinite: false,
-				slidesToShow: 3.5,
-				slidesToScroll: 3.5,
-			});
-			$('.slide_menu_li>button').click(function (e) {
-				e.preventDefault();
-				if ($(this).hasClass('active')) {
-					$('.active').removeClass('active');
-					$(this).addClass('active');
+			$('.member_list_box .btn_close').on('click', function () {
+				var currentList = $(this).parent();
+				if (currentList.hasClass('list_del')) {
+					currentList.removeClass('list_del');
 				} else {
-					$('.active').removeClass('active');
-					$(this).addClass('active');
-				};
-			});
+					currentList.addClass('list_del');
+				}
+
+			})
+			$('.dutch_member').each(function () {
+				var btnGroup = $('.popup_footer').outerHeight();
+				console.log(btnGroup);
+				var win = $(window).height();
+				var outItem = Number(win - (56 + 61 + 44 + 85 + btnGroup)) + 'px';
+				$('.member_list_box').css('height', outItem);
+			})
 		});
 	</script>
 </head>
 
 <!-- s: 모임 초대하기 -->
-<!-- 마크업 수정 : 2022-02-03 
-		탭 display:none 삭제 -->
+<!-- s: 마크업 : 2022-02-17 전체 수정 -->
 
 <body class="popup">
 	<div class="popup_inner">
@@ -53,196 +50,92 @@
 			<h1 class="popup_tit txt_s18">모임 초대하기</h1>
 			<button type="button" class="btn btn_close_popup" onclick="closeWindow();">닫기</button>
 		</div>
-		<div class="popup_sub_header">
-			<div class="section pl_4 pr_4 bg_drop_top mt_4">
-				<nav class="tab_menu tab_menu3 mb_1">
-					<ul class="tab_list">
-						<li class="on"><a href="#tab_cont1">직접 선택</a></li>
-						<li> <a href="#tab_cont2">기존 그룹 참여</a>
-						</li>
-					</ul>
-				</nav>
-				<!-- s: 직접 선택 -->
-				<div class="tab_cont pt_1" id="tab_cont1">
-					<h3 class="sr_only">직접 선택</h3>
-					<div class="container p_0">
-						<p class="txt_sm txt_l pl_1 txt_gray02"><span class="txt_lg txt_bold txt_default mr_1"><span>0</span>/100
-								명</span> 최대 100명까지 초대가능해요</p>
-						<p class="txt_invite"><i class="ico ico_invite_bubble"></i>아래 전화번호에서 초대할 친구를 선택하세요</p>
-					</div>
-				</div>
-				<!-- e: 직접 선택 -->
-
-				<!-- s: 기존 그룹 참여 : 기준 그룹 참조 1 -->
-				<div class="tab_cont pt_1" id="tab_cont2">
-					<h3 class="sr_only">기존 그룹 참여</h3>
-					<div class="container p_0">
-						<nav class="tab_menu tab_menu3 menu3_type02 mt_1 mb_2">
-							<ul class="tab_list">
-								<li class="on"><a href="#tab_cont2_1"><span>점심멤버</span></a></li>
-								<li class=""><a href="#tab_cont2_2"><span>팀뒷풀이</span></a></li>
-								<li class=""><a href="#tab_cont2_3"><span>같이크루즈</span></a></li>
-								<li class=""><a href="#tab_cont2_4"><span>월고기</span></a></li>
-							</ul>
-						</nav>
-
-						<div class="tab_cont" id="tab_cont2_1">
-							<strong class="sr_only">점심멤버</strong>
-							<div class="container p_0 pb_2">
-								<p class="txt_sm txt_l pl_1 txt_gray02 pb_2"><span
-										class="txt_lg txt_bold txt_default mr_1"><span>4</span>/100
-										명</span> 최대 100명까지 초대가능해요</p>
-
-								<div class="section mt_0">
-									<ul class="join_member mb_2">
-										<li><span>김우정</span>
-											<button type="reset"><i class="ico ico_close_join"><span class="sr_only">삭제</span></i></button>
-										</li>
-										<li><span>김페이</span>
-											<button type="reset"><i class="ico ico_close_join"><span class="sr_only">삭제</span></i></button>
-										</li>
-										<li><span>김보냄</span>
-											<button type="reset"><i class="ico ico_close_join"><span class="sr_only">삭제</span></i></button>
-										</li>
-										<li><span>김제로</span>
-											<button type="reset"><i class="ico ico_close_join"><span class="sr_only">삭제</span></i></button>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="tab_cont" id="tab_cont2_2">
-							<strong class="sr_only">팀뒷풀이</strong>
-							<div class="container p_0">
-								<p class="txt_sm txt_l pl_1 txt_gray02 pb_2"><span
-										class="txt_lg txt_bold txt_default mr_1"><span>0</span>/100
-										명</span> 최대 100명까지 초대가능해요</p>
-							</div>
-						</div>
-
-						<div class="tab_cont" id="tab_cont2_3">
-							<strong class="sr_only">같이크루즈</strong>
-							<div class="container p_0">
-								<p class="txt_sm txt_l pl_1 txt_gray02 pb_2"><span
-										class="txt_lg txt_bold txt_default mr_1"><span>0</span>/100
-										명</span> 최대 100명까지 초대가능해요</p>
-							</div>
-						</div>
-
-						<div class="tab_cont" id="tab_cont2_4">
-							<strong class="sr_only">월고기</strong>
-							<div class="container p_0">
-								<p class="txt_sm txt_l pl_1 txt_gray02 pb_2"><span
-										class="txt_lg txt_bold txt_default mr_1"><span>0</span>/100
-										명</span> 최대 100명까지 초대가능해요</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- e: 기존 그룹 참여 : 기준 그룹 참조 1 -->
-
-				<!-- s: 기존 그룹 참여 : 참조 그룹 없음 -->
-				<!-- <div class="tab_cont pt_0" id="tab_cont2">
-					<div class="container p_0">
-						<p class="bul_notice txt_gray">더치페이, 모임서비스를 같이 이용했던 친구들이 없어요. </p>
-						<p class="txt_sm txt_l pl_1 pt_1 txt_gray02"><span
-								class="txt_lg txt_bold txt_default mr_1"><span>0</span>/100
-								명</span> 최대 100명까지 초대가능해요</p>
-						<p class="txt_invite"><i class="ico ico_invite_bubble"></i>아래 전화번호에서 초대할 친구를 선택하세요</p>
-					</div>
-				</div> -->
-				<!-- e: 기존 그룹 참여 : 참조 그룹 없음 -->
-
-				<!-- e: 기존 그룹 참여 -->
-			</div>
-		</div>
 
 		<div class="popup_body">
-			<div class="container">
-				<!-- s : 마크업 수정 : 2022-02-08 -->
-				<div class="invite_wrap">
-					<ul>
+
+			<div class="postpay dutch_member">
+
+				<!-- s: 그룹 리스트-->
+				<div class="inner_scroll">
+					<ul class="member_group">
 						<li>
-							<a href="#;" class="invite_item">
-								<span>고은경</span>
-								<em>010-3333-1234</em>
-							</a>
+							<div class="member_item dutch">
+								<input type="checkbox" name="dutch_group" id="lb_member01">
+								<label for="lb_member01">점심멤버</label>
+							</div>
 						</li>
 						<li>
-							<a href="#;" class="invite_item">
-								<span>권공공</span>
-								<em>010-4444-1234</em>
-							</a>
+							<div class="member_item dutch">
+								<input type="checkbox" name="dutch_group" id="lb_member02">
+								<label for="lb_member02">팀뒷풀이</label>
+							</div>
 						</li>
 						<li>
-							<a href="#;" class="invite_item">
-								<span>김동철</span>
-								<em>010-5555-1234</em>
-							</a>
+							<div class="member_item meet">
+								<input type="checkbox" name="dutch_group" id="lb_member03">
+								<label for="lb_member03">같이크루즈</label>
+							</div>
 						</li>
 						<li>
-							<a href="#;" class="invite_item">
-								<span>고길동</span>
-								<em>010-6666-1234</em>
-							</a>
-						</li>
-						<li>
-							<a href="#;" class="invite_item">
-								<span>홍가을</span>
-								<em>010-1111-1234</em>
-							</a>
-						</li>
-						<li>
-							<a href="#;" class="invite_item">
-								<span>홍겨울</span>
-								<em>010-2222-1234</em>
-							</a>
-						</li>
-						<li>
-							<a href="#;" class="invite_item">
-								<span>홍봄</span>
-								<em>010-3333-1234</em>
-							</a>
-						</li>
-						<li>
-							<a href="#;" class="invite_item">
-								<span>김우정</span>
-								<em>010-1111-1234</em>
-							</a>
+							<div class="member_item meet">
+								<input type="checkbox" name="dutch_group" id="lb_member04">
+								<label for="lb_member04">윌고기</label>
+							</div>
 						</li>
 					</ul>
 				</div>
-				<!-- e : 마크업 수정 : 2022-02-08 -->
+				<!-- e: 그룹 리스트-->
+				<div class="container pt_2">
+					<div class="d_flex pb_3">
+						<span>
+							<span><strong>3/20</strong>명</span>
+							<span class="txt_sm txt_gray">최대 20명까지 지정 가능해요</span>
+						</span>
+						<span>
+							<button type="button" class="btn btn_sm btn_round bg_lightgray">모두삭제</button>
+						</span>
+					</div>
+
+					<!-- s: option 1 멤버 목록 -->
+					<div class="box box_border member_list_box">
+						<div class="inner_scroll">
+							<ul class="member_set_list">
+								<li>
+									<strong class="name">홍길동</strong>
+									<p class="phone">010-1234-5678</p>
+									<button type="button" class="btn_close">멤버 삭제</button>
+								</li>
+								<li class="list_del">
+									<strong class="name">나희선</strong>
+									<p class="phone">010-1234-5678</p>
+									<button type="button" class="btn_close">멤버 삭제</button>
+								</li>
+								<li>
+									<strong class="name">이포페</strong>
+									<p class="phone">010-1234-5678</p>
+									<button type="button" class="btn_close">멤버 삭제</button>
+								</li>
+
+							</ul>
+							<!-- s: 데이터 없음
+							<div class="empty_box">
+								<i class="ico_warning_lg"></i>
+								<strong>전화번호부 또는 직접 입력을 선택하여<br>
+									초대할 모임 명단을 구성해주세요.</strong>
+							</div>
+								e: 데이터 없음 -->
+						</div>
+					</div>
+					<!-- e: option 1 멤버 목록 -->
+
+				</div>
 			</div>
 		</div>
 
 		<div class="popup_footer pb_0">
-			<div class="fixed_invite_wrap">
-				<div class="btm_slide_menu">
-					<ul class="slide_menu">
-						<li class="slide_menu_li">
-							<button type="button" class="_btn active">전체</button>
-						</li>
-						<li class="slide_menu_li">
-							<button type="button" class="_btn">가족</button>
-						</li>
-						<li class="slide_menu_li">
-							<button type="button" class="_btn">친구들</button>
-						</li>
-						<li class="slide_menu_li">
-							<button type="button" class="_btn">회사동료</button>
-						</li>
-					</ul>
-				</div>
-
-				<div class="ml_4 mr_4">
-					<div class="board_search  mt_4">
-						<input type="text" class="tf" title="이름, 전화번호 검색 입력" placeholder="이름, 전화번호로 검색">
-						<a href="#;" class="btn_search">
-							<span class="sr_only">검색</span>
-						</a>
-					</div>
-				</div>
+			<div class="btn_group mt_1">
+				<a href="#" class="btn btn_lg btn_outline_default btn_block">+ 전화번호부에서 추가</a>
+				<a href="#" class="btn btn_lg btn_outline_default btn_block">+ 직접 입력 추가</a>
 			</div>
 		</div>
 		<div class="btn_group btn_group_flex">
@@ -256,5 +149,6 @@
 	<div class="common_layers"></div>
 	<!-- e: 공통 레이어 로딩 -->
 </body>
+<!-- e: 마크업 : 2022-02-17 전체 수정 -->
 
 </html>
