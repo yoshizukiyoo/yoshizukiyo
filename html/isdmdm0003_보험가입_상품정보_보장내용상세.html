@@ -33,7 +33,8 @@
 			});
 			$('.tab_menu_type1 li a').click(function (e) {
 				var tg = $(this).attr('href');
-				$(this).addClass('current').parent('li').siblings('li').children('a').removeClass('current');
+				$(this).addClass('current').attr('title', '선택됨')
+					.parent('li').siblings('li').children('a').removeClass('current').removeAttr('title');
 				if (tg === '#' || tg === '' || tg === '#;') {
 					e.preventDefault();
 				} else if (tg.charAt(0) === '#') {
