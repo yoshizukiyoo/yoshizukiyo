@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			// 로그인 후 알림 레이어 컨트롤 (불필요시 삭제)
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<aside class="breadcrumb"></aside>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">보안센터</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="main_cont bg_sub_main certi_main">
+				<h2 class="sr_only">보안센터 서브메인 본문</h2>
+				<section class="sec_home sub_first_section certi_sec">
+
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+					<div class="logged_info_layer" style="display: none;">
+						<div class="container">
+							<div class="info_cont">
+								<p>레이어 마크업 영역</p>
+								<p>레이어 마크업 영역</p>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_info_layer">
+								<i class="ico ico_close_sm"></i>
+								<span class="sr_only">알림 레이어 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+
+					<div class="container">
+						<div class="sub_top_cont certi_cont">
+							<div class="l">
+								<h3>나의 보안수준</h3>
+								<div class="box bg_lightgray security_top security_main">
+									<div class="l">
+										<div class="security_level">
+											<span class="level01">안전</span><!-- [D] class 속성에 on 추가 -->
+											<span class="level02">보통</span>
+											<span class="level03 on">주의</span>
+										</div>
+										<div class="total mt_2 txt_c txt_gray txt_normal">
+											<div class="inline_block">
+												보안점수 <strong class="txt_lg txt_normal"><span
+														class="txt_default txt_size18 txt_bold">8</span>/14점</strong>
+											</div>
+											<div class="inline_block ml_6">
+												보안수준 <strong class="txt_lg txt_bold txt_orange">주의</strong>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="r">
+								<h3>FAQ</h3>
+								<ul class="faq_list">
+									<li>
+										<a href="#;">
+											<strong>Q</strong>
+											300만원 이상 이체 시 추가 인증 대신 SMS 통지를 설정할 수 있나요?
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<strong>Q</strong>
+											휴대폰이 없을 경우 추가인증을 어떻게 하나요?
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<strong>Q</strong>
+											단말기(PC) 지정서비스와 추가인증 서비스 둘 다 신청할 수 있나요?
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="flex_container">
+							<div class="box sub_main_box flex_item">
+								<h3 class="tit1 checklist_tit">
+									<span class="txt_size18 txt_normal mb_1 d_b">보다 안전한 인터넷뱅킹을 위한</span>
+									보안 체크리스트
+								</h3>
+								<ul class="security_check_list">
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle1" checked>
+												<label for="btn_toggle1"><span class="sr_only">보안카드 표기 설정</span></label>
+											</div>
+											<span class="btn_name">보안카드</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle2">
+												<label for="btn_toggle2"><span class="sr_only">추가인증(문자, ARS) 표기 설정</span></label>
+											</div>
+											<span class="btn_name">추가인증(문자, ARS)</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle3">
+												<label for="btn_toggle3"><span class="sr_only">뱅킹 이용 PC 지정 표기 설정</span></label>
+											</div>
+											<span class="btn_name">뱅킹 이용 PC 지정</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle4">
+												<label for="btn_toggle4"><span class="sr_only">뱅킹 이용 스마트폰 지정 표기 설정</span></label>
+											</div>
+											<span class="btn_name">뱅킹 이용 스마트폰 지정</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle5">
+												<label for="btn_toggle5"><span class="sr_only">해외 IP 차단 표기 설정</span></label>
+											</div>
+											<span class="btn_name">해외 IP 차단</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle6">
+												<label for="btn_toggle6"><span class="sr_only">OTP인증 표기 설정</span></label>
+											</div>
+											<span class="btn_name">OTP인증</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle7">
+												<label for="btn_toggle7"><span class="sr_only">지연이체 표기 설정</span></label>
+											</div>
+											<span class="btn_name">지연이체</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle8">
+												<label for="btn_toggle8"><span class="sr_only">피싱 방지 안심 거래 아이콘 표기 설정</span></label>
+											</div>
+											<span class="btn_name">피싱 방지 안심 거래 아이콘</span>
+										</div>
+									</li>
+									<li>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle9">
+												<label for="btn_toggle9"><span class="sr_only">입출금 통지 표기 설정</span></label>
+											</div>
+											<span class="btn_name">입출금 통지</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="ml_4 flex_item">
+								<div class="box sub_main_box pt_8 pb_8">
+									<h3 class="tit1">전자금융사기예방</h3>
+									<div class="btn_list02">
+										<a href="#;" class="btn btn_md btn_outline_default flex_item">PC지정 서비스</a>
+										<a href="#;" class="btn btn_md btn_outline_default flex_item">추가인증 서비스</a>
+									</div>
+									<div class="mt_4">
+										<a href="#;" class="btn btn_explain">전자금융사기예방서비스 안내</a>
+									</div>
+								</div>
+								<div class="box sub_main_box mt_4 pt_8 pb_8">
+									<h3 class="tit1">금융보안서비스</h3>
+									<div class="btn_list02">
+										<a href="#;" class="btn btn_md btn_outline_default flex_item">해외IP차단 서비스</a>
+										<a href="#;" class="btn btn_md btn_outline_default flex_item">피싱 방지 안심거래아이콘</a>
+										<a href="#;" class="btn btn_md btn_outline_default flex_item">지연이체서비스</a>
+										<a href="#;" class="btn btn_md btn_outline_default flex_item">입출금통지서비스</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box sub_main_box mt_4 pt_8 pb_8">
+							<h3 class="tit1 tell_tit">금융사기신고</h3>
+							<ul class="tell_list">
+								<li>
+									<span>지급정지신고 경찰청</span>
+									<strong>112</strong>
+								</li>
+								<li>
+									<span>피싱사고신고 인터넷진흥원</span>
+									<strong>118</strong>
+								</li>
+								<li>
+									<span>피해신고상담금융감독원</span>
+									<strong>1332</strong>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section class="last_sec mt_10">
+					<div class="container">
+						<div class="tbl_tit mb_2">
+							<div class="tit_left">
+								<h3 class="sub_ico_tit limit_tit">인터넷뱅킹 자동 이용 제한 안내</h3>
+							</div>
+						</div>
+						<div class="box">
+							<ul class="list list2">
+								<li>보다 안전한 뱅킹서비스와 금융사기 예방을 위해, 우체국 인터넷뱅킹은 고객님의 미사용 거래 기간을 확인하여 자동 거래 제한 처리를 하고 있습니다.</li>
+							</ul>
+							<div class="tbl_data tbl_list_data mt_3">
+								<table>
+									<caption class="sr_only">인터넷뱅킹 자동 이용 제한 안내 표로 인터넷뱅킹 이용 제한, 이체 이용 제한 정보 제공</caption>
+									<colgroup>
+										<col>
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">인터넷뱅킹 이용 제한</th>
+											<th scope="col">이체 이용 제한</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="v_top">
+												<ul class="list list2">
+													<li>창구에서 인터넷뱅킹 약정 등록 후 4일 이내 이용 등록을 완료하지 않은 경우</li>
+													<li>12개월 동안 인터넷뱅킹에 로그인을 하지 않은 경우</li>
+												</ul>
+												<a href="#;" class="btn btn_explain mt_2">인터넷뱅킹 일시정지 해제</a>
+											</td>
+											<td class="v_top">
+												<ul class="list list2">
+													<li>12개월 이상 이체성 거래를 하지 않은 경우</li>
+												</ul>
+												<p class="mt_1">※ 이체성 거래: 즉시이체, 다계좌이체, 예약이체, CMS이체, 그룹이체, 해외송금, 휴대폰송금 등</p>
+												<a href="#;" class="btn btn_explain mt_2">장기 미이체 거래제한 해제</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
