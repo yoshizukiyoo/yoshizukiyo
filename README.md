@@ -12,8 +12,8 @@ http://cea.epost.inseq.co.kr:7789/html/smart/index.html
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
     - 스마트뱅킹(smart-deposit) : http://ced.epost.inseq.co.kr:7789/html/index.html
     - 스마트보험(smart-insurance) : http://cee.epost.inseq.co.kr:7789/html/index.html
+- 우체국 메인 마크업 가이드 : https://inseq.notion.site/860d55008b3244a3a2f86c0832376fdf
 - 퍼블리싱 산출물 내부망 공유용 SVN 저장소 : http://pms.inseq.co.kr:9000/svn/geistkorea/epost-html (본 PMS 계정 사용)
-
 
 # PMS 사용 안내
 협업을 위한 PMS(Yona) 사용법 : https://docs.google.com/document/d/1uJo9dxPPSdaDDdDLhGPJGHaLWnhhbQRPLPzPIWR7O00/edit?usp=sharing
@@ -71,6 +71,7 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 스마트뱅킹 : smart-deposit
 스마트보험 : smart-insurance
 - 채널통합 : cea (하위에 인뱅스뱅 모두 존재)
+- 태블릿브랜치 : tablet-branch
 - 팀원별 임시 브랜치 생성시 네이밍 규칙
 > 인뱅 d/sub-brach, 인보 i/sub-brach, 스뱅 sd/sub-brach, 스보 si/sub-brach, 채널통합 a/sub-branch
 단, 병합후 더이상 사용하지 않는 브랜치를 제거해 주세요.
@@ -78,8 +79,8 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
 ### 퍼블리셔 팀 협업 가이드
 1. 기본 업무는 본 PMS의 '이슈' 메뉴에서 이슈트래킹 함을 원칙으로 합니다.
 '게시판'에는 계속 확인이 필요한 공지나 자료를 올려주세요.
-2. 긴급하거나 긴밀한 논의가 필요한 경우 채널톡 메신저로 협업 합니다.
-> 퍼블리셔 협업용 메신저 채널톡 다운로드 : https://channel.io/ko/download
+2. 긴급하거나 긴밀한 논의가 필요한 경우 Slack 메신저로 협업 합니다.
+> 퍼블리셔 협업용 메신저 Slack 다운로드 : https://slack.com/intl/ko-kr/downloads/
 
 ### .vscode/settings.json
 ```json
