@@ -21,7 +21,6 @@
 	}
 }
 
-
 .mypage_sec02 {
 	.mypage_menu_list {
 		display: flex;
@@ -160,5 +159,407 @@
 	&.cate04 {
 		background: #f2f8ff;
 		color: #3786e9;
+	}
+}
+
+
+//스마트 뱅킹 개인 홈
+.spacing_tit1 {
+	margin-top: 34px;
+	padding: 0 $spacing;
+	font-size: 18px;
+}
+
+.section_gray {
+	padding-bottom: 20px;
+	border-bottom: 10px solid #f3f3f3;
+
+	.list2 {
+		margin-bottom: -20px;
+
+		>li {
+			padding: 10px 0;
+			border-bottom: 1px solid $border-base;
+
+			&:last-child {
+				border-bottom-width: 0;
+			}
+
+			.flex_group {
+				display: flex;
+
+				>* {
+					display: inline-block;
+					vertical-align: top;
+					font-size: 16px;
+					font-weight: 500;
+				}
+
+				>span {
+					width: 85px;
+					line-height: 1;
+					font-size: 13px;
+					font-weight: 200;
+					color: #666;
+
+					>* {
+						display: inline-block;
+						vertical-align: top;
+						font-size: 14px;
+						color: #969696;
+						font-weight: 200;
+					}
+
+					.date {
+						font-size: 13px;
+						line-height: 1.3;
+						color: #666;
+
+						+span {
+							margin-top: 3px;
+						}
+					}
+
+					&.account {
+						>* {
+							font-size: $font-size-lg;
+							color: $darkgray;
+						}
+					}
+				}
+
+				.name {
+					width: calc(100% - 195px);
+					line-height: 18px;
+
+					&_short {
+						width: calc(100% - 195px);
+						@include text-ellipsis(1, 18px);
+					}
+				}
+
+				.price {
+					width: 110px;
+					margin-top: -1px;
+					text-align: right;
+					font-style: normal;
+					line-height: 1;
+
+					span {
+						font-size: 15px;
+						font-weight: 400;
+					}
+				}
+
+				&.flex_between {
+					justify-content: space-between;
+				}
+			}
+
+			.memo_area {
+				margin-left: 85px;
+				margin-top: 6px;
+				color: #969696;
+
+				p {
+					padding-left: 25px;
+					background-image: url(#{$url-img}/content/ico_memo_gray.png);
+					background-size: 23.5px 18px;
+					background-position: left center;
+					background-repeat: no-repeat;
+					@include text-ellipsis(1, 18px);
+				}
+
+				&.on {
+					color: #333;
+
+					p {
+						background-image: url(#{$url-img}/content/ico_memo_black.png);
+					}
+				}
+			}
+		}
+
+		&.fund_list {
+			margin-bottom: -10px;
+		}
+	}
+
+	&.section_toggle {
+		padding-bottom: 0;
+	}
+}
+
+.acc_info_detail {
+	padding: 0 $spacing 15px;
+
+	.inner_shadow {
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 70px;
+			background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 87%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+			opacity: .8;
+		}
+	}
+
+	.inner_scroll {
+		padding: 15px 5px;
+		background-color: $bg-lightprimary;
+		overflow-y: auto;
+		display: flex;
+
+		>div {
+			flex: 0 0 65px;
+			width: 65px;
+			text-align: center;
+
+			span {
+				font-size: 13px;
+				text-align: center;
+			}
+
+			p {
+				font-size: 11px;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.section_toggle {
+	.toggle_btn {
+		width: 100%;
+		padding: 0 $spacing;
+
+		.toggle_tit {
+			position: relative;
+			display: block;
+			padding: 16px 0 17px;
+			font-size: 18px;
+			font-weight: 400;
+			text-align: left;
+
+			em {
+				font-style: normal;
+			}
+		}
+
+		.toggle_icon {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			transform: translateY(-50%);
+			height: 7px;
+
+			i {
+				vertical-align: top;
+			}
+		}
+
+		&.on {
+			.toggle_icon {
+				i {
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+
+	.toggle_cont {
+		display: none;
+		padding: 0 $spacing $spacing;
+
+		.chart_area {
+			margin-top: 10px;
+			text-align: center
+		}
+	}
+
+	&.acc_toggle {
+		.toggle_btn {
+			padding: 15px $spacing;
+
+			.toggle_tit {
+				display: flex;
+				padding: 15px 35px 15px 15px;
+				justify-content: space-between;
+				font-weight: 500;
+
+				strong {
+					.ico {
+						display: inline-block;
+						width: 30px;
+						height: 25px;
+						margin-right: 5px;
+						background-size: 30px 25px;
+						background-repeat: no-repeat;
+						vertical-align: middle;
+
+						&_deposit {
+							background-image:url(#{$url-img}/content/ico_deposit_lg.png);
+						}
+
+						&_withdraw {
+							background-image:url(#{$url-img}/content/ico_withdraw_lg.png);
+						}
+					}
+				}
+			}
+		}
+
+		.toggle_cont {}
+	}
+
+	.bg_lightyellow {
+		background-color: #fff8e9;
+	}
+
+	.bg_lightblue {
+		background-color: #eaf4ff;
+	}
+}
+
+.set_btn_group {
+	padding: $spacing;
+}
+
+.slider_like_fund {
+	padding: $spacing 0 10px 20px;
+	overflow: hidden;
+	background-color: #ebfbf7;
+
+	//일반 스크롤
+	.inner_scroll {
+		overflow-y: auto;
+		display: flex;
+		padding-right: 20px;
+		padding-bottom: 10px;
+	}
+
+	.slide_section {
+		+.slide_section {
+			margin-left: 10px;
+		}
+	}
+
+
+	.slider_tit {
+		margin-bottom: 12px;
+		font-size: 15px;
+
+		.ico {
+			display: inline-block;
+			width: 17px;
+			height: 16.5px;
+			margin-right: 5px;
+			background-image: url(#{$url-img}/content/ico_like_sm.png);
+			background-size: 17px 16.5px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			vertical-align: middle;
+
+			&_cart_sm {
+				background-image: url(#{$url-img}/content/ico_cart_sm.png);
+			}
+		}
+	}
+
+	.inner_slider {
+		padding-left: $spacing;
+
+		overflow: hidden;
+	}
+
+	.slick-list {
+		padding-bottom: $spacing;
+	}
+
+	.slick-slide {
+		margin-left: 10px;
+	}
+
+
+	.item_row_group {
+		display: flex;
+		margin-left: -10px;
+		overflow: hidden;
+	}
+
+	.slide_item {
+		width: 225px;
+		height: 140px;
+		margin-left: 10px;
+		padding: $spacing;
+		background-color: $white;
+		border-radius: 8px;
+		box-shadow: 4px 0 12px rgba(0, 0, 0, 0.06);
+	}
+
+	.item_header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 11px;
+
+		.date {
+			font-size: 12px;
+			align-self: center;
+			color: #777;
+		}
+
+		.label {
+			display: inline-block;
+			min-width: 44px;
+			height: 24px;
+			padding: 0 9px;
+			font-size: 12px;
+			line-height: 24px;
+			border-radius: 12px;
+			background-color: #fff6e2;
+			color: #dc990a;
+			text-align: center;
+			font-weight: 700
+		}
+	}
+
+	.item_body {
+		.name {
+			@include text-ellipsis (3, 18px);
+		}
+	}
+
+
+	&.bg_lightgreen {
+		background-color: #ebfbf7;
+	}
+}
+
+.notice_list {
+	>li {
+		position: relative;
+		padding-left: 25px;
+		color: $gray;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 15px;
+			height: 15px;
+			margin-top: 5px;
+			background-image:url(#{$url-img-common}/ico_notice.png);
+			background-size: 15px 15px;
+		}
+
+		+li {
+			margin-top: 2px;
+		}
 	}
 }
