@@ -336,6 +336,9 @@
 
 
 	>.tab_info {
+		display: flex;
+		height: 100%;
+		flex-direction: column;
 		padding: 20px 30px 0;
 
 		>.top {
@@ -474,12 +477,13 @@
 	}
 }
 
+.tab_cont {
+	flex: 1;
+	-ms-flex-preferred-size: auto
+}
+
 .bk_acc_btn {
 	display: flex;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
 
 	>a:not(:first-child) {
 		&::before {
@@ -947,35 +951,12 @@
 	}
 }
 
-.visual_top {
-	position: relative;
-	background-position: 50% 0;
-	background-repeat: no-repeat;
-
-	&.small {
-		display: flex;
-		height: 319px;
-		align-items: center;
-
-		.cus_info {
-			flex-direction: column;
-
-			>.last_msg {
-				font-weight: 200;
-				font-size: 36px;
-
-				>strong {
-					font-weight: 600;
-					color: #986800;
-				}
-			}
-		}
-	}
-}
-
 .sub_indi_info {
-	height: 571px;
-	background-image: url(#{$url-img}/main/bg_indi_visual.gif);
+	.visual_top {
+		position: relative;
+		height: 571px;
+		background-image: url(#{$url-img}/main/bg_indi_visual.gif);
+	}
 
 	.total_info {
 		padding: 99px 0 37px 260px;
@@ -983,7 +964,7 @@
 		background-position-y: 74px;
 	}
 
-	&.small {
+	&.customer_no_data {
 		background-image: url(#{$url-img}/main/bg_indi_visual_small.gif);
 
 		.total_info {
@@ -995,18 +976,21 @@
 }
 
 .sub_card_info {
-	height: 571px;
-	background-image: url(#{$url-img}/main/bg_card_visual.gif);
+	.visual_top {
+		position: relative;
+		height: 571px;
+		background-image: url(#{$url-img}/main/bg_card_visual.gif);
+	}
 
 	.total_info_wrap {}
 
 	.total_info {
-		padding: 102px 0 37px 260px;
+		padding: 102px 0 37px 244px;
 		background-image: url(#{$url-img}/main/img_card_info_deco.png);
 		background-position-y: 54px;
 	}
 
-	&.small {
+	&.customer_no_data {
 		background-image: url(#{$url-img}/main/bg_card_visual_small.gif);
 
 		.total_info {
@@ -1018,8 +1002,11 @@
 }
 
 .sub_fund_info {
-	height: 660px;
-	background-image: url(#{$url-img}/main/bg_fund_visual.gif);
+	.visual_top {
+		position: relative;
+		height: 660px;
+		background-image: url(#{$url-img}/main/bg_fund_visual.gif);
+	}
 
 	.container {
 		padding-top: 62px;
@@ -1031,7 +1018,7 @@
 		padding: 0 55px 0 110px;
 		border: 2px solid #caede4;
 		border-radius: 20px;
-		background: #fff url(#{$url-img}/main/ico_fund_notice.png) no-repeat 57px 50%;
+		background: #fff url(#{$url-img}/main/ico_tit_notice.png) no-repeat 57px 50%;
 		align-items: center;
 
 		>.l {
@@ -1069,13 +1056,44 @@
 
 	.total_info_wrap {
 		display: flex;
-		padding: 59px 0 0;
+		padding: 49px 0 0;
 	}
 
 	.total_info {
 		.cus_info {
+			margin-bottom: 10px;
+
 			>a {
 				margin-left: 12px;
+			}
+		}
+	}
+
+	&.customer_no_data {
+		.container {
+			padding-top: 0;
+		}
+
+		.total_info_wrap {
+			display: block;
+			padding: 0;
+		}
+
+		background-image: url(#{$url-img}/main/bg_fund_visual_small.gif);
+
+		.total_info {
+			padding-top: 49px;
+			padding-bottom: 35px;
+			padding-left: 244px;
+			background-position-y: 0;
+			background-image: url(#{$url-img}/main/img_fund_info_deco.png);
+		}
+
+		&+.sec_fund_list {
+			padding-top: 60px;
+
+			.latest_fund_list {
+				margin-top: 0;
 			}
 		}
 	}
@@ -1084,7 +1102,7 @@
 		position: relative;
 		width: 400px;
 		margin-left: auto;
-		padding: 20px 15px;
+		padding: 20px 15px 22px;
 		border: 1px solid #000;
 		border-radius: 10px;
 
@@ -1097,7 +1115,7 @@
 
 				>span {
 					display: inline-flex;
-					padding-bottom: 5px;
+					padding: 0 5px 5px 0;
 					border-bottom: 2px solid #000;
 					align-items: center;
 					font-weight: 600;
@@ -1145,30 +1163,159 @@
 
 		>a {
 			position: absolute;
-			display: block;
+			display: flex;
 			right: 15px;
 			bottom: 20px;
 			width: 100px;
 			height: 46px;
 			border-radius: 7px;
 			background: #555;
-			line-height: 46px;
-			text-align: center;
+			align-items: center;
+			justify-content: center;
 			font-weight: 500;
 			color: #fff;
 		}
 	}
 
 	.info_box_list {
-		top: 371px;
+		top: 370px;
 	}
 
-	&.small {
-		background-image: url(#{$url-img}/main/bg_card_visual_small.gif);
+	.fund_detail_chart {
+		margin-top: 20px;
+		padding: 38px 40px 55px;
+		border-radius: 10px;
+		background: #fff;
 
-		.total_info {
-			padding-top: 49px;
-			padding-bottom: 35px;
+		>.fund_date_point {
+			display: flex;
+			padding-bottom: 27px;
+			border-bottom: 1px solid #eee;
+
+			>.l {
+				flex: 1;
+				line-height: 1;
+			}
+
+			>.r {
+				flex: 1;
+				margin-left: auto;
+
+				>ul {
+					display: flex;
+
+					>li {
+						position: relative;
+						flex: 1;
+						padding: 0 20px 5px;
+						text-align: center;
+						color: #666;
+
+						&:not(:last-child) {
+							&::after {
+								content: '';
+								position: absolute;
+								right: 0;
+								top: 0;
+								width: 1px;
+								height: 100%;
+								background: #eee;
+							}
+						}
+
+						>strong {
+							display: block;
+							margin-top: 3px;
+							line-height: 1;
+							white-space: nowrap;
+							font-family: NotoSansKR;
+							font-size: 22px;
+
+							&:not(.col_upper):not(.col_lower) {
+								color: #111;
+							}
+						}
+					}
+				}
+			}
+
+			.point_date {
+				font-size: 14px;
+				color: #555;
+
+				>span {
+					margin-right: 5px;
+				}
+			}
+
+			.point_index {
+				display: flex;
+				margin-top: 13px;
+				align-items: center;
+
+				>strong {
+					margin-right: 15px;
+					font-size: 35px;
+				}
+
+				>.profit {
+					>strong {
+						font-size: 16px;
+					}
+
+					>.profit_money {
+						&::before {
+							border-left-width: 5px;
+							border-right-width: 5px;
+							border-bottom: 7px solid #ff0000;
+							transform: translate(-5px, -2px);
+						}
+					}
+
+					>.profit_point {
+						font-weight: 400;
+						font-size: 16px;
+						color: #111;
+					}
+				}
+			}
+
+			.col_upper {
+				color: #ff3131;
+			}
+
+			.col_lower {
+				color: #0069e1;
+			}
+		}
+
+		>.btn_standard_date {
+			display: flex;
+			padding: 15px 0 48px;
+			justify-content: end;
+
+			>button {
+				display: inline-flex;
+				width: 55px;
+				height: 32px;
+				border: 1px solid #a2a2a2;
+				border-radius: 5px;
+				align-items: center;
+				justify-content: center;
+				font-size: 14px;
+				color: #555;
+
+				&:not(:last-child) {
+					margin-right: 5px;
+				}
+
+				&.on {
+					border-color: #555;
+					background: #555;
+					font-weight: 500;
+					color: #fff;
+				}
+			}
 		}
 	}
 }
@@ -1224,6 +1371,31 @@
 	}
 }
 
+.customer_no_data {
+	.visual_top {
+		display: flex;
+		position: relative;
+		background-position: 50% 0;
+		background-repeat: no-repeat;
+		height: 319px;
+		align-items: center;
+
+		.cus_info {
+			flex-direction: column;
+
+			>.last_msg {
+				font-weight: 200;
+				font-size: 36px;
+
+				>strong {
+					font-weight: 600;
+					color: #986800;
+				}
+			}
+		}
+	}
+}
+
 .btn.ico_arrow {
 	&::after {
 		display: inline-block;
@@ -1239,6 +1411,7 @@
 	position: absolute;
 	left: calc((100% - 1200px) / 2);
 	top: 279px;
+	z-index: 10;
 	width: 1200px;
 	padding: 20px;
 	border-radius: 15px;
@@ -1371,11 +1544,15 @@
 			}
 
 			.top {
-				margin-bottom: 29px;
+				margin-bottom: 17px;
 			}
 
 			.btn_area {
 				margin-top: 25px;
+
+				>a:not(.btn_r) {
+					width: 138px;
+				}
 			}
 		}
 
@@ -1407,6 +1584,41 @@
 				}
 			}
 		}
+
+		.badge_list {
+			margin-bottom: 18px;
+
+			>.round_badge {
+				font-weight: 400;
+				color: #333;
+
+				&:not(:last-child) {
+					margin-right: 2px;
+				}
+			}
+		}
+
+		.represent_fund {
+			>.rep_fund_name {
+				margin-bottom: 13px;
+				line-height: 1.3;
+				font-weight: 400;
+				font-size: 18px;
+				color: #333;
+			}
+
+			>.rep_fund_acc {
+				margin-bottom: 21px;
+				font-size: 26px;
+				color: #333;
+			}
+
+			>.rep_func_date {
+				font-weight: 400;
+				font-size: 18px;
+				color: #000;
+			}
+		}
 	}
 
 	.info_list_wrap {
@@ -1418,6 +1630,7 @@
 		padding: 20px;
 		border-radius: 10px;
 		background: #fff;
+		box-shadow: -6px 7px 17px 2px rgba(0, 0, 0, .09);
 
 		.inner {
 			display: flex;
@@ -1437,6 +1650,13 @@
 				line-height: 1;
 				font-weight: 400;
 				color: #888;
+			}
+
+			.cont_tit {
+				line-height: 1;
+				font-weight: 400;
+				font-size: 18px;
+				color: #333;
 			}
 		}
 
@@ -1525,7 +1745,7 @@
 				background: url(#{$url-img}/main/ico_cicle_dot.png) no-repeat 100% 0;
 			}
 
-			>a+a {
+			>a+a:not(.btn_r) {
 				margin-left: 6px;
 			}
 		}
@@ -1603,8 +1823,6 @@
 	}
 }
 
-
-
 .help_tooltip {
 	display: inline-flex;
 	position: relative;
@@ -1657,8 +1875,15 @@
 	}
 }
 
-.money_link {
+.label_moeny {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	font-weight: 400;
+	font-size: 18px;
+}
 
+.sum_money {
 	&.next_month_money {
 		>a {
 			font-size: 18px;
@@ -1670,22 +1895,36 @@
 		}
 	}
 
-	>a {
+	>a,
+	>span {
 		display: inline-flex;
-		padding-right: 23px;
-		background: url(#{$url-img}/main/ico_right_arrow.png) no-repeat 100% 12px;
 		align-items: baseline;
 		font-weight: 400;
 		font-size: 24px;
 		color: #000;
-
-		>strong {
-			margin-right: 8px;
-			font-weight: 600;
-			font-size: 36px;
-		}
 	}
 
+	>a {
+		padding-right: 23px;
+		background: url(#{$url-img}/main/ico_right_arrow.png) no-repeat 100% 12px;
+	}
+
+	strong {
+		margin-right: 8px;
+		font-weight: 600;
+		font-size: 36px;
+	}
+
+	&.customer_no_data {
+		>span {
+			font-size: 18px;
+
+			>strong {
+				margin-right: 4px;
+				font-size: 24px;
+			}
+		}
+	}
 }
 
 .btn_round_ico {
@@ -1827,66 +2066,71 @@
 			}
 		}
 	}
+}
 
-	.block {
-		display: block;
-	}
+.profit {
+	font-weight: 400;
+	font-size: 18px;
+	color: #000;
 
-	.profit {
-		display: block;
-		font-weight: 400;
-		font-size: 18px;
-		color: #000;
+	>.profit_money {
+		position: relative;
+		display: inline-block;
+		font-size: 30px;
 
-		>.profit_money {
-			position: relative;
+		&::before {
 			display: inline-block;
-			font-size: 30px;
+			content: '';
+			width: 0;
+			height: 0;
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			transform: translate(-6px, -4px);
+		}
+
+		&.upper {
+			color: #ff3131;
+
+			&+.profit_point {
+				color: #ff3131;
+			}
 
 			&::before {
-				display: inline-block;
-				content: '';
-				width: 0;
-				height: 0;
-				border-left: 7px solid transparent;
-				border-right: 7px solid transparent;
-				transform: translate(-6px, -4px);
+				border-bottom: 12px solid #ff0000;
 			}
+		}
 
-			&.upper {
-				color: #ff3131;
+		&.lower {
+			color: #0069e1;
 
-				&+.profit_point {
-					color: #ff3131;
-				}
-
-				&::before {
-					border-bottom: 12px solid #ff0000;
-				}
-			}
-
-			&.lower {
+			&+.profit_point {
 				color: #0069e1;
+			}
 
-				&+.profit_point {
-					color: #0069e1;
-				}
-
-				&::before {
-					border-bottom: 12px solid #0069e1;
-					transform: rotate(180deg);
-				}
+			&::before {
+				border-bottom: 12px solid #0069e1;
+				transform: rotate(180deg);
 			}
 		}
+	}
 
-		>.profit_point {
-			font-size: 18px;
-		}
+	>.profit_point {
+		font-size: 18px;
 	}
 }
 
 .sec_fund_list {
 	padding: 200px 0 50px;
+
+	.latest_fund_list {
+		margin-top: 50px;
+
+		>.cate_fund_list {
+			&:not(:last-child) {
+				margin-bottom: 50px;
+			}
+		}
+	}
 }
 
 .sec_my_rec {
@@ -2005,8 +2249,63 @@
 	}
 }
 
+.sec_fund_caution {
+	padding: 40px 0 50px;
+	background: #eefdf9;
+
+	.tit_caution {
+		padding-left: 45px;
+		background: url(#{$url-img}/main/ico_tit_notice.png) no-repeat 0 2px;
+		font-weight: 500;
+		font-size: 22px;
+		color: #111;
+	}
+}
+
+.ico_link_list {
+	display: flex;
+
+	>li {
+		flex: 1;
+		border-radius: 7px;
+		box-shadow: -6px 7px 17px 2px rgba(0, 0, 0, .02);
+		background: #fff;
+
+		&:not(:last-child) {
+			margin-right: 30px;
+		}
+
+		>a {
+			display: flex;
+			height: 102px;
+			padding-left: 123px;
+			background-position: 41px 50%;
+			background-repeat: no-repeat;
+			flex-direction: column;
+			justify-content: center;
+			line-height: 1.2;
+			font-weight: 400;
+			font-size: 23px;
+			color: #333;
+		}
+	}
+
+	.fund_cau1 {
+		background-image: url(#{$url-img}/main/ico_link_deco1.png);
+	}
+
+	.fund_cau2 {
+		background-image: url(#{$url-img}/main/ico_link_deco2.png);
+	}
+
+	.fund_cau3 {
+		background-image: url(#{$url-img}/main/ico_link_deco3.png);
+	}
+}
+
 .tit_top {
 	display: flex;
+	align-items: end;
 
 	>.l {
 		margin-right: auto;
@@ -2027,6 +2326,12 @@
 			&.ico_basket {
 				background-position-y: 3px;
 				background-image: url(#{$url-img}/main/ico_basket.png);
+			}
+
+			&.ico_interest {
+				padding-left: 41px;
+				background-position-y: 12px;
+				background-image: url(#{$url-img}/main/ico_interest.png);
 			}
 		}
 
@@ -2049,11 +2354,41 @@
 	}
 }
 
+.txt_caution {
+	padding-left: 25px;
+	background: url(#{$url-img}/main/ico_caution.png) no-repeat 0 6px;
+}
+
 .product_list {
+	>.fund_product_msg {
+		display: flex;
+		height: 215px;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+		align-items: center;
+		justify-content: center;
+
+		>p {
+			display: inline-flex;
+			align-items: center;
+			font-weight: 400;
+
+			&::before {
+				display: inline-block;
+				content: '';
+				width: 24px;
+				height: 24px;
+				margin-right: 7px;
+				background: url(#{$url-img}/main/ico_write.png) no-repeat 0 0;
+			}
+		}
+	}
+
 	>ul {
 		display: flex;
 
 		>li {
+			position: relative;
 			flex: 1;
 			padding: 24px 29px;
 			border: 1px solid #ddd;
@@ -2062,16 +2397,43 @@
 			&:not(:last-child) {
 				margin-right: 20px;
 			}
+
+			>.inner {
+				display: flex;
+				height: 100%;
+				flex-direction: column;
+			}
 		}
 
 		.top {
 			display: flex;
 
-			>.l {}
-
 			>.r {
 				margin-left: auto;
 			}
+
+			.pro_date {
+				color: #333;
+			}
+		}
+
+		.mid {
+			flex: 1;
+			-ms-flex-preferred-size: auto;
+			margin-top: 12px;
+
+			>strong {
+				display: block;
+				line-height: 1.3;
+				word-break: break-all;
+				font-weight: 400;
+				font-size: 18px;
+				color: #333;
+			}
+		}
+
+		.btm {
+			margin-top: 30px;
 		}
 	}
 
@@ -2101,9 +2463,20 @@
 	line-height: 1;
 }
 
+.beige {
+	background: #fff4d4;
+}
+
+.mint {
+	background: #ebfbf7;
+}
+
+.lightpurple {
+	background: #e5f1ff;
+}
+
 .lightbeige {
 	background: #fff6e2;
-
 }
 
 .lightpink {
@@ -2157,8 +2530,6 @@
 	}
 }
 
-
-
 .th_tit {
 	display: flex;
 	padding: 0 10px;
@@ -2201,6 +2572,10 @@
 	thead>tr>th {
 		background: #f4f9ff;
 	}
+}
+
+.block {
+	display: block;
 }
 
 .col_blue {
