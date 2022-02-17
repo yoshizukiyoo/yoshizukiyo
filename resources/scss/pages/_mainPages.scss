@@ -1769,6 +1769,7 @@
 
 	&.card_use {
 		>ul {
+			height: 116px;
 			padding: 0 50px;
 			border-color: #b2cff0;
 			background: #e5f1ff;
@@ -1783,6 +1784,7 @@
 
 	&.fund_use {
 		>ul {
+			height: 130px;
 			border-color: #9cddcd;
 			background: #ebfbf7;
 
@@ -1796,7 +1798,6 @@
 
 	>ul {
 		display: flex;
-		height: 116px;
 		border-style: solid;
 		border-width: 1px;
 		border-radius: 5px;
@@ -1820,7 +1821,7 @@
 				}
 			}
 
-			>strong {
+			strong {
 				font-weight: 600;
 				color: #000;
 			}
@@ -1829,6 +1830,58 @@
 
 	.block {
 		display: block;
+	}
+
+	.profit {
+		display: block;
+		font-weight: 400;
+		font-size: 18px;
+		color: #000;
+
+		>.profit_money {
+			position: relative;
+			display: inline-block;
+			font-size: 30px;
+
+			&::before {
+				display: inline-block;
+				content: '';
+				width: 0;
+				height: 0;
+				border-left: 7px solid transparent;
+				border-right: 7px solid transparent;
+				transform: translate(-6px, -4px);
+			}
+
+			&.upper {
+				color: #ff3131;
+
+				&+.profit_point {
+					color: #ff3131;
+				}
+
+				&::before {
+					border-bottom: 12px solid #ff0000;
+				}
+			}
+
+			&.lower {
+				color: #0069e1;
+
+				&+.profit_point {
+					color: #0069e1;
+				}
+
+				&::before {
+					border-bottom: 12px solid #0069e1;
+					transform: rotate(180deg);
+				}
+			}
+		}
+
+		>.profit_point {
+			font-size: 18px;
+		}
 	}
 }
 
@@ -1954,27 +2007,26 @@
 
 .tit_top {
 	display: flex;
-	margin-bottom: 20px;
 
 	>.l {
 		margin-right: auto;
 
-		>h3 {
+		>.tit_ico {
 			display: inline-flex;
 			margin-right: 16px;
 			padding: 5px 0 0 45px;
 			background-position: 0 0;
 			background-repeat: no-repeat;
-			font-weight: 400;
 			font-size: 22px;
 			color: #111;
 
-			&.tit_rec {
-				background-image: url(#{$url-img}/main/bg_bullet_hand.png);
+			&.ico_rec {
+				background-image: url(#{$url-img}/main/ico_hand.png);
 			}
 
-			>span {
-				font-weight: 600;
+			&.ico_basket {
+				background-position-y: 3px;
+				background-image: url(#{$url-img}/main/ico_basket.png);
 			}
 		}
 
@@ -1995,6 +2047,75 @@
 	>.r {
 		margin-left: auto;
 	}
+}
+
+.product_list {
+	>ul {
+		display: flex;
+
+		>li {
+			flex: 1;
+			padding: 24px 29px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+
+			&:not(:last-child) {
+				margin-right: 20px;
+			}
+		}
+
+		.top {
+			display: flex;
+
+			>.l {}
+
+			>.r {
+				margin-left: auto;
+			}
+		}
+	}
+
+	.round_badge {
+		font-weight: 500;
+		font-size: 14px;
+	}
+
+	.lightbeige {
+		color: #e2a116;
+	}
+
+	.lightpink {
+		color: #f46e17;
+	}
+
+	.lightgreen {
+		color: #6ac6b0;
+	}
+}
+
+.round_badge {
+	display: inline-flex;
+	padding: 6px 10px;
+	border-radius: 15px;
+	align-items: center;
+	line-height: 1;
+}
+
+.lightbeige {
+	background: #fff6e2;
+
+}
+
+.lightpink {
+	background: #fff1e9;
+}
+
+.lightgreen {
+	background: #ebfbf7;
+}
+
+.btn_explain.small {
+	height: 25px;
 }
 
 .hashtag_list {
@@ -2090,16 +2211,16 @@
 	color: #dd3927;
 }
 
-.spoqa {
-	font-family: SpoqaHanSans;
-}
-
 .fsize_18 {
 	font-size: 18px;
 }
 
 .fsize_20 {
 	font-size: 20px;
+}
+
+.fsize_24 {
+	font-size: 24px;
 }
 
 .fsize_26 {
