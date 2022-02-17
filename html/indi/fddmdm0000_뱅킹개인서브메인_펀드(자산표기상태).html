@@ -23,27 +23,7 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			var button;
 
-			// 툴팁 도움말 레이어 실행
-			$('.help_tooltip > button').on('click', function () {
-				button = $(this);
-				$(this).next().show().focus();
-			});
-
-			// 툴팁 도움말 레이어 닫기
-			$('.tooltip button').on('click', function () {
-				$(this).parent().hide();
-				button.focus();
-			});
-
-			// 외부영역 클릭 시 팝업 닫기
-			$(document).mouseup(function (e) {
-				var LayerPopup = $(".tooltip");
-				if (LayerPopup.has(e.target).length === 0) {
-					LayerPopup.hide();
-				}
-			});
 		});
 	</script>
 </head>
@@ -66,30 +46,42 @@
 				-->
 				<section class="sec_home">
 					<h3 class="sr_only">예금 계좌 정보</h3>
-					<div class="sub_card_info visual_top">
+					<div class="sub_fund_info visual_top">
 						<div class="container">
+							<div class="fund_notice">
+								<div class="l"><a href="#;">우체국 펀드 2개 상품 신규 판매 일시 중단 안내</a></div>
+								<div class="r"><span class="spoqa">2022.01.18 12:33:57</span></div>
+							</div>
 							<div class="total_info_wrap">
 								<div class="total_info">
 									<div class="cus_info">
 										<p>
-											<strong>홍길동</strong>님은 <strong> 카드 2개</strong>를 보유하고 있습니다.
+											<strong>홍길동</strong>님은 <strong> 펀드 2개</strong>를 보유하고 있습니다.
 										</p>
-										<a href="#;" class="btn btn_md btn_outline_default ico_arrow">전체 카드 보기</a>
+										<a href="#;" class="btn btn_md btn_outline_default ico_arrow">전체 펀드 조회</a>
 									</div>
 									<div class="cus_toal_info">
-										<span class="total_tit">이번 달 카드 결제(예정) :</span>
+										<span class="total_tit">펀드 총 자산 :</span>
 										<strong class="total_num">387,210</strong>
 										<div class="btn_mouse_toggle">
 											<div class="switch">
 												<input type="checkbox" id="btn_toggle" checked>
-												<label for="btn_toggle"><span class="sr_only">결재금액 표기 설정</span></label>
+												<label for="btn_toggle"><span class="sr_only">총 자산금액 표기 설정</span></label>
 											</div>
-											<span class="btn_name">결재금액</span>
+											<span class="btn_name">총 자산금액</span>
 										</div>
 									</div>
 								</div>
+								<div class="invest_result">
+									<dl>
+										<dt><span class="inv_res1">공격투자형</span></dt>
+										<dd>투자자정보분석일 : 2021년07월02일</dd>
+										<dd>정보 만기일 : 2023년07월02일</dd>
+									</dl>
+									<a href="#;">분석갱신</a>
+								</div>
 							</div>
-							<div class="info_box_list card_info_box">
+							<div class="info_box_list fund_info_box">
 								<div class="info_list_wrap">
 									<div class="info_cont_box">
 										<div class="inner">
@@ -112,12 +104,10 @@
 									<div class="info_cont_box">
 										<div class="inner">
 											<div class="top">
-												<div class="month_money">
-													<span class="mon">
-														<strong>12월</strong>
-														카드이용금액
-													</span>
-												</div>
+												<span class="month_money">
+													<strong>12월</strong>
+													카드이용금액
+												</span>
 											</div>
 											<div class="box_cont">
 												<p class="money_link txt_c">
@@ -200,29 +190,36 @@
 										</div>
 									</div>
 								</div>
+								<div class="fund_detail"><button type="button" title="기준가 상세정보 열기">기준가 상세보기</button></div>
 							</div>
 						</div>
 					</div>
 				</section>
 
-				<!-- s: 카드 이용 내역 -->
-				<section class="sec_card_list">
+				<!-- s: 거래 내역 -->
+				<section class="sec_fund_list">
 					<div class="container">
-						<h3 class="sub_tit">12월 카드 이용 내역</h3>
-						<div class="use_list card_use">
+						<h3 class="sub_tit">거래 내역</h3>
+						<div class="use_list fund_use">
 							<ul>
-								<li class="txt_l">
-									<strong class="fsize_30 block mb_2">12월</strong>
-									<span class="fsize_18 col_darkgray spoqa">2021.12.01~ 2021.12.31</span>
+								<li>
+									<strong class="spoqa">보유 비중</strong>
+									<strong class="spoqa">65.2%</strong>
 								</li>
-								<li><span class="col_darkgray fsize_30 txt_normal">총</span> <strong class="fsize_30">5건</strong></li>
-								<li class="txt_r"><strong class="fsize_30 spoqa">600,800</strong> <span
-										class="fsize_18 txt_normal">원</span></li>
+								<li>
+
+								</li>
+								<li>
+
+								</li>
+								<li>
+
+								</li>
 							</ul>
 						</div>
 						<div class="tbl_data tbl_list_data mt_6">
 							<table>
-								<caption class="sr_only">카드 이용 내역 목록이며 이용일자, 이용시간, 이용금액(원), 이용처, 사용포인트, 이용구분, 메모 정보를 제공하고 있습니다.
+								<caption class="sr_only"> 정보를 제공하고 있습니다.</caption>
 								<colgroup>
 									<col style="width: 13%;">
 									<col style="width: 13%;">
@@ -294,7 +291,7 @@
 						</div>
 					</div>
 				</section>
-				<!-- e: 카드 이용 내역 -->
+				<!-- e: 거래 내역 -->
 
 			</div>
 
