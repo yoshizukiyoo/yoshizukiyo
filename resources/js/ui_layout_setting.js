@@ -36,7 +36,9 @@ $(function () {
 		container: '.common_layers',
 		use: true,
 		isLoaded: false,
-		callback: function () {},
+		callback: function () {
+			setTransferListSlider();
+		},
 	}, {
 		name: 'bottomQuickbar',
 		element: $('.bottom_quickbar'),
@@ -530,6 +532,34 @@ function quickTransferToggle(_obj) {
 	}
 }
 
+// 빠른이체목록 슬라이더
+function setTransferListSlider() {
+	$('.transfer_list a').click(function () {
+		$(this).toggleClass('on');
+		if ($(this).hasClass('on')) {
+			$(this).attr('title', '선택됨');
+		} else {
+			$(this).removeAttr('title');
+		}
+	});
+	$('.transfer_list').slick({
+		fade: false,
+		autoplay: false,
+		speed: 1000,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		variableWidth: true,
+		infinite: true,
+		arrows: false,
+		dots: false,
+		// dotsClass: 'slick-dots',
+		accessibility: false,
+	});
+	$('.tab_list a').click(function () {
+		$('.transfer_list').slick('setPosition');
+	});
+}
+
 // 자주쓰는메뉴
 function favorMenuControl() {
 	const $box = $('.favor_menu_box'),
@@ -556,7 +586,6 @@ function favorMenuControl() {
 
 // 퀵메뉴 하단바
 function quickNavTabbar() {
-	console.log('네비 탭바');
 	const $quickNav = $('.bottom_quickbar'),
 		$handler = $('.quickbar_handler');
 
