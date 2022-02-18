@@ -7,46 +7,94 @@
 
 // 레이아웃 공통 영역 로드
 $(function () {
-	let globalSetIsRun = false;
 	const headerInc = $('.header').data('inc');
 	const pageTitle = $('.header').data('page-title');
-	if (headerInc == undefined && pageTitle != undefined) {
-		$('.header').load('/html/_inc_header.html .header > *', function () {
-			$('.tit_page').html(pageTitle);
-		});
-	} else if (pageTitle != undefined) {
-		$('.header').load('/html/' + headerInc + ' .header > *', function () {
-			$('.tit_page').html(pageTitle);
-		});
+	let headerUrl;
+	if (headerInc == undefined) {
+		if (pageTitle == undefined) {
+			headerUrl = window.location.pathname;
+		} else {
+			headerUrl = '/html/_inc_header.html';
+		}
+	} else {
+		headerUrl = '/html/' + headerInc;
 	}
-	$('.common_layers').load('/html/_inc_common_layers.html .common_layers > *', function (response, stu, xhr) {
-		if (stu == 'success') {
-			runSetting();
-			globalSetIsRun = true;
+	const components = [{
+		name: 'header',
+		element: $('.header'),
+		fileUrl: headerUrl,
+		container: '.header',
+		use: true,
+		isLoaded: false,
+		callback: function () {
+			$('.tit_page').html(pageTitle);
+		},
+	}, {
+		name: 'commonLayers',
+		element: $('.common_layers'),
+		fileUrl: '/html/_inc_common_layers.html',
+		container: '.common_layers',
+		use: true,
+		isLoaded: false,
+		callback: function () {},
+	}, {
+		name: 'bottomQuickbar',
+		element: $('.bottom_quickbar'),
+		fileUrl: '/html/_inc_bottom_quickbar.html',
+		container: '.bottom_quickbar',
+		use: true,
+		isLoaded: false,
+		callback: function () {
+			quickNavTabbar();
+		},
+	}];
+
+	components.forEach(function (value, index, array) {
+		if (!components[index].element.is(':visible')) {
+			components[index].use = false;
 		}
 	});
-	$('.bottom_quickbar').load('/html/_inc_bottom_quickbar.html .bottom_quickbar > *', function (response, stu, xhr) {
-		if (stu == 'success') {
-			quickNavTabbar();
+
+	let useComponents = components.filter(function (useComponent) {
+		return useComponent.use;
+	});
+
+	if (!useComponents) {
+		runSetting();
+	}
+
+	useComponents.forEach(function (value, index, array) {
+		var component = useComponents[index],
+			element = component.element,
+			fileUrl = component.fileUrl,
+			container = component.container,
+			callback = component.callback;
+		if (window.location.pathname == fileUrl) {
 			runSetting();
-			globalSetIsRun = true;
+		} else {
+			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
+				callback.call();
+				useComponents[index].isLoaded = true;
+				if (index == useComponents.length - 1) {
+					runSetting();
+				}
+			});
 		}
 	});
 
 	// 페이지 로딩시 기본 세팅
 	function runSetting() {
-		if (!globalSetIsRun) {
-			tabmenu();
-			inputStatus();
-			quickNavSettingLayer();
-			if ($('.acc_info_area .check_quick_transfer').length) {
-				$('.acc_info_area .check_quick_transfer').each(function () {
-					quickTransferToggle($(this));
-				}).change(function () {
-					quickTransferToggle($(this));
-				});
-			}
+		tabmenu();
+		inputStatus();
+		quickNavSettingLayer();
+		if ($('.acc_info_area .check_quick_transfer').length) {
+			$('.acc_info_area .check_quick_transfer').each(function () {
+				quickTransferToggle($(this));
+			}).change(function () {
+				quickTransferToggle($(this));
+			});
 		}
+		console.log('UI setup is complete.');
 	}
 });
 
@@ -508,6 +556,7 @@ function favorMenuControl() {
 
 // 퀵메뉴 하단바
 function quickNavTabbar() {
+	console.log('네비 탭바');
 	const $quickNav = $('.bottom_quickbar'),
 		$handler = $('.quickbar_handler');
 
