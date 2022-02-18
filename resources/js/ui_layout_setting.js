@@ -7,37 +7,76 @@
 
 // 레이아웃 공통 영역 로드
 $(function () {
-	var layersLoading = false;
-
-	var headerInc = $('.header').data('inc');
-	var pageTitle = $('.header').data('page-title');
-	if (headerInc == undefined && pageTitle != undefined) {
-		$('.header').load('/html/_inc_header.html .header > *', function () {
-			$('.tit_page').html(pageTitle);
-		});
-	} else if (pageTitle != undefined) {
-		$('.header').load('/html/' + headerInc + ' .header > *', function () {
-			$('.tit_page').html(pageTitle);
-		});
+	const headerInc = $('.header').data('inc');
+	const pageTitle = $('.header').data('page-title');
+	let headerUrl;
+	if (headerInc == undefined) {
+		if (pageTitle == undefined) {
+			headerUrl = window.location.pathname;
+		} else {
+			headerUrl = '/html/_inc_header.html';
+		}
+	} else {
+		headerUrl = '/html/' + headerInc;
 	}
-	$('.common_layers').load('/html/_inc_common_layers.html .common_layers > *', function (response, stu, xhr) {
-		if (stu == 'success') {
-			layersLoading = true;
+	const components = [{
+		name: 'header',
+		element: $('.header'),
+		fileUrl: headerUrl,
+		container: '.header',
+		use: true,
+		isLoaded: false,
+		callback: function () {
+			$('.tit_page').html(pageTitle);
+		},
+	}, {
+		name: 'commonLayers',
+		element: $('.common_layers'),
+		fileUrl: '/html/_inc_common_layers.html',
+		container: '.common_layers',
+		use: true,
+		isLoaded: false,
+		callback: function () {},
+	}];
+
+	components.forEach(function (value, index, array) {
+		if (!components[index].element.is(':visible')) {
+			components[index].use = false;
+		}
+	});
+
+	let useComponents = components.filter(function (useComponent) {
+		return useComponent.use;
+	});
+
+	if (!useComponents) {
+		runSetting();
+	}
+
+	useComponents.forEach(function (value, index, array) {
+		var component = useComponents[index],
+			element = component.element,
+			fileUrl = component.fileUrl,
+			container = component.container,
+			callback = component.callback;
+		if (window.location.pathname == fileUrl) {
 			runSetting();
+		} else {
+			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
+				callback.call();
+				useComponents[index].isLoaded = true;
+				if (index == useComponents.length - 1) {
+					runSetting();
+				}
+			});
 		}
 	});
 
 	// 페이지 로딩시 기본 세팅
 	function runSetting() {
-		if (layersLoading) {
-			tabmenu();
-			inputStatus();
-
-			// console.log('실행중');
-		}
-		// else {
-		// 	console.log('컴포넌트 로딩중');
-		// }
+		tabmenu();
+		inputStatus();
+		console.log('UI setup is complete.');
 	}
 });
 
