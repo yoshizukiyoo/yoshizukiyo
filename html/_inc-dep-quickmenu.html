@@ -14,15 +14,31 @@
 	<script src="/resources/js/jquery-ui.js"></script>
 	<script src="/resources/js/ui_global.js"></script>
 
-	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
-	<script src="/resources/js/ui_layout_setting.js"></script>
+	<script>
+		$(document).ready(function () {
+
+			// 더보기 영역 확장
+			$('.btn_menu_more').on('click', function () {
+				var button = $(this);
+				$('.quick_my_menu > ul').toggleClass('hidden_menu');
+
+				if (button.attr('title') == 'MY메뉴 전체 영역 열기') {
+					button.attr('title', 'MY메뉴 전체 영역 닫기');
+				} else {
+					button.attr('title', 'MY메뉴 전체 영역 열기');
+				}
+			});
+
+		});
+	</script>
+
 </head>
 
 <body>
 	<!-- s: 퀵메뉴 -->
 	<div class="quick_menu_wrap">
 		<button type="button" class="btn_quick_open"><span class="sr_only">퀵메뉴 열기</span></button>
-		<div class="quick_menu_inner">
+		<div class="quick_menu_inner open">
 			<h2 class="quick_tit">QUICK MENU</h2>
 			<div class="quick_menu">
 				<div class="quick_menu_box">
@@ -37,9 +53,24 @@
 						<span class="count">6</span>
 					</div>
 					<div class="more_body">
-						<div class="more_inner more_msg">
+						<div class="quick_my_menu">
+							<ul class="hidden_menu">
+								<li><a href="#;">즉시이체</a></li>
+								<li><a href="#;">공과금</a></li>
+								<li><a href="#;">인터넷SWIFT송금</a></li>
+								<li><a href="#;">예금상품</a></li>
+								<li><a href="#;">보험상품</a></li>
+								<li><a href="#;">신규매수</a></li>
+								<li><a href="#;">예약이체</a></li>
+								<li><a href="#;">환율조회</a></li>
+							</ul>
+							<button type="button" class="btn_menu_more" title="MY메뉴 전체 영역 열기">더보기</button>
+						</div>
+						<!-- s: 안내 메세지 박스 (로그인 후 이용가능 합니다.) -->
+						<div class="more_inner more_msg" style="display: none;">
 							로그인 후<br>이용가능 합니다.
 						</div>
+						<!-- e: 안내 메세지 박스 (로그인 후 이용가능 합니다.) -->
 					</div>
 				</div>
 				<div class="quick_menu_box">
