@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 기준가 상세내용 펼침
+			$('.fund_detail_btn > button').on('click', function () {
+				var button = $(this);
+				$('.sub_fund_info').toggleClass('standard_price_open');
+				$('.fund_detail_chart').attr('tabindex', '0').focus();
+				if (button.attr('title') == '기준가 상세정보 열기') {
+					$('.sec_fund_list').css('padding-top', '860px');
+					button.attr('title', '기준가 상세정보 닫기');
+				} else {
+					$(window).scrollTop(200);
+					$('.sec_fund_list').removeAttr('style');
+					button.attr('title', '기준가 상세정보 열기');
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<div class="main_cont">
+				<h2 class="sr_only">메인 본문</h2>
+
+				<!-- 
+					[퍼블] 메인 첫번째 섹션은 .sec_home 필수 (메인+서브메인 공통 스크립트 적용됨)
+					.sec_home 클래스는 메인 공통 클래스이므로 스타일링 금지합니다.
+					반드시 멀티클래스 추가 후 스타일링 해주세요
+				-->
+				<section class="sec_home sub_fund_info">
+					<h3 class="sr_only">예금 계좌 정보</h3>
+					<div class="visual_top">
+						<div class="container">
+							<div class="fund_notice">
+								<div class="l"><a href="#;">우체국 펀드 2개 상품 <strong class="txt_bold">신규 판매 일시 중단 안내</strong></a></div>
+								<div class="r"><span>2022.01.18 12:33:57</span></div>
+							</div>
+							<div class="total_info_wrap">
+								<div class="total_info">
+									<div class="cus_info">
+										<p>
+											<strong>홍길동</strong>님은 <strong> 펀드 2개</strong>를 보유하고 있습니다.
+										</p>
+										<a href="#;" class="btn btn_md btn_outline_default ico_arrow">전체 펀드 조회</a>
+									</div>
+									<div class="cus_toal_info">
+										<span class="total_tit">펀드 총 자산 :</span>
+										<strong class="total_num">387,210</strong>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle" checked>
+												<label for="btn_toggle"><span class="sr_only">총 자산금액 표기 설정</span></label>
+											</div>
+											<span class="btn_name">총 자산금액</span>
+										</div>
+									</div>
+								</div>
+								<div class="invest_result">
+									<dl>
+										<dt><span class="inv_res1">공격투자형</span></dt>
+										<dd>투자자정보분석일 : 2021년07월02일</dd>
+										<dd>정보 만기일 : 2023년07월02일</dd>
+									</dl>
+									<a href="#;">분석갱신</a>
+								</div>
+							</div>
+							<div class="info_box_list fund_info_box">
+								<div class="info_list_wrap">
+									<div class="info_cont_box">
+										<div class="inner">
+											<div class="top">
+												<a href="#;" class="btn_round_ico">대표 펀드</a>
+											</div>
+											<div class="box_cont txt_c">
+												<div class="badge_list">
+													<span class="round_badge beige">임의식</span>
+													<span class="round_badge mint">채권혼합형</span>
+													<span class="round_badge lightpurple">수수료미징구</span>
+												</div>
+												<div class="represent_fund">
+													<p class="rep_fund_name">IBK그랑프리국공채MMF<br>개인투자신탁제1호[국공채]Ce</p>
+													<p class="rep_fund_acc"><strong>010017-95-001345</strong></p>
+													<p class="rep_func_date">신규개설일 : 2021-03-21</p>
+												</div>
+											</div>
+											<div class="btn_area">
+												<a href="#;" class="btn btn_md btn_outline_default">수익률보고서</a>
+												<a href="#;" class="btn btn_md btn_primary txt_medium">증명서 발급</a>
+												<a href="#;" class="btn_r"><span class="sr_only">계좌관리</span></a>
+											</div>
+										</div>
+									</div>
+									<div class="info_cont_box">
+										<div class="inner">
+											<div class="top mb_4 pt_3">
+												<h4 class="cont_tit">투자평가금액</h4>
+											</div>
+											<div class="box_cont">
+												<div class="sum_money txt_c">
+													<span>
+														<strong>3,233,127</strong> 원
+													</span>
+												</div>
+												<div class="profit txt_c mt_6">
+													<!-- 상한가 클래스명 "upper" / 하한가 클래스명 "lower" -->
+													<strong class="profit_money upper">5,604</strong> 원
+													<strong class="profit_point mt_2 block">(+1.02%)</strong>
+												</div>
+												<div class="label_moeny mt_5">
+													투자원금
+													<div class="sum_money small ml_2">
+														<span>
+															<strong>3,233,127</strong> 원
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="btn_area">
+												<a href="#;" class="btn btn_md btn_outline_default">추가 매수</a>
+												<a href="#;" class="btn btn_md btn_primary txt_medium">환매 신청</a>
+											</div>
+										</div>
+									</div>
+									<div class="info_cont_box">
+										<div class="inner">
+											<div class="top mb_4 pt_3">
+												<h4 class="cont_tit">평가금액추이</h4>
+											</div>
+											<div class="box_cont">
+												<!-- s: 차트 영역 -->
+												<div class="fund_chard"><img src="/resources/img/main/img_temp_chart.gif" alt=""></div>
+												<!-- e: 차트 영역 -->
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- s: 상세보기 영역 차트 -->
+								<div class="fund_detail_chart">
+									<div class="fund_date_point">
+										<div class="l">
+											<div class="point_date"><span>조회일</span> 2021.07.07</div>
+											<div class="point_index">
+												<strong>1,191.96</strong>
+												<div class="profit">
+													<!-- 상한가 클래스명 "upper" / 하한가 클래스명 "lower" -->
+													<strong class="profit_money upper">0.17</strong>
+													<span class="profit_point">(0.02%)</span>
+												</div>
+											</div>
+										</div>
+										<div class="r">
+											<ul>
+												<li>
+													올해
+													<strong class="col_upper">0.90%</strong>
+												</li>
+												<li>
+													1개월
+													<strong class="col_lower">-0.90%</strong>
+												</li>
+												<li>
+													3개월
+													<strong class="col_upper">0.90%</strong>
+												</li>
+												<li>
+													1년
+													<strong class="col_upper">9.98%</strong>
+												</li>
+												<li>
+													3년
+													<strong>NA</strong>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="btn_standard_date">
+										<button type="button" class="on">1개월</button>
+										<button type="button">3개월</button>
+										<button type="button">6개월</button>
+										<button type="button">1년</button>
+										<button type="button">3년</button>
+									</div>
+									<!-- s: 차트 영역 -->
+									<div class="date_fund_chart" style="text-align: center;"><img
+											src="/resources/img/main/img_temp_chart2.gif" alt=""></div>
+									<!-- e: 차트 영역 -->
+								</div>
+								<!-- e: 상세보기 영역 차트 -->
+								<div class="fund_detail_btn"><button type="button" title="기준가 상세정보 열기">기준가 상세보기</button></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- s: 거래 내역 -->
+				<section class="sec_fund_list">
+					<div class="container">
+						<h3 class="sub_tit">거래 내역</h3>
+						<div class="use_list fund_use">
+							<ul>
+								<li>
+									<strong class="fsize_24 txt_medium block mb_3">보유 비중</strong>
+									<strong class="fsize_30">65.2%</strong>
+								</li>
+								<li>
+									<strong class="fsize_24 txt_medium block mb_3">평가손익</strong>
+									<div class="profit">
+										<!-- 상한가 클래스명 "upper" / 하한가 클래스명 "lower" -->
+										<strong class="profit_money upper">5,604</strong> 원
+										<strong class="profit_point">(+1.02%)</strong>
+									</div>
+								</li>
+								<li>
+									<strong class="fsize_24 txt_medium block mb_3">거래 신청</strong>
+									<strong class="fsize_30">0<span class="fsize_24 txt_medium">건</span></strong>
+								</li>
+								<li>
+									<strong class="fsize_24 txt_medium block mb_3">거래 완료</strong>
+									<strong class="fsize_30">3<span class="fsize_24 txt_medium">건</span></strong>
+								</li>
+							</ul>
+						</div>
+						<div class="tbl_data tbl_list_data mt_6">
+							<table>
+								<caption class="sr_only">거래내역 목록이며 거래일자, 거래구분, 거래금액(원), 거래좌수(좌), 잔과좌수(좌), 평가금액 정보를 제공하고 있습니다.</caption>
+								<thead>
+									<tr>
+										<th scope="col">거래 일자</th>
+										<th scope="col">거래 구분</th>
+										<th scope="col">거래 금액(원)</th>
+										<th scope="col">거래 좌수(좌)</th>
+										<th scope="col">잔과 좌수(좌)</th>
+										<th scope="col">평가금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">일반매수</td>
+										<td class="txt_r">23,000</td>
+										<td class="txt_r">23,000</td>
+										<td class="txt_r">800,000</td>
+										<td class="txt_r">3,450,332</td>
+									</tr>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">일반매수</td>
+										<td class="txt_r">23,000</td>
+										<td class="txt_r">23,000</td>
+										<td class="txt_r">800,000</td>
+										<td class="txt_r">3,450,332</td>
+									</tr>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">일반매수</td>
+										<td class="txt_r">23,000</td>
+										<td class="txt_r">23,000</td>
+										<td class="txt_r">800,000</td>
+										<td class="txt_r">3,450,332</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="latest_fund_list">
+							<!-- s: 내 장바구니 펀드 -->
+							<div class="cate_fund_list">
+								<div class="tit_top mb_2">
+									<div class="l">
+										<h4 class="tit_ico ico_basket txt_medium">내 장바구니 펀드 4</h4>
+									</div>
+									<div class="r"><a href="#;" class="btn btn_explain small">장바구니 바로가기</a></div>
+								</div>
+								<div class="product_list">
+									<ul>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- s: 내 장바구니 펀드 -->
+
+							<!-- s: 내 관심펀드 -->
+							<div class="cate_fund_list">
+								<div class="tit_top mb_2">
+									<div class="l">
+										<h4 class="tit_ico ico_interest txt_medium">내 관심펀드 4</h4>
+									</div>
+									<div class="r"><a href="#;" class="btn btn_explain small">관심상품 바로가기</a></div>
+								</div>
+								<div class="product_list">
+									<ul>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+										<li>
+											<div class="inner">
+												<div class="top">
+													<div class="l"><span class="pro_date">2021.12.24</span></div>
+													<div class="r"><span class="round_badge lightbeige">예금</span></div>
+												</div>
+												<div class="mid"><strong>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</strong></div>
+												<div class="btm"><a href="#;" class="btn btn_md btn_outline_default">펀드상세정보</a></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- e: 내 관심펀드 -->
+						</div>
+					</div>
+				</section>
+				<!-- e: 거래 내역 -->
+
+				<!-- s: 펀드투자 유의사항 -->
+				<section class="sec_fund_caution">
+					<div class="container">
+						<h3 class="tit_caution">펀드투자 유의사항</h3>
+						<ul class="list list1 mt_2">
+							<li>집합투자증권은 운용결과에 따라 투자원금의 손실이 발생할 수 있으며, 그 손실은 투자자에게 귀속됩니다.</li>
+							<li>집합투자증권을 취득하시기 전에 투자대상, 보수, 수수료 및 환매 방법 등에 관하여 (간이)투자설명서를 받드시 읽어보시기 바랍니다.</li>
+							<li>집합투자증권은 예금자보호법에 따라 예금보험공사가 보호하지 않습니다.</li>
+							<li>증권거래비용, 기타비용이 추가로 발생할 수 있습니다.</li>
+							<li>과거의 운용실적이 미래의 수익률을 보장하는 것은 아닙니다.</li>
+							<li>종류형 펀드의 경우, 종류별 집합투자증권에 부과되는 보수, 수수료 차이로 운용실적이 달라질 수 있습니다.</li>
+							<li>MMF는 시가와 장부가의 차이가 ±0.5%를 초과하거나 초과할 우려가 있는 경우 시가로 전환됩니다.</li>
+							<li>제로인 평가등급(태극마크)은펀드평가사인 제로인이 운용기간이 3년 이상인 펀드를 대상으로 수익률과 변동성(위험)을 동시에 고려하여 산출한 것입니다.</li>
+						</ul>
+						<p class="txt_caution txt_gray mt_2">우정사업본부 준법감시인 심사필 제20-12호(2020.10.25)</p>
+						<ul class="ico_link_list mt_5">
+							<li><a href="#;" class="fund_cau1">투자권유 준칙</a></li>
+							<li><a href="#;" class="fund_cau2">투자자예금탁<br>이용료 안내</a></li>
+							<li><a href="#;" class="fund_cau3">FINE 파인<br>금융소비자 정보 포털</a></li>
+						</ul>
+					</div>
+				</section>
+				<!-- e: 펀드투자 유의사항 -->
+
+			</div>
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
