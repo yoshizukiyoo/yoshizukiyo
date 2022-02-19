@@ -68,8 +68,7 @@ $(function () {
 	});
 
 	if (useLoadComponents.length < defaultComponents.length) {
-		if (_ui_dev_mode) console.log('case 1');
-		setDefaultUI();
+		setDefaultUI('case 1');
 	}
 
 	useLoadComponents.forEach(function (value, index, array) {
@@ -79,26 +78,24 @@ $(function () {
 			container = component.container,
 			callback = component.callback;
 		if (window.location.pathname == fileUrl) {
-			if (_ui_dev_mode) console.log('case 2');
-			setDefaultUI();
+			setDefaultUI('case 2');
 		} else {
 			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
 				callback.call();
 				if (index == useLoadComponents.length - 1) {
-					if (_ui_dev_mode) console.log('case 3');
-					setDefaultUI();
+					setDefaultUI('case 3');
 				}
 			});
 		}
 	});
 
 	// 페이지 로딩시 기본 세팅
-	function setDefaultUI() {
+	function setDefaultUI(type) {
 		tabmenu();
 		inputStatus();
 		quickNavSettingLayer();
 		setQuickTransferSwitch();
-		console.log('UI setup is complete.');
+		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });
 
