@@ -6,6 +6,9 @@
 */
 
 // 레이아웃 공통 영역 로드
+var _ui_dev_mode = true;
+// var _ui_dev_mode = false;
+
 $(function () {
 	const headerInc = $('.header').data('inc');
 	const pageTitle = $('.header').data('page-title');
@@ -25,19 +28,8 @@ $(function () {
 		fileUrl: headerUrl,
 		container: '.header',
 		use: true,
-		isLoaded: false,
 		callback: function () {
 			$('.tit_page').html(pageTitle);
-		},
-	}, {
-		name: 'commonLayers',
-		element: $('.common_layers'),
-		fileUrl: '/html/_inc_common_layers.html',
-		container: '.common_layers',
-		use: true,
-		isLoaded: false,
-		callback: function () {
-			setTransferListSlider();
 		},
 	}, {
 		name: 'bottomQuickbar',
@@ -45,9 +37,17 @@ $(function () {
 		fileUrl: '/html/_inc_bottom_quickbar.html',
 		container: '.bottom_quickbar',
 		use: true,
-		isLoaded: false,
 		callback: function () {
 			quickNavTabbar();
+		},
+	}, {
+		name: 'commonLayers',
+		element: $('.common_layers'),
+		fileUrl: '/html/_inc_common_layers.html',
+		container: '.common_layers',
+		use: true,
+		callback: function () {
+			setTransferListSlider();
 		},
 	}];
 
@@ -57,45 +57,47 @@ $(function () {
 		}
 	});
 
-	let useComponents = components.filter(function (useComponent) {
-		return useComponent.use;
+	let useLoadComponents = components.filter(function (useLoadComponent) {
+		return useLoadComponent.use && window.location.pathname != useLoadComponent.fileUrl;
 	});
 
-	if (!useComponents) {
-		runSetting();
+	let defaultComponents = components.filter(function (defaultComponent) {
+		var myContents = defaultComponent.use && window.location.pathname == defaultComponent.fileUrl;
+		if (myContents) defaultComponent.callback.call();
+		return myContents;
+	});
+
+	if (useLoadComponents.length < defaultComponents.length) {
+		if (_ui_dev_mode) console.log('case 1');
+		setDefaultUI();
 	}
 
-	useComponents.forEach(function (value, index, array) {
-		var component = useComponents[index],
+	useLoadComponents.forEach(function (value, index, array) {
+		var component = useLoadComponents[index],
 			element = component.element,
 			fileUrl = component.fileUrl,
 			container = component.container,
 			callback = component.callback;
 		if (window.location.pathname == fileUrl) {
-			runSetting();
+			if (_ui_dev_mode) console.log('case 2');
+			setDefaultUI();
 		} else {
 			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
 				callback.call();
-				useComponents[index].isLoaded = true;
-				if (index == useComponents.length - 1) {
-					runSetting();
+				if (index == useLoadComponents.length - 1) {
+					if (_ui_dev_mode) console.log('case 3');
+					setDefaultUI();
 				}
 			});
 		}
 	});
 
 	// 페이지 로딩시 기본 세팅
-	function runSetting() {
+	function setDefaultUI() {
 		tabmenu();
 		inputStatus();
 		quickNavSettingLayer();
-		if ($('.acc_info_area .check_quick_transfer').length) {
-			$('.acc_info_area .check_quick_transfer').each(function () {
-				quickTransferToggle($(this));
-			}).change(function () {
-				quickTransferToggle($(this));
-			});
-		}
+		setQuickTransferSwitch();
 		console.log('UI setup is complete.');
 	}
 });
@@ -524,6 +526,16 @@ $(document).on('click', '.gnb a', function (e) {
 });
 
 // 빠른이체 스위치
+function setQuickTransferSwitch() {
+	if ($('.acc_info_area .check_quick_transfer').length) {
+		$('.acc_info_area .check_quick_transfer').each(function () {
+			quickTransferToggle($(this));
+		}).change(function () {
+			quickTransferToggle($(this));
+		});
+	}
+}
+
 function quickTransferToggle(_obj) {
 	if ($('input', _obj).prop('checked')) {
 		$(_obj).closest('.acc_info_area').find('.add_quick').show();
