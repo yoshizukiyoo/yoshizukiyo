@@ -23,7 +23,79 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+			// 메뉴 박스 펼치기 접기
+			const $box = $('.favor_menu_box'),
+				maxH = $box.outerHeight(),
+				minH = 110;
+			let boxH,
+				btnText,
+				boxTop,
+				boxTopDefault = $('.mall_service_list').offset().top;
+			$box.css('height', minH);
+			$('.btn_box_handler').click(function (e) {
+				e.preventDefault();
+				$box.toggleClass('opened');
+				if ($box.hasClass('opened')) {
+					boxH = maxH;
+					btnText = '접기';
+					boxTop = boxTopDefault - $('.header').outerHeight() - 15;
+					$('.mall_service_list a').first().focus();
+				} else {
+					boxH = minH;
+					btnText = '펼치기';
+					boxTop = 0;
+					serviceDetail('close');
+				}
+				$(this).children('.sr_only').text(btnText);
+				$('body, html').animate({
+					scrollTop: boxTop
+				}, 600);
+				$box.animate({
+					'height': boxH
+				}, 'fast');
+			});
 
+			// 서비스 슬라이더
+			$('.mall_service_slider').slick({
+				fade: false,
+				autoplay: false,
+				speed: 1000,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+				arrows: false,
+				dots: false,
+				accessibility: false,
+			}).on('afterChange', function (event, slick, currentSlide, nextSlide) {
+				$(slick.$slides[currentSlide]).attr('tabindex', 0).focus();
+			});
+
+			// 서비스 레이어 열기
+			$('.mall_service_list a').click(function (e) {
+				e.preventDefault();
+				var index = $(this).parent('li').index();
+				serviceDetail('open', index);
+			});
+
+			// 서비스 레이어 닫기(뒤로가기)
+			$('.mall_service_slider .btn_turn_back').click(function (e) {
+				var index = $(this).closest('.slick-slide:not(.slick-cloned)').index() - 1;
+				serviceDetail('close', index);
+			});
+
+			function serviceDetail(opt, index) {
+				if (index == undefined) index = 0;
+				if (opt == 'open') {
+					$('.mall_service_list').hide();
+					$('.mall_service_cont').show();
+					$('.favor_menu_box').height('auto');
+					$('.mall_service_slider').slick('setPosition').slick('slickGoTo', index);
+				} else if (opt == 'close') {
+					$('.mall_service_cont').hide();
+					$('.mall_service_list').show();
+					$('.mall_service_list li').eq(index).children('a').focus();
+				}
+			}
 		});
 	</script>
 </head>
@@ -34,12 +106,257 @@
 		<div id="content">
 			<!-- s: 본문 -->
 
+			<!-- s: 로그인 후 -->
+			<!-- s: 알람 레이어 -->
+			<div class="layer_top_alarm">
+				<div class="container">
+					<div class="alarm_cont">
+						<!-- s: 알람 레이어 본문 -->
+						<div class="icon">
+							<i class="ico ico_alarm"></i>
+							<h3 class="sr_only">알람</h3>
+						</div>
+						<div class="cont">
+							<div class="status">
+								<p>신청 진행중 <span class="txt_red">1</span>건</p>
+								<a href="#;" class="btn btn_xs btn_round btn_white ml_1">카드발급신청</a>
+							</div>
+							<p class="subject">
+								<strong>우체국 어디서나 하이브리드 체크카드(VISA)</strong>
+							</p>
+							<div class="mt_2">
+								<a href="#;" class="btn btn_md btn_outline_default btn_round">
+									<span>관련 상담 신청</span>
+								</a>
+								<a href="#;" class="btn btn_md btn_primary btn_round ml_1">
+									<i class="ico ico_comment_white"></i>
+									<span>이어서 진행</span>
+								</a>
+							</div>
+						</div>
+						<!-- e: 알람 레이어 본문 -->
+					</div>
+					<button type="button" class="btn btn_icon btn_close_alarm"
+						onclick="$(this).closest('.layer_top_alarm').slideUp('fast');">
+						<i class="ico ico_close"></i>
+						<span class="sr_only">알람 닫기</span>
+					</button>
+				</div>
+			</div>
+			<!-- e: 알람 레이어 -->
+			<!-- e: 로그인 후 -->
+
+			<!-- s: 자주 찾는 메뉴 -->
+			<section class="sec_mall_favor">
+				<h3 class="sr_only">자주 찾는 메뉴</h3>
+				<div class="favor_menu_box">
+					<ul class="favor_menu_list">
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_favor1.png" alt="" class="icon">
+								<span>예금</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_favor2.png" alt="" class="icon">
+								<span>보험</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_favor3.png" alt="" class="icon">
+								<span>카드</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_favor4.png" alt="" class="icon">
+								<span>펀드</span>
+							</a>
+						</li>
+					</ul>
+					<ul class="mall_service_list">
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>목표금액</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>목돈굴리기</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>목돈만들기</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>내게 맞는 펀드</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>보험 간편설계</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>보험 보장분석</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>연령대 PICK</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<span>생애주기 상품표</span>
+							</a>
+						</li>
+					</ul>
+					<div class="mall_service_cont">
+						<div class="mall_service_slider">
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">목표금액</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">목돈굴리기</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">목돈만들기</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">내게 맞는 펀드</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">보험 간편설계</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">보험 보장분석</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">연령대 PICK</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit">생애주기 상품표</h3>
+								</div>
+								<div class="item_body">
+									내용노출영역
+								</div>
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="mall_service_btns">
+						<div>
+							#여행자금 #모임회비
+						</div>
+						<div class="txt_r">
+							<a href="#;">태그 더 보기</a>
+						</div>
+						<div class="txt_c mt_2">
+							<a href="#;">버튼</a>
+							<a href="#;">버튼</a>
+						</div>
+					</div>
+				</div>
+				<a href="#;" class="btn_box_handler">
+					<i class="ico ico_chevron_down_md"></i>
+					<span class="sr_only">펼치기</span>
+				</a>
+			</section>
+			<!-- e: 자주 찾는 메뉴 -->
+
 			<div class="bg_lightprimary">
 				<p>Full Area</p>
 			</div>
 
 			<div class="container pb_4">
 				<div class="bg_lightprimary">
+					<p>Spacing Area</p>
+					<p>Spacing Area</p>
+					<p>Spacing Area</p>
+					<p>Spacing Area</p>
+					<p>Spacing Area</p>
 					<p>Spacing Area</p>
 				</div>
 			</div>

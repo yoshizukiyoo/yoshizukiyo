@@ -46,7 +46,9 @@ $(function () {
 		fileUrl: '/html/smart/_inc_common_layers.html',
 		container: '.common_layers',
 		use: true,
-		callback: function () {},
+		callback: function () {
+			setTransferListSlider();
+		},
 	}];
 
 	components.forEach(function (value, index, array) {
@@ -66,8 +68,7 @@ $(function () {
 	});
 
 	if (useLoadComponents.length < defaultComponents.length) {
-		if (_ui_dev_mode) console.log('case 1');
-		setDefaultUI();
+		setDefaultUI('case 1');
 	}
 
 	useLoadComponents.forEach(function (value, index, array) {
@@ -77,25 +78,24 @@ $(function () {
 			container = component.container,
 			callback = component.callback;
 		if (window.location.pathname == fileUrl) {
-			if (_ui_dev_mode) console.log('case 2');
-			setDefaultUI();
+			setDefaultUI('case 2');
 		} else {
 			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
 				callback.call();
 				if (index == useLoadComponents.length - 1) {
-					if (_ui_dev_mode) console.log('case 3');
-					setDefaultUI();
+					setDefaultUI('case 3');
 				}
 			});
 		}
 	});
 
 	// 페이지 로딩시 기본 세팅
-	function setDefaultUI() {
+	function setDefaultUI(type) {
 		tabmenu();
 		inputStatus();
 		quickNavSettingLayer();
-		if (_ui_dev_mode) console.log('UI setup is complete.');
+		setQuickTransferSwitch();
+		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });
 
@@ -504,6 +504,57 @@ $(function () {
 		});
 	}, 200);
 });
+
+//
+// 메인
+//
+
+// 빠른이체 스위치
+function setQuickTransferSwitch() {
+	if ($('.acc_info_area .check_quick_transfer').length) {
+		$('.acc_info_area .check_quick_transfer').each(function () {
+			quickTransferToggle($(this));
+		}).change(function () {
+			quickTransferToggle($(this));
+		});
+	}
+}
+
+function quickTransferToggle(_obj) {
+	if ($('input', _obj).prop('checked')) {
+		$(_obj).closest('.acc_info_area').find('.add_quick').show();
+	} else {
+		$(_obj).closest('.acc_info_area').find('.add_quick').hide();
+	}
+}
+
+// 빠른이체목록 슬라이더
+function setTransferListSlider() {
+	$('.transfer_list a').click(function () {
+		$(this).toggleClass('on');
+		if ($(this).hasClass('on')) {
+			$(this).attr('title', '선택됨');
+		} else {
+			$(this).removeAttr('title');
+		}
+	});
+	$('.transfer_list').slick({
+		fade: false,
+		autoplay: false,
+		speed: 1000,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		variableWidth: true,
+		infinite: true,
+		arrows: false,
+		dots: false,
+		// dotsClass: 'slick-dots',
+		accessibility: false,
+	});
+	$('.tab_list a').click(function () {
+		$('.transfer_list').slick('setPosition');
+	});
+}
 
 // 퀵메뉴 하단바
 function quickNavTabbar() {
