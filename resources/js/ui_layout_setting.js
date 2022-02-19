@@ -6,6 +6,9 @@
 */
 
 // 레이아웃 공통 영역 로드
+var _ui_dev_mode = true;
+// var _ui_dev_mode = false;
+
 $(function () {
 	const headerInc = $('.header').data('inc');
 	const pageTitle = $('.header').data('page-title');
@@ -25,7 +28,6 @@ $(function () {
 		fileUrl: headerUrl,
 		container: '.header',
 		use: true,
-		isLoaded: false,
 		callback: function () {
 			$('.tit_page').html(pageTitle);
 		},
@@ -35,7 +37,6 @@ $(function () {
 		fileUrl: '/html/_inc_common_layers.html',
 		container: '.common_layers',
 		use: true,
-		isLoaded: false,
 		callback: function () {},
 	}];
 
@@ -45,38 +46,43 @@ $(function () {
 		}
 	});
 
-	let useComponents = components.filter(function (useComponent) {
-		return useComponent.use;
+	let useLoadComponents = components.filter(function (useLoadComponent) {
+		return useLoadComponent.use && window.location.pathname != useLoadComponent.fileUrl;
 	});
 
-	if (!useComponents) {
-		runSetting();
+	let defaultComponents = components.filter(function (defaultComponent) {
+		var myContents = defaultComponent.use && window.location.pathname == defaultComponent.fileUrl;
+		if (myContents) defaultComponent.callback.call();
+		return myContents;
+	});
+
+	if (useLoadComponents.length < defaultComponents.length) {
+		setDefaultUI('case 1');
 	}
 
-	useComponents.forEach(function (value, index, array) {
-		var component = useComponents[index],
+	useLoadComponents.forEach(function (value, index, array) {
+		var component = useLoadComponents[index],
 			element = component.element,
 			fileUrl = component.fileUrl,
 			container = component.container,
 			callback = component.callback;
 		if (window.location.pathname == fileUrl) {
-			runSetting();
+			setDefaultUI('case 2');
 		} else {
 			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
 				callback.call();
-				useComponents[index].isLoaded = true;
-				if (index == useComponents.length - 1) {
-					runSetting();
+				if (index == useLoadComponents.length - 1) {
+					setDefaultUI('case 3');
 				}
 			});
 		}
 	});
 
 	// 페이지 로딩시 기본 세팅
-	function runSetting() {
+	function setDefaultUI(type) {
 		tabmenu();
 		inputStatus();
-		console.log('UI setup is complete.');
+		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });
 
