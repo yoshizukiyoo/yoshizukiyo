@@ -6,6 +6,9 @@
 */
 
 // 레이아웃 공통 영역 로드
+var _ui_dev_mode = true;
+// var _ui_dev_mode = false;
+
 $(function () {
 	const headerInc = $('.header').data('inc');
 	const pageTitle = $('.header').data('page-title');
@@ -25,9 +28,17 @@ $(function () {
 		fileUrl: headerUrl,
 		container: '.header',
 		use: true,
-		isLoaded: false,
 		callback: function () {
 			$('.tit_page').html(pageTitle);
+		},
+	}, {
+		name: 'bottomQuickbar',
+		element: $('.bottom_quickbar'),
+		fileUrl: '/html/smart/_inc_bottom_quickbar.html',
+		container: '.bottom_quickbar',
+		use: true,
+		callback: function () {
+			quickNavTabbar();
 		},
 	}, {
 		name: 'commonLayers',
@@ -35,7 +46,6 @@ $(function () {
 		fileUrl: '/html/smart/_inc_common_layers.html',
 		container: '.common_layers',
 		use: true,
-		isLoaded: false,
 		callback: function () {},
 	}];
 
@@ -45,39 +55,47 @@ $(function () {
 		}
 	});
 
-	let useComponents = components.filter(function (useComponent) {
-		return useComponent.use;
+	let useLoadComponents = components.filter(function (useLoadComponent) {
+		return useLoadComponent.use && window.location.pathname != useLoadComponent.fileUrl;
 	});
 
-	if (!useComponents) {
-		runSetting();
+	let defaultComponents = components.filter(function (defaultComponent) {
+		var myContents = defaultComponent.use && window.location.pathname == defaultComponent.fileUrl;
+		if (myContents) defaultComponent.callback.call();
+		return myContents;
+	});
+
+	if (useLoadComponents.length < defaultComponents.length) {
+		if (_ui_dev_mode) console.log('case 1');
+		setDefaultUI();
 	}
 
-	useComponents.forEach(function (value, index, array) {
-		var component = useComponents[index],
+	useLoadComponents.forEach(function (value, index, array) {
+		var component = useLoadComponents[index],
 			element = component.element,
 			fileUrl = component.fileUrl,
 			container = component.container,
 			callback = component.callback;
 		if (window.location.pathname == fileUrl) {
-			runSetting();
+			if (_ui_dev_mode) console.log('case 2');
+			setDefaultUI();
 		} else {
 			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
 				callback.call();
-				useComponents[index].isLoaded = true;
-				if (index == useComponents.length - 1) {
-					runSetting();
+				if (index == useLoadComponents.length - 1) {
+					if (_ui_dev_mode) console.log('case 3');
+					setDefaultUI();
 				}
 			});
 		}
-		console.log(component.name);
 	});
 
 	// 페이지 로딩시 기본 세팅
-	function runSetting() {
+	function setDefaultUI() {
 		tabmenu();
 		inputStatus();
-		console.log('UI setup is complete.');
+		quickNavSettingLayer();
+		if (_ui_dev_mode) console.log('UI setup is complete.');
 	}
 });
 
@@ -162,6 +180,33 @@ function inputStatus() {
 				$container.toggleClass('active', text);
 			});
 		}
+	});
+}
+
+// 터치 디바이스 체커
+function is_touch_device() {
+	try {
+		document.createEvent("TouchEvent");
+		return true;
+	} catch (e) {
+		return false;
+	}
+}
+
+// 퀵메뉴설정 레이어
+function quickNavSettingLayer() {
+	if (is_touch_device) {
+		$.ajax({
+			async: false,
+			type: 'GET',
+			dataType: 'script',
+			url: '/resources/smart/js/jquery.ui.touch-punch.js'
+		});
+	}
+
+	// 드래그앤 드롭 순서 변경
+	$('.quickmenu_list_all').sortable({
+		placeholder: 'sortable-placeholder'
 	});
 }
 
@@ -459,3 +504,60 @@ $(function () {
 		});
 	}, 200);
 });
+
+// 퀵메뉴 하단바
+function quickNavTabbar() {
+	const $quickNav = $('.bottom_quickbar'),
+		$handler = $('.quickbar_handler');
+
+	if ($('.bottom_quickbar:visible').length) {
+		$('body').addClass('use_quickbar');
+		$quickNav.css('bottom', 80 - $quickNav.outerHeight());
+		$handler.click(function (e) {
+			e.preventDefault();
+			quickNavControl('toggle');
+		});
+		$('.bottom_quickbar').on('scroll touchmove mousewheel', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+		});
+		let mstartY = 0,
+			mendY = 0,
+			startY = 0,
+			endY = 0,
+			range = 30;
+		$quickNav.on('mousedown', function (e) {
+			mstartY = e.pageY;
+		}).on('mouseup', function (e) {
+			mendY = e.pageY;
+			if (mstartY - mendY > range) {
+				quickNavControl('expand');
+			} else if (mendY - mstartY > range) {
+				quickNavControl('collapse');
+			}
+		}).on('touchstart', function (e) {
+			startY = e.originalEvent.changedTouches[0].screenY;
+		}).on('touchend', function (e) {
+			endY = e.originalEvent.changedTouches[0].screenY;
+			if (startY - endY > range) {
+				quickNavControl('expand');
+			} else if (endY - startY > range) {
+				quickNavControl('collapse');
+			}
+		});
+	}
+
+	function quickNavControl(status) {
+		if (status == 'expand') {
+			$quickNav.addClass('opened');
+		} else if (status == 'collapse') {
+			$quickNav.removeClass('opened');
+		} else if (status == 'toggle') {
+			$quickNav.toggleClass('opened');
+		}
+		var text = $quickNav.hasClass('opened') ? '접기' : '펼치기';
+		$handler.children('.sr_only').text(text);
+	}
+
+	if (_ui_dev_mode) console.log('Quickbar setup is complete.');
+}
