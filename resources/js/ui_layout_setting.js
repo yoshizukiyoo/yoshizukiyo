@@ -82,6 +82,7 @@ $(function () {
 	function setDefaultUI(type) {
 		tabmenu();
 		inputStatus();
+		setCaption();
 		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });
@@ -168,6 +169,15 @@ function inputStatus() {
 			});
 		}
 	});
+}
+
+// 접근성 개선 관련
+function setCaption() {
+	if ($('.input_step .on').length) {
+		$('.input_step .on').each(function () {
+			$(this).append('<span class="sr_only">현재 단계</span>');
+		});
+	}
 }
 
 // 데이트피커 기본설정
