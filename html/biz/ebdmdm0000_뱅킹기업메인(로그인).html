@@ -89,11 +89,13 @@
 
 				if (dataId == 'tab_box1') {
 					$('.tab_account > ul').addClass('tab tab_on1');
-					$('.bk_acc_money').slick('setPosition');
 				} else if (dataId == 'tab_box2') {
+					$('.bk_acc_money').slick('setPosition');
 					$('.tab_account > ul').addClass('tab tab_on2');
-				} else {
+				} else if (dataId == 'tab_box3') {
 					$('.tab_account > ul').addClass('tab tab_on3');
+				} else {
+					$('.tab_account > ul').addClass('tab tab_on4');
 				}
 				return false;
 			});
@@ -200,10 +202,10 @@
 						<h3 class="sr_only">프로모션</h3>
 						<div class="main_promotion_slide">
 							<div>
-								<a href="#;"><img src="/resources/img/main/img_temp_promotion1.jpg" alt="이미지 대체텍스트 입력"></a>
+								<a href="#;"><img src="/resources/img/main/img_temp_biz_promotion1.jpg" alt="이미지 대체텍스트 입력"></a>
 							</div>
 							<div>
-								<a href="#;"><img src="/resources/img/main/img_temp_promotion1.jpg" alt="이미지 대체텍스트 입력"></a>
+								<a href="#;"><img src="/resources/img/main/img_temp_biz_promotion1.jpg" alt="이미지 대체텍스트 입력"></a>
 							</div>
 						</div>
 						<div class="rolling_info">
@@ -217,15 +219,66 @@
 
 						<!-- s: 대표계좌 영역 (로그인 후 노출) -->
 						<div class="account_info">
-							<div class="tab_account">
+							<div class="tab_account biz_account">
 								<ul class="tab tab_on1">
-									<li><a href="#tab_box1" title="현재 선택된 메뉴"><span>대표계좌</span></a></li>
-									<li><a href="#tab_box2"><span>총잔액</span></a></li>
-									<li><a href="#tab_box3"><span>접속정보</span></a></li>
+									<li><a href="#tab_box1" title="현재 선택된 메뉴"><span>결재함</span></a></li>
+									<li><a href="#tab_box2"><span>대표계좌</span></a></li>
+									<li><a href="#tab_box3"><span>총잔액</span></a></li>
+									<li><a href="#tab_box4"><span>접속정보</span></a></li>
 								</ul>
 
-								<!-- s: 대표계좌 -->
+								<!-- s: 결재함 -->
 								<div class="tab_info" data-tab="tab_box1">
+									<div class="top">
+										<div class="l">
+											<h4 class="tit_payment">결제함</h4>
+										</div>
+										<div class="r">
+											<ul class="payment_check">
+												<li><span class="aut_on">확인</span></li>
+												<li><span class="aut_off">승인</span></li>
+												<li><span class="aut_on">전결</span></li>
+											</ul>
+										</div>
+									</div>
+									<div class="tab_cont">
+										<p class="my_payment_count">내 결재 대상수 <span>2</span>건</p>
+										<ul class="my_payment_list">
+											<li>
+												<a href="#;">
+													<div class="pay_date">
+														2021.01.16 12:25
+														<span>요청자(이길동)</span>
+													</div>
+													<div class="pay_money">
+														즉시이체
+														<strong>3,000,000원</strong>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="#;">
+													<div class="pay_date">
+														2021.01.16 12:25
+														<span>요청자(이길동)</span>
+													</div>
+													<div class="pay_money">
+														즉시이체
+														<strong>3,000,000원</strong>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="bk_acc_btn">
+										<a href="#;">간편결재관리</a>
+										<a href="#;">결재진행내역</a>
+									</div>
+								</div>
+								<!-- e: 결재함 -->
+
+								<!-- s: 대표계좌 -->
+								<div class="tab_info" data-tab="tab_box2" style="display: none;">
 									<div class="top">
 										<div class="r">
 											<span class="check_switch">
@@ -281,7 +334,7 @@
 								<!-- e: 대표계좌 -->
 
 								<!-- s: 총잔액 -->
-								<div class="tab_info" data-tab="tab_box2" style="display: none;">
+								<div class="tab_info" data-tab="tab_box3" style="display: none;">
 									<div class="top">
 										<div class="l">자산 총 잔액</div>
 										<div class="r">
@@ -329,12 +382,24 @@
 								<!-- e: 총잔액 -->
 
 								<!-- s: 접속정보 -->
-								<div class="tab_info" data-tab="tab_box3" style="display: none;">
+								<div class="tab_info" data-tab="tab_box4" style="display: none;">
 									<div class="tab_cont">
-										<div class="security_score">
+										<!-- 
+											보안수준 단계 별 이미지 class 
+											1. 안전 : security_safety
+											2. 보통 : security_normal
+											2. 주의 : security_danger
+										 -->
+										<div class="biz_security_score security_danger">
 											<p>
 												보안점수 <em>3</em>/14점
-												<span class="ml_3">보안수준 <strong>주의</strong></span>
+												<!-- 
+													보안수준 단계 별 폰트 색상 
+													1. 안전 : col_safety
+													2. 보통 : col_normal
+													2. 주의 : col_danger
+												-->
+												<span class="ml_3">보안수준 <strong class="col_danger">주의</strong></span>
 											</p>
 										</div>
 										<ul class="exp_list connect_list">
@@ -429,31 +494,25 @@
 					<div class="container">
 						<h3>
 							<span class="txt_bold">많이 찾는</span> 우체국금융상품
-							<span class="best_icon">BEST</span>
+							<span class="best_icon biz_best">BEST</span>
 						</h3>
 						<div class="finance_product">
 							<a href="#;">
-								<dl class="bg_dep">
-									<dt><span>예금</span></dt>
-									<dd>챔피언정기예금</dd>
+								<dl class="bg_biz_dep">
+									<dt><span>기업예금</span></dt>
+									<dd>페이든든+통장</dd>
 								</dl>
 							</a>
 							<a href="#;">
-								<dl class="bg_card">
-									<dt><span>카드</span></dt>
-									<dd>우체국 포미 하이브리드 체크카드(VISA)</dd>
+								<dl class="bg_biz_cor">
+									<dt><span>법인카드</span></dt>
+									<dd>성공partner 체크카드(VISA)</dd>
 								</dl>
 							</a>
 							<a href="#;">
-								<dl class="bg_fund">
+								<dl class="bg_biz_fund">
 									<dt><span>펀드</span></dt>
-									<dd>한국투자크레딧포커스ESG 증권자투자신탁1호(채권)C</dd>
-								</dl>
-							</a>
-							<a href="#;">
-								<dl class="bg_ins">
-									<dt><span>보험</span></dt>
-									<dd>(무)온라인어린이보험</dd>
+									<dd>한국투자크레딧포커스ESG<br>증권자투자신탁1호(채권)C</dd>
 								</dl>
 							</a>
 						</div>
@@ -486,12 +545,6 @@
 					</div>
 				</section>
 				<!-- e: 고객센터/APP -->
-
-				<!-- s: 우체국 보험 바로가기 -->
-				<div class="sec_link">
-					<a href="#;" title="새창으로 열림">더욱 든든한 <strong>우체국 보험 바로가기</strong></a>
-				</div>
-				<!-- e: 우체국 보험 바로가기 -->
 
 			</div>
 
