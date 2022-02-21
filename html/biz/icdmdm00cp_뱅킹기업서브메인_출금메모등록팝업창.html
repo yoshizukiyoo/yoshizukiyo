@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont"></h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+
+
+				<!-- Modal Popup : 입금 메모 등록 -->
+				<div class="modal_popup modal_sm show" data-popup="layer01">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">입금 메모 등록</h3>
+						</div>
+						<div class="popup_body">
+							<div class="input_items">
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-1">
+									<label for="chk1-1">급여</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-2" checked>
+									<label for="chk1-2">현금입금</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-3">
+									<label for="chk1-3">금융수입</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-4">
+									<label for="chk1-4">사업수입</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-5">
+									<label for="chk1-5">용돈</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-6">
+									<label for="chk1-6">연금</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-7" checked>
+									<label for="chk1-7">내 계좌이체</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk1-8">
+									<label for="chk1-8">가족이체</label>
+								</span>
+							</div>
+							<div class="mt_8">
+								<h4 class="tit2 mt_0">입금 메모 입력</h4>
+								<input type="text" class="tf txt_default" placeholder="입금 메모 입력" value="현금입금, 내 계좌이체"
+									style="width: 100%;">
+							</div>
+							<div class="btn_group mt_8">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer01');">등록</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 입금 메모 등록 -->
+
+				<!-- Modal Popup : 출금 메모 등록 -->
+				<div class="modal_popup modal_sm hide" data-popup="layer02">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h3 class="popup_tit">출금 메모 등록</h3>
+						</div>
+						<div class="popup_body">
+							<div class="input_items">
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-1">
+									<label for="chk2-1">카드결재</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-2" checked>
+									<label for="chk2-2">저축성이체</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-3">
+									<label for="chk2-3">대출상환</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-4">
+									<label for="chk2-4">통신비</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-5">
+									<label for="chk2-5">국민연금</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-6">
+									<label for="chk2-6">보험료</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-7">
+									<label for="chk2-7">내 계좌이체</label>
+								</span>
+								<span class="check_item type_btn02">
+									<input type="checkbox" name="" id="chk2-8">
+									<label for="chk2-8">공과금</label>
+								</span>
+							</div>
+							<div class="mt_8">
+								<h4 class="tit2 mt_0">출금 메모 입력</h4>
+								<input type="text" class="tf txt_default" placeholder="출금 메모 입력" value="저축성이체" style="width: 100%;">
+							</div>
+							<span class="check_item square mt_2">
+								<input type="checkbox" name="" id="chk3" checked>
+								<label for="chk3">현재 목록에서 받는이 정보가 같은 경우 동일한 메모 등록</label>
+							</span>
+							<div class="btn_group mt_8">
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layer02');">등록</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 출금 메모 등록 -->
+
+				<!-- s: alert 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="alert_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">안내</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_alert_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: alert 메세지 입력 영역 -->
+									<p>
+										alert 메세지 입력 영역
+									</p>
+									<!-- e: alert 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('alert_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: alert 팝업 -->
+
+				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h2 class="popup_tit">확인</h2>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										컨펌 메세지 입력 영역
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">취소</button>
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm_popup');">확인</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+
+	</div>
+</body>
+
+</html>
