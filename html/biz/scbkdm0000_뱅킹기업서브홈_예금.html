@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//아코디언 
+			$('.section_toggle .toggle_btn').on('click', function () {
+				var accCurrent = $(this);
+				if (accCurrent.hasClass('on')) {
+					accCurrent.removeClass('on').children().find('.sr_only').text('펼치기');
+					accCurrent.next().slideUp();
+				} else {
+					accCurrent.addClass('on').children().find('.sr_only').text('접기');
+					accCurrent.next().slideDown();
+				}
+			});
+
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_main.html" data-page-title="예금"></header>
+		<div id="content" class=" pb_8">
+			<!-- s: 본문 -->
+
+			<!-- s: 계좌 정보 : 예금 -->
+			<div class="acc_info_area acc_info_area_deposit biz">
+				<div class="bg"></div>
+				<div class="acc_box">
+					<div class="acc_box_header">
+						<div class="info">
+							<h2 class="tit">일반저축예금</h2>
+							<p class="acc_num">100081-02-024210</p>
+						</div>
+						<div class="toolbar">
+							<span class="check_switch check_switch_sm">
+								<input type="checkbox" id="chk_fast2" checked>
+								<label for="chk_fast2">빠른이체</label>
+							</span>
+							<a href="#;" class="pl_1 ml_1">
+								<i class="ico ico_submenu"></i>
+								<span class="sr_only">세뷰 메뉴</span>
+							</a>
+						</div>
+					</div>
+					<div class="acc_box_body">
+						<div class="inner">
+							<div class="balance_area">
+								<strong class="balance_num">75,678,900</strong><span class="txt_xl">원</span>
+							</div>
+							<div class="mt_2">
+								<a href="#;" class="btn btn_outline_gray btn_sm btn_round"
+									onclick="openModal('layerQuickTransfer1', this); return false;">김직원</a>
+								<a href="#;" class="btn btn_outline_gray btn_sm btn_round"
+									onclick="openModal('layerQuickTransfer1', this); return false;">이모모</a>
+								<a href="#;" class="btn btn_icon ml_1">
+									<i class="ico ico_plus_circle"></i>
+									<span class="sr_only">빠른이체 추가</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="acc_box_footer">
+						<div class="btn_area">
+							<a href="#;" class="btn">거래내역</a>
+							<a href="#;" class="btn">즉시이체</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 계좌 정보 : 예금 -->
+
+			<!-- s: 출금/입금내역 -->
+			<h3 class="spacing_tit1 txt_light"><strong>8월</strong> 입출금</h3>
+			<div class="section_gray section_toggle acc_toggle">
+				<button type="button" class="toggle_btn">
+					<h4 class="toggle_tit bg_lightyellow">
+						<strong><i class="ico ico_deposit"></i>입금</strong>
+						<em class="txt_blue">+ 12,500,000 <span class="txt_lg">원</span></em>
+						<span class="toggle_icon">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">닫기</span>
+						</span>
+					</h4>
+				</button>
+				<div class="toggle_cont">
+					<ul class="list2">
+						<li>
+							<div class="flex_group">
+								<span class="date">08.06 09:08</span>
+								<strong class="name_short">홍길동</strong>
+								<em class="price">10,800,000<span>원</span></em>
+							</div>
+							<!-- 메모 있을경우 .on-->
+							<div class="memo_area">
+								<a href="#" onclick="openModal('layerOption', this); return false;">
+									<p>메모없음</p>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="flex_group">
+								<span class="date">08.06 09:08</span>
+								<strong class="name_short">홍길동</strong>
+								<em class="price">10,800,000<span>원</span></em>
+							</div>
+							<!-- 메모 있을경우 .on-->
+							<div class="memo_area on">
+								<a href="#" onclick="openModal('layerOption', this); return false;">
+									<p>급여</p>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="section_gray section_toggle acc_toggle">
+				<button type="button" class="toggle_btn">
+					<h4 class="toggle_tit bg_lightblue">
+						<strong><i class="ico ico_withdraw"></i>출금</strong>
+						<em class="txt_red">- 12,500,000 <span class="txt_lg">원</span></em>
+						<span class="toggle_icon">
+							<i class="ico ico_chevron_down_md"></i>
+							<span class="sr_only">닫기</span>
+						</span>
+					</h4>
+				</button>
+				<div class="toggle_cont">
+					<ul class="list2">
+						<li>
+							<div class="flex_group">
+								<span class="date">08.06 09:08</span>
+								<strong class="name_short">홍길동</strong>
+								<em class="price">10,800,000<span>원</span></em>
+							</div>
+							<!-- 메모 있을경우 .on-->
+							<div class="memo_area">
+								<a href="#" onclick="openModal('layerOption', this); return false;">
+									<p>메모없음</p>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="flex_group">
+								<span class="date">08.06 09:08</span>
+								<strong class="name_short">홍길동</strong>
+								<em class="price">10,800,000<span>원</span></em>
+							</div>
+							<!-- 메모 있을경우 .on-->
+							<div class="memo_area on">
+								<a href="#" onclick="openModal('layerOption', this); return false;">
+									<p>급여</p>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="container pt_1">
+				<div class="btn_group btn_group_flex">
+					<a href="#" class="btn btn_lg btn_outline_gray  txt_black"><i class="ico ico_search_acc_black mr_2"></i>전체 계좌
+						조회</a>
+				</div>
+			</div>
+			<!-- e: 출금/입금내역 -->
+
+			<!-- s: 퀵바 로딩 _inc_bottom_quickbar.html -->
+			<div class="bottom_quickbar"></div>
+			<!-- e: 퀵바 로딩 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
