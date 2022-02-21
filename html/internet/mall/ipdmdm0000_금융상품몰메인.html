@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 로그인 후 알림 레이어 컨트롤
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
+			// 프로모션 영역 슬라이드 기능
+			var nums = 0;
+			var $mainRollingArea = $('.main_promotion_slide');
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_info .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_info .nums .bar span").css({
+						width: (100 / nums) + "%"
+					})
+					nums = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_info .nums strong").text("0" + (slick + 1));
+				$(".rolling_info .nums .bar span").css({
+					width: ((100 / nums) * (slick + 1)) + "%"
+				})
+			});
+
+			$(".rolling_info").append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_info .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문-->
+			<div class="main_cont">
+				<h2 class="sr_only">메인 본문</h2>
+				<div class="sec_home mall_sec01">
+
+					<!-- s: 로그인 후 노출 -->
+					<div class="logged_info_layer" style="display:none;">
+						<div class="container">
+							<div class="info_cont">
+								<div class="status_info">
+									<div class="l">
+										<div class="count">
+											진행 <span>1</span>건
+										</div>
+										<div class="current_status">
+											<div class="date_time">
+												<span>모바일 웹</span>
+												2022.01.18 12:33:57
+											</div>
+											<div class="status">카드 발급 신청 진행 중 <strong>우체국 다드림 하이브리드 체크</strong></div>
+										</div>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn btn_md btn_outline_default">관련 상담하기</a>
+										<a href="#;" class="btn btn_md btn_primary btn_talk">이어어 상담하기</a>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_info_layer">
+								<i class="ico ico_close_sm"></i>
+								<span class="sr_only">알림 레이어 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- e: 로그인 후 노출 -->
+
+					<div class="main_promotion">
+						<h3 class="sr_only">프로모션</h3>
+						<div class="main_promotion_slide">
+							<div><a href="#;"><img src="/resources/img/main/img_mall_promotion.jpg" alt="이미지 대체텍스트 입력"></a></div>
+						</div>
+						<div class="rolling_info">
+							<div class="nums">
+								<strong>01</strong><span></span>
+								<em class="bar">
+									<span></span>
+								</em>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- e: 메인 본문-->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
