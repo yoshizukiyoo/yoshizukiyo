@@ -34,7 +34,7 @@
 
 			// 프로모션 영역 슬라이드 기능
 			var nums = 0;
-			var $mainRollingArea = $('.main_promotion_slide');
+			var $mainRollingArea = $('.mall_promotion_slide');
 			$mainRollingArea.slick({
 				arrows: false,
 				draggable: false,
@@ -47,25 +47,55 @@
 				autoplay: true,
 				autoplaySpeed: 3000,
 				customPaging: function (slick, index) {
-					$(".rolling_info .nums > span").text("0" + slick.slideCount);
+					$(".rolling_visual .nums > span").text("0" + slick.slideCount);
 
-					$(".rolling_info .nums .bar span").css({
+					$(".rolling_visual .nums .bar span").css({
 						width: (100 / nums) + "%"
 					})
 					nums = slick.slideCount;
 
 				}
 			}).on('afterChange', function (event, index, slick, currentSlide) {
-				$(".rolling_info .nums strong").text("0" + (slick + 1));
-				$(".rolling_info .nums .bar span").css({
+				$(".rolling_visual .nums strong").text("0" + (slick + 1));
+				$(".rolling_visual .nums .bar span").css({
 					width: ((100 / nums) * (slick + 1)) + "%"
 				})
 			});
 
-			$(".rolling_info").append(
+			// 팝업존 영역 슬라이드 기능
+			var nums2 = 0;
+			var $popRollingArea = $('.mall_popzone_slide');
+			$popRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_pop .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_pop .nums .bar span").css({
+						width: (100 / nums2) + "%"
+					})
+					nums2 = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_pop .nums strong").text("0" + (slick + 1));
+				$(".rolling_pop .nums .bar span").css({
+					width: ((100 / nums2) * (slick + 1)) + "%"
+				})
+			});
+
+			$(".rolling_visual, .rolling_pop").append(
 				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
 			);
-			$(".rolling_info .btn_ctrl button").on('click', function () {
+			$(".rolling_visual .btn_ctrl button").on('click', function () {
 				if (!$(this).hasClass("btn_play")) {
 					$mainRollingArea.slick('slickPause');
 					$(this).removeClass("btn_pause").addClass("btn_play");
@@ -76,6 +106,19 @@
 					$(this).text("Play");
 				}
 			});
+			$(".rolling_pop .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$popRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$popRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+
 		})
 	</script>
 </head>
@@ -89,7 +132,7 @@
 			<!-- s: 메인 본문-->
 			<div class="main_cont">
 				<h2 class="sr_only">메인 본문</h2>
-				<div class="sec_home mall_sec01">
+				<section class="sec_home mall_first">
 
 					<!-- s: 로그인 후 노출 -->
 					<div class="logged_info_layer" style="display:none;">
@@ -122,12 +165,13 @@
 					</div>
 					<!-- e: 로그인 후 노출 -->
 
-					<div class="main_promotion">
+					<div class="mall_main_promotion">
 						<h3 class="sr_only">프로모션</h3>
-						<div class="main_promotion_slide">
+						<div class="mall_promotion_slide">
+							<div><a href="#;"><img src="/resources/img/main/img_mall_promotion.jpg" alt="이미지 대체텍스트 입력"></a></div>
 							<div><a href="#;"><img src="/resources/img/main/img_mall_promotion.jpg" alt="이미지 대체텍스트 입력"></a></div>
 						</div>
-						<div class="rolling_info">
+						<div class="rolling_info rolling_visual">
 							<div class="nums">
 								<strong>01</strong><span></span>
 								<em class="bar">
@@ -137,7 +181,150 @@
 						</div>
 					</div>
 
-				</div>
+					<div class="best_promotion container">
+						<div class="best">판매량 <strong>BEST 1</strong></div>
+						<ul>
+							<li class="bg_dep">
+								<a href="#;">
+									<h4>예금</h4>
+									<p>챔피언정기예금</p>
+								</a>
+							</li>
+							<li class="bg_ins">
+								<a href="#;">
+									<h4>보험</h4>
+									<p>(무)온라인어린이보험</p>
+								</a>
+							</li>
+							<li class="bg_card">
+								<a href="#;">
+									<h4>카드</h4>
+									<p>우체국 포미 하이브리드 체크카드(VISA)</p>
+								</a>
+							</li>
+							<li class="bg_fund">
+								<a href="#;">
+									<h4>펀드</h4>
+									<p>한국투자크레딧포커스 ESG증권자투자신탁1호(채권)C</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="mall_theme">
+					<div class="container">
+						<h3>우체국금융 <strong>테마 추천</strong></h3>
+						<ul>
+							<li class="bg01">
+								<a href="#;">
+									<span class="txt_gray">ft. 생애주기</span>
+									<h4>재테크시간표</h4>
+									<p class="mt_4">금융상품도 시간과 상황에 따라<br>
+										<span>생애주기 맞춤 <strong>재테크 시간표</strong></span>
+									</p>
+								</a>
+							</li>
+							<li class="bg02">
+								<a href="#;">
+									<span class="txt_gray">우정군’s</span>
+									<h4>소소한 행복찾기</h4>
+									<p class="mt_4">일상 속 소소한 행복을 위한<br>
+										<span><strong>금융 여정</strong> 따라가기</span>
+									</p>
+								</a>
+							</li>
+							<li class="bg03">
+								<a href="#;">
+									<span class="txt_gray">믿을 수 있는 금융생활 동반자</span>
+									<h4>우체국 공적 금융이야기</h4>
+									<p class="mt_4">국영금융기관으로서 우체국만의<br>
+										<span>특별한 <strong>공적 상품</strong>들 소개</span>
+									</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="mall_search">
+					<div class="container">
+						<div class="mall_search_box">
+							<div class="l">
+								<h3 class="find">상품찾기</h3>
+								<div class="product_search mt_4">
+									<input type="text" title="상품 입력" placeholder="상품을 검색하세요.">
+									<button type="button"><span class="sr_only">검색</span></button>
+								</div>
+							</div>
+							<div class="r">
+								<h3 class="tag"><a href="#;">상품태그</a></h3>
+								<ul class="mt_2">
+									<li><a href="#;">#여행자금</a></li>
+									<li><a href="#;">#모임회비</a></li>
+									<li><a href="#;">#여가생활</a></li>
+									<li><a href="#;">#여럿이함께</a></li>
+									<li><a href="#;">#매일</a></li>
+									<li><a href="#;">#목표설정</a></li>
+									<li><a href="#;">#우리아기</a></li>
+									<li><a href="#;">#취업준비생</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="mall_search_result">
+							<div class="txt_r txt_sm txt_gray">
+								<span class="mr_2">금리 기준일</span>2021.05.12 16:18:38</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="mall_news">
+					<div class="container">
+						<div class="news_con">
+							<div class="tit">
+								<h3>새소식</h3>
+								<a href="#;">더보기</a>
+							</div>
+							<ul>
+								<li>
+									<a href="#;">
+										<h4>부산시 제로페이 페이백 이벤트 조기 종료 안내</h4>
+										<p>제로페이 부산 페이백 이벤트 예산이 조기 소진됨에 따라 페이백 이벤트가 종료됩니다.</p>
+										<span>2021.05.26 09:45:23</span>
+									</a>
+								</li>
+								<li>
+									<a href="#;">
+										<h4>조폐공사 KOMSCO 신뢰플랫폼 이전 구축 작업에 따른 지역사랑상품권 서비스 중단 안내</h4>
+										<p>작업내용: 조폐공사 KOMSCO 신뢰플랫폼 이전 작업(민간 보안 클라우드 -> 공사 데이터 센터)</p>
+										<span>2021.05.07 14:05:07</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="pop_con">
+							<div class="tit">
+								<h3>이벤트 혜택 <span>놓치지 마세요</span></h3>
+								<div class="rolling_info rolling_pop">
+									<div class="nums">
+										<strong>01</strong><span></span>
+										<em class="bar">
+											<span></span>
+										</em>
+									</div>
+								</div>
+							</div>
+							<div class="mall_popzone_slide">
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
 			</div>
 			<!-- e: 메인 본문-->
 		</article>
