@@ -217,6 +217,17 @@
 	margin-top: 25px;
 
 	.container {
+
+		.d_flex {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			a {
+				font-size: 13px;
+			}
+		}
+
 		h3 {
 			position: relative;
 
@@ -285,35 +296,187 @@
 
 /* 기업 메인 */
 /* 결재함 */
-.approv_box {
-	border-radius: 12px;
-	background-color: #fff;
-	box-shadow: 2px 7px 20px 0px rgba(0, 0, 0, 0.08);
-	margin-bottom: 15px;
+.acc_info_area {
+	.approv_box {
+		border-radius: 12px;
+		background-color: #fff;
+		box-shadow: 2px 7px 20px 0px rgba(0, 0, 0, 0.08);
+		margin-bottom: 15px;
+		padding: 0;
 
-	.approv_box_header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		height: 50px;
-		padding: 0 18px;
-
-		.left {
+		.approv_box_header {
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
+			height: 50px;
+			padding: 0 18px;
+
+			.left {
+				display: flex;
+				align-items: center;
+				height: 20px;
+
+				h3 {
+					line-height: 20px;
+					font-weight: 500;
+					display: inline-block;
+
+					.ico_paymentbox {
+						margin-bottom: 2px;
+					}
+
+					.alarm_circle {
+						background-color: $black;
+						color: $white;
+						border-radius: 15px;
+						width: 20px;
+						line-height: 20px;
+						text-align: center;
+						display: inline-block;
+						font-size: 14px;
+					}
+				}
+
+				.box_state {
+
+					span {
+						width: 35px;
+						line-height: 20px;
+						border-radius: 3px;
+						padding: 0 7px;
+						font-weight: 300;
+						font-size: 11px;
+						display: inline-block;
+					}
+
+					.state_default {
+						background-color: #ffe9a6;
+						color: $black;
+					}
+
+					.state_gray {
+						background-color: #f3f3f3;
+						color: $gray;
+					}
+				}
+			}
+
+			.tit {
+				margin-right: 10px;
+				font-size: 16px;
+				font-weight: 500;
+			}
 		}
 
-		.tit {
-			margin-right: 10px;
-			font-size: 16px;
-			font-weight: 500;
-		}
-	}
+		.approv_box_body {
+			display: none;
+			border-top: 1px solid #ddd;
+			padding: 20px 18px 0;
 
-	.approv_box_body {
-		display: none;
-		border-top: 1px solid #ddd;
-		padding: 20px 18px 25px;
+			.layer_details {
+				border-radius: 0 0 8px 8px;
+
+				.tit {
+					font-size: 18px;
+					margin-bottom: 15px;
+					font-weight: 300;
+				}
+
+				.btm_toggle {
+					position: relative;
+					max-height: 190px;
+					overflow: hidden;
+
+					&.active {
+						max-height: none;
+						padding-bottom: 30px;
+
+						.btn_toggle_more {
+							background-image:url(#{$url-img}/content/ico_btm_toggle_on.png);
+						}
+					}
+
+					&:after {
+						content: '';
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 30px;
+						background: #fff;
+					}
+
+					.btn_toggle_more {
+						position: absolute;
+						bottom: 0;
+						left: 50%;
+						margin-left: -25px;
+						width: 50px;
+						height: 26px;
+						background-image:url(#{$url-img}/content/ico_btm_toggle.png);
+						background-repeat: no-repeat;
+						background-position: 0 0;
+						background-size: 50px;
+						z-index: 1;
+					}
+				}
+			}
+
+			.payment_list {
+				li {
+					padding-top: 20px;
+					border-top: 1px solid #f2f2f2;
+					margin-top: 20px;
+
+					&:first-child {
+						border: 0;
+						padding-top: 0;
+						margin-top: 0;
+					}
+
+					a {
+						display: flex;
+						background-image: url(#{$url-img}/main/ico_arrow_sm.png);
+						background-position: right center;
+						background-repeat: no-repeat;
+						background-size: 12px 20px;
+						padding-right: 30px;
+
+						.left {
+							flex: 1 1 50%;
+
+							.data {
+								display: block;
+								font-size: 12px;
+								color: $gray;
+							}
+
+							p {
+								font-size: 16px;
+								color: $darkgray;
+							}
+						}
+
+						.right {
+							flex: 1 1 50%;
+							text-align: right;
+
+							.requester {
+								display: block;
+								font-size: 12px;
+								color: $gray;
+							}
+
+							.amount {
+								display: block;
+								font-size: 16px;
+								color: $darkgray
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
