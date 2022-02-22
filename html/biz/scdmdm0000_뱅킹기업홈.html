@@ -42,6 +42,35 @@
 				}
 			});
 
+			// 결재함 상세 확인
+			approveBoxToggle();
+			$('#chk_approv_box').change(function () {
+				approveBoxToggle();
+			});
+
+			function approveBoxToggle() {
+				if ($('#chk_approv_box').prop('checked')) {
+					$('.approv_box_body').slideDown('fast');
+				} else {
+					$('.approv_box_body').slideUp('fast');
+				}
+			}
+
+			// 결재함 상세 확인
+			approveBoxToggle();
+			$('#chk_approv_box').change(function () {
+				approveBoxToggle();
+			});
+
+			function approveBoxToggle() {
+				if ($('#chk_approv_box').prop('checked')) {
+					$('.approv_box_body').slideDown('fast');
+				} else {
+					$('.approv_box_body').slideUp('fast');
+				}
+			}
+
+
 			// 자주쓰는 메뉴
 			favorMenuControl();
 
@@ -65,25 +94,6 @@
 				$(this).parent().toggleClass('active');
 			})
 		});
-
-		//결제함 스와이프 버튼
-		function setQuickTransferSwitchtype() {
-			if ($('.acc_info_area .check_quick_transfer_type').length) {
-				$('.acc_info_area .check_quick_transfer_type').each(function () {
-					quickpaymentToggle($(this));
-				}).change(function () {
-					quickpaymentToggle($(this));
-				});
-			}
-		}
-
-		function quickpaymentToggle(_obj) {
-			if ($('input', _obj).prop('checked')) {
-				$(_obj).closest('.acc_info_area').find('.add_quick_type').show();
-			} else {
-				$(_obj).closest('.acc_info_area').find('.add_quick_type').hide();
-			}
-		}
 	</script>
 </head>
 
@@ -220,70 +230,77 @@
 					<section class="acc_info_area acc_info_area_home">
 
 						<!-- s: 결제함 -->
-						<div class="acc_box mb_3">
-							<div class="layer_paymentbox">
-								<div class="area_payment">
-									<strong class="mr_2">
+						<div class="approv_box acc_box pb_0 mb_3">
+
+							<div class="approv_box_header">
+								<div class="left">
+									<h3 class="tit">
 										<i class="ico ico_paymentbox"></i>
 										결제함
 										<span class="alarm_circle">2</span>
-									</strong>
+									</h3>
 									<div class="box_state">
 										<span class="state_default">확인</span>
 										<span class="state_gray">승인</span>
 										<span class="state_default">전결</span>
 									</div>
 								</div>
-								<!-- 텍스트 미노출형 (주로 설정 화면에 사용) -->
-								<span class="check_switch check_switch_sm check_quick_transfer_type">
-									<input type="checkbox" id="inputCheckSwitchSm1" checked>
-									<label for="inputCheckSwitchSm1">
-										<span class="sr_only">결제함</span>
-									</label>
-								</span>
+								<div class="right">
+									<span class="check_switch check_switch_sm">
+										<input type="checkbox" id="chk_approv_box" checked>
+										<label for="chk_approv_box">
+											<span class="sr_only">결재함 상세 확인</span>
+										</label>
+									</span>
+								</div>
 							</div>
-							<div class="layer_details btm_toggle add_quick_type">
-								<strong>내 결제대상 <span class="txt_red">2</span>건</strong>
-								<ul class="payment_list">
-									<li>
-										<a href="#">
-											<div class="left">
-												<span class="data">2021.01.16 12:25</span>
-												<p>급여이체</p>
-											</div>
-											<div class="right">
-												<span class="requester">요청자(김직원)</span>
-												<strong class="amount">13,000,000원</strong>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<div class="left">
-												<span class="data">2021.01.16 12:25</span>
-												<p>급여이체</p>
-											</div>
-											<div class="right">
-												<span class="requester">요청자(김직원)</span>
-												<strong class="amount">13,000,000원</strong>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<div class="left">
-												<span class="data">2021.01.16 12:25</span>
-												<p>급여이체</p>
-											</div>
-											<div class="right">
-												<span class="requester">요청자(김직원)</span>
-												<strong class="amount">13,000,000원</strong>
-											</div>
-										</a>
-									</li>
-								</ul>
-								<a href="#;" class="btn_toggle_more"><span class="sr_only">더보기</span></a>
+							<div class="approv_box_body">
+								<div class="layer_details">
+									<dt class="tit">내 결제대상 <span class="txt_red">2</span>건</dt>
+									<dd class="btm_toggle">
+										<ul class="payment_list">
+											<li>
+												<a href="#">
+													<div class="left">
+														<span class="data">2021.01.16 12:25</span>
+														<p>급여이체</p>
+													</div>
+													<div class="right">
+														<span class="requester">요청자(김직원)</span>
+														<strong class="amount">13,000,000원</strong>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<div class="left">
+														<span class="data">2021.01.16 12:25</span>
+														<p>급여이체</p>
+													</div>
+													<div class="right">
+														<span class="requester">요청자(김직원)</span>
+														<strong class="amount">13,000,000원</strong>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<div class="left">
+														<span class="data">2021.01.16 12:25</span>
+														<p>급여이체</p>
+													</div>
+													<div class="right">
+														<span class="requester">요청자(김직원)</span>
+														<strong class="amount">13,000,000원</strong>
+													</div>
+												</a>
+											</li>
+										</ul>
+										<a href="#;" class="btn_toggle_more"><span class="sr_only">더보기</span></a>
+									</dd>
+								</div>
 							</div>
+
 						</div>
 
 						<!-- e: 결제함 -->
