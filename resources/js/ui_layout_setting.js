@@ -497,10 +497,15 @@ function scrVertical(_obj) {
 	})
 }
 
-$(document).on('click', '.untact_menu > li > a', function (e) {
-	e.preventDefault();
-	$('.untact_menu > li > a').not($(this)).removeClass('active').siblings('.detail').slideUp('fast');
-	$(this).toggleClass('active').siblings('.detail').slideToggle('fast');
+$(document).on('click', '.untact_menu > li > .toggle_tit', function () {
+	var accCurrent = $(this);
+	if (accCurrent.hasClass('on')) {
+		accCurrent.removeClass('on').children().find('.sr_only').text('펼치기');
+		accCurrent.next().slideUp();
+	} else {
+		accCurrent.addClass('on').children().find('.sr_only').text('접기');
+		accCurrent.next().slideDown();
+	}
 })
 
 // 레이어 옵션선택 활성화항목 접근성 개선
