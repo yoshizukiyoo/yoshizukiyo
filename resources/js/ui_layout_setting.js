@@ -303,6 +303,11 @@ function openModal(_target, _opener) {
 	if (tg.hasClass('modal_toggle')) {
 		tg.closest('.bottom_toggle').find('.btn_toggle').addClass('active');
 	}
+
+	// [접근성] 헤더 내 모달 닫기 버튼 위치 변경
+	if (tg.hasClass('popup') && $('.btn_close_popup', tg).length) {
+		$('.btn_close_popup', tg).appendTo($('.popup_inner', tg));
+	}
 }
 
 function closeModal(_target) {
