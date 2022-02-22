@@ -4996,16 +4996,6 @@ input[type=radio].sr_only:focus:focus-visible + label, input[type=checkbox].sr_o
   outline: 0;
 }
 
-.modal_popup.hide .modal_popup .popup_inner {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
-}
-
-.modal_popup.show .modal_popup .popup_inner {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
 .modal_popup.hide {
   opacity: 0;
   visibility: hidden;
@@ -5186,6 +5176,75 @@ input[type=radio].sr_only:focus:focus-visible + label, input[type=checkbox].sr_o
   display: none;
 }
 
+.modal_popup.modal_half_sheet {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.modal_popup.modal_half_sheet.hide .popup_inner {
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.modal_popup.modal_half_sheet.show .popup_inner {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.modal_popup.modal_half_sheet .popup_inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+
+.modal_popup.modal_half_sheet .popup_header {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.modal_popup.modal_half_sheet .popup_header .popup_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  padding-right: 50px;
+  padding-left: 20px;
+  height: 56px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.modal_popup.modal_half_sheet .popup_body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.modal_popup.modal_half_sheet .popup_footer {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
 .modal_popup.modal_toggle {
   position: relative;
   display: block;
@@ -5312,6 +5371,77 @@ input[type=radio].sr_only:focus:focus-visible + label, input[type=checkbox].sr_o
 
 .opt_list_account .btn.active .bank {
   background-color: #fff;
+}
+
+/* 예금 하프시트*/
+.modal_deposit_manage .popup_header {
+  display: block;
+  height: auto;
+  padding: 0;
+}
+
+.modal_deposit_manage .popup_body .lnb_area {
+  padding: 0 20px 10px 15px;
+}
+
+.modal_deposit_manage .popup_body .lnb_list {
+  padding: 0;
+}
+
+.modal_deposit_manage .popup_body .lnb_list > li a {
+  font-weight: 200;
+}
+
+.modal_deposit_manage .popup_body .lnb_list > li:first-child {
+  margin-top: 10px;
+}
+
+.modal_deposit_manage .section_gray {
+  border-color: #f3f3f3;
+}
+
+.modal_deposit_manage .set_theme {
+  margin: -7.5px -8px;
+}
+
+.modal_deposit_manage .set_theme ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.modal_deposit_manage .set_theme ul li {
+  margin: 7.5px 8px;
+}
+
+.modal_deposit_manage .set_theme .btn_theme {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 17.5px;
+  border: 0;
+  background-color: currentColor;
+}
+
+.modal_deposit_manage .set_theme .btn_theme_light {
+  border: 1px solid #ddd;
+}
+
+.modal_deposit_manage .set_theme .btn_theme.on:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12.5px;
+  height: 8.5px;
+  background: url(/resources/img/content/ico_check_sm.png) 0 0 no-repeat;
+  background-size: cover;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .tooltip {
