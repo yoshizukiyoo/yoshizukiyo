@@ -16,9 +16,27 @@ $(function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
 	}
-	$('.quick_menu_wrap').load('/html/_inc-quickmenu.html .quick_menu_wrap > *', function () {
-		// if ($.isFunction(window.scrollbar)) scrollbar();
-	});
+	if ($('.quick_menu_wrap').data('inc') == undefined) {
+		$('.quick_menu_wrap').load('/html/_inc-quickmenu.html .quick_menu_wrap > *', function () {
+			// if ($.isFunction(window.scrollbar)) scrollbar();
+		});
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-dep-quickmenu.html') {
+		$('.quick_menu_wrap').load('/html/_inc-dep-quickmenu.html .quick_menu_wrap > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-dep-quickmenu_logout.html') {
+		$('.quick_menu_wrap').load('/html/_inc-dep-quickmenu_logout.html .quick_menu_wrap > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-card-quickmenu.html') {
+		$('.quick_menu_wrap').load('/html/_inc-card-quickmenu.html .quick_menu_wrap > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-fund-quickmenu.html') {
+		$('.quick_menu_wrap').load('/html/_inc-fund-quickmenu.html .quick_menu_wrap > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	}
 	$('.breadcrumb').load('/html/_inc-breadcrumb.html .breadcrumb > *', function () {
 		if ($.isFunction(window.breadcrumbSetting)) breadcrumbSetting();
 	});
