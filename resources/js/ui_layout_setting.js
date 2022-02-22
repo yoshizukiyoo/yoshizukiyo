@@ -95,6 +95,7 @@ $(function () {
 		inputStatus();
 		quickNavSettingLayer();
 		setQuickTransferSwitch();
+		setQuickTransferSwitchtype();
 		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 비주얼 배너 슬라이더
+			$('.visual_banner .inner_slider').each(function () {
+				if ($('.slide_item').length > 1) {
+					$(this).not('.slick-initialized').slick({
+						fade: false,
+						autoplay: false,
+						speed: 1000,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						variableWidth: false,
+						infinite: true,
+						arrows: false,
+						dots: true,
+						dotsClass: 'slick-dots',
+						accessibility: false,
+					});
+				}
+			});
+
+			// 자주쓰는 메뉴
+			favorMenuControl();
+
+			// 이벤트 배너 슬라이더
+			$('.event_slide').slick({
+				fade: false,
+				autoplay: false,
+				speed: 1000,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				variableWidth: true,
+				infinite: true,
+				arrows: false,
+				dots: true,
+				// dotsClass: 'slick-dots',
+				accessibility: false,
+			});
+
+			// 더보기 버튼
+			$('.btn_toggle_more').click(function () {
+				$(this).parent().toggleClass('active');
+			})
+		});
+
+		//결제함 스와이프 버튼
+		function setQuickTransferSwitchtype() {
+			if ($('.acc_info_area .check_quick_transfer_type').length) {
+				$('.acc_info_area .check_quick_transfer_type').each(function () {
+					quickpaymentToggle($(this));
+				}).change(function () {
+					quickpaymentToggle($(this));
+				});
+			}
+		}
+
+		function quickpaymentToggle(_obj) {
+			if ($('input', _obj).prop('checked')) {
+				$(_obj).closest('.acc_info_area').find('.add_quick_type').show();
+			} else {
+				$(_obj).closest('.acc_info_area').find('.add_quick_type').hide();
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_main.html" data-page-title="우체국 개인 스마트뱅킹"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<section class="sec_home">
+				<h2 class="sr_only">개인 홈</h2>
+
+				<!-- s: 로그인 전 -->
+				<div>
+					<!-- s: 인사말 -->
+					<div class="welcome_info">
+						<div class="container">
+							<p class="pt_1">
+								<i class="ico ico_quot_blue mr_1"></i>
+								고객님 오늘도 행복한 하루 되세요!
+							</p>
+						</div>
+					</div>
+					<!-- e: 인사말 -->
+
+					<!-- s: 비주얼배너 슬라이더 -->
+					<div class="visual_banner">
+						<div class="inner_slider">
+
+							<a href="#" class="slide_item">
+								<img src="/resources/img/main/smart_main_visual_01.png"
+									alt="우체국 기업뱅킹이 스마트뱅킹을 시작합니다. 기업 스마트뱅킹 이용 신청 후 서비스를 이용해 보세요.">
+							</a>
+
+							<a href="#" class="slide_item">
+								<img src="/resources/img/main/smart_main_visual_01.png"
+									alt="우체국 기업뱅킹이 스마트뱅킹을 시작합니다. 기업 스마트뱅킹 이용 신청 후 서비스를 이용해 보세요.">
+							</a>
+
+							<a href="#" class="slide_item">
+								<img src="/resources/img/main/smart_main_visual_01.png"
+									alt="우체국 기업뱅킹이 스마트뱅킹을 시작합니다. 기업 스마트뱅킹 이용 신청 후 서비스를 이용해 보세요.">
+							</a>
+						</div>
+					</div>
+					<!-- e: 비주얼배너 슬라이더 -->
+				</div>
+				<!-- e: 로그인 전 -->
+
+				<!-- s: 로그인 후 -->
+				<div>
+					<!-- s: 인사말 -->
+					<div class="welcome_info after_login">
+						<div class="container">
+							<p class="welcome">
+								<i class="ico ico_mailbox_md mr_1"></i>
+								<span class="name">(주)모모산업님</span> 안녕하세요!
+							</p>
+							<p class="last_access">최근접속시간 : 2022-01.22 16:45</p>
+						</div>
+					</div>
+					<!-- e: 인사말 -->
+
+					<!-- s: 알람 레이어 -->
+
+					<div class="layer_top_alarm">
+						<!-- s: 알람 타입1 -->
+						<div class="container">
+							<div class="alarm_cont">
+								<!-- s: 알람 레이어 본문 -->
+								<div class="icon">
+									<i class="ico ico_alarm"></i>
+									<h3 class="sr_only">알람</h3>
+								</div>
+								<div class="cont">
+									<div class="status">
+										<p>신청 진행중 <span class="txt_red">1</span>건</p>
+										<a href="#;" class="btn btn_xs btn_round btn_white ml_1">카드발급신청</a>
+									</div>
+									<p class="subject">
+										<strong>우체국 어디서나 하이브리드 체크카드(VISA)</strong>
+									</p>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_md btn_outline_default btn_round">
+											<span>관련 상담 신청</span>
+										</a>
+										<a href="#;" class="btn btn_md btn_primary btn_round ml_1">
+											<i class="ico ico_comment_white"></i>
+											<span>이어서 진행</span>
+										</a>
+									</div>
+								</div>
+								<!-- e: 알람 레이어 본문 -->
+							</div>
+							<button type="button" class="btn btn_icon btn_close_alarm"
+								onclick="$(this).closest('.layer_top_alarm').slideUp('fast');">
+								<i class="ico ico_close"></i>
+								<span class="sr_only">알람 닫기</span>
+							</button>
+						</div>
+						<!-- e: 알람 타입1 -->
+					</div>
+
+					<div class="layer_top_alarm bg_lightgray">
+						<!-- s: 알람 타입2 -->
+						<div class="container">
+							<div class="alarm_cont">
+								<!-- s: 알람 레이어 본문 -->
+								<div class="cont">
+									<p class="subject txt_md pr_6 txt_normal">
+										(주)모모산업님 간편설정을 하시면 Push alarm을
+										통해 빠른 결재가 가능합니다.
+									</p>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_md btn_outline_default btn_round">
+											<span>간편결제설정</span>
+										</a>
+									</div>
+								</div>
+								<!-- e: 알람 레이어 본문 -->
+							</div>
+							<button type="button" class="btn btn_icon btn_close_alarm"
+								onclick="$(this).closest('.layer_top_alarm').slideUp('fast');">
+								<i class="ico ico_close"></i>
+								<span class="sr_only">알람 닫기</span>
+							</button>
+						</div>
+						<!-- e: 알람 타입2 -->
+					</div>
+
+					<!-- e: 알람 레이어 -->
+
+					<!-- s: 계좌 정보 : 홈 -->
+					<section class="acc_info_area acc_info_area_home">
+
+						<!-- s: 결제함 -->
+						<div class="acc_box mb_3">
+							<div class="layer_paymentbox">
+								<div class="area_payment">
+									<strong class="mr_2">
+										<i class="ico ico_paymentbox"></i>
+										결제함
+										<span class="alarm_circle">2</span>
+									</strong>
+									<div class="box_state">
+										<span class="state_default">확인</span>
+										<span class="state_gray">승인</span>
+										<span class="state_default">전결</span>
+									</div>
+								</div>
+								<!-- 텍스트 미노출형 (주로 설정 화면에 사용) -->
+								<span class="check_switch check_switch_sm check_quick_transfer_type">
+									<input type="checkbox" id="inputCheckSwitchSm1" checked>
+									<label for="inputCheckSwitchSm1">
+										<span class="sr_only">결제함</span>
+									</label>
+								</span>
+							</div>
+							<div class="layer_details btm_toggle add_quick_type">
+								<strong>내 결제대상 <span class="txt_red">2</span>건</strong>
+								<ul class="payment_list">
+									<li>
+										<a href="#">
+											<div class="left">
+												<span class="data">2021.01.16 12:25</span>
+												<p>급여이체</p>
+											</div>
+											<div class="right">
+												<span class="requester">요청자(김직원)</span>
+												<strong class="amount">13,000,000원</strong>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="left">
+												<span class="data">2021.01.16 12:25</span>
+												<p>급여이체</p>
+											</div>
+											<div class="right">
+												<span class="requester">요청자(김직원)</span>
+												<strong class="amount">13,000,000원</strong>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="left">
+												<span class="data">2021.01.16 12:25</span>
+												<p>급여이체</p>
+											</div>
+											<div class="right">
+												<span class="requester">요청자(김직원)</span>
+												<strong class="amount">13,000,000원</strong>
+											</div>
+										</a>
+									</li>
+								</ul>
+								<a href="#;" class="btn_toggle_more"><span class="sr_only">더보기</span></a>
+							</div>
+						</div>
+
+						<!-- e: 결제함 -->
+
+						<div class="bg biz_lightblue"></div>
+						<div class="acc_box">
+							<div class="acc_box_header">
+								<div class="info">
+									<h3 class="tit">스마트e-Postbank예금</h3>
+									<p class="acc_num">100081-02-024210</p>
+								</div>
+								<div class="toolbar">
+									<span class="check_switch check_switch_sm check_quick_transfer">
+										<input type="checkbox" id="chk_fast1" checked>
+										<label for="chk_fast1">빠른이체</label>
+									</span>
+									<a href="#;" class="pl_1 ml_1">
+										<i class="ico ico_submenu"></i>
+										<span class="sr_only">계좌관리</span>
+									</a>
+								</div>
+							</div>
+							<div class="acc_box_body">
+								<div class="inner">
+									<div class="balance_area">
+										<strong class="balance_num">75,678,900</strong><span class="txt_xl">원</span>
+									</div>
+									<div class="add_quick">
+										<!-- s: 빠른이체 없을 때 -->
+										<!-- <span class="btn btn_outline_gray btn_sm btn_round">등록된 빠른이체가 없습니다</span> -->
+										<!-- e: 빠른이체 없을 때 -->
+
+										<!-- s: 빠른이체 있을 때 -->
+										<a href="#;" class="btn btn_outline_gray btn_sm btn_round"
+											onclick="openModal('layerQuickTransfer1', this); return false;">김직원</a>
+										<a href="#;" class="btn btn_outline_gray btn_sm btn_round"
+											onclick="openModal('layerQuickTransfer1', this); return false;">이모모</a>
+										<!-- e: 빠른이체 있을 때 -->
+
+										<a href="#;" class="btn btn_icon ml_1">
+											<i class="ico ico_plus_circle"></i>
+											<span class="sr_only">빠른이체 추가</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="acc_box_footer">
+								<div class="btn_area">
+									<a href="#;" class="btn">거래내역</a>
+									<a href="#;" class="btn">즉시이체</a>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- e: 계좌 정보 : 홈 -->
+				</div>
+				<!-- e: 로그인 후 -->
+			</section>
+
+			<!-- s: 자주 찾는 메뉴 -->
+			<section class="sec_favor_menu">
+				<h3 class="sr_only">자주 찾는 메뉴</h3>
+				<div class="container">
+					<div class="favor_menu_box">
+						<ul class="favor_menu_list">
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu1.png" alt="" class="icon">
+									<span>전계좌조회</span>
+									<i class="badge">New</i>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu2.png" alt="" class="icon">
+									<span>모바일번호표</span>
+									<i class="badge">New</i>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu3.png" alt="" class="icon">
+									<span>전자문서지갑</span>
+									<i class="badge">New</i>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu4.png" alt="" class="icon">
+									<span>해외송금</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu5.png" alt="" class="icon">
+									<span>공과금</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu6.png" alt="" class="icon">
+									<span>간편송금</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu7.png" alt="" class="icon">
+									<span>디지털OTP</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu8.png" alt="" class="icon">
+									<span>간편인증등록</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu9.png" alt="" class="icon">
+									<span>증명서발급</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu10.png" alt="" class="icon">
+									<span>자동이체</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu11.png" alt="" class="icon">
+									<span>송금받기</span>
+								</a>
+							</li>
+							<li>
+								<a href="#;">
+									<img src="/resources/img/common/ico_favor_menu12.png" alt="" class="icon">
+									<span>ATM출금</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<a href="#;" class="btn_box_handler">
+						<i class="ico ico_chevron_down_md"></i>
+						<span class="sr_only">펼치기</span>
+					</a>
+				</div>
+			</section>
+			<!-- e: 자주 찾는 메뉴 -->
+
+			<!-- s: 한 줄 공지 -->
+			<div class="sec_notice_ticker">
+				<div class="container">
+					<div class="d_f flex_align_center">
+						<div class="notice_area">
+							<a href="#;">[당첨자발표]우체국온라인당뇨보험출시 이벤트</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 한 줄 공지 -->
+
+			<!-- s: 이벤트 배너 -->
+			<div class="sec_event_banner">
+				<div class="container">
+					<h3 class="txt_normal"><strong>이벤트 혜택</strong> 놓치지 마세요!</h3>
+				</div>
+				<div class="event_slide mb_10">
+					<a class="slide_item">
+						<img src="/resources/img/main/img_event_banner_01.png" alt="시니어 싱글벙글 정기예금 출시 이벤트">
+					</a>
+					<a class="slide_item">
+						<img src="/resources/img/main/img_event_banner_02.png" alt="포스트페이 머니 충전하고 결제하면 100% 당첨!">
+					</a>
+					<a class="slide_item">
+						<img src="/resources/img/main/img_event_banner_01.png" alt="시니어 싱글벙글 정기예금 출시 이벤트">
+					</a>
+					<a class="slide_item">
+						<img src="/resources/img/main/img_event_banner_02.png" alt="포스트페이 머니 충전하고 결제하면 100% 당첨!">
+					</a>
+					<!-- <div class="slick-dots"></div> -->
+				</div>
+			</div>
+			<!-- e: 이벤트 배너 -->
+
+			<!-- s: 퀵바 로딩 _inc_bottom_quickbar.html -->
+			<div class="bottom_quickbar"></div>
+			<!-- e: 퀵바 로딩 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
