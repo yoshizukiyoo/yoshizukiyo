@@ -20,19 +20,19 @@ $(function () {
 		$('.quick_menu_wrap').load('/html/_inc-quickmenu.html .quick_menu_wrap > *', function () {
 			// if ($.isFunction(window.scrollbar)) scrollbar();
 		});
-	} else if ($('.quick_menu_wrap').data('inc') == '_inc-dep-quickmenu.html') {
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-dep-quickmenu.html') { // 인터넷뱅킹 예금 퀵메뉴
 		$('.quick_menu_wrap').load('/html/_inc-dep-quickmenu.html .quick_menu_wrap > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
-	} else if ($('.quick_menu_wrap').data('inc') == '_inc-dep-quickmenu_logout.html') {
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-dep-quickmenu_logout.html') { // 인터넷뱅킹 예금 퀵메뉴
 		$('.quick_menu_wrap').load('/html/_inc-dep-quickmenu_logout.html .quick_menu_wrap > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
-	} else if ($('.quick_menu_wrap').data('inc') == '_inc-card-quickmenu.html') {
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-card-quickmenu.html') { // 인터넷뱅킹 카드 퀵메뉴
 		$('.quick_menu_wrap').load('/html/_inc-card-quickmenu.html .quick_menu_wrap > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
-	} else if ($('.quick_menu_wrap').data('inc') == '_inc-fund-quickmenu.html') {
+	} else if ($('.quick_menu_wrap').data('inc') == '_inc-fund-quickmenu.html') { // 인터넷뱅킹 펀드 퀵메뉴
 		$('.quick_menu_wrap').load('/html/_inc-fund-quickmenu.html .quick_menu_wrap > *', function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
