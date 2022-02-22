@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 로그인 후 알림 레이어 컨트롤
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
+			// 프로모션 영역 슬라이드 기능
+			var nums = 0;
+			var $mainRollingArea = $('.mall_promotion_slide');
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_visual .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_visual .nums .bar span").css({
+						width: (100 / nums) + "%"
+					})
+					nums = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_visual .nums strong").text("0" + (slick + 1));
+				$(".rolling_visual .nums .bar span").css({
+					width: ((100 / nums) * (slick + 1)) + "%"
+				})
+			});
+
+			// 팝업존 영역 슬라이드 기능
+			var nums2 = 0;
+			var $popRollingArea = $('.mall_popzone_slide');
+			$popRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_pop .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_pop .nums .bar span").css({
+						width: (100 / nums2) + "%"
+					})
+					nums2 = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_pop .nums strong").text("0" + (slick + 1));
+				$(".rolling_pop .nums .bar span").css({
+					width: ((100 / nums2) * (slick + 1)) + "%"
+				})
+			});
+
+			$(".rolling_visual, .rolling_pop").append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_visual .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+			$(".rolling_pop .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$popRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$popRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문-->
+			<div class="main_cont">
+				<h2 class="sr_only">메인 본문</h2>
+				<section class="sec_home mall_first">
+
+					<!-- s: 로그인 후 노출 -->
+					<div class="logged_info_layer">
+						<div class="container">
+							<div class="info_cont">
+								<div class="status_info">
+									<div class="l">
+										<div class="count">
+											진행 <span>1</span>건
+										</div>
+										<div class="current_status">
+											<div class="date_time">
+												<span>모바일 웹</span>
+												2022.01.18 12:33:57
+											</div>
+											<div class="status">카드 발급 신청 진행 중 <strong>우체국 다드림 하이브리드 체크</strong></div>
+										</div>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn btn_md btn_outline_default">관련 상담하기</a>
+										<a href="#;" class="btn btn_md btn_primary btn_talk">이어서 상담하기</a>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_info_layer">
+								<i class="ico ico_close_sm"></i>
+								<span class="sr_only">알림 레이어 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- e: 로그인 후 노출 -->
+
+					<div class="mall_main_promotion">
+						<h3 class="sr_only">프로모션</h3>
+						<div class="mall_promotion_slide">
+							<div><a href="#;"><img src="/resources/img/main/img_mall_promotion.jpg" alt="이미지 대체텍스트 입력"></a></div>
+							<div><a href="#;"><img src="/resources/img/main/img_mall_promotion.jpg" alt="이미지 대체텍스트 입력"></a></div>
+						</div>
+						<div class="rolling_info rolling_visual">
+							<div class="nums">
+								<strong>01</strong><span></span>
+								<em class="bar">
+									<span></span>
+								</em>
+							</div>
+						</div>
+					</div>
+
+					<div class="best_promotion container">
+						<div class="best">판매량 <strong>BEST 1</strong></div>
+						<ul>
+							<li class="bg_dep">
+								<a href="#;">
+									<h4>예금</h4>
+									<p>챔피언정기예금</p>
+								</a>
+							</li>
+							<li class="bg_ins">
+								<a href="#;">
+									<h4>보험</h4>
+									<p>(무)온라인어린이보험</p>
+								</a>
+							</li>
+							<li class="bg_card">
+								<a href="#;">
+									<h4>카드</h4>
+									<p>우체국 포미 하이브리드 체크카드(VISA)</p>
+								</a>
+							</li>
+							<li class="bg_fund">
+								<a href="#;">
+									<h4>펀드</h4>
+									<p>한국투자크레딧포커스 ESG증권자투자신탁1호(채권)C</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="mall_theme">
+					<div class="container">
+						<h3>우체국금융 <strong>테마 추천</strong></h3>
+						<ul>
+							<li class="bg01">
+								<a href="#;">
+									<span class="txt_gray">ft. 생애주기</span>
+									<h4>재테크시간표</h4>
+									<p class="mt_4">금융상품도 시간과 상황에 따라<br>
+										<span>생애주기 맞춤 <strong>재테크 시간표</strong></span>
+									</p>
+								</a>
+							</li>
+							<li class="bg02">
+								<a href="#;">
+									<span class="txt_gray">우정군’s</span>
+									<h4>소소한 행복찾기</h4>
+									<p class="mt_4">일상 속 소소한 행복을 위한<br>
+										<span><strong>금융 여정</strong> 따라가기</span>
+									</p>
+								</a>
+							</li>
+							<li class="bg03">
+								<a href="#;">
+									<span class="txt_gray">믿을 수 있는 금융생활 동반자</span>
+									<h4>우체국 공적 금융이야기</h4>
+									<p class="mt_4">국영금융기관으로서 우체국만의<br>
+										<span>특별한 <strong>공적 상품</strong>들 소개</span>
+									</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="mall_search">
+					<div class="container">
+						<div class="mall_search_box">
+							<div class="find_con bg_search">
+								<h3 class="find">상품찾기</h3>
+								<div class="product_search mt_4">
+									<input type="text" title="상품 입력" placeholder="상품을 검색하세요.">
+									<button type="button"><span class="sr_only">검색</span></button>
+								</div>
+							</div>
+							<div class="tag_con">
+								<h3 class="tag"><a href="#;">상품태그</a></h3>
+								<ul class="mt_2">
+									<li><a href="#;">#여행자금</a></li>
+									<li><a href="#;">#모임회비</a></li>
+									<li><a href="#;">#여가생활</a></li>
+									<li><a href="#;">#여럿이함께</a></li>
+									<li><a href="#;">#매일</a></li>
+									<li><a href="#;">#목표설정</a></li>
+									<li><a href="#;">#우리아기</a></li>
+									<li><a href="#;">#취업준비생</a></li>
+									<li><a href="#;" class="on">#장병내일준비</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="mall_search_result">
+							<div class="txt_r txt_sm txt_gray"><span class="mr_2">금리 기준일</span>2021.05.12 16:18:38</div>
+							<div class="acco_list">
+								<div class="top flex_box pb_4">
+									<p class="tit_arr mt_2 txt_normal">검색어 <span class="txt_bold">적금</span>으로 <span
+											class="txt_bold">17</span>개 상품이 검색되었습니다.</p>
+								</div>
+								<div class="acco_inner">
+									<div class="ch_product">
+										<div class="l">
+											<div class="product_cate">
+												<ul class="inline_list pd_list1">
+													<li class="fir">적금</li>
+													<li>비과세</li>
+													<li>예금자보호</li>
+												</ul>
+												<ul class="inline_rounding ml_2 bg_white">
+													<li>우체국창구</li>
+													<li>오프라인</li>
+												</ul>
+												<span class="grade">5</span>
+											</div>
+											<div class="product_name mt_5">
+												<strong>장병내일준비적금</strong>
+												<span class="evt_icon red">NEW</span>
+											</div>
+											<ul class="product_hashtag mt_5">
+												<li>#국군병사</li>
+												<li>#군복무</li>
+												<li>#장병내일준비</li>
+												<li>#휴일재해보장보험</li>
+											</ul>
+										</div>
+										<div class="r">
+											<div class="prd_top mb_6">
+												<ul class="product_top_btn">
+													<li><a href="#;" class="btn btn_sm btn_outline_default">상세보기</a></li>
+													<li><a href="#;" class="btn btn_sm btn_outline_default">상담하기</a></li>
+												</ul>
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+											<div class="product_price">
+												<div class="price_tit">
+													<strong>최고 우대</strong>
+													기간별 적용이율
+												</div>
+												<ul>
+													<li>
+														<span>6개월</span>
+														<strong>4%</strong>
+													</li>
+													<li>
+														<span>12개월</span>
+														<strong>4.5%</strong>
+													</li>
+													<li>
+														<span>15개월~</span>
+														<strong>5%</strong>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="ch_product">
+										<div class="l">
+											<div class="product_cate">
+												<ul class="inline_list pd_list1">
+													<li class="fir">적금</li>
+													<li>비과세</li>
+													<li>예금자보호</li>
+												</ul>
+												<ul class="inline_rounding ml_2 bg_white">
+													<li>우체국창구</li>
+													<li>인터넷뱅킹</li>
+													<li>우체국창구</li>
+												</ul>
+												<span class="grade">5</span>
+											</div>
+											<div class="product_name mt_5">
+												<strong>매일모아 e적금</strong>
+												<span class="evt_icon yellow">추천</span>
+											</div>
+											<ul class="product_hashtag mt_5">
+												<li>#매일적금</li>
+												<li>#목표설정</li>
+												<li>#매일용돈</li>
+											</ul>
+										</div>
+										<div class="r">
+											<div class="prd_top mb_6">
+												<ul class="product_top_btn">
+													<li><a href="#;" class="btn btn_sm btn_outline_default">상세보기</a></li>
+													<li><a href="#;" class="btn btn_sm btn_outline_default">가입하기</a></li>
+												</ul>
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+											<div class="product_price">
+												<div class="price_tit">
+													<strong>최고 우대</strong>
+													기간별 적용이율
+												</div>
+												<ul>
+													<li>
+														<span>6개월</span>
+														<strong>1.1%</strong>
+													</li>
+													<li>
+														<span>12개월</span>
+														<strong>2.05%</strong>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="flex_box mt_3">
+								<div class="l">
+									<ul class="list list1">
+										<li>상품 검색 결과는 정확도 상위 2개만 미리보기 가능합니다.</li>
+										<li>나머지 상품을 더 확인하고 싶으실 경우 통합검색 결과 화면으로 이동하여 확인 가능합니다.</li>
+									</ul>
+								</div>
+								<div class="r">
+									<a href="#;" class="btn btn_md btn_default btn_gray">상품찾기 결과 더보기</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="mall_news">
+					<div class="container">
+						<div class="news_con">
+							<div class="tit">
+								<h3>새소식</h3>
+								<a href="#;">더보기</a>
+							</div>
+							<ul>
+								<li>
+									<a href="#;">
+										<h4>부산시 제로페이 페이백 이벤트 조기 종료 안내</h4>
+										<p>제로페이 부산 페이백 이벤트 예산이 조기 소진됨에 따라 페이백 이벤트가 종료됩니다.</p>
+										<span>2021.05.26 09:45:23</span>
+									</a>
+								</li>
+								<li>
+									<a href="#;">
+										<h4>조폐공사 KOMSCO 신뢰플랫폼 이전 구축 작업에 따른 지역사랑상품권 서비스 중단 안내</h4>
+										<p>작업내용: 조폐공사 KOMSCO 신뢰플랫폼 이전 작업(민간 보안 클라우드 -> 공사 데이터 센터)</p>
+										<span>2021.05.07 14:05:07</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="pop_con">
+							<div class="tit">
+								<h3>이벤트 혜택 <span>놓치지 마세요</span></h3>
+								<div class="rolling_info rolling_pop">
+									<div class="nums">
+										<strong>01</strong><span></span>
+										<em class="bar">
+											<span></span>
+										</em>
+									</div>
+								</div>
+							</div>
+							<div class="mall_popzone_slide">
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+								<div><a href="#;"><img src="/resources/img/main/img_mall_pop.png" alt="이미지 대체텍스트 입력"></a></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+			<!-- e: 메인 본문-->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
