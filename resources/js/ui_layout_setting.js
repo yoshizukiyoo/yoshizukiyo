@@ -48,6 +48,7 @@ $(function () {
 		use: true,
 		callback: function () {
 			setTransferListSlider();
+			accountThemeSetting();
 		},
 	}];
 
@@ -101,6 +102,7 @@ $(function () {
 
 		// 접근성
 		setCaption();
+
 		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });
@@ -684,4 +686,49 @@ function quickNavTabbar() {
 		var text = $quickNav.hasClass('opened') ? '접기' : '펼치기';
 		$handler.children('.sr_only').text(text);
 	}
+}
+
+// 계좌관리 레이어 호출
+var $accBox;
+
+function accountSettingView(opener) {
+	openModal('layerDepositManage', opener);
+	$accBox = $(opener).closest('.acc_info_area');
+	console.log($accBox);
+}
+
+function accountThemeSetting() {
+	// 계좌관리 색상선택
+	$('.btn_theme').each(function () {
+		var options = $(this).data('theme-options'),
+			brightness = options.brightness,
+			color = options.boxColor,
+			bgColor = options.bgColor;
+
+		$(this).css('background-color', $(this).data('theme-options').boxColor);
+		if (brightness == 'light') {
+			$(this).addClass('btn_theme_light');
+		}
+
+		$(this).click(function () {
+			$(this).addClass('on').attr('title', '선택됨')
+				.closest('li').siblings('li').children('.btn_theme').removeClass('on').removeAttr('title', '선택됨');
+
+			closeModal('layerDepositManage');
+			setTimeout(function () {
+				$('.bg', $accBox).css('background-color', bgColor);
+				$('.acc_box', $accBox).css('background-color', color);
+				if (brightness == 'light') {
+					$($accBox).removeClass('theme_dark');
+					$($accBox).addClass('theme_light');
+				} else if (brightness == 'dark') {
+					$($accBox).removeClass('theme_light');
+					$($accBox).addClass('theme_dark');
+				} else {
+					$($accBox).removeClass('theme_light');
+					$($accBox).removeClass('theme_dark');
+				}
+			}, 100);
+		});
+	});
 }
