@@ -80,8 +80,13 @@ $(function () {
 
 	// 페이지 로딩시 기본 세팅
 	function setDefaultUI(type) {
+		hashModalOpener();
+
+		// 공통 UI
 		tabmenu();
 		inputStatus();
+
+		// 접근성
 		setCaption();
 		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
@@ -90,6 +95,19 @@ $(function () {
 //
 // 공통 컴포넌트 UI
 //
+
+// 해시 URL로 모달팝업 열기 (화면 미리보기 용도)
+function hashModalOpener() {
+	var hash = window.location.hash;
+	var popupData = hash.substring(hash.lastIndexOf("#") + 1);
+	if ($('.modal_popup[data-popup="' + popupData + '"]').length) {
+		if ($('.modal_popup.show').length) closeModal($('.modal_popup.show').data('popup'));
+		openModal(popupData);
+	}
+	$(window).bind('hashchange', function () {
+		hashModalOpener();
+	});
+}
 
 // 탭메뉴
 function tabmenu() {

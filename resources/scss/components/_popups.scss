@@ -139,14 +139,6 @@ $popup-size: (alert: 280px,
 			outline: 0;
 			// box-shadow: 0 0 20px 5px rgba(#fff, .2);
 		}
-
-		.modal_popup.hide & {
-			transform: scale(0.9);
-		}
-
-		.modal_popup.show & {
-			transform: scale(1);
-		}
 	}
 
 	&.hide {
@@ -313,6 +305,60 @@ $popup-size: (alert: 280px,
 		}
 	}
 
+	// 하프시트
+	&.modal_half_sheet {
+		justify-content: flex-end;
+
+		&.hide {
+			.popup_inner {
+				transform: translate3d(100%, 0, 0);
+				transition-duration: 0.3s;
+			}
+		}
+
+		&.show {
+			.popup_inner {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+
+		.popup_inner {
+			display: flex;
+			flex-direction: column;
+			width: 300px;
+			height: 100%;
+			background-color: #fff;
+			transition-duration: 0.3s;
+			transform: translate3d(100%, 0, 0);
+		}
+
+		.popup_header {
+			flex: 0 0 auto;
+			// padding-right: 50px;
+			// padding-left: 20px;
+
+			.popup_title {
+				display: flex;
+				align-items: center;
+				font-size: 18px;
+				font-weight: 500;
+				padding-right: 50px;
+				padding-left: 20px;
+				height: $titlebar-height;
+				border-bottom: 1px solid #f3f3f3;
+			}
+		}
+
+		.popup_body {
+			flex: 1 1 auto;
+			overflow-y: auto;
+		}
+
+		.popup_footer {
+			flex: 0 0 auto;
+		}
+	}
+
 	// 하단 고정영역 내 토글
 	&.modal_toggle {
 		position: relative;
@@ -430,6 +476,81 @@ $popup-size: (alert: 280px,
 		&.active {
 			.bank {
 				background-color: #fff;
+			}
+		}
+	}
+}
+
+/* 예금 하프시트*/
+.modal_deposit_manage {
+	.popup_header {
+		display: block;
+		height: auto;
+		padding: 0;
+	}
+
+	.popup_body {
+		.lnb_area {
+			padding: 0 20px 10px 15px;
+		}
+
+		.lnb_list {
+			padding: 0;
+
+			>li {
+				a {
+					font-weight: 200;
+				}
+
+				&:first-child {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+
+	.section_gray {
+		border-color: #f3f3f3;
+	}
+
+	.set_theme {
+		margin: -7.5px -8px;
+
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+
+			li {
+				margin: 7.5px 8px;
+			}
+		}
+
+		.btn_theme {
+			position: relative;
+			width: 35px;
+			height: 35px;
+			border-radius: 17.5px;
+			border: 0;
+
+			background-color: currentColor;
+
+			&_light {
+				border: 1px solid #ddd;
+			}
+
+			&.on {
+				&:after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 12.5px;
+					height: 8.5px;
+					background:url(#{$url-img}/content/ico_check_sm.png) 0 0 no-repeat;
+					background-size: cover;
+					transform: translate(-50%, -50%);
+				}
 			}
 		}
 	}
