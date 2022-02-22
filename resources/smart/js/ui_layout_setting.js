@@ -95,6 +95,7 @@ $(function () {
 		inputStatus();
 		quickNavSettingLayer();
 		setQuickTransferSwitch();
+		setCaption();
 		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });
@@ -208,6 +209,15 @@ function quickNavSettingLayer() {
 	$('.quickmenu_list_all').sortable({
 		placeholder: 'sortable-placeholder'
 	});
+}
+
+// 접근성 개선 관련
+function setCaption() {
+	if ($('.input_step .on').length) {
+		$('.input_step .on').each(function () {
+			$(this).append('<span class="sr_only">현재 단계</span>');
+		});
+	}
 }
 
 // 데이트피커 기본설정
@@ -332,6 +342,11 @@ function openModal(_target, _opener) {
 	// 하단 고정영역 내 토글 모달 호출 버튼 활성화
 	if (tg.hasClass('modal_toggle')) {
 		tg.closest('.bottom_toggle').find('.btn_toggle').addClass('active');
+	}
+
+	// [접근성] 헤더 내 모달 닫기 버튼 위치 변경
+	if (tg.hasClass('popup') && $('.btn_close_popup', tg).length) {
+		$('.btn_close_popup', tg).appendTo($('.popup_inner', tg));
 	}
 }
 
