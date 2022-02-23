@@ -409,13 +409,17 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 					e.preventDefault();
 					const $otherBtn = $('.selectbox_wrap').not($el).find('dt a');
 					$('.selectbox_wrap').not($el).removeClass('active')
-					$otherBtn.attr('title', $otherBtn.attr('title').replace('접기', '펼치기'));
+					if ($otherBtn.attr('title') != undefined) {
+						$otherBtn.attr('title', $otherBtn.attr('title').replace('접기', '펼치기'));
+					}
 
 					$el.toggleClass('active');
-					if ($el.hasClass('active')) {
-						$btn.attr('title', $btn.attr('title').replace('펼치기', '접기'));
-					} else {
-						$btn.attr('title', $btn.attr('title').replace('접기', '펼치기'));
+					if ($otherBtn.attr('title') != undefined) {
+						if ($el.hasClass('active')) {
+							$btn.attr('title', $btn.attr('title').replace('펼치기', '접기'));
+						} else {
+							$btn.attr('title', $btn.attr('title').replace('접기', '펼치기'));
+						}
 					}
 				});
 
@@ -424,7 +428,9 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 					$btn.children('span').text($(this).text());
 					$el.toggleClass('active').removeClass('error');
 					$el.closest('td').find('> .error_info').hide();
-					$btn.attr('title', $btn.attr('title').replace('접기', '펼치기')).focus();
+					if ($btn.attr('title') != undefined) {
+						$btn.attr('title', $btn.attr('title').replace('접기', '펼치기')).focus();
+					}
 				});
 			}
 		});
