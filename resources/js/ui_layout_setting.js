@@ -366,7 +366,7 @@ $(document).ready(function () {
 });
 
 // 더블 탭메뉴 활성화
-$(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
+$(document).on('click', '.tab_menu_type1 a', function () {
 	var obj = $(this);
 	var tg = obj.data('tab-tg');
 	obj.addClass('current').attr('title', '선택됨').parent().siblings().find('>a').removeClass().removeAttr('title');
