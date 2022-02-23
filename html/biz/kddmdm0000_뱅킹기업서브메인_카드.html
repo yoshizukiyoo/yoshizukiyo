@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			var button;
+
+			// 툴팁 도움말 레이어 실행
+			$('.help_tooltip > button').on('click', function () {
+				button = $(this);
+				$(this).next().show().focus();
+			});
+
+			// 툴팁 도움말 레이어 닫기
+			$('.tooltip button').on('click', function () {
+				$(this).parent().hide();
+				button.focus();
+			});
+
+			// 외부영역 클릭 시 팝업 닫기
+			$(document).mouseup(function (e) {
+				var LayerPopup = $(".tooltip");
+				if (LayerPopup.has(e.target).length === 0) {
+					LayerPopup.hide();
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap" data-inc="_inc-card-quickmenu.html"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<div class="main_cont">
+				<h2 class="sr_only">메인 본문</h2>
+
+				<!-- 
+					[퍼블] 메인 첫번째 섹션은 .sec_home 필수 (메인+서브메인 공통 스크립트 적용됨)
+					.sec_home 클래스는 메인 공통 클래스이므로 스타일링 금지합니다.
+					반드시 멀티클래스 추가 후 스타일링 해주세요
+				-->
+				<section class="sec_home sub_card_info biz_sub_main">
+					<h3 class="sr_only">예금 계좌 정보</h3>
+					<div class="visual_top">
+						<div class="container">
+							<div class="total_info_wrap">
+								<div class="total_info">
+									<div class="cus_info">
+										<p>
+											<strong>홍길동</strong>님은 <strong> 카드 2개</strong>를 보유하고 있습니다.
+										</p>
+										<a href="#;" class="btn btn_md btn_outline_default ico_arrow">전체 카드 보기</a>
+									</div>
+									<div class="cus_toal_info">
+										<span class="total_tit">이번 달 카드 결제(예정) :</span>
+										<strong class="total_num">387,210</strong>
+										<div class="btn_mouse_toggle">
+											<div class="switch">
+												<input type="checkbox" id="btn_toggle" checked>
+												<label for="btn_toggle"><span class="sr_only">결재금액 표기 설정</span></label>
+											</div>
+											<span class="btn_name">결재금액</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="info_box_list card_info_box">
+								<div class="info_list_wrap">
+									<div class="info_cont_box">
+										<div class="inner">
+											<div class="top">
+												<a href="#;" class="btn_round_ico">대표 카드</a>
+											</div>
+											<div class="box_cont txt_c">
+												<p class="card_txt1">우체국 多Dream 하이브리드</p>
+												<p class="card_txt2">생활비카드</p>
+												<p class="card_txt3"><strong>9440-****-****-4953</strong></p>
+												<p class="card_txt4">결제일 : 매월 26일</p>
+											</div>
+											<div class="btn_area">
+												<a href="#;" class="btn btn_md btn_outline_default">캐시백통합신청</a>
+												<a href="#;" class="btn btn_md btn_primary txt_medium">비번번호변경</a>
+												<a href="#;" class="btn_r"><span class="sr_only">계좌관리</span></a>
+											</div>
+										</div>
+									</div>
+									<div class="info_cont_box">
+										<div class="inner">
+											<div class="top">
+												<div class="month_money">
+													<span class="mon">
+														<strong>12월</strong>
+														카드이용금액
+													</span>
+												</div>
+											</div>
+											<div class="box_cont">
+												<div class="sum_money txt_c">
+													<a href="#;">
+														<strong>567,789</strong> 원
+													</a>
+												</div>
+												<ul class="limit_list">
+													<li>
+														<div class="l">잔여한도</div>
+														<div class="r">
+															<span>43,435,550</span> 원
+														</div>
+													</li>
+													<li>
+														<div class="l">총 이용한도</div>
+														<div class="r">
+															<span>50,000,000</span> 원
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class="btn_area">
+												<a href="#;" class="btn btn_md btn_outline_default">이용한도변경</a>
+												<a href="#;" class="btn btn_md btn_primary txt_medium">실적충족현황</a>
+											</div>
+										</div>
+									</div>
+									<div class="info_cont_box">
+										<div class="inner">
+											<div class="top">
+												<div class="month_money">
+													<span class="mon">
+														<strong>11월</strong>
+														이용대금명세서
+													</span>
+													<div class="help_tooltip ml_1">
+														<button type="button"><span class="sr_only">이용대금명세서 도움말</span></button>
+														<div class="tooltip tooltip_md" tabindex="0" style="display: none;">
+															<p>도움말 내용 영역</p>
+															<button type="button"><span class="sr_only">닫기</span></button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="box_cont">
+												<div class="sum_money txt_c">
+													<a href="#;">
+														<strong>2,567,789</strong> 원
+													</a>
+												</div>
+												<div class="month_money next_month mt_8">
+													<span class="mon">
+														<strong>12월</strong>
+														결재예정금액
+													</span>
+													<div class="help_tooltip ml_1">
+														<button type="button"><span class="sr_only">결재예정금액 도움말</span></button>
+														<div class="tooltip tooltip_md" tabindex="0" style="display: none;">
+															<p>도움말 내용 영역</p>
+															<button type="button"><span class="sr_only">닫기</span></button>
+														</div>
+													</div>
+												</div>
+												<!-- s: 확인 불가 메세지 -->
+												<div class="payment_msg mt_4" style="display: none">
+													<p>당월 3일 이후 조회가 가능합니다.</p>
+													<p>(최대 5일)</p>
+												</div>
+												<!-- e: 확인 불가 메세지 -->
+												<div class="sum_money next_month_money txt_c mt_5">
+													<a href="#;">
+														<strong>567,789</strong> 원
+													</a>
+												</div>
+											</div>
+											<div class="btn_area">
+												<a href="#;" class="btn btn_md btn_primary txt_medium">포인트 적립 내역</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- s: 카드 이용 내역 -->
+				<section class="sec_card_list">
+					<div class="container">
+						<h3 class="sub_tit">12월 카드 이용 내역</h3>
+						<div class="use_list card_use">
+							<ul>
+								<li class="txt_l">
+									<strong class="fsize_30 block mb_2">12월</strong>
+									<span class="fsize_18 col_darkgray">2021.12.01~ 2021.12.31</span>
+								</li>
+								<li><span class="col_darkgray fsize_30 txt_normal">총</span> <strong class="fsize_30">5건</strong></li>
+								<li class="txt_r"><strong class="fsize_30">600,800</strong> <span class="fsize_18 txt_normal">원</span>
+								</li>
+							</ul>
+						</div>
+						<div class="tbl_data tbl_list_data mt_6">
+							<table>
+								<caption class="sr_only">카드 이용 내역 목록이며 이용일자, 이용시간, 이용금액(원), 이용처, 사용포인트, 이용구분, 메모 정보를 제공하고 있습니다.
+								<colgroup>
+									<col style="width: 13%;">
+									<col style="width: 13%;">
+									<col style="width: 13%;">
+									<col>
+									<col style="width: 11%;">
+									<col style="width: 11%;">
+									<col style="width: 14%;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">이용일자</th>
+										<th scope="col">이용시간</th>
+										<th scope="col">이용금액(원)</th>
+										<th scope="col">이용처</th>
+										<th scope="col">사용포인트</th>
+										<th scope="col">이용구분</th>
+										<th scope="col">메모</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">15:12:33</td>
+										<td class="txt_c">23,000</td>
+										<td>쿠팡</td>
+										<td class="txt_c">800,000</td>
+										<td class="txt_c">일시불</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">15:12:33</td>
+										<td class="txt_c">23,000</td>
+										<td>금천 농협 하나로마트 빛가람점</td>
+										<td class="txt_c">800,000</td>
+										<td class="txt_c">일시불</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">15:12:33</td>
+										<td class="txt_c">23,000</td>
+										<td>쿠팡</td>
+										<td class="txt_c">800,000</td>
+										<td class="txt_c">일시불</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">15:12:33</td>
+										<td class="txt_c">23,000</td>
+										<td>쿠팡</td>
+										<td class="txt_c">800,000</td>
+										<td class="txt_c">일시불</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="txt_c">2022.01.14</td>
+										<td class="txt_c">15:12:33</td>
+										<td class="txt_c">23,000</td>
+										<td>쿠팡</td>
+										<td class="txt_c">800,000</td>
+										<td class="txt_c">일시불</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+				<!-- e: 카드 이용 내역 -->
+
+			</div>
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
