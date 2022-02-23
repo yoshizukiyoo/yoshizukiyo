@@ -155,14 +155,6 @@ $popup-size: (alert: 280px,
 			outline: 0;
 			// box-shadow: 0 0 20px 5px rgba(#fff, .2);
 		}
-
-		.modal_popup.hide & {
-			transform: scale(0.9);
-		}
-
-		.modal_popup.show & {
-			transform: scale(1);
-		}
 	}
 
 	.inner_login_form {
@@ -353,6 +345,60 @@ $popup-size: (alert: 280px,
 			.dimed {
 				display: none;
 			}
+		}
+	}
+
+	// 하프시트
+	&.modal_half_sheet {
+		justify-content: flex-end;
+
+		&.hide {
+			.popup_inner {
+				transform: translate3d(100%, 0, 0);
+				transition-duration: 0.3s;
+			}
+		}
+
+		&.show {
+			.popup_inner {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+
+		.popup_inner {
+			display: flex;
+			flex-direction: column;
+			width: 300px;
+			height: 100%;
+			background-color: #fff;
+			transition-duration: 0.3s;
+			transform: translate3d(100%, 0, 0);
+		}
+
+		.popup_header {
+			flex: 0 0 auto;
+			// padding-right: 50px;
+			// padding-left: 20px;
+
+			.popup_title {
+				display: flex;
+				align-items: center;
+				font-size: 18px;
+				font-weight: 500;
+				padding-right: 50px;
+				padding-left: 20px;
+				height: $titlebar-height;
+				border-bottom: 1px solid #f3f3f3;
+			}
+		}
+
+		.popup_body {
+			flex: 1 1 auto;
+			overflow-y: auto;
+		}
+
+		.popup_footer {
+			flex: 0 0 auto;
 		}
 	}
 
