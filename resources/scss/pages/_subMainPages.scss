@@ -41,7 +41,9 @@
 	}
 
 	.product_link {
-		margin-top: 70px;
+		position: absolute;
+		left: 0;
+		top: 237px;
 
 		>a {
 			display: inline-flex;
@@ -63,16 +65,34 @@
 	top: 42px;
 	z-index: 10;
 	width: 382px;
-	height: 348px;
-	padding: 57px 30px 0;
+	height: 337px;
+	padding: 12px 13px 0 2px;
+	border-radius: 10px 10px 10px 60px;
+	box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, .1);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 
-	&.pro_dep {
-		background-image: url(#{$url-img}/main/bg_dep_result.png);
+	&::before {
+		content: '';
+		position: absolute;
+		right: 14px;
+		top: -12px;
+		width: 35px;
+		height: 50px;
+		background: url(#{$url-img}/main/img_clip.png) no-repeat 0 0;
 	}
 
-	>.tit_calc {
+	&.pro_dep {
+		background: #fdc61c;
+	}
+
+	>.inner {
+		height: 323px;
+		padding: 32px 30px 0;
+		background: url(#{$url-img}/main/bg_product_result.png) no-repeat 0 0;
+	}
+
+	.tit_calc {
 		display: inline-flex;
 		margin-bottom: 20px;
 		align-items: center;
@@ -119,20 +139,67 @@
 	left: calc((100% - 1200px) / 2);
 	bottom: -35px;
 	width: 1200px;
+	box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, .07);
 
 	>ul {
 		display: flex;
+		overflow: hidden;
+		border-radius: 7px;
+
 
 		>li {
 			flex: 1;
 
+			&:not(:last-child) {
+				>a {
+					&::before {
+						content: '';
+						position: absolute;
+						right: 0;
+						top: 50%;
+						z-index: 1;
+						width: 1px;
+						height: 18px;
+						margin-top: -9px;
+						background: #ddd;
+					}
+				}
+			}
+
 			>a {
 				display: block;
+				position: relative;
 				height: 70px;
+				background: #fff;
 				text-align: center;
+				line-height: 70px;
+				font-weight: 400;
+				font-size: 20px;
+
+				&:hover,
+				&.on {
+					&::after {
+						content: '';
+						position: absolute;
+						left: 0;
+						top: 0;
+						z-index: 2;
+						width: 100%;
+						height: 100%;
+						background: #333;
+					}
+
+					>span {
+						position: relative;
+						z-index: 3;
+						color: #fff;
+					}
+				}
 			}
 		}
 	}
+
+
 }
 
 .evt_ico_box {

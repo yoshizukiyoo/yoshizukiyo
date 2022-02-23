@@ -755,7 +755,9 @@
 }
 
 .mall_slide_cont .product_link {
-  margin-top: 70px;
+  position: absolute;
+  left: 0;
+  top: 237px;
 }
 
 .mall_slide_cont .product_link > a {
@@ -782,17 +784,36 @@
   top: 42px;
   z-index: 10;
   width: 382px;
-  height: 348px;
-  padding: 57px 30px 0;
+  height: 337px;
+  padding: 12px 13px 0 2px;
+  border-radius: 10px 10px 10px 60px;
+  -webkit-box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.1);
   background-position: 0 0;
   background-repeat: no-repeat;
 }
 
-.product_result.pro_dep {
-  background-image: url(/resources/img/main/bg_dep_result.png);
+.product_result::before {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: -12px;
+  width: 35px;
+  height: 50px;
+  background: url(/resources/img/main/img_clip.png) no-repeat 0 0;
 }
 
-.product_result > .tit_calc {
+.product_result.pro_dep {
+  background: #fdc61c;
+}
+
+.product_result > .inner {
+  height: 323px;
+  padding: 32px 30px 0;
+  background: url(/resources/img/main/bg_product_result.png) no-repeat 0 0;
+}
+
+.product_result .tit_calc {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -805,7 +826,7 @@
   font-weight: 500;
 }
 
-.product_result > .tit_calc::before {
+.product_result .tit_calc::before {
   display: inline-block;
   content: '';
   width: 30px;
@@ -842,12 +863,16 @@
   left: calc((100% - 1200px) / 2);
   bottom: -35px;
   width: 1200px;
+  -webkit-box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
+          box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
 }
 
 .product_category_menu > ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
+  border-radius: 7px;
 }
 
 .product_category_menu > ul > li {
@@ -856,10 +881,44 @@
           flex: 1;
 }
 
+.product_category_menu > ul > li:not(:last-child) > a::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 1;
+  width: 1px;
+  height: 18px;
+  margin-top: -9px;
+  background: #ddd;
+}
+
 .product_category_menu > ul > li > a {
   display: block;
+  position: relative;
   height: 70px;
+  background: #fff;
   text-align: center;
+  line-height: 70px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.product_category_menu > ul > li > a:hover::after, .product_category_menu > ul > li > a.on::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+.product_category_menu > ul > li > a:hover > span, .product_category_menu > ul > li > a.on > span {
+  position: relative;
+  z-index: 3;
+  color: #fff;
 }
 
 .evt_ico_box {
