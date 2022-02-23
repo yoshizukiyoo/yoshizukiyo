@@ -702,8 +702,7 @@ function accountThemeSetting() {
 	$('.btn_theme').each(function () {
 		var options = $(this).data('theme-options'),
 			brightness = options.brightness,
-			color = options.boxColor,
-			bgColor = options.bgColor;
+			color = options.boxColor;
 
 		$(this).css('background-color', $(this).data('theme-options').boxColor);
 		if (brightness == 'light') {
@@ -716,7 +715,6 @@ function accountThemeSetting() {
 
 			closeModal('layerDepositManage');
 			setTimeout(function () {
-				$('.bg', $accBox).css('background-color', bgColor);
 				$('.acc_box', $accBox).css('background-color', color);
 				if (brightness == 'light') {
 					$($accBox).removeClass('theme_dark');
