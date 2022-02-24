@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			// 로그인 후 알림 레이어 컨트롤 (불필요시 삭제)
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<div class="main_cont">
+				<h2 class="sr_only">마이페이지 서브메인 본문</h2>
+				<section class="sec_home mypage_sec01">
+
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+					<div class="logged_info_layer" style="display: none;">
+						<div class="container">
+							<div class="info_cont">
+								<p>레이어 마크업 영역</p>
+								<p>레이어 마크업 영역</p>
+							</div>
+							<button type="button" class="btn btn_icon btn_close_info_layer">
+								<i class="ico ico_close_sm"></i>
+								<span class="sr_only">알림 레이어 닫기</span>
+							</button>
+						</div>
+					</div>
+					<!-- s: 로그인 후 노출 (불필요시 삭제) -->
+
+					<h3 class="sr_only">내 정보</h3>
+					<div class="container">
+						<!-- s: 내 정보 -->
+						<div class="mypage_user start">
+							<span>
+								<span class="user v_mid"><strong class="txt_bold">홍길동</strong>님 환영합니다.</span>
+								<a href="#;" class="btn btn_md btn_outline_default btn_link ml_2">내정보관리</a>
+							</span>
+							<ul class="list list1 mt_3">
+								<li>최근접속일자 : 2021.07.30 17:52:42</li>
+								<li>조회시간 : 2021.07.30 17:52:43</li>
+							</ul>
+						</div>
+						<!-- e: 내 정보 -->
+
+						<!-- s: 버튼 영역 -->
+						<ul class="mypage_menu mt_8">
+							<li class="bg01">
+								<a href="#;">계약사항조회</a>
+							</li>
+							<li class="bg02">
+								<a href="#;">자동이체관리</a>
+							</li>
+							<li class="bg03">
+								<a href="#;">완전판매모니터링</a>
+							</li>
+							<li class="bg04">
+								<a href="#;">내설계함</a>
+							</li>
+							<li class="bg05">
+								<a href="#;">알림함</a>
+							</li>
+							<li class="bg06">
+								<a href="#;">증명서발급</a>
+							</li>
+							<li class="bg07">
+								<a href="#;">소비자리서치</a>
+							</li>
+							<li class="bg08">
+								<a href="#;">나의상담내역</a>
+							</li>
+						</ul>
+						<!-- e: 버튼 영역 -->
+					</div>
+				</section>
+
+				<!-- s: 전자청약 -->
+				<section class="mypage_sec02">
+					<div class="container">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_bold pb_1">전자청약</h3>
+							</div>
+							<div class="txt_right">
+								<a href="#;" class="btn btn_explain">전자청약 더보기</a>
+							</div>
+						</div>
+						<div class="tbl_data tbl_list_data">
+							<table>
+								<caption class="sr_only">전자청약</caption>
+								<colgroup>
+									<col style="width: 235px;">
+									<col style="width: 139px;">
+									<col style="width: 139px;">
+									<col>
+									<col style="width: 225px;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">가입설계일</th>
+										<th scope="col">계약자</th>
+										<th scope="col">피보험자</th>
+										<th scope="col">상품명</th>
+										<th scope="col">상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="txt_c">2021-06-12 12:45:55</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">나봄미</td>
+										<td class="pl_8">(무)우체국저축보험</td>
+										<td class="txt_c"><a href="#;" class="btn btn_sm btn_default">4단계부터 이어하기</a></td>
+									</tr>
+									<!-- s: case 1 : 전자청약 정보 없을 경우 -->
+									<tr>
+										<td class="txt_c txt_gray2" colspan="5">진행중인 전자청약이 없습니다.</td>
+									</tr>
+									<!-- e: case 1 : 전자청약 정보 없을 경우 -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+				<!-- e: 전자청약 -->
+
+				<!-- s: 알림 -->
+				<section class="mypage_sec03 mt_10">
+					<div class="container box sub_main_box">
+						<div class="tit flex_align_center">
+							<h3 class="d_i_b tit1 mb_0">알림</h3>
+							<a href="#;" class="btn btn_default btn_setting ml_3">알림종류설정</a>
+						</div>
+						<ul class="mypage_noti_list mt_4">
+							<li>
+								<span>2021.07.18 15:45</span>
+								<div class="bg01">
+									(무)우체국저축보험 전자청약 진행 중입니다.
+									<a href="#;" class="btn btn_sm btn_outline_default ml_1">이어하기</a>
+								</div>
+							</li>
+							<li>
+								<span>2021.07.17 15:45</span>
+								<div class="bg02">(무)우체국저축보험 완납(120/120)</div>
+							</li>
+							<li>
+								<span>2021.07.16 15:45</span>
+								<div class="bg03">(무)우체국저축보험 실효예정</div>
+							</li>
+							<li>
+								<span>2021.07.12 16:00</span>
+								<div class="bg04">(무)우체국저축보험 10월분 보험료 미납</div>
+							</li>
+							<li>
+								<span>2021.07.01 10:15</span>
+								<div class="bg05">(무)우체국저축보험 만기예정</div>
+							</li>
+						</ul>
+						<!-- s: case 1 : 알림 정보 없을 경우 -->
+						<p class="txt_c pt_5 txt_gray2">알림 소식이 없습니다</p>
+						<!-- s: case 1 : 알림 정보 없을 경우 -->
+					</div>
+				</section>
+				<!-- e: 알림 -->
+
+				<!-- s: 내보험 -->
+				<section class="mypage_sec04 mt_10">
+					<div class="container">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_bold pb_1">내보험(가입보험 <span>13</span>건)</h3>
+							</div>
+							<div class="txt_right">
+								<a href="#;" class="btn btn_explain">내보험 더보기</a>
+							</div>
+						</div>
+						<div class="tbl_data tbl_list_data">
+							<table>
+								<caption class="sr_only">내보험</caption>
+								<colgroup>
+									<col style="width: 140px;">
+									<col style="width: 200px;">
+									<col style="width: 85px;">
+									<col style="width: 100px;">
+									<col style="width: 116px;">
+									<col style="width: 95px;">
+									<col style="width: 150px;">
+									<col>
+									<col style="width: 145px;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">증서번호</th>
+										<th scope="col">보험종류</th>
+										<th scope="col">계약자</th>
+										<th scope="col">피보험자</th>
+										<th scope="col">계약일</th>
+										<th scope="col">최종납월</th>
+										<th scope="col">계약상태</th>
+										<th scope="col">환급금 대출가능액</th>
+										<th scope="col">바로가기</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="txt_c">70332604427</td>
+										<td>(무)나르미안전</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">2020.11.23</td>
+										<td class="txt_c">2022.04</td>
+										<td class="txt_c">정상(청약심사중)</td>
+										<td class="txt_r">0원</td>
+										<td class="txt_c"><a href="#;" class="btn btn_sm btn_default">계약사항조회</a></td>
+									</tr>
+									<tr>
+										<td class="txt_c">70332604427</td>
+										<td>(무)온라인3대질병</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">2020.11.23</td>
+										<td class="txt_c">2022.04</td>
+										<td class="txt_c">정상(청약심사중)</td>
+										<td class="txt_r">2만원</td>
+										<td class="txt_c"></td>
+									</tr>
+									<tr>
+										<td class="txt_c">70332604427</td>
+										<td>(무)하나로OK</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">2020.11.23</td>
+										<td class="txt_c">2022.04</td>
+										<td class="txt_c">정상</td>
+										<td class="txt_r">0원</td>
+										<td class="txt_c"></td>
+									</tr>
+									<tr>
+										<td class="txt_c">70332604427</td>
+										<td>(무)실속정기1종순수</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">2020.11.23</td>
+										<td class="txt_c">2022.04</td>
+										<td class="txt_c">정상</td>
+										<td class="txt_r">0원</td>
+										<td class="txt_c"></td>
+									</tr>
+									<tr>
+										<td class="txt_c">70332604427</td>
+										<td>(무)실속정기1종순수</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">나봄미</td>
+										<td class="txt_c">2020.11.23</td>
+										<td class="txt_c">2022.04</td>
+										<td class="txt_c">정상</td>
+										<td class="txt_r">100만원</td>
+										<td class="txt_c"></td>
+									</tr>
+									<!-- s: case 1 : 가입보험 정보 없을 경우 -->
+									<tr>
+										<td class="txt_c txt_gray2" colspan="9">가입보험이 없습니다.</td>
+									</tr>
+									<!-- e: case 1 : 가입보험 정보 없을 경우 -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+				<!-- e: 내보험 -->
+
+				<!-- s: 참여이벤트 -->
+				<section class="mypage_sec05 mt_11 mb_10">
+					<div class="container">
+						<div class="tbl_tit">
+							<div class="tit_left">
+								<h3 class="tit1 txt_bold pb_1">참여이벤트</h3>
+							</div>
+							<div class="txt_right">
+								<a href="#;" class="btn btn_explain">지난 이벤트 더보기</a>
+							</div>
+						</div>
+						<div class="box">
+							<a href="#;">
+								<span class="img"><img src="/resources/img/main/img_submain48.png" alt=""></span>
+								<strong class="tit">행복지킴이 다이렉트 상품 가입 이벤트</strong>
+								<span class="d_day">D-47</span>
+								<span class="view"><span>이벤트캐시</span><span>경품</span><span>상품권</span></span>
+							</a>
+						</div>
+					</div>
+				</section>
+				<!-- e: 참여이벤트 -->
+			</div>
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
