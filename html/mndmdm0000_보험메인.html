@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+
+			// 프로모션 영역 슬라이드 기능
+			var nums = 0;
+			var $mainRollingArea = $('.main_promotion_slide');
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_info .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_info .nums .bar span").css({
+						width: (100 / nums) + "%"
+					})
+					nums = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_info .nums strong").text("0" + (slick + 1));
+				$(".rolling_info .nums .bar span").css({
+					width: ((100 / nums) * (slick + 1)) + "%"
+				})
+			});
+
+			$(".rolling_info").append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_info .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+			// 이벤트존 슬라이더
+			var nums = 0;
+			var $eventzoneRollingArea = $('.eventzone_slide');
+			$('.eventzone_slide').slick({
+				arrows: false,
+				// draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".event_rollong .nums > span").text("0" + slick.slideCount);
+
+					$(".event_rollong .nums .bar span").css({
+						width: (100 / nums) + "%"
+					})
+					nums = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".event_rollong .nums strong").text("0" + (slick + 1));
+				$(".event_rollong .nums .bar span").css({
+					width: ((100 / nums) * (slick + 1)) + "%"
+				})
+			});
+
+			$(".event_rollong").append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".event_rollong .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$eventzoneRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$eventzoneRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+			// tag 선택
+			$('.product_search .tag_area .tag_list .item_tag').click(function () {
+				if ($(this).hasClass('current')) {
+					$('.current').removeClass('current');
+					$(this).addClass('current');
+				} else {
+					$('.current').removeClass('current');
+					$(this).addClass('current');
+				};
+			});
+
+			// btn 선택
+			$('.product_search .btn_area ul li a').click(function () {
+				if ($(this).hasClass('active')) {
+					$('.active').removeClass('active');
+					$(this).addClass('active');
+				} else {
+					$('.active').removeClass('active');
+					$(this).addClass('active');
+				};
+			});
+
+			//탭 메뉴
+			$('.tab_menu_type4 li a.current').each(function () {
+				var tg = $(this).attr('href');
+				if (tg !== '#' && tg.charAt(0) === '#') {
+					$(tg + '.tab_cont').css('display', 'block');
+				}
+			});
+			$('.tab_menu_type4 li a').click(function (e) {
+				var tg = $(this).attr('href');
+				$(this).addClass('current').attr('title', '선택됨')
+					.parent('li').siblings('li').children('a').removeClass('current').removeAttr('title');
+				if (tg === '#' || tg === '' || tg === '#;') {
+					e.preventDefault();
+				} else if (tg.charAt(0) === '#') {
+					if ($(tg).hasClass('tab_cont')) {
+						$(tg).show().siblings('.tab_cont').hide();
+						e.preventDefault();
+					}
+				}
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<!-- 대표홈 헤더에만 .header_global_main 추가 (서브메인은 서브 헤더 동일 적용) -->
+		<header class="header header_global_main"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<div class="main_cont">
+				<h2 class="sr_only">메인 본문</h2>
+
+				<section class="sec_home sec_home_global">
+
+					<!-- s: 프로모션 영역 -->
+					<div class="main_promotion">
+						<h3 class="sr_only">프로모션</h3>
+						<div class="main_promotion_slide">
+							<div>
+								<a href="#;"><img src="/resources/img/content/img_main_promotion1.png" alt="이미지 대체텍스트 입력"></a>
+								<div class="btn_area">
+									<a href="#;" class="more_link">자세히 보기</a>
+								</div>
+							</div>
+							<div>
+								<a href="#;"><img src="/resources/img/content/img_main_promotion1.png" alt="이미지 대체텍스트 입력"></a>
+								<div class="btn_area">
+									<a href="#;" class="more_link">자세히 보기</a>
+								</div>
+							</div>
+							<div>
+								<a href="#;"><img src="/resources/img/content/img_main_promotion1.png" alt="이미지 대체텍스트 입력"></a>
+								<div class="btn_area">
+									<a href="#;" class="more_link">자세히 보기</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="rolling_info">
+							<div class="nums">
+								<strong>01</strong><span></span>
+								<em class="bar">
+									<span></span>
+								</em>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- e: 프로모션 영역 -->
+
+				<!-- s: 새소식/이벤트존 -->
+				<section class="sec_news">
+					<div class="container">
+						<div class="new_news_list">
+							<h3>새소식</h3>
+							<ul>
+								<li>
+									<a href="#;">
+										<strong>우체국 지역화폐 체크카드 서비스 일시중단 안내
+										</strong>
+										<span>2021.05.24 09:19:57</span>
+									</a>
+								</li>
+								<li>
+									<a href="#;">
+										<strong>정선아리랑상품권 우체국 와와페이
+										</strong>
+										<span>2021.05.24 09:19:57</span>
+									</a>
+								</li>
+								<li>
+									<a href="#;">
+										<strong>아산시 지역사랑상품권 우체국 아산카드
+										</strong>
+										<span>2021.05.24 09:19:57</span>
+									</a>
+								</li>
+								<li>
+									<a href="#;">
+										<strong>파주시 제2차 긴급생활안정지원금은 우체국 체크카드
+										</strong>
+										<span>2021.05.24 09:19:57</span>
+									</a>
+								</li>
+							</ul>
+							<a href="#;" class="more_link">더보기</a>
+						</div>
+
+
+						<div class="eventzone">
+							<h3>이벤트</h3>
+							<div class="event_rollong">
+								<div class="nums">
+									<strong>01</strong><span></span>
+									<em class="bar">
+										<span></span>
+									</em>
+								</div>
+							</div>
+
+							<div class="eventzone_slide">
+								<div>
+									<a href="#;"><img src="/resources/img/content/img_event3.jpg" alt="이미지 대체텍스트 입력"></a>
+								</div>
+								<div>
+									<a href="#;"><img src="/resources/img/content/img_event3.jpg" alt="이미지 대체텍스트 입력"></a>
+								</div>
+								<div>
+									<a href="#;"><img src="/resources/img/content/img_event3.jpg" alt="이미지 대체텍스트 입력"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- e: 새소식/이벤트존 -->
+
+				<!-- s: 내게 맞는 상품 찾기 -->
+				<section class="product_search">
+					<div class="container">
+						<div class="search_top">
+							<div class="search_area">
+								<h3><i class="ico ico_product"></i>내게 맞는 상품 찾기</h3>
+								<div class="tf_search">
+									<input type="text" class="tf" title="검색어를 입력하세요." placeholder="검색어를 입력하세요.">
+									<button type="submit" class="btn btn_sm">
+										<i class="ico ico_search_sm"></i>
+										<span class="sr_only">검색</span>
+									</button>
+								</div>
+
+							</div>
+							<div class="tag_area">
+								<h3><i class="ico ico_product_tag"></i><a href="#;">상품태그 <i class="ico ico_arr_more02"></i><span
+											class="sr_only">더보기</span></a></h3>
+								<ul class="tag_list">
+									<li>
+										<a href="#;">
+											<span class="item_tag">
+												우리아이
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="item_tag">
+												종신보험
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="item_tag">
+												여행
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="item_tag current">
+												교통안전
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="item_tag">
+												아이사랑가족보험
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="btn_area">
+								<ul>
+									<li><a href="#;" class="active">보험 간편 설계</a></li>
+									<li><a href="#;">보험 보장 분석</a></li>
+									<li><a href="#;">보험금 청구</a></li>
+									<li><a href="#;">방문신청</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="search_inner">
+							<!--s: 결과확장 :상품 찾기 확장 -->
+							<div class="search_box">
+								<div class="clfx">
+									<div class="f_r">
+										<span class="time">조회 기준일: <span>2021.08.30 12:00</span>
+										</span>
+									</div>
+								</div>
+								<strong class="txt_result">검색어 <span>안전벨트</span>로 <span>1</span>개 상품이 검색되었습니다.
+								</strong>
+								<div class="n_insureance_style">
+									<div class="left">
+										<ul class="ins_txt_list">
+											<li class="txt_medium">상해보험</li>
+											<li>전기납</li>
+											<li>월납</li>
+										</ul>
+										<span class="info">
+											<strong class="ins_tit">무배당 우체국 안전벨트보험
+												<img src="/resources/img/content/ico_new.png" alt="new" class="ml_1"></strong>
+											<span class="hash">
+												<span>#교통재해</span>
+												<span>#상해최고1억</span>
+												<span>#사망최고2억</span>
+												<span>#교통사고장애</span>
+												<span>#교통사고사망</span>
+											</span>
+										</span>
+									</div>
+
+									<div class="right">
+										<div class="btn_box">
+											<a href="#;" class="btn btn_sm btn_outline_default">상세보기</a>
+											<a href="#;" class="btn btn_sm btn_outline_default">가입하기</a>
+										</div>
+										<ul class="price_info">
+											<li class="pl_4 pr_4">
+												<em class="first">20세(여)</em>
+												<span>
+													<span>20년 만기</span>
+													<span>전기납</span>
+												</span>
+											</li>
+											<li class="pl_5 pr_5">
+												<span>월납</span>
+												<strong>5,700원
+												</strong>
+											</li>
+											<li>
+												<span>보장금액</span>
+												<strong>2억원</strong>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--e: 결과확장 :상품 찾기 확장 -->
+							<!--s: 결과확장 :상품 태그 확장 -->
+							<div class="search_box">
+								<div class="clfx">
+									<div class="f_r">
+										<span class="time">조회 기준일: <span>2021.08.30 12:00</span>
+										</span>
+									</div>
+								</div>
+								<strong class="txt_result">상품 태그 <span>#교통안전</span>로 <span>1</span>개 상품이 조회되었습니다.
+								</strong>
+								<div class="n_insureance_style">
+									<div class="left">
+										<ul class="ins_txt_list">
+											<li class="txt_medium">상해보험</li>
+											<li>전기납 </li>
+											<li>월납</li>
+										</ul>
+										<ul class="ins_txt_list round">
+											<li>인터넷보험</li>
+											<li>스마트보험</li>
+											<li>우체국창구</li>
+										</ul>
+										<span class="info">
+											<strong class="ins_tit">무배당 우체국 안전벨트보험
+												<img src="/resources/img/content/ico_new.png" alt="new" class="ml_1"></strong>
+											<span class="hash">
+												<span>#교통재해</span>
+												<span>#상해최고1억</span>
+												<span>#사망최고2억</span>
+												<span>#교통사고장애</span>
+												<span>#교통사고사망</span>
+											</span>
+										</span>
+									</div>
+
+									<div class="right">
+										<div class="btn_box">
+											<a href="#;" class="btn btn_sm btn_outline_default">상세보기</a>
+											<a href="#;" class="btn btn_sm btn_outline_default">가입하기</a>
+										</div>
+										<ul class="price_info">
+											<li class="pl_4 pr_4">
+												<em class="first">20세(여)</em>
+												<span>
+													<span>20년 만기</span>
+													<span>전기납</span>
+												</span>
+											</li>
+											<li class="pl_5 pr_5">
+												<span>월납</span>
+												<strong>5,700원
+												</strong>
+											</li>
+											<li>
+												<span>보장금액</span>
+												<strong>2억원</strong>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--e: 결과확장 :상품 태그 확장 -->
+							<!--s: 결과확장 :보험간편설계확장 -->
+							<div class="search_box box_type02">
+								<div class="top_area">
+									<strong class="txt_result">내 보험료 간편계산 설정
+									</strong>
+									<span class="info">
+										<span>간편계산 정보를 한번만 입력하시면, 보험상품 목록이나 상품 상세정보에서 계산된 보험료를 미리 확인할 수 있어요.
+										</span>
+									</span>
+								</div>
+								<div class="body_area clfx">
+									<div class="f_l">
+										<label class="tf_title" for="tf_birth">가입자 생년월일/성별*
+										</label>
+										<input type="text" class="tf" id="tf_birth" title="생년월일 입력" placeholder="생년월일(예:19780224)"
+											style="width:197px;" required>
+
+										<span class="gender_chk">
+											<span>
+												<input type="radio" name="gender" id="gender_man">
+												<label for="gender_man">남자</label>
+											</span>
+											<span>
+												<input type="radio" name="gender" id="gender_woman" checked>
+												<label for="gender_woman">여자</label>
+											</span>
+										</span>
+
+										<p class="txt_info">
+											간편 계산된 보험료는 보험 상품 목록에서 바로 확인 가능합니다.
+										</p>
+									</div>
+
+									<div class="btn_area f_r">
+										<a href="#;" class="btn btn_md btn_outline_default txt_default">추가 설정</a>
+										<a href="#;" class="btn btn_md btn_primary">계산결과확인</a>
+									</div>
+								</div>
+							</div>
+							<!--e: 결과확장 :보험간편설계확장 -->
+						</div>
+					</div>
+				</section>
+				<!-- s: 내게 맞는 상품 찾기 -->
+
+				<section class="insur_area">
+					<div class="container">
+						<div class="tab_menu_type4">
+							<ul>
+								<li><a href="#tab_cont1" class="current" title="선택됨">다이렉트보험</a></li>
+								<li><a href="#tab_cont2">상담전용보험</a></li>
+							</ul>
+						</div>
+
+						<div class="tab_cont" id="tab_cont1">
+							<h3 class="sr_only">다이렉트보험</h3>
+							<ul class="insur_inner">
+								<li class="bg_pen">
+									<a href="#;">
+										<dl>
+											<dt><span>연금</span></dt>
+											<dd><strong><span>무배당</span> 우체국온라인연금<br> 저축보험</strong>
+												<div>
+													<ul class="tag_list">
+														<li>MZ세대</li>
+														<li>소확행</li>
+														<li>암집중보장</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+								<li class="bg_can">
+									<a href="#;">
+										<dl>
+											<dt><span>암</span></dt>
+											<dd><strong><span>무배당</span>
+													우체국온라인<br> 암보험ⓔ</strong>
+												<div>
+													<ul class="tag_list">
+														<li>비갱신형</li>
+														<li>암</li>
+														<li>온라인</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+								<li class="bg_inj">
+									<a href="#;">
+										<dl>
+											<dt><span>상해</span></dt>
+											<dd><strong><span>무배당</span>
+													에버리치상해보험</strong>
+												<div>
+													<ul class="tag_list">
+														<li>진단부터</li>
+														<li>입원수술</li>
+														<li>온라인</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+								<li class="bg_life">
+									<a href="#;">
+										<dl>
+											<dt><span>종신</span></dt>
+											<dd><strong><span>무배당</span>
+													우체국온라인<br> 종신보험</strong>
+												<div>
+													<ul class="tag_list">
+														<li>종신</li>
+														<li>비갱신형</li>
+														<li>온라인</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+							</ul>
+							<div class="insur_more">
+								<a href="#;">다이렉트보험 더보기<i class="ico ico_arr_more"></i></a>
+							</div>
+						</div>
+
+						<div class="tab_cont" id="tab_cont2">
+							<h3 class="sr_only">상담전용보험</h3>
+							<ul class="insur_inner">
+								<li class="bg_pen">
+									<a href="#;">
+										<dl>
+											<dt><span>연금</span></dt>
+											<dd><strong><span>무배당</span> 우체국연금보험
+												</strong>
+												<div>
+													<ul class="tag_list">
+														<li>세액공제</li>
+														<li>연금</li>
+														<li>유배당</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+								<li class="bg_can">
+									<a href="#;">
+										<dl>
+											<dt><span>암</span></dt>
+											<dd><strong><span>무배당</span>
+													우리가족암보험ⓔ</strong>
+												<div>
+													<ul class="tag_list">
+														<li>비갱신형</li>
+														<li>암</li>
+														<li>우리가족</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+								<li class="bg_inj">
+									<a href="#;">
+										<dl>
+											<dt><span>상해</span></dt>
+											<dd><strong><span>무배당</span>
+													에버리치상해보험</strong>
+												<div>
+													<ul class="tag_list">
+														<li>진단부터</li>
+														<li>입원수술</li>
+														<li>상해</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+								<li class="bg_life">
+									<a href="#;">
+										<dl>
+											<dt><span>종신</span></dt>
+											<dd><strong><span>무배당</span>
+													우체국든든한<br> 종신보험</strong>
+												<div>
+													<ul class="tag_list">
+														<li>종신</li>
+														<li>세액공제</li>
+														<li>진단</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</a>
+								</li>
+							</ul>
+							<div class="insur_more">
+								<a href="#;">상담전용보험 더보기<i class="ico ico_arr_more"></i></a>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- s: 고객센터/APP -->
+				<section class="insur_customer">
+					<div class="container">
+						<div class="insur_cus">
+							<h3>우체국 보험 고객센터</h3>
+							<p>평일 09시~18시 (은행휴무일 제외)</p>
+							<dl>
+								<dt>국내전용</dt>
+								<dd><strong>1599-0100</strong></dd>
+								<dd><strong>042-336-6898</strong></dd>
+							</dl>
+						</div>
+						<div class="fin_app">
+							<h3>편리한 부가 서비스</h3>
+							<ul>
+								<li><a href="#;" class="app_ins" title="새창으로 열림" target="_blank">스마트보험</a></li>
+								<li><a href="#;" class="app_bk" title="새창으로 열림" target="_blank">스마트뱅킹</a></li>
+								<li><a href="#;" class="app_postpay" title="새창으로 열림" target="_blank">포스트페이</a></li>
+								<li><a href="#;" class="app_member" title="새창으로 열림" target="_blank">우체국멤버십</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<!-- e: 고객센터/APP -->
+				<!-- s: 우체국 보험 바로가기 -->
+				<div class="dep_link">
+					<a href="#;" title="새창으로 열림" target="_blank">더욱 든든한 <strong>우체국 예금 바로가기</strong></a>
+				</div>
+				<!-- e: 우체국 보험 바로가기 -->
+			</div>
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
