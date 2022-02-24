@@ -16,7 +16,7 @@ $(function () {
 			// if ($.isFunction(window.gnbSetting)) gnbSetting();
 		});
 	}
-	$('.quick_menu_wrap').load('/html/internet/_inc-quickmenu.html .quick_menu_wrap > *', function () {
+	$('.quick_menu_wrap').load('/html/internet/_inc-finance-quickmenu.html .quick_menu_wrap > *', function () {
 		// if ($.isFunction(window.scrollbar)) scrollbar();
 	});
 	$('.breadcrumb').load('/html/internet/_inc-breadcrumb.html .breadcrumb > *', function () {
