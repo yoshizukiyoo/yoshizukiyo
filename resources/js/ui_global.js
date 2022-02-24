@@ -76,3 +76,41 @@ $(window).on('load scroll', function () {
 		$('body').removeClass('scrolled');
 	}
 });
+
+// 인터넷뱅킹 퀵메뉴 마이메뉴 (더보기 영역 확장)
+$(document).on('click', '.btn_menu_more', function () {
+	var button = $(this);
+	$('.quick_my_menu > ul').toggleClass('hidden_menu');
+
+	if (button.attr('title') == 'MY메뉴 전체 영역 열기') {
+		button.attr('title', 'MY메뉴 전체 영역 닫기');
+	} else {
+		button.attr('title', 'MY메뉴 전체 영역 열기');
+	}
+});
+
+// 인터넷뱅킹 퀵메뉴 상품 목록 슬라이드
+setTimeout(function () {
+	$('.latest_product_slide').slick({
+		arrows: false,
+		draggable: false,
+		slidesToScroll: 1,
+		slidesToShow: 1,
+		infinite: true,
+		false: true,
+		dots: false,
+		speed: 500,
+		autoplay: false,
+		autoplaySpeed: 3000
+	});
+}, 500);
+
+// 인터넷뱅킹 퀵메뉴 상품목록 이전 버튼
+function latestProductPrev() {
+	$('.latest_product_slide').slick('slickPrev');
+}
+
+// 인터넷뱅킹 퀵메뉴 상품목록 다음 버튼
+function latestProductNext() {
+	$('.latest_product_slide').slick('slickNext');
+}
