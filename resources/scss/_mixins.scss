@@ -124,3 +124,22 @@
 	padding-left: $spacing;
 	padding-right: $spacing;
 }
+
+@mixin label-focus($border-radius: false) {
+	&:focus {
+		+label {
+			outline: 1px dotted #000;
+
+			@if ($border-radius) {
+				border-radius: $border-radius;
+			}
+		}
+	}
+
+	// IE 처리
+	&:not(:focus-visible) {
+		+label {
+			outline: 0;
+		}
+	}
+}
