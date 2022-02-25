@@ -23,7 +23,13 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
 		});
 	</script>
 </head>
