@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(document).ready(function () {
+				var $totalUseSlide = $('.swiper_box');
+				$totalUseSlide.slick({
+					arrows: true,
+					//variableWidth: true,
+					draggable: true,
+					slidesToScroll: 1,
+					infinite: false,
+					false: true,
+					fade: false,
+					dots: false,
+					speed: 500,
+					autoplay: false,
+					autoplaySpeed: 4000,
+				});
+				// 스와이프 콜백 함수
+				$('.swiper_box').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+					// alert('스와이프 종료 후 콜백 이벤트');
+				});
+
+				$(".slick-prev").hide();
+				$(".slick-next").hide();
+			});
+
+
+			var $mainRollingArea = $('.insurance_list .insurance_slick');
+			var $eventRollingArea = $('.event_area .event_slick');
+			$mainRollingArea.on('init reInit afterChange ', function (event, slick, currentSlide, index) {
+				//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+				var i = (currentSlide ? currentSlide : 0) + 1;
+				$('.insurance_list .rolling_info').find('.nums').html('<strong>' + i + '</strong>' + '/' + slick
+					.slideCount);
+			});
+
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000
+			});
+
+			$(".rolling_info").prepend(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_info .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$eventRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$eventRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+			if ($(".insurance_list .insurance_slick .slick-track .slide_item").length < 4) {
+				$(".insurance_list .rolling_info").hide();
+			}
+
+			if ($(".event_area .event_slick .slick-track .slide_item").length < 4) {
+				$(".event_area .rolling_info").hide();
+			}
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-page-title="마이페이지"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+
+			<div class="top_info">
+				<h3 class="sr_only">내 정보</h3>
+				<span>
+					<span><strong>홍길동</strong>님 환영합니다.</span>
+					<span><a href="#;" class="btn btn_sm btn_primary btn_round">내정보관리</a></span>
+				</span>
+				<ul class="list list1">
+					<li>최근접속일자 : 2021.07.30 17:52:42</li>
+					<li>조회시간 : 2021.07.30 17:52:43</li>
+				</ul>
+			</div>
+
+			<div class="container pt_4">
+				<!-- s: 버튼 모음 -->
+				<div class="mypage_btn_container">
+					<ul>
+						<li>
+							<a href="#;">
+								<span>계약사항<br>조회</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<span>자동이체<br>관리</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<span>완전판매<br>모니터링</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<span>내설계함</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<span>알림함</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<span>증명서발급</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<span>소비자<br>리서치</span>
+							</a>
+						</li>
+						<li>
+							<a href="#;">
+								<span>나의상담<br>내역</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- e: 버튼 모음 -->
+			</div>
+
+			<!-- s: 전자청약 -->
+			<div class="section mt_7 pl_2 pr_4">
+				<div class="clfx pl_2">
+					<h4 class="tit1 f_l mb_0">전자청약</h4>
+					<div class="f_r">
+						<a href="#;" class="btn btn_sm btn_round btn_default">
+							<span>전자청약 더보기</span>
+							<i class="ico ico_chevron_right_sm"></i>
+						</a>
+					</div>
+				</div>
+				<div class="swiper_box">
+					<div class="tbl mt_3">
+						<table>
+							<caption class="sr_only">전자청약</caption>
+							<colgroup>
+								<col style="width: 33.3%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" colspan="2" class="txt_l txt_medium">무배당온라인암보험</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_l">계약자</td>
+									<td class="txt_l">나봄미</td>
+								</tr>
+								<tr>
+									<td class="txt_l">피보험자</td>
+									<td class="txt_l">나봄미</td>
+								</tr>
+								<tr>
+									<td class="txt_l">가입설계일</td>
+									<td class="txt_l">2021.10.21 12:25:55</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tbl mt_3">
+						<table>
+							<caption class="sr_only">전자청약</caption>
+							<colgroup>
+								<col style="width: 33.3%;">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" colspan="2" class="txt_l txt_medium">무배당온라인암보험</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt_l">계약자</td>
+									<td class="txt_l">나봄미</td>
+								</tr>
+								<tr>
+									<td class="txt_l">피보험자</td>
+									<td class="txt_l">나봄미</td>
+								</tr>
+								<tr>
+									<td class="txt_l">가입설계일</td>
+									<td class="txt_l">2021.10.21 12:25:55</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- s: case 1 : 전자청약 없을 경우 -->
+				<p class="txt_c p_4 ml_2 txt_gray2">진행중인 전자청약이 없습니다.</p>
+				<!-- e: case 1 : 전자청약 없을 경우 -->
+				<div class="btn_group btn_group_flex mt_2 pl_2">
+					<a href="#;" class="btn btn_md btn_primary btn_darkgray btn_round">4단계부터 이어하기</a>
+				</div>
+			</div>
+			<!-- e: 전자청약 -->
+
+			<div class="container">
+				<!-- s: 내보험 -->
+				<div class="slick_container mt_9">
+					<div class="clfx">
+						<h4 class="tit1 f_l mb_0">내보험</h4>
+						<div class="f_r">
+							<a href="#;" class="btn btn_sm btn_round btn_default">
+								<span>내보험 더보기</span>
+								<i class="ico ico_chevron_right_sm"></i>
+							</a>
+						</div>
+					</div>
+
+					<div class="insurance_list slider_area2">
+						<div class="insurance_slick">
+							<div class="slide_item">
+								<a href="#">
+									<strong>(무)우체국저축보험</strong>
+									<p>2005.10.10~2025.10.09</p>
+									<span>월납입금 <strong>85,569</strong>원</span>
+								</a>
+							</div>
+							<div class="slide_item">
+								<a href="#">
+									<strong>(무)우체국저축보험</strong>
+									<p>2005.10.10~2025.10.09</p>
+									<span>월납입금 <strong>85,569</strong>원</span>
+								</a>
+							</div>
+							<div class="slide_item">
+								<a href="#">
+									<strong>(무)우체국저축보험</strong>
+									<p>2005.10.10~2025.10.09</p>
+									<span>월납입금 <strong>85,569</strong>원</span>
+								</a>
+							</div>
+							<div class="slide_item">
+								<a href="#">
+									<strong>(무)우체국저축보험</strong>
+									<p>2005.10.10~2025.10.09</p>
+									<span>월납입금 <strong>85,569</strong>원</span>
+								</a>
+							</div>
+							<div class="slide_item">
+								<a href="#">
+									<strong>(무)우체국저축보험</strong>
+									<p>2005.10.10~2025.10.09</p>
+									<span>월납입금 <strong>85,569</strong>원</span>
+								</a>
+							</div>
+						</div>
+						<div class="rolling_info">
+							<div class="nums"></div>
+						</div>
+					</div>
+					<!-- s: case 1 : 가입보험 없을 경우 -->
+					<p class="txt_c pt_4 pb_4 txt_gray2">가입보험이 없습니다.</p>
+					<!-- e: case 1 : 가입보험 없을 경우 -->
+				</div>
+				<!-- e: 내보험 -->
+
+				<!-- s: 참여 이벤트 -->
+				<div class="section mt_10 mb_4">
+					<div class="clfx">
+						<h4 class="tit1 f_l mb_0">참여 이벤트</h4>
+						<div class="f_r">
+							<a href="#;" class="btn btn_sm btn_round btn_default">
+								<span>지난 이벤트 더보기</span>
+								<i class="ico ico_chevron_right_sm"></i>
+							</a>
+						</div>
+					</div>
+					<div class="event_banner">
+						<a href="#;">
+							<span class="img"><img src="/resources/img/main/img_si_submain20.png" alt=""></span>
+							<strong class="tit">행복지킴이<br>다이렉트 상품 가입 이벤트</strong>
+							<span class="d_day">D-47</span>
+							<span class="view"><span>이벤트캐시</span><span>경품</span><span>상품권</span></span>
+						</a>
+					</div>
+					<!-- s: case 1 : 이벤트 없을 경우 -->
+					<p class="txt_c pt_4 pb_4 txt_gray2">참여중인 이벤트가 없습니다.</p>
+					<!-- e: case 1 : 이벤트 없을 경우 -->
+				</div>
+				<!-- e: 참여 이벤트 -->
+			</div>
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
