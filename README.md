@@ -62,6 +62,7 @@ SVN 클라이언트 사용법 : http://lmc.cs.kookmin.ac.kr/readmore/tortoisesvn
     - [웹 접근성 교육자료](https://drive.google.com/drive/folders/11g0tibHlboUnPkn8hwthPkOfJ3IdB0xl)
     - [우체국차세대금융_고객채널퍼블리싱가이드](https://docs.google.com/presentation/d/1SSQpJfcXbevYXzevfWQSdBF2BbFL47cn/edit?usp=sharing&ouid=100874491042190796911&rtpof=true&sd=true)
 5. [퍼블리싱팀 업무현황표 구글시트 사용법](http://pms.inseq.co.kr:9000/geistkorea/epost/post/5)
+6. [웹 접근성 진단보고서 및 조치 가이드](https://inseq.notion.site/77b9b3d2731a43e0ae60f5179308dbfc)
 
 ### Git 브랜치 전략
 - PC웹 공통 : master (퍼블리싱 PL 승인외 수정 금지)
