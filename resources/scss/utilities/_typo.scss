@@ -1,4 +1,11 @@
 // 크기
+.txt_xxs {
+	font-size: $font-size-xxs !important;
+}
+
+.txt_xs {
+	font-size: $font-size-xs !important;
+}
 
 .txt_sm {
 	font-size: $font-size-sm !important;
@@ -25,14 +32,11 @@
 }
 
 // 타이틀
-.tit_cont {
-	margin: 80px 0 40px;
-	margin-right: 12px;
+.tit_page {
 	color: $black;
-	font-size: 40px;
-	font-weight: 600;
+	font-size: 30px;
+	font-weight: bold;
 	line-height: 1;
-	letter-spacing: -0.05em;
 }
 
 .tit1,
@@ -42,18 +46,31 @@
 }
 
 .tit1 {
-	margin-bottom: 20px;
+	margin: 30px 0 20px;
 	font-weight: 500;
-	font-size: 26px;
+	font-size: 20px;
 	color: $black;
 	line-height: 1;
 }
 
 .tit2 {
+	position: relative;
+	margin: 30px 0 20px;
+	padding-left: 24px;
 	font-weight: 500;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1;
-	margin: 30px 0 15px; // TODO : 추후 쓰임새에 따라 수정 필요 (임의로 지정한 간격)
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 18px;
+		height: 18px;
+		background: url(#{$url-img-common}/ico_arr_right_circle_black@2x.png) no-repeat;
+		background-size: cover;
+	}
 }
 
 // 두께
@@ -73,29 +90,28 @@
 	font-weight: bold !important;
 }
 
-// 링크 텍스트
-.link {
-	text-decoration: underline;
-
-	&:focus,
-	&:hover {
-		color: $primary;
-	}
-}
-
 // 상태 라벨
 .lab_status {
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	min-width: 54px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 60px;
 	padding: 0 14px;
-	line-height: 28px;
+	height: 28px;
 	border-radius: 14px;
 	font-size: 14px;
-	font-weight: normal;
+	font-weight: 500;
+	background-color: #fff;
 
 	+.lab_status {
 		margin-left: 6px;
+	}
+
+	&.outline_dep {
+		border: 2px solid $primary;
+	}
+
+	&.outline_ins {
+		border: 2px solid #ff883a;
 	}
 }

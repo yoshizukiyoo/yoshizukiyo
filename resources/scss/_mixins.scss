@@ -48,11 +48,22 @@
 // 아이콘
 @mixin ico($name, $w:21px, $h:21px, $url: #{$url-img-common}) {
 	.ico_#{$name} {
-		@include ir;
+		// @include ir;
 		width: $w;
 		height: $h;
 		line-height: $h;
 		background-image: url('#{$url}/ico_#{$name}.png');
+	}
+}
+
+@mixin ico2x($name, $w:21px, $h:21px, $url: #{$url-img-common}) {
+	.ico_#{$name} {
+		// @include ir;
+		width: $w;
+		height: $h;
+		line-height: $h;
+		background-image: url('#{$url}/ico_#{$name}@2x.png');
+		background-size: cover;
 	}
 }
 
@@ -117,14 +128,25 @@
 // }
 
 @mixin container {
-	width: $max-width;
-	margin: auto;
+	padding-left: $spacing;
+	padding-right: $spacing;
+}
 
-	@if ($mode=='responsive') {
-		max-width: $max-width;
+@mixin label-focus($border-radius: false) {
+	&:focus {
+		+label {
+			outline: 1px dotted #000;
 
-		@include media-breakpoint-down(md) {
-			width: auto;
+			@if ($border-radius) {
+				border-radius: $border-radius;
+			}
+		}
+	}
+
+	// IE 처리
+	&:not(:focus-visible) {
+		+label {
+			outline: 0;
 		}
 	}
 }

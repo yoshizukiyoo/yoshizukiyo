@@ -5,31 +5,118 @@
 	Back-End 개발시 이 파일을 반드시 삭제해 주세요 :)
 */
 
+
+// 레이아웃 공통 영역 로드
+var _ui_dev_mode = true;
+// var _ui_dev_mode = false;
+
 $(function () {
-	var headerInc = $('.header').data('inc');
+	const headerInc = $('.header').data('inc');
+	const pageTitle = $('.header').data('page-title');
+	let headerUrl;
 	if (headerInc == undefined) {
-		$('.header').load('/html/_inc-header.html .header > *', function () {
-			// if ($.isFunction(window.gnbSetting)) gnbSetting();
-		});
-	} else if (headerInc != undefined) {
-		$('.header').load('/html/' + headerInc + ' .header > *', function () {
-			// if ($.isFunction(window.gnbSetting)) gnbSetting();
-		});
+		if (pageTitle == undefined) {
+			headerUrl = window.location.pathname;
+		} else {
+			headerUrl = '/html/_inc_header.html';
+		}
+	} else {
+		headerUrl = '/html/' + headerInc;
 	}
-	$('.quick_menu_wrap').load('/html/_inc-quickmenu.html .quick_menu_wrap > *', function () {
-		// if ($.isFunction(window.scrollbar)) scrollbar();
+	const components = [{
+		name: 'header',
+		element: $('.header'),
+		fileUrl: headerUrl,
+		container: '.header',
+		use: true,
+		callback: function () {
+			$('.tit_page').html(pageTitle);
+		},
+	}, {
+		name: 'footer',
+		element: $('.footer'),
+		fileUrl: '/html/_inc_footer.html',
+		container: '.footer',
+		use: true,
+		callback: function () {},
+	}, {
+		name: 'commonLayers',
+		element: $('.common_layers'),
+		fileUrl: '/html/_inc_common_layers.html',
+		container: '.common_layers',
+		use: true,
+		callback: function () {},
+	}];
+
+	components.forEach(function (value, index, array) {
+		if (!components[index].element.is(':visible')) {
+			components[index].use = false;
+		}
 	});
-	$('.breadcrumb').load('/html/_inc-breadcrumb.html .breadcrumb > *', function () {
-		if ($.isFunction(window.breadcrumbSetting)) breadcrumbSetting();
+
+	let useLoadComponents = components.filter(function (useLoadComponent) {
+		return useLoadComponent.use && window.location.pathname != useLoadComponent.fileUrl;
 	});
-	$('.footer').load('/html/_inc-footer.html .footer > *', function () {
-		// if ($.isFunction(window.toTop)) toTop();
+
+	let defaultComponents = components.filter(function (defaultComponent) {
+		var myContents = defaultComponent.use && window.location.pathname == defaultComponent.fileUrl;
+		if (myContents) defaultComponent.callback.call();
+		return myContents;
 	});
+
+	if (useLoadComponents.length < defaultComponents.length) {
+		setDefaultUI('case 1');
+	}
+
+	useLoadComponents.forEach(function (value, index, array) {
+		var component = useLoadComponents[index],
+			element = component.element,
+			fileUrl = component.fileUrl,
+			container = component.container,
+			callback = component.callback;
+		if (window.location.pathname == fileUrl) {
+			setDefaultUI('case 2');
+		} else {
+			element.load(fileUrl + ' ' + container + ' > *', function (response, stu, xhr) {
+				callback.call();
+				if (index == useLoadComponents.length - 1) {
+					setDefaultUI('case 3');
+				}
+			});
+		}
+	});
+
+	// 페이지 로딩시 기본 세팅
+	function setDefaultUI(type) {
+		hashModalOpener();
+
+		// 공통 UI
+		// tabmenu();
+		// inputStatus();
+
+		// 접근성
+		// setCaption();
+
+		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
+	}
 });
 
 //
 // 공통 컴포넌트 UI
 //
+
+// 해시 URL로 모달팝업 열기 (화면 미리보기 용도)
+function hashModalOpener() {
+	var hash = window.location.hash;
+	var popupData = hash.substring(hash.lastIndexOf("#") + 1);
+	if ($('.modal_popup[data-popup="' + popupData + '"]').length) {
+		if ($('.modal_popup.show').length) closeModal($('.modal_popup.show').data('popup'));
+		openModal(popupData);
+	}
+	$(window).bind('hashchange', function () {
+		hashModalOpener();
+	});
+}
 
 // 즐겨찾기 버튼 토글
 $(function () {
@@ -81,7 +168,7 @@ $(function () {
 				showMonthAfterYear: true,
 				showOn: "button",
 				buttonText: titleText,
-				buttonImage: "/resources/img/common/ico_datepicker.png",
+				buttonImage: "/resources/img/common/ico_datepicker@2x.png",
 				buttonImageOnly: false,
 
 				// 추가 옵션
@@ -361,13 +448,13 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 	$.fn.customSelect = function () {
 
 		$(document).on('mousedown', function (e) {
-			if (!$(e.target).closest('.selectbox_wrap').length) {
-				$('.selectbox_wrap.active dt a').each(function () {
+			if (!$(e.target).closest('.opt').length) {
+				$('.opt.active dt a').each(function () {
 					if ($(this).attr('title') != undefined) {
 						$(this).attr('title', $(this).attr('title').replace('접기', '펼치기'))
 					}
 				});
-				$('.selectbox_wrap.active').removeClass('active');
+				$('.opt.active').removeClass('active');
 			}
 		});
 
@@ -389,8 +476,8 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 
 				$btn.click(function (e) {
 					e.preventDefault();
-					const $otherBtn = $('.selectbox_wrap').not($el).find('dt a');
-					$('.selectbox_wrap').not($el).removeClass('active')
+					const $otherBtn = $('.opt').not($el).find('dt a');
+					$('.opt').not($el).removeClass('active')
 					$otherBtn.attr('title', $otherBtn.attr('title').replace('접기', '펼치기'));
 
 					$el.toggleClass('active');
@@ -413,7 +500,7 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 	};
 })(jQuery);
 $(function () {
-	$('.selectbox_wrap').customSelect();
+	$('.opt').customSelect();
 });
 
 // 
