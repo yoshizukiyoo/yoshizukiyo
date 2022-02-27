@@ -1,72 +1,41 @@
-$popup-title-height: 88px;
+$popup-title-height: 60px;
 $popup-mobile-title-height: 50px;
 
-$popup-size: (xs: 400px,
-	sm: 600px,
-	md: 750px,
-	lg: 800px,
-	xl: 880px,
-	xxl: 1200px,
+$popup-size: (alert: 300px,
+	sm: 400px,
+	md: 600px,
+	lg: 900px,
+	// xl: 880px,
+	// xxl: 1200px,
 );
 
 /* 모달, 윈도우 팝업 공통 */
 .popup_header {
-	font-family: $font-family-title;
+	display: flex;
+	align-items: center;
 	height: $popup-title-height;
-	border-bottom: 1px solid $border-light;
-	text-align: center;
-	padding: 0 50px;
-
-	&.txt_l {
-		padding: 0 75px 0 50px;
-	}
+	padding: 0 30px;
+	line-height: 1;
+	// font-family: $font-family-title;
 
 	.popup_tit {
 		display: inline-flex;
-		vertical-align: middle;
-		height: $popup-title-height - 1px;
 		align-items: center;
-		font-size: $font-size-xl;
-		font-weight: 500;
-	}
-
-	@if ($mode=='responsive') {
-		.modal_popup & {
-			@include media-breakpoint-up(lg) {
-				border-radius: 10px 10px 0 0;
-			}
-
-			@include media-breakpoint-down(md) {
-				height: $popup-mobile-title-height;
-				justify-content: flex-start;
-				padding-left: $mobile-spacing;
-			}
-		}
+		vertical-align: middle;
+		letter-spacing: -0.05em;
+		font-size: 22px;
+		font-weight: bold;
 	}
 }
 
 .popup_body {
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
-	padding: 40px 50px;
+	padding: 10px 30px 40px;
 
 	.btn_group {
-		margin-top: 30px;
+		margin-top: 25px;
 		text-align: center;
-	}
-
-	.btn+.btn_md {
-		margin-left: 2px;
-	}
-
-	.btn_md {
-		min-width: 82px;
-	}
-
-	@if ($mode=='responsive') {
-		@include media-breakpoint-down(md) {
-			padding: $mobile-spacing $mobile-spacing 0;
-		}
 	}
 }
 
@@ -95,7 +64,8 @@ $popup-size: (xs: 400px,
 	right: 0;
 	width: $popup-title-height;
 	height: $popup-title-height;
-	background: url(#{$url-img-common}/ico_close_lg.png) no-repeat center center;
+	background: url(#{$url-img-common}/ico_close@2x.png) no-repeat center center;
+	background-size: 20px auto;
 
 	@include ir;
 	text-decoration: none;
@@ -142,19 +112,10 @@ $popup-size: (xs: 400px,
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 950; // 2021-11-29 z-index 값 수정
+	z-index: 950;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	// 2021-11-29 개발자 요청 추가
-	&.modal_confirm {
-		z-index: 960
-	}
-
-	&.modal_alert {
-		z-index: 970
-	}
 
 	.dimed {
 		position: fixed;
@@ -176,14 +137,6 @@ $popup-size: (xs: 400px,
 		&:focus {
 			outline: 0;
 			// box-shadow: 0 0 20px 5px rgba(#fff, .2);
-		}
-
-		.modal_popup.hide & {
-			transform: scale(0.9);
-		}
-
-		.modal_popup.show & {
-			transform: scale(1);
 		}
 	}
 
@@ -215,28 +168,51 @@ $popup-size: (xs: 400px,
 		}
 	}
 
-	// 오류창 팝업
+	// 알림창 팝업
+	&.modal_confirm {
+		z-index: 960;
+	}
+
+	&.modal_alert {
+		z-index: 970;
+	}
+
 	&.modal_alert,
 	&.modal_confirm {
 		.popup_inner {
-			width: 600px;
+			width: 300px;
+			box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 		}
 
-		.alert_cont {
+		.popup_header {
+			height: 40px;
+			justify-content: center;
+			align-items: flex-end;
+		}
+
+		.popup_body {
+			padding: 25px;
+			word-break: keep-all;
+		}
+
+		.btn_group {
+			margin-top: 15px;
 			display: flex;
-			align-items: center;
-			line-height: 24px;
+			justify-content: center;
 
-			.artwork {
-				text-align: center;
-				flex: 0 0 auto;
-				width: 128px;
-				margin-right: 30px;
+			.btn {
+				flex: 1 1 20%;
+				width: 150px;
+				max-width: 150px;
+				margin: 5px;
 			}
+		}
 
-			.cont {
-				flex: 1 1 auto;
-				font-weight: normal;
+		.btn_close_popup {
+			&:not(:focus) {
+				width: 1px;
+				height: 1px;
+				background: none;
 			}
 		}
 	}
@@ -247,41 +223,9 @@ $popup-size: (xs: 400px,
 	}
 
 	.popup_body {
-		max-height: calc(100vh - 300px);
-	}
-
-	@if ($mode=='responsive') {
-		@include media-breakpoint-down(md) {
-			&.modal_sm {
-				.popup_inner {
-					margin: $mobile-spacing;
-					border-radius: 10px;
-				}
-			}
-
-			&:not(.modal_sm) {
-				.popup_inner {
-					width: 100%;
-					display: flex !important;
-					flex-direction: column !important;
-					justify-content: center !important;
-					height: 100%;
-				}
-
-				.popup_header,
-				.popup_footer {
-					flex: 0 0 auto;
-				}
-
-				.popup_body {
-					flex: 1 1 auto;
-					max-height: 100%;
-				}
-			}
-		}
+		max-height: calc(100vh - 200px);
 	}
 }
-
 
 /* 윈도우 팝업 */
 .popup {
@@ -295,10 +239,6 @@ $popup-size: (xs: 400px,
 		height: 100%;
 	}
 
-	// .popup_header {
-	// 	flex: 0 0 auto;
-	// }
-
 	.popup_body {
 		flex: 1 1 auto;
 		max-height: 100%;
@@ -310,170 +250,4 @@ $popup-size: (xs: 400px,
 	.popup_footer {
 		flex: 0 0 auto;
 	}
-}
-
-/* 툴팁 */
-.tooltip {
-	display: block;
-	position: absolute;
-	left: 0;
-	top: -66px;
-
-	border-radius: 6px;
-	box-shadow: 0 5px 12px 0 #d8d8d8;
-	font-weight: 200;
-	font-size: 14px;
-
-	&::before {
-		content: '';
-		position: absolute;
-		left: 34px;
-		bottom: -13px;
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 0 0 13px 10px;
-		color: #555;
-	}
-
-	&.tooltip_sm {
-		padding: 14px 20px;
-		background: #fef5e5;
-		white-space: nowrap;
-
-		&::before {
-			border-color: #fef5e5 #fef5e5 transparent #fef5e5;
-		}
-	}
-
-	&.tooltip_md {
-		width: 322px;
-		padding: 16px 42px 16px 20px;
-		background: #fff;
-		line-height: 1.5;
-
-		>button {
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 42px;
-			height: 48px;
-			background: url(#{$url-img-common}/ico_close_sm.png) no-repeat 50% 50%;
-		}
-
-		&::before {
-			border-color: #fff #fff transparent #fff;
-		}
-	}
-
-	.tooltip_list {
-		font-size: 14px;
-
-		>li {
-			position: relative;
-			padding-left: 18px;
-
-			&:not(:last-child) {
-				margin-bottom: 7px;
-			}
-
-			&::before {
-				content: '※';
-				position: absolute;
-				left: 0;
-				top: 0;
-			}
-		}
-	}
-}
-
-.dim_hide>.dimed {
-	opacity: 0;
-	transition: .3s;
-}
-
-/* 우편번호 */
-.zipcode_search {
-	display: flex;
-	border: 1px solid $black;
-	border-radius: 6px;
-
-	>input[type=text] {
-		width: calc(100% - 57px);
-		padding-left: 15px;
-		border: 0;
-		border-radius: 6px;
-		height: 44px;
-		font-weight: 200;
-		font-size: 16px;
-	}
-
-	>button {
-		width: 57px;
-		height: 44px;
-		border-radius: 0 6px 6px 0;
-		background: url(#{$url-img-common}/ico_search_bold.png) no-repeat 50% 50%;
-	}
-}
-
-.txt_info_zipcode {
-	margin-top: 23px;
-}
-
-.address_example {
-	display: flex;
-	align-items: center;
-	margin: 5px 0 0 -15px;
-	border-radius: 6px;
-	background: $primary;
-
-	>.box_l {
-		width: 97px;
-		text-align: center;
-
-		>span {
-			display: inline-block;
-			padding-top: 32px;
-			background: url(#{$url-img}/content/ico_search_zipcode.png) no-repeat 50% 0;
-			font-weight: 400;
-			color: $black;
-		}
-	}
-
-	>.box_r {
-		flex: 1 1 0;
-		padding: 17px 30px;
-		background: $bg-lightgray;
-		font-size: 14px;
-		color: $gray;
-
-		li>span {
-			display: inline-block;
-			width: 165px;
-		}
-	}
-}
-
-.zipcode_search_result {
-	margin-top: 23px;
-}
-
-.address_write {
-	margin-top: 23px;
-}
-
-.txt_last_data {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 60px;
-
-	>p {
-		padding-left: 34px;
-		background: url(#{$url-img-common}/ico_check_primary.png) no-repeat 0 50%;
-	}
-}
-
-.line_popup .popup_inner {
-	border: 1px solid $black;
 }
