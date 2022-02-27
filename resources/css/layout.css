@@ -1,4 +1,10 @@
 @charset "UTF-8";
+html,
+body,
+.wrapper {
+  height: 100%;
+}
+
 .wrapper {
   position: relative;
   display: -webkit-box;
@@ -9,12 +15,10 @@
       -ms-flex-direction: column;
           flex-direction: column;
   min-width: 1024px;
-  height: 100vh;
   overflow: hidden;
 }
 
-.wrapper .header,
-.wrapper .footer {
+.wrapper > :not(#content) {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -27,12 +31,23 @@
   overflow-y: auto;
 }
 
-/* 헤더 컨테이너 */
-.header {
-  background-color: #fff;
+.wrapper .btn_close_page {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 56px;
+  height: 56px;
 }
 
-.header .titlebar {
+hr {
+  display: block;
+  height: 10px;
+  border: 0;
+  background-color: #ddd;
+}
+
+/* 헤더 컨테이너 */
+.titlebar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,8 +63,12 @@
   padding-right: 14px;
 }
 
-.header .left,
-.header .right {
+.use_close_btn .titlebar {
+  padding-right: 70px;
+}
+
+.titlebar .left,
+.titlebar .right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,20 +77,12 @@
           align-items: center;
 }
 
-.header .btn_icon {
+.titlebar .btn_icon {
   width: 56px;
   height: 56px;
 }
 
-#content {
-  min-height: calc(100vh - 84px);
-}
-
-.cont_header {
-  padding-left: 32px;
-  padding-right: 32px;
-  position: relative;
-  padding: 30px 0 0;
+.titlebar .tit_page {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,154 +91,34 @@
           align-items: center;
 }
 
-.cont_header:after {
-  display: block;
-  clear: both;
+.titlebar .tit_page:first-child {
+  margin-left: 10px;
+}
+
+.titlebar .tit_page .user_name {
+  position: relative;
+}
+
+.titlebar .tit_page .user_name:after {
   content: '';
-}
-
-.cont_header .tit_page {
-  display: inline-block;
-  margin: 0 10px 0 0;
-}
-
-.cont_header_right {
   position: absolute;
-  top: -40px;
+  bottom: -3px;
+  left: 0;
   right: 0;
-  height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.cont_header_right .step {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.cont_header_right .step li {
-  color: #595959;
-  font-weight: 400;
-  letter-spacing: -0.05em;
-  margin-left: 20px;
-  line-height: 0;
-}
-
-.cont_header_right .step li .num {
-  display: inline-block;
-  width: 10px;
   height: 10px;
-  background: #555;
-  border-radius: 100%;
-  color: transparent;
+  z-index: -1;
+  background-color: #fad973;
 }
 
-.cont_header_right .step li .txt {
-  display: none;
+.titlebar .tit_page .user_num {
+  font-size: 24px;
+  font-weight: 500;
 }
 
-.cont_header_right .step li.on .num {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  margin-right: 8px;
-  background: #555;
-  color: #fff;
-  text-align: center;
-  line-height: 32px;
-  border-radius: 100%;
-}
-
-.cont_header_right .step li.on .txt {
-  display: inline;
-}
-
-.cont_header_right .step li.on ~ li .num {
-  background-color: #ddd;
-}
-
-.cont_body {
-  position: relative;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-top: .1px;
-  padding-bottom: 120px;
-}
-
-.blind {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-.fx_lr {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.fx_lr > .fx_left {
-  margin-right: auto;
-}
-
-.fx_lr > .fx_right {
-  margin-left: auto;
-}
-
-.war_style1 {
-  display: inline-block;
-  padding-left: 23px;
-  background: url(/resources/img/common/ico_emp.png) no-repeat 0 6px;
-  font-weight: 200;
-  color: #555;
-}
-
-.war_style2 {
-  line-height: 1.3;
-}
-
-.war_style2 > strong {
-  display: block;
-  font-weight: 200;
-  color: #555;
-}
-
-.war_style2 > strong > span {
-  display: inline-block;
-  padding-left: 23px;
-  background: url(/resources/img/common/ico_emp.png) no-repeat 0 2px;
-}
-
-.inp_checkbox > label {
-  display: inline-block;
-  padding-left: 32px;
-  background: url(/resources/img/common/ico_checkbox2_default.png) no-repeat 0 3px;
-  font-weight: 200;
-  color: #555;
-}
-
-.inp_checkbox > input[type=checkbox]:checked + label {
-  background-image: url(/resources/img/common/ico_checkbox2_checked.png);
-}
-
-.inp_checkbox > input[type=checkbox]:focus + label {
-  outline: 1px solid #555;
+#content {
+  padding-bottom: 50px;
 }
 
 .footer {
-  background-color: red;
   overflow: hidden;
 }

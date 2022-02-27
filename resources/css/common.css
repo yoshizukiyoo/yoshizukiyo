@@ -94,15 +94,6 @@ body {
   word-wrap: break-word;
 }
 
-header,
-section,
-article,
-aside,
-footer,
-nav {
-  display: block;
-}
-
 fieldset {
   display: block;
   margin: 0;
@@ -1176,34 +1167,46 @@ caption.sr_only {
   display: flex;
 }
 
-.flex_container .flex_item_fit {
+.flex_item_fit {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
 }
 
 .flex_justify_between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-.flex_justify_center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.flex_align_stretch {
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-}
-
 .flex_align_center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.flex_align_start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.flex_align_end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .d_n {
@@ -1244,6 +1247,10 @@ caption.sr_only {
 
 .txt_valid {
   color: #009973 !important;
+}
+
+.txt_blue {
+  color: #0069e1 !important;
 }
 
 .txt_red {
@@ -1316,6 +1323,10 @@ caption.sr_only {
   background-color: #fff !important;
 }
 
+.txt_base {
+  font-size: 15px !important;
+}
+
 .txt_xxs {
   font-size: 12px !important;
 }
@@ -1329,7 +1340,7 @@ caption.sr_only {
 }
 
 .txt_md {
-  font-size: 15px !important;
+  font-size: 16px !important;
 }
 
 .txt_lg {
@@ -1768,6 +1779,22 @@ caption.sr_only {
   background-size: cover;
 }
 
+.ico_lg_close {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  background-image: url("/resources/img/common/ico_lg_close@2x.png");
+  background-size: cover;
+}
+
+.ico_lg_user {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  background-image: url("/resources/img/common/ico_lg_user@2x.png");
+  background-size: cover;
+}
+
 .ico_arr_down {
   width: 13px;
   height: 7px;
@@ -1789,6 +1816,14 @@ caption.sr_only {
   height: 13px;
   line-height: 13px;
   background-image: url("/resources/img/common/ico_arr_left_double@2x.png");
+  background-size: cover;
+}
+
+.ico_arr_right_black_xs {
+  width: 4px;
+  height: 6px;
+  line-height: 6px;
+  background-image: url("/resources/img/common/ico_arr_right_black_xs@2x.png");
   background-size: cover;
 }
 
@@ -2048,14 +2083,6 @@ caption.sr_only {
   background-size: cover;
 }
 
-.ico_user_lg {
-  width: 27.5px;
-  height: 33px;
-  line-height: 33px;
-  background-image: url("/resources/img/common/ico_user_lg@2x.png");
-  background-size: cover;
-}
-
 /* 불릿 시스템 */
 .list {
   line-height: 1.5;
@@ -2109,14 +2136,15 @@ caption.sr_only {
 }
 
 .list2 > li {
-  padding-left: 15px;
+  padding-left: 14px;
 }
 
 .list2 > li:before {
-  width: 5px;
+  width: 4px;
   height: 6px;
-  top: 12px;
-  background: url(/resources/img/common/bul_list2.png) no-repeat;
+  top: 9px;
+  background: url(/resources/img/common/ico_arr_right_black_xs@2x.png) no-repeat;
+  background-size: cover;
 }
 
 .list3 {
@@ -2209,6 +2237,7 @@ caption.sr_only {
   overflow: hidden;
   font-family: "SpoqaHanSans", "NotoSansKR", "malgun gothic", Arial, sans-serif;
   font-weight: normal;
+  line-height: 1;
 }
 
 .btn + .btn {
@@ -2224,11 +2253,6 @@ caption.sr_only {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  margin-top: 2px;
-}
-
-.btn .ico:first-child {
-  margin-right: 10px;
 }
 
 .btn .ico:only-child {
@@ -2236,7 +2260,30 @@ caption.sr_only {
   margin-right: 0;
 }
 
-.btn * + .ico {
+.btn_xs .ico:first-child,
+.btn_sm .ico:first-child,
+.btn_md .ico:first-child {
+  margin-right: 5px;
+}
+
+.btn_xs * + .ico,
+.btn_sm * + .ico,
+.btn_md * + .ico {
+  margin-left: 5px;
+}
+
+.btn_lg .ico,
+.btn_xl .ico {
+  margin-top: 2px;
+}
+
+.btn_lg .ico:first-child,
+.btn_xl .ico:first-child {
+  margin-right: 10px;
+}
+
+.btn_lg * + .ico,
+.btn_xl * + .ico {
   margin-left: 10px;
 }
 
@@ -2265,20 +2312,12 @@ caption.sr_only {
   font-weight: 300;
 }
 
-.btn_sm .ico:first-child {
-  margin-right: 5px;
-}
-
-.btn_sm * + .ico {
-  margin-left: 5px;
-}
-
 .btn_md {
   min-width: 60px;
   height: 35px;
   padding: 0 15px;
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: normal;
 }
 
 .btn_lg {
@@ -2368,6 +2407,49 @@ caption.sr_only {
   min-width: auto;
   padding-left: 20px;
   padding-right: 25px;
+}
+
+.btn_more {
+  min-width: 100px;
+  height: 30px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.btn_more .ico {
+  margin-left: 10px;
+}
+
+/* 버튼 그룹 */
+.btn_group {
+  clear: both;
+  word-spacing: 6px;
+  text-align: center;
+  margin: 45px 0 -5px;
+}
+
+.btn_group_form {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.btn_group_view {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.btn_group .btn {
+  margin: 5px 0;
+}
+
+.btn_group * {
+  word-spacing: normal;
+}
+
+.btn_group_main {
+  text-align: center;
+  margin-top: 55px;
 }
 
 .tf {
@@ -3954,6 +4036,10 @@ textarea.tf::placeholder {
   border-radius: 0 0 6px 6px;
   width: 110px;
   height: 30px;
+}
+
+.search_form .btn_search_more .ico {
+  margin-left: 10px;
 }
 
 .tbl_search {

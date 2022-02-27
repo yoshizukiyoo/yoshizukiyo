@@ -33,13 +33,13 @@ $(function () {
 			$('.tit_page').html(pageTitle);
 		},
 	}, {
-		name: 'footer',
-		element: $('.footer'),
-		fileUrl: '/html/_inc_footer.html',
-		container: '.footer',
-		use: true,
-		callback: function () {},
-	}, {
+		// 	name: 'footer',
+		// 	element: $('.footer'),
+		// 	fileUrl: '/html/_inc_footer.html',
+		// 	container: '.footer',
+		// 	use: true,
+		// 	callback: function () {},
+		// }, {
 		name: 'commonLayers',
 		element: $('.common_layers'),
 		fileUrl: '/html/_inc_common_layers.html',
@@ -91,6 +91,7 @@ $(function () {
 		hashModalOpener();
 
 		// 공통 UI
+		setHeaderSpacing();
 		tabmenu();
 		// inputStatus();
 
@@ -116,6 +117,13 @@ function hashModalOpener() {
 	$(window).bind('hashchange', function () {
 		hashModalOpener();
 	});
+}
+
+// 헤더 우측 닫기 버튼 위치 확보
+function setHeaderSpacing() {
+	if ($('.btn_close_page').length) {
+		$('body').addClass('use_close_btn');
+	}
 }
 
 // 탭메뉴
