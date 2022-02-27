@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header.html" data-page-title="테이블 모음"></header>
+		<article id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 검색조건입력 -->
+			<form action="#;" class="search_form">
+				<div class="inner">
+					<div class="tbl tbl_search">
+						<table>
+							<caption class="sr_only">검색조건 입력</caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col style="width: 35%;">
+								<col>
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">조회구분</th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="radioSearch1" id="radioSearch1_1" checked>
+											<label for="radioSearch1_1">펀드거래내역</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="radioSearch1" id="radioSearch1_2">
+											<label for="radioSearch1_2">펀드매매현황</label>
+										</span>
+									</td>
+									<th scope="row">
+										펀드계좌번호
+										<span class="req">필수항목</span>
+									</th>
+									<td>
+										<div class="opt" style="width: 100%;">
+											<dl>
+												<dt><a href="#;" title="펀드계좌번호 선택"><span>00000000-00-00000000</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>선택1</span></a></li>
+														<li><a href="#;"><span>선택2</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										거래기간 <span class="req">필수항목</span>
+									</th>
+									<td colspan="3">
+										<span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_1">
+												<label for="radio4_1">당일</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_2" checked>
+												<label for="radio4_2">7일</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_3">
+												<label for="radio4_3">15일</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_4">
+												<label for="radio4_4">1개월</label>
+											</span>
+										</span>
+										<span class="ml_2">
+											<input type="text" class="tf tf_datepicker" value="2022.01.01" title="거래기간 시작일"
+												style="width: 150px;">
+											<span class="datepicker_bar">-</span>
+											<input type="text" class="tf tf_datepicker" value="2022.01.01" title="거래기간 종료일"
+												style="width: 150px;">
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">업무구분</th>
+									<td colspan="3">
+										<span class="check_item">
+											<input type="radio" name="radioSearch2" id="radioSearch2_1" checked>
+											<label for="radioSearch2_1">전체</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="radioSearch2" id="radioSearch2_2">
+											<label for="radioSearch2_2">매수신청</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="radioSearch2" id="radioSearch2_3">
+											<label for="radioSearch2_3">환매신청</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="radioSearch2" id="radioSearch2_4">
+											<label for="radioSearch2_4">전환신청</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<button type="button" class="btn btn_lg btn_primary btn_search">
+						<i class="ico ico_search_lg_white"></i>
+						<span>조회</span>
+					</button>
+				</div>
+				<button type="button" class="btn btn_search_more" title="펼치기">
+					<span>상세조건</span>
+					<i class="ico ico_arr_down_white"></i>
+				</button>
+			</form>
+			<!-- e: 검색조건입력 -->
+
+			<div class="container pb_8">
+				<div class="txt_r mb_2">
+					<p class="txt_xs">
+						<i class="ico ico_clock_gray mr_1"></i>
+						<span class="v_mid">조회 시간 2021.12.31 14:18:38</span>
+					</p>
+				</div>
+				<div class="tbl tbl_data">
+					<table style="min-width: 1200px;">
+						<caption class="sr_only">${표제목}에 대한 검색결과 목록</caption>
+						<thead>
+							<tr>
+								<th scope="col">항목1</th>
+								<th scope="col">항목2</th>
+								<th scope="col">항목3</th>
+								<th scope="col">항목4</th>
+								<th scope="col">항목</th>
+								<th scope="col">항목</th>
+								<th scope="col">항목</th>
+								<th scope="col">항목</th>
+								<th scope="col">항목</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>0000.00.00 00:00:00</td>
+								<td>text</td>
+								<td class="txt_r">1,000원</td>
+								<td>text</td>
+								<td>text</td>
+								<td>text</td>
+								<td>text</td>
+								<td>text</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<h4 class="tit2">상세/등록형</h4>
+				<div class="tbl tbl_data">
+					<table>
+						<caption class="sr_only">${표제목}</caption>
+						<colgroup>
+							<col style="width: 17%;">
+							<col style="width: 33%;">
+							<col style="width: 17%;">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">텍스트</th>
+								<td>
+									000-0000-0000
+									<span class="ml_2">
+										<a href="#;" class="btn btn_xs btn_outline_default">예약</a>
+										<a href="#;" class="btn btn_xs btn_outline_lightgray">취소</a>
+									</span>
+								</td>
+								<th scope="row">날짜</th>
+								<td>2022.00.00</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<label for="inputSample">input <span class="req">필수항목</span></label>
+								</th>
+								<td><input type="text" class="tf full" id="inputSample"></td>
+								<th scope="row">
+									셀렉트 <span class="req">필수항목</span>
+								</th>
+								<td>
+									<div class="form_group">
+										<div class="opt">
+											<dl>
+												<dt><a href="#;" title="${대체텍스트} 선택"><span>선택</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>선택1</span></a></li>
+														<li><a href="#;"><span>선택2</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<span class="form_addon">
+											<button type="button" class="btn btn_md btn_outline_default">검색</button>
+										</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">checkbox</th>
+								<td>
+									<span class="check_item">
+										<input type="checkbox" id="check_sample1" checked>
+										<label for="check_sample1">항목1</label>
+									</span>
+									<span class="check_item">
+										<input type="checkbox" id="check_sample2">
+										<label for="check_sample2">항목2</label>
+									</span>
+								</td>
+								<th scope="row">radio</th>
+								<td>2021.10.28</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<h4 class="tit2">라운드형</h4>
+				<div class="tbl tbl_data tbl_round">
+					<table>
+						<caption class="sr_only">${간략한 표제목}</caption>
+						<thead>
+							<tr>
+								<th scope="col">항목1</th>
+								<th scope="col">항목2</th>
+								<th scope="col">항목3</th>
+								<th scope="col" class="bg_lightprimary">항목4</th>
+								<th scope="col" class="bg_lightprimary">항목</th>
+								<th scope="col" class="bg_lightgreen">항목</th>
+								<th scope="col" class="bg_lightred">항목</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>0000.00.00 00:00:00</td>
+								<td>text</td>
+								<td class="txt_r">1,000원</td>
+								<td>text</td>
+								<td>text</td>
+								<td>text</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- e: 본문 -->
+		</article>
+		<button type="button" class="btn btn_icon btn_close_page">
+			<i class="ico ico_leave"></i>
+			<span class="sr_only">닫기</span>
+		</button>
+	</div>
+</body>
+
+</html>

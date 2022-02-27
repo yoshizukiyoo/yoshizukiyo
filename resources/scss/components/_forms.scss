@@ -2,11 +2,6 @@
 // Forms
 // 
 
-input[type=password]::-ms-reveal,
-input[type=password]::-ms-clear {
-	display: none;
-}
-
 .tf {
 	max-width: 100%;
 	height: $form-height;
@@ -83,16 +78,6 @@ input[type=password]::-ms-clear {
 	}
 }
 
-.error_info {
-	margin-top: 10px;
-	line-height: 1;
-	color: $invalid;
-}
-
-.opt+.btn {
-	margin-left: 6px;
-}
-
 textarea.tf {
 	width: 100%;
 	height: auto;
@@ -114,6 +99,156 @@ textarea.tf {
 		font-size: 16px;
 		color: $darkgray;
 	}
+}
+
+.opt {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+	height: $form-height;
+	z-index: 99;
+	vertical-align: middle;
+
+	dl {
+		position: relative;
+	}
+
+	dt {
+		a {
+			height: $form-height;
+			color: $darkgray;
+			display: block;
+			border: 1px solid $border-base;
+			border-radius: 6px;
+			background: $white;
+
+			>span {
+				display: block;
+				margin: 0 40px 0 15px;
+				height: $form-height - 2;
+				line-height: $form-height - 2;
+				color: $darkgray;
+
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					top: 15px;
+					right: 15px;
+					width: 13px;
+					height: 7px;
+					background: url(#{$url-img-common}/ico_arr_down@2x.png) no-repeat 0 0;
+					background-size: 13px auto;
+				}
+			}
+		}
+	}
+
+	dd {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 45px;
+		width: 100%;
+		background: #fff;
+
+		ul {
+			max-height: 202px;
+			overflow-y: auto;
+			border: 1px solid $darkgray;
+			border-top: 1px solid #eee;
+			border-radius: 0 0 6px 6px;
+		}
+
+		a {
+			display: block;
+			background: $white;
+
+			&:hover {
+				background: #f3f3f3;
+
+				>span {
+					color: $darkgray;
+				}
+			}
+
+			>span {
+				color: #666;
+			}
+		}
+
+		li {
+			&:last-child a {
+				border-radius: 0 0 5px 5px;
+			}
+		}
+
+		a span {
+			display: block;
+			margin: 0 27px 0 15px;
+			height: 50px;
+			line-height: 50px;
+		}
+
+		li.active a {
+			background: #f3f3f3;
+
+			>span {
+				color: $darkgray;
+			}
+		}
+	}
+
+	&.active {
+		z-index: 100;
+
+		dd {
+			display: block;
+			top: $form-height - 1;
+
+			a {
+				span {
+					height: $form-height;
+					line-height: $form-height;
+				}
+			}
+		}
+
+		dt {
+			a {
+				border: 1px solid #333;
+				border-radius: 6px 6px 0 0;
+
+				span {
+					&:after {
+						transform: rotate(180deg);
+					}
+				}
+			}
+		}
+	}
+
+	&.error {
+		dt a {
+			border-color: #d70000;
+		}
+	}
+
+	&.disabled {
+		a {
+			background: #f3f3f3;
+
+			>span {
+				color: #666;
+			}
+		}
+	}
+}
+
+.error_info {
+	margin-top: 10px;
+	line-height: 1;
+	color: $invalid;
 }
 
 .check_item {
@@ -333,264 +468,19 @@ textarea.tf {
 	}
 }
 
-.form_row {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-
-	.txt_item {
-		flex: 0 0 auto;
-		padding: 0 10px;
-	}
-
-	.tf_item {
-
-		+.tf_item {
-			margin-left: 10px;
-		}
-
-		.tf {
-			width: 100%;
-		}
-	}
-
-	@include media-breakpoint-up(lg) {
-		.tf_item {
-			display: block;
-			flex: 0 0 auto;
-		}
-	}
-
-	@include media-breakpoint-down(md) {
-		max-width: none !important;
-
-		.txt_item {
-			padding: 0 5px;
-		}
-
-		.tf_item {
-			flex: 1 1 10%;
-
-			&.md-full {
-				flex: 1 1 100%;
-				margin: 15px 0 0 !important;
-				flex-basis: 100%;
-				width: 100%;
-			}
-		}
-
-	}
-}
-
-.form_group_file {
-	display: block;
-	max-width: 500px;
-
-	label {
-		display: inline-block;
-	}
-
-	.form-file {
-		display: none;
-	}
-
-	.tf {
-		display: inline-block;
-		margin: 0 .05rem;
-		max-width: calc(100% - 1.64rem);
-	}
-}
-
-// 입력폼 관련 컴포넌트
-.txt_guide,
-p.txt_guide {
-	// position: relative;
-	// padding-left: 1em;
-	color: $darkprimary;
-	font-size: 14px;
-	margin: 10px 0 0;
-}
-
 .req {
-	color: $darkprimary;
-	vertical-align: middle;
-
-	// @include media-breakpoint-up(lg) {
-	// 	position: absolute;
-	// 	margin-left: -11px;
-	// }
-}
-
-.opt {
-	position: relative;
+	color: transparent;
+	vertical-align: top;
 	display: inline-block;
-	text-align: left;
-	height: $form-height;
-	z-index: 99;
-	vertical-align: middle;
-
-	dl {
-		position: relative;
-	}
-
-	dt {
-		a {
-			height: $form-height;
-			color: $darkgray;
-			display: block;
-			border: 1px solid $border-base;
-			border-radius: 6px;
-			background: $white;
-
-			>span {
-				display: block;
-				margin: 0 40px 0 15px;
-				height: $form-height - 2;
-				line-height: $form-height - 2;
-				color: $darkgray;
-
-				&:after {
-					content: '';
-					display: block;
-					position: absolute;
-					top: 15px;
-					right: 15px;
-					width: 13px;
-					height: 7px;
-					background: url(#{$url-img-common}/ico_arr_down@2x.png) no-repeat 0 0;
-					background-size: 13px auto;
-				}
-			}
-		}
-	}
-
-	dd {
-		display: none;
-		position: absolute;
-		left: 0;
-		top: 45px;
-		width: 100%;
-		background: #fff;
-
-		ul {
-			max-height: 202px;
-			overflow-y: auto;
-			border: 1px solid $darkgray;
-			border-top: 1px solid #eee;
-			border-radius: 0 0 6px 6px;
-		}
-
-		a {
-			display: block;
-			background: $white;
-
-			&:hover {
-				background: #f3f3f3;
-
-				>span {
-					color: $darkgray;
-				}
-			}
-
-			>span {
-				color: #666;
-			}
-		}
-
-		li {
-			&:last-child a {
-				border-radius: 0 0 5px 5px;
-			}
-		}
-
-		a span {
-			display: block;
-			margin: 0 27px 0 15px;
-			height: 50px;
-			line-height: 50px;
-		}
-
-		li.active a {
-			background: #f3f3f3;
-
-			>span {
-				color: $darkgray;
-			}
-		}
-	}
-
-	&.active {
-		z-index: 100;
-
-		dd {
-			display: block;
-			top: $form-height - 1;
-
-			a {
-				span {
-					height: $form-height;
-					line-height: $form-height;
-				}
-			}
-		}
-
-		dt {
-			a {
-				border: 1px solid #333;
-				border-radius: 6px 6px 0 0;
-
-				span {
-					&:after {
-						transform: rotate(180deg);
-					}
-				}
-			}
-		}
-	}
-
-	&.error {
-		dt a {
-			border-color: #d70000;
-		}
-	}
-
-	&.disabled {
-		a {
-			background: #f3f3f3;
-
-			>span {
-				color: #666;
-			}
-		}
-	}
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: $orange;
 }
 
 .btn_inline_box {
 	display: inline-block;
 	margin-left: 6px;
-}
-
-.selectbox_wrap+.selectbox_wrap {
-	margin-left: 6px;
-}
-
-.btn_mouse_pwd {
-	position: relative;
-	display: inline-block;
-
-	>input[type=text] {
-		width: 358px;
-		padding-right: 40px;
-	}
-
-	>button {
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 38px;
-		height: 100%;
-		background: url(#{$url-img-common}/ico_mouse@2x.png) no-repeat 50% 50%;
-	}
 }
 
 // 토글형 체크박스
@@ -685,27 +575,6 @@ p.txt_guide {
 		}
 	}
 }
-
-.check_switch_sm {
-	label {
-		min-width: 45px;
-		height: 19px;
-
-		&:after {
-			left: 3px;
-			top: 3px;
-		}
-	}
-
-	input {
-		&:checked+label {
-			&:after {
-				left: calc(100% - 16px);
-			}
-		}
-	}
-}
-
 
 // 입력요소 가로 배치
 .input_items {

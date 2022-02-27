@@ -91,7 +91,7 @@ $(function () {
 		hashModalOpener();
 
 		// 공통 UI
-		// tabmenu();
+		tabmenu();
 		// inputStatus();
 
 		// 접근성
@@ -115,6 +115,50 @@ function hashModalOpener() {
 	}
 	$(window).bind('hashchange', function () {
 		hashModalOpener();
+	});
+}
+
+// 탭메뉴
+function tabmenu() {
+	$(document).on('click', '.tab_list a', function (e) {
+		var tg = $(this).attr('href');
+		$(this).attr('title', '선택됨').parent('li').addClass('on').siblings('li').removeClass('on').children('a').removeAttr('title');
+		if (tg === '#' || tg === '' || tg === '#;') {
+			e.preventDefault();
+		} else if (tg.charAt(0) === '#') {
+			if ($(tg).hasClass('tab_cont')) {
+				$(tg).show().siblings('.tab_cont').hide();
+				e.preventDefault();
+			}
+		}
+	});
+	$('.tab_list .on a').each(function () {
+		$(this).attr('title', '선택됨');
+		var tg = $(this).attr('href');
+		if (tg !== '#' && tg !== '#;' && tg.charAt(0) === '#') {
+			$(tg + '.tab_cont').css('display', 'block');
+		}
+	});
+	$('.tab_menu1').each(function () {
+		var outerWidth = Math.floor($(this).width());
+		var innerWidth = 0;
+		var current = $('li.on', this).index();
+		$('li', this).each(function () {
+			innerWidth += Math.floor($(this).width());
+		});
+
+		if (outerWidth < innerWidth) {
+			$(this).addClass('scroll_enable');
+		}
+		if (current > 1) {
+			var posL = $('li', this).eq(current - 1).position().left;
+			$(this).children().scrollLeft(posL);
+		}
+	});
+	$('.tab_menu2').each(function () {
+		if ($('li', this).length > 3) {
+			$(this).addClass('col_drop');
+		}
 	});
 }
 
@@ -478,13 +522,17 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 					e.preventDefault();
 					const $otherBtn = $('.opt').not($el).find('dt a');
 					$('.opt').not($el).removeClass('active')
-					$otherBtn.attr('title', $otherBtn.attr('title').replace('접기', '펼치기'));
+					if ($otherBtn.attr('title') != undefined) {
+						$otherBtn.attr('title', $otherBtn.attr('title').replace('접기', '펼치기'));
+					}
 
 					$el.toggleClass('active');
-					if ($el.hasClass('active')) {
-						$btn.attr('title', $btn.attr('title').replace('펼치기', '접기'));
-					} else {
-						$btn.attr('title', $btn.attr('title').replace('접기', '펼치기'));
+					if ($otherBtn.attr('title') != undefined) {
+						if ($el.hasClass('active')) {
+							$btn.attr('title', $btn.attr('title').replace('펼치기', '접기'));
+						} else {
+							$btn.attr('title', $btn.attr('title').replace('접기', '펼치기'));
+						}
 					}
 				});
 
@@ -493,7 +541,9 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 					$btn.children('span').text($(this).text());
 					$el.toggleClass('active').removeClass('error');
 					$el.closest('td').find('> .error_info').hide();
-					$btn.attr('title', $btn.attr('title').replace('접기', '펼치기')).focus();
+					if ($btn.attr('title') != undefined) {
+						$btn.attr('title', $btn.attr('title').replace('접기', '펼치기')).focus();
+					}
 				});
 			}
 		});

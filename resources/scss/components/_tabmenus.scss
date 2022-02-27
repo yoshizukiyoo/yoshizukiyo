@@ -1,237 +1,241 @@
 /* 탭메뉴 */
+.tab_menu {
+	white-space: nowrap;
 
-// 더블 탭메뉴
-.tab_menu_double {
-	>.tab_menu_type1 .current {
-		position: relative;
-
-		&::after {
-			content: '';
-			position: absolute;
-			left: 50%;
-			top: 84px;
-			width: 23px;
-			height: 13px;
-			margin-left: -12px;
-			background: url(#{$url-img-common}/ico_arr_box.png) no-repeat 0 0;
+	.tab_list {
+		a {
+			position: relative;
 		}
-	}
 
-	>.tab_sub {
-		margin-top: 40px;
-		padding: 20px;
-		border-top: 1px solid #efefef;
-		background: $bg-lightgray;
-
-		>ul {
-			@include clearfix;
-
-			>li {
-				float: left;
-				position: relative;
-
-				&::before {
-					content: '';
-					position: absolute;
-					left: 0;
-					top: 0;
-					width: calc(100% - 1px);
-					height: calc(100% - 1px);
-					border-right: 1px solid $bg-lightgray;
-					border-bottom: 1px solid $bg-lightgray;
-					background: $white;
-				}
-
-				>a {
-					display: block;
-					position: relative;
-					height: 47px;
-					line-height: 47px;
-					text-align: center;
-					color: #666;
-
-					&:hover,
-					&.current {
-						background: $primary;
-						font-weight: 400;
-						color: #000;
-					}
-				}
-			}
+		.badge {
+			white-space: nowrap;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 20px;
+			font-style: normal;
+			line-height: 1;
+			margin: 0 0 0 5px;
+			width: auto;
+			vertical-align: auto;
 		}
-	}
-
-	.col4>ul>li {
-		width: calc(100% / 4);
-	}
-
-	.col5>ul>li {
-		width: calc(100% / 5);
-	}
-
-	.col6>ul>li {
-		width: calc(100% / 6);
-	}
-
-	.col7>ul>li {
-		width: calc(100% / 7);
 	}
 }
 
-// 스타일1
-.tab_menu_type1 {
-	>ul {
+.tab_menu1 {
+	position: relative;
+	margin-bottom: 30px;
+
+	.tab_list {
 		display: flex;
-		border-radius: 6px;
+		text-align: center;
+		line-height: 1.2;
+		border-bottom: 1px solid $black;
+		border-left: 1px solid $border-base;
 
-		>li {
-			flex: 1 1 0;
+		li {
+			width: 16.666666%;
+			font-size: 16px;
+			background-color: #fff;
+			border-top: 1px solid $border-base;
+			border-right: 1px solid $border-base;
 
-			&:first-child>a {
-				border-radius: 6px 0 0 6px;
-			}
-
-			&:last-child>a {
-				border-radius: 0 6px 6px 0;
-			}
-
-			&:not(:last-child)>a {
-
-				&.current,
-				&:hover {
-					background: $darkgray;
-					font-weight: 500;
-					color: #fff;
-
-					&::after {
-						background: $darkgray;
-					}
-				}
-
-				&::after {
-					content: '';
-					position: absolute;
-					right: 0;
-					top: 0;
-					width: 1px;
-					height: 100%;
-					background: $white;
-				}
-			}
-
-			>a {
-				display: block;
+			&.on {
 				position: relative;
-				height: 70px;
-				border-color: red;
-				background: #efefef;
-				line-height: 70px;
-				text-align: center;
-				font-weight: 400;
-				font-size: 18px;
-				color: #666;
+				color: #fff;
+				font-weight: 500;
+				border-color: $black;
 
-				&.current,
-				&:hover {
-					background: $darkgray;
-					font-weight: 500;
-					color: #fff;
+				a {
+					background-color: $black;
 				}
 			}
 		}
+
+		a {
+			display: block;
+
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 45px;
+			}
+		}
+
+		.badge {
+			min-width: 22px;
+			height: 22px;
+			padding: 0 8px;
+			color: $black;
+			font-size: 12px;
+			font-weight: 500;
+			background-color: $primary;
+		}
 	}
 
-	&.md>ul>li>a {
-		height: 56px;
-		line-height: 56px;
+	&.col_drop {
+		flex-wrap: wrap;
 	}
 }
 
-.tab_menu_double .tab_menu_type1>ul>li:not(:last-child)>a.current::after {
-	background: url(/resources/img/common/ico_arr_box.png) no-repeat 0 0;
-}
+.tab_menu2 {
+	margin-bottom: 20px;
 
-// 스타일2
-.tab_menu_type2 {
-	>ul {
-		display: inline-flex;
-		width: 100%;
-		border-bottom: 1px solid $border-base;
+	.tab_list {
+		display: flex;
+		font-weight: normal;
+		color: #555;
 
-		>li {
-			>a {
-				display: inline-block;
-				height: 36px;
-				padding: 0 31px;
-				line-height: 1;
-				font-weight: 400;
-				font-size: 18px;
-				color: #666;
+		li {
+			min-width: 100px;
 
-				&.current,
-				&:hover {
-					position: relative;
-					color: $darkgray;
+			&.on {
+				a {
+					color: $black;
+					background-color: $primary;
+					box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
+				}
 
-					&::before {
+				span {
+					padding: 0 30px;
+
+					&:before {
+						content: '';
+						width: 13px;
+						height: 10px;
+						margin-right: 7px;
+						background-color: red;
+						background: url(#{$url-img-common}/ico_check_black@2x.png) no-repeat;
+						background-size: cover;
+					}
+				}
+
+				+li {
+					a {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+
+			&:not(.on):not(:first-child) {
+				a {
+					&:before {
 						content: '';
 						position: absolute;
-						left: 0;
-						bottom: -1px;
-						width: 100%;
-						height: 2px;
-						background: $black;
+						top: 50%;
+						width: 1px;
+						height: 13px;
+						margin-top: -7px;
+						background-color: #ddd;
 					}
 				}
+			}
+		}
+
+		a {
+			display: block;
+			position: relative;
+			border-radius: 17px;
+		}
+
+		span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 34px;
+			padding: 0 25px;
+		}
+
+		.badge {
+			min-width: 18px;
+			height: 18px;
+			padding: 0 3px;
+			color: #fff;
+			background-color: $darkgray;
+			font-size: 10px;
+
+			&.off {
+				background-color: #666;
 			}
 		}
 	}
 }
 
-// 스타일3
-.tab_menu_type3 {
-	>ul {
+.tab_menu3 {
+	position: relative;
+	border-bottom: 3px solid $primary;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 $spacing;
+
+	.container & {
+		margin: 0 -1 * $spacing;
+	}
+
+	.toolbar {
+		flex: 0 0 1;
+	}
+
+	.tab_list {
+		flex: 1 1 auto;
 		display: flex;
-		border-style: none none solid solid;
-		border-width: 1px;
-		border-color: transparent transparent $black #eee;
+		text-align: center;
+		line-height: 1.2;
 
-		>li>a {
-			display: block;
-			position: relative;
-			height: 55px;
-			padding: 0 40px;
-			border-style: solid solid none none;
-			border-width: 1px;
-			border-color: #eee;
-			background: $white;
-			font-size: 20px;
-			color: $gray;
-			line-height: 55px;
+		li {
+			min-width: 160px;
+			margin-right: 1px;
+			font-size: 16px;
+			color: #555;
+			background-color: #fff;
 
-			&:hover,
-			&:focus,
-			&.current {
+			&.on {
+				position: relative;
+				font-size: 18px;
 				font-weight: 500;
 				color: $black;
 
-				&::before {
-					content: '';
-					position: absolute;
-					left: -1px;
-					top: -1px;
-					width: 100%;
-					height: 100%;
-					border-style: solid solid none solid;
-					border-width: 1px;
-					border-color: $primary;
-					background: $primary;
+				a {
+					margin-top: -5px;
+					border-color: transparent;
+					background-color: $primary;
+
+					span {
+						height: 48px;
+					}
 				}
 			}
+		}
 
-			>span {
-				position: relative;
+		a {
+			display: block;
+			border: 1px solid $border-base;
+			border-bottom: 0;
+			border-radius: 10px 10px 0 0;
+
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 43px;
 			}
 		}
+
+		.badge {
+			min-width: 22px;
+			height: 22px;
+			padding: 0 3px;
+			color: $black;
+			font-size: 12px;
+			font-weight: 500;
+			background-color: $primary;
+		}
 	}
+}
+
+.tab_cont {
+	display: none;
 }

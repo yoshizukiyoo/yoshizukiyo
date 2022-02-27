@@ -1,20 +1,145 @@
 .tbl {
+	position: relative;
+	letter-spacing: 0;
+
 	table {
 		width: 100%;
-		table-layout: fixed;
 		border-collapse: collapse;
-		border-style: solid none solid;
+	}
+}
+
+.tbl_scroll {
+	.container & {
+		margin: 0 -1 * $spacing;
+	}
+
+	.scroll_track {
+		padding: 0 $spacing;
+		overflow-x: auto;
+	}
+}
+
+.tbl_data {
+	// overflow: hidden;
+	// overflow-x: auto;
+
+	&.tbl_round {
+		border: 1px solid $border-base;
+		border-radius: 8px;
+		overflow: hidden;
+
+		table {
+			border-style: hidden;
+		}
+	}
+
+	table {
+		border-style: solid hidden solid;
 		border-width: 1px 0 1px;
 		border-color: $border-base;
 	}
 
-	&_data {
-		th {
-			background-color: $bg-lightgray;
+	th,
+	td {
+		height: 45px;
+		padding: 10px 15px;
+		border: 1px solid $border-base;
+	}
+
+	th {
+		background-color: #f6f6f6;
+		line-height: 18px;
+		text-align: left;
+		font-weight: 500;
+
+		small {
+			display: inline-block;
+			font-size: 12px;
+			line-height: 15px;
+		}
+	}
+
+	td {
+		font-weight: normal;
+	}
+
+	// tbody {
+	// 	th {}
+	// }
+
+	thead,
+	thead~tbody,
+	thead~tfoot {
+
+		th,
+		td {
+			text-align: center;
+		}
+	}
+}
+
+.search_form {
+	position: relative;
+	margin-bottom: 30px;
+
+	&.opened {
+		.inner {
+			height: auto;
 		}
 
-		thead {
-			th {}
+		.btn_search_more {
+			.ico {
+				transform: rotate(180deg);
+			}
 		}
+	}
+
+	.inner {
+		display: flex;
+		background-color: $bg-lightprimary;
+		border-bottom: 1px solid $primary;
+		overflow: hidden;
+		height: 76px;
+		box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.08);
+	}
+
+	.tbl_search {
+		flex: 1 1 auto;
+	}
+
+	.btn_search {
+		flex: 0 0 auto;
+		margin: 15px $spacing;
+	}
+
+	.btn_search_more {
+		position: absolute;
+		left: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: -55px;
+		color: #fff;
+		background-color: #555;
+		border-radius: 0 0 6px 6px;
+		width: 110px;
+		height: 30px;
+	}
+}
+
+.tbl_search {
+	padding: 10px;
+
+	th,
+	td {
+		height: 55px;
+	}
+
+	th {
+		text-align: left;
+		padding-left: 20px;
+		padding-right: 15px;
+		font-weight: normal;
+		color: $black;
 	}
 }
