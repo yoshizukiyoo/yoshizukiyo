@@ -40,6 +40,12 @@
 		}
 	}
 
+	.product_card_img {
+		position: absolute;
+		right: 40px;
+		top: 72px;
+	}
+
 	.product_link {
 		position: absolute;
 		left: 0;
@@ -559,8 +565,7 @@
 	}
 
 	.mid {
-		flex: 1;
-		-ms-flex-preferred-size: auto;
+		//-ms-flex-preferred-size: auto;
 		padding-top: 45px;
 		line-height: 1.2;
 	}
@@ -583,10 +588,33 @@
 		display: inline-flex;
 	}
 
+	.category_group {
+		display: flex;
+		justify-content: center;
+
+		>li {
+			position: relative;
+			margin-right: -1px;
+			padding: 0 10px;
+
+			&:not(:last-child)::before {
+				content: '';
+				position: absolute;
+				right: 0;
+				top: 4px;
+				width: 1px;
+				height: 12px;
+				background: #ddd;
+			}
+		}
+	}
+
 	.product_pick_name {
 		text-align: center;
 
-		>strong {
+		>a {
+			word-break: break-all;
+			letter-spacing: -2px;
 			font-weight: 500;
 			font-size: 26px;
 			color: #000;
@@ -595,6 +623,25 @@
 		>.evt_ico_box {
 			margin-left: 7px;
 			vertical-align: 7px;
+		}
+	}
+
+	.product_card_name {
+		>a {
+			display: block;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow: hidden;
+			height: 65px;
+		}
+
+		.card_thum_img {
+			margin-top: 15px;
+
+			>img {
+				border-radius: 5px;
+			}
 		}
 	}
 
@@ -868,4 +915,21 @@
 
 .flex_box.align_end {
 	align-items: flex-end;
+}
+
+.hashtag_list {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: -9px;
+	line-height: 1.1;
+
+	>li {
+		margin: 0 3px 9px 0;
+		font-size: 14px;
+		color: #666;
+	}
+}
+
+.sec_card {
+	background: #e5f1ff;
 }
