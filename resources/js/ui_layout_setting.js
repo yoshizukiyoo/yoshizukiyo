@@ -40,9 +40,19 @@ $(function () {
 	$('.breadcrumb').load('/html/_inc-breadcrumb.html .breadcrumb > *', function () {
 		if ($.isFunction(window.breadcrumbSetting)) breadcrumbSetting();
 	});
-	$('.footer').load('/html/_inc-footer.html .footer > *', function () {
-		// if ($.isFunction(window.toTop)) toTop();
-	});
+	// $('.footer').load('/html/_inc-footer.html .footer > *', function () {
+	// 	// if ($.isFunction(window.toTop)) toTop();
+	// });
+	var footerInc = $('.footer').data('inc');
+	if (footerInc == undefined) {
+		$('.footer').load('/html/_inc-footer.html .footer > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	} else if (footerInc != undefined) {
+		$('.footer').load('/html/' + footerInc + ' .footer > *', function () {
+			// if ($.isFunction(window.gnbSetting)) gnbSetting();
+		});
+	}
 });
 
 //
