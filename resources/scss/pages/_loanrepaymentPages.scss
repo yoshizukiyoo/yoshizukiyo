@@ -266,3 +266,117 @@
 		}
 	}
 }
+
+//디지털OTP안내팝업
+
+.img_num_step {
+	&.arr_type {
+		>li {
+			position: relative;
+
+			&:not(:first-child) {
+				&::before {
+					content: "";
+					position: absolute;
+
+					width: 21px;
+					height: 13px;
+
+					left: 50%;
+					bottom: calc(100% + 17px);
+
+					transform: translateX(-50%);
+
+					background-image: url(#{$url-img}/content/ico_arr_down_lightgray_bold.png);
+					background-repeat: no-repeat;
+					background-size: contain;
+					background-position: 0 0;
+				}
+			}
+		}
+	}
+
+	>li {
+		&:not(:first-child) {
+			margin-top: 50px;
+		}
+
+		>.tit {
+			display: flex;
+
+			align-items: center;
+
+			margin-bottom: 10px;
+
+			.num {
+				position: relative;
+				display: inline-flex;
+				flex: 0 0 auto;
+
+				width: 20px;
+				height: 20px;
+				margin-right: 7px;
+
+				align-items: center;
+				justify-content: center;
+
+				font-size: 10px;
+				font-weight: 500;
+				color: #111;
+
+				background-color: #fff;
+				border-color: $primary;
+				border-width: 1px;
+				border-style: solid;
+				border-radius: 100%;
+
+				&::before,
+				&::after {
+					content: "";
+					position: absolute;
+				}
+
+				&::before {
+					left: 100%;
+					top: 50%;
+					transform: translateY(-50%);
+
+					border-left: 4px solid $primary;
+					border-top: 3px solid transparent;
+					border-bottom: 3px solid transparent;
+
+					z-index: 10;
+				}
+
+				&::after {
+					left: 100%;
+					top: 50%;
+					transform: translate(-1.5px, -50%);
+
+					border-left: 4px solid #fff;
+					border-top: 3px solid transparent;
+					border-bottom: 3px solid transparent;
+
+					z-index: 20;
+				}
+
+			}
+
+			.txt {
+				font-size: 14px;
+				line-height: 1.2;
+				font-weight: 500;
+				color: #333;
+			}
+		}
+
+		>.box {
+			text-align: center;
+
+			>img {
+				width: 100%;
+				vertical-align: top;
+			}
+		}
+	}
+}
