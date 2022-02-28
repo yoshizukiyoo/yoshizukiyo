@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 로그인 후 알림 레이어 컨트롤
+			if ($('.logged_info_layer').is(':visible')) {
+				$('body').addClass('info_layer_opened');
+			}
+			$('.btn_close_info_layer').click(function () {
+				$(this).closest('.logged_info_layer').slideUp('fast');
+				$('body').removeClass('info_layer_opened');
+			});
+
+			// 프로모션 영역 슬라이드 기능
+			var nums = 0;
+			var $mainRollingArea = $('.mall_promotion_slide');
+			$mainRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_visual .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_visual .nums .bar span").css({
+						width: (100 / nums) + "%"
+					})
+					nums = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_visual .nums strong").text("0" + (slick + 1));
+				$(".rolling_visual .nums .bar span").css({
+					width: ((100 / nums) * (slick + 1)) + "%"
+				})
+			});
+
+			// 팝업존 영역 슬라이드 기능
+			var nums2 = 0;
+			var $popRollingArea = $('.mall_popzone_slide');
+			$popRollingArea.slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				customPaging: function (slick, index) {
+					$(".rolling_pop .nums > span").text("0" + slick.slideCount);
+
+					$(".rolling_pop .nums .bar span").css({
+						width: (100 / nums2) + "%"
+					})
+					nums2 = slick.slideCount;
+
+				}
+			}).on('afterChange', function (event, index, slick, currentSlide) {
+				$(".rolling_pop .nums strong").text("0" + (slick + 1));
+				$(".rolling_pop .nums .bar span").css({
+					width: ((100 / nums2) * (slick + 1)) + "%"
+				})
+			});
+
+			$(".rolling_visual, .rolling_pop").append(
+				'<div class="btn_ctrl"><button type="button" class="btn_pause">stop</button></div>'
+			);
+			$(".rolling_visual .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$mainRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$mainRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+			$(".rolling_pop .btn_ctrl button").on('click', function () {
+				if (!$(this).hasClass("btn_play")) {
+					$popRollingArea.slick('slickPause');
+					$(this).removeClass("btn_pause").addClass("btn_play");
+					$(this).text("Stop")
+				} else {
+					$popRollingArea.slick('slickPlay');
+					$(this).removeClass("btn_play").addClass("btn_pause");
+					$(this).text("Play");
+				}
+			});
+
+
+		})
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header mall_header" data-inc="_inc-mall-header.html"></header>
+		<div class="quick_menu_wrap"></div>
+		<article id="content">
+			<!-- s: 메인 본문-->
+			<div class="main_cont">
+				<h2 class="sr_only">메인 본문</h2>
+
+				<section class="sec_home ">
+					<div class="mall_main_promotion sub_main_mall">
+						<h3 class="sr_only">프로모션</h3>
+						<div class="mall_promotion_slide">
+							<div>
+								<div class="container mall_slide_cont">
+									<div class="product_name_box">
+										<div class="pro_name">
+											<div class="inner">
+												<strong>시니어 벙글벙글 정기예금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon red">NEW</span>
+													<span class="evt_icon yellow">추천</span>
+												</div>
+											</div>
+										</div>
+										<div class="exp">고객님을 싱글벙글 웃게 하는 안정적인 목돈관리</div>
+									</div>
+									<div class="product_link"><a href="#;">자세히 보기</a></div>
+								</div>
+							</div>
+							<div>
+								<div class="container mall_slide_cont">
+									<div class="product_name_box">
+										<div class="pro_name">
+											<div class="inner">
+												<strong>시니어 벙글벙글 정기예금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon red">NEW</span>
+													<span class="evt_icon yellow">추천</span>
+												</div>
+											</div>
+										</div>
+										<div class="exp">고객님을 싱글벙글 웃게 하는 안정적인 목돈관리</div>
+									</div>
+									<div class="product_link"><a href="#;">자세히 보기</a></div>
+								</div>
+							</div>
+						</div>
+						<div class="rolling_info rolling_visual">
+							<div class="nums">
+								<strong>01</strong><span></span>
+								<em class="bar">
+									<span></span>
+								</em>
+							</div>
+						</div>
+						<!-- s: 예금계산결과 영역 -->
+						<div class="product_result pro_dep">
+							<div class="inner">
+								<h4 class="tit_calc">만기 금액 미리 계산</h4>
+								<div>
+									<input type="text" class="tf txt_r" title="예치금액 입력" placeholder="예치금액 입력" style="width: 219px;">
+									<span class="tf_txt ml_1">원</span>
+								</div>
+								<div class="mt_1">
+									<input type="text" class="tf txt_r" title="기간 입력" placeholder="기간 입력" style="width: 219px;">
+									<span class="tf_txt ml_1">개월</span>
+								</div>
+								<div class="mt_1">
+									<input type="text" value="1.75" class="tf txt_bold" disabled title="최고우대기준" style="width: 66px;">
+									<span class="tf_txt">%</span>
+									<span class="ml_2 txt_normal">최고우대기준</span>
+								</div>
+								<div class="txt_r mt_3">
+									<a href="#;" class="btn btn_md btn_primary">결과보기</a>
+								</div>
+							</div>
+						</div>
+						<!-- e: 예금계산결과 영역 -->
+
+						<!-- s: 탭 메뉴 -->
+						<div class="product_category_menu">
+							<ul>
+								<li><a href="#;" class="on"><span>추천</span></a></li>
+								<li><a href="#;"><span>혜택별</span></a></li>
+								<li><a href="#;"><span>체크카드</span></a></li>
+								<li><a href="#;"><span>지역카드</span></a></li>
+								<li><a href="#;"><span>제휴카드</span></a></li>
+								<li><a href="#;"><span>전체</span></a></li>
+							</ul>
+						</div>
+						<!-- e: 탭 메뉴 -->
+					</div>
+				</section>
+
+				<!-- s: 카드 판매량 -->
+				<section class="sec_sale mt_18">
+					<div class="container">
+						<div class="tit_top mb_4">
+							<div class="l">
+								<h3 class="tit_ico tit_mall ico_sale txt_normal">예금 판매량 <span class="txt_bold ml_1">Top3</span></h3>
+							</div>
+							<div class="r">
+								<button type="button" class="btn btn_md btn_outline_darkgray txt_default">
+									<i class="ico ico_cart_compare mr_1"></i>
+									비교하기
+								</button>
+							</div>
+						</div>
+						<div class="rec_cont card_cont">
+							<ul>
+								<li>
+									<div class="card_list_img"><img src="/resources/img/main/img_tem_card.gif"
+											alt="우체국 어디서나 하이브리드 체크카드(VISA)"></div>
+									<div class="card_list_name">
+										<a href="#;">우체국 어디서나 하이브리드 체크카드(VISA)</a>
+									</div>
+									<ul class="hashtag_list">
+										<li>#캐시백</li>
+										<li>#쇼핑할인</li>
+										<li>#외식</li>
+										<li>#베이커리</li>
+										<li>#통신료할인</li>
+										<li>#영화할인</li>
+										<li>#주유할인</li>
+									</ul>
+								</li>
+								<li>
+									<div class="card_list_img"><img src="/resources/img/main/img_tem_card.gif"
+											alt="우체국 어디서나 하이브리드 체크카드(VISA)"></div>
+									<div class="card_list_name">
+										<a href="#;">우체국 어디서나 하이브리드 체크카드(VISA)</a>
+									</div>
+									<ul class="hashtag_list">
+										<li>#캐시백</li>
+										<li>#쇼핑할인</li>
+										<li>#외식</li>
+										<li>#베이커리</li>
+										<li>#통신료할인</li>
+										<li>#영화할인</li>
+										<li>#주유할인</li>
+									</ul>
+								</li>
+								<li>
+									<div class="card_list_img"><img src="/resources/img/main/img_tem_card.gif"
+											alt="우체국 어디서나 하이브리드 체크카드(VISA)"></div>
+									<div class="card_list_name">
+										<a href="#;">우체국 多Dream 하이브리드 체크카드(MASTER)</a>
+									</div>
+									<ul class="hashtag_list">
+										<li>#캐시백</li>
+										<li>#쇼핑할인</li>
+										<li>#외식</li>
+										<li>#베이커리</li>
+										<li>#통신료할인</li>
+										<li>#영화할인</li>
+										<li>#주유할인</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<!-- e: 카드 판매량 -->
+
+				<!-- s: 상품 검색 -->
+				<section class="mall_search sub_mall_search mt_10">
+					<div class="container">
+						<div class="mall_search_box">
+							<div class="find_con bg_search">
+								<h3 class="find">상품찾기</h3>
+								<div class="product_search mt_4">
+									<input type="text" title="상품 입력" placeholder="상품을 검색하세요.">
+									<button type="button"><span class="sr_only">검색</span></button>
+								</div>
+							</div>
+							<div class="tag_con">
+								<h3 class="tag"><a href="#;">상품태그</a></h3>
+								<ul class="mt_4">
+									<li><a href="#;">#여행자금</a></li>
+									<li><a href="#;">#모임회비</a></li>
+									<li><a href="#;">#여가생활</a></li>
+									<li><a href="#;">#여럿이함께</a></li>
+									<li><a href="#;">#매일</a></li>
+									<li><a href="#;">#목표설정</a></li>
+									<li><a href="#;">#우리아기</a></li>
+									<li><a href="#;">#취업준비생</a></li>
+									<li><a href="#;">#매일</a></li>
+									<li><a href="#;">#목표설정</a></li>
+									<li><a href="#;">#우리아기</a></li>
+									<li><a href="#;">#취업준비생</a></li>
+									<li><a href="#;">#장병내일준비</a></li>
+								</ul>
+							</div>
+							<div class="my_product_find">
+								<h3 class="product_find">내게 맞는 상품 찾기</h3>
+								<ul class="mt_4">
+									<li><button type="button">목돈 굴리기</button></li>
+									<li><button type="button">매월 저축</button></li>
+									<li><button type="button" class="on">목표금액 모으기</button></li>
+								</ul>
+							</div>
+						</div>
+						<div class="mall_search_result">
+							<div class="txt_r txt_sm txt_gray"><span class="mr_2">금리 기준일</span>2021.05.12 16:18:38</div>
+							<div class="acco_list">
+								<div class="top flex_box pb_4">
+									<p class="tit_arr mt_2 txt_normal">목표금액 모으기</p>
+								</div>
+								<div class="product_find_result">
+									<div class="find_form">
+										<div class="l">
+											<div class="round_check_wrap mr_2">
+												<div class="round_check_btn">
+													<input type="radio" name="date" id="date1" class="blind" checked>
+													<div class="lab_box"><label for="date1">6개월</label></div>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date" id="date2" class="blind">
+													<div class="lab_box"><label for="date2">1년</label></div>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date" id="date3" class="blind">
+													<div class="lab_box"><label for="date3">2년</label></div>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date" id="date4" class="blind">
+													<div class="lab_box"><label for="date4">3년</label></div>
+												</div>
+											</div>
+											<span class="form_txt mr_4">후,</span>
+											<span class="mr_1"><input type="text" class="tf txt_r" value="10,000" style="width: 200px;"
+													title="금액 입력"></span>
+											<span class="form_txt mr_4">을 만들려면?</span>
+										</div>
+										<div class="r">
+											<button type="button" class="btn btn_md btn_primary txt_medium btn_fun">결과확인</button>
+										</div>
+									</div>
+									<div class="dep_result">
+										<div class="dep_res_msg">
+											연 <strong>2.2%</strong> 적금에 <strong>36개월</strong> 동안
+											월 <strong>6,600,000원</strong>을 저축하면 모을 수 있어요.
+										</div>
+										<div class="dep_res_info">
+											<div class="top">
+												<div class="l">
+													<h4>우체국 가치모아적금</h4>
+												</div>
+												<div class="r">
+													<a href="#;" class="btn btn_sm btn_outline_default mr_1">우대 이율 조건 상세보기</a>
+													<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+												</div>
+											</div>
+											<div class="mid">
+												<div class="l">
+													<ul>
+														<li>
+															기본 연
+															<strong>1.20%</strong>
+														</li>
+														<li>
+															우대 연
+															<strong>0.80%</strong>
+														</li>
+														<li>
+															최대 우대 연
+															<strong>2.20%</strong>
+														</li>
+													</ul>
+												</div>
+												<div class="r">
+													<ul>
+														<li>
+															<div class="l">월 저축해야 할 금액</div>
+															<div class="r"><strong>2,673,183원</strong></div>
+														</li>
+														<li>
+															<div class="l">
+																<span class="t1">예상이자 금액</span>
+																<span class="t2 ml_1">일반과세(15.4%)</span>
+															</div>
+															<div class="r"><strong>3,765,428원</strong></div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="flex_box mt_3">
+									<div class="l">
+										<ul class="list list1">
+											<li>조건 맞춤 우체국 적금 최대 이율 : 3% 기준</li>
+										</ul>
+									</div>
+									<div class="r">
+										<a href="#;" class="btn btn_explain">다른 적금 상품 더보기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- e: 상품 검색 -->
+
+				<!-- s: 연령대 PICK5 -->
+				<section class="sec_age">
+					<div class="container">
+						<div class="tit_top mb_4">
+							<div class="l">
+								<h3 class="tit_ico tit_mall ico_age txt_normal">연령대 <span class="txt_bold ml_1">PICK5</span></h3>
+							</div>
+							<div class="r">
+								<div class="selectbox_wrap" style="width: 120px;">
+									<dl>
+										<dt><a href="#none" title="연령 선택 펼치기"><span>20대</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#none"><span>10대</span></a></li>
+												<li><a href="#none"><span>20대</span></a></li>
+												<li><a href="#none"><span>30대</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="round_check_wrap v_top ml_1 mr_1">
+									<div class="round_check_btn lg">
+										<input type="radio" name="age" id="male" class="blind" checked>
+										<div class="lab_box"><label for="male">남</label></div>
+									</div>
+									<div class="round_check_btn lg">
+										<input type="radio" name="age" id="female" class="blind">
+										<div class="lab_box"><label for="female">여</label></div>
+									</div>
+								</div>
+								<button type="button" class="btn btn_md btn_gray">적용</button>
+							</div>
+						</div>
+						<div class="scroll_wrap">
+							<ul class="mall_product_list pb_5">
+								<li>
+									<div class="inner">
+										<div class="top">
+											<div class="l">
+												<span class="pro_cat">적금</span>
+												<span class="grade ml_0">5</span>
+											</div>
+											<div class="r">
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="mid pb_7">
+											<div class="txt_c mb_3">여럿이 함께 할수록 우대혜택이 커지는</div>
+											<div class="product_pick_name">
+												<strong>가치모아적금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon yellow">추천</span>
+												</div>
+											</div>
+											<ul class="product_des_list mt_8">
+												<li>
+													<div class="l txt_c">최고 우대 연<br>(12개월 기준)</div>
+													<div class="r"><strong>2.15%</strong></div>
+												</li>
+											</ul>
+										</div>
+										<div class="btm">
+											<div class="txt_c mt_6">
+												<a href="#;" class="btn btn_md btn_outline_default txt_normal txt_default">상세보기</a>
+												<a href="#;" class="btn btn_md btn_primary txt_normal ml_1">가입하기</a>
+											</div>
+											<ul class="product_hash_list mt_6">
+												<li>#전기납</li>
+												<li>#암보험</li>
+												<li>#고액암</li>
+												<li>#일반암</li>
+												<li>#남여생식기암</li>
+												<li>#항암방사선</li>
+												<li>#약물치료비</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="inner">
+										<div class="top">
+											<div class="l">
+												<span class="pro_cat">적금</span>
+												<span class="grade ml_0">5</span>
+											</div>
+											<div class="r">
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="mid pb_7">
+											<div class="txt_c mb_3">여럿이 함께 할수록 우대혜택이 커지는</div>
+											<div class="product_pick_name">
+												<strong>가치모아적금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon red">NEW</span>
+												</div>
+											</div>
+											<ul class="product_des_list mt_8">
+												<li>
+													<div class="l txt_c">최고 우대 연<br>(12개월 기준)</div>
+													<div class="r"><strong>2.15%</strong></div>
+												</li>
+											</ul>
+										</div>
+										<div class="btm">
+											<div class="txt_c mt_6">
+												<a href="#;" class="btn btn_md btn_outline_default txt_normal txt_default">상세보기</a>
+												<a href="#;" class="btn btn_md btn_primary txt_normal ml_1">가입하기</a>
+											</div>
+											<ul class="product_hash_list mt_6">
+												<li>#전기납</li>
+												<li>#암보험</li>
+												<li>#고액암</li>
+												<li>#일반암</li>
+												<li>#남여생식기암</li>
+												<li>#항암방사선</li>
+												<li>#약물치료비</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="inner">
+										<div class="top">
+											<div class="l">
+												<span class="pro_cat">적금</span>
+												<span class="grade ml_0">5</span>
+											</div>
+											<div class="r">
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="mid pb_7">
+											<div class="txt_c mb_3">여럿이 함께 할수록 우대혜택이 커지는</div>
+											<div class="product_pick_name">
+												<strong>가치모아적금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon yellow">추천</span>
+												</div>
+											</div>
+											<ul class="product_des_list mt_8">
+												<li>
+													<div class="l txt_c">최고 우대 연<br>(12개월 기준)</div>
+													<div class="r"><strong>2.15%</strong></div>
+												</li>
+											</ul>
+										</div>
+										<div class="btm">
+											<div class="txt_c mt_6">
+												<a href="#;" class="btn btn_md btn_outline_default txt_normal txt_default">상세보기</a>
+												<a href="#;" class="btn btn_md btn_primary txt_normal ml_1">가입하기</a>
+											</div>
+											<ul class="product_hash_list mt_6">
+												<li>#전기납</li>
+												<li>#암보험</li>
+												<li>#고액암</li>
+												<li>#일반암</li>
+												<li>#남여생식기암</li>
+												<li>#항암방사선</li>
+												<li>#약물치료비</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="inner">
+										<div class="top">
+											<div class="l">
+												<span class="pro_cat">적금</span>
+												<span class="grade ml_0">5</span>
+											</div>
+											<div class="r">
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="mid pb_7">
+											<div class="txt_c mb_3">여럿이 함께 할수록 우대혜택이 커지는</div>
+											<div class="product_pick_name">
+												<strong>가치모아적금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon yellow">추천</span>
+												</div>
+											</div>
+											<ul class="product_des_list mt_8">
+												<li>
+													<div class="l txt_c">최고 우대 연<br>(12개월 기준)</div>
+													<div class="r"><strong>2.15%</strong></div>
+												</li>
+											</ul>
+										</div>
+										<div class="btm">
+											<div class="txt_c mt_6">
+												<a href="#;" class="btn btn_md btn_outline_default txt_normal txt_default">상세보기</a>
+												<a href="#;" class="btn btn_md btn_primary txt_normal ml_1">가입하기</a>
+											</div>
+											<ul class="product_hash_list mt_6">
+												<li>#전기납</li>
+												<li>#암보험</li>
+												<li>#고액암</li>
+												<li>#일반암</li>
+												<li>#남여생식기암</li>
+												<li>#항암방사선</li>
+												<li>#약물치료비</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="inner">
+										<div class="top">
+											<div class="l">
+												<span class="pro_cat">적금</span>
+												<span class="grade ml_0">5</span>
+											</div>
+											<div class="r">
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="mid pb_7">
+											<div class="txt_c mb_3">여럿이 함께 할수록 우대혜택이 커지는</div>
+											<div class="product_pick_name">
+												<strong>가치모아적금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon yellow">추천</span>
+												</div>
+											</div>
+											<ul class="product_des_list mt_8">
+												<li>
+													<div class="l txt_c">최고 우대 연<br>(12개월 기준)</div>
+													<div class="r"><strong>2.15%</strong></div>
+												</li>
+											</ul>
+										</div>
+										<div class="btm">
+											<div class="txt_c mt_6">
+												<a href="#;" class="btn btn_md btn_outline_default txt_normal txt_default">상세보기</a>
+												<a href="#;" class="btn btn_md btn_primary txt_normal ml_1">가입하기</a>
+											</div>
+											<ul class="product_hash_list mt_6">
+												<li>#전기납</li>
+												<li>#암보험</li>
+												<li>#고액암</li>
+												<li>#일반암</li>
+												<li>#남여생식기암</li>
+												<li>#항암방사선</li>
+												<li>#약물치료비</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="inner">
+										<div class="top">
+											<div class="l">
+												<span class="pro_cat">적금</span>
+												<span class="grade ml_0">5</span>
+											</div>
+											<div class="r">
+												<ul class="product_top_btn">
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
+														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
+														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
+													</li>
+													<li>
+														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
+														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="mid pb_7">
+											<div class="txt_c mb_3">여럿이 함께 할수록 우대혜택이 커지는</div>
+											<div class="product_pick_name">
+												<strong>가치모아적금</strong>
+												<div class="evt_ico_box">
+													<span class="evt_icon yellow">추천</span>
+												</div>
+											</div>
+											<ul class="product_des_list mt_8">
+												<li>
+													<div class="l txt_c">최고 우대 연<br>(12개월 기준)</div>
+													<div class="r"><strong>2.15%</strong></div>
+												</li>
+											</ul>
+										</div>
+										<div class="btm">
+											<div class="txt_c mt_6">
+												<a href="#;" class="btn btn_md btn_outline_default txt_normal txt_default">상세보기</a>
+												<a href="#;" class="btn btn_md btn_primary txt_normal ml_1">가입하기</a>
+											</div>
+											<ul class="product_hash_list mt_6">
+												<li>#전기납</li>
+												<li>#암보험</li>
+												<li>#고액암</li>
+												<li>#일반암</li>
+												<li>#남여생식기암</li>
+												<li>#항암방사선</li>
+												<li>#약물치료비</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<!-- e: 연령대 PICK5 -->
+
+				<!-- s: 이벤트 혜택 -->
+				<section class="sec_mall_event">
+					<div class="container">
+						<div class="tit_top mb_4">
+							<div class="l">
+								<h3 class="tit_ico tit_mall ico_event txt_normal"><span class="txt_bold">이벤트 혜택</span> 놓치지 마세요</h3>
+							</div>
+						</div>
+						<div class="scroll_wrap">
+							<ul class="product_event_list pb_5">
+								<li>
+									<a href="#;"><img src="/resources/img/main/img_temp_event1.gif" alt="이미지 대체텍스트 입력"></a>
+									<button type="button"><span class="sr_only">공유하기</span></button>
+								</li>
+								<li>
+									<a href="#;"><img src="/resources/img/main/img_temp_event2.gif" alt="이미지 대체텍스트 입력"></a>
+									<button type="button"><span class="sr_only">공유하기</span></button>
+								</li>
+								<li>
+									<a href="#;"><img src="/resources/img/main/img_temp_event1.gif" alt="이미지 대체텍스트 입력"></a>
+									<button type="button"><span class="sr_only">공유하기</span></button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<!-- e: 이벤트 혜택 -->
+
+			</div>
+			<!-- e: 메인 본문-->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
