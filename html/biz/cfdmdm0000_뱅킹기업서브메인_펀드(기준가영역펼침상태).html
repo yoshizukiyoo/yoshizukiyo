@@ -23,7 +23,17 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			// 기준가 상세내용 펼침
+			$('.fund_detail_btn > button').on('click', function () {
+				var button = $(this);
+				$('.sub_fund_info').toggleClass('standard_price_open');
+				$('.fund_detail_chart').attr('tabindex', '0').focus();
+				if (button.attr('title') == '기준가 상세정보 열기') {
+					button.attr('title', '기준가 상세정보 닫기');
+				} else {
+					button.attr('title', '기준가 상세정보 열기');
+				}
+			});
 		});
 	</script>
 </head>
@@ -44,7 +54,7 @@
 					.sec_home 클래스는 메인 공통 클래스이므로 스타일링 금지합니다.
 					반드시 멀티클래스 추가 후 스타일링 해주세요
 				-->
-				<section class="sec_home sub_fund_info biz_fund_info biz_sub_main">
+				<section class="sec_home sub_fund_info biz_fund_info biz_sub_main standard_price_open">
 					<h3 class="sr_only">예금 계좌 정보</h3>
 					<div class="visual_top">
 						<div class="container">
@@ -152,7 +162,7 @@
 									</div>
 								</div>
 								<!-- s: 상세보기 영역 차트 -->
-								<div class="fund_detail_chart" style="display: none;">
+								<div class="fund_detail_chart" tabindex="0">
 									<div class="fund_date_point">
 										<div class="l">
 											<div class="point_date"><span>조회일</span> 2021.07.07</div>
@@ -203,7 +213,7 @@
 									<!-- e: 차트 영역 -->
 								</div>
 								<!-- e: 상세보기 영역 차트 -->
-								<div class="fund_detail_btn"><button type="button" title="기준가 상세정보 열기">기준가 상세보기</button></div>
+								<div class="fund_detail_btn"><button type="button" title="기준가 상세정보 닫기">기준가 상세보기</button></div>
 							</div>
 						</div>
 					</div>
@@ -213,7 +223,7 @@
 				<section class="sec_fund_list">
 					<div class="container">
 						<h3 class="sub_tit">거래 내역</h3>
-						<div class="use_list fund_use">
+						<div class="use_list fund_use biz_use">
 							<ul>
 								<li>
 									<strong class="fsize_24 txt_medium block mb_3">보유 비중</strong>
