@@ -91,7 +91,6 @@ $(function () {
 		hashModalOpener();
 
 		// 공통 UI
-		setHeaderSpacing();
 		tabmenu();
 		// inputStatus();
 
@@ -117,13 +116,6 @@ function hashModalOpener() {
 	$(window).bind('hashchange', function () {
 		hashModalOpener();
 	});
-}
-
-// 헤더 우측 닫기 버튼 위치 확보
-function setHeaderSpacing() {
-	if ($('.btn_close_page').length) {
-		$('body').addClass('use_close_btn');
-	}
 }
 
 // 탭메뉴
