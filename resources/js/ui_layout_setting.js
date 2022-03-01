@@ -92,6 +92,7 @@ $(function () {
 
 		// 공통 UI
 		tabmenu();
+		tableScroll();
 		// inputStatus();
 
 		// 접근성
@@ -553,7 +554,35 @@ $(function () {
 	$('.opt').customSelect();
 });
 
+// 테이블 스크롤 표시
+function tableScroll() {
+	$('.tbl_data').each(function () {
+		var $table = $(this).children('table');
+		var minW = $table.css('min-width');
+		var maxH = $table.css('max-height');
 
+		// 세로 스크롤
+		if ($table.css('max-height') != 'none') {
+			$(this)
+				.addClass('tbl_scroll_y')
+				.wrapInner('<div class="inner"><div class="tbody"></div></div>')
+				.children('.inner').css({
+					'min-width': minW,
+					'max-height': maxH,
+				}).prepend('<div class="thead"></div>');
+			$table.css({
+				'min-width': '',
+				'max-height': '',
+			});
+			$table.clone().appendTo('.thead');
+			$('thead', $table).remove();
+			$('.thead tbody', this).remove();
+		}
+
+		// 가로 스크롤
+		if ($(this).width() < $(this).children().width()) {
+			$(this).addClass('tbl_scroll_x');
+			$(this).wrapInner('<div class="scroll_track"></div>');
 		}
 	});
 }

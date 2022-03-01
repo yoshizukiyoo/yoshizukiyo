@@ -3816,13 +3816,56 @@ textarea.tf::placeholder {
   border-collapse: collapse;
 }
 
-.container .tbl_scroll {
+.container .tbl_scroll_x {
   margin: 0 -32px;
 }
 
-.tbl_scroll .scroll_track {
+.tbl_scroll_x .scroll_track {
+  position: relative;
   padding: 0 32px;
   overflow-x: auto;
+}
+
+.tbl_scroll_y .scroll_track {
+  padding: 0;
+}
+
+.tbl_scroll_y.tbl_scroll_x .inner {
+  padding: 0 32px;
+}
+
+.tbl_scroll_y .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tbl_scroll_y .thead,
+.tbl_scroll_y .tbody {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.tbl_scroll_y .thead {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.tbl_scroll_y .tbody {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border-top: hidden;
+  text-align: center;
+}
+
+.tbl_scroll_y .tbody table {
+  border-top: hidden;
 }
 
 .tbl_data.tbl_round {

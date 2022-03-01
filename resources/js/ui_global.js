@@ -7,42 +7,11 @@ $(document).on('click', '.btn_search_more', function () {
 		.parent('.search_form').toggleClass('opened');
 });
 
-// 테이블 스크롤 표시
-$(function () {
-	$('.tbl').each(function () {
-		tableScroll($(this));
-	});
-});
-
-function tableScroll(obj) {
-	if (obj.width() < obj.children('table').width()) {
-		obj.addClass('tbl_scroll');
-		obj.wrapInner('<div class="scroll_track"></div>');
+$(window).on('load scroll', function () {
+	var scrollValue = $(document).scrollTop();
+	if (scrollValue) {
+		$('body').addClass('scrolled');
+	} else {
+		$('body').removeClass('scrolled');
 	}
-
-	var ingClass = 'scroll_ing',
-		endClass = 'scroll_end';
-
-	obj.children('.scroll_track').on('scroll', function (e) {
-		var currLeft = this.scrollLeft,
-			scrWidth = this.scrollWidth,
-			cliWidth = this.clientWidth;
-
-		if (currLeft === 0) {
-			obj.removeClass(ingClass).removeClass(endClass);
-		} else if (currLeft !== 0 && currLeft + cliWidth < scrWidth) {
-			obj.addClass(ingClass).removeClass(endClass);
-		} else {
-			obj.addClass(endClass);
-		}
-	});
-}
-
-// $(window).on('load scroll', function () {
-// 	var scrollValue = $(document).scrollTop();
-// 	if (scrollValue) {
-// 		$('body').addClass('scrolled');
-// 	} else {
-// 		$('body').removeClass('scrolled');
-// 	}
-// });
+});

@@ -8,14 +8,53 @@
 	}
 }
 
-.tbl_scroll {
+.tbl_scroll_x {
 	.container & {
 		margin: 0 -1 * $spacing;
 	}
 
 	.scroll_track {
+		position: relative;
 		padding: 0 $spacing;
 		overflow-x: auto;
+	}
+}
+
+.tbl_scroll_y {
+
+	.scroll_track {
+		padding: 0;
+	}
+
+	&.tbl_scroll_x {
+		.inner {
+			padding: 0 $spacing;
+		}
+	}
+
+	.inner {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.thead,
+	.tbody {
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+	.thead {
+		flex: 0 0 auto;
+	}
+
+	.tbody {
+		flex: 1 1 auto;
+		border-top: hidden;
+		text-align: center;
+
+		table {
+			border-top: hidden;
+		}
 	}
 }
 
