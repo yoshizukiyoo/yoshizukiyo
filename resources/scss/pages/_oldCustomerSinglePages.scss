@@ -3,32 +3,96 @@
 // 헤더 내 아이콘
 .myservice_list {
 	display: flex;
-	padding-right: 10px;
+	padding-right: 18px;
 	text-align: center;
 
 	li {
-		padding: 0 10px;
+		padding: 0 5px;
+
+		&.on {
+			a {
+				border-color: transparent;
+				color: $black;
+			}
+
+			&:nth-child(1) {
+				a {
+					background-color: #fddbc6;
+				}
+			}
+
+			&:nth-child(2) {
+				a {
+					background-color: #ffdd75;
+				}
+			}
+
+			&:nth-child(3) {
+				a {
+					background-color: #f5d8f5;
+				}
+			}
+
+			&:nth-child(4) {
+				a {
+					background-color: #ffa86f;
+				}
+			}
+
+			&:nth-child(5) {
+				a {
+					background-color: #d5d6f5;
+				}
+			}
+
+			&:nth-child(6) {
+				a {
+					background-color: #b8e9ce;
+				}
+			}
+
+			&:nth-child(7) {
+				a {
+					background-color: #dbef79;
+				}
+			}
+
+			&:nth-child(8) {
+				a {
+					background-color: #dcdee3;
+				}
+			}
+
+			&:nth-child(9) {
+				a {
+					background-color: #a1e1ff;
+				}
+			}
+		}
 	}
 
 	a {
 		display: flex;
-		width: 60px;
-		height: 54px;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		position: relative;
-		border-radius: 5px;
-		background-color: rgba(red, .1);
+		width: 60px;
+		height: 56px;
+		border: 1px solid $border-base;
+		border-radius: 10px;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+		font-size: $font-size-xxs;
+		font-weight: 300;
+		color: #666;
 	}
 
-	// TODO : 작업 후 삭제
-	.ico {
-		background-color: rgba(red, .1);
+	@for $i from 1 to 10 {
+		@include ico2x('service#{$i}_sm_on', 30px, 30px);
 	}
 
-	@for $i from 1 to 9 {
-		@include ico2x('service#{$i}', 30px, 30px);
+	@for $i from 1 to 10 {
+		@include ico2x('service#{$i}_sm_off', 30px, 30px);
 	}
 
 	.text {
@@ -39,13 +103,753 @@
 		position: absolute;
 		right: -2px;
 		top: -2px;
-		width: 16px;
-		height: 16px;
-		line-height: 16px;
+		width: 18px;
+		height: 18px;
+		line-height: 18px;
 		border-radius: 50%;
-		background-color: #333;
-		color: #fff;
+		background-color: $darkgray;
+		color: $white;
 		font-size: 11px;
+		font-weight: 500;
+	}
+}
+
+// 가입상품조회 싱글뷰
+.wrapper_single_type1 {
+	.container {
+		padding: 60px 0 0 32px;
+	}
+}
+
+@for $i from 1 to 10 {
+	@include ico2x('service#{$i}_on', 45px, 40px);
+}
+
+@for $i from 1 to 10 {
+	@include ico2x('service#{$i}_off', 45px, 40px);
+}
+
+.service_wrap {
+	overflow: hidden;
+
+	>.inner {
+		&:not(.slick-slider) {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow: hidden;
+			margin: -10px;
+
+			.service_item {
+				flex: 0 0 auto;
+				margin: 10px;
+			}
+		}
+
+		&.slick-slider {
+			.slick-slide {
+				width: 480px;
+				padding: 0 20px 20px 0;
+			}
+		}
+	}
+
+	.service_item {
+		display: flex !important;
+		flex-direction: column;
+		position: relative;
+		width: 460px;
+		height: 530px;
+		padding: 40px 40px 30px;
+		border-radius: 50px 20px 20px 20px;
+		box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .05);
+		background-color: $white;
+	}
+
+	.item_info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex: 0 0 auto;
+		padding-bottom: 4px;
+
+		.left {
+			flex: 0 0 auto;
+			position: relative;
+			width: 109.5px;
+			height: 103.5px;
+			margin: -2px 0 0 -7px;
+			background-repeat: no-repeat;
+			background-size: auto 103.5px;
+		}
+
+		.inner {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			margin: -4px 0 0 -6px;
+		}
+
+		.text {
+			font-size: $font-size-xs;
+			font-weight: 300;
+			color: $black;
+			letter-spacing: -.03em;
+		}
+
+		.badge {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 2px;
+			right: 22px;
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background-color: $darkgray;
+			font-size: $font-size-xxs;
+			color: $white;
+		}
+
+		.right {
+			flex: 1 1 50%;
+		}
+
+		.total {
+			margin-top: -22px;
+			color: $black;
+			text-align: right;
+		}
+
+		.tit {
+			font-weight: 300;
+		}
+
+		.amount {
+			margin-top: 2px;
+			font-size: 35px;
+			font-weight: 600;
+			line-height: 1.2;
+			word-break: break-word;
+			letter-spacing: -.05em;
+
+			span {
+				display: block;
+				margin-top: 6px;
+				font-size: $font-size-base;
+				font-weight: 300;
+			}
+		}
+	}
+
+	.item_list {
+		flex: 1 1 50%;
+		overflow-y: auto;
+		max-height: 300px;
+		margin-bottom: 15px;
+
+		>li {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 105px;
+			border-top: 1px solid #eee;
+		}
+
+		.left {
+			display: flex;
+			flex-direction: column;
+			flex: 0 0 auto;
+			color: $black;
+			letter-spacing: -.05em;
+		}
+
+		.name {
+			font-size: $font-size-md;
+			font-weight: 300;
+			color: $black;
+		}
+
+		.account {
+			font-size: $font-size-lg;
+			font-weight: 400;
+		}
+
+		.btn {
+			margin: -2px 0 0 6px;
+			background-color: #eee;
+		}
+
+		.right {
+			display: flex;
+			flex-direction: column;
+			flex: 1 1 50%;
+			color: $black;
+			text-align: right;
+		}
+
+		.date {
+			margin-top: 2px;
+			font-size: $font-size-xs;
+
+			.ico {
+				margin-top: -2px;
+			}
+
+			+.amount {
+				margin-top: 3px;
+			}
+		}
+
+		.period {
+			font-size: $font-size-xs;
+			color: #666;
+
+			+.amount {
+				margin-top: 2px;
+			}
+		}
+
+		.amount {
+			margin-top: 24px;
+			font-size: 25px;
+			font-weight: 600;
+			line-height: 1.2;
+			word-break: break-word;
+			letter-spacing: -.05em;
+		}
+
+		.total_amount {
+			margin-top: 3px;
+			font-size: $font-size-sm;
+			font-weight: 400;
+		}
+	}
+
+	.limit_amout {
+		padding-top: 16px;
+		border-top: 1px solid #bbb;
+		font-size: $font-size-sm;
+		color: $black;
+		text-align: right;
+
+		li {
+			+li {
+				margin-top: 10px;
+			}
+		}
+
+		span {
+			display: inline-block;
+			width: 90px;
+			font-weight: 400;
+			text-align: left;
+		}
+
+		strong {
+			font-size: $font-size-md;
+		}
+	}
+
+	.bot_banner {
+		flex: 0 0 auto;
+	}
+
+	.banner_item {
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		position: relative;
+		height: 80px;
+		padding: 0 30px;
+		border-radius: 10px;
+
+		.tit {
+			flex: 0 0 auto;
+			position: relative;
+			z-index: 10;
+			font-size: 23px;
+			font-weight: 400;
+			color: $black;
+			letter-spacing: -.05em;
+		}
+
+		.img_area {
+			img {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 80px;
+			}
+		}
+
+		+.banner_item {
+			margin-top: 10px;
+		}
+	}
+
+	.banner_type2 {
+		.tit {
+			font-size: $font-size-xl;
+		}
+	}
+
+	.banner_type4 {
+		.tit {
+			font-size: $font-size-xl;
+			line-height: 1.25;
+		}
+	}
+
+	.banner_type5 {
+		justify-content: space-between;
+		height: 60px;
+		background-color: #a0e8c0;
+
+		.tit {
+			font-size: $font-size-base;
+		}
+
+		.lab_status {
+			min-width: 80px;
+			border: 1px solid transparent;
+		}
+
+		.btn {
+			background-color: #eee;
+		}
+	}
+
+	.recommend_service {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: 18px 40px 0;
+		border-radius: 20px;
+		background-color: $bg-lightgray;
+
+		>.tit {
+			padding-bottom: 20px;
+			font-size: $font-size-xl;
+			font-weight: 400;
+			color: $black;
+			letter-spacing: -.05em;
+		}
+
+		.btn_toggle_service {
+			display: block;
+			position: relative;
+			padding: 5px 35px 5px 0;
+			overflow: visible;
+
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: calc(50% - 14px);
+				right: 0;
+				width: 29px;
+				height: 28px;
+				background: url(#{$url-img-common}/ico_toggle_up@2x.png) no-repeat 0 0;
+				background-size: auto 28px;
+			}
+		}
+
+		>.cont {
+			display: none;
+			margin-bottom: 30px;
+		}
+
+		.list {
+			display: flex;
+			overflow: hidden;
+			margin: 0 -5px;
+
+			li {
+				flex: 0 0 auto;
+				overflow: hidden;
+				width: calc(50% - 10px);
+				height: 210px;
+				margin: 0 5px;
+				border: 1px solid $border-base;
+				border-radius: 10px;
+				background-color: $white;
+			}
+
+			a {
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				height: 100%;
+				padding: 17px 20px 0;
+			}
+		}
+
+		.rank {
+			display: block;
+			width: 38px;
+			height: 25px;
+			background: url(#{$url-img}/content/bg_ranking@2x.png) no-repeat 0 0;
+			background-size: auto 25px;
+			font-weight: 600;
+			text-align: center;
+		}
+
+		.lab_status {
+			position: absolute;
+			right: 20px;
+			min-width: 48px;
+			height: 26px;
+			padding: 0 7px;
+			border-radius: 13px;
+			font-size: $font-size-xxs;
+			color: $black;
+		}
+
+		.name {
+			@include text-ellipsis(2, 20px);
+			margin: 23px 8px 0;
+			font-size: $font-size-md;
+			font-weight: 500;
+			color: $black;
+			letter-spacing: -.05em;
+		}
+
+		.customer_num {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+
+			.tit {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 20px;
+				font-size: $font-size-xxs;
+				font-weight: 400;
+				color: $gray;
+			}
+
+			.ico {
+				margin-right: 4px;
+			}
+
+			.num {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 45px;
+				margin: 0 -20px;
+				padding: 0 20px;
+				font-size: $font-size-xl;
+				font-weight: 600;
+				color: $black;
+				letter-spacing: -.05em;
+			}
+		}
+
+		&.opened {
+			.btn_toggle_service {
+				&:after {
+					background-image: url(#{$url-img-common}/ico_toggle_down@2x.png);
+				}
+			}
+		}
+	}
+
+	// 입출금
+	.service_type1 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service1@2x.png);
+			}
+
+			.ico {
+				margin-left: 8px;
+			}
+		}
+
+		.recommend_service {
+			.lab_status {
+				background-color: #fddbc6;
+			}
+
+			.num {
+				background-color: #fff3ec;
+			}
+		}
+	}
+
+	// 예금
+	.service_type2 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service2@2x.png);
+			}
+		}
+
+		.recommend_service {
+			.lab_status {
+				background-color: #ffdd75;
+			}
+
+			.num {
+				background-color: #f9f5ea;
+			}
+		}
+	}
+
+	// 적금
+	.service_type3 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service3@2x.png);
+			}
+
+			.ico {
+				margin-left: 4px;
+			}
+		}
+
+		.recommend_service {
+			.lab_status {
+				background-color: #f5d8f5;
+			}
+
+			.num {
+				background-color: #fbf6fe;
+			}
+		}
+	}
+
+	// 보장보험
+	.service_type4 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service4@2x.png);
+			}
+		}
+
+		.recommend_service {
+			.lab_status {
+				background-color: #ffa86f;
+			}
+
+			.num {
+				background-color: #f9f4f0;
+			}
+		}
+	}
+
+	// 저축보험
+	.service_type5 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service5@2x.png);
+			}
+		}
+
+		.item_list {
+			>li {
+				height: 110px;
+			}
+		}
+
+		.recommend_service {
+			.lab_status {
+				background-color: #d5d6f5;
+			}
+
+			.num {
+				background-color: #f3f1f8;
+			}
+		}
+	}
+
+	// 펀드
+	.service_type6 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service6@2x.png);
+			}
+		}
+
+		.item_list {
+			>li {
+				flex-direction: column;
+				align-items: normal;
+				justify-content: normal;
+				height: auto;
+				padding: 35px 0;
+			}
+
+			.name {
+				font-weight: 400;
+			}
+
+			.lab_status {
+				min-width: 70px;
+				margin: -2px 0 0 8px;
+				border: 1px solid $border-base;
+			}
+		}
+
+		.lab_status {
+			height: 24px;
+			border-radius: 12px;
+			font-size: $font-size-xxs;
+			font-weight: 200;
+		}
+
+		.flex_justify_between {
+			align-items: center;
+			margin-top: 16px;
+		}
+
+		.invest_amount {
+			margin-top: 7px;
+		}
+
+		.amount {
+			margin-top: 0;
+		}
+
+		.profit_amount {
+			margin-top: 4px;
+			font-weight: 400;
+
+			strong {
+				font-weight: 600;
+			}
+
+			&.up {
+				.ico_arrow {
+					background-image: url(#{$url-img-common}/ico_arr_up_red@2x.png);
+				}
+
+				strong {
+					color: $red;
+				}
+			}
+
+			&.down {
+				.ico_arrow {
+					background-image: url(#{$url-img-common}/ico_arr_down_blue@2x.png);
+				}
+
+				strong {
+					color: $blue;
+				}
+			}
+		}
+
+		.ico_arrow {
+			@include ir;
+			display: inline-block;
+			width: 10px;
+			height: 9px;
+			margin: -2px 5px 0 0;
+			background-repeat: no-repeat;
+			background-size: auto 9px;
+		}
+	}
+
+	// 가계대월
+	.service_type7 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service7@2x.png);
+			}
+		}
+
+		.recommend_service {
+			.lab_status {
+				background-color: #dbef79;
+			}
+
+			.num {
+				background-color: #f9fbee;
+			}
+		}
+	}
+
+	// 대출
+	.service_type8 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service8@2x.png);
+			}
+		}
+
+		.item_list {
+			max-height: 315px;
+		}
+	}
+
+	// 카드
+	.service_type9 {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service9@2x.png);
+			}
+		}
+
+		.item_list {
+			>li {
+				display: block;
+				height: auto;
+				padding: 25px 0;
+			}
+		}
+
+		.limit_amout {
+			margin-top: 30px;
+		}
+
+		.recommend_service {
+			.lab_status {
+				background-color: #a1e1ff;
+			}
+
+			.num {
+				background-color: #eff9fe;
+			}
+		}
+	}
+
+	.no_service {
+		.item_info {
+			.left {
+				background-image: url(#{$url-img}/content/bg_service_default@2x.png);
+			}
+
+			.text {
+				color: #666;
+				letter-spacing: -.05em;
+			}
+
+			.badge {
+				background-color: #666;
+			}
+		}
+
+		.no_text {
+			margin-top: -10px;
+			font-weight: 400;
+			color: #666;
+			text-align: center;
+		}
+
+		.bot_banner {
+			position: absolute;
+			right: 40px;
+			bottom: 30px;
+			left: 40px;
+		}
 	}
 }
 
