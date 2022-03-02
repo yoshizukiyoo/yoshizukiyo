@@ -1,5 +1,95 @@
 /* 공통 */
-.wrapper_common {}
 
-// TODO : 이곳에 스타일을 정의해 주세요.
-// 클래스 네임 중복되지 않도록 네이밍은 2단어 이상으로 해주세요.
+/* 신분증 촬영 */
+.scan_mask_area {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+
+	.inner {
+		height: 340px;
+		margin-bottom: $header-height;
+	}
+
+	.mask {
+		position: relative;
+		width: 500px;
+		height: 320px;
+		background-color: #fff;
+		border-radius: 16px;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			top: -1px;
+			width: 32px;
+			height: 32px;
+			background: url(#{$url-img-common}/img_angle_top_left@2x.png) no-repeat;
+			background-size: cover;
+		}
+
+		&:before {
+			left: -1px;
+		}
+
+		&:after {
+			right: -1px;
+			transform: rotate(90deg);
+		}
+
+		.subject {
+			height: 100%;
+			border-radius: 16px;
+			overflow: hidden;
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: -1px;
+				width: 32px;
+				height: 32px;
+				background: url(#{$url-img-common}/img_angle_top_left@2x.png) no-repeat;
+				background-size: cover;
+			}
+
+			&:before {
+				left: -1px;
+				transform: rotate(-90deg);
+			}
+
+			&:after {
+				right: -1px;
+				transform: rotate(180deg);
+			}
+
+			img {
+				max-width: none;
+			}
+		}
+	}
+
+	.btn_shutter {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -70px - $header-height * 0.5;
+		margin-left: 300px;
+		border-radius: 50%;
+		width: 120px;
+		height: 120px;
+		background-color: $primary;
+		color: $black;
+		padding-top: 10px;
+		font-size: 20px;
+		font-weight: 500;
+
+		span {
+			margin-top: 4px;
+			display: block;
+		}
+	}
+}
