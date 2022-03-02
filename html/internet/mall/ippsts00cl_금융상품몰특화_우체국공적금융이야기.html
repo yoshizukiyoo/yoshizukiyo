@@ -22,28 +22,44 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		// $(document).ready(function () {
-		// 	var storyTop = $('.story_box_wrap').offset().top - 100;
-		// 	var storyBtm = $('.story_box_wrap').outerHeight();
-		// 	// = $("body").height() - $(window).height() - $(window).scrollTop();
+		$(document).ready(function () {
+			var storyTop = $('.story_box_wrap').offset().top - 134;
+			var storyBtm = $('.story_box_wrap').outerHeight();
 
+			$(window).scroll(function () {
+				var scrT = $(window).scrollTop();
 
-		// 	$(window).scroll(function () {
-		// 		var windowH = $('html,body').scrollTop();
-		// 		var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
-		// 		console.log(scrollBottom);
-		// 		if (windowH >= storyTop) {
-		// 			$('.story_anchor').addClass('active');
-		// 		}
-		// 		if (scrollBottom == storyBtm) {
-		// 			$('.story_anchor').addClass('active_btm');
-		// 			console.log('bottom');
-		// 		} else {
-		// 			$('.story_anchor').removeClass('active');
-		// 		}
+				if (scrT >= storyTop) {
+					$('.story_anchor').addClass('active');
+				} else {
+					$('.story_anchor').removeClass('active');
+				}
+				if (scrT >= storyBtm) {
+					$('.story_anchor').addClass('active_btm');
+				} else {
+					$('.story_anchor').removeClass('active_btm');
+				}
 
-		// 	});
-		// })
+				$('.story_anchor a').each(function () {
+					var currLink = $(this);
+					var refElement = $(currLink.attr("href"));
+					var target = refElement.offset().top - 150;
+					if (target <= scrT) {
+						$('.story_anchor a').removeClass("active");
+						currLink.addClass("active");
+					} else {
+						currLink.removeClass("active");
+					}
+				});
+			});
+
+			$('.story_anchor a').click(function (e) {
+				e.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top - 134
+				}, 500);
+			});
+		});
 	</script>
 </head>
 
@@ -96,14 +112,14 @@
 					</div>
 					<div class="story_box_wrap">
 						<div class="story_anchor">
-							<a href="#;" class="anchor01">취업이룸통장</a>
-							<a href="#;" class="anchor02">(건설) 하나로전자카드</a>
-							<a href="#;" class="anchor03">나르미안전보험</a>
-							<a href="#;" class="anchor04">마미든든적금</a>
-							<a href="#;" class="anchor05">새출발자유적금</a>
-							<a href="#;" class="anchor06">만원의행복보험</a>
+							<a href="#story01" class="anchor01 active">취업이룸통장</a>
+							<a href="#story02" class="anchor02">(건설) 하나로전자카드</a>
+							<a href="#story03" class="anchor03">나르미안전보험</a>
+							<a href="#story04" class="anchor04">마미든든적금</a>
+							<a href="#story05" class="anchor05">새출발자유적금</a>
+							<a href="#story06" class="anchor06">만원의행복보험</a>
 						</div>
-						<div class="story_box yellow">
+						<div id="story01" class="story_box yellow">
 							<div class="news_paper">
 								<div class="tit">
 									<div class="flex_box">
@@ -128,7 +144,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="story_box green">
+						<div id="story02" class="story_box green">
 							<div class="news_paper">
 								<div class="tit">
 									<div class="flex_box">
@@ -166,7 +182,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="story_box skyblue">
+						<div id="story03" class="story_box skyblue">
 							<div class="news_paper">
 								<div class="tit">
 									<div class="flex_box">
@@ -188,7 +204,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="story_box purple">
+						<div id="story04" class="story_box purple">
 							<div class="news_paper">
 								<div class="tit">
 									<div class="flex_box">
@@ -208,7 +224,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="story_box blue">
+						<div id="story05" class="story_box blue">
 							<div class="news_paper">
 								<div class="tit">
 									<div class="flex_box">
@@ -240,7 +256,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="story_box orange">
+						<div id="story06" class="story_box orange">
 							<div class="news_paper">
 								<div class="tit">
 									<div class="flex_box">

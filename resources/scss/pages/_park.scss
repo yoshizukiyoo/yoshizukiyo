@@ -4844,9 +4844,10 @@ table>tbody>tr>.fund_name {
 						border-width: 1px;
 						border-style: solid;
 						border-radius: 6px;
-						padding: 17px 20px;
+						padding: 17px 15px;
 						text-align: center;
 						background: #fff;
+						min-height: 100px;
 
 						&:not(:nth-child(3n)) {
 							margin-right: 10px;
@@ -4873,6 +4874,7 @@ table>tbody>tr>.fund_name {
 							width: 100%;
 							font-size: 20px;
 							line-height: 1.2;
+							letter-spacing: -0.5px;
 						}
 
 						span {
@@ -5168,11 +5170,11 @@ table>tbody>tr>.fund_name {
 			}
 
 			>a {
-				display: flex;
+				position: relative;
+				display: block;
 				text-align: right;
 				color: #555;
-				justify-content: flex-end;
-				align-items: center;
+				padding-right: 30px;
 
 				&:not(:first-child) {
 					margin-top: 6px;
@@ -5180,40 +5182,51 @@ table>tbody>tr>.fund_name {
 
 				&:after {
 					content: '';
-					display: inline-block;
+					position: absolute;
+					top: 50%;
+					right: 0;
+					transform: translateY(-50%);
 					width: 16px;
 					height: 16px;
 					border-radius: 50%;
-					margin-left: 12px;
 				}
 
 				&.anchor01:after {
-					background: #fdc61c;
+					background-color: #fdc61c;
 				}
 
 				&.anchor02:after {
-					background: #009973;
+					background-color: #009973;
 				}
 
 				&.anchor03:after {
-					background: #45a0e0;
+					background-color: #45a0e0;
 				}
 
 				&.anchor04:after {
-					background: #918cd7;
+					background-color: #918cd7;
 				}
 
 				&.anchor05:after {
-					background: #3a82ca;
+					background-color: #3a82ca;
 				}
 
 				&.anchor06:after {
-					background: #f46e16;
+					background-color: #f46e16;
 				}
 
-				.active {
+				&.active {
 					font-weight: 500;
 					color: #111;
+
+					&:after {
+						right: -4px;
+						width: 24px;
+						height: 24px;
+						background-image:url(#{$url-img}/content/ico_chk_anchor.png);
+						background-position: 50% 50%;
+						background-repeat: no-repeat;
+					}
 				}
 			}
 		}
