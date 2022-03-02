@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(window).scroll(function () {
+				var scrT = $(window).scrollTop();
+
+				$('.story_anchor a').each(function () {
+					var currLink = $(this);
+					var refElement = $(currLink.attr("href"));
+					var target = refElement.offset().top - 60;
+					if (target <= scrT) {
+						$('.story_anchor a').removeClass("active");
+						currLink.addClass("active");
+					} else {
+						currLink.removeClass("active");
+					}
+				});
+			});
+
+			$('.story_anchor a').click(function (e) {
+				e.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top - 56
+				}, 500);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header round" data-inc="_inc_header_mall.html" data-page-title="테마로 찾기"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<div class="container p_4">
+				<div class="finance_story_wrap">
+					<a href="#;" class="btn_share_theme">
+						<span class="sr_only">공유하기</span>
+						<i class="ico_share"></i>
+					</a>
+					<div class="finance_top">
+						<h3>우체국 <strong>공적 금융이야기</strong></h3>
+						<p>국영금융기관으로서 우체국만의<br><strong>특별한 공적 상품</strong>들을 소개드려요.</p>
+						<div class="law_txt mt_4">
+							<strong class="mb_1">우체국예금·보험에 관한 법률 제1장 제1조</strong>
+							신용 있는 예금 · 보험사업을 운영하게 함으로써 금융의 대중화를 통하여 국민의 저축의욕을 북돋우고,
+							보험의 보편화를 통하여 재해의 위험에 공동으로 대처하게 함으로써 국민 경제생활의 안정과
+							공공복리의 증진에 이바지함을 목적으로 한다.
+						</div>
+					</div>
+					<div class="story_box_wrap">
+						<div class="story_anchor">
+							<div class="inner">
+								<a href="#story01" class="anchor01 active">취업이룸통장</a>
+								<a href="#story02" class="anchor02">(건설) 하나로전자카드</a>
+								<a href="#story03" class="anchor03">나르미안전보험</a>
+								<a href="#story04" class="anchor04">마미든든적금</a>
+								<a href="#story05" class="anchor05">새출발자유적금</a>
+								<a href="#story06" class="anchor06">만원의행복보험</a>
+							</div>
+						</div>
+						<div id="story01" class="story_box yellow">
+							<div class="news_paper">
+								<div class="tit">
+									<div class="flex_box">
+										<div class="l">
+											<span class="category on">구직촉진수당</span>
+											<span class="category">압류방지</span>
+										</div>
+										<div class="r txt_xs">2021.11.02</div>
+									</div>
+									<h4 class="mt_2">빚을 진 청년들을 위한 <strong>“취업이룸통장”</strong></h4>
+								</div>
+								<p class="news_txt mt_3">“우체국예금은 국영금융기관으로서 공적역할 수행에 앞장서고 있다. 우체국 취업이룸통장을 통해 기존 고용안전망 사각지대에 놓은 취업취약계층의
+									구직촉진수당 수급을 보호하고 최소한의 생계안정이 이루어지기를 기대한다.”
+									<strong class="d_b txt_default">[박종석 우정사업본부장]</strong>
+								</p>
+								<div class="img_box mt_3">
+									<img src="/resources/img/content/img_story01.jpg" alt="대체텍스트 이미지">
+								</div>
+								<div class="news_con">
+									<p>구직촉진수당 입금용 통장으로 <strong>구직촉진수당</strong>만 입금 받으며, 압류 대상에서 제외됩니다.</p>
+									<p class="mt"><strong>최고 연 0.3%</strong></p>
+								</div>
+							</div>
+						</div>
+						<div id="story02" class="story_box green">
+							<div class="news_paper">
+								<div class="tit">
+									<div class="flex_box">
+										<div class="l">
+											<span class="category on">건설근로자</span>
+											<span class="category">퇴직공제제도</span>
+										</div>
+										<div class="r txt_xs">2020.08.21</div>
+									</div>
+									<h4 class="mt_2">건설노동자 출퇴근용 <br><strong>“우체국하나로 전자카드”</strong></h4>
+								</div>
+								<p class="news_txt mt_3">“전국 우체국 네트워크와 건설현장을 연계해 전자카드 제도의 정착을 지원하고, 우체국 금융/우편/물류 등 통합 서비스 제공을 통해 건설근로자의
+									삶의 질 향상에 기여할 수 있도록 노력하겠다.”
+									<strong class="d_b txt_default">[박종석 우정사업본부장]</strong>
+								</p>
+								<div class="img_box mt_3"><img src="/resources/img/content/img_story02.jpg" alt="대체텍스트 이미지"></div>
+								<div class="news_con">
+									<p><span>5% 캐시백</span></p>
+									<p>- 병원, 약국, 통신료</p>
+									<p><span>3% 캐시백</span></p>
+									<p>- 요식업, 편의점, 숙박업</p>
+									<p><span>10% 캐시백</span></p>
+									<p>- 우체국요금/쇼핑, EMS</p>
+									<p class="mt"><strong>해외 인출 수수료 면제</strong></p>
+								</div>
+								<div class="img_box mt_3"><img src="/resources/img/content/img_story03.jpg" alt="대체텍스트 이미지"></div>
+								<div class="news_con">
+									<p>전자카드 발급과 같이 하면 우대금리 및<br> 수수료 면제</p>
+									<p class="mt"><strong>100만원 이하 <br>최고 연 0.8%</strong></p>
+								</div>
+							</div>
+						</div>
+						<div id="story03" class="story_box skyblue">
+							<div class="news_paper">
+								<div class="tit">
+									<div class="flex_box">
+										<div class="l">
+											<span class="category on">운송업종사자</span>
+											<span class="category">공익재원지원</span>
+										</div>
+										<div class="r txt_xs">2020.04.26</div>
+									</div>
+									<h4 class="mt_2">배달운송맞춤형 상해보험 <br><strong>“나르미안전보험”</strong></h4>
+								</div>
+								<div class="img_box mt_3"><img src="/resources/img/content/img_story04.jpg" alt="대체텍스트 이미지"></div>
+								<div class="news_con">
+									<p>운송업종사자 전용<br>공익형 교통상해보험</p>
+									<p class="mt"><strong>보험료 50% 지원</strong></p>
+									<p>교통재해 사망/장애/중환자실입원/<br>중대수술/응급실내원</p>
+								</div>
+							</div>
+						</div>
+						<div id="story04" class="story_box purple">
+							<div class="news_paper">
+								<div class="tit">
+									<div class="flex_box">
+										<div class="l">
+											<span class="category on">일하는여성</span>
+										</div>
+										<div class="r txt_xs">2018.06.18</div>
+									</div>
+									<h4 class="mt_2">워킹맘을 위한 <strong>“마미든든적금”</strong></h4>
+								</div>
+								<div class="img_box mt_3"><img src="/resources/img/content/img_story05.jpg" alt="대체텍스트 이미지"></div>
+								<div class="news_con">
+									<p>일하는기혼여성, 결혼이민/한부모/<br>장애인 여성, 자녀수, 거래실적에 따른 우대 제공</p>
+									<p class="mt"><strong>최고 연 3.6%</strong></p>
+								</div>
+							</div>
+						</div>
+						<div id="story05" class="story_box blue">
+							<div class="news_paper">
+								<div class="tit">
+									<div class="flex_box">
+										<div class="l">
+											<span class="category">기초생활</span>
+											<span class="category">근로장려금</span>
+											<span class="category on">나눔실천</span>
+										</div>
+										<div class="r txt_xs">2015.06.19</div>
+									</div>
+									<h4 class="mt_2">서민 저축 활동 지원 위한 <br><strong>“새출발자유적금”</strong></h4>
+								</div>
+								<div class="img_box mt_3"><img src="/resources/img/content/img_story06.jpg" alt="대체텍스트 이미지"></div>
+								<div class="news_con ">
+									<p>- 기초생활수급자, 근로장려금수급자</p>
+									<p>- 장애인보호대상, 한부모가족, 소년소녀가장</p>
+									<p>- 북한이탈주민, 결혼이민자</p>
+									<p class="mt"><strong>최고 연 4.1%</strong></p>
+								</div>
+								<div class="img_box mt_3"><img src="/resources/img/content/img_story07.jpg" alt="대체텍스트 이미지"></div>
+								<div class="news_con">
+									<p>- 헌헐자, 입양자, 장기/골수기증자 등 사랑나눔실천자</p>
+									<p>- 자녀가정, 부모봉양가족, 농어촌거주, 신용등급 7등금 이하, 협동조합종사자</p>
+									<p class="mt"><strong>최고 연 2.4%</strong></p>
+								</div>
+							</div>
+						</div>
+						<div id="story06" class="story_box orange">
+							<div class="news_paper">
+								<div class="tit">
+									<div class="flex_box">
+										<div class="l">
+											<span class="category on">차상위계층</span>
+											<span class="category">서민보험</span>
+										</div>
+										<div class="r txt_xs">2009.12.10</div>
+									</div>
+									<h4 class="mt_2">소액 서민보험제도 <strong>“만원의행복보험”</strong></h4>
+								</div>
+								<div class="img_box mt_3"><img src="/resources/img/content/img_story08.jpg" alt="대체텍스트 이미지"></div>
+								<div class="news_con">
+									<p>차상위계층 공익형상해보험<br>1년에 만원.</p>
+									<p class="mt"><strong>입원의료비</strong></p>
+									<p><strong>통원의료비</strong></p>
+									<p><strong>유족위로금 2천만원</strong></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
