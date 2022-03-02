@@ -38,6 +38,11 @@
 			font-size: 24px;
 			color: #333;
 		}
+
+		.category_group {
+			line-height: 1;
+		}
+
 	}
 
 	.product_card_img {
@@ -90,6 +95,10 @@
 
 	&.pro_dep {
 		background: #fdc61c;
+	}
+
+	&.pro_fund {
+		background: #9cdccc;
 	}
 
 	>.inner {
@@ -589,24 +598,7 @@
 	}
 
 	.category_group {
-		display: flex;
 		justify-content: center;
-
-		>li {
-			position: relative;
-			margin-right: -1px;
-			padding: 0 10px;
-
-			&:not(:last-child)::before {
-				content: '';
-				position: absolute;
-				right: 0;
-				top: 4px;
-				width: 1px;
-				height: 12px;
-				background: #ddd;
-			}
-		}
 	}
 
 	.product_pick_name {
@@ -678,6 +670,26 @@
 					font-size: 36px;
 				}
 			}
+		}
+	}
+}
+
+.category_group {
+	display: flex;
+
+	>li {
+		position: relative;
+		margin-right: -1px;
+		padding: 0 10px;
+
+		&:not(:last-child)::before {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 4px;
+			width: 1px;
+			height: 12px;
+			background: #ddd;
 		}
 	}
 }
@@ -894,12 +906,6 @@
 	}
 }
 
-.scroll_wrap {
-	width: 100%;
-	overflow-x: auto;
-	//padding-left: calc((100% - 1200px) / 2);
-}
-
 .btn_gray {
 	background: #555;
 	color: #fff;
@@ -958,5 +964,61 @@
 
 	.product_hashtag {
 		padding-right: 190px;
+	}
+}
+
+.sec_fund {
+	background: #ebfbf7;
+
+	.product_link {
+		top: 254px;
+	}
+}
+
+.scroll_wrap {
+	position: relative;
+
+	&::before {
+		content: '';
+		width: 100%;
+		height: 11px;
+		background: #fff;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+
+	>.scroll_inner {
+		width: 100%;
+		overflow-x: auto;
+
+		/* IE scrollbar */
+		scrollbar-arrow-color: #e4e4e4; // 화살표 색상
+		scrollbar-face-color: #fdc61c; // 표면 색상
+		scrollbar-shadow-color: #fdc61c; //그림자 부분 색상
+		scrollbar-track-color: #e4e4e4; // 트랙 색상
+
+		/* wekbit 브라우저 scrollbar */
+
+		// 스크롤바 넓이
+		&::-webkit-scrollbar {
+			height: 16px;
+		}
+
+		// 스크롤바 버튼
+		&::-webkit-scrollbar-button:start:decrement,
+		&::-webkit-scrollbar-button:end:increment {
+			display: none;
+		}
+
+		// 트랙 색상
+		&::-webkit-scrollbar-track {
+			background: #efefef;
+		}
+
+		// 바 색상
+		&::-webkit-scrollbar-thumb {
+			background: #fdc61c;
+		}
 	}
 }
