@@ -32,7 +32,15 @@
 				$(this).closest('.logged_info_layer').slideUp('fast');
 				$('body').removeClass('info_layer_opened');
 			});
+			$('.tab_conent').children('h4').text($('.sec_dep_list .tab_menu_type1 li a.current').text());
 
+			$('.sec_dep_list .tab_menu_type1 li a.current').attr('title', 'selected');
+			$(
+				'.sec_dep_list .tab_menu_type1 li a').on('click', function () {
+				$(this).addClass('current').attr('title', 'selected').parent().siblings().children().removeClass(
+					'current').removeAttr('title');
+				$('.tab_conent').children('h4').text($('.sec_dep_list .tab_menu_type1 li a.current').text());
+			});
 		});
 	</script>
 </head>
@@ -55,79 +63,299 @@
 					.sec_home 클래스는 메인 공통 클래스이므로 스타일링 금지합니다.
 					반드시 멀티클래스 추가 후 스타일링 해주세요
 				-->
-				<section class="sec_home sec_home_global">
 
-					<!-- s: 로그인 후 노출 -->
-					<div class="logged_info_layer">
+				<!-- s: 비 로그인 영역
+					클래스 .n_login 삽입시 비로그인 영역으로 속성값이 변경됩니다. 
+				<section class="sec_home sub_en_info biz_sub_main n_login">
+					<h3 class="sr_only">Savings account information</h3>
+					<div class="visual_top">
 						<div class="container">
-							<div class="info_cont">
-								<p>레이어 마크업 영역</p>
-								<p>레이어 마크업 영역</p>
+							<div class="slogan">
+								<em class="sup">The more difficult it is, the more trustworthy it is.</em>
+								<strong><span class="txt_lightblue">Good finance,</span> Post office finance.</strong>
 							</div>
-							<button type="button" class="btn btn_icon btn_close_info_layer">
-								<i class="ico ico_close_sm"></i>
-								<span class="sr_only">알림 레이어 닫기</span>
-							</button>
 						</div>
 					</div>
-					<!-- s: 로그인 후 노출 -->
+				</section>
+				e: 비 로그인 영역 -->
 
+				<!-- s: 로그인 -->
+				<section class="sec_home sub_en_info biz_sub_main">
+					<h3 class="sr_only">Savings account information</h3>
+					<div class="visual_top">
+						<div class="container">
+							<div class="slogan">
+								<em class="sup">The more difficult it is, the more trustworthy it is.</em>
+								<strong><span class="txt_lightblue">Good finance,</span> Post office finance.</strong>
+							</div>
+
+							<!-- S: 대표계좌-->
+							<div class="info_box_list ind_info_box">
+								<div class="info_list_wrap">
+									<div class="info_cont_box first">
+										<div class="inner">
+											<div class="top">
+												<a href="#;" class="btn_round_ico">대표 계좌</a>
+											</div>
+											<div class="box_cont txt_c">
+												<p class="acc_txt1">우체국다드림통장(베이직)</p>
+												<p class="acc_txt2">
+													급여통장
+													<span class="check_switch check_switch_sm check_quick_transfer">
+														<input type="checkbox" id="chk_fast1">
+														<label for="chk_fast1">Quick</label>
+													</span>
+												</p>
+												<p class="acc_txt3">010017-02-627027</p>
+												<p class="acc_txt4"><strong>691,392,500</strong>원</p>
+											</div>
+											<div class="btn_area">
+												<a href="#;" class="btn btn_md btn_outline_default">거래내역</a>
+												<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
+												<a href="#;" class="btn_r"><span class="sr_only">계좌관리</span></a>
+											</div>
+										</div>
+									</div>
+									<!-- s: 등록된 계좌가 있을때 -->
+									<div class="r_info_cont">
+										<div class="date_acc_info">
+											<div class="info_cont_box">
+												<div class="inner">
+													<div class="top">
+														<span class="r acc_date">2022.01.28</span>
+													</div>
+													<div class="box_cont">
+														<p class="acc_name"><span>김순이</span></p>
+														<p class="acc_bank">국민은행 <span>12345800033334</span></p>
+														<p class="acc_money txt_c"><strong>700,000</strong>원</p>
+													</div>
+													<div class="btn_area">
+														<a href="#;" class="btn btn_md btn_primary txt_medium">빠른이체</a>
+													</div>
+												</div>
+											</div>
+											<div class="info_cont_box">
+												<div class="inner">
+													<div class="top">
+														<span class="r acc_date">2022.01.28</span>
+													</div>
+													<div class="box_cont">
+														<p class="acc_name"><span>홍길동</span></p>
+														<p class="acc_bank">국민은행 <span>12345800033334</span></p>
+														<p class="acc_money txt_c"><strong>700,000</strong>원</p>
+													</div>
+													<div class="btn_area">
+														<a href="#;" class="btn btn_md btn_primary txt_medium">빠른이체</a>
+													</div>
+												</div>
+											</div>
+											<div class="info_cont_box">
+												<div class="inner">
+													<div class="top">
+														<span class="r acc_date">2022.01.28</span>
+													</div>
+													<div class="box_cont">
+														<p class="acc_name"><span>저금통</span></p>
+														<p class="acc_bank">국민은행 <span>123-123-1234</span></p>
+														<p class="acc_money txt_c"><strong>700,000</strong>원</p>
+													</div>
+													<div class="btn_area">
+														<a href="#;" class="btn btn_md btn_primary txt_medium">빠른이체</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="btm_transfer_write">
+											<p class="acc_write_txt">최근 이체 내역 정보를 확인하고 간편하게 빠른이체 또는 자동이체를 등록해 보세요.</p>
+											<a href="#;" class="btn btn_md btn_outline_default ico_arrow">최근이체내역조회</a>
+										</div>
+									</div>
+									<!-- s: 등록된 계좌가 있을때 -->
+
+									<!-- s: 등록된 계좌가 없을시 -->
+									<div class="transfer_write" style="display: none;">
+										<p class="acc_write_txt mb_7">최근 이체 내역 정보를 확인하고 간편하게 빠른이체 또는 자동이체를 등록해 보세요.</p>
+										<a href="#;" class="btn btn_md btn_outline_default ico_arrow">최근이체내역조회</a>
+									</div>
+									<!-- e: 등록된 계좌가 없을시 -->
+								</div>
+							</div>
+							<!-- e: 대표계좌-->
+						</div>
+					</div>
+				</section>
+				<!-- e: 로그인 -->
+
+				<!-- s: 입금/출금 목록 -->
+				<section class="sec_dep_list">
 					<div class="container">
-						<h3>Title1</h3>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
+						<div class="deal_list">
+							<div class="l">
+								<div class="clfx">
+									<div class="f_l">
+										<h3 class="sub_tit">Exchange Rates</h3>
+										<span class="date">2021.06.17. 07:05:44</span>
+									</div>
+									<a href="#;" class="f_r btn_more_sm">More <i class="ico ico_arrow_right_sm"></i></a>
+								</div>
+								<div class="tab_menu_type1 md">
+									<ul>
+										<li><a href="#;" class="current" title="selected">Cash</a></li>
+										<li><a href="#;">Wire Transfer</a></li>
+									</ul>
+								</div>
+								<div class="tab_conent">
+									<h4 class="sr_only">Cash</h4>
+									<div class="tbl_data tbl_list_data tbl_en_data">
+										<table>
+											<caption class="sr_only">info Exchange Rates</caption>
+											<colgroup>
+												<col>
+												<col style="width:140px">
+												<col style="width:140px">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col"><span class=" sr_only">Nation</span></th>
+													<th scope="col">Buying</th>
+													<th scope="col">Selling</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">
+														<span class="img">
+															<img src="/resources/img/main/img_nation_usa.jpg" alt="" class="thumb">
+														</span>
+														United States
+													</th>
+													<td class="txt_r pr_8">1137.56</td>
+													<td class="txt_r pr_8">1098.44</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<span class="img">
+															<img src="/resources/img/main/img_nation_jp.jpg" alt="" class="thumb">
+														</span>
+														Japan
+													</th>
+													<td class="txt_r pr_8">1034.71</td>
+													<td class="txt_r pr_8">999.13</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<span class="img">
+															<img src="/resources/img/main/img_nation_china.jpg" alt="" class="thumb">
+														</span>
+														China
+													</th>
+													<td class="txt_r pr_8">183.55</td>
+													<td class="txt_r pr_8">166.07</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<span class="img">
+															<img src="/resources/img/main/img_nation_eu.jpg" alt="" class="thumb">
+														</span>
+														The European Union
+													</th>
+													<td class="txt_r pr_8">1382.86</td>
+													<td class="txt_r pr_8">1329.18</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<span class="img">
+															<img src="/resources/img/main/img_nation_thailand.jpg" alt="" class="thumb">
+														</span>
+														Thailand
+													</th>
+													<td class="txt_r pr_8">37.65</td>
+													<td class="txt_r pr_8">33.35</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<!-- s: 서비스링크 영역 -->
+							<div class="r">
+								<h3 class="sub_tit">Service Link</h3>
+
+								<div class="box_area">
+									<ul class="box_row_list">
+										<li>
+											<a href="#" class="box item">
+												<span class="box bg_lightgray">
+													<i class="ico ico_service_transfer"></i>
+												</span>
+												<strong>Real time transfer</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="box item">
+												<span class="box bg_lightgray">
+													<i class="ico ico_service_inquiry"></i>
+												</span>
+												<strong>Account inquiry</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="box item">
+												<span class="box bg_lightgray">
+													<i class="ico ico_service_remittance"></i>
+												</span>
+												<strong>EUROGIRO remittance</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="box item">
+												<span class="box bg_lightgray">
+													<i class="ico ico_service_result"></i>
+												</span>
+												<strong>Transfer result inquiry</strong>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- e: 서비스링크 영역 -->
+						</div>
+					</div>
+				</section>
+				<!-- e: 입금/출금 목록 -->
+
+				<section class="sec_banner bg_lightgray">
+					<div class="container">
+						<div class="content_row">
+							<div class="cont_item">
+								<h3 class="sub_tit mb_2 mt_2">CONTACT US</h3>
+								<p class="txt_gray">Mon to Fri 09:00 ~ 18:00 (except on holidays)</p>
+								<ul class="contact_list">
+									<li>
+										<strong>Local</strong>
+										<span>1588-1900</span><span>1599-1900</span>
+									</li>
+									<li>
+										<strong>Overseas</strong>
+										<span>82-31-888-8000</span>
+									</li>
+								</ul>
+
+							</div>
+							<div class="cont_item banner_area">
+								<a href="#;" class="service_banner" title="new window" target="_blank">
+									<h3 class="sub_tit mb_3">Global App Service</h3>
+									<p>
+										Korea Post Bank’s multilingual
+										Banking App for foreign customers
+									</p>
+								</a>
+							</div>
+						</div>
 					</div>
 				</section>
 
-				<section class="bg_gray">
-					<!-- [웹접근성] 디자인상 섹션제목이 없을시 숨겨진 헤딩 제공 -->
-					<h3 class="sr_only">${Title2}</h3>
-					<div class="container">
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-					</div>
-				</section>
-
-				<section>
-					<div class="container">
-						<h3>Title3</h3>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-					</div>
-				</section>
-
-				<section class="bg_gray">
-					<div class="container">
-						<h3>Title3</h3>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-						<p>text</p>
-					</div>
-				</section>
 			</div>
 
 			<!-- e: 메인 본문 -->
