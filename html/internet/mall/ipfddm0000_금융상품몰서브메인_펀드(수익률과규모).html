@@ -13,6 +13,7 @@
 	<script src="/resources/js/jquery-ui.js"></script>
 	<script src="/resources/js/jquery.print.js"></script>
 	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/jquery.range.js"></script>
 
 	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
 	<script src="/resources/js/ui_global.js"></script>
@@ -115,6 +116,41 @@
 					$popRollingArea.slick('slickPlay');
 					$(this).removeClass("btn_play").addClass("btn_pause");
 					$(this).text("Play");
+				}
+			});
+
+			// 수익률 Range slider
+			$('.profit_range').jRange({
+				from: -100,
+				to: 100,
+				step: 1,
+				scale: [-100, 0, 100],
+				format: '%s',
+				width: 478,
+				showLabels: true,
+				isRange: true,
+				ondragend: function (e) { // callback 함수
+					//console.log(e)
+				}
+			});
+
+			// 펀드 규모 Range slider
+			$('.fund_scale_range').jRange({
+				from: 0,
+				to: 1000,
+				step: 10,
+				scale: [0, '1000억'],
+				format: '%s억',
+				width: 478,
+				showLabels: true,
+				isRange: true,
+				ondragend: function (e) { // callback 함수
+					//console.log(e)
+
+					var val = e;
+					if (val.split(',')[0] == '0') {
+						$('.pointer-label.low').text('0');
+					}
 				}
 			});
 		})
@@ -290,7 +326,7 @@
 								<h3 class="tag"><a href="#;">상품태그</a></h3>
 								<ul class="mt_4">
 									<li><a href="#;">#성과보수</a></li>
-									<li><a href="#;" class="on">#4차혁명</a></li>
+									<li><a href="#;">#4차혁명</a></li>
 									<li><a href="#;">#원금보존추구</a></li>
 									<li><a href="#;">#목표설정</a></li>
 									<li><a href="#;">#우리아기</a></li>
@@ -305,113 +341,112 @@
 								<h3 class="product_find">내게 맞는 상품 찾기</h3>
 								<ul class="mt_4">
 									<li><button type="button">투자성향분석</button></li>
-									<li><button type="button">수익률과 규모</button></li>
+									<li><button type="button" class="on">수익률과 규모</button></li>
 									<li><button type="button">내게맞는펀드</button></li>
 								</ul>
 							</div>
 						</div>
-						<div class="mall_search_result">
-							<div class="txt_r txt_sm txt_gray"><span class="mr_2">수익률 기준일</span>2021.05.12 16:18:38</div>
-							<div class="acco_list">
+						<div class="mall_search_result pt_6">
+							<div class="fund_nec_txt">
+								<p>수익률과 펀드 규모 등 상세조건으로 펀드를 찾을 수 있어요.</p>
+							</div>
+							<div class="acco_list pt_5">
 								<div class="top flex_box pb_4 align_end">
-									<p class="tit_arr mt_2 txt_normal">상품태그 <span class="txt_bold">#4차혁명</span>으로 <span
-											class="txt_bold">1</span>개 상품이 검색되었습니다.</p>
-									<a href="#;" class="btn btn_explain">동일한 태그 다른 상품 더보기</a>
+									<p class="tit_arr mt_2 txt_normal">수익률과 규모로 펀드 찾기</p>
 								</div>
-								<div class="acco_inner">
-									<div class="ch_product">
+								<div class="fund_profit_find">
+									<div class="profit_inner">
 										<div class="l">
-											<div class="product_cate">
-												<ul class="inline_list pd_list1">
-													<li class="fir">보통위험</li>
-													<li>채권혼합형</li>
-													<li>NH-Amund운용</li>
-												</ul>
-												<ul class="inline_rounding ml_4">
-													<li>수수료선취</li>
-													<li>오프라인</li>
-												</ul>
-												<span class="grade">5</span>
+											<div class="fund_range">
+												<div class="find_tit">
+													<h4>수익률</h4>
+													<div class="selectbox_wrap" style="width: 120px;">
+														<dl>
+															<dt><a href="#none" title="기간 선택 펼치기"><span>1개월</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>2개월</span></a></li>
+																	<li><a href="#none"><span>3개월</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+												</div>
+												<div class="selected_bar">
+													<input class="profit_range" type="hidden" value="0, 100">
+												</div>
 											</div>
-											<div class="product_name mt_5">
-												<strong>NH-Amundi 4차산업혁명30증권 투자신탁(채권혼합) Ce</strong>
-												<span class="evt_icon red">NEW</span>
+											<div class="fund_range mt_7">
+												<div class="find_tit">
+													<h4>펀드 규모</h4>
+												</div>
+												<div class="selected_bar">
+													<input class="fund_scale_range" type="hidden" value="150, 500">
+												</div>
 											</div>
-											<div class="score_dual mt_3">
-												<i class="on"></i>
-												<i class="on"></i>
-												<i class="on"></i>
-												<i></i>
-												<i></i>
-											</div>
-											<ul class="product_hashtag mt_4">
-												<li>#4차혁명</li>
-												<li>#NH-Amundi운용</li>
-												<li>#저평가기업</li>
-												<li>#공유경제</li>
-												<li>#바이오테크</li>
-												<li>#인공지능</li>
-												<li>#빅데이터</li>
-											</ul>
 										</div>
 										<div class="r">
-											<div class="prd_top mb_8">
-												<ul class="product_top_btn">
-													<li><a href="#;" class="btn btn_sm btn_outline_default">클래스보기</a></li>
-													<li><a href="#;" class="btn btn_sm btn_outline_default">상세보기</a></li>
-													<li><a href="#;" class="btn btn_sm btn_outline_default">매수하기</a></li>
-												</ul>
-												<ul class="product_top_btn">
-													<li>
-														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_like on"> -->
-														<a href="#;" class="btn_pd_like"><span class="sr_only">좋아요</span></a>
-													</li>
-													<li>
-														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_cart on"> -->
-														<a href="#;" class="btn_pd_cart"><span class="sr_only">장바구니</span></a>
-													</li>
-													<li>
-														<!-- ON 이미지로 변환시 on 클래스 추가 <a href="#;" class="btn_pd_share on"> -->
-														<a href="#;" class="btn_pd_share"><span class="sr_only">상품 공유하기</span></a>
-													</li>
-												</ul>
-											</div>
-											<div class="product_price">
-												<div class="price_tit">
+											<div class="fund_range">
+												<div class="find_tit mb_4 pt_1">
+													<h4>펀드 테마</h4>
 												</div>
-												<ul class="narrow">
-													<li>
-														<span class="txt_xl_ex txt_normal txt_black mb_0">1,191.96</span>
-														<div class="cart_price_num txt_sm txt_normal">
-															<span class="up mr_1">0.17</span>(0.02%)
-														</div>
-													</li>
-													<li>
-														<span>3개월</span>
-														<strong>0.90%</strong>
-													</li>
-													<li>
-														<span>6개월</span>
-														<strong>1.54%</strong>
-													</li>
-													<li>
-														<span>1년</span>
-														<strong>9.98%</strong>
-													</li>
-													<li>
-														<span>3년</span>
-														<strong>18.78%</strong>
-													</li>
-												</ul>
+												<div class="filter_chk fund_theme">
+													<span class="chk_item mt_0">
+														<input type="radio" name="chk4" id="chk4-1" class="sr_only" checked>
+														<label for="chk4-1">온라인전용</label>
+													</span>
+													<span class="chk_item mt_0">
+														<input type="radio" name="chk4" id="chk4-2" class="sr_only">
+														<label for="chk4-2">성과보수</label>
+													</span>
+													<span class="chk_item mt_0">
+														<input type="radio" name="chk4" id="chk4-3" class="sr_only">
+														<label for="chk4-3">원금보존추가</label>
+													</span>
+													<span class="chk_item">
+														<input type="radio" name="chk4" id="chk4-4" class="sr_only">
+														<label for="chk4-4">국공채</label>
+													</span>
+													<span class="chk_item">
+														<input type="radio" name="chk4" id="chk4-5" class="sr_only">
+														<label for="chk4-5">4차산업</label>
+													</span>
+													<span class="chk_item">
+														<input type="radio" name="chk4" id="chk4-6" class="sr_only">
+														<label for="chk4-6">레버리지</label>
+													</span>
+													<span class="chk_item">
+														<input type="radio" name="chk4" id="chk4-7" class="sr_only">
+														<label for="chk4-7">환매수수료 없는</label>
+													</span>
+													<span class="chk_item">
+														<input type="radio" name="chk4" id="chk4-8" class="sr_only">
+														<label for="chk4-8">1,000억원 이상</label>
+													</span>
+												</div>
 											</div>
-											<ul class="inline_list pd_list2 dot_gray mt_3 pl_4">
-												<li>
-													<span>규모 : 17억원</span>
-													<span>판매액(1M) : 0.8억원</span>
-													<span>총보수 : 0.7380%</span>
-												</li>
-											</ul>
+											<div class="fund_range mt_8">
+												<div class="find_tit mb_5">
+													<h4>추천 구분</h4>
+												</div>
+												<div class="filter_chk fund_theme">
+													<span class="chk_item mt_0">
+														<input type="radio" name="chk5" id="chk5-1" class="sr_only" checked>
+														<label for="chk5-1">우체국판매</label>
+													</span>
+													<span class="chk_item mt_0">
+														<input type="radio" name="chk5" id="chk5-2" class="sr_only">
+														<label for="chk5-2">제로인추천</label>
+													</span>
+													<span class="chk_item mt_0">
+														<input type="radio" name="chk5" id="chk5-3" class="sr_only">
+														<label for="chk5-3">신상품</label>
+													</span>
+												</div>
+											</div>
 										</div>
+									</div>
+									<div class="txt_c mt_4"><button type="button" class="btn btn_md w174 bg_darkgray">맞춤 펀드 찾기</button>
 									</div>
 								</div>
 							</div>
