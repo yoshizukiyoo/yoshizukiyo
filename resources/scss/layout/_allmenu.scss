@@ -105,14 +105,14 @@
 		padding: 0;
 		border-bottom: 6px solid #f3f3f3;
 
-		.allmenu_title {
-			font-size: 18px;
-			font-weight: 500;
-		}
+		// .allmenu_title {
+		// 	font-size: 18px;
+		// 	font-weight: 500;
+		// }
 
 		.welcome {
-			font-size: 14px;
-			font-weight: 200;
+			font-size: 16px;
+			font-weight: normal;
 			margin-left: 5px;
 		}
 
@@ -133,8 +133,9 @@
 		.login_info {
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
 			margin-top: -8px;
-			margin-bottom: 15px;
+			margin-bottom: 5px;
 			padding: 0 $spacing;
 
 			.last_access {
@@ -145,6 +146,8 @@
 		}
 
 		.header_search_area {
+			display: none;
+			margin-bottom: 10px;
 			padding: 0 $spacing;
 
 			fieldset {
@@ -189,8 +192,6 @@
 			}
 
 			.toolbar {
-
-
 				.alert_badge {
 					position: absolute;
 					transform: translateX(55%);
@@ -210,15 +211,15 @@
 			}
 		}
 
-		// 뱅킹홈
 		.header_quick_area {
 			ul {
 				display: flex;
 				text-align: center;
-				font-size: 13px;
-				line-height: 17px;
 				padding: 0 10px;
 				color: #333;
+				font-size: 13px;
+				font-weight: 500;
+				line-height: 1;
 
 				li {
 					flex: 1 1 auto;
@@ -226,9 +227,7 @@
 
 				a {
 					display: block;
-					padding: 15px 0 20px;
-					font-size: 13px;
-					font-weight: 500;
+					padding: 0 0 16px;
 				}
 			}
 
@@ -241,40 +240,106 @@
 		}
 
 		// 모바일웹
-		.header_quick_box {
-			border-top: 1px solid #f3f3f3;
+		// .header_quick_box {
+		// 	border-top: 1px solid #f3f3f3;
 
-			ul {
+		// 	ul {
+		// 		display: flex;
+		// 		text-align: center;
+		// 		font-size: 13px;
+		// 		line-height: 1;
+		// 		padding: 15px;
+		// 	}
+
+		// 	li {
+		// 		flex: 1 1 20%;
+		// 		margin: 5px;
+		// 	}
+
+		// 	a {
+		// 		display: flex;
+		// 		flex-direction: column;
+		// 		align-items: center;
+		// 		justify-content: center;
+		// 		background-color: #ffefbc;
+		// 		height: 80px;
+		// 		padding: 0 0 5px;
+		// 		border-radius: 8px;
+		// 		font-size: 13px;
+		// 		font-weight: 500;
+
+		// 		.icon {
+		// 			margin: 0;
+		// 			width: 40px;
+		// 			height: 40px;
+		// 			margin-bottom: 3px;
+		// 		}
+		// 	}
+		// }
+
+		// MY 메뉴
+		.mymenu_area {
+			border-top: 6px solid #f3f3f3;
+			padding: 0 $spacing;
+		}
+
+		.mymenu_header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding-top: 15px;
+
+			.left {
 				display: flex;
-				text-align: center;
-				font-size: 13px;
-				line-height: 1;
-				padding: 15px;
+				align-items: center;
 			}
 
+			.tit {
+				font-size: 18px;
+				font-weight: 500;
+			}
+
+			.desc {
+				font-size: 12px;
+				margin-left: 5px;
+			}
+
+			.btn {
+				padding: 0 9px;
+			}
+		}
+
+		.menu_list {
+			display: flex;
+			flex-wrap: wrap;
+			margin: -2px;
+			padding: 10px 0 20px;
+
 			li {
-				flex: 1 1 20%;
-				margin: 5px;
+				margin: 2px;
 			}
 
 			a {
 				display: flex;
-				flex-direction: column;
 				align-items: center;
-				justify-content: center;
-				background-color: #ffefbc;
-				height: 80px;
-				padding: 0 0 5px;
-				border-radius: 8px;
-				font-size: 13px;
-				font-weight: 500;
+				padding: 0 10px;
+				border-radius: 15px;
+				border: 1px solid rgba(#ddd, .66);
+				height: 30px;
+				font-size: 12px;
+				color: $darkgray;
+			}
+		}
 
-				.icon {
-					margin: 0;
-					width: 40px;
-					height: 40px;
-					margin-bottom: 3px;
-				}
+		.mymenu_none {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 65px;
+			color: $gray;
+
+			.ico {
+				margin-right: 5px;
 			}
 		}
 	}
@@ -346,12 +411,11 @@
 	}
 }
 
-
 .gnb_area {
 	flex: 0 0 auto;
 	width: $gnb-1depth-width;
 	overflow-y: auto;
-	background-color: #f6f5f1;
+	background-color: #fef0e7;
 
 	>ul {
 		>li {
@@ -442,9 +506,14 @@
 		margin-bottom: 20px;
 
 		>a {
-			display: block;
+			display: flex;
+			align-items: center;
 			font-size: 16px;
 			font-weight: 500;
+
+			.lab_menu {
+				margin-left: 5px;
+			}
 		}
 
 		>.btn_favor {
@@ -460,6 +529,7 @@
 
 			>li {
 				display: flex;
+				flex-wrap: wrap;
 				justify-content: space-between;
 
 				>a {
@@ -476,6 +546,39 @@
 					flex: 0 0 auto;
 					margin-right: -10px;
 					padding: 0 10px;
+				}
+
+				>ul {
+					width: 100%;
+					margin-bottom: 10px;
+
+					>li {
+						display: flex;
+						justify-content: space-between;
+
+						>a {
+							flex: 1 1 auto;
+							background-color: #f3f3f3;
+							line-height: 26px;
+							padding-left: 15px;
+						}
+
+						.btn_favor {
+							margin-left: 5px;
+						}
+
+						&:first-child {
+							>a {
+								padding-top: 10px;
+							}
+						}
+
+						&:last-child {
+							>a {
+								padding-bottom: 10px;
+							}
+						}
+					}
 				}
 			}
 		}
