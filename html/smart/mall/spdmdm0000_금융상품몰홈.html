@@ -47,9 +47,9 @@
 					serviceDetail('close');
 				}
 				$(this).children('.sr_only').text(btnText);
-				$('body, html').animate({
-					scrollTop: boxTop
-				}, 600);
+				// $('body, html').animate({
+				// 	scrollTop: boxTop
+				// }, 600);
 				$box.animate({
 					'height': boxH
 				}, 'fast');
@@ -62,7 +62,7 @@
 				speed: 1000,
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				infinite: true,
+				infinite: false,
 				arrows: false,
 				dots: false,
 				accessibility: false,
@@ -143,23 +143,23 @@
 			});
 
 			//range
-			const rangeInputs = document.querySelectorAll('input[type="range"]')
+			const rangeInputs = document.querySelectorAll('input[type="range"]');
 
 			function handleInputChange(e) {
-				let target = e.target
+				let target = e.target;
 				if (e.target.type !== 'range') {
-					target = document.getElementById('range')
+					target = document.getElementById('range');
 				}
-				const min = target.min
-				const max = target.max
-				const val = target.value
+				const min = target.min;
+				const max = target.max;
+				const val = target.value;
 
-				target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+				target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
 			}
 
 			rangeInputs.forEach(input => {
-				input.addEventListener('input', handleInputChange)
-			})
+				input.addEventListener('input', handleInputChange);
+			});
 		});
 	</script>
 </head>
@@ -578,7 +578,7 @@
 											필수 약관 동의</strong>
 										<div class="check_item_agree">
 											<span class="check_item">
-												<input type="radio" name="agrChk" id="agrChk1_1">
+												<input type="radio" name="agrChk" id="agrChk1_1" checked>
 												<label for="agrChk1_1">동의합니다.</label>
 											</span>
 											<span class="check_item">
