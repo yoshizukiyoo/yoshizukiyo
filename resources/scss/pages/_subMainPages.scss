@@ -810,6 +810,10 @@
 			background: url(#{$url-img}/main/btn_event_share.png) no-repeat 100% 50%;
 		}
 	}
+
+	img {
+		vertical-align: top;
+	}
 }
 
 .product_find_result {
@@ -1288,6 +1292,75 @@
 	}
 }
 
+.survey_list {
+	display: flex;
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 7px;
+		width: 100%;
+		height: 2px;
+		background: #ddd;
+	}
+
+	>li {
+		position: relative;
+
+		&:not(:last-child) {
+			padding-right: 60px;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: -19px;
+			height: 100%;
+			background: #fffcf4;
+		}
+
+		&:first-child {
+			&::before {
+				left: 0;
+				width: calc(50% - 24px);
+			}
+		}
+
+		&:last-child {
+			&::before {
+				right: 0;
+				width: 50%;
+			}
+		}
+
+		>input[type=checkbox]:checked+label,
+		>input[type=radio]:checked+label {
+			&::before {
+				background: url(#{$url-img-common}/ico_survey_check.png) no-repeat 0 0;
+			}
+		}
+
+		>label {
+			display: inline-block;
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: -24px;
+				width: 24px;
+				height: 24px;
+				margin-left: -12px;
+				border-radius: 50%;
+				background: #ddd;
+			}
+		}
+	}
+}
+
 .w174 {
 	width: 174px;
 }
@@ -1299,52 +1372,57 @@
 }
 
 .scroll_wrap {
-	position: relative;
-
-	&::before {
-		content: '';
-		width: 100%;
-		height: 11px;
-		background: #fff;
-		position: absolute;
-		left: 0;
-		bottom: 0;
-	}
-
-	>.scroll_inner {
-		width: 100%;
-		overflow-x: auto;
-
-		/* IE scrollbar */
-		scrollbar-arrow-color: #e4e4e4; // 화살표 색상
-		scrollbar-face-color: #fdc61c; // 표면 색상
-		scrollbar-shadow-color: #fdc61c; //그림자 부분 색상
-		scrollbar-track-color: #e4e4e4; // 트랙 색상
-
-		/* wekbit 브라우저 scrollbar */
-
-		// 스크롤바 넓이
-		&::-webkit-scrollbar {
-			height: 16px;
-		}
-
-		// 스크롤바 버튼
-		&::-webkit-scrollbar-button:start:decrement,
-		&::-webkit-scrollbar-button:end:increment {
-			display: none;
-		}
-
-		// 트랙 색상
-		&::-webkit-scrollbar-track {
-			background: #efefef;
-		}
-
-		// 바 색상
-		&::-webkit-scrollbar-thumb {
-			background: #fdc61c;
-		}
-	}
+	width: 1200px;
+	overflow: auto;
 }
+
+// .scroll_wrap {
+// 	position: relative;
+
+// 	&::before {
+// 		content: '';
+// 		width: 100%;
+// 		height: 11px;
+// 		background: #fff;
+// 		position: absolute;
+// 		left: 0;
+// 		bottom: 0;
+// 	}
+
+// 	>.scroll_inner {
+// 		width: 100%;
+// 		overflow-x: auto;
+
+// 		/* IE scrollbar */
+// 		scrollbar-arrow-color: #e4e4e4; // 화살표 색상
+// 		scrollbar-face-color: #fdc61c; // 표면 색상
+// 		scrollbar-shadow-color: #fdc61c; //그림자 부분 색상
+// 		scrollbar-track-color: #e4e4e4; // 트랙 색상
+
+// 		/* wekbit 브라우저 scrollbar */
+
+// 		// 스크롤바 넓이
+// 		&::-webkit-scrollbar {
+// 			height: 16px;
+// 		}
+
+// 		// 스크롤바 버튼
+// 		&::-webkit-scrollbar-button:start:decrement,
+// 		&::-webkit-scrollbar-button:end:increment {
+// 			display: none;
+// 		}
+
+// 		// 트랙 색상
+// 		&::-webkit-scrollbar-track {
+// 			background: #efefef;
+// 		}
+
+// 		// 바 색상
+// 		&::-webkit-scrollbar-thumb {
+// 			background: #fdc61c;
+// 		}
+// 	}
+// }
 
 // 펀드 Range Plugin CSS
 .slider-container {
