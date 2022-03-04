@@ -107,7 +107,7 @@
 				variableWidth: true,
 				infinite: true,
 				arrows: false,
-				dots: true,
+				dots: false,
 				// dotsClass: 'slick-dots',
 				accessibility: false,
 			});
@@ -141,6 +141,25 @@
 				// dotsClass: 'slick-dots',
 				accessibility: false,
 			});
+
+			//range
+			const rangeInputs = document.querySelectorAll('input[type="range"]')
+
+			function handleInputChange(e) {
+				let target = e.target
+				if (e.target.type !== 'range') {
+					target = document.getElementById('range')
+				}
+				const min = target.min
+				const max = target.max
+				const val = target.value
+
+				target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+			}
+
+			rangeInputs.forEach(input => {
+				input.addEventListener('input', handleInputChange)
+			})
 		});
 	</script>
 </head>
@@ -169,7 +188,7 @@
 							<p class="subject">
 								<strong>우체국 어디서나 하이브리드 체크카드(VISA)</strong>
 							</p>
-							<div class="mt_2">
+							<div class="mt_3 alarm_btn_area">
 								<a href="#;" class="btn btn_md btn_outline_default btn_round">
 									<span>관련 상담 신청</span>
 								</a>
@@ -224,163 +243,443 @@
 					<ul class="mall_service_list">
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
-								<span>목표금액</span>
+								<img src="/resources/smart/img/content/ico_mall_service1.png" alt="" class="icon">
+								<span>목표<br> 금액</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
-								<span>목돈굴리기</span>
+								<img src="/resources/smart/img/content/ico_mall_service2.png" alt="" class="icon">
+								<span>목돈 굴리기</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
-								<span>목돈만들기</span>
+								<img src="/resources/smart/img/content/ico_mall_service3.png" alt="" class="icon">
+								<span>목돈 만들기</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<img src="/resources/smart/img/content/ico_mall_service4.png" alt="" class="icon">
 								<span>내게 맞는 펀드</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<img src="/resources/smart/img/content/ico_mall_service5.png" alt="" class="icon">
 								<span>보험 간편설계</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<img src="/resources/smart/img/content/ico_mall_service6.png" alt="" class="icon">
 								<span>보험 보장분석</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<img src="/resources/smart/img/content/ico_mall_service7.png" alt="" class="icon">
 								<span>연령대 PICK</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
-								<img src="/resources/smart/img/common/ico_mall_service1.png" alt="" class="icon">
+								<img src="/resources/smart/img/content/ico_mall_service8.png" alt="" class="icon">
 								<span>생애주기 상품표</span>
 							</a>
 						</li>
 					</ul>
 					<div class="mall_service_cont">
 						<div class="mall_service_slider">
+
+							<!-- s : 목표금액 -->
 							<div class="item">
 								<div class="item_header">
-									<h3 class="tit">목표금액</h3>
+									<h3 class="tit"><i class="ico ico_mall_service1"></i> 목표금액</h3>
 								</div>
 								<div class="item_body">
-									내용노출영역
+									<div class="product_find_result">
+										<div class="find_form">
+											<div class="round_check_wrap">
+												<div class="round_check_btn">
+													<input type="radio" name="date1" id="date1-1">
+													<label for="date1-1">6개월</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date1" id="date1-2">
+													<label for="date1-2">1년</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date1" id="date1-3">
+													<label for="date1-3">2년</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date1" id="date1-4" checked>
+													<label for="date1-4">3년</label>
+												</div>
+												<span class="form_txt">후,</span>
+											</div>
+
+											<p class="form_txt"><span>100,000,000</span>원을 만들려면?</p>
+
+											<div class="form_range">
+												<input type="range" class="form_range_form" min="1" max="999999999" value="100000000">
+												<span class="clfx">
+													<span class="f_l">1</span>
+													<span class="f_r">999,999,999</span>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="btn_area">
+										<button type="button" class="btn btn_md btn_round"
+											onclick="openModal('layerBottomSheet01', this);">결과확인</button>
+									</div>
 								</div>
 								<button type="button" class="btn btn_icon btn_turn_back">
 									<i class="ico ico_turn_back"></i>
 									<span class="sr_only">메뉴로 돌아가기</span>
 								</button>
 							</div>
+							<!-- e : 목표금액 -->
+
+							<!-- s : 목돈굴리기 -->
 							<div class="item">
 								<div class="item_header">
-									<h3 class="tit">목돈굴리기</h3>
+									<h3 class="tit"><i class="ico ico_mall_service2"></i> 목돈굴리기</h3>
 								</div>
 								<div class="item_body">
-									내용노출영역
+									<div class="product_find_result pt_1">
+										<div class="find_form">
+											<p class="form_txt">여유자금<span>100,000,000</span>원을</p>
+											<div class="round_check_wrap mt_1">
+												<div class="round_check_btn">
+													<input type="radio" name="date3" id="date3-1">
+													<label for="date3-1">6개월</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date3" id="date3-2">
+													<label for="date3-2">1년</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date3" id="date3-3">
+													<label for="date3-3">2년</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date3" id="date3-4" checked>
+													<label for="date3-4">3년</label>
+												</div>
+											</div>
+											<p class="form_txt mt_1">동안 묶어두면?</p>
+
+											<div class="form_range mt_1">
+												<input type="range" class="form_range_form form02" min="1" max="999999999" value="100000000">
+												<span class="clfx">
+													<span class="f_l">1</span>
+													<span class="f_r">999,999,999</span>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="btn_area">
+										<button type="button" class="btn btn_md btn_round"
+											onclick="openModal('layerBottomSheet02', this);">결과확인</button>
+									</div>
+								</div>
+
+								<button type="button" class="btn btn_icon btn_turn_back">
+									<i class="ico ico_turn_back"></i>
+									<span class="sr_only">메뉴로 돌아가기</span>
+								</button>
+							</div>
+							<!-- e : 목돈굴리기 -->
+
+							<!-- s : 목돈만들기 -->
+							<div class="item">
+								<div class="item_header">
+									<h3 class="tit"><i class="ico ico_mall_service3"></i> 목돈만들기</h3>
+								</div>
+								<div class="item_body">
+									<div class="product_find_result pt_5">
+										<div class="find_form">
+											<div class="round_check_wrap">
+												<span class="form_txt">매월</span>
+												<div class="round_check_btn">
+													<input type="radio" name="date2" id="date2-1">
+													<label for="date2-1">1년</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date2" id="date2-2">
+													<label for="date2-2">2년</label>
+												</div>
+												<div class="round_check_btn">
+													<input type="radio" name="date2" id="date2-3" checked>
+													<label for="date2-3">3년</label>
+												</div>
+												<span class="form_txt">동안</span>
+											</div>
+
+											<p class="form_txt"><span>5,000,000</span>원을 만들려면?</p>
+
+											<div class="form_range">
+												<input type="range" class="form_range_form form02" min="1" max="999999999" value="5000000">
+												<span class="clfx">
+													<span class="f_l">1</span>
+													<span class="f_r">999,999,999</span>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="btn_area">
+										<button type="button" class="btn btn_md btn_round"
+											onclick="openModal('layerBottomSheet03', this);">결과확인</button>
+									</div>
 								</div>
 								<button type="button" class="btn btn_icon btn_turn_back">
 									<i class="ico ico_turn_back"></i>
 									<span class="sr_only">메뉴로 돌아가기</span>
 								</button>
 							</div>
+							<!-- e : 목돈만들기 -->
+
+							<!-- s : 내게 맞는 펀드 -->
 							<div class="item">
 								<div class="item_header">
-									<h3 class="tit">목돈만들기</h3>
+									<h3 class="tit"><i class="ico ico_mall_service4"></i> 내게 맞는 펀드</h3>
 								</div>
 								<div class="item_body">
-									내용노출영역
+									<div class="step_box">
+										<ul class="list list2">
+											<li>설문형으로 초보자들도 손쉽게 내게 맞는 펀드를 찾을 수 있어요.
+											</li>
+										</ul>
+										<strong class="step_tit"><span class="txt_bubble">1단계</span>연령대를 선택하세요</strong>
+										<div class="check_item_bar mt_5">
+											<span class="check_item">
+												<input type="radio" name="ageChk" id="ageChk1_1">
+												<label for="ageChk1_1">10대</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="ageChk" id="ageChk1_2">
+												<label for="ageChk1_2">20대</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="ageChk" id="ageChk1_3" checked>
+												<label for="ageChk1_3">30대</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="ageChk" id="ageChk1_4">
+												<label for="ageChk1_4">40대</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="ageChk" id="ageChk1_5">
+												<label for="ageChk1_5">50대</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="ageChk" id="ageChk1_6">
+												<label for="ageChk1_6">60대이상</label>
+											</span>
+										</div>
+									</div>
+									<div class="btn_area mt_8">
+										<button type="button" class="btn btn_md btn_round">다음</button>
+									</div>
 								</div>
 								<button type="button" class="btn btn_icon btn_turn_back">
 									<i class="ico ico_turn_back"></i>
 									<span class="sr_only">메뉴로 돌아가기</span>
 								</button>
 							</div>
+							<!-- e : 내게 맞는 펀드 -->
+
+							<!-- s : 보험 간편설계 -->
 							<div class="item">
 								<div class="item_header">
-									<h3 class="tit">내게 맞는 펀드</h3>
+									<h3 class="tit"><i class="ico ico_mall_service5"></i> 보험 간편설계</h3>
 								</div>
 								<div class="item_body">
-									내용노출영역
+									<div class="step_box">
+										<ul class="list list2 mt_1">
+											<li>간편계산 정보를 한번 입력하시면, 보험 마다 따로 계산할 필요가 없어요.
+											</li>
+										</ul>
+
+										<ul class="tab_area">
+											<li class="radio_item">
+												<input type="radio" name="chk" id="chk1_1" checked>
+												<label for="chk1_1">기본</label>
+											</li>
+											<li class="radio_item">
+												<input type="radio" name="chk" id="chk1_2">
+												<label for="chk1_2">태아</label>
+											</li>
+											<li class="radio_item">
+												<input type="radio" name="chk" id="chk1_3">
+												<label for="chk1_3">어린이</label>
+											</li>
+											<li class="radio_item">
+												<input type="radio" name="chk" id="chk1_4">
+												<label for="chk1_4">연금/저축</label>
+											</li>
+										</ul>
+
+										<div class="member_info">
+											<h4>가입자 생년월일/성별<span class="req">필수항목</span></h4>
+											<div class="info_inner">
+												<div class="tf_item mb_3">
+													<div class="input_area">
+														<input type="text" id="user_gend" class="tf" placeholder="예시) 19950101" title="가입자 생년월일"
+															required>
+													</div>
+												</div>
+
+												<div class="input_items mb_5">
+													<span class="radio_item">
+														<input type="radio" name="lb_gender1" id="lb_man1_1" checked>
+														<label for="lb_man1_1">남자</label>
+													</span>
+													<span class="radio_item">
+														<input type="radio" name="lb_gender1" id="lb_woman1_1">
+														<label for="lb_woman1_1">여자</label>
+													</span>
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<div class="btn_area">
+										<button type="button" class="btn btn_md btn_round">설정 적용</button>
+									</div>
 								</div>
 								<button type="button" class="btn btn_icon btn_turn_back">
 									<i class="ico ico_turn_back"></i>
 									<span class="sr_only">메뉴로 돌아가기</span>
 								</button>
 							</div>
+							<!-- s : 보험 간편설계 -->
+
+							<!-- s : 보험 보장분석 -->
 							<div class="item">
 								<div class="item_header">
-									<h3 class="tit">보험 간편설계</h3>
+									<h3 class="tit"><i class="ico ico_mall_service6"></i> 보험 보장분석</h3>
 								</div>
 								<div class="item_body">
-									내용노출영역
+									<div class="step_box">
+										<ul class="list list2 mt_1">
+											<li>내 가입 보험을 한번에 조회하고 부족한 보험 보장을 확인해 드려요.
+											</li>
+										</ul>
+										<div class="clfx">
+											<div class="f_r line_link"><a href="#;">약관 내용 보기</a></div>
+										</div>
+
+										<strong class="step_tit tit_type2"><span class="txt_bubble">1단계</span>보험보장분석 서비스 이용을 위한
+											필수 약관 동의</strong>
+										<div class="check_item_agree">
+											<span class="check_item">
+												<input type="radio" name="agrChk" id="agrChk1_1">
+												<label for="agrChk1_1">동의합니다.</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="agrChk" id="agrChk1_2">
+												<label for="agrChk1_2">동의하지않니다.</label>
+											</span>
+										</div>
+									</div>
+									<div class="btn_area mt_6">
+										<button type="button" class="btn btn_md btn_round">다음</button>
+									</div>
 								</div>
 								<button type="button" class="btn btn_icon btn_turn_back">
 									<i class="ico ico_turn_back"></i>
 									<span class="sr_only">메뉴로 돌아가기</span>
 								</button>
 							</div>
+							<!-- e : 보험 보장분석 -->
+
+							<!-- s : 연령대 PICK -->
 							<div class="item">
 								<div class="item_header">
-									<h3 class="tit">보험 보장분석</h3>
+									<h3 class="tit"><i class="ico ico_mall_service7"></i> 연령대 PICK</h3>
 								</div>
 								<div class="item_body">
-									내용노출영역
+									<ul class="hash_tag mt_1">
+										<li>#가입통계</li>
+										<li>#같은나이</li>
+										<li>#연령대통계</li>
+									</ul>
+									<ul class="agepick_area">
+										<li class="pick_box">
+											<a href="#;">
+												<i class="ico ico_pick_best"></i>
+												<strong><span>연령대별</span><br> 우체국 베스트셀러는?</strong>
+											</a>
+										</li>
+										<li class="pick_box">
+											<a href="#;">
+												<i class="ico ico_pick_select"></i>
+												<strong><span>내 또래</span>가 많이 선택한<br> 우체국 상품은?</strong>
+											</a>
+										</li>
+									</ul>
 								</div>
 								<button type="button" class="btn btn_icon btn_turn_back">
 									<i class="ico ico_turn_back"></i>
 									<span class="sr_only">메뉴로 돌아가기</span>
 								</button>
 							</div>
+							<!-- e : 연령대 PICK -->
+
+							<!-- s : 생애주기 상품표 -->
 							<div class="item">
 								<div class="item_header">
-									<h3 class="tit">연령대 PICK</h3>
+									<h3 class="tit"><i class="ico ico_mall_service8"></i>생애주기 상품표</h3>
 								</div>
 								<div class="item_body">
-									내용노출영역
+									<ul class="hash_tag">
+										<li>#생애주기</li>
+										<li>#자녀미래준비</li>
+										<li>#사회진출</li>
+										<li>#본격사회생활</li>
+										<li>#은퇴대비</li>
+										<li>#은퇴기</li>
+										<li>#생애주기</li>
+										<li>맞춤추천</li>
+									</ul>
+									<div class="lifecycle">
+										<a href="#;">
+											<i class="ico ico_lifecycle"></i>
+											<strong><span>내 생애주기</span>에 맞는 상품은?</strong>
+										</a>
+									</div>
 								</div>
 								<button type="button" class="btn btn_icon btn_turn_back">
 									<i class="ico ico_turn_back"></i>
 									<span class="sr_only">메뉴로 돌아가기</span>
 								</button>
 							</div>
-							<div class="item">
-								<div class="item_header">
-									<h3 class="tit">생애주기 상품표</h3>
-								</div>
-								<div class="item_body">
-									내용노출영역
-								</div>
-								<button type="button" class="btn btn_icon btn_turn_back">
-									<i class="ico ico_turn_back"></i>
-									<span class="sr_only">메뉴로 돌아가기</span>
-								</button>
-							</div>
+							<!-- e : 생애주기 상품표 -->
 						</div>
 					</div>
+
 					<div class="mall_service_btns">
-						<div>
-							#여행자금 #모임회비
-						</div>
-						<div class="txt_r">
+						<ul>
+							<li>#여행자금</li>
+							<li>#모임회비</li>
+							<li>#여가생활</li>
+							<li>#여럿이함께</li>
+							<li>#매일</li>
+							<li>#목표설정</li>
+							<li>#우리아기</li>
+							<li>#취업준비생</li>
+						</ul>
+						<div class="tag_area txt_r">
 							<a href="#;">태그 더 보기</a>
 						</div>
-						<div class="txt_c mt_2">
-							<a href="#;">버튼</a>
-							<a href="#;">버튼</a>
+						<div class="btn_area txt_c">
+							<a href="#;">관심 설정 많은 상품 보기</a>
+							<a href="#;">키워드로 찾기</a>
 						</div>
 					</div>
 				</div>
@@ -392,9 +691,9 @@
 			<!-- e: 자주 찾는 메뉴 -->
 
 			<!-- s: 판매량 best -->
-			<div class="sales_area pb_6">
+			<div class="sales_area">
 				<div class="d_flex">
-					<h3 class="finance_tit txt_normal">판매량 <strong>BEST</strong></h3>
+					<h3 class="finance_tit">판매량 <strong>BEST</strong></h3>
 					<a href="#" class="txt_gray">
 						더보기
 						<i class="ico ico_chevron_right_sm"></i>
@@ -403,8 +702,8 @@
 				<div class="sales_list">
 					<div class="sales_item">
 						<span class="state deposit">예금</span>
-						<p>매일모아 e적금<br>매일모아 e적금</p>
-						<ul>
+						<strong>매일모아 e적금</strong>
+						<ul class="hash_tag">
 							<li>
 								#매일적금
 							</li>
@@ -418,17 +717,29 @@
 						<a href="#" class="link"><i class="ico ico_prd_share"></i></a>
 					</div>
 					<div class="sales_item">
-						<span class="state insurance">예금</span>
-						<p>매일모아 e적금<br>매일모아 e적금</p>
-						<ul>
+						<span class="state insurance">보험</span>
+						<strong>(무)우체국온라인암보험</strong>
+						<ul class="hash_tag">
 							<li>
-								#매일적금
+								#전기납
 							</li>
 							<li>
-								#목표설정
+								#암보험
 							</li>
 							<li>
-								#매일용돈
+								#고액암
+							</li>
+							<li>
+								#일반암
+							</li>
+							<li>
+								#남여생식기암
+							</li>
+							<li>
+								#항암방사선
+							</li>
+							<li>
+								#약물치료비
 							</li>
 						</ul>
 						<a href="#" class="link"><i class="ico ico_prd_share"></i></a>
@@ -440,16 +751,16 @@
 			<!-- s: 우체국 금융 테마 추천 -->
 			<div class="sec_event_banner">
 				<div class="container">
-					<h3 class="finance_tit txt_normal">우체국금융 <strong>테마 추천</strong></h3>
+					<h3 class="finance_tit">우체국금융 <strong>테마 추천</strong></h3>
 				</div>
 				<div class="theme_slide">
-					<a href="#" class="slick-slide">
+					<a href="#;" class="slick-slide">
 						<img src="/resources/smart/img/main/main_theme_1.png" alt="재테크시간표">
 					</a>
-					<a href="#" class="slick-slide">
+					<a href="#;" class="slick-slide">
 						<img src="/resources/smart/img/main/main_theme_2.png" alt="소소한 행복찾기">
 					</a>
-					<a href="#" class="slick-slide">
+					<a href="#;" class="slick-slide">
 						<img src="/resources/smart/img/main/main_theme_3.png" alt="우체국 공적 금융이야기">
 					</a>
 					<!-- <div class="slick-dots"></div> -->
@@ -460,7 +771,7 @@
 			<!-- s: 이벤트 배너 -->
 			<div class="sec_event_banner mb_20">
 				<div class="container">
-					<h3 class="txt_normal"><strong>이벤트 혜택</strong> 놓치지 마세요!</h3>
+					<h3><strong>이벤트 혜택</strong> 놓치지 마세요!</h3>
 				</div>
 				<div class="event_slide mb_10">
 					<a href="#" class="slide_item">
@@ -483,6 +794,249 @@
 			<!-- s: 퀵바 로딩 _inc_bottom_quickbar.html -->
 			<div class="bottom_quickbar"></div>
 			<!-- e: 퀵바 로딩 -->
+
+			<!-- s : 목표금액 : bottomsheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerBottomSheet01">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">목표금액</h2>
+					</div>
+					<div class="popup_body result_box">
+						<div class="container after_line">
+							<div class="box round_box bg_lightgray">
+								<p class="txt_que"><strong>3년 후,</strong> 목표금액 <strong>1억원</strong>을 만들려면?</p>
+							</div>
+
+							<div class="bubble_box">
+								<div class="box">
+									<p>
+										<strong>연 3%</strong> 적금에 <strong>36개월</strong> 동안<br>
+										<strong>월 2,673,183원</strong>을 저축하면 모을 수 있어요.
+									</p>
+								</div>
+								<p class="txt_notice"><i class="ico ico_notice"></i>조건 맞춤 우체국 적금 최대 이율 : 3% 기준</p>
+							</div>
+						</div>
+
+						<div class="container cont_body">
+							<div class="clfx mb_4">
+								<h3 class="saving_tit f_l">우체국 가치모아적금<span class="txt_bubble">NEW</span></h3>
+							</div>
+
+							<div class="rate_list">
+								<ul>
+									<li>
+										<span>기본 연</span>
+										<strong>2.0%</strong>
+									</li>
+									<li>
+										<span>우대 연</span>
+										<strong>1.0%</strong>
+									</li>
+									<li>
+										<span>최고 우대 연</span>
+										<strong>3.0%</strong>
+									</li>
+								</ul>
+							</div>
+
+							<div class="clfx">
+								<div class="f_r">
+									<a href="#;" class="btn btn_sm btn_round btn_default btn_morelink mt_2">우대이율 조건 상세보기<i
+											class="ico ico_tell_arr"></i>
+									</a>
+								</div>
+							</div>
+
+							<ul class="amount_list">
+								<li>
+									<span>월 저축해야 할 금액</span>
+									<strong>2,673,183<span>원</span></strong>
+								</li>
+								<li>
+									<span>예상 이자 금액<br><span class="sub_txt">일반과세(15.4%)</span></span>
+									<strong>2,673,183<span>원</span></strong>
+								</li>
+							</ul>
+
+							<a href="#" class="txt_gray f_r share_link">
+								공유하기
+							</a>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_darkgray" onclick="closeModal('layerBottomSheet01');">다른 적금 상품
+								더보기</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e : 목표금액 : bottomsheet -->
+
+			<!-- s : 목돈굴리기 : bottomsheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerBottomSheet02">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">목표굴리기</h2>
+					</div>
+					<div class="popup_body result_box">
+						<div class="container after_line">
+							<div class="box round_box bg_lightgray">
+								<p class="txt_que">여유자금 <strong>1억원</strong>을 <strong>3년 동안</strong>묶어두면?</p>
+							</div>
+
+							<div class="bubble_box">
+								<div class="box">
+									<p>
+										<strong>연 2.2%</strong> 예금에 <strong>36개월</strong> 동안 예치하시면<br>
+										총 <strong>6,600,000원</strong>의 이자를 모을 수 있어요.
+									</p>
+								</div>
+								<p class="txt_notice"><i class="ico ico_notice"></i>조건 맞춤 우체국 적금 최대 이율 : 2.2% 기준</p>
+							</div>
+						</div>
+
+						<div class="container cont_body">
+							<div class="clfx mb_4">
+								<h3 class="saving_tit f_l">챔피언 정기예금</h3>
+							</div>
+
+							<div class="rate_list">
+								<ul>
+									<li>
+										<span>기본 연</span>
+										<strong>1.2%</strong>
+									</li>
+									<li>
+										<span>우대 연</span>
+										<strong>0.8%</strong>
+									</li>
+									<li>
+										<span>최고 우대 연</span>
+										<strong>2.2%</strong>
+									</li>
+								</ul>
+							</div>
+
+							<div class="clfx">
+								<div class="f_r">
+									<a href="#;" class="btn btn_sm btn_round btn_default btn_morelink mt_2">우대이율 조건 상세보기<i
+											class="ico ico_tell_arr"></i></a>
+								</div>
+							</div>
+
+							<ul class="amount_list">
+								<li>
+									<span>묶어둘 금액</span>
+									<strong>100,000,000<span>원</span></strong>
+								</li>
+								<li>
+									<span>예상 이자 금액<br><span class="sub_txt">일반과세(15.4%)</span></span>
+									<strong>5,583,600<span>원</span></strong>
+								</li>
+							</ul>
+
+							<a href="#" class="txt_gray f_r share_link">
+								공유하기
+							</a>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_darkgray" onclick="closeModal('layerBottomSheet02');">다른 적금 상품
+								더보기</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e : 목돈굴리기 : bottomsheet -->
+
+
+			<!-- s : 목돈만들기 : bottomsheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="layerBottomSheet03">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">목돈 만들기</h2>
+					</div>
+					<div class="popup_body result_box">
+						<div class="container after_line">
+							<div class="box round_box bg_lightgray">
+								<p class="txt_que"><strong>매월 3년</strong> 동안, <strong>5백만원 </strong>씩 저축하면?</p>
+							</div>
+
+							<div class="bubble_box">
+								<div class="box">
+									<p>
+										<strong>연 2.2%</strong> 적금에 <strong>36개월</strong> 동안<br>
+										<strong>총 186,105,000원</strong>을 만들 수 있어요.
+									</p>
+								</div>
+								<p class="txt_notice"><i class="ico ico_notice"></i>조건 맞춤 우체국 적금 최대 이율 : 2.2% 기준</p>
+							</div>
+						</div>
+
+						<div class="container cont_body">
+							<div class="clfx mb_4">
+								<h3 class="saving_tit f_l">2040+a 자유적금</h3>
+							</div>
+
+							<div class="rate_list">
+								<ul>
+									<li>
+										<span>기본 연</span>
+										<strong>1.9%</strong>
+									</li>
+									<li>
+										<span>우대 연</span>
+										<strong>0.3%</strong>
+									</li>
+									<li>
+										<span>최고 우대 연</span>
+										<strong>2.2%</strong>
+									</li>
+								</ul>
+							</div>
+
+							<div class="clfx">
+								<div class="f_r">
+									<a href="#;" class="btn btn_sm btn_round btn_default btn_morelink mt_2">우대이율 조건 상세보기<i
+											class="ico ico_tell_arr"></i>
+									</a>
+								</div>
+							</div>
+
+							<ul class="amount_list">
+								<li>
+									<span>월 저축금액</span>
+									<strong>5,000,000<span>원</span></strong>
+								</li>
+								<li>
+									<span>예상 이자 금액<br><span class="sub_txt">일반과세(15.4%)</span></span>
+									<strong>5,164,830<span>원</span></strong>
+								</li>
+							</ul>
+
+							<a href="#" class="txt_gray f_r share_link">
+								공유하기
+							</a>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<button type="button" class="btn btn_lg btn_darkgray" onclick="closeModal('layerBottomSheet03');">다른 적금 상품
+								더보기</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e : 목표만들기 : bottomsheet -->
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
