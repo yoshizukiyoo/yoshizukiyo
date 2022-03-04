@@ -18,12 +18,225 @@
 	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
 	<script src="/resources/js/ui_layout_setting.js"></script>
 
-	<!-- 페이지 개별 스크립트 -->
+	<!-- chart.js files -->
+	<script src="/resources/js/chart.min.js"></script>
+	<script src="/resources/js/chartjs-plugin-datalabels@2.0.0.js"></script>
+	<!-- EOD : chart.js files -->
+
+	<!-- 챠트 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			// 이곳에 정의
+		$(function () {
+			var lineCtx = document.querySelector('#lineChart');
+			var lineChart = new Chart(lineCtx, {
+				data: {
+					labels: ['1일', '2일', '3일', '4일', '5일', '6일', '7일', '8일', '9일', '10일', '11일', '12일', '13일', '14일', '15일',
+						'16일', '17일', '18일', '19일', '20일', '21일', '22일', '23일', '24일', '25일', '26일', '27일', '28일', '29일',
+						'30일', '31일'
+					],
+					datasets: [{
+							type: 'line',
+							label: '1월',
+							data: [
+								120000, 80000, 10200, 38000, 52000, 43000, 220000, 410000, 90000, 143500,
+								880000, 920000, 1025000, 733000, 3000000, 2200000, 1800000, 520000, 170000, 330000,
+								542000, 1200000, 2300000, 800000, 653200, 800000, 1100000, 2300000, 1900000, 1500000, 500000
+							],
+							backgroundColor: 'rgb(108, 113, 114, 0.2)',
+							borderColor: 'rgb(108, 113, 114, 0.2)',
+							borderWidth: 2,
+							tension: 0,
+							pointRadius: 0,
+							fill: true,
+						},
+						{
+							type: 'line',
+							label: '2월',
+							data: [
+								220000, 800000, 100200, 88000, 22000, 413000, 120000, 210000, 190000, 343500,
+								480000, 1920000, 1325000, 1733000, 2000000, 1200000, 2800000, 1520000, 670000, 630000,
+								742000, 800000, 900000
+							],
+							backgroundColor: 'rgb(255, 255, 255, 1)',
+							borderColor: 'rgb(255, 0, 0, 0.8)',
+							borderWidth: 2,
+							borderDash: [10, 2],
+							tension: 0,
+							pointRadius: 0,
+						},
+					]
+				},
+				plugins: [{
+					afterDraw: function (chart) {
+						if (chart.tooltip?._active?.length) {
+							let x = chart.tooltip._active[0].element.x;
+							let yAxis = chart.scales.y;
+							let ctx = chart.ctx;
+							ctx.save();
+							ctx.beginPath();
+							ctx.moveTo(x, yAxis.top);
+							ctx.lineTo(x, yAxis.bottom);
+							ctx.lineWidth = 1;
+							ctx.strokeStyle = 'rgba(0, 0, 255, 0.4)';
+							ctx.stroke();
+							ctx.restore();
+						}
+					}
+				}],
+				options: {
+					responsive: false,
+					scales: {
+						y: {
+							ticks: {
+								display: false,
+							},
+							beginAtZero: true,
+							title: {
+								display: false,
+								text: '1월',
+							},
+							position: 'bottom',
+						},
+						x: {
+							ticks: {
+								// For a category axis, the val is the index so the lookup via getLabelForValue is needed
+								callback: function (val, index) {
+									// Hide every 2nd tick label
+									return index % 30 === 0 ? this.getLabelForValue(val) : '';
+								},
+								color: '#333',
+								style: 'normal'
+							},
+							grid: {
+								display: false,
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						},
+					},
+					plugins: {
+						title: {
+							display: false,
+						},
+						legend: {
+							display: true,
+							position: 'bottom',
+						},
+					},
+					interaction: {
+						intersect: false,
+						mode: 'index',
+					},
+					spanGaps: true,
+				}
+			});
+
+			var barCtx = document.querySelector('#barChart').getContext('2d');
+			var barConfig = {
+				plugins: [ChartDataLabels],
+				data: {
+					datasets: [{
+							type: 'bar',
+							data: [130, 34, 56, 32, 40, 85],
+							// backgroundColor: ['rgba(255,0,0, 0.1)'],
+							backgroundColor: 'rgba(0, 0, 0, 0.1)',
+							datalabels: {
+								align: 'end',
+								anchor: 'end'
+							}
+						},
+						{
+							type: 'line',
+							data: [130, 34, 56, 32, 40, 85],
+							borderColor: ['rgba(255, 0, 0, 0.4)'],
+							datalabels: {
+								labels: {
+									title: null
+								}
+							}
+						},
+					],
+					labels: ['5월', '6월', '7월', '8월', '9월', '10월']
+				},
+				options: {
+					responsive: false,
+					plugins: {
+						legend: {
+							display: false,
+						},
+						datalabels: {
+							// backgroundColor: function(context) {
+							// 	return context.dataset.backgroundColor;
+							// },
+							borderRadius: 4,
+							color: 'black',
+							font: {
+								weight: 'bold'
+							},
+							formatter: Math.round,
+							padding: 2
+						}
+					},
+					// Core options
+					aspectRatio: 5 / 3,
+					layout: {
+						padding: {
+							top: 32,
+							right: 16,
+							bottom: 16,
+							left: 8
+						}
+					},
+					elements: {
+						line: {
+							fill: false,
+							tension: 0
+						}
+					},
+					scales: {
+						x: {
+							grid: {
+								display: false
+							}
+						},
+						y: {
+							stacked: true,
+							ticks: {
+								display: false,
+							},
+							grid: {
+								display: false
+							}
+						},
+					}
+				}
+			};
+			var barChart = new Chart(barCtx, barConfig);
+
+
+			/**
+			 * CHART UPDATE SAMPLE CODE
+			 */
+			var updateDataLineChart = [
+				220000, 800000, 100200, 88000, 22000, 413000, 120000, 210000, 190000, 343500,
+				480000, 1920000, 1325000, 1733000, 2000000, 1200000, 2800000, 1520000, 670000, 630000,
+				742000, 800000, 900000, 520000, 394500
+			];
+
+			$('.btnUpdateChart').on('click', function () {
+				lineChart.data.datasets[1].data = updateDataLineChart;
+				lineChart.update();
+			});
+			/* EOD : CHART UPDATE SAMPLE CODE */
+
+			/**
+			 * CHART DESTROY SAMPLE CODE
+			 */
+			$('.btnDestroy').on('click', function () {
+				lineChart.destroy();
+			});
+			/* EOD : CHART DESTROY SAMPLE CODE */
 		});
 	</script>
+	<!-- EOD : 챠트 스크립트 -->
 </head>
 
 <!-- s: 마크업 수정 : 2022-02-07
@@ -40,18 +253,36 @@
 			<div class="container">
 
 
-				<h2 class="txt_c_guide pt_2 pb_6">
+				<div class="txt_c_guide pt_2">
 					<strong>이번달</strong> 오늘까지 <strong class="txt_highlighter txt_xxxl">85만원</strong> 썼어요
-				</h2>
+				</div>
+				<!-- s: 증가일 경우 -->
+				<div class="stats_wrap increase">
+					지난달 <span class="txt_medium">45만원 &#x25b2</span> <span class="sr_only">증가</span>
+				</div>
+				<!-- e: 증가일 경우 -->
+				<!-- s: 감소일 경우 -->
+				<div class="stats_wrap decrease">
+					지난달 <span class="txt_medium">45만원 &#x25bc</span> <span class="sr_only">감소</span>
+				</div>
+				<!-- e: 감소일 경우 -->
 
+				<!-- 라인 챠트 -->
 				<div class="chart_area">
-					<img src="/resources/img/content/_sample_cheart_postpay01.jpg" alt="">
+					<canvas id="lineChart" style="width:100%; height:300px"></canvas>
+				</div>
+				<!-- EOD : 라인 챠트 -->
+
+				<div class="flex_box mt_5">
+					<strong class="block txt_lg l">최근 6개월 추이</strong>
+					<span class="txt_sm r">(단위 : 만원)</span>
 				</div>
 
-				<strong class="block txt_lg pt_5 pb_3">최근 6개월 추이</strong>
+				<!-- 바 챠트 -->
 				<div class="chart_area">
-					<img src="/resources/img/content/_sample_cheart_postpay02.jpg" alt="">
+					<canvas id="barChart" style="width:100%; height:300px;"></canvas>
 				</div>
+				<!-- EOD : 바 챠트 -->
 
 				<div class="clfx  mb_2 mt_6">
 					<h3 class="f_l txt_lg">고정 지출 항목</h3>
