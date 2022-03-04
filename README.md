@@ -12,7 +12,7 @@ http://cea.epost.inseq.co.kr:7789/html/smart/index.html
     - 인터넷보험(insurance) : http://cec.epost.inseq.co.kr:7789/html/index.html
     - 스마트뱅킹(smart-deposit) : http://ced.epost.inseq.co.kr:7789/html/index.html
     - 스마트보험(smart-insurance) : http://cee.epost.inseq.co.kr:7789/html/index.html
-    - 태블릿브랜치(tablet-branch) : http://cef.epost.inseq.co.kr:7789/html/index.html
+    - 태블릿브랜치(tablet-branch) : http://cia.epost.inseq.co.kr:7789/html/index.html
 > 태블릿브랜치 자료 : http://pms.inseq.co.kr:9000/geistkorea/epost/post/20
 > 태블릿브랜치 마크업 체크리스트 : https://inseq.notion.site/236e36fc08364555b869f73f0745e1c6
 - 우체국 메인 마크업 가이드 : https://inseq.notion.site/860d55008b3244a3a2f86c0832376fdf
