@@ -1,6 +1,12 @@
 /* 전체홈 */
 .wrapper_home {
 	$spacing: 40px;
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 	background: url(#{$url-img-common}/bg_gray_pattern@2x.png);
 	background-size: 3px auto;
 
@@ -21,13 +27,20 @@
 
 	#content {
 		padding: 0;
+		overflow: hidden;
 	}
 
 	.main_container {
 		display: flex;
 		height: 100%;
+		overflow: hidden;
 		overflow-x: auto;
 		padding: $spacing;
+
+		.scroll_track {
+			display: flex;
+			height: 100%;
+		}
 
 		.item {
 			min-width: 472px;
@@ -40,19 +53,19 @@
 				border-radius: 0 10px 10px 0;
 			}
 		}
-	}
 
-	.item_new,
-	.item_old {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
+		.item_new,
+		.item_old {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
 
-		.txt {
-			font-size: 36px;
-			font-weight: 500;
-			color: $black;
+			.txt {
+				font-size: 36px;
+				font-weight: 500;
+				color: $black;
+			}
 		}
 	}
 
@@ -74,5 +87,19 @@
 	// 퀵메뉴
 	.item_quick {
 		background-color: #e5e5e5;
+		min-width: auto !important;
+		transition-duration: .3s;
+
+		// 열림 모드
+		&.opened {
+			width: 472px;
+			padding: 30px 40px;
+		}
+
+		// 닫힘 모드
+		&:not(.opened) {
+			width: 105px;
+			padding: 30px 20px;
+		}
 	}
 }

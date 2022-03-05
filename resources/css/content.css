@@ -1,6 +1,11 @@
 @charset "UTF-8";
 /* 전체홈 */
 .wrapper_home {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   background: url(/resources/img/common/bg_gray_pattern@2x.png);
   background-size: 3px auto;
 }
@@ -20,6 +25,7 @@
 
 .wrapper_home #content {
   padding: 0;
+  overflow: hidden;
 }
 
 .wrapper_home .main_container {
@@ -27,8 +33,16 @@
   display: -ms-flexbox;
   display: flex;
   height: 100%;
+  overflow: hidden;
   overflow-x: auto;
   padding: 40px;
+}
+
+.wrapper_home .main_container .scroll_track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 
 .wrapper_home .main_container .item {
@@ -43,8 +57,8 @@
   border-radius: 0 10px 10px 0;
 }
 
-.wrapper_home .item_new,
-.wrapper_home .item_old {
+.wrapper_home .main_container .item_new,
+.wrapper_home .main_container .item_old {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,8 +71,8 @@
   text-align: center;
 }
 
-.wrapper_home .item_new .txt,
-.wrapper_home .item_old .txt {
+.wrapper_home .main_container .item_new .txt,
+.wrapper_home .main_container .item_old .txt {
   font-size: 36px;
   font-weight: 500;
   color: #111;
@@ -78,6 +92,19 @@
 
 .wrapper_home .item_quick {
   background-color: #e5e5e5;
+  min-width: auto !important;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+}
+
+.wrapper_home .item_quick.opened {
+  width: 472px;
+  padding: 30px 40px;
+}
+
+.wrapper_home .item_quick:not(.opened) {
+  width: 105px;
+  padding: 30px 20px;
 }
 
 /* 공통 */

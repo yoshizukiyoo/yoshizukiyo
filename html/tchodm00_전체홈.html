@@ -24,7 +24,23 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
+			// 퀵메뉴 스위치
+			$('#quickmenuShow').each(function () {
+				quickToggle($(this));
+			}).change(function () {
+				quickToggle($(this));
+				$('.main_container').animate({
+					scrollLeft: $('.scroll_track').width()
+				}, 300);
+			});
 
+			function quickToggle(_obj) {
+				if ($(_obj).prop('checked')) {
+					$(_obj).closest('.item_quick').addClass('opened');
+				} else {
+					$(_obj).closest('.item_quick').removeClass('opened');
+				}
+			}
 		});
 	</script>
 </head>
@@ -50,23 +66,30 @@
 			<!-- s: 본문 -->
 
 			<div class="main_container">
-				<div class="item item_new">
-					<a href="#;" class="link">
-						<div>${이미지}</div>
-						<span class="txt">처음 고객</span>
-					</a>
-				</div>
-				<div class="item item_old">
-					<a href="#;" class="link">
-						<div>${이미지}</div>
-						<span class="txt">우체국 고객</span>
-					</a>
-				</div>
-				<div class="item item_reserv">
-					나예약 고객님
-				</div>
-				<div class="item item_quick">
-					퀵메뉴
+				<div class="scroll_track">
+					<div class="item item_new">
+						<a href="#;" class="link">
+							<div>${이미지}</div>
+							<span class="txt">처음 고객</span>
+						</a>
+					</div>
+					<div class="item item_old">
+						<a href="#;" class="link">
+							<div>${이미지}</div>
+							<span class="txt">우체국 고객</span>
+						</a>
+					</div>
+					<div class="item item_reserv">
+						나예약 고객님
+					</div>
+					<div class="item item_quick">
+						<div class="txt_r">
+							<span class="check_switch_sm">
+								<input type="checkbox" id="quickmenuShow" checked>
+								<label for="quickmenuShow">퀵메뉴</label>
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 

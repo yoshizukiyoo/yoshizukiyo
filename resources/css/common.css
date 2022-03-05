@@ -84,6 +84,7 @@ html {
 }
 
 body {
+  height: 100%;
   min-width: 1024px;
   color: #333;
   font-size: 15px;
@@ -3085,7 +3086,8 @@ textarea.tf::placeholder {
   margin-left: 6px;
 }
 
-.check_switch {
+.check_switch,
+.check_switch_sm {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -3097,7 +3099,8 @@ textarea.tf::placeholder {
   font-weight: normal;
 }
 
-.check_switch label {
+.check_switch label,
+.check_switch_sm label {
   position: relative;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -3120,7 +3123,8 @@ textarea.tf::placeholder {
   transition-property: background-color;
 }
 
-.check_switch label:after {
+.check_switch label:after,
+.check_switch_sm label:after {
   content: '';
   position: absolute;
   top: 5px;
@@ -3135,12 +3139,14 @@ textarea.tf::placeholder {
           box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
-.check_switch label span {
+.check_switch label span,
+.check_switch_sm label span {
   display: block;
   line-height: 23px;
 }
 
-.check_switch label .txt_checked {
+.check_switch label .txt_checked,
+.check_switch_sm label .txt_checked {
   display: none;
   opacity: 0;
   -webkit-transition-duration: .3s;
@@ -3149,40 +3155,75 @@ textarea.tf::placeholder {
           transition-timing-function: ease-in;
 }
 
-.check_switch input {
+.check_switch input,
+.check_switch_sm input {
   position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
 }
 
-.check_switch input:focus + label {
+.check_switch input:focus + label,
+.check_switch_sm input:focus + label {
   outline: 1px dotted #000;
 }
 
-.check_switch input:not(:focus-visible) + label {
+.check_switch input:not(:focus-visible) + label,
+.check_switch_sm input:not(:focus-visible) + label {
   outline: 0;
 }
 
-.check_switch input:checked + label {
+.check_switch input:checked + label,
+.check_switch_sm input:checked + label {
   color: #111;
   background-color: #FDC61C;
   padding-left: 18px;
   padding-right: 32px;
 }
 
-.check_switch input:checked + label:after {
+.check_switch input:checked + label:after,
+.check_switch_sm input:checked + label:after {
   left: calc(100% - 25px);
 }
 
-.check_switch input:checked + label .txt_uncheck {
+.check_switch input:checked + label .txt_uncheck,
+.check_switch_sm input:checked + label .txt_uncheck {
   display: none;
   opacity: 0;
 }
 
-.check_switch input:checked + label .txt_checked {
+.check_switch input:checked + label .txt_checked,
+.check_switch_sm input:checked + label .txt_checked {
   display: inline;
   opacity: 1;
+}
+
+.check_switch_sm label {
+  min-width: 65px;
+  padding-left: 26px;
+  padding-right: 10px;
+  font-size: 10px;
+  min-height: 23px;
+  color: #fff;
+  background-color: #555;
+}
+
+.check_switch_sm label:after {
+  width: 13px;
+  height: 13px;
+  top: 5px;
+  left: 6px;
+}
+
+.check_switch_sm input:checked + label {
+  padding-left: 10px;
+  padding-right: 26px;
+  background-color: #FDC61C;
+  color: #111;
+}
+
+.check_switch_sm input:checked + label:after {
+  left: calc(100% - 18px);
 }
 
 .input_items {
