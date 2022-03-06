@@ -143,23 +143,41 @@
 			});
 
 			//range
-			const rangeInputs = document.querySelectorAll('input[type="range"]');
+			$(".form_range").each(function () {
+				$(this).formRange({
+					unitName: '',
+					minShow: true,
+					maxShow: true,
+				});
+				const $el = $(this),
+					$range = $('.form_range_form', $el),
+					max = $range.attr('max'),
+					min = $range.attr('min');
+				//초기셋팅
+				rangeSetting($range, max, min);
 
-			function handleInputChange(e) {
-				let target = e.target;
-				if (e.target.type !== 'range') {
-					target = document.getElementById('range');
+				function rangeSetting(range, max, min) {
+					const $range = range,
+						$value = $range.next('.form_range_value');
+					let val = Number($range.val()),
+						gague = ((val - min) / (max - min) * 100) + '%';
+
+					$range.css('background-size', gague + " 100%");
 				}
-				const min = target.min;
-				const max = target.max;
-				const val = target.value;
 
-				target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
-			}
+				$el.on('input', function () {
+					rangeSetting($range, max, min);
+				});
 
-			rangeInputs.forEach(input => {
-				input.addEventListener('input', handleInputChange);
+				$(this).change(function () {
+					var value = $(this).children(".form_range_value"),
+						formValue = value.text(),
+						formVal = value.val();
+					$(this).parents(".find_form").find(".form_range_value2").text(formValue);
+				});
+
 			});
+
 		});
 	</script>
 </head>
@@ -244,49 +262,49 @@
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service1.png" alt="" class="icon">
-								<span>목표<br> 금액</span>
+								<span>목표<br>금액</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service2.png" alt="" class="icon">
-								<span>목돈 굴리기</span>
+								<span>목돈<br>굴리기</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service3.png" alt="" class="icon">
-								<span>목돈 만들기</span>
+								<span>목돈<br>만들기</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service4.png" alt="" class="icon">
-								<span>내게 맞는 펀드</span>
+								<span>내게 맞는<br>펀드</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service5.png" alt="" class="icon">
-								<span>보험 간편설계</span>
+								<span>보험<br>간편설계</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service6.png" alt="" class="icon">
-								<span>보험 보장분석</span>
+								<span>보험<br>보장분석</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service7.png" alt="" class="icon">
-								<span>연령대 PICK</span>
+								<span>연령대<br>PICK</span>
 							</a>
 						</li>
 						<li>
 							<a href="#;">
 								<img src="/resources/smart/img/content/ico_mall_service8.png" alt="" class="icon">
-								<span>생애주기 상품표</span>
+								<span>생애주기<br>상품표</span>
 							</a>
 						</li>
 					</ul>
@@ -320,15 +338,10 @@
 												</div>
 												<span class="form_txt">후,</span>
 											</div>
-
-											<p class="form_txt"><span>100,000,000</span>원을 만들려면?</p>
+											<p class="form_txt"><span class="form_range_value2">100,000,000</span>원을 만들려면?</p>
 
 											<div class="form_range">
 												<input type="range" class="form_range_form" min="1" max="999999999" value="100000000">
-												<span class="clfx">
-													<span class="f_l">1</span>
-													<span class="f_r">999,999,999</span>
-												</span>
 											</div>
 										</div>
 									</div>
@@ -352,7 +365,7 @@
 								<div class="item_body">
 									<div class="product_find_result pt_1">
 										<div class="find_form">
-											<p class="form_txt">여유자금<span>100,000,000</span>원을</p>
+											<p class="form_txt">여유자금<span class="form_range_value2">100,000,000</span>원을</p>
 											<div class="round_check_wrap mt_1">
 												<div class="round_check_btn">
 													<input type="radio" name="date3" id="date3-1">
@@ -375,10 +388,6 @@
 
 											<div class="form_range mt_1">
 												<input type="range" class="form_range_form form02" min="1" max="999999999" value="100000000">
-												<span class="clfx">
-													<span class="f_l">1</span>
-													<span class="f_r">999,999,999</span>
-												</span>
 											</div>
 										</div>
 									</div>
@@ -420,14 +429,10 @@
 												<span class="form_txt">동안</span>
 											</div>
 
-											<p class="form_txt"><span>5,000,000</span>원을 만들려면?</p>
+											<p class="form_txt"><span class="form_range_value2">5,000,000</span>원을 만들려면?</p>
 
 											<div class="form_range">
 												<input type="range" class="form_range_form form02" min="1" max="999999999" value="5000000">
-												<span class="clfx">
-													<span class="f_l">1</span>
-													<span class="f_r">999,999,999</span>
-												</span>
 											</div>
 										</div>
 									</div>
