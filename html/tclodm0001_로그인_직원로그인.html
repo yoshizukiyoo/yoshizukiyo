@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 입력폼 인터랙션
+			inputStatus();
+
+			// 온보딩 슬라이더
+			$('.onboarding_slider').not('.slick-initialized').slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+				dots: true,
+				arrows: false,
+				speed: 1000,
+				autoplay: false,
+				accessibility: false
+			});
+
+			// 인증요청
+			$('#btn_cert_apply').click(function () {
+				$('#btn_cert_apply').hide();
+				$('.sms_pin_area').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper wrapper_login">
+		<article id="content">
+			<!-- s: 본문 -->
+
+			<div class="login_container">
+
+				<!-- s: 온보딩 영역 -->
+				<div class="login_onboarding_area">
+					<div class="onboarding_header">
+						<h1 class="tit_login">태블릿브랜치 <strong>시작하기</strong></h1>
+					</div>
+					<div class="onboarding_body">
+						<div class="onboarding_slider">
+							<div class="item"><img src="/resources/img/content/_sample.jpg" alt=""></div>
+							<div class="item"><img src="/resources/img/content/_sample.jpg" alt=""></div>
+							<div class="item"><img src="/resources/img/content/_sample.jpg" alt=""></div>
+							<div class="item"><img src="/resources/img/content/_sample.jpg" alt=""></div>
+						</div>
+					</div>
+				</div>
+				<!-- e: 온보딩 영역 -->
+
+				<!-- s: 로그인 영역 -->
+				<div class="login_form_area">
+					<div class="form_header">
+						<p class="logo"><img src="/resources/img/common/logo@2x.png" alt="우체국 예금 우체국 보험"></p>
+					</div>
+					<div class="form_body">
+						<h2 class="tit_login">우체국예금보험 <strong>태블릿브랜치</strong></h2>
+						<form action="#;" onsubmit="openModal('layerLoginError'); return false;">
+							<fieldset>
+								<legend class="sr_only">로그인정보 입력</legend>
+								<div class="tf_item">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="user_id">아이디 <span class="req">필수항목</span></label>
+											<input type="text" id="user_id" class="tf" placeholder="이름을 입력해주세요">
+										</div>
+									</div>
+								</div>
+								<div class="tf_item mt_2">
+									<div class="tf_item_body">
+										<div class="input_area">
+											<label class="lab" for="user_pw">비밀번호 <span class="req">필수항목</span></label>
+											<input type="password" id="user_pw" class="tf" placeholder="비밀번호를 입력해주세요" autocomplete="false">
+										</div>
+									</div>
+								</div>
+								<!-- 
+								<p class="txt_guide txt_red">
+									<i class="ico ico_notice_red"></i>
+									패스워드가 틀렸습니다. 다시 한 번 확인해주세요.
+								</p>
+								-->
+								<div class="mt_3">
+									<button type="button" class="btn btn_xl btn_black" id="btn_cert_apply">인증요청</button>
+								</div>
+
+								<div class="sms_pin_area" style="display: none;">
+
+									<!-- s: 인증번호가 틀렸을 때 -->
+									<div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="sms_pin">SMS인증번호 <span class="req">필수항목</span></label>
+												<input type="text" id="sms_pin" class="tf" placeholder="6자리 인증번호 입력">
+											</div>
+											<div class="right_area">
+												<p class="time txt_blue">02:59</p>
+											</div>
+										</div>
+									</div>
+									<div class="txt_r mt_1">
+										<button type="button" class="btn btn_cert">인증번호 재요청</button>
+									</div>
+									<p class="txt_guide txt_red">
+										<i class="ico ico_notice_red"></i>
+										<span class="v_mid">인증번호가 틀렸습니다. 다시 입력해주세요.</span>
+									</p>
+									<!-- e: 인증번호가 틀렸을 때 -->
+
+									<!-- s: 입력 유효시간이 경과했을 때 -->
+									<!-- <div class="tf_item mt_2">
+										<div class="tf_item_body">
+											<div class="input_area">
+												<label class="lab" for="sms_pin">SMS인증번호</label>
+												<input type="text" id="sms_pin" class="tf" placeholder="6자리 인증번호 입력">
+											</div>
+											<div class="right_area">
+												<p class="time txt_red">0:00</p>
+											</div>
+										</div>
+									</div>
+									<div class="txt_r mt_1">
+										<button type="button" class="btn btn_cert bg_red">인증번호 재요청</button>
+									</div>
+									<p class="txt_guide txt_red">
+										<i class="ico ico_notice_red"></i>
+										<span class="v_mid">입력 유효시간 경과하였습니다. 재요청을 해주세요.</span>
+									</p> -->
+									<!-- e: 입력 유효시간이 경과했을 때 -->
+
+									<div class="mt_3">
+										<!-- 기본 비활성화 : disabled 속성 추가 -->
+										<!-- <button type="submit" class="btn btn_xl btn_black" disabled>로그인</button> -->
+
+										<!-- 활성화시 : disabled 속성 제거 -->
+										<button type="submit" class="btn btn_xl btn_black">로그인</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+						<ul class="list list4 mt_3">
+							<li>아이디, 비밀번호, 인증번호 5회 오류시 로그인이 제한됩니다.</li>
+							<li>로그인 제한 해제는 웹통합단말 “사용자정보관리(010020) 화면에서 비밀번호 초기화하여 재이용 가능합니다.</li>
+						</ul>
+					</div>
+					<div class="form_footer">
+						<address>COPYRIGHTⓒ 2022 KOREAPOST . ALL RIGHTS RESERVED</address>
+					</div>
+				</div>
+				<!-- e: 로그인 영역 -->
+
+			</div>
+
+			<!-- s: 사용자 유효성 체크 관련 오류 알림 -->
+			<div class="modal_popup modal_alert hide" data-popup="layerLoginError">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">알림</h2>
+					</div>
+					<div class="popup_body">
+
+						<!-- s: 존재하지 않는 금융ID -->
+						<!-- <div>
+							<p>등록되지 않은 아이디입니다.</p>
+							<p>아이디를 다시 한 번 확인해주세요.</p>
+						</div> -->
+						<!-- e: 존재하지 않는 금융ID -->
+
+						<!-- s: 비밀번호 5회 오류 -->
+						<div>
+							<p>패스워드 5회 오류로 태블릿브랜치 로그인이 제한되었습니다.</p>
+							<p class="mt_2">※ 웹단말 “사용자정보관리(010020) 화면에서 비밀번호 초기화 후 다시 이용해 주세요.</p>
+						</div>
+						<!-- e: 비밀번호 5회 오류 -->
+
+						<div class="btn_group">
+							<button type="button" class="btn btn_lg btn_round btn_primary"
+								onclick="closeModal('layerLoginError');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 사용자 유효성 체크 관련 오류 알림 -->
+
+			<!-- e: 본문 -->
+		</article>
+	</div>
+</body>
+
+</html>
