@@ -34,6 +34,11 @@
 
 	<!-- 사이트 개별 스크립트 -->
 	<script src="/resources/_guide/js/ui_html_guide.js"></script>
+	<script>
+		$(document).ready(function () {
+			inputStatus();
+		});
+	</script>
 </head>
 
 <body>
@@ -1812,6 +1817,7 @@
 					<div class="guide_section">
 						<h3 class="tit_guide" id="form">
 							입력폼
+							<i class="badge"></i>
 						</h3>
 
 						<div class="box_html_guide">
@@ -1821,38 +1827,103 @@
 							</ul>
 						</div>
 
-						<h4 class="tit1 mt_10">텍스트 입력 필드 .tf</h4>
-						<div class="examples">
-							<div>
-								<input type="text" class="tf" placeholder="placeholder" title="">
-								<input type="text" class="tf" placeholder="placeholder" title="" style="width: 100%; max-width: 300px;">
-								<input type="text" class="tf" placeholder="placeholder" title="" value="input text value">
+						<h4 class="tit1 mt_10">텍스트 입력 필드</h4>
+						<h5 class="tit2">기본형 .tf</h5>
+						<div class="cont_row">
+							<div class="inner">
+								<div class="col_item">
+									<div class="examples">
+										<div>
+											<input type="text" class="tf" placeholder="placeholder" title="">
+											<input type="text" class="tf" placeholder="placeholder" title=""
+												style="width: 100%; max-width: 300px;">
+											<input type="text" class="tf" placeholder="placeholder" title="" value="input text value">
+										</div>
+										<div class="mt_2">
+											<input type="text" class="tf" placeholder="placeholder" title="" value=":disabled" disabled>
+											<input type="text" class="tf" placeholder="placeholder" title="" value=":readonly" readonly>
+										</div>
+										<div class="mt_2">
+											<textarea class="tf" rows="3" placeholder="내용은 한글 1000자, 영문 2000자까지 입력 가능합니다."
+												title="내용은 한글 1000자, 영문 2000자까지 입력 가능합니다."></textarea>
+										</div>
+										<div class="mt_2">
+											<input type="text" class="tf error" placeholder="placeholder" title="" value=".error">
+											<p class="error_info">오류 안내 메시지 .error_info</p>
+										</div>
+									</div>
+								</div>
+								<div class="col_item codes">
+									<pre class="brush:html" title="HTML">
+										&lt;!-- input text --&gt;
+										&lt;input type="text" class="tf" id="" placeholder="" title="" style="width: 100%;"&gt;
+										&lt;input type="text" class="tf" id="" placeholder="" title="" style="width: 100%;" disabled&gt;
+										&lt;input type="text" class="tf" id="" placeholder="" title="" style="width: 100%;" readonly&gt;
+										&lt;input type="text" class="tf error" id="" placeholder="" title="" style="width: 100%;"&gt;
+
+										&lt;!-- texarea full size --&gt;
+										&lt;textarea class="tf" id="" rows="" placeholder="" title="" style="width: 100%;"&gt;&lt;/textarea&gt;
+										
+										&lt;!-- 기본 가이드 외 디자인 발생시 커스텀 클래스 .tf_* 적용 후 별도 스타일링 --&gt;
+										&lt;input type="text" class="tf tf_classname" id="" placeholder="" title=""&gt;</pre>
+								</div>
 							</div>
-							<div class="mt_2">
-								<input type="text" class="tf" placeholder="placeholder" title="" value=":disabled" disabled>
-								<input type="text" class="tf" placeholder="placeholder" title="" value=":readonly" readonly>
-							</div>
-							<div class="mt_2">
-								<textarea class="tf" rows="3" placeholder="내용은 한글 1000자, 영문 2000자까지 입력 가능합니다."
-									title="내용은 한글 1000자, 영문 2000자까지 입력 가능합니다."></textarea>
-							</div>
-							<div class="mt_2">
-								<input type="text" class="tf error" placeholder="placeholder" title="" value=".error">
-								<p class="error_info">오류 안내 메시지 .error_info</p>
+
+						</div>
+						<div class="cont_row">
+							<div class="inner">
+								<div class="col_item">
+									<h5 class="tit2">박스형 기본 .tf_item</h5>
+									<div class="examples">
+										<div class="tf_item">
+											<div class="tf_item_body">
+												<div class="input_area">
+													<label class="lab" for="user_id">아이디 <span class="req">필수항목</span></label>
+													<input type="text" id="user_id" class="tf" placeholder="이름을 입력해주세요">
+												</div>
+											</div>
+										</div>
+									</div>
+									<pre class="brush:html" title="HTML">
+										&lt;div class="tf_item"&gt;
+											&lt;div class="tf_item_body"&gt;
+												&lt;div class="input_area"&gt;
+													&lt;label class="lab" for="user_id"&gt;아이디 &lt;span class="req"&gt;필수항목&lt;/span&gt;&lt;/label&gt;
+													&lt;input type="text" id="user_id" class="tf" placeholder="이름을 입력해주세요"&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+										&lt;/div&gt;</pre>
+								</div>
+								<div class="col_item">
+									<h5 class="tit2">박스형 가로 .tf_item_row</h5>
+									<div class="examples">
+										<div class="tf_item_row">
+											<div class="tf_item_body">
+												<div class="input_area">
+													<label class="lab" for="user_address">자택주소 <span class="req">필수항목</span></label>
+													<input type="text" id="user_address" class="tf" placeholder="주소검색을 해주세요.">
+												</div>
+												<div class="right_area">
+													<a href="#;" class="btn btn_round btn_sm btn_black">주소검색</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<pre class="brush:html" title="HTML">
+										&lt;div class="tf_item_row"&gt;
+											&lt;div class="tf_item_body"&gt;
+												&lt;div class="input_area"&gt;
+													&lt;label class="lab" for="user_address"&gt;자택주소 &lt;span class="req"&gt;필수항목&lt;/span&gt;&lt;/label&gt;
+													&lt;input type="text" id="user_address" class="tf" placeholder="주소검색을 해주세요."&gt;
+												&lt;/div&gt;
+												&lt;div class="right_area"&gt;
+													&lt;a href="#;" class="btn btn_round btn_sm btn_black"&gt;주소검색&lt;/a&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+										&lt;/div&gt;</pre>
+								</div>
 							</div>
 						</div>
-						<pre class="brush:html" title="HTML">
-							&lt;!-- input text --&gt;
-							&lt;input type="text" class="tf" id="" placeholder="" title="" style="width: 100%;"&gt;
-							&lt;input type="text" class="tf" id="" placeholder="" title="" style="width: 100%;" disabled&gt;
-							&lt;input type="text" class="tf" id="" placeholder="" title="" style="width: 100%;" readonly&gt;
-							&lt;input type="text" class="tf error" id="" placeholder="" title="" style="width: 100%;"&gt;
-
-							&lt;!-- texarea full size --&gt;
-							&lt;textarea class="tf" id="" rows="" placeholder="" title="" style="width: 100%;"&gt;&lt;/textarea&gt;
-							
-							&lt;!-- 기본 가이드 외 디자인 발생시 커스텀 클래스 .tf_* 적용 후 별도 스타일링 --&gt;
-							&lt;input type="text" class="tf tf_classname" id="" placeholder="" title=""&gt;</pre>
 
 						<h4 class="tit1 mt_10">셀렉트박스 (커스텀 리스트형 드롭다운) .opt</h4>
 						<ul class="list list1 mb_1">
@@ -1860,53 +1931,101 @@
 							<li class="txt_invalid">'펼치기/접기' 텍스트 자동으로 붙도록 처리함. 중복정의하지 않도록 유의</li>
 						</ul>
 						<div class="examples" style="height: 200px;">
-							<div class="opt">
-								<dl>
-									<dt><a href="#;" title="${조건} 선택"><span>전체</span></a></dt>
-									<dd>
-										<ul>
-											<li><a href="#;"><span>전체</span></a></li>
-											<li><a href="#;"><span>전체</span></a></li>
-										</ul>
-									</dd>
-								</dl>
+							<div>
+								<div class="opt">
+									<dl>
+										<dt><a href="#;" title="${조건} 선택"><span>전체</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>전체</span></a></li>
+												<li><a href="#;"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="opt disabled">
+									<dl>
+										<dt><a href="#;" title="${조건} 선택"><span>비활성화</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>전체</span></a></li>
+												<li><a href="#;"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="opt" style="width: 300px;">
+									<dl>
+										<dt><a href="#;" title="${조건} 선택"><span>선택</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>선택1</span></a></li>
+												<li><a href="#;"><span>선택2</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="opt disabled" style="width: 300px;">
+									<dl title="입금계좌번호 선택">
+										<dt><a href="#;"><span>셀렉트 비활성화</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>12345678910</span></a></li>
+												<li><a href="#;"><span>12345678910</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
 							</div>
-							<div class="opt disabled">
-								<dl>
-									<dt><a href="#;" title="${조건} 선택"><span>비활성화</span></a></dt>
-									<dd>
-										<ul>
-											<li><a href="#;"><span>전체</span></a></li>
-											<li><a href="#;"><span>전체</span></a></li>
-										</ul>
-									</dd>
-								</dl>
-							</div>
-							<div class="opt" style="width: 300px;">
-								<dl>
-									<dt><a href="#;" title="${조건} 선택"><span>선택</span></a></dt>
-									<dd>
-										<ul>
-											<li><a href="#;"><span>선택1</span></a></li>
-											<li><a href="#;"><span>선택2</span></a></li>
-										</ul>
-									</dd>
-								</dl>
-							</div>
-							<div class="opt disabled" style="width: 300px;">
-								<dl title="입금계좌번호 선택">
-									<dt><a href="#;"><span>셀렉트 비활성화</span></a></dt>
-									<dd>
-										<ul>
-											<li><a href="#;"><span>12345678910</span></a></li>
-											<li><a href="#;"><span>12345678910</span></a></li>
-										</ul>
-									</dd>
-								</dl>
+							<div class="mt_2">
+								<div class="opt opt_lg">
+									<dl>
+										<dt><a href="#;" title="${조건} 선택"><span>전체</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>전체</span></a></li>
+												<li><a href="#;"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="opt opt_lg disabled">
+									<dl>
+										<dt><a href="#;" title="${조건} 선택"><span>비활성화</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>전체</span></a></li>
+												<li><a href="#;"><span>전체</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="opt opt_lg" style="width: 300px;">
+									<dl>
+										<dt><a href="#;" title="${조건} 선택"><span>선택</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>선택1</span></a></li>
+												<li><a href="#;"><span>선택2</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+								<div class="opt opt_lg disabled" style="width: 300px;">
+									<dl title="입금계좌번호 선택">
+										<dt><a href="#;"><span>셀렉트 비활성화</span></a></dt>
+										<dd>
+											<ul>
+												<li><a href="#;"><span>12345678910</span></a></li>
+												<li><a href="#;"><span>12345678910</span></a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
 							</div>
 						</div>
 						<pre class="brush:html" title="HTML">
-							&lt;!-- 비활성화시 멀티클래스 .disabled 추가 --&gt;
+							&lt;!-- 비활성화시 멀티클래스 .disabled 추가 / 큰 사이즈 멀티클래스 .opt_lg 추가 --&gt;
 							&lt;div class="opt"&gt;
 								&lt;dl&gt;
 									&lt;!-- 비활성화시 href 속성 제거 --&gt;
@@ -1998,6 +2117,7 @@
 					<div class="guide_section">
 						<h3 class="tit_guide" id="formEtc">
 							기타 폼 요소
+							<i class="badge"></i>
 						</h3>
 
 						<h4 class="tit1">checkbox</h4>
@@ -2046,16 +2166,24 @@
 									<h5 class="tit2 mt_0">스위치형 .check_switch</h5>
 									<div class="examples">
 										<!-- 텍스트 노출형 -->
-										<span class="check_switch">
-											<input type="checkbox" id="inputCheckSwitch2" checked>
-											<label for="inputCheckSwitch2">
-												<span class="txt_uncheck">비동의</span>
-												<span class="txt_checked">동의</span>
-											</label>
-										</span>
+										<div>
+											<span class="check_switch">
+												<input type="checkbox" id="inputCheckSwitch2" checked>
+												<label for="inputCheckSwitch2">
+													<span class="txt_uncheck">비동의</span>
+													<span class="txt_checked">동의</span>
+												</label>
+											</span>
+										</div>
+										<div class="mt_2">
+											<span class="check_switch_sm">
+												<input type="checkbox" id="inputCheckSwitch3" checked>
+												<label for="inputCheckSwitch3">퀵메뉴</label>
+											</span>
+										</div>
 									</div>
 									<pre class="brush:html" title="HTML">
-										&lt;!-- 텍스트 노출형 --&gt;
+										&lt;!-- 텍스트 노출형 .check_switch .check_switch_sm 택일 --&gt;
 										&lt;span class="check_switch"&gt;
 											&lt;input type="checkbox" id="inputCheckSwitch2" checked&gt;
 											&lt;label for="inputCheckSwitch2"&gt;
@@ -2063,6 +2191,34 @@
 												&lt;span class="txt_checked"&gt;동의&lt;/span&gt;
 											&lt;/label&gt;
 										&lt;/span&gt;</pre>
+								</div>
+								<div class="col_item">
+									<h5 class="tit2 mt_0">큰 버튼형 .type_btn_lg</h5>
+									<div class="examples">
+										<div class="input_items">
+											<span class="check_item type_btn_lg">
+												<input type="checkbox" name="check3" id="check3_1" checked>
+												<label for="check3_1">체크항목1</label>
+											</span>
+											<span class="check_item type_btn_lg">
+												<input type="checkbox" name="check3" id="check3_2">
+												<label for="check3_2">체크항목2</label>
+											</span>
+										</div>
+									</div>
+
+									<pre class="brush:html" title="HTML">
+										&lt;!-- .type_btn --&gt;
+										&lt;div class="input_items"&gt;
+											&lt;span class="check_item type_btn"&gt;
+												&lt;input type="radio" name="radio3" id="radio3_1" checked&gt;
+												&lt;label for="radio3_1"&gt;text&lt;/label&gt;
+											&lt;/span&gt;
+											&lt;span class="check_item type_btn"&gt;
+												&lt;input type="radio" name="radio3" id="radio3_2"&gt;
+												&lt;label for="radio3_2"&gt;text&lt;/label&gt;
+											&lt;/span&gt;
+										&lt;/div&gt;</pre>
 								</div>
 							</div>
 						</div>
