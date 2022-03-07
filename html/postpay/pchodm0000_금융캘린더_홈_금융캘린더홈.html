@@ -18,7 +18,7 @@
 	<script src="/resources/js/ui_global.js"></script>
 
 	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
-	<script src="/resources/js/ui_layout_setting.js"></script>
+<!--	<script src="/resources/js/ui_layout_setting.js"></script>-->
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
@@ -44,8 +44,7 @@
 			}
 		});
 
-		$(document).ready(function () {
-
+		$(function() {
 			//하단 슬라이더
 			var $postpaySlide = $('.postpay_bottom_list');
 			$postpaySlide.slick({
@@ -68,7 +67,7 @@
 			});
 
 			function tabCurrent() {
-				$('.cal_body table .day').on('click', function () {
+				$(document).on('click', '.cal_body table .day', function() {
 					var currentBtn = $(this).parent().addClass('on');
 					$('.cal_body table td').not(currentBtn).removeClass("on");
 
@@ -80,16 +79,423 @@
 					$('html').animate({
 						scrollTop: offset.top
 					}, 400);
-				})
+				});
 			};
 
 			tabCurrent();
-			$('.cal_header .tab_cal li a').on('click', function () {
-				$(this).attr('title', '선택됨').parent().addClass('on').siblings().removeClass('on').children().removeAttr(
-					'title');
-				$('.finance_body > div').eq($(this).parent().index()).show().siblings().hide();
-				$('.cal_body > div').eq($(this).parent().index()).show().siblings().hide();
+		});
+	</script>
+
+
+	<script>
+		$(function(){
+			var $targetCalendar = $('#calendar'), // 캘린더 객체
+				today = new Date(), // 현재 날짜
+				date = new Date(),
+				setYear = null,
+				setMonth = null,
+				changeMonth = null,
+				$dPayment = $('.dPayment'), // 결제버튼
+				$dMeeting = $('.dMeeting'), // 모임버튼
+				$dAccount = $('.dAccount'); // 계좌버튼
+
+			// 사용자 데이터를 담을 변수
+			// key: 실제 날짜 , value: js 날짜
+			var _totalAmount = {
+				'2021-12-02': {
+					date        : new Date(2021, 11, 2),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : -10, // 결제 금액,
+					priceAccount: 4000, // 계좌금액
+					meetingClass : 'bg_lightorange',
+					meetingTxt : '회비내는날'
+				},
+				'2022-01-02': {
+					date        : new Date(2022, 0, 2),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : -10, // 결제 금액,
+					priceAccount: 4000, // 계좌금액
+					meetingClass : 'bg_lightorange',
+					meetingTxt : '회비내는날'
+				},
+				'2022-01-12': {
+					date        : new Date(2022, 0, 12),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : -10, // 결제 금액,
+					priceAccount: 81000, // 계좌금액
+					meetingClass : 'bg_darkblue',
+					meetingTxt : '회비내는날'
+				},
+				'2022-01-13': {
+					date        : new Date(2022, 0, 13),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : -10, // 결제 금액,
+					priceAccount: 81000, // 계좌금액
+					meetingClass : 'd_day',
+					meetingTxt : '깨는 날'
+				},
+				'2022-02-10' : {
+					date : new Date(2022, 1, 10),
+					month : date.getMonth(),
+					day : date.getDate(),
+					price : -110000, // 결제 금액,
+					priceAccount : 800000, // 계좌금액
+					meetingClass : 'bg_lightorange',
+					meetingTxt : '회비내는날'
+				},
+				'2022-02-11': {
+					date        : new Date(2022, 1, 11),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : 0, // 결제 금액,
+					priceAccount: 80, // 계좌금액
+					meetingClass : 'bg_darkblue',
+					meetingTxt : '회비내는날'
+				},
+				'2022-02-12': {
+					date        : new Date(2022, 1, 12),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : 320000, // 결제 금액
+					priceAccount: 70000, // 계좌금액
+					meetingClass : 'bg_lightgreen',
+					meetingTxt: '회비내는날',
+				},
+				'2022-02-13' : {
+					date : new Date(2022, 1, 13),
+					month : date.getMonth(),
+					day : date.getDate(),
+					price : 10000, // 결제 금액
+					priceAccount : -200000 // 계좌금액
+				},
+				'2022-02-14': {
+					date        : new Date(2022, 1, 14),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : 10000, // 결제 금액
+					priceAccount: 3000, // 계좌금액
+					meetingClass : 'd_day',
+					meetingTxt: '깨는 날',
+				},
+				'2022-02-15': {
+					date        : new Date(2022, 1, 15),
+					month       : date.getMonth(),
+					day         : date.getDate(),
+					price       : 10000, // 결제 금액
+					priceAccount: -3000, // 계좌금액
+					meetingClass : 'd_day',
+					meetingTxt: '깨는 날',
+				},
+				'2022-04-04' : {
+					date : new Date(2022, 3, 4),
+					month : date.getMonth(),
+					day : date.getDate(),
+					price : 10000, // 결제 금액
+					priceAccount : -100000 // 계좌금액
+				},
+				'2022-05-05' : {
+					date : new Date(2022, 4, 5),
+					month : date.getMonth(),
+					day : date.getDate(),
+					price : -100000, // 결제 금액
+					priceAccount : -30000 // 계좌금액
+				},
+			};
+
+			// 달력의 선택된 연.월 표기할 값
+			// '월'이 1자리일 경우 앞에 '0'을 추가한다.
+			changeMonth = today.getMonth() < 10 ? '0' + (today.getMonth() + 1) : today.getMonth();
+
+			// 페이지 로드 시
+			// 현재 연.월을 표기한다.
+			$('.selectbox_area a')
+				.data('date', today.getFullYear() + '.' + (today.getMonth() + 1))
+				.text(today.getFullYear() + '.' + changeMonth);
+
+
+			// 결제, 모임, 계좌 버튼 클릭 시 action
+			$('.tagDivision').off('click.tag').on('click.tag', function (e) {
+				e.preventDefault();
+				$(this)
+					.attr('title', '선택됨')
+					.parent().addClass('on')
+					.siblings().removeClass('on')
+					.children().removeAttr('title');
+
+				if($dPayment.parent().is('.on')) {        // 결제 선택 시
+					displayValue($targetCalendar);
+				} else if($dMeeting.parent().is('.on')) { // 모임 선택 시
+					displayValueMeeting($targetCalendar, $dMeeting);
+				} else if($dAccount.parent().is('.on')) { // 계좌 선택 시
+					displayValueAccount($targetCalendar, $dAccount);
+				}
 			});
+
+
+			buildCalendar($targetCalendar);
+
+
+			/**
+			 * 달력 Draw
+			 * 페이지 진입 시 DATA 노출
+			 * @param id {string} jQuery 객체
+			 */
+			function buildCalendar(id) {
+				var nowYear = today.getFullYear();
+				var nowMonth = today.getMonth();
+				var firstDate = new Date(nowYear,nowMonth,1).getDate();
+				var firstDay = new Date(nowYear,nowMonth,1).getDay(); //1st의 요일
+				var lastDate = new Date(nowYear,nowMonth+1,0).getDate();
+
+				if((nowYear%4===0 && nowYear % 100 !==0) || nowYear%400===0) { //윤년 적용
+					lastDate[1]=29;
+				}
+
+				for (i=0; i<firstDay; i++) { //첫번째 줄 빈칸
+					$('#calendar tbody:last').append('<td></td>');
+				}
+				for (i=1; i <=lastDate; i++){ // 날짜 채우기
+					plusDate = new Date(nowYear,nowMonth,i).getDay();
+					if (plusDate==0) {
+						$('#calendar tbody:last').append('<tr></tr>');
+					}
+					$('#calendar tbody:last').append("<td><span class='day'>"+ i +"</span></td>");
+				}
+
+				if($('#calendar > tbody > td').length%7!=0) { //마지막 줄 빈칸
+					for(i=1; i<= $('#calendar > tbody > td').length%7; i++) {
+						$('#calendar tbody:last').append('<td></td>');
+					}
+				}
+
+				// 오늘 날짜 표시
+				$(id).find('tbody td:has(.day)').each(function(index){
+					if(nowYear==date.getFullYear() && nowMonth==date.getMonth() && $(this).find('.day').text()==date.getDate()) {
+						$(this).find('.day').addClass('today');
+					}
+				});
+
+				if($dPayment.parent().is('.on')) { // 결제 선택 시
+					displayValue($targetCalendar);
+				} else if($dMeeting.parent().is('.on')) { // 모임 선택 시
+					displayValueMeeting($targetCalendar, $dMeeting);
+				} else if($dAccount.parent().is('.on')) { // 계좌 선택 시
+					displayValueAccount($targetCalendar, $dAccount);
+				}
+			}
+
+
+			/**
+			 * 결제 클릭 action
+			 * @param id {string} jQuery 객체
+			 */
+			function displayValue(id) {
+				for(let key in _totalAmount) {
+					let yyyy = key.slice(0,4);
+					let mm = key.slice(5,7);
+					let dd = key.slice(8,10);
+					let value = _totalAmount[key]['price'];
+					let customValue;
+
+					mm = mm < 10 ? mm.slice(1) : mm;
+					dd = dd < 10 ? dd.slice(1) : dd;
+
+					if(value > 0) value = '+' + value;
+
+					customValue = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 숫자 3자리 콤마
+
+					$(id).find('tbody td:has(.day)').each(function(index){
+						$(this)
+							.find('.priceAccount').remove()
+							.end()
+							.find('.event').prev().removeClass().addClass('day');
+						$(this).find('.event').remove();
+
+						if(yyyy==today.getFullYear() && mm==(today.getMonth() + 1) && dd==$(this).find(".day").text() && value != 0) {
+							if($(this).find('.price').length < 1) {
+								$(this).append('<small class="price priceBank">' + customValue + '</small>');
+							}
+						}
+					});
+				}
+			}
+
+
+			/**
+			 * 모임 Data 노출
+			 * @param id
+			 * @param el
+			 * class 종류 : bg_lightorange, bg_darkblue, bg_lightgreen, d_day(깨는 날)
+			 */
+			function displayValueMeeting(id ,el) {
+				for(let key in _totalAmount) {
+					let yyyy = key.slice(0,4);
+					let mm = key.slice(5,7);
+					let dd = key.slice(8,10);
+					let value = _totalAmount[key]['priceAccount'];
+					let customValue;
+					let meetingClass = _totalAmount[key]['meetingClass'];
+					let meetingTxt = _totalAmount[key]['meetingTxt'];
+
+					mm = mm < 10 ? mm.slice(1) : mm;
+					dd = dd < 10 ? dd.slice(1) : dd;
+
+					if(value > 0) value = '+' + value;
+
+					customValue = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+					if($(el).is('.dMeeting')) { // 계좌 버튼 클릭 시
+						$(id).find('tbody td:has(.day)').each(function(index){
+							$(this).find('.price').remove();
+
+							if(yyyy==today.getFullYear() && mm==(today.getMonth() + 1) && dd==$(this).find(".day").text() && meetingClass != undefined && meetingTxt != undefined) {
+
+								if($(this).find('.event').length < 1) {
+									$(this).append('<small class="event">' + meetingTxt + '</small>');
+								}
+
+								$(this).find('.day').addClass(meetingClass);
+							}
+						});
+					}
+				}
+			}
+
+			/**
+			 * 계좌 Data 노출
+			 * @param id
+			 */
+			function displayValueAccount(id ,el) {
+				for(let key in _totalAmount) {
+					let yyyy = key.slice(0,4);
+					let mm = key.slice(5,7);
+					let dd = key.slice(8,10);
+					let priceAccount = _totalAmount[key]['priceAccount'];
+					let customValue;
+
+
+					mm = mm < 10 ? mm.slice(1) : mm;
+					dd = dd < 10 ? dd.slice(1) : dd;
+
+					if(priceAccount > 0) priceAccount = '+' + priceAccount;
+
+					customValue = priceAccount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+					if($(el).is('.dAccount')) { // 계좌 버튼 클릭 시
+						$(id).find('tbody td:has(.day)').each(function(index){
+							$(this)
+								.find('.priceBank').remove()
+								.end()
+								.find('.event').prev().removeClass().addClass('day');
+							$(this).find('.event').remove();
+
+
+							if(yyyy==today.getFullYear() && mm==(today.getMonth() + 1) && dd==$(this).find(".day").text() && priceAccount != undefined) {
+								if($(this).find('.price').length < 1) {
+									$(this).append('<small class="price priceAccount">' + customValue + '</small>');
+								}
+
+								if(customValue.slice(0,1) == '-') {
+									$(this).find('.price').addClass('txt_red');
+								} else {
+									$(this).find('.price').addClass('txt_blue');
+								}
+							}
+						});
+					}
+				}
+			}
+
+			// 달력 선택된 연.월 클릭 시
+			// 레이어 호출한다.
+			$('.selectbox_area').off('click.selectCal').on('click.selectCal', 'a', function(e) {
+				e.preventDefault();
+				showLayerDatePicker('.setLayerCalendar', this);
+			});
+
+			// 연.월 선택 레이어팝업 리스트 클릭 시
+			$(document).on('click', '.setLayerCalendar .opt_list .btn', function() {
+				setDateListData($(this));
+			});
+
+			// 연.월 선택 레이어팝업 닫기 버튼 클릭 시
+			$(document).on('click', '.setLayerCalendar .btn_close_popup', function() {
+				closeLayerDatepicker($(this))
+			});
+
+			/**
+			 * @param layerName {string} 달력레이어 class
+			 * @param returnEl {string} 달력레이어 호출한 버튼
+			 */
+			function showLayerDatePicker(layerName, returnEl) {
+				insertDateListData(layerName, this)
+			}
+
+			/**
+			 * 레이어팝업 호출
+			 * 연.월 리스트 생성, 출력한다.
+			 * @param el {string} 달력레이어 class
+			 * @param returnEl {string} 달력레이어 호출한 버튼
+			 */
+			function insertDateListData(el, returnEl) {
+				var $list = $(el).find('.opt_list');
+				var $data = $(returnEl).data('date');
+				var $now = new Date();
+				var $year = $now.getFullYear();
+				var $month = $now.getMonth() + 1;
+
+				$(el).removeClass('hide').addClass('show');
+				$list.css({
+					'overflow' : 'hidden',
+					'overflow-y' : 'auto',
+					'maxHeight' : '300px'
+				}).children().remove();
+
+				for(var i = 1; i <= 10; i++) {
+					if($month === 0) {
+						--$year;
+						$month = 12;
+					}
+
+					$list.append('<button type="button" class="btn" data-date="' + $year + '.' + ($month < 10 ? '0' + $month : $month) + '">' + $year + '.' + ($month < 10 ? '0' + $month : $month) + '</button>');
+					$month--
+				}
+			}
+
+			/**
+			 * 연.월일 레이어팝업 리스트 클릭 시
+			 * 바닥페이지 달력 redraw
+			 * @param el {string} jQuery 객체
+			 */
+			function setDateListData(el) {
+				var $dataDate = $(el).data('date');
+				var $year = String($dataDate).slice(0,4);
+				var $month = String($dataDate).slice(5);
+
+				$(el).addClass('active').siblings().removeClass('active'); // 클릭 요소 활성화한다.
+
+				$('.selectbox_area a').text($dataDate); // 바닥 페이지 선택된 연.월 표기한다.
+
+				today = new Date(parseInt($year), parseInt($month) - 1);
+
+				$("#calendar > tbody > td").remove();
+				$("#calendar > tbody > tr").remove();
+				today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+				buildCalendar($targetCalendar);
+			}
+
+			/**
+			 * 레이어팝업 닫기
+			 * @param el {string} jQuery 객체
+			 */
+			function closeLayerDatepicker(el) {
+				$(el).closest('.modal_popup').removeClass('show').addClass('hide');
+			}
 		});
 	</script>
 </head>
@@ -114,11 +520,6 @@
 						<i class="ico ico_chevron_right_sm_gray"></i>
 					</a>
 
-					<a href="#" class="link_gray">
-						<span class="txt_gray txt_medium ml_2">캘린더 검색</span>
-						<i class="ico ico_chevron_right_sm_gray"></i>
-					</a>
-
 				</div>
 				<!-- e: 상단 고정영역 -->
 
@@ -127,32 +528,29 @@
 					<div class="cal_header">
 
 						<div class="cal_l">
-
 							<!-- s: 바텀 셀렉트 -->
-							<!-- 마크업 수정 : 2022-02-03 -->
 							<div class="selectbox_area">
-								<a href="#;" class="opt" title="옵션 선택"
-									onclick="openModal('layerOption', this); return false;">2021.10</a>
+								<a href="#none" class="opt" title="연도,월 선택 레이어팝업 열기"></a>
 							</div>
 							<!-- e: 바텀 셀렉트 -->
 						</div>
+						<!-- EOD : cal_l -->
 
 						<div class="cal_r">
 							<ul class="tab_cal">
-								<li class="on"><a href="#">결제</a></li>
-								<li><a href="#">모임</a></li>
-								<li><a href="#">계좌</a></li>
+								<li class="on"><a href="#" role="button" class="tagDivision dPayment">결제</a></li>
+								<li><a href="#" role="button" class="tagDivision dMeeting">모임</a></li>
+								<li><a href="#" role="button" class="tagDivision dAccount">계좌</a></li>
 							</ul>
 						</div>
-
+						<!-- EOD : cal_r -->
 					</div>
 					<!-- e: 상단 선택영역 -->
 
 					<!-- s: 캘린더 -->
 					<div class="cal_body">
-
-						<div class="hide">
-							<table>
+						<div>
+							<table id="calendar">
 								<colgroup>
 									<col style="width:14.2857%">
 									<col style="width:14.2857%">
@@ -160,9 +558,10 @@
 									<col style="width:14.2857%">
 									<col style="width:14.2857%">
 									<col style="width:14.2857%">
-									<col style="width:14.2857%">
+									<col style="">
 								</colgroup>
 								<thead>
+								<tr>
 									<th scope="col">일</th>
 									<th scope="col">월</th>
 									<th scope="col">화</th>
@@ -170,140 +569,9 @@
 									<th scope="col">목</th>
 									<th scope="col">금</th>
 									<th scope="col">토</th>
+								</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-											<span class="day">1</span>
-										</td>
-										<td>
-											<span class="day">2</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">3</span>
-										</td>
-										<td>
-											<span class="day">4</span>
-										</td>
-										<td>
-											<span class="day">5</span>
-											<small class="price">-114,980</small>
-										</td>
-										<td>
-											<span class="day">6</span>
-											<small class="price">+114,980</small>
-										</td>
-										<td>
-											<span class="day">7</span>
-										</td>
-										<td>
-											<span class="day">8</span>
-										</td>
-										<td>
-											<span class="day">9</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">10</span>
-										</td>
-										<td>
-											<span class="day">11</span>
-										</td>
-										<td>
-											<span class="day">12</span>
-										</td>
-										<td>
-											<span class="day">13</span>
-										</td>
-										<td>
-											<span class="day">14</span>
-										</td>
-										<td>
-											<span class="day">15</span>
-										</td>
-										<td>
-											<span class="day">16</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">17</span>
-										</td>
-										<td>
-											<span class="day">18</span>
-										</td>
-										<td>
-											<span class="day">19</span>
-										</td>
-										<td>
-											<span class="day">20</span>
-										</td>
-										<td>
-											<span class="day">21</span>
-										</td>
-										<td>
-											<span class="day">22</span>
-										</td>
-										<td>
-											<span class="day">23</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">24</span>
-										</td>
-										<td>
-											<span class="day today">25</span>
-											<small class="price">+114,980</small>
-										</td>
-										<td>
-											<span class="day">26</span>
-										</td>
-										<td>
-											<span class="day">27</span>
-										</td>
-										<td>
-											<span class="day">28</span>
-										</td>
-										<td>
-											<span class="day">29</span>
-										</td>
-										<td>
-											<span class="day">30</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">31</span>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-									</tr>
-								</tbody>
-
+								<tbody></tbody>
 							</table>
 
 							<div class="box_memo">
@@ -367,358 +635,6 @@
 							</div>
 
 						</div>
-
-						<div class="hide">
-							<table>
-								<colgroup>
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-								</colgroup>
-								<thead>
-									<th scope="col">일</th>
-									<th scope="col">월</th>
-									<th scope="col">화</th>
-									<th scope="col">수</th>
-									<th scope="col">목</th>
-									<th scope="col">금</th>
-									<th scope="col">토</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											<span class="day"></span>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-											<span class="day">1</span>
-										</td>
-										<td>
-											<span class="day">2</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">3</span>
-										</td>
-										<td>
-											<span class="day">4</span>
-										</td>
-										<td>
-											<span class="day bg_lightorange">5</span>
-											<small class="event">회비내는날</small>
-										</td>
-										<td>
-											<span class="day bg_darkblue">6</span>
-											<small class="event">회비내는날</small>
-										</td>
-										<td>
-											<span class="day">7</span>
-										</td>
-										<td>
-											<span class="day">8</span>
-										</td>
-										<td>
-											<span class="day">9</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">10</span>
-										</td>
-										<td>
-											<span class="day bg_lightgreen">11</span>
-											<small class="event">회비내는날</small>
-										</td>
-										<td>
-											<span class="day">12</span>
-										</td>
-										<td>
-											<span class="day">13</span>
-										</td>
-										<td>
-											<span class="day">14</span>
-										</td>
-										<td>
-											<span class="day d_day">15</span>
-											<small class="event">깨는 날</small>
-										</td>
-										<td>
-											<span class="day">16</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">17</span>
-										</td>
-										<td>
-											<span class="day">18</span>
-										</td>
-										<td>
-											<span class="day">19</span>
-										</td>
-										<td>
-											<span class="day">20</span>
-										</td>
-										<td>
-											<span class="day">21</span>
-										</td>
-										<td>
-											<span class="day">22</span>
-										</td>
-										<td>
-											<span class="day">23</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">24</span>
-										</td>
-										<td>
-											<span class="day today">25</span>
-										</td>
-										<td>
-											<span class="day">26</span>
-										</td>
-										<td>
-											<span class="day">27</span>
-										</td>
-										<td>
-											<span class="day">28</span>
-										</td>
-										<td>
-											<span class="day">29</span>
-										</td>
-										<td>
-											<span class="day">30</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">31</span>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-							<div class="box_memo">
-								<p class="bul_notice mb_3">회비 내는날 표시 날짜를 선택하면 바로 회비를 낼 수 있어요.
-								</p>
-								<div class="box_inner show">
-									<span class="date">19일 화요일</span>
-
-									<ul class="fn_list">
-										<li>
-											<div class="flex_con_group">
-												<span>
-													<span class="box_round">
-														<i class="ico ico_fn_card"></i>
-													</span>
-													<span>
-														<em>10월 회비</em>
-														<small>같이크루즈</small>
-													</span>
-												</span>
-												<span>
-													<span class="pr_1">
-														<span class="block price">
-															<strong>8,410</strong>
-															원
-														</span>
-														<span class="block txt_r txt_sml mt_1">
-															<strong class="txt_light">4</strong>/4명
-														</span>
-													</span>
-													<a href="#;" class="btn btn_sm btn_round bg_gray">납부하기</a>
-												</span>
-
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-
-						</div>
-
-						<div class="hide">
-							<table>
-								<colgroup>
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-									<col style="width:14.2857%">
-								</colgroup>
-								<thead>
-									<th scope="col">일</th>
-									<th scope="col">월</th>
-									<th scope="col">화</th>
-									<th scope="col">수</th>
-									<th scope="col">목</th>
-									<th scope="col">금</th>
-									<th scope="col">토</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-											<span class="day">1</span>
-										</td>
-										<td>
-											<span class="day">2</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">3</span>
-										</td>
-										<td>
-											<span class="day">4</span>
-										</td>
-										<td>
-											<span class="day">5</span>
-											<small class="price txt_red">-114,980</small>
-										</td>
-										<td>
-											<span class="day">6</span>
-											<small class="price txt_blue">+114,980</small>
-										</td>
-										<td>
-											<span class="day">7</span>
-										</td>
-										<td>
-											<span class="day">8</span>
-										</td>
-										<td>
-											<span class="day">9</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">10</span>
-										</td>
-										<td>
-											<span class="day">11</span>
-										</td>
-										<td>
-											<span class="day">12</span>
-										</td>
-										<td>
-											<span class="day">13</span>
-										</td>
-										<td>
-											<span class="day">14</span>
-										</td>
-										<td>
-											<span class="day">15</span>
-										</td>
-										<td>
-											<span class="day">16</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">17</span>
-										</td>
-										<td>
-											<span class="day">18</span>
-										</td>
-										<td>
-											<span class="day">19</span>
-										</td>
-										<td>
-											<span class="day">20</span>
-										</td>
-										<td>
-											<span class="day">21</span>
-										</td>
-										<td>
-											<span class="day">22</span>
-										</td>
-										<td>
-											<span class="day">23</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">24</span>
-										</td>
-										<td>
-											<span class="day today">25</span>
-											<small class="price txt_blue">+114,980</small>
-										</td>
-										<td>
-											<span class="day">26</span>
-										</td>
-										<td>
-											<span class="day">27</span>
-										</td>
-										<td>
-											<span class="day">28</span>
-										</td>
-										<td>
-											<span class="day">29</span>
-										</td>
-										<td>
-											<span class="day">30</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="day">31</span>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-										<td>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-						</div>
-
 					</div>
 					<!-- e: 캘린더 -->
 				</div>
@@ -915,12 +831,32 @@
 			</div>
 			<!-- e: 하단 슬라이더 영역 -->
 
-			<!-- s: 공통 레이어 로딩 -->
-			<div class="common_layers"></div>
-			<!-- e: 공통 레이어 로딩 -->
-			<!-- e: 본문 -->
+
 		</div>
 	</div>
+
+
+	<div class="common_layers">
+		<!-- s: Modal popup 옵션 선택 -->
+		<div class="modal_popup modal_bottom_sheet setLayerCalendar hide">
+			<div class="dimed"></div>
+			<div class="popup_inner">
+				<div class="popup_header">
+					<h2 class="sr_only">옵션 선택</h2>
+				</div>
+				<div class="popup_body">
+					<div class="container">
+						<div class="opt_list">
+
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn_close_popup">닫기</button>
+			</div>
+		</div>
+		<!-- e: Modal popup 옵션 선택 -->
+	</div>
+	<!-- EOD : common_layers -->
 </body>
 
 </html>

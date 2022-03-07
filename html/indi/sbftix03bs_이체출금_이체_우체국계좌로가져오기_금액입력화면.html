@@ -444,6 +444,15 @@
 			</div>
 			<!-- e: 계좌상세 팝업 -->
 
+
+
+
+
+
+
+
+
+
 			<!-- s: 금액입력 bottom sheet -->
 			<div class="modal_popup modal_bottom_sheet show" data-popup="money_write_keypad">
 				<div class="dimed"></div>
@@ -477,30 +486,48 @@
 											<span>금액</span>
 										</div>
 										<div class="amount_area">
-											<span class="txt_amt1">4,123,000</span>
+
+											<span class="txt_amt1" id="calcSum">0</span>
 											<span class="txt_amt2">원</span>
-											<span class="txt_amt3">사백일십이만삼천원</span>
+											<span class="txt_amt3" id="showkoreanNumeric">0원</span>
 										</div>
 									</div>
-									<button type="button" class="btn btn_icon btn_reset">
+									<button type="button" class="btn btn_icon btn_reset reset_number_keypad">
 										<i class="ico ico_reset"></i>
 										<span class="sr_only">초기화</span>
 									</button>
 								</div>
 							</div>
 							<div class="money_select">
-								<a href="#n">1만</a>
-								<a href="#n" class="on">5만</a>
-								<a href="#n">10만</a>
-								<a href="#n">50만</a>
-								<a href="#n">100만</a>
+								<a href="#n" data-money="10000">1만</a>
+								<a href="#n" data-money="50000" class="on">5만</a>
+								<a href="#n" data-money="100000">10만</a>
+								<a href="#n" data-money="500000">50만</a>
+								<a href="#n" data-money="1000000">100만</a>
 							</div>
 						</div>
 					</div>
 					<div class="popup_footer keypad">
-						<!-- s: 보안 키패드 영역 -->
-						<div class="txt_c">키패드 영역</div>
-						<!-- e: 보안 키패드 영역 -->
+
+						<!-- s: 기본 숫자 키패드 -->
+						<div class="number_keypad">
+							<ul>
+								<li><button type="button" class="numeric">1</button></li>
+								<li><button type="button" class="numeric">2</button></li>
+								<li><button type="button" class="numeric">3</button></li>
+								<li><button type="button" class="numeric">4</button></li>
+								<li><button type="button" class="numeric">5</button></li>
+								<li><button type="button" class="numeric">6</button></li>
+								<li><button type="button" class="numeric">7</button></li>
+								<li><button type="button" class="numeric">8</button></li>
+								<li><button type="button" class="numeric">9</button></li>
+								<li><button type="button" class="remove_number"><span class="sr_only">삭제</span></button></li>
+								<li><button type="button" class="numeric">0</button></li>
+								<li><button type="button" class="txt_key">입력완료</button></li>
+							</ul>
+						</div>
+						<!-- e: 기본 숫자 키패드 -->
+
 						<div class="btn_group btn_group_flex">
 							<a href="#n" class="btn btn_lg btn_primary">다음</a>
 						</div>
@@ -509,6 +536,147 @@
 				</div>
 			</div>
 			<!-- e: 금액입력 bottom sheet -->
+
+
+			<script>
+				$(function() {
+					var $keyPad = $('.number_keypad'); // {object}
+					var $target = $('#calcSum'); // {object}
+					var $targetValue; // 합산 결과 {string}
+					var $targetStr = ''; // {string}
+					var $value; // 키패드 입력 값 {string}
+					var $btnMoney = $('.money_select'); // 버튼 영역 부모객체 {object}
+					var $showKoreanNumeric = $('#showkoreanNumeric'); // 한글 표기 객체
+					var $resetNumberKeypad = $('.reset_number_keypad'); // 합산 금액 초기화 버튼
+
+
+					// 키패드 클릭 시 동작
+					$keyPad.off('click.numerickey').on('click.numerickey', 'button', function() {
+						// 숫자 키 입력 시
+						if($(this).is('.numeric')) {
+							// 합산 결과 텍스트를 가져온다.
+							$targetValue = $.trim($target.text());
+
+							// 숫자 키패드의 숫자를 가져온다. {string}
+							$value = $.trim($(this).text());
+
+							// 입력 금액의 자리수가 10자리 이하일 경우만 계산한다. ###### 기획 확인 필요(자리수) #####
+							if($targetValue.length <= 10) {
+								// 초기 합산 결과가 0 이고 숫자 0 입력 시에 계산하지 않는다.
+								if($targetValue == 0 && $value == 0) {
+									return;
+								}
+
+								// 초기 합산 결과가 0이고 숫자 입력(0 아닐 경우) 시에 앞 숫자 0을 제거한다.
+								if($targetValue == 0) {
+									$targetValue = '';
+								}
+
+								// 입력 숫자를 더한다.({string} + {string})
+								$targetValue += $value;
+
+								// 한글변환(입력금액, 한글표기객체)
+								viewKorean($targetValue, $showKoreanNumeric);
+
+								// 3자리 컴마 표기
+								$targetValue = numberWithCommas($targetValue);
+
+								// 최종 결과 값 표기한다.
+								$target.text($targetValue);
+							} else {
+								alert('자리수 초과 개발시 참고요망')
+							}
+						}
+
+						// delete 키 입력 시
+						if($(this).is('.remove_number')) {
+							$targetValue = $.trim($target.text());
+
+							// 값이 있을 경우
+							if($targetValue.length > 0 && $targetValue != '' && $targetValue != 0) {
+								$targetValue = $targetValue.split(',').join('').slice(0, -1);
+								$target.text($targetValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+
+								// 한글변환(입력금액, 한글표기객체)
+								viewKorean($targetValue, $showKoreanNumeric);
+							}
+
+							// 갑이 없을 경우 0 처리한다.
+							if($targetValue.length == 0 && $targetValue == '') {
+								$targetValue = 0;
+								$target.text(0);
+								$showKoreanNumeric.text('0원');
+							}
+						}
+					});
+
+					// 숫자 버튼(1만, 5만, ....) 클릭 시 동작
+					$btnMoney.off('click.btnMoney').on('click.btnMoney', 'a', function(e) {
+						e.preventDefault();
+
+						var $dataValue = $(this).data('money');
+						var $targetString = $target.text().split(',').join('');
+						var $sum = Number($.trim($targetString)) + Number($dataValue);
+
+						$target.text($sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+
+						// 한글변환(입력금액, 한글표기객체)
+						viewKorean($sum, $showKoreanNumeric);
+					});
+
+					$resetNumberKeypad.off('click.resetbutton').on('click.resetbutton', function() {
+						$targetValue = 0;
+						$target.text(0);
+						$showKoreanNumeric.text('0원');
+					})
+
+					/**
+					 * 입력 숫자 한글 표기
+					 * @param num 금액
+					 * @param objKor 한글표기영역
+					 * @returns {string}
+					 */
+					function viewKorean(num ,objKor) {
+						var hanA = new Array('', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구', '십');
+						var danA = new Array('', '십', '백', '천', '', '십', '백', '천', '', '십', '백', '천', '', '십', '백', '천');
+						var result = '';
+						num = num.toString().split(',').join('');
+
+						for(var i = 0; i < num.length; i++) {
+							str = '';
+							han = hanA[num.charAt(num.length-(i+1))];
+							if(han != '') str += han+danA[i];
+							if(i == 4) str += '만';
+							if(i == 8) str += '억';
+							if(i == 12) str += '조';
+
+							result = str + result;
+						}
+
+						if(num != 0) result = result + '원';
+
+						$(objKor).text(result);
+
+						return result;
+					}
+
+
+					/**
+					 * 3자리 콤마 표기
+					 * @param str
+					 * @returns {string|string|jQuery}
+					 */
+					function numberWithCommas(str) {
+						str = str.toString().split(',').join('').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+						return $.trim(str);
+					}
+				})
+			</script>
+
+
+
+
+
 
 			<!-- s: 통장표기입력 bottom sheet -->
 			<div class="modal_popup modal_bottom_sheet hide" data-popup="bankbook_bottom_sheet">
