@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+	<script src="/resources/js/jquery.mCustomScrollbar.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+			$('.btn_menu').click(function () {
+				$(this).parents('.popup_inner').addClass('open');
+			});
+			$('.btn_menu_close').click(function () {
+				$(this).parents('.popup_inner').removeClass('open');
+			});
+
+			$('.guide_tit').click(function () {
+				$(this).toggleClass('active');
+				if ($(this).hasClass('active')) {
+					$(this).find('a').attr('title', '접기');
+				} else {
+					$(this).find('a').attr('title', '펼치기');
+				}
+			})
+
+			$('.btn_guide_view a').click(function () {
+				$('.btn_guide_view a').removeClass('active');
+				$(this).addClass('active');
+				if ($('.btn_list_view').hasClass('active')) {
+					$('.guide_con').addClass('list_view')
+				} else {
+					$('.guide_con').removeClass('list_view')
+				}
+			})
+
+			$('.menu_list h4').click(function () {
+				$(this).toggleClass('active');
+				if ($(this).hasClass('active')) {
+					$(this).find('a').attr('title', '접기');
+				} else {
+					$(this).find('a').attr('title', '펼치기');
+				}
+			})
+
+			// 디자인 가로 스크롤바 설정
+			$(".guide_con > ul").mCustomScrollbar({
+				axis: "x",
+				mouseWheel: false,
+				advanced: {
+					autoExpandHorizontalScroll: true
+				}
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<!-- 대표홈 헤더에만 .header_global_main 추가 (서브메인은 서브 헤더 동일 적용) -->
+		<header class="header header_global_main" data-inc="_inc-header-main.html"></header>
+		<div class="quick_menu_wrap" data-inc="_inc-dep-quickmenu.html"></div>
+		<article id="content">
+			<!-- s: 메인 본문 -->
+
+			<!-- Modal Popup : 이용가이드 -->
+			<div class="modal_popup modal_xxl show" data-popup="use_guide_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header guide_header">
+						<div>
+							<a href="#;" class="btn_back" onclick="closeModal('use_guide_popup',this)"><span
+									class="sr_only">뒤로가기</span></a>
+						</div>
+						<h3 class="popup_tit">이용가이드</h3>
+						<div>
+							<a href="#;" class="btn_home"><span class="sr_only">홈으로 가기</span></a>
+							<a href="#;" class="btn_menu"><span class="sr_only">전체 메뉴</span></a>
+						</div>
+					</div>
+					<div class="popup_body guide_body">
+						<div class="btn_guide_view txt_r">
+							<a href="#;" class="btn_card_view active">갤러리</a>
+							<a href="#;" class="btn_list_view">리스트</a>
+						</div>
+						<div class="guide_toggle_box">
+							<h4 class="guide_tit active"><a href="#;" title="접기">뱅킹 사전 준비</a></h4>
+							<div class="guide_con">
+								<ul>
+									<li class="bg01"><a href="#;">로그인</a></li>
+									<li class="bg02"><a href="#;">인증서 발급</a></li>
+									<li class="bg03"><a href="#;">타행인증서 등록</a></li>
+									<li class="bg04"><a href="#;">보안매체 발급</a></li>
+									<li class="bg05"><a href="#;">오픈뱅킹 등록</a></li>
+									<li class="bg06"><a href="#;">마이데이터 신청</a></li>
+									<li class="bg07"><a href="#;">문제해결</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="guide_toggle_box">
+							<h4 class="guide_tit"><a href="#;" title="펼치기">시작하기</a></h4>
+							<div class="guide_con">
+								<ul>
+									<li class="bg08"><a href="#;">인터넷뱅킹</a></li>
+									<li class="bg09"><a href="#;">스마트뱅킹</a></li>
+									<li class="bg10"><a href="#;">폰뱅킹</a></li>
+									<li class="bg11"><a href="#;">기업뱅킹</a></li>
+									<li class="bg12"><a href="#;">우체국 보험</a></li>
+									<li class="bg13"><a href="#;">오픈뱅킹</a></li>
+									<li class="bg14"><a href="#;">펀드투자</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="guide_toggle_box">
+							<h4 class="guide_tit"><a href="#;" title="펼치기">서비스별 이용방법</a></h4>
+							<div class="guide_con">
+								<ul>
+									<li class="bg15"><a href="#;">예금(개인)</a></li>
+									<li class="bg16"><a href="#;">예금(기업)</a></li>
+									<li class="bg17"><a href="#;">카드</a></li>
+									<li class="bg14"><a href="#;">펀드</a></li>
+									<li class="bg18"><a href="#;">외환</a></li>
+									<li class="bg12"><a href="#;">보험</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="guide_toggle_box">
+							<h4 class="guide_tit"><a href="#;" title="펼치기">맞춤설정</a></h4>
+							<div class="guide_con">
+								<ul>
+									<li class="bg19"><a href="#;">대표계좌</a></li>
+									<li class="bg20"><a href="#;">MY메뉴</a></li>
+									<li class="bg21"><a href="#;">관심상품</a></li>
+									<li class="bg22"><a href="#;">홈 빠른이체</a></li>
+									<li class="bg23"><a href="#;">알림받기</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="guide_menu">
+						<div class="menu_top">
+							<h3 class="tit">이용가이드</h3>
+							<a href="#;" class="btn_menu_close"><span class="sr_only">메뉴 닫기</span></a>
+						</div>
+						<div class="menu_con">
+							<div class="guide_tab_menu">
+								<ul>
+									<li><a href="#;">스마트뱅킹</a></li>
+									<li><a href="#;" class="active" title="선택됨">인터넷뱅킹</a></li>
+								</ul>
+							</div>
+							<div class="menu_list mt_8">
+								<h4 class="tit01 active"><a href="#;" title="접기">뱅킹 사전 준비</a></h4>
+								<ul>
+									<li><a href="#;">로그인</a></li>
+									<li><a href="#;">인증서 발급</a></li>
+									<li><a href="#;">타행인증서 등록</a></li>
+									<li><a href="#;">보안매체 발급</a></li>
+									<li><a href="#;">오픈뱅킹 등록</a></li>
+									<li><a href="#;">마이데이터 신청</a></li>
+									<li><a href="#;">문제해결</a></li>
+								</ul>
+							</div>
+							<div class="menu_list">
+								<h4 class="tit02"><a href="#;" title="펼치기">시작하기</a></h4>
+								<ul>
+									<li><a href="#;">인터넷뱅킹</a></li>
+									<li><a href="#;">스마트뱅킹</a></li>
+									<li><a href="#;">폰뱅킹</a></li>
+									<li><a href="#;">기업뱅킹</a></li>
+									<li><a href="#;">우체국 보험</a></li>
+									<li><a href="#;">오픈뱅킹</a></li>
+									<li><a href="#;">펀드투자</a></li>
+								</ul>
+							</div>
+							<div class="menu_list">
+								<h4 class="tit03"><a href="#;" title="펼치기">서비스별 이용방법</a></h4>
+								<ul>
+									<li><a href="#;">예금(개인)</a></li>
+									<li><a href="#;">예금(기업)</a></li>
+									<li><a href="#;">카드</a></li>
+									<li><a href="#;">펀드</a></li>
+									<li><a href="#;">외환</a></li>
+									<li><a href="#;">보험</a></li>
+								</ul>
+							</div>
+							<div class="menu_list">
+								<h4 class="tit04"><a href="#;" title="펼치기">맞춤설정</a></h4>
+								<ul>
+									<li><a href="#;">대표계좌</a></li>
+									<li><a href="#;">MY메뉴</a></li>
+									<li><a href="#;">관심상품</a></li>
+									<li><a href="#;">홈 빠른이체</a></li>
+									<li><a href="#;">알림받기</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 이용가이드 -->
+
+			<!-- e: 메인 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
