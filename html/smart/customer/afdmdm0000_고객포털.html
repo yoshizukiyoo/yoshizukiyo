@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/smart/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/smart/js/jquery-3.3.1.js"></script>
+	<script src="/resources/smart/js/jquery-ui.js"></script>
+	<script src="/resources/smart/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/smart/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/smart/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$('.layer_alarm_area .innner_alerm').slick({
+				arrows: false,
+				draggable: false,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				infinite: true,
+				false: true,
+				dots: true,
+				speed: 500,
+				autoplay: false,
+				autoplaySpeed: 3000
+			});
+
+			$('.product_sec .btn_group .btn').on('click', function () {
+				if ($(this).hasClass('on')) {
+					$(this).removeClass('on').children().find('.sr_only').text('펼치기');
+					$(this).parent('.btn_group').next().slideUp();
+
+				} else {
+					$(this).addClass('on').children().find('.sr_only').text('접기');
+					$(this).parent('.btn_group').next().slideDown();
+				}
+			});
+
+			//맞춤추천
+			$('.accordian_area .acc_btn').on('click', function () {
+				var btnGroup = $(this).parent();
+
+				if (btnGroup.hasClass('on')) {
+					btnGroup.removeClass('on').find('.sr_only').text('펼치기').parents('dt').next().slideUp();
+				} else {
+					btnGroup.addClass('on').find('.sr_only').text('접기').parents('dt').next().slideDown().parents('dl')
+						.siblings('dl').children('dd').slideUp().prev().removeClass('on').find('.sr_only').text('펼치기');
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-inc="_inc_header_report.html" data-page-title="금융리포트"></header>
+		<div id="content">
+			<!-- s: 본문 -->
+			<!-- s: 유저 상세 정보 -->
+			<div class="report_header">
+				<div class="flex_group">
+					<h2 class="user_name"><strong>홍길동</strong>님</h2>
+					<a href="#;" class="btn btn_icon">
+						<i class="ico ico_alert"></i>
+						<span class="sr_only">알림</span>
+						<span class="alert_badge">123</span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 유저 상세 정보 -->
+
+			<div class="layer_alarm_area">
+				<div class="innner_alerm">
+					<div class="layer_top_alarm">
+						<!-- s: 알람 타입1 -->
+						<div class="container">
+							<div class="alarm_cont">
+								<!-- s: 알람 레이어 본문 -->
+								<div class="icon">
+									<i class="ico ico_alarm"></i>
+									<h3 class="sr_only">알람</h3>
+								</div>
+								<div class="cont">
+									<div class="status">
+										<p>신청 진행중 <span class="txt_red">1</span>건</p>
+										<a href="#;" class="btn btn_xs btn_round btn_white ml_1">카드발급신청</a>
+									</div>
+									<p class="subject">
+										<strong>우체국 어디서나 하이브리드 체크카드(VISA)</strong>
+									</p>
+									<div class="mt_2">
+										<a href="#;" class="btn btn_md btn_outline_default btn_round">
+											<span>관련 상담 신청</span>
+										</a>
+										<a href="#;" class="btn btn_md btn_primary btn_round ml_1">
+											<i class="ico ico_comment_white"></i>
+											<span>이어서 진행</span>
+										</a>
+									</div>
+								</div>
+								<!-- e: 알람 레이어 본문 -->
+							</div>
+						</div>
+						<!-- e: 알람 타입1 -->
+					</div>
+
+					<div class="layer_top_alarm bg_lightblue">
+						<!-- s: 알람 타입2 -->
+						<div class="container">
+							<div class="alarm_cont">
+								<!-- s: 알람 레이어 본문 -->
+								<div class="icon">
+									<i class="ico ico_al_birth"></i>
+									<h3 class="sr_only">생일축하</h3>
+								</div>
+								<div class="cont">
+									<p class="subject">
+										<strong>홍길동</strong>님, 생일을 진심으로 축하드려요.
+									</p>
+									<p class="desc">가정의 건강과 행복을 기원합니다.</p>
+								</div>
+								<!-- e: 알람 레이어 본문 -->
+							</div>
+						</div>
+						<!-- e: 알람 타입2 -->
+					</div>
+
+
+					<div class="layer_top_alarm  bg_lightblue">
+						<!-- s: 알람 타입3 -->
+						<div class="container">
+							<div class="alarm_cont">
+								<!-- s: 알람 레이어 본문 -->
+								<div class="icon">
+									<i class="ico ico_al_grade"></i>
+									<h3 class="sr_only">등급알림</h3>
+								</div>
+								<div class="cont">
+									<p class="subject">
+										고객등급이 <strong>MVP</strong>에서 <strong>S-MVP</strong>로 올랏어요.
+									</p>
+									<p class="desc">추가혜택을 확인해보세요.</p>
+								</div>
+								<!-- e: 알람 레이어 본문 -->
+							</div>
+						</div>
+						<!-- e: 알람 타입3 -->
+					</div>
+
+					<div class="layer_top_alarm  bg_lightblue">
+						<!-- s: 알람 타입3 -->
+						<div class="container">
+							<div class="alarm_cont">
+								<!-- s: 알람 레이어 본문 -->
+								<div class="icon">
+									<i class="ico ico_al_grade"></i>
+									<h3 class="sr_only">만기알림</h3>
+								</div>
+								<div class="cont">
+									<p class="sup">
+										고객님의 소중한 만기일이 도래했어요.
+									</p>
+									<p class="subject"><strong class="txt_light">가치모아적금 만기일</strong> : 2022.2.30</p>
+								</div>
+								<!-- e: 알람 레이어 본문 -->
+							</div>
+						</div>
+						<!-- e: 알람 타입3 -->
+					</div>
+				</div>
+
+				<button type="button" class="btn btn_icon btn_close_alarm"
+					onclick="$(this).closest('.layer_alarm_area').slideUp('fast');">
+					<i class="ico ico_close"></i>
+					<span class="sr_only">알람 닫기</span>
+				</button>
+			</div>
+
+			<!-- s: 멤버쉽 영역 -->
+			<div class="report_sec user_info">
+				<div class="box box_shadow mb_5">
+					<ul class="point_list">
+						<li>
+							<span class="flex_group">
+								<em>멤버십포인트</em>
+								<strong>10,528P</strong>
+							</span>
+						</li>
+						<li>
+							<span class="flex_group">
+								<em>이벤트캐시</em>
+								<strong>2,500원</strong>
+							</span>
+						</li>
+						<li>
+							<span class="flex_group">
+								<em>쿠폰 <a href="#;" class="btn btn_xsm bg_lightgray ml_1">전환</a></em>
+								<strong>1개</strong>
+							</span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="tag_area">
+					<ul class="hash_tag_list">
+						<li><span class="hash_tag">폰뱅킹</span></li>
+						<li><span class="hash_tag">VM뱅킹</span></li>
+						<li><span class="hash_tag">인터넷뱅킹</span></li>
+						<li><span class="hash_tag">바이오</span></li>
+						<li><span class="hash_tag">포스트페이</span></li>
+						<li><span class="hash_tag">멤버십</span></li>
+						<li><span class="hash_tag bg_lightgray">제휴카드</span></li>
+						<li><span class="hash_tag bg_lightgray">자동이체</span></li>
+						<li><span class="hash_tag bg_lightgray">급여이체</span></li>
+					</ul>
+				</div>
+			</div>
+			<!-- e: 멤버쉽 영역 -->
+
+			<!-- s: 고객등급 영역 -->
+			<div class="report_sec sub_main_box">
+				<div class="flex_group section_header mb_5">
+					<h3 class="report_tit01 mb_0">고객등급</h3>
+					<a href="#;" class="btn_more_gray">더보기</a>
+				</div>
+
+				<div class="grad_area">
+					<div class="l">
+						<div class="grade_category indi">
+							<div>
+								<strong>MVP</strong>
+								<span>예금</span>
+							</div>
+							<span class="current_score">
+								<a href="#;">3,100점</a>
+							</span>
+						</div>
+					</div>
+					<div class="r">
+						<div class="grade_category insure">
+							<div>
+								<strong>Silver</strong>
+								<span>보험</span>
+							</div>
+							<span class="current_score">
+								<a href="#;">100점</a>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="grade_score">
+					<div class="top txt_c">
+						<span class="txt_sm txt_gray txt_normal  grade_star v_mid">
+							<strong class="txt_bold">S-MVP</strong> 등급까지 남은 점수 <strong class="txt_normal">200점</strong>!
+						</span>
+					</div>
+
+					<ul class="grade_list mt_7">
+						<li><span>일반</span></li>
+						<li><strong>VIP</strong></li>
+						<li class="on"><strong>MVP</strong></li>
+						<li><strong>S-MVP</strong></li>
+						<li><strong>Premium</strong></li>
+					</ul>
+
+					<p class="date"><em>유효기간 :</em>2021. 12. 31</p>
+				</div>
+			</div>
+			<!-- e: 고객등급 영역 -->
+
+			<!-- s: 보유자산 영역 -->
+			<div class="report_sec product_sec">
+				<h3 class="report_tit01 mb_4">보유자산</h3>
+				<div class="prd_header">
+					<ul class="prd_list">
+						<li class="on">
+							<span class="item">
+								<i class="ico ico_product_01"></i>
+								<strong>입출금</strong>
+							</span>
+						</li>
+						<li class="on">
+							<span class="item">
+								<i class="ico ico_product_02"></i>
+								<strong>예금(거치식)</strong>
+							</span>
+						</li>
+						<li class="on">
+							<span class="item">
+								<i class="ico ico_product_03"></i>
+								<strong>적금(적립식)</strong>
+							</span>
+						</li>
+						<li class="on">
+							<span class="item">
+								<i class="ico ico_product_04"></i>
+								<strong>보장보험</strong>
+							</span>
+						</li>
+						<li>
+							<span class="item">
+								<i class="ico ico_product_05"></i>
+								<strong>저축보험</strong>
+							</span>
+						</li>
+						<li class="on">
+							<span class="item">
+								<i class="ico ico_product_06"></i>
+								<strong>펀드</strong>
+							</span>
+						</li>
+						<li>
+							<span class="item">
+								<i class="ico ico_product_07"></i>
+								<strong>가계대월</strong>
+							</span>
+						</li>
+						<li>
+							<span class="item">
+								<i class="ico ico_product_08"></i>
+								<strong>대출</strong>
+							</span>
+						</li>
+					</ul>
+
+				</div>
+
+				<div class="prd_body">
+					<div class="chart_area">
+						<img src="/resources/smart/img/main/_sample_product_chart.jpg" alt="">
+					</div>
+					<!-- 기본클래스 bul
+						예금-입출금 .bg_yellow
+						예금-거치식 .bg_lightblue
+						예금-적립식 .bg_blue
+						펀드 .bg_green
+						보험 .bg_lightorange
+						필요시 클래스 추가 가능
+					-->
+					<div class="chart_detail">
+						<ul>
+							<li>
+								<em><span class="bul bg_yellow"></span>예금-입출금 <small class="per">9.21%</small></em>
+								<strong>457,298원</strong>
+							</li>
+							<li>
+								<em><span class="bul bg_lightblue"></span>예금-거치식 <small class="per">9.21%</small></em>
+								<strong>457,298원</strong>
+							</li>
+							<li>
+								<em><span class="bul bg_blue"></span>예금-적립식 <small class="per">9.21%</small></em>
+								<strong>457,298원</strong>
+							</li>
+							<li>
+								<em><span class="bul bg_green"></span>펀드 <small class="per">9.21%</small></em>
+								<strong>457,298원</strong>
+							</li>
+							<li>
+								<em><span class="bul bg_lightorange"></span>보험 <small class="per">9.21%</small></em>
+								<strong>457,298원</strong>
+							</li>
+						</ul>
+						<div class="flex_group total_price">
+							<em>우체국 자산합계</em>
+							<strong>35,578,388원</strong>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn_group txt_c">
+					<a href="#;" class="btn btn_md btn_round btn_outline_default">
+						상세 자산 목록 보기
+						<span>
+							<i class="ico ico_chevron_down_md ml_1"></i><span class="sr_only">펼치기</span>
+						</span>
+					</a>
+				</div>
+
+				<div class="financial_detail">
+					<div class="container">
+
+						<div class="detail_header">
+							<ul class="tab_list">
+								<li class="on">
+									<a href="#tab01">
+										<i class="ico ico_rep_dep"></i>
+										<strong>예금</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#tab02">
+										<i class="ico ico_rep_ins"></i>
+										<strong>보험</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#tab03" class="">
+										<i class="ico ico_rep_fund"></i>
+										<strong>펀드</strong>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="tab_container">
+							<!-- s: 탭 예금 영역 -->
+							<div class="tab_cont" id="tab01">
+								<h4 class="sr_only">예금</h4>
+
+								<span class="assets_area">
+									<em class="sup">현재 예금 잔액</em>
+									<strong class="price">75,678,900<span>원</span></strong>
+								</span>
+								<div class="txt_c mt_8 mb_5">
+									<strong class="report_tit02 block">보험 보장분석</strong>
+								</div>
+
+								<div class="chart_area">
+									<img src="/resources/smart/img/main/_sample_product_chart02.jpg" alt="">
+								</div>
+
+								<div class="assets_list">
+									<ul class="list list_line">
+										<li>
+											<a href="#;">
+												<em class="sup">주거래입출금통장</em>
+												<strong class="price">11,644,200원</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#;">
+												<em class="sup">주거래입출금통장</em>
+												<strong class="price">11,644,200원</strong>
+											</a>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+							<!-- e: 탭 예금 영역 -->
+
+							<!-- s: 탭 보험 영역 -->
+							<div class="tab_cont" id="tab02">
+								<h4 class="sr_only">보험</h4>
+
+								<span class="assets_area">
+									<em class="sup">보험 계약 잔액</em>
+									<strong class="price">14,678,900<span>원</span></strong>
+								</span>
+
+								<div class="flex_group">
+									<span class="assets_area">
+										<em class="sup_sm">월 납입액</em>
+										<strong class="price_sm">557,330<span>원</span></strong>
+									</span>
+									<span class="assets_area">
+										<em class="sup_sm">보험 사고 지급액</em>
+										<strong class="price_sm">75,678,900<span>원</span></strong>
+									</span>
+								</div>
+
+								<!-- s: 데이터 없음 -->
+								<div class="empty_area">
+									<strong>가입된 보장보험이 없어요.</strong>
+								</div>
+								<!-- e: 데이터 없음 -->
+
+								<!-- s: 차트 영역 -->
+								<div class=" txt_c mt_7">
+									<strong class="report_tit02 block">보험 보장분석</strong>
+									<span class="block txt_r">
+										<a href="#;" class="btn btn_xsm btn_round">전문가 보장분석 신청</a>
+									</span>
+								</div>
+								<div class="chart_area  mt_6">
+									<img src="/resources/smart/img/main/_sample_product_chart03.jpg" alt="">
+								</div>
+								<!-- e: 차트 영역 -->
+
+								<!-- s: 내게 맞춘 자동추천 영역 -->
+								<div class="flex_group list_header">
+									<div class="header_l">
+										<h5 class="tit"><i class="ico ico_best_only mr_1"></i><strong>내게 맞춘</strong> 자동 추천</h5>
+										<ul class="hash_tag_list">
+											<li><span class="hash_tag">빅데이터기반</span></li>
+											<li><span class="hash_tag">맞춤추천</span></li>
+										</ul>
+									</div>
+									<a href="#;" class="btn_more_gray">
+										더보기
+									</a>
+								</div>
+
+								<div class="inner_scroll ins">
+									<ul class="box_list">
+										<li>
+											<a href="#;" class="item item_hash">
+												<strong class="tit tit_md">무배당 우체국 안전벨트보험
+													무배당 우체국 안전벨트보험</strong>
+												<dl class="prd_info">
+													<dt>가입고객</dt>
+													<dd class="total"><strong>450,826</strong>명</dd>
+												</dl>
+												<ul class="hash_tag_list">
+													<li><span class="hash_tag txt_sm">교통재해 </span></li>
+													<li><span class="hash_tag txt_sm">교통사고</span></li>
+													<li><span class="hash_tag txt_sm">의료비종합보장 </span></li>
+													<li><span class="hash_tag txt_sm">나이관계없음</span></li>
+													<li><span class="hash_tag txt_sm">최고1억원보장 </span></li>
+													<li><span class="hash_tag txt_sm">휴일보장 </span></li>
+													<li><span class="hash_tag txt_sm">세제혜택</span></li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#;" class="item item_hash">
+												<strong class="tit tit_md">무배당 우체국 안전벨트보험</strong>
+												<dl class="prd_info">
+													<dt>가입고객</dt>
+													<dd class="total"><strong>450,826</strong>명</dd>
+												</dl>
+												<ul class="hash_tag_list">
+													<li><span class="hash_tag txt_sm">교통재해 </span></li>
+													<li><span class="hash_tag txt_sm">교통사고</span></li>
+													<li><span class="hash_tag txt_sm">의료비종합보장 </span></li>
+													<li><span class="hash_tag txt_sm">나이관계없음</span></li>
+													<li><span class="hash_tag txt_sm">최고1억원보장 </span></li>
+													<li><span class="hash_tag txt_sm">휴일보장 </span></li>
+													<li><span class="hash_tag txt_sm">세제혜택</span></li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#;" class="item item_hash">
+												<strong class="tit tit_md">무배당 우체국 안전벨트보험
+													무배당 우체국 안전벨트보험</strong>
+												<dl class="prd_info">
+													<dt>가입고객</dt>
+													<dd class="total"><strong>450,826</strong>명</dd>
+												</dl>
+												<ul class="hash_tag_list">
+													<li><span class="hash_tag txt_sm">교통재해 </span></li>
+													<li><span class="hash_tag txt_sm">교통사고</span></li>
+													<li><span class="hash_tag txt_sm">의료비종합보장 </span></li>
+													<li><span class="hash_tag txt_sm">나이관계없음</span></li>
+													<li><span class="hash_tag txt_sm">최고1억원보장 </span></li>
+													<li><span class="hash_tag txt_sm">휴일보장 </span></li>
+													<li><span class="hash_tag txt_sm">세제혜택</span></li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#;" class="item item_hash">
+												<strong class="tit tit_md">무배당 우체국 안전벨트보험
+													무배당 우체국 안전벨트보험</strong>
+												<dl class="prd_info">
+													<dt>가입고객</dt>
+													<dd class="total"><strong>450,826</strong>명</dd>
+												</dl>
+												<ul class="hash_tag_list">
+													<li><span class="hash_tag txt_sm">교통재해 </span></li>
+													<li><span class="hash_tag txt_sm">교통사고</span></li>
+													<li><span class="hash_tag txt_sm">의료비종합보장 </span></li>
+													<li><span class="hash_tag txt_sm">나이관계없음</span></li>
+													<li><span class="hash_tag txt_sm">최고1억원보장 </span></li>
+													<li><span class="hash_tag txt_sm">휴일보장 </span></li>
+													<li><span class="hash_tag txt_sm">세제혜택</span></li>
+												</ul>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<!-- e: 내게 맞춘 자동추천 영역 -->
+
+
+								<div class="assets_list">
+									<ul class="list list_line">
+										<li>
+											<a href="#;">
+												<em class="sup">주거래입출금통장</em>
+												<strong class="price">11,644,200원</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#;">
+												<em class="sup">주거래입출금통장</em>
+												<strong class="price">11,644,200원</strong>
+											</a>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+							<!-- e: 탭 보험 영역 -->
+
+							<!-- s: 탭 펀드 영역 -->
+							<div class="tab_cont" id="tab03">
+								<h4 class="sr_only">펀드</h4>
+
+
+								<div class=" txt_c mt_7">
+									<strong class="report_tit02 block">최근 3개월 투자금액</strong>
+									<span class="block txt_r">
+										<a href="#;" class="btn btn_xsm btn_round">수익률 조회</a>
+									</span>
+								</div>
+
+								<div class="chart_area  mt_6">
+									<img src="/resources/smart/img/main/_sample_product_chart04.jpg" alt="">
+								</div>
+
+								<!-- s: 데이터 없음 -->
+								<div class="empty_area">
+									<strong>투자중인 펀드가 없어요.</strong>
+								</div>
+								<!-- e: 데이터 없음 -->
+
+								<!-- s: 많이 판매된 펀드 영역 -->
+								<div class="flex_group list_header">
+									<div class="header_l">
+										<h5 class="tit"><i class="ico ico_best_sale mr_1"></i><strong>많이 판매된</strong> 펀드!</h5>
+										<ul class="hash_tag_list">
+											<li><span class="hash_tag">우체국펀드랭킹</span></li>
+										</ul>
+									</div>
+									<a href="#;" class="btn_more_gray">
+										더보기
+									</a>
+								</div>
+
+								<div class="inner_scroll fund">
+									<ul class="box_list">
+										<li>
+											<a href="#;" class="item item_hash">
+												<span class="sup"><em>MMF</em>매우낮은위험</span>
+												<strong class="tit tit_md">삼성MMF법인제1호삼성MMF법
+													인제1호삼성MMF법인제1호</strong>
+												<span class="prd_info txt_r">
+													<strong class="total">450,826<span>명</span></strong>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#;" class="item item_hash">
+												<span class="sup"><em>MMF</em>매우낮은위험</span>
+												<strong class="tit tit_md">삼성MMF법인제1호삼성MMF법
+													인제1호삼성MMF법인제1호</strong>
+												<span class="prd_info txt_r">
+													<strong class="total">450,826<span>명</span></strong>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#;" class="item item_hash">
+												<span class="sup"><em>MMF</em>매우낮은위험</span>
+												<strong class="tit tit_md">삼성MMF법인제1호삼성MMF법
+													인제1호삼성MMF법인제1호</strong>
+												<span class="prd_info txt_r">
+													<strong class="total">450,826<span>명</span></strong>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#;" class="item item_hash">
+												<span class="sup"><em>MMF</em>매우낮은위험</span>
+												<strong class="tit tit_md">삼성MMF법인제1호삼성MMF법
+													인제1호삼성MMF법인제1호</strong>
+												<span class="prd_info txt_r">
+													<strong class="total">450,826<span>명</span></strong>
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<!-- e: 내게 맞춘 자동추천 영역 -->
+
+
+								<div class="assets_list">
+									<ul class="list list_line">
+										<li>
+											<a href="#;">
+												<em class="sup">우리중소형고배당30투자신탁1호</em>
+												<strong class="price">11,644,200원</strong>
+											</a>
+										</li>
+										<li>
+											<a href="#;">
+												<em class="sup">주거래입출금통장</em>
+												<strong class="price">11,644,200원</strong>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- e: 탭 펀드 영역 -->
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<!-- e: 보유자산 영역 -->
+
+			<!-- s: 맞춤추천 영역 -->
+			<div class="report_sec best_sec">
+				<h3 class="report_tit01 mb_4">맞춤추천</h3>
+				<h4 class="report_subtit"><i class="ico ico_like_sm mr_1"></i> 내 관심 상품 <span class="num pl_1">4</span></h4>
+				<div class="inner_scroll">
+					<ul class="box_list">
+						<li>
+							<a href="#" class="item">
+								<span class="label label_yellow">예금</span>
+								<strong class="tit tit_md">매일모아 e적금</strong>
+								<span class="date">2021-03-21</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="item">
+								<span class="label label_red">보험</span>
+								<strong class="tit tit_md">(무)온라인 어린이 보험</strong>
+								<span class="date">2021-03-21</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="item">
+								<span class="label label_green">펀드</span>
+								<strong class="tit tit_md">한국투자 크레딧 포커스 EGS 증권자 투자신탁 1호(채권) C</strong>
+								<span class="date">2021-03-21</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="item">
+								<span class="label label_blue">카드</span>
+								<strong class="tit tit_md">우체국 어디서나 하이브리드 체크카드</strong>
+								<span class="date">2021-03-21</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="accordian_area">
+					<dl>
+						<dt>
+							<button type="button" class="acc_btn">
+								<span class="img_area">
+									<img src="/resources/smart/img/main/img_round_gender.png" alt="">
+								</span>
+								<div class="content_area">
+									<strong><span>같은 20대 (여)</span> 많이 가입했어요</strong>
+									<ul class="hash_group">
+										<li><span class="hash_tag">같은나이</span></li>
+										<li><span class="hash_tag">연령통계</span></li>
+									</ul>
+									<span class="arrow_area">
+										<span class="sr_only">펼치기</span>
+									</span>
+								</div>
+							</button>
+						</dt>
+						<dd class="pb_0">
+							<div class="chart_total">
+								<strong>123,123명</strong>
+								<small class="date">2021.07 <span>기준</span></small>
+							</div>
+
+							<!-- s: 차트영역 -->
+							<div class="flex_chart_group mb_5">
+								<div class="txt_c">
+									<div class="chart_area">
+										<img src="/resources/smart/img/main/_sample_product_chart05.jpg" alt="">
+									</div>
+									<div class="chart_detail">
+										<ul class="row_list">
+											<li>
+												<em><span class="bul bg_yellow"></span>예적금 <small class="per">9.21%</small></em>
+											</li>
+											<li>
+												<em><span class="bul bg_green"></span>펀드 <small class="per">9.21%</small></em>
+											</li>
+											<li>
+												<em><span class="bul bg_lightorange"></span>보험 <small class="per">9.21%</small></em>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="txt_c">
+									<div class="chart_area">
+										<img src="/resources/smart/img/main/_sample_product_chart06.jpg" alt="">
+									</div>
+									<div class="chart_detail">
+										<ul class="row_list">
+											<li>
+												<em><span class="bul bg_blue"></span>카드있음 <small class="per">9.21%</small></em>
+											</li>
+											<li>
+												<em><span class="bul bg_darkgray"></span>카드없음 <small class="per">9.21%</small></em>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- e: 차트영역 -->
+
+							<h4 class="report_tit01 mb_3 mt_3"><i class="ico ico_bank_sm mr_1"></i>예금</h4>
+							<span class="flex_group">
+								<em>평균 가입기간</em>
+								<strong class="txt_bold">24개월</strong>
+							</span>
+							<span class="flex_group">
+								<em>월 평균 입금 금액</em>
+								<strong class="txt_bold">987,654원</strong>
+							</span>
+
+							<div class="inner_scroll deposit">
+								<ul class="box_list">
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_yellow">예금</span>
+												<strong class="grade_badge grade_badge_one">1</strong>
+											</div>
+											<strong class="tit tit_md">매일모아 e적금</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_yellow">예금</span>
+												<strong class="grade_badge grade_badge_two">2</strong>
+											</div>
+											<strong class="tit tit_md">(무)온라인 어린이 보험</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<div class="item_header">
+												<span class="label label_yellow">예금</span>
+												<strong class="grade_badge grade_badge_tree">3</strong>
+											</div>
+											<strong class="tit tit_md">한국투자 크레딧 포커스 EGS 증권자 투자신탁 1호(채권) C</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</div>
+
+							<!-- s: 보험 영역 -->
+							<h4 class="report_tit01 mb_3 mt_3"><i class="ico ico_ins_sm mr_1"></i>보험</h4>
+							<span class="flex_group">
+								<em>평균 보험 계약기간</em>
+								<strong class="txt_bold">10년</strong>
+							</span>
+							<span class="flex_group">
+								<em>월 평균 보헙 납입금액</em>
+								<strong class="txt_bold">987,654원</strong>
+							</span>
+
+							<div class="inner_scroll ins">
+								<ul class="box_list">
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_red">보험</span>
+												<strong class="grade_badge grade_badge_one">1</strong>
+											</div>
+											<strong class="tit tit_md">매일모아 e적금</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_red">보험</span>
+												<strong class="grade_badge grade_badge_two">2</strong>
+											</div>
+											<strong class="tit tit_md">(무)온라인 어린이 보험</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<div class="item_header">
+												<span class="label label_red">보험</span>
+												<strong class="grade_badge grade_badge_tree">3</strong>
+											</div>
+											<strong class="tit tit_md">한국투자 크레딧 포커스 EGS 증권자 투자신탁 1호(채권) C</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- e: 보험 영역 -->
+
+							<!-- s: 펀드 영역 -->
+							<h4 class="report_tit01 mb_3 mt_3"><i class="ico ico_fund_sm mr_1"></i>펀드</h4>
+							<span class="flex_group">
+								<em>평균 펀드 투자기간</em>
+								<strong class="txt_bold">100개월</strong>
+							</span>
+							<span class="flex_group">
+								<em>월 평균 펀드 투자금액</em>
+								<strong class="txt_bold">987,654원</strong>
+							</span>
+
+							<div class="inner_scroll fund">
+								<ul class="box_list">
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_green">펀드</span>
+												<strong class="grade_badge grade_badge_one">1</strong>
+											</div>
+											<strong class="tit tit_md">매일모아 e적금</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_green">펀드</span>
+												<strong class="grade_badge grade_badge_two">2</strong>
+											</div>
+											<strong class="tit tit_md">(무)온라인 어린이 보험</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<div class="item_header">
+												<span class="label label_green">펀드</span>
+												<strong class="grade_badge grade_badge_tree">3</strong>
+											</div>
+											<strong class="tit tit_md">한국투자 크레딧 포커스 EGS 증권자 투자신탁 1호(채권) C</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- e: 펀드 영역 -->
+
+							<!-- s: 카드 영역 -->
+							<h4 class="report_tit01 mb_3 mt_3"><i class="ico ico_card_sm mr_1"></i>카드</h4>
+							<span class="flex_group">
+								<em>평균 보유 카드개수</em>
+								<strong class="txt_bold">1개</strong>
+							</span>
+							<span class="flex_group">
+								<em>월 평균 펀드 투자금액</em>
+								<strong class="txt_bold">500,000원</strong>
+							</span>
+
+							<div class="inner_scroll card">
+								<ul class="box_list">
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_blue">카드</span>
+												<strong class="grade_badge grade_badge_two">2</strong>
+											</div>
+											<strong class="tit tit_md">매일모아 e적금</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_blue">카드</span>
+												<strong class="grade_badge grade_badge_two">2</strong>
+											</div>
+											<strong class="tit tit_md">(무)온라인 어린이 보험</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<div class="item_header">
+												<span class="label label_blue">카드</span>
+												<strong class="grade_badge grade_badge_two">2</strong>
+											</div>
+											<strong class="tit tit_md">한국투자 크레딧 포커스 EGS 증권자 투자신탁 1호(채권) C</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item  item_md">
+											<div class="item_header">
+												<span class="label label_blue">카드</span>
+												<strong class="grade_badge grade_badge_two">2</strong>
+											</div>
+											<strong class="tit tit_md">우체국 어디서나 하이브리드 체크카드</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- e: 카드 영역 -->
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<button type="button" class="acc_btn">
+								<span class="img_area">
+									<img src="/resources/smart/img/main/img_round_best.png" alt="">
+								</span>
+								<div class="content_area">
+									<strong><span>내게 맞춘</span> 자동 추천</strong>
+									<ul class="hash_group">
+										<li><span class="hash_tag">빅데이터기반</span></li>
+										<li><span class="hash_tag">맞춤추천</span></li>
+									</ul>
+									<span class="arrow_area">
+										<span class="sr_only">펼치기</span>
+									</span>
+								</div>
+							</button>
+						</dt>
+						<dd>
+							<div class="inner_scroll only">
+								<ul class="box_list">
+									<li>
+										<a href="#" class="item item_md">
+											<span class="label label_yellow">예금</span>
+											<strong class="tit tit_md">매일모아 e적금</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<span class="label label_red">보험</span>
+											<strong class="tit tit_md">(무)온라인 어린이 보험</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<span class="label label_blue">카드</span>
+											<strong class="tit tit_md">우체국 어디서나 하이브리드
+												체크카드(VISA)</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<button type="button" class="acc_btn">
+								<span class="img_area">
+									<img src="/resources/smart/img/main/img_round_select.png" alt="">
+								</span>
+								<div class="content_area">
+									<strong><span>100만 고객</span>이 선택했어요</strong>
+									<ul class="hash_group">
+										<li><span class="hash_tag">우체국베스트셀러</span></li>
+									</ul>
+									<span class="arrow_area">
+										<span class="sr_only">펼치기</span>
+									</span>
+								</div>
+							</button>
+						</dt>
+						<dd>
+							<div class="inner_scroll only">
+								<ul class="box_list">
+									<li>
+										<a href="#" class="item item_md">
+											<span class="label label_yellow">예금</span>
+											<strong class="tit tit_md">
+												매일모아 e적금
+											</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<span class="label label_red">보험</span>
+											<strong class="tit tit_md">
+												(무)온라인 어린이 보험
+											</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item item_md">
+											<span class="label label_green">펀드</span>
+											<strong class="tit tit_md">
+												멀티에셋국공채법인MMF 투자신탁1호[국공채]
+											</strong>
+											<dl class="prd_info">
+												<dt>가입고객</dt>
+												<dd class="total"><strong>1,450,500</strong>명</dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<!-- e: 맞춤추천 영역 -->
+
+			<!-- s: eCRM 추천영역 -->
+			<div class="report_sec ecrm_area">
+				<h3 class="sr_only">eCRM 추천</h3>
+				<div class="inner_scroll bg_n">
+					<ul class="box_list">
+						<li>
+							<a href="#" class="item">
+								<span class="label label_yellow">예금</span>
+								<strong class="tit">매일모아 e적금</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="item">
+								<span class="label label_red">보험</span>
+								<strong class="tit">(무)온라인 어린이 보험</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="item">
+								<span class="label label_green">펀드</span>
+								<strong class="tit">한국투자 크레딧 포커스 EGS 증권자 투자신탁 1호(채권) C</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="item">
+								<span class="label label_blue">카드</span>
+								<strong class="tit">우체국 어디서나 하이브리드 체크카드</strong>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- e: eCRM 추천영역 -->
+
+			<!-- s: 공통 레이어 로딩 -->
+			<div class="common_layers"></div>
+			<!-- e: 공통 레이어 로딩 -->
+
+			<!-- e: 본문 -->
+		</div>
+	</div>
+</body>
+
+</html>
