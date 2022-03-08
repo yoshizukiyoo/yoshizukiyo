@@ -24,6 +24,15 @@
 	<script>
 		$(document).ready(function () {
 
+			var tabALL = $('.tab_list > li.on a').attr('href', '#tab_contAll');
+			tabALL.each(function () {
+				$('.tab_cont').show();
+			})
+
+			tabALL.on('click', function () {
+				$('.tab_cont').show();
+			})
+
 		});
 	</script>
 </head>
@@ -58,12 +67,13 @@
 			</div>
 
 			<!-- s: 탭메뉴 -->
-			<nav class="tab_menu tab_menu1">
+			<nav class="tab_menu tab_menu1 scroll_enable">
 				<ul class="tab_list">
-					<li class="on"><a href="#" title="선택됨"><span>전체(10건)</span></a></li>
-					<li><a href="#"><span>메뉴(2건)</span></a></li>
-					<li><a href="#"><span>다이렉트(4건)</span></a></li>
-					<li><a href="#"><span>상담전용(4건)</span></a></li>
+					<li class="on"><a href="#tab_contAll" title="선택됨"><span>전체(10건)</span></a></li>
+					<li><a href="#tab_cont1"><span>메뉴(2건)</span></a></li>
+					<li><a href="#tab_cont2"><span>상품(4건)</span></a></li>
+					<li><a href="#tab_cont3"><span>웹페이지(4건)</span></a></li>
+					<li><a href="#tab_cont4"><span>FAQ</span></a></li>
 				</ul>
 			</nav>
 			<!-- e: 탭메뉴 -->
@@ -72,7 +82,7 @@
 			<div class="container pt_3">
 
 				<!-- s: 메뉴 검색결과 -->
-				<div class="section mt_0">
+				<div class="tab_cont mb_10" id="tab_cont1">
 					<div class="clfx">
 						<h2 class="f_l tit1">
 							메뉴(6건)
@@ -118,11 +128,11 @@
 				</div>
 				<!-- e: 메뉴 검색결과 -->
 
-				<!-- s: 다이렉트 검색결과 -->
-				<div class="section">
+				<!-- s: 상품 검색결과 -->
+				<div class="tab_cont mb_10" id="tab_cont2">
 					<div class="clfx">
 						<h2 class="f_l tit1">
-							다이렉트(2건)
+							상품(2건)
 						</h2>
 					</div>
 					<ul class="mobile_issuance_list list_type3">
@@ -158,20 +168,33 @@
 						</li>
 					</ul>
 				</div>
-				<!-- e: 다이렉트 검색결과 -->
+				<!-- e: 상품 검색결과 -->
 
-				<!-- s: 상담전용 검색결과 -->
-				<div class="section">
+				<!-- s: 웹페이지 검색결과 -->
+				<div class="tab_cont mb_10" id="tab_cont3">
 					<div class="clfx">
 						<h2 class="f_l tit1">
-							상담전용(0건)
+							웹페이지(2건)
 						</h2>
 					</div>
 					<div class="complete_txt">
 						<strong class="txt_lg">검색결과가 없습니다.</strong>
 					</div>
 				</div>
-				<!-- e: 상담전용 검색결과 -->
+				<!-- e: 웹페이지 검색결과 -->
+
+				<!-- s: FAQ 검색결과 -->
+				<div class="tab_cont" id="tab_cont4">
+					<div class="clfx">
+						<h2 class="f_l tit1">
+							FAQ(0건)
+						</h2>
+					</div>
+					<div class="complete_txt">
+						<strong class="txt_lg">검색결과가 없습니다.</strong>
+					</div>
+				</div>
+				<!-- e: FAQ 검색결과 -->
 
 			</div>
 			<!-- e: 통합검색 -->
