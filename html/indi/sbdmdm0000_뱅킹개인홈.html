@@ -60,6 +60,60 @@
 				accessibility: false,
 			});
 		});
+		// 퀵메뉴 하단바
+		$(document).ready(function quickNavTabbar() {
+			const $quickNav = $('.bottom_quickbar02'),
+				$handler = $('.quickbar_handler');
+
+			if ($('.bottom_quickbar02:visible').length) {
+				$('body').addClass('use_quickbar');
+				$quickNav.css('bottom', 80 - $quickNav.outerHeight());
+				$handler.click(function (e) {
+					e.preventDefault();
+					quickNavControl('toggle');
+				});
+				$('.bottom_quickbar02').on('scroll touchmove mousewheel', function (e) {
+					e.preventDefault();
+					e.stopPropagation();
+				});
+				let mstartY = 0,
+					mendY = 0,
+					startY = 0,
+					endY = 0,
+					range = 30;
+				$quickNav.on('mousedown', function (e) {
+					mstartY = e.pageY;
+				}).on('mouseup', function (e) {
+					mendY = e.pageY;
+					if (mstartY - mendY > range) {
+						quickNavControl('expand');
+					} else if (mendY - mstartY > range) {
+						quickNavControl('collapse');
+					}
+				}).on('touchstart', function (e) {
+					startY = e.originalEvent.changedTouches[0].screenY;
+				}).on('touchend', function (e) {
+					endY = e.originalEvent.changedTouches[0].screenY;
+					if (startY - endY > range) {
+						quickNavControl('expand');
+					} else if (endY - startY > range) {
+						quickNavControl('collapse');
+					}
+				});
+			}
+
+			function quickNavControl(status) {
+				if (status == 'expand') {
+					$quickNav.addClass('opened');
+				} else if (status == 'collapse') {
+					$quickNav.removeClass('opened');
+				} else if (status == 'toggle') {
+					$quickNav.toggleClass('opened');
+				}
+				var text = $quickNav.hasClass('opened') ? '접기' : '펼치기';
+				$handler.children('.sr_only').text(text);
+			}
+		});
 	</script>
 </head>
 
@@ -340,9 +394,107 @@
 			</div>
 			<!-- e: 이벤트 배너 -->
 
-			<!-- s: 퀵바 로딩 _inc_bottom_quickbar.html -->
-			<div class="bottom_quickbar"></div>
-			<!-- e: 퀵바 로딩 -->
+			<!-- s: 퀵바 -->
+			<div class="bottom_quickbar02">
+				<!-- s: 도움말 -->
+				<div class="help_btn_area">
+					<a href="#;" class="btn btn_help">
+						<i class="ico ico_lg_help"></i>
+						<span class="sr_only">도움말</span>
+					</a>
+					<a href="#" class="btn btn_lnb_close">
+						<i class="ico ico_close_hlep"></i>
+						<span class="sr_only">닫기</span>
+					</a>
+				</div>
+				<!-- e: 도움말 -->
+
+				<a href="#;" class="quickbar_handler">
+					<span class="sr_only">펼치기</span>
+				</a>
+				<ul class="quickmenu_list">
+					<!-- s: 로그인 전 -->
+					<!-- <li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu9.png" alt="" class="icon">
+							<span>처음가이드</span>
+						</a>
+					</li>
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu13.png" alt="" class="icon">
+							<span>로그인</span>
+						</a>
+					</li> -->
+					<!-- e: 로그인 전 -->
+					<!-- s: 로그인 후 -->
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu1.png" alt="" class="icon">
+							<span>금융리포트</span>
+						</a>
+					</li>
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu2.png" alt="" class="icon">
+							<span>My 데이터</span>
+						</a>
+					</li>
+					<!-- e: 로그인 후 -->
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu3.png" alt="" class="icon">
+							<span>상품몰</span>
+						</a>
+					</li>
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu4.png" alt="" class="icon">
+							<span>AI챗봇</span>
+						</a>
+					</li>
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu5.png" alt="" class="icon">
+							<span>전계좌조회</span>
+						</a>
+					</li>
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu6.png" alt="" class="icon">
+							<span>출석체크</span>
+						</a>
+					</li>
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu7.png" alt="" class="icon">
+							<span>선물하기</span>
+						</a>
+					</li>
+					<li>
+						<a href="#;">
+							<img src="/resources/img/common/ico_quickmenu8.png" alt="" class="icon">
+							<span>이벤트</span>
+						</a>
+					</li>
+				</ul>
+				<div class="container">
+					<div class="menu_setting clfx">
+						<div class="f_l">
+							<a href="#;" onclick="allmenuControl('open', this); return false;">
+								<span>전체메뉴</span>
+							</a>
+						</div>
+						<div class="f_r">
+							<a href="#;" onclick="openModal('layerQuickMenuSetting', this);" title="퀵메뉴">
+								<i class="ico ico_settings_sm_gray"></i>
+								<span>설정</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- e: 퀵바 -->
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
