@@ -31,50 +31,6 @@
 			$('.btn_menu_close').click(function () {
 				$(this).parents('.popup_inner').removeClass('open');
 			});
-
-			// 토글 버튼
-			$('.guide_tit').click(function () {
-				$(this).toggleClass('active');
-				if ($(this).hasClass('active')) {
-					$(this).find('a').attr('title', '접기');
-				} else {
-					$(this).find('a').attr('title', '펼치기');
-				}
-			})
-			$('.menu_list h4').click(function () {
-				$(this).toggleClass('active');
-				if ($(this).hasClass('active')) {
-					$(this).find('a').attr('title', '접기');
-				} else {
-					$(this).find('a').attr('title', '펼치기');
-				}
-			})
-
-			// 카드형, 목록형 버튼
-			$('.btn_guide_view a').click(function () {
-				$('.btn_guide_view a').removeClass('active');
-				$(this).addClass('active');
-				if ($('.btn_list_view').hasClass('active')) {
-					$('.guide_con').addClass('list_view')
-					$('.guide_con > ul').mCustomScrollbar('destroy');
-				} else {
-					$('.guide_con').removeClass('list_view')
-					$('.guide_con > ul').mCustomScrollbar('update');
-					scrollBar()
-				}
-			})
-
-			//디자인 가로 스크롤바 설정
-			function scrollBar() {
-				$(".guide_con > ul").mCustomScrollbar({
-					axis: "x",
-					mouseWheel: false,
-					advanced: {
-						autoExpandHorizontalScroll: true
-					}
-				});
-			}
-			scrollBar()
 		});
 	</script>
 </head>
@@ -105,13 +61,15 @@
 					</div>
 
 					<div class="popup_body guide_bridge">
-						<aside class="breadcrumb pt_0"></aside>
-						<div class="img_box mt_5">
+						<aside class="breadcrumb pt_0 mb_5"></aside>
+						<div class="img_box">
 							<img src="/resources/img/main/img_main_thumb.jpg" alt="메인 화면 이미지">
 						</div>
 						<div class="guide_info_box mt_4">
 							<div class="chk_tit">뱅킹 서브메인 <strong>200%</strong> 활용하기</div>
-							<p class="bul_txt mt_3">메뉴로 이동하지 않아도 내 대표계좌 정보를 한눈에!</p>
+							<p class="bul_txt mt_3">메뉴로 이동하지 않아도 내 대표계좌 정보를 한눈에!
+								<a href="#;" class="link_underline ml6">대표계좌 설정하기</a>
+							</p>
 						</div>
 						<div class="bridge_link_wrap">
 							<ul class="bridge_link">
@@ -168,6 +126,7 @@
 							</div>
 						</div>
 					</div>
+					<!-- s: 이용가이드 메뉴 -->
 					<div class="guide_menu">
 						<div class="menu_top">
 							<h3 class="tit">이용가이드</h3>
@@ -227,6 +186,7 @@
 							</div>
 						</div>
 					</div>
+					<!-- e: 이용가이드 메뉴 -->
 				</div>
 			</div>
 			<!-- e: 이용가이드(브릿지) -->
