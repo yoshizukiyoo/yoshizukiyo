@@ -97,7 +97,6 @@ $(function () {
 
 		// 접근성
 		// setCaption();
-
 		if (_ui_dev_mode) console.log(type + ': UI setup is complete.');
 	}
 });
@@ -474,12 +473,15 @@ $(function () {
 	$('.opt').customSelect();
 });
 
-// 테이블 스크롤 표시
 function tableScroll() {
+	// 테이블 스크롤 표시
 	$('.tbl_data').each(function () {
 		var $table = $(this).children('table');
 		var minW = $table.css('min-width');
 		var maxH = $table.css('max-height');
+		var $fixedCol = $('col.col_fixed', this);
+		var colLength = $fixedCol.length ? $fixedCol.index() : 0;
+		var fixedWidth = 0;
 
 		// 세로 스크롤
 		if ($table.css('max-height') != 'none') {
@@ -494,16 +496,51 @@ function tableScroll() {
 				'min-width': '',
 				'max-height': '',
 			});
-			$table.clone().appendTo('.thead');
+
+			var thead = $('.thead', this);
+			$table.clone().appendTo(thead);
 			$('thead', $table).remove();
 			$('.thead tbody', this).remove();
 		}
 
 		// 가로 스크롤
 		if ($(this).width() < $(this).children().width()) {
+			// 좌측 고정 영역 너비 계산
+			if ($fixedCol.length) {
+				$('th', this).each(function (index) {
+					fixedWidth += $(this).outerWidth();
+					if (index == colLength) {
+						fixedWidth = fixedWidth + 10;
+						return false;
+					}
+				});
+			}
+
+			// 가로 스크롤 처리
 			$(this).addClass('tbl_scroll_x');
 			$(this).wrapInner('<div class="scroll_track"></div>');
+
+			// 좌측 틀 고정
+			if ($fixedCol.length) {
+				$(this).addClass('tbl_left_fixed')
+					.find('.scroll_track').clone().prependTo($(this))
+					.end().addClass('left_column')
+					.end().addClass('right_column');
+				$('.left_column .inner', this).css('min-width', '').parent().width(fixedWidth);
+				$('.left_column colgroup, .left_column tr', this).each(function () {
+					$(this).children().eq(colLength).nextAll().remove();
+				});
+				$('.right_column .inner', this).css('min-width', parseInt(minW, 10) - fixedWidth);
+				$('.right_column colgroup, .right_column tr', this).each(function () {
+					$(this).children().eq(colLength + 1).prevAll().remove();
+				});
+			}
 		}
+	});
+
+	// 가로 틀고정시 세로스크롤 동기화
+	$('.tbody').scroll(function (e) {
+		$(this).closest('.scroll_track').siblings('.scroll_track').find('.tbody').scrollTop($(this).scrollTop());
 	});
 }
 
