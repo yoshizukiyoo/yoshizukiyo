@@ -5,6 +5,7 @@ $popup-size: (alert: 300px,
 	sm: 400px,
 	md: 600px,
 	lg: 900px,
+	expand: 100%,
 	// xl: 880px,
 	// xxl: 1200px,
 );
@@ -103,9 +104,9 @@ $popup-size: (alert: 300px,
 // }
 
 /* 모달 팝업 */
-.modal_open {
-	overflow: hidden;
-}
+// .modal_open {
+// 	overflow: hidden;
+// }
 
 .modal_popup {
 	position: fixed;
@@ -117,6 +118,7 @@ $popup-size: (alert: 300px,
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition-duration: 0.3s;
 
 	.dimed {
 		position: fixed;
@@ -214,6 +216,81 @@ $popup-size: (alert: 300px,
 				width: 1px;
 				height: 1px;
 				background: none;
+			}
+		}
+	}
+
+	&.modal_expand {
+		padding: $spacing;
+		transition-duration: 0.3s;
+
+		.popup_inner {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+
+		.popup_header {
+			position: relative;
+			flex: 0 0 auto;
+			height: 100px;
+			display: flex;
+			justify-content: space-between;
+			padding-right: 75px;
+			line-height: 1.25;
+
+			.left,
+			.right {
+				flex: 0 0 auto;
+				display: flex;
+				align-items: center;
+			}
+
+			.left {
+				max-width: calc(100vw - 340px);
+			}
+
+			.center {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate3d(-50%, -50%, 0);
+			}
+
+			.popup_tit {
+				display: block;
+				max-width: 100%;
+				@include text-ellipsis(1, 1.2em);
+				font-size: 26px;
+				font-weight: 500;
+			}
+		}
+
+		.popup_body {
+			flex: 1 1 auto;
+			overflow-y: auto;
+			max-height: none;
+			padding: 0 30px 30px;
+		}
+
+		.btn_close_popup {
+			top: 33px;
+			right: $spacing;
+			width: 34px;
+			height: 34px;
+			background: url(#{$url-img-common}/ico_lg_collapse@2x.png) no-repeat center center;
+			background-size: 34px auto;
+		}
+
+		&.hide {
+			.popup_inner {
+				transform: scale(.6);
+			}
+		}
+
+		&.show {
+			.popup_inner {
+				transform: scale(1);
 			}
 		}
 	}
