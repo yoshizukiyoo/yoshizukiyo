@@ -23,17 +23,21 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-			$('.layer_alarm_area .innner_alerm').slick({
-				arrows: false,
-				draggable: false,
-				slidesToScroll: 1,
-				slidesToShow: 1,
-				infinite: true,
-				false: true,
-				dots: true,
-				speed: 500,
-				autoplay: false,
-				autoplaySpeed: 3000
+			$('.layer_alarm_area .layer_top_alarm').each(function () {
+				if ($('.layer_top_alarm .item').length > 1) {
+					$(this).not('.slick-initialized').slick({
+						arrows: false,
+						draggable: true,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+						infinite: true,
+						false: true,
+						dots: true,
+						speed: 500,
+						autoplay: false,
+						autoplaySpeed: 3000
+					});
+				}
 			});
 
 			$('.product_sec .btn_group .btn').on('click', function () {
@@ -81,103 +85,94 @@
 			<!-- e: 유저 상세 정보 -->
 
 			<div class="layer_alarm_area">
-				<div class="innner_alerm">
-					<div class="layer_top_alarm">
-						<!-- s: 알람 타입1 -->
-						<div class="container">
-							<div class="alarm_cont">
-								<!-- s: 알람 레이어 본문 -->
-								<div class="icon">
-									<i class="ico ico_alarm"></i>
-									<h3 class="sr_only">알람</h3>
-								</div>
-								<div class="cont">
-									<div class="status">
-										<p>신청 진행중 <span class="txt_red">1</span>건</p>
-										<a href="#;" class="btn btn_xs btn_round btn_white ml_1">카드발급신청</a>
-									</div>
-									<p class="subject">
-										<strong>우체국 어디서나 하이브리드 체크카드(VISA)</strong>
-									</p>
-									<div class="mt_2">
-										<a href="#;" class="btn btn_md btn_outline_default btn_round">
-											<span>관련 상담 신청</span>
-										</a>
-										<a href="#;" class="btn btn_md btn_primary btn_round ml_1">
-											<i class="ico ico_comment_white"></i>
-											<span>이어서 진행</span>
-										</a>
-									</div>
-								</div>
-								<!-- e: 알람 레이어 본문 -->
+				<div class="layer_top_alarm">
+					<!-- s: 알람 타입1 -->
+					<div class="container item">
+						<div class="alarm_cont">
+							<!-- s: 알람 레이어 본문 -->
+							<div class="icon">
+								<i class="ico ico_alarm"></i>
+								<h3 class="sr_only">알람</h3>
 							</div>
-						</div>
-						<!-- e: 알람 타입1 -->
-					</div>
-
-					<div class="layer_top_alarm bg_lightblue">
-						<!-- s: 알람 타입2 -->
-						<div class="container">
-							<div class="alarm_cont">
-								<!-- s: 알람 레이어 본문 -->
-								<div class="icon">
-									<i class="ico ico_al_birth"></i>
-									<h3 class="sr_only">생일축하</h3>
+							<div class="cont">
+								<div class="status">
+									<p>신청 진행중 <span class="txt_red">1</span>건</p>
+									<a href="#;" class="btn btn_xs btn_round btn_white ml_1">카드발급신청</a>
 								</div>
-								<div class="cont">
-									<p class="subject">
-										<strong>홍길동</strong>님, 생일을 진심으로 축하드려요.
-									</p>
-									<p class="desc">가정의 건강과 행복을 기원합니다.</p>
+								<p class="subject">
+									<strong>우체국 어디서나 하이브리드 체크카드(VISA)</strong>
+								</p>
+								<div class="mt_2">
+									<a href="#;" class="btn btn_md btn_outline_default btn_round">
+										<span>관련 상담 신청</span>
+									</a>
+									<a href="#;" class="btn btn_md btn_primary btn_round ml_1">
+										<i class="ico ico_comment_white"></i>
+										<span>이어서 진행</span>
+									</a>
 								</div>
-								<!-- e: 알람 레이어 본문 -->
 							</div>
+							<!-- e: 알람 레이어 본문 -->
 						</div>
-						<!-- e: 알람 타입2 -->
 					</div>
+					<!-- e: 알람 타입1 -->
 
-
-					<div class="layer_top_alarm  bg_lightblue">
-						<!-- s: 알람 타입3 -->
-						<div class="container">
-							<div class="alarm_cont">
-								<!-- s: 알람 레이어 본문 -->
-								<div class="icon">
-									<i class="ico ico_al_grade"></i>
-									<h3 class="sr_only">등급알림</h3>
-								</div>
-								<div class="cont">
-									<p class="subject">
-										고객등급이 <strong>MVP</strong>에서 <strong>S-MVP</strong>로 올랏어요.
-									</p>
-									<p class="desc">추가혜택을 확인해보세요.</p>
-								</div>
-								<!-- e: 알람 레이어 본문 -->
+					<!-- s: 알람 타입2 -->
+					<div class="container item bg_lightblue">
+						<div class="alarm_cont">
+							<!-- s: 알람 레이어 본문 -->
+							<div class="icon">
+								<i class="ico ico_al_birth"></i>
+								<h3 class="sr_only">생일축하</h3>
 							</div>
-						</div>
-						<!-- e: 알람 타입3 -->
-					</div>
-
-					<div class="layer_top_alarm  bg_lightblue">
-						<!-- s: 알람 타입3 -->
-						<div class="container">
-							<div class="alarm_cont">
-								<!-- s: 알람 레이어 본문 -->
-								<div class="icon">
-									<i class="ico ico_al_grade"></i>
-									<h3 class="sr_only">만기알림</h3>
-								</div>
-								<div class="cont">
-									<p class="sup">
-										고객님의 소중한 만기일이 도래했어요.
-									</p>
-									<p class="subject"><strong class="txt_light">가치모아적금 만기일</strong> : 2022.2.30</p>
-								</div>
-								<!-- e: 알람 레이어 본문 -->
+							<div class="cont">
+								<p class="subject">
+									<strong>홍길동</strong>님, 생일을 진심으로 축하드려요.
+								</p>
+								<p class="desc">가정의 건강과 행복을 기원합니다.</p>
 							</div>
+							<!-- e: 알람 레이어 본문 -->
 						</div>
-						<!-- e: 알람 타입3 -->
 					</div>
+					<!-- e: 알람 타입2 -->
+
+					<!-- s: 알람 타입3 -->
+					<div class="container item bg_lightblue">
+						<div class="alarm_cont">
+							<!-- s: 알람 레이어 본문 -->
+							<div class="icon">
+								<i class="ico ico_al_grade"></i>
+								<h3 class="sr_only">등급알림</h3>
+							</div>
+							<div class="cont">
+								<p class="subject">
+									고객등급이 <strong>MVP</strong>에서 <strong>S-MVP</strong>로 올랏어요.
+								</p>
+								<p class="desc">추가혜택을 확인해보세요.</p>
+							</div>
+							<!-- e: 알람 레이어 본문 -->
+						</div>
+					</div>
+					<!-- e: 알람 타입3 -->
+
+					<!-- s: 알람 타입4 -->
+					<div class="container item bg_lightblue">
+						<div class="alarm_cont">
+							<!-- s: 알람 레이어 본문 -->
+							<div class="icon">
+								<i class="ico ico_al_grade"></i>
+								<h3 class="sr_only">만기알림</h3>
+							</div>
+							<div class="cont">
+								<p class="sup">
+									고객님의 소중한 만기일이 도래했어요.
+								</p>
+								<p class="subject"><strong class="txt_light">가치모아적금 만기일</strong> : 2022.2.30</p>
+							</div>
+							<!-- e: 알람 레이어 본문 -->
+						</div>
+					</div>
+					<!-- e: 알람 타입4 -->
 				</div>
 
 				<button type="button" class="btn btn_icon btn_close_alarm"

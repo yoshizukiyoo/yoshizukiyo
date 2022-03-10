@@ -39,17 +39,22 @@
 				});
 			});
 
-			$('.logged_info_layer .inner_scroll').slick({
-				arrows: false,
-				draggable: true,
-				slidesToScroll: 1,
-				slidesToShow: 1,
-				infinite: true,
-				false: true,
-				dots: true,
-				speed: 500,
-				autoplay: true,
-				autoplaySpeed: 5000
+			//2022-03-10 스크립트 수정
+			$('.logged_info_layer .inner_scroll').each(function () {
+				if ($('.inner_scroll .item').length > 1) {
+					$(this).not('.slick-initialized').slick({
+						arrows: false,
+						draggable: true,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+						infinite: true,
+						false: true,
+						dots: true,
+						speed: 500,
+						autoplay: true,
+						autoplaySpeed: 5000
+					});
+				}
 			});
 
 			var layerHeight = $(".membership_sec").offset().top - 250;
