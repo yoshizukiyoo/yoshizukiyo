@@ -187,3 +187,41 @@ $(function () {
 		topEvent: function () {}
 	};
 })(jQuery);
+
+
+// 컨텐츠 영역 폰트사이즈 확대
+var fontZoom;
+
+function checkFontSize() {
+	$('#content .container *').not('#content .modal_popup .container *').each(function () {
+		$(this).attr('data-font', $(this).css('font-size'));
+	});
+}
+
+function fontSizeReset() {
+	$('#content .container *').each(function () {
+		$(this).removeAttr('style data-font');
+		fontZoom = 1;
+	});
+}
+
+function fontSize() {
+	checkFontSize();
+
+	if (fontZoom == undefined) {
+		fontZoom = 1;
+	} else if (fontZoom == '4') {
+		fontSizeReset();
+		return false;
+	}
+
+	$('#content .container *').not('#content .modal_popup .container *').each(function () {
+		var obj = $(this);
+		var font = Number($(obj).attr('data-font').slice(0, 2));
+		$(obj).attr('style', 'font-size:' + (font + 1) + 'px !important').attr('data-font', font + 1);
+		//$(obj).css('font-size', font + 1).attr('data-font', font + 1);
+		// $(obj).attr('data-font', $(obj).css('font-size'));
+	});
+
+	fontZoom++;
+}
