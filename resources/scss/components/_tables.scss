@@ -9,6 +9,10 @@
 }
 
 .tbl_scroll_x {
+	table {
+		table-layout: fixed;
+	}
+
 	.container & {
 		margin: 0 -1 * $spacing;
 	}
@@ -17,6 +21,44 @@
 		position: relative;
 		padding: 0 $spacing;
 		overflow-x: auto;
+	}
+
+	.inner_left_fixed {
+		display: flex;
+
+		.left {
+			flex: 0 0 auto;
+		}
+
+		.right {
+			flex: 1 1 auto;
+		}
+	}
+
+	&.tbl_left_fixed {
+		display: flex;
+
+		th,
+		td {
+			white-space: nowrap;
+		}
+
+		.left_column {
+			flex: 0 0 auto;
+			border-right: 3px solid #ddd;
+
+			.inner {
+				padding-right: 0;
+			}
+		}
+
+		.right_column {
+			flex: 1 1 auto;
+
+			.inner {
+				padding-left: 0;
+			}
+		}
 	}
 }
 
