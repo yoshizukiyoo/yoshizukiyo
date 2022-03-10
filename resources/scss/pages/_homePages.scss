@@ -12,6 +12,7 @@
 
 	.header {
 		.titlebar {
+			height: 65px;
 			padding-left: $spacing;
 		}
 
@@ -21,6 +22,78 @@
 			img {
 				width: 124px;
 				vertical-align: top;
+			}
+		}
+	}
+
+	.staff_info {
+		display: flex;
+		align-items: center;
+
+		img {
+			width: 48px;
+			height: 48px;
+			overflow: hidden;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.name {
+			margin-left: 13px;
+			font-size: $font-size-sm;
+			color: $black;
+			letter-spacing: -.05em;
+
+			strong {
+				display: block;
+				margin-top: 5px;
+				font-size: $font-size-lg;
+			}
+		}
+	}
+
+	.btn_alert {
+		position: relative;
+
+		.badge {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: -1px;
+			right: -4px;
+			min-width: 15px;
+			height: 15px;
+			padding: 0 3px;
+			border: 2px solid $white;
+			border-radius: 15px;
+			background-color: #ff883a;
+			font-size: 9px;
+			font-weight: 600;
+			color: $white;
+		}
+	}
+
+	.check_lock {
+		input {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+		}
+
+		label {
+			display: block;
+			width: 28px;
+			height: 28px;
+			background: url(#{$url-img-common}/ico_sm_unlock@2x.png) no-repeat 0 0;
+			background-size: auto 28px;
+		}
+
+		&.on {
+			label {
+				background-image: url(#{$url-img-common}/ico_sm_lock@2x.png);
+				background-position: -1px 0;
 			}
 		}
 	}
@@ -56,15 +129,38 @@
 
 		.item_new,
 		.item_old {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
+			>.inner {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				text-align: center;
+				height: 100%;
+			}
+
+			.icon_area {
+				display: flex;
+				align-items: flex-end;
+				height: 215px;
+				margin: -94px 0 38px;
+			}
 
 			.txt {
+				position: relative;
 				font-size: 36px;
 				font-weight: 500;
 				color: $black;
+				letter-spacing: -.05em;
+
+				&:after {
+					content: '';
+					position: absolute;
+					right: 0;
+					bottom: -11px;
+					left: 0;
+					height: 2px;
+					background-color: $black;
+				}
 			}
 		}
 	}
@@ -77,29 +173,313 @@
 	// 우체국 고객
 	.item_old {
 		background-color: $bg-old;
+
+		&.type2 {
+			position: relative;
+
+			>.inner {
+				padding-bottom: 50px;
+			}
+
+			.txt {
+				&:after {
+					display: none;
+				}
+			}
+
+			.btn_group {
+				position: absolute;
+				right: 40px;
+				bottom: 70px;
+				left: 40px;
+			}
+		}
 	}
 
 	// 예약정보
 	.item_reserv {
+		position: relative;
 		background-color: #cae9c5;
+
+		>.inner {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			height: 100%;
+			padding: 0 40px 154px;
+		}
+
+		.lab_stat {
+			display: flex;
+			align-items: center;
+			position: absolute;
+			top: 30px;
+			left: 40px;
+			width: 79px;
+			height: 32px;
+			padding: 0 15px;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-size: auto 32px;
+			font-size: $font-size-md;
+			font-weight: 400;
+			letter-spacing: -.025em;
+
+			&.type1 {
+				color: $black;
+				background-image: url(#{$url-img}/content/bg_label_white@2x.png);
+			}
+
+			&.type2 {
+				color: $white;
+				background-image: url(#{$url-img}/content/bg_label_black@2x.png);
+			}
+		}
+
+		.name {
+			margin-top: 7px;
+			font-size: 24px;
+			font-weight: 400;
+			color: $black;
+			text-align: center;
+
+			strong {
+				display: block;
+				font-size: 30px;
+			}
+		}
+
+		.date {
+			margin-top: 70px;
+
+			li {
+				font-weight: 400;
+				font-size: 24px;
+				color: $black;
+				letter-spacing: -.05em;
+
+				strong {
+					font-weight: 600;
+				}
+
+				+li {
+					margin-top: 4px;
+				}
+			}
+
+			.tit {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 65px;
+				height: 25px;
+				margin: -2px 8px 0 0;
+				border: 1px solid $black;
+				border-radius: 13px;
+				font-size: $font-size-xxs;
+				font-weight: 500;
+				color: $darkgray;
+				vertical-align: middle;
+			}
+		}
+
+		.btn_group {
+			position: absolute;
+			right: 40px;
+			bottom: 60px;
+			left: 40px;
+		}
+
+		&.type2 {
+			.btn_group {
+				bottom: 70px;
+			}
+		}
 	}
 
 	// 퀵메뉴
 	.item_quick {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		position: relative;
 		background-color: #e5e5e5;
 		min-width: auto !important;
 		transition-duration: .3s;
 
+		.txt_r {
+			flex: 0 0 auto;
+		}
+
+		.quick_wrap {
+			display: flex;
+			align-items: center;
+			flex: 1 1 50%;
+		}
+
+		.quick_list {
+			width: 100%;
+			margin-top: -45px;
+
+			li {
+				a {
+					display: flex;
+					align-items: center;
+					overflow: hidden;
+					position: relative;
+					height: 65px;
+					padding: 0 50px 0 40px;
+					border-radius: 8px;
+					background-color: $white;
+					font-size: 24px;
+					font-weight: 500;
+					color: $black;
+					letter-spacing: -.05em;
+
+					&:after {
+						content: '';
+						position: absolute;
+						top: 50%;
+						right: 28px;
+						width: 16.5px;
+						height: 16.5px;
+						background: url(#{$url-img-common}/ico_external_link@2x.png);
+						background-size: auto 16.5px;
+						transform: translateY(-50%);
+					}
+				}
+
+				+li {
+					margin-top: 10px;
+				}
+			}
+
+			.ico {
+				margin-right: 15px;
+			}
+		}
+
+		.quick_ctrl {
+			position: absolute;
+			right: 40px;
+			bottom: 63px;
+			left: 40px;
+			font-size: $font-size-sm;
+			font-weight: 400;
+			color: #666;
+			letter-spacing: -.05em;
+
+			a {
+				text-decoration: underline;
+			}
+		}
+
 		// 열림 모드
 		&.opened {
 			width: 472px;
-			padding: 30px 40px;
+			padding: 30px 40px 100px;
 		}
 
 		// 닫힘 모드
 		&:not(.opened) {
 			width: 105px;
 			padding: 30px 20px;
+
+			.quick_list,
+			.quick_ctrl {
+				display: none;
+			}
 		}
+	}
+
+	// 진행 알림 투명 알림바
+	.notice_bar {
+		position: absolute;
+		right: 80px;
+		bottom: 80px;
+		left: 80px;
+		padding: 15px;
+		border-radius: 10px;
+		background-color: rgba($black, .5);
+		font-size: $font-size-xl;
+		font-weight: 500;
+		color: $white;
+		text-align: center;
+		letter-spacing: -.05em;
+	}
+
+	// 상담시작(예약고객)
+	.item_certify {
+		position: relative;
+		background-color: #ebebeb;
+
+		.inner {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			height: 100%;
+			padding: 0 40px 156px;
+		}
+
+		p {
+			color: $black;
+			letter-spacing: -.05em;
+		}
+
+		.txt1 {
+			margin-bottom: 115px;
+			font-size: 24px;
+			line-height: 33px;
+		}
+
+		.txt2 {
+			font-size: $font-size-lg;
+		}
+
+		.btn_xl {
+			padding: 0 35px;
+		}
+
+		.link {
+			position: absolute;
+			bottom: 85px;
+			left: 40px;
+			font-size: $font-size-lg;
+			color: $black;
+			letter-spacing: -.05em;
+
+			&:after {
+				content: '';
+				position: absolute;
+				right: 0;
+				bottom: -5px;
+				left: 0;
+				height: 1px;
+				background-color: $black;
+			}
+		}
+	}
+
+	.btn_start {
+		min-width: 215px;
+		border: 1px dashed #666;
+		border-radius: 30px;
+		background-color: rgba($white, .3);
+		color: $black;
+
+		.ico {
+			margin: -2px 0 0 5px;
+		}
+	}
+
+	.btn_prev {
+		position: fixed;
+		right: 17px;
+		bottom: 17px;
+		width: 45px;
+		height: 45px;
+		background: url(#{$url-img}/content/bg_menu@2x.png) no-repeat 0 0;
+		background-size: auto 45px;
 	}
 }

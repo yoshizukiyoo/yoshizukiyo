@@ -2,14 +2,385 @@
 .wrapper_bridge_staff {
 	background-color: #f6e3d8;
 
+	.staff_info {
+		display: flex;
+		align-items: center;
+		color: $black;
+		letter-spacing: -.05em;
+
+		img {
+			overflow: hidden;
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.name {
+			font-size: $font-size-lg;
+		}
+	}
+
+	.tit_page {
+		font-size: 22px;
+	}
+
+	.time_ctrl {
+		display: flex;
+		align-items: center;
+		height: 28px;
+		padding: 0 10px;
+		border: 1px solid $border-base;
+		border-radius: 6px;
+		font-size: $font-size-xs;
+
+		.txt {
+			color: $orange;
+		}
+	}
+
+	.btn_extend {
+		color: $gray;
+	}
+
+	.btn_end {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 28px;
+		padding: 0 13px;
+		border: 1px solid #a2a2a2;
+		border-radius: 6px;
+		font-size: $font-size-sm;
+		color: $gray;
+	}
+
+	.btn_alert {
+		position: relative;
+
+		.badge {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: -1px;
+			right: -4px;
+			min-width: 15px;
+			height: 15px;
+			padding: 0 3px;
+			border: 2px solid $white;
+			border-radius: 15px;
+			background-color: #ff883a;
+			font-size: 9px;
+			font-weight: 600;
+			color: $white;
+		}
+	}
+
+	.check_lock {
+		input {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+		}
+
+		label {
+			display: block;
+			width: 28px;
+			height: 28px;
+			background: url(#{$url-img-common}/ico_sm_unlock@2x.png) no-repeat 0 0;
+			background-size: auto 28px;
+		}
+
+		&.on {
+			label {
+				background-image: url(#{$url-img-common}/ico_sm_lock@2x.png);
+				background-position: -1px 0;
+			}
+		}
+	}
+
 	#content {
-		padding: 0 30px;
+		overflow-y: hidden;
 	}
 
 	.bottom_area {
 		height: 70px;
+
+		.container {
+			display: flex;
+			justify-content: center;
+			height: 100%;
+		}
+	}
+
+	.stat_list {
+		display: flex;
+		align-items: center;
+
+		li {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			letter-spacing: -.05em;
+
+			+li {
+				margin-left: 21px;
+			}
+		}
+	}
+
+	.lab_stat {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 70px;
+		height: 30px;
+		padding: 0 8px;
+		border-radius: 3px;
+		color: #000;
+		letter-spacing: -.05em;
+
+		span {
+			padding: 0 2px;
+
+			+span {
+				padding-left: 0;
+
+				&:before {
+					content: '';
+					display: inline-block;
+					margin: -2px 9px 0;
+					width: 1px;
+					height: 13px;
+					background-color: $darkgray;
+					vertical-align: middle;
+				}
+			}
+		}
+
+		&.type1 {
+			background-color: #ffebb5;
+		}
+
+		&.type2 {
+			background-color: #f5c9c2;
+		}
+
+		&.type3 {
+			background-color: #d2e9e0;
+		}
+
+		&.type4 {
+			background-color: #cfdeea;
+		}
+
+		&.type5 {
+			background-color: #c9d1df;
+		}
+
+		&.type6 {
+			background-color: #d6d0cc;
+		}
 	}
 }
 
 /* 직원 브릿지 */
-// 본문 내 스타일은 이곳에 정의해 주세요
+.bridge_staff_area {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding-bottom: 17px;
+
+	.staff_notice_area {
+		display: flex;
+		align-items: center;
+		flex: 0 0 auto;
+		height: 50px;
+		margin: 0 30px;
+		padding: 0 5px;
+		border-bottom: 1px dashed #dbb29b;
+		letter-spacing: -.025em;
+
+		.txt {
+			@include text-ellipsis(1, 24px);
+			max-width: calc(100% - 95px);
+			font-size: $font-size-md;
+		}
+
+		.btn_view {
+			position: relative;
+
+			&:after {
+				content: '';
+				position: absolute;
+				right: 0;
+				bottom: 0px;
+				left: 0;
+				height: 1px;
+				background-color: #575351;
+			}
+
+			.ico {
+				margin: -2px 0 0 3px;
+			}
+		}
+	}
+
+	.staff_service_wrap {
+		flex: 1 1 50%;
+		overflow-y: auto;
+		padding: 0 30px;
+
+		.item {
+			padding: 17px 0 28px;
+			letter-spacing: -.05em;
+
+			.date {
+				display: block;
+				margin: 0 0 10px 10px;
+				font-size: 22px;
+				font-weight: 400;
+
+				strong {
+					font-weight: 600;
+				}
+			}
+
+			// 오늘 날짜 강조 처리
+			&.item_today {
+				.date {
+					color: #dd3900;
+				}
+			}
+
+			// 요청건이 없을 경우
+			&.item_nodata {
+				display: flex;
+				align-items: center;
+				padding-bottom: 20px;
+
+				.date {
+					margin-bottom: 0;
+					color: #666;
+				}
+
+				.txt {
+					color: $gray;
+					font-size: $font-size-md;
+
+					&:before {
+						content: '';
+						display: inline-block;
+						width: 1px;
+						height: 16px;
+						margin: -2px 12px 0 17px;
+						background-color: $darkgray;
+						vertical-align: middle;
+					}
+				}
+			}
+
+			+.item {
+				border-top: 1px dashed #dbb29b;
+			}
+		}
+	}
+
+	.staff_service_list {
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 70px;
+			padding: 0 24px 0 22px;
+			border: 2px solid transparent;
+			border-radius: 10px;
+			box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .1);
+			background-color: $white;
+
+			// 예약시간 3시간 이내 도래
+			&.active {
+				border-color: #dd3900;
+			}
+
+			+li {
+				margin-top: 15px;
+			}
+
+			>div {
+				display: flex;
+				align-items: center;
+			}
+		}
+
+		.left {
+			flex: 1 1 50%;
+
+			.ico {
+				flex: 0 0 auto;
+			}
+		}
+
+		.right {
+			flex: 0 0 auto;
+			margin-left: 20px;
+		}
+
+		.time {
+			flex: 0 0 auto;
+			margin-left: 70px;
+			font-size: $font-size-xl;
+			font-weight: 400;
+
+			strong {
+				display: inline-block;
+				width: 55px;
+				font-weight: 600;
+				text-align: right;
+			}
+		}
+
+		.user_info {
+			flex: 1 1 50%;
+			margin-left: 80px;
+
+			.name {
+				font-size: 22px;
+			}
+
+			.type {
+				font-size: $font-size-xl;
+
+				&:before {
+					content: '';
+					display: inline-block;
+					width: 1px;
+					height: 16px;
+					margin: -2px 9px 0 8px;
+					background-color: $darkgray;
+					vertical-align: middle;
+				}
+			}
+		}
+
+		.btn_counsel_result {
+			border-bottom: 1px solid $darkgray;
+			font-size: $font-size-md;
+
+			.ico {
+				margin: -2px 0 0 3px;
+			}
+		}
+
+		.stat_area {
+			min-width: 170px;
+			text-align: center;
+		}
+
+		.btn_expand {
+			margin-left: 30px;
+		}
+	}
+}

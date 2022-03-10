@@ -24,7 +24,18 @@
 	<!-- 페이지 개별 스크립트 -->
 	<script>
 		$(document).ready(function () {
-
+			// 잠금 아이콘 토글
+			$('.check_lock input:checked').closest('.check_lock').addClass('on');
+			$('.check_lock input:checked').next('label').text('잠금');
+			$('.check_lock input').click(function () {
+				if ($(this).is(':checked')) {
+					$(this).closest('.check_lock').addClass('on');
+					$(this).next('label').find('span').text('잠금');
+				} else {
+					$(this).closest('.check_lock').removeClass('on');
+					$(this).next('label').find('span').text('잠금해제');
+				}
+			});
 		});
 	</script>
 </head>
@@ -39,59 +50,185 @@
 						<i class="ico ico_lg_back"></i>
 						<span class="sr_only">뒤로가기</span>
 					</a>
-					<h1 class="tit_page">빛가람우체국</h1>
-					<span class="ml_4">나예금</span>
+					<span class="staff_info">
+						<img src="/resources/img/content/img_staff@2x.png" alt="">
+						<h1 class="tit_page ml_2">빛가람우체국</h1>
+						<span class="name ml_4">나예금</span>
+					</span>
+					<span class="time_ctrl ml_2">
+						<i class="ico ico_clock_sm_black"></i>
+						<span class="txt ml_1">08:02</span>
+						<button type="button" class="btn_extend ml_1">연장</button>
+					</span>
+					<a href="#;" class="btn btn_end ml_2">마감</a>
 				</div>
-				<div class="right">
-					<div class="mr_4">
-						${우측 영역}
-					</div>
+				<div class="right pr_3">
+					<a href="#;" class="btn_alert ml_4">
+						<i class="ico ico_sm_alert"></i>
+						<span class="sr_only">알림</span>
+						<span class="badge">3</span>
+					</a>
+					<a href="#;" class="btn_set ml_3">
+						<i class="ico ico_sm_set"></i>
+						<span class="sr_only">설정</span>
+					</a>
+					<span class="check_lock ml_2">
+						<input type="checkbox" id="checkLock">
+						<label for="checkLock"><span class="sr_only">잠금해제</span></label>
+					</span>
 				</div>
 			</div>
 		</header>
 		<!-- e: 헤더 -->
 
-		<article id="content">
+		<article id="content" class="pb_0">
 			<!-- s: 본문 -->
 
-			<div>
-				[시템작업공지] 태블릿브랜치 시스템 점검 안내 (2022.03.04 00:00~03.05 09:00)
-			</div>
+			<div class="bridge_staff_area">
+				<div class="staff_notice_area">
+					<i class="ico ico_megaphone"></i>
+					<span class="txt ml_2">[시스템작업공지] 태블릿브랜치 시스템 점검 안내 (2022.01.04 00:00~01.05 09:00)</span>
+					<a href="#;" class="btn_view ml_3">
+						<span>상세</span>
+						<i class="ico ico_arr_right_gray"></i>
+					</a>
+				</div>
 
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
-			<p>contents</p>
+				<div class="staff_service_wrap">
+					<div class="item item_today">
+						<span class="date"><strong>2021</strong>년 <strong>12</strong>월 <strong>13</strong>일 월요일</span>
+						<ul class="staff_service_list">
+							<li>
+								<div class="left">
+									<i class="ico ico_request_stat3"></i>
+									<span class="time">오전 <strong>10:00</strong></span>
+									<div class="user_info">
+										<strong class="name">나예금</strong>
+										<span class="type">카드상담</span>
+									</div>
+								</div>
+								<div class="right">
+									<div class="stat_area">
+										<div class="lab_stat type5">
+											<span>종료</span>
+										</div>
+									</div>
+									<a href="#;" class="btn_expand">
+										<i class="ico ico_lg_expand"></i>
+										<span class="sr_only">신청상세</span>
+									</a>
+								</div>
+							</li>
+							<li class="active">
+								<div class="left">
+									<i class="ico ico_request_stat1"></i>
+									<span class="time">오전 <strong>11:00</strong></span>
+									<div class="user_info">
+										<strong class="name">나신규</strong>
+										<span class="type">예금신규</span>
+									</div>
+								</div>
+								<div class="right">
+									<a href="#" class="btn_counsel_result mr_4">
+										<span>상담결과등록</span>
+										<i class="ico ico_counsel_result"></i>
+									</a>
+									<div class="stat_area">
+										<div class="lab_stat type3">
+											<span>진행중</span>
+											<span>홍길동</span>
+										</div>
+									</div>
+									<a href="#;" class="btn_expand">
+										<i class="ico ico_lg_expand"></i>
+										<span class="sr_only">신청상세</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="left">
+									<i class="ico ico_request_stat2"></i>
+									<span class="time">오후 <strong>3:00</strong></span>
+									<div class="user_info">
+										<strong class="name">나신고</strong>
+										<span class="type">제신고</span>
+									</div>
+								</div>
+								<div class="right">
+									<a href="#" class="btn_counsel_result mr_4">
+										<span>상담결과등록</span>
+										<i class="ico ico_counsel_result"></i>
+									</a>
+									<div class="stat_area">
+										<div class="lab_stat type1">
+											<span>상담대기</span>
+										</div>
+									</div>
+									<a href="#;" class="btn_expand">
+										<i class="ico ico_lg_expand"></i>
+										<span class="sr_only">신청상세</span>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="item item_nodata">
+						<span class="date">2021년 12월 14일 화요일</span>
+						<p class="txt">요청 건이 없습니다.</p>
+					</div>
+					<div class="item">
+						<span class="date">2021년 12월 15일 수요일</span>
+						<ul class="staff_service_list">
+							<li>
+								<div class="left">
+									<i class="ico ico_request_stat2"></i>
+									<span class="time">오전 <strong>11:30</strong></span>
+									<div class="user_info">
+										<strong class="name">나상담</strong>
+										<span class="type">카드상담</span>
+									</div>
+								</div>
+								<div class="right">
+									<a href="#" class="btn_counsel_result mr_4">
+										<span>상담결과등록</span>
+										<i class="ico ico_counsel_result"></i>
+									</a>
+									<div class="stat_area">
+										<div class="lab_stat type1">
+											<span>상담대기</span>
+										</div>
+									</div>
+									<a href="#;" class="btn_expand">
+										<i class="ico ico_lg_expand"></i>
+										<span class="sr_only">신청상세</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="left">
+									<i class="ico ico_request_stat3"></i>
+									<span class="time">오후 <strong>2:00</strong></span>
+									<div class="user_info">
+										<strong class="name">나신고</strong>
+										<span class="type">제신고</span>
+									</div>
+								</div>
+								<div class="right">
+									<div class="stat_area">
+										<div class="lab_stat type6">
+											<span>취소</span>
+										</div>
+									</div>
+									<a href="#;" class="btn_expand">
+										<i class="ico ico_lg_expand"></i>
+										<span class="sr_only">신청상세</span>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
 			<!-- e: 본문 -->
 		</article>
@@ -99,8 +236,44 @@
 		<!-- s: 하단 영역 -->
 		<div class="bottom_area bg_white">
 			<div class="container">
-				상담대기 확인완료
-				진행중
+				<ul class="stat_list">
+					<li>
+						<div class="lab_stat type1">
+							<span>상담대기</span>
+						</div>
+						<span class="txt_gray ml_2">확인완료</span>
+					</li>
+					<li>
+						<div class="lab_stat type2">
+							<span>진행중</span>
+						</div>
+						<span class="txt_gray ml_2">진행중(본인)</span>
+					</li>
+					<li>
+						<div class="lab_stat type3">
+							<span>진행중</span>
+						</div>
+						<span class="txt_gray ml_2">진행중(다른직원)</span>
+					</li>
+					<li>
+						<div class="lab_stat type4">
+							<span>상담완료</span>
+						</div>
+						<span class="txt_gray ml_2">상담완료</span>
+					</li>
+					<li>
+						<div class="lab_stat type5">
+							<span>종료</span>
+						</div>
+						<span class="txt_gray ml_2">종료</span>
+					</li>
+					<li>
+						<div class="lab_stat type6">
+							<span>취소</span>
+						</div>
+						<span class="txt_gray ml_2">요청자취소</span>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<!-- e: 하단 영역 -->
