@@ -534,6 +534,17 @@ function tableScroll() {
 				$('.right_column colgroup, .right_column tr', this).each(function () {
 					$(this).children().eq(colLength + 1).prevAll().remove();
 				});
+
+				// 좌-우측 행 높이 동기화
+				var $rightTable = $('.right_column', this);
+				$('.left_column tr', this).each(function (i) {
+					if ($(this).height() != $rightTable.find('tr').eq(i).height()) {
+						var cellHeight = $(this).height() > $rightTable.find('tr').eq(i).height() ? $(this).height() : $rightTable.find('tr').eq(i).height();
+						// console.log(i + '번째 줄 높이 왼쪽 ' + $(this).height() + ', 오른쪽 ' + $rightTable.find('tr').eq(i).height() + '로 서로 다름');
+						$(this).height(cellHeight);
+						$rightTable.find('tr').eq(i).height(cellHeight);
+					}
+				});
 			}
 		}
 	});
