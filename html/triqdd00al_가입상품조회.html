@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 상품군 카드 슬라이더
+			$('.service_wrap > .inner').not('.slick-initialized').slick({
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				variableWidth: true,
+				infinite: true,
+				dots: false,
+				arrows: false,
+				speed: 1000,
+				autoplay: false,
+				accessibility: false
+			});
+
+			// 추천상품 여닫기
+			$('.recommend_service.opened').each(function () {
+				$(this).children('.cont').show();
+			});
+			$('.recommend_service .btn').click(function () {
+				var text = $(this).parents('.recommend_service').hasClass('opened') ? '펼치기' : '접기';
+				$(this).prop('title', text).closest('.recommend_service').toggleClass('opened').children('.cont')
+					.slideToggle();
+			});
+		});
+
+		$(window).on('load', function () {
+			// 상품군 스와이핑 이벤트
+			$('.myservice_list li a').click(function () {
+				var slideNo = $(this).data('slide');
+				$('.service_wrap > .inner').slick('slickGoTo', slideNo - 1);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<!-- .wrapper_single_type1 : 우체국고객 가입상품조회 싱글뷰 -->
+	<div class="wrapper wrapper_single_type1">
+		<header class="header" data-inc="_inc_header_service.html" data-page-title="가입상품조회"></header>
+		<article id="content" class="bg_lightprimary">
+			<!-- s: 본문 -->
+
+			<div class="service_wrap">
+				<div class="inner">
+					<!-- [D] 상품별 클래스
+							- 입출금 : service_type1
+							- 예금 : service_type2
+							- 적금 : service_type3
+							- 보장보험 : service_type4
+							- 저축보험 : service_type5
+							- 펀드 : service_type6
+							- 가계대월 : service_type7
+							- 대출 : service_type8
+							- 카드 : service_type9
+						-->
+					<div class="service_item service_type1">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service1_on"></i>
+									<span class="text">입출금</span>
+									<span class="badge">1</span>
+								</div>
+							</div>
+							<div class="right">
+								<dl class="total">
+									<dt class="tit">총 잔액</dt>
+									<dd class="amount">34,457,298원</dd>
+								</dl>
+							</div>
+						</div>
+						<ul class="item_list">
+							<li>
+								<div class="left">
+									<span class="name">우체국다드림통장</span>
+									<span class="account">000000-12-000000<a href="#;" class="btn btn_xs">상세</a></span>
+								</div>
+								<div class="right">
+									<span class="amount">34,457,298원</span>
+								</div>
+							</li>
+						</ul>
+						<div class="bot_banner">
+							<a href="#;" class="banner_item banner_type1">
+								<span class="tit">거래내역조회</span>
+								<div class="img_area">
+									<img src="../resources/img/content/img_service_banner1@2x.png" alt="">
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="service_item service_type2">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<span class="ico_area">
+										<i class="ico ico_service2_on"></i>
+									</span>
+									<span class="text">예금</span>
+									<span class="badge">1</span>
+								</div>
+							</div>
+							<div class="right">
+								<dl class="total">
+									<dt class="tit">총 잔액</dt>
+									<dd class="amount">100,000,000원</dd>
+								</dl>
+							</div>
+						</div>
+						<ul class="item_list">
+							<li>
+								<div class="left">
+									<span class="name">정기예금</span>
+									<span class="account">000000-10-000000<a href="#;" class="btn btn_xs">상세</a></span>
+								</div>
+								<div class="right">
+									<span class="date">
+										<i class="ico ico_clock_red"></i>
+										<span>만기일 : 2022.12.10</span>
+									</span>
+									<span class="amount">100,000,000원</span>
+								</div>
+							</li>
+						</ul>
+						<dl class="recommend_service">
+							<dt class="tit"><a href="#;" class="btn btn_toggle_service" title="접기">추천 거치식 예금</a></dt>
+							<dd class="cont">
+								<ul class="list">
+									<li>
+										<a href="#;">
+											<span class="rank">1</span>
+											<span class="lab_status">예금</span>
+											<span class="name">우체국 편리한 e정기예금</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">10,050,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="rank">2</span>
+											<span class="lab_status">예금</span>
+											<span class="name">2040+α정기예금</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">850,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="service_item service_type3 no_service">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service3_off"></i>
+									<span class="text">적금</span>
+									<span class="badge">0</span>
+								</div>
+							</div>
+							<div class="right">
+								<p class="no_text">이용중인 예금 상품이 없습니다.</p>
+							</div>
+						</div>
+						<dl class="recommend_service opened">
+							<dt class="tit"><a href="#;" class="btn btn_toggle_service" title="접기">추천 적립식 예금</a></dt>
+							<dd class="cont">
+								<ul class="list">
+									<li>
+										<a href="#;">
+											<span class="rank">1</span>
+											<span class="lab_status">적금</span>
+											<span class="name">아이LOVE적금</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">10,050,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="rank">2</span>
+											<span class="lab_status">적금</span>
+											<span class="name">마미든든적금</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">850,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="service_item service_type4 no_service">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service4_off"></i>
+									<span class="text">보장보험</span>
+									<span class="badge">0</span>
+								</div>
+							</div>
+							<div class="right">
+								<p class="no_text">이용중인 보장보험이 없습니다.</p>
+							</div>
+						</div>
+						<dl class="recommend_service opened">
+							<dt class="tit"><a href="#;" class="btn btn_toggle_service" title="접기">추천 보장 보험</a></dt>
+							<dd class="cont">
+								<ul class="list">
+									<li>
+										<a href="#;">
+											<span class="rank">1</span>
+											<span class="lab_status">보험</span>
+											<span class="name">(무)우체국건강클리닉보험 2109</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">10,050,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="rank">2</span>
+											<span class="lab_status">보험</span>
+											<span class="name">(무)우체국더간편건강보험 2109</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">850,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="service_item service_type5">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service5_on"></i>
+									<span class="text">저축보험</span>
+									<span class="badge">1</span>
+								</div>
+							</div>
+							<div class="right">
+								<dl class="total">
+									<dt class="tit">총 납입보험료</dt>
+									<dd class="amount">1,000,000원</dd>
+								</dl>
+							</div>
+						</div>
+						<ul class="item_list">
+							<li>
+								<div class="left">
+									<span class="name">(무배당)그린보너스저축보험 2109</span>
+									<span class="account">70327597320<a href="#;" class="btn btn_xs">상세</a></span>
+								</div>
+								<div class="right">
+									<span class="period">10년, 월납</span>
+									<span class="amount">200,000원</span>
+									<span class="total_amount">납입 총액: 1,000,000원</span>
+								</div>
+							</li>
+						</ul>
+						<dl class="recommend_service">
+							<dt class="tit"><a href="#;" class="btn btn_toggle_service" title="접기">추천 저축보험</a></dt>
+							<dd class="cont">
+								<ul class="list">
+									<li>
+										<a href="#;">
+											<span class="rank">1</span>
+											<span class="lab_status">저축보험</span>
+											<span class="name">무배당 파워적립보험 2109</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">10,050,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="rank">2</span>
+											<span class="lab_status">저축보험</span>
+											<span class="name">무배당그린보너스저축보험 2109</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">850,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="service_item service_type6">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service6_on"></i>
+									<span class="text">펀드</span>
+									<span class="badge">1</span>
+								</div>
+							</div>
+							<div class="right">
+								<dl class="total">
+									<dt class="tit">총 잔액</dt>
+									<dd class="amount">1,955,628원<span>총 투자 원금: 1,946,538원</span></dd>
+								</dl>
+							</div>
+						</div>
+						<ul class="item_list">
+							<li>
+								<span class="name">한국투자e단기채ESG증권투자신탁(채권)A<span class="lab_status">낮은위험</span></span>
+								<div class="flex_justify_between">
+									<div class="left">
+										<span class="account">000000-12-000000<a href="#;" class="btn btn_xs">상세</a></span>
+										<span class="invest_amount">투자 원금: 1,946,538원</span>
+									</div>
+									<div class="right">
+										<span class="amount">1,955,628원</span>
+										<!-- s: 증가 -->
+										<span class="profit_amount up"><span class="ico_arrow">증가</span><strong>9.909원</strong>
+											(0.46%)</span>
+										<!-- e: 증가 -->
+										<!-- s: 감소 -->
+										<!--
+											<span class="profit_amount down"><span class="ico_arrow">감소</span><strong>9.909원</strong>
+												(-0.46%)</span>
+											-->
+										<!-- e: 감소 -->
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="bot_banner">
+							<a href="#;" class="banner_item banner_type3">
+								<span class="tit">펀드 거래내역조회</span>
+								<div class="img_area">
+									<img src="../resources/img/content/img_service_banner3@2x.png" alt="">
+								</div>
+							</a>
+							<div href="#;" class="banner_item banner_type5">
+								<span class="tit"><span class="txt_bold">나조회</span>님의 투자성향<span
+										class="lab_status ml_2">위험중립형</span></span>
+								<a href="#;" class="btn btn_xs">펀드 더보기</a>
+							</div>
+						</div>
+					</div>
+					<div class="service_item service_type7">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service7_on"></i>
+									<span class="text">가계대월</span>
+									<span class="badge">1</span>
+								</div>
+							</div>
+							<div class="right">
+								<dl class="total">
+									<dt class="tit">대월 잔액</dt>
+									<dd class="amount">-9,690,953원</dd>
+								</dl>
+							</div>
+						</div>
+						<ul class="item_list">
+							<li>
+								<div class="left">
+									<span class="name">일반계좌대월</span>
+									<span class="account">000000-12-000000<a href="#;" class="btn btn_xs">상세</a></span>
+								</div>
+								<div class="right">
+									<span class="date">약정일: 2020.06.02</span>
+									<span class="amount">10,000,000원</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="service_item service_type8 no_service">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service8_off"></i>
+									<span class="text">대출</span>
+									<span class="badge">0</span>
+								</div>
+							</div>
+							<div class="right">
+								<p class="no_text">이용중인 대출이 없습니다.</p>
+							</div>
+						</div>
+					</div>
+					<div class="service_item service_type9 no_service">
+						<div class="item_info">
+							<div class="left">
+								<div class="inner">
+									<i class="ico ico_service9_off"></i>
+									<span class="text">카드</span>
+									<span class="badge">0</span>
+								</div>
+							</div>
+							<div class="right">
+								<p class="no_text">이용중인 카드가 없습니다.</p>
+							</div>
+						</div>
+						<dl class="recommend_service opened">
+							<dt class="tit"><a href="#;" class="btn btn_toggle_service" title="접기">추천 체크카드</a></dt>
+							<dd class="cont">
+								<ul class="list">
+									<li>
+										<a href="#;">
+											<span class="rank">1</span>
+											<span class="lab_status">체크카드</span>
+											<span class="name">영리한PLUS 체크카드</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">850,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+									<li>
+										<a href="#;">
+											<span class="rank">2</span>
+											<span class="lab_status">하이브리드</span>
+											<span class="name">행福한 하이브리드 체크카드</span>
+											<dl class="customer_num">
+												<dt class="tit">
+													<i class="ico ico_user_sm"></i>
+													<span>가입고객</span>
+												</dt>
+												<dd class="num">550,826<span class="ml_1 txt_medium">명</span></dd>
+											</dl>
+										</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+
+			<!-- e: 본문 -->
+		</article>
+	</div>
+</body>
+
+</html>
