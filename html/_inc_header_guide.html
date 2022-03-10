@@ -17,17 +17,32 @@
 
 	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
 	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$('.menu_list h4').click(function () {
+				$(this).toggleClass('active');
+				if ($(this).hasClass('active')) {
+					$(this).find('a').attr('title', '접기');
+				} else {
+					$(this).find('a').attr('title', '펼치기');
+				}
+			})
+		});
+	</script>
 </head>
 
 <body class="allmenu_open">
-	<header class="header">
+	<header class="header guide_header">
 		<!-- s: 타이틀 바 -->
 		<div class="titlebar">
 			<div class="left">
 				<a href="#;" class="btn btn_icon">
-					<i class="ico ico_back"></i>
+					<i class="ico ico_guide_back"></i>
 					<span class="sr_only">뒤로가기</span>
 				</a>
+			</div>
+			<div class="center">
 				<h1 class="tit_page">{$Title}</h1>
 			</div>
 			<div class="right">
@@ -44,18 +59,68 @@
 		<!-- e: 타이틀 바 -->
 
 		<!-- s: 전체메뉴 -->
-		<div class="allmenu">
+		<div class="allmenu guide_menu">
 			<div class="dimed"></div>
 			<div class="allmenu_inner">
 				<div class="allmenu_header">
-					<div class="header_top_area">
+					<div class="header_top_area pl_0">
 						<h2 class="allmenu_title">
 							<span>이용가이드</span>
 						</h2>
 					</div>
 				</div>
-				<div class="allmenu_body">
-					컨텐츠 영역
+				<div class="allmenu_body pt_4">
+					<div class="guide_tab_menu">
+						<ul>
+							<li><a href="#;">스마트뱅킹</a></li>
+							<li class="active"><a href="#;" title="선택됨">인터넷뱅킹</a></li>
+						</ul>
+					</div>
+					<div class="menu_list mt_6">
+						<h4 class="tit01 active"><a href="#;" title="접기">뱅킹 사전 준비</a></h4>
+						<ul>
+							<li><a href="#;">로그인</a></li>
+							<li><a href="#;">인증서 발급</a></li>
+							<li><a href="#;">타행인증서 등록</a></li>
+							<li><a href="#;">보안매체 발급</a></li>
+							<li><a href="#;">오픈뱅킹 등록</a></li>
+							<li><a href="#;">마이데이터 신청</a></li>
+							<li><a href="#;">문제해결</a></li>
+						</ul>
+					</div>
+					<div class="menu_list">
+						<h4 class="tit02 active"><a href="#;" title="펼치기">시작하기</a></h4>
+						<ul>
+							<li><a href="#;">인터넷뱅킹</a></li>
+							<li><a href="#;">스마트뱅킹</a></li>
+							<li><a href="#;">폰뱅킹</a></li>
+							<li><a href="#;">기업뱅킹</a></li>
+							<li><a href="#;">우체국 보험</a></li>
+							<li><a href="#;">오픈뱅킹</a></li>
+							<li><a href="#;">펀드투자</a></li>
+						</ul>
+					</div>
+					<div class="menu_list">
+						<h4 class="tit03 active"><a href="#;" title="펼치기">서비스별 이용방법</a></h4>
+						<ul>
+							<li><a href="#;">예금(개인)</a></li>
+							<li><a href="#;">예금(기업)</a></li>
+							<li><a href="#;">카드</a></li>
+							<li><a href="#;">펀드</a></li>
+							<li><a href="#;">외환</a></li>
+							<li><a href="#;">보험</a></li>
+						</ul>
+					</div>
+					<div class="menu_list">
+						<h4 class="tit04 active"><a href="#;" title="펼치기">맞춤설정</a></h4>
+						<ul>
+							<li><a href="#;">대표계좌</a></li>
+							<li><a href="#;">MY메뉴</a></li>
+							<li><a href="#;">관심상품</a></li>
+							<li><a href="#;">홈 빠른이체</a></li>
+							<li><a href="#;">알림받기</a></li>
+						</ul>
+					</div>
 				</div>
 				<button type="button" class="btn btn_allmenu_close">
 					<i class="ico ico_close"></i>
