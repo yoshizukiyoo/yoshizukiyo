@@ -218,7 +218,8 @@ function fontSize() {
 	$('#content .container *').not('#content .modal_popup .container *').each(function () {
 		var obj = $(this);
 		var font = Number($(obj).attr('data-font').slice(0, 2));
-		$(obj).css('font-size', font + 1).attr('data-font', font + 1);
+		$(obj).attr('style', 'font-size:' + (font + 1) + 'px !important').attr('data-font', font + 1);
+		//$(obj).css('font-size', font + 1).attr('data-font', font + 1);
 		// $(obj).attr('data-font', $(obj).css('font-size'));
 	});
 
