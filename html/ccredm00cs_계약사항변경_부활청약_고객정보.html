@@ -37,44 +37,46 @@
 			<div class="container pt_4 pb_16">
 
 				<!-- s: 현재 단계 표시 -->
-				<ul class="input_step">
-					<li><span class="num">1</span><span class="txt">1단계명</span></li>
+				<ul class="input_step mb_3">
+					<li><span class="num">1</span><span class="txt">부활청약조회</span></li>
 					<li class="on"><span class="num">2</span><span class="txt">고객정보</span></li>
-					<li><span class="num">3</span><span class="txt">3단계명</span></li>
-					<li><span class="num">4</span><span class="txt">4단계명</span></li>
-					<li><span class="num">4</span><span class="txt">5단계명</span></li>
+					<li><span class="num">3</span><span class="txt">계약 전 고지의무</span></li>
+					<li><span class="num">4</span><span class="txt">결제하기</span></li>
+					<li><span class="num">4</span><span class="txt">완료</span></li>
 				</ul>
 				<!-- e: 현재 단계 표시 -->
 
-				<!-- s: 고객정보 영역 -->
-				<h2 class="tit1">고객정보</h2>
-				<div class="box box_border">
-					<ul>
-						<li class="clfx">
-							<span class="f_l txt_gray">피보험자</span>
-							<strong class="f_r txt_light">나봄미</strong>
-						</li>
-						<li class="clfx mt_1">
-							<span class="f_l txt_gray">주민등록번호</span>
-							<strong class="f_r txt_light">210508-*******</strong>
-						</li>
-					</ul>
-				</div>
-				<!-- e: 고객정보 영역 -->
-
 				<!-- s: 기본정보 영역 -->
-				<h2 class="tit1 mt_8">기본정보</h2>
+				<h2 class="tit1 mt_3 mb_2">기본정보</h2>
 				<ul class="list list1">
 					<li>휴대폰 번호와 이메일 주소가 없는 고객은 부활청약을 진행할 수 없습니다.</li>
 				</ul>
 
-				<div class="tf_item mt_3">
+				<div class="tf_item mt_2 disabled">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_name">피보험자</label>
+							<input type="text" id="lb_name" class="tf" value="나봄미" disabled>
+						</div>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2 disabled">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_num">주민등록번호</label>
+							<input type="text" id="lb_num" class="tf" value="611122-*******" disabled>
+						</div>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2">
 					<div class="tf_item_body">
 						<div class="input_area">
 							<label class="lab" for="lb_email">이메일<span class="req">필수항목</span></label>
 							<div class="input_items">
-								<input type="email" id="lb_email" class="tf tf_email_id" placeholder="이메일 아이디" value="nananananananana"
-									title="이메일 아이디" required="">
+								<input type="email" id="lb_email" class="tf tf_email_id" placeholder="이메일 아이디" value="na"
+									title="이메일 아이디" required>
 								<span class="text">@</span>
 								<a href="#;" class="opt tf_email_domain" title="이메일 도메인"
 									onclick="openModal('layerOption');">hanmail.net</a>
@@ -82,26 +84,28 @@
 						</div>
 					</div>
 				</div>
-				<div class="tf_item mt_2">
+
+				<div class="tf_item mt_2 disabled_tf">
 					<div class="tf_item_body">
 						<div class="input_area">
 							<span class="lab">휴대폰번호<span class="req">필수항목</span></span>
-							<a href="#;" class="opt" title="전화번호 국번 선택" onclick="openModal('layerOption');">010</a>
+							<a href="#;" class="opt pr_9" title="전화번호 국번 선택" onclick="openModal('layerOption');">010</a>
 						</div>
 						<div class="input_items items_type1">
-							<input type="text" id="lb_tel" class="tf" title="국번을 제외한 전화번호" placeholder="번호입력" required="">
+							<input type="text" id="lb_tel" class="tf" title="국번을 제외한 전화번호" value="번호입력" required disabled>
 						</div>
 						<div class="btn_area">
 							<a href="#;" class="btn btn_md btn_round btn_darkgray">번호변경</a>
 						</div>
 					</div>
 				</div>
-				<p class="txt_gray txt_sm pt_1 pb_1">휴대폰번호 변경은 휴대폰 본인인증이 필요합니다.</p>
-				<div class="tf_item">
+				<p class="txt_guide mt_1">휴대폰번호 변경은 휴대폰 본인인증이 필요합니다.</p>
+
+				<div class="tf_item mt_1">
 					<div class="tf_item_body">
 						<div class="input_area">
-							<label class="lab" for="lb_address2">주소 <span class="req">필수항목</span></label>
-							<input type="text" class="tf" id="lb_address2" value="58217" title="우편번호" required="">
+							<label class="lab" for="lb_address1">주소 <span class="req">필수항목</span></label>
+							<input type="text" class="tf" id="lb_address1" value="58217" title="우편번호" required="">
 						</div>
 						<div class="btn_area">
 							<a href="#;" class="btn btn_md btn_round btn_darkgray">우편번호</a>
@@ -112,11 +116,10 @@
 						<p>A동 626호(빛가람동, 중흥s클래스메가티움 2차)</p>
 					</div>
 				</div>
-
 				<!-- e: 기본정보 영역 -->
 
 				<!-- s: 직장정보 영역 -->
-				<h2 class="tit1 mt_8">직장정보</h2>
+				<h2 class="tit1 mt_9">직장정보</h2>
 				<div class="tf_item mt_3">
 					<div class="tf_item_body">
 						<div class="input_area">
@@ -144,11 +147,217 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_address2">주소 <span class="req">필수항목</span></label>
+							<input type="text" class="tf" id="lb_address2" value="58217" title="우편번호" required>
+						</div>
+						<div class="btn_area">
+							<a href="#;" class="btn btn_md btn_round btn_darkgray">우편번호</a>
+						</div>
+					</div>
+					<div class="tf_item_footer">
+						<p>전라남도 나주시 상야 3길8</p>
+						<p>A동 626호(빛가람동, 중흥s클래스메가티움 2차)</p>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tel2">전화번호 <span class="req">필수항목</span></label>
+							<div class="input_items">
+								<a href="#;" class="opt pr_11" title="전화번호 국번 선택" onclick="openModal('layerOption');">010</a>
+								<input type="text" id="lb_tel2" class="tf ml_4" title="국번을 제외한 전화번호" placeholder="번호입력" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tf_item mt_2">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tel3">팩스번호 <span class="req">필수항목</span></label>
+							<div class="input_items">
+								<a href="#;" class="opt pr_11" title="전화번호 국번 선택" onclick="openModal('layerOption');">010</a>
+								<input type="text" id="lb_tel3" class="tf ml_4" title="국번을 제외한 전화번호" placeholder="번호입력" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<!-- e: 직장정보 영역 -->
 
+				<!-- s: 추가정보 영역 -->
+				<h2 class="tit1 mt_9 mb_2">추가정보</h2>
+				<h3 class="tit2 tit_req">운전여부 <span class="req">필수항목</span></h3>
+				<p class="txt_guide pl_0 lh_24">
+					현재 운전(오토바이인 경우 최근 1년 이내 운전·소유 포함)
+					또는 정기적 탑승을 하고 있습니까? </p>
+				<div class="input_items mt_2">
+					<span class="check_item type_btn_round">
+						<input type="radio" name="duty_chk1" id="duty_chk_Y_1">
+						<label for="duty_chk_Y_1">예</label>
+					</span>
+					<span class="check_item type_btn_round">
+						<input type="radio" name="duty_chk1" id="duty_chk_N_1" checked>
+						<label for="duty_chk_N_1">아니오</label>
+					</span>
+				</div>
 
+				<h3 class="tit2 tit_req mt_5 mb_0">차종선택(중복가능) <span class="req">필수항목</span></h3>
+				<ul class="check_list02">
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list1" id="check_list1_1" checked>
+							<label for="check_list1_1">승용차(자가용)</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list1_2" id="check_list1_2">
+							<label for="check_list1_2">승합차(자가용)</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list1_3" id="check_list1_3">
+							<label for="check_list1_3">화물차(자가용)</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list1_4" id="check_list1_4">
+							<label for="check_list1_4">오토바이(50cc미만)</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list1_5" id="check_list1_5">
+							<label for="check_list1_5">건설기계</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list1_6" id="check_list1_6">
+							<label for="check_list1_6">농기계</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list1_7" id="check_list1_7">
+							<label for="check_list1_7">기타</label>
+						</span>
+					</li>
+				</ul>
 
+				<div class="tf_item mt_3 disabled">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_5">
+								차종 <span class="req">필수항목</span>
+							</label>
+							<input type="text" id="lb_tf_5" class="tf" placeholder="구체적으로 기재" required>
+						</div>
+					</div>
+				</div>
+				<!-- e: 추가정보 영역 -->
 
+				<!-- s: 취미활동 여부 영역 -->
+				<h3 class="tit2 tit_req mt_5 mb_0">취미활동 여부 <span class="req">필수항목</span></h3>
+				<p class="txt_guide pl_0 lh_24">
+					최근 1년 이내에 다음과 같은 취미를 자주 반복적으로 하고
+					있거나 관련 자격증을 가지고 있습니까?
+				</p>
+				<div class="input_items mt_2">
+					<span class="check_item type_btn_round">
+						<input type="radio" name="duty_chk2" id="duty_chk_Y_2">
+						<label for="duty_chk_Y_2">예</label>
+					</span>
+					<span class="check_item type_btn_round">
+						<input type="radio" name="duty_chk2" id="duty_chk_N_2" checked>
+						<label for="duty_chk_N_2">아니오</label>
+					</span>
+				</div>
+
+				<h3 class="tit2 tit_req mt_5 mb_0">취미선택(중복가능) <span class="req">필수항목</span></h3>
+				<ul class="check_list02">
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list2" id="check_list2_1" checked>
+							<label for="check_list2_1">스쿠버다이빙</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list2_2" id="check_list2_2">
+							<label for="check_list2_2">스카이다이빙</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item item2">
+							<input type="checkbox" name="check_list2_3" id="check_list2_3">
+							<label for="check_list2_3">행글라이딩 패러글라이딩</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list2_4" id="check_list2_4">
+							<label for="check_list2_4">수상스키, 제트스키</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list2_5" id="check_list2_5">
+							<label for="check_list2_5">자동차, 오토바이경주 </label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list2_6" id="check_list2_6">
+							<label for="check_list2_6">번지점프</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list2_7" id="check_list2_7">
+							<label for="check_list2_7">빙벽, 암벽등반</label>
+						</span>
+					</li>
+					<li>
+						<span class="check_item">
+							<input type="checkbox" name="check_list2_8" id="check_list2_8">
+							<label for="check_list2_8">레프팅</label>
+						</span>
+					</li>
+				</ul>
+
+				<div class="tf_item mt_3">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_6">
+								연간 취미활동 횟수
+							</label>
+							<div class="input_box input_txt">
+								<input type="text" id="lb_tf_6" class="tf" value="00" placeholder="구체적으로 기재">
+								<span>회</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_3">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_7">
+								자격증명
+							</label>
+							<input type="text" id="lb_tf_7" class="tf" placeholder="자격증명을 입력해주세요.">
+						</div>
+					</div>
+				</div>
+				<!-- e: 취미활동 여부 영역 -->
 
 			</div>
 
