@@ -1,0 +1,842 @@
+/* 신규고객 */
+
+// TODO : 이곳에 스타일을 정의해 주세요.
+// 클래스 네임 중복되지 않도록 네이밍은 2단어 이상으로 해주세요.
+.header {
+	.right {
+		>div {
+			position: relative;
+
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				width: 100%;
+				height: 1px;
+			}
+		}
+
+		.process_underline2 {
+			color: $black;
+		}
+
+		.process_underline1 {
+			&:after {
+				background: #ddd;
+			}
+
+		}
+
+		.process_underline2 {
+			&:after {
+				background: $primary;
+			}
+
+		}
+	}
+}
+
+.cont_step+.cont_header {
+	padding-top: 20px;
+}
+
+.cont_body.cont_body_hidden {
+	overflow-y: hidden;
+}
+
+.customer_process_intro {
+	p {
+		margin: 138px 0 55px 0;
+	}
+
+	ul {
+		position: relative;
+		width: 874px;
+		margin: 0 auto;
+
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		li {
+			float: left;
+			padding: 0 0 0 30px;
+			background-image: url(#{$url-img-common}/ico_arr_right_black@2x.png);
+			background-size: 10px auto;
+			background-repeat: no-repeat;
+			background-position: 10px 53px;
+			font-size: 16px;
+			font-weight: 400;
+			color: $black;
+			text-align: center;
+
+			span {
+				display: block;
+				position: relative;
+				overflow: hidden;
+				height: 120px;
+				width: 120px;
+				margin: 0 0 12px 0;
+				background: #fff;
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				border-radius: 100%;
+				box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+
+				&:after {
+					content: '';
+					position: absolute;
+					top: 100px;
+					left: 0;
+					width: 120px;
+					height: 120px;
+					background-color: $bg-lightgray;
+					border-radius: 100%;
+				}
+			}
+		}
+
+		li {
+			&:nth-child(1) {
+				padding: 0;
+
+				span {
+					background-image: url(#{$url-img-common}/ico_customer_process1@2x.png);
+					background-size: 44px auto;
+				}
+			}
+
+			&:nth-child(2) {
+				span {
+					background-image: url(#{$url-img-common}/ico_customer_process2@2x.png);
+					background-size: 44px auto;
+				}
+			}
+
+			&:nth-child(3) {
+				span {
+					background-image: url(#{$url-img-common}/ico_customer_process3@2x.png);
+					background-size: 44px auto;
+				}
+			}
+
+			&:nth-child(4) {
+				span {
+					background-image: url(#{$url-img-common}/ico_customer_process4@2x.png);
+					background-size: 44px auto;
+				}
+			}
+
+			&:nth-child(5) {
+				span {
+					background-image: url(#{$url-img-common}/ico_customer_process5@2x.png);
+					background-size: 44px auto;
+				}
+			}
+
+			&:nth-child(6) {
+				span {
+					background-image: url(#{$url-img-common}/ico_customer_process6@2x.png);
+					background-size: 44px auto;
+				}
+			}
+		}
+	}
+
+	.process_btn {
+		margin: 68px 0 0 0;
+
+		a {
+			width: 280px;
+			height: 75px;
+			font-size: 20px;
+		}
+	}
+}
+
+.apply_step {
+	display: flex;
+	align-items: center;
+	padding: 20px 0;
+
+	li {
+		display: flex;
+		align-items: center;
+		height: 36px;
+		margin-right: 5px;
+		padding: 0 20px 0 2px;
+		border: 2px solid $white;
+		border-radius: 18px;
+		background-color: $white;
+
+		.num {
+			display: block;
+			padding: 2px 0 0 10px;
+			margin: 0 5px 0 0;
+			width: 30px;
+			height: 26px;
+			background-image: url(#{$url-img}/content/bg_service8@2x.png);
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-size: 30px auto;
+			color: $gray;
+		}
+
+	}
+
+	.on {
+		border: 2px solid #80c9f5;
+
+		.num {
+			background-image: url(#{$url-img}/content/bg_service9@2x.png);
+			color: $black;
+		}
+	}
+}
+
+.service_wrap {
+
+	.product_selected {
+		display: none;
+		position: absolute;
+		top: -15px;
+		right: -10px;
+	}
+
+	.service_item {
+
+		// 계좌개설 상품선택 
+		&.account_open {
+			height: 430px;
+
+			.account_open_info {
+
+				div {
+					overflow: hidden;
+					height: 160px;
+					max-height: 160px;
+
+					p {
+						font-size: 30px;
+						font-weight: 500;
+						color: $black;
+						letter-spacing: -2px;
+
+						+p {
+							font-size: 15px;
+							font-weight: 200;
+							color: #666;
+							letter-spacing: 0;
+						}
+					}
+				}
+
+				dl {
+					height: 150px;
+					text-align: center;
+
+					dt {
+						display: inline-block;
+						padding-bottom: 6px;
+						border-bottom: 1px solid #111;
+					}
+
+					dd {
+						font-size: 70px;
+						font-weight: 600;
+						line-height: 70px;
+
+
+						span {
+							font-size: 30px;
+						}
+					}
+				}
+
+				.btn_product_info {
+					text-align: right;
+				}
+			}
+		}
+
+		// 상품둘러보기 - 예금 
+		&.new_product_bank {
+			height: 430px;
+
+			.product_info_area {
+
+				div {
+					overflow: hidden;
+					height: 160px;
+					max-height: 160px;
+
+					p {
+						font-size: 30px;
+						font-weight: 500;
+						color: $black;
+						letter-spacing: -2px;
+
+						+p {
+							font-size: 15px;
+							font-weight: 200;
+							color: #666;
+							letter-spacing: 0;
+						}
+					}
+				}
+
+				dl {
+					height: 150px;
+					text-align: center;
+
+					dt {
+						display: inline-block;
+						padding-bottom: 6px;
+						border-bottom: 1px solid #111;
+					}
+
+					dd {
+						font-size: 70px;
+						font-weight: 600;
+						line-height: 70px;
+
+
+						span {
+							font-size: 30px;
+						}
+					}
+				}
+
+				.btn_product_info {
+					text-align: right;
+				}
+			}
+		}
+
+		// 상품둘러보기 - 카드 
+		&.new_product_card {
+			height: 430px;
+
+			.product_info_area {
+
+				div {
+					overflow: hidden;
+					height: 105px;
+					max-height: 105px;
+
+					p {
+						font-size: 30px;
+						font-weight: 500;
+						color: $black;
+						letter-spacing: -2px;
+
+						+p {
+							font-size: $font-size-base;
+							font-weight: 200;
+							color: #666;
+							letter-spacing: 0;
+						}
+					}
+				}
+
+				.card_img {
+					width: 262px;
+					height: 160px;
+					margin: 0 auto 35px;
+					text-align: center;
+				}
+
+				.btn_product_info {
+					text-align: right;
+				}
+			}
+		}
+
+		// 상품둘러보기 - 펀드 
+		&.new_product_fund {
+			height: 430px;
+
+			.product_info_area {
+
+				div {
+					overflow: hidden;
+					height: 140px;
+					max-height: 140px;
+
+					p {
+						font-size: 14px;
+						font-weight: 200;
+						color: #666;
+						letter-spacing: 0;
+
+						span {
+							position: relative;
+							margin-right: 10px;
+							padding-right: 10px;
+
+							&:after {
+								content: '';
+								position: absolute;
+								top: 50%;
+								right: 0;
+								width: 1px;
+								height: 10px;
+								margin-top: -4px;
+								background-color: #ddd;
+							}
+
+							&:last-child {
+								margin: 0;
+								padding: 0;
+
+								&:after {
+									background: none;
+								}
+							}
+
+							&.fund_joining {
+								display: inline-block;
+								position: relative;
+								padding: 3px 0 0 32px;
+								margin: 0 20px 0 0;
+								width: 88px;
+								height: 28px;
+								background-color: #5200c1;
+								border-radius: 50px;
+								color: $white;
+
+								&:after {
+									content: '';
+									position: absolute;
+									top: 8px;
+									left: 7px;
+									width: 20px;
+									height: 20px;
+									background-color: #fff;
+									background-image: url(#{$url-img-common}/ico_product_joining@2x.png);
+									background-repeat: no-repeat;
+									background-position: 50%;
+									background-size: 11px auto;
+									border-radius: 100%;
+								}
+
+								&:before {
+									content: '';
+									position: absolute;
+									top: 10px;
+									right: 10px;
+									width: 5px;
+									height: 5px;
+									border: 2px solid #fff;
+									border-bottom: none;
+									border-left: none;
+									transform: rotate(45deg);
+								}
+							}
+
+
+						}
+
+
+						+p {
+							font-size: 30px;
+							font-weight: 500;
+							color: $black;
+							letter-spacing: -2px;
+						}
+					}
+				}
+
+				dl {
+					height: 150px;
+					text-align: center;
+
+					dt {
+						display: inline-block;
+						padding-bottom: 6px;
+						border-bottom: 1px solid #111;
+					}
+
+					dd {
+						font-size: 70px;
+						font-weight: 600;
+						line-height: 70px;
+
+
+						span {
+							font-size: 30px;
+						}
+					}
+				}
+
+				.btn_product_info {
+					text-align: right;
+				}
+			}
+		}
+
+		// 상품둘러보기 - 보험 
+		&.new_product_insu {
+			height: 430px;
+
+			.product_info_area {
+
+				div {
+					overflow: hidden;
+					height: 120px;
+					max-height: 120px;
+
+					p {
+						font-size: 14px;
+						font-weight: 200;
+						color: #666;
+						letter-spacing: 0;
+
+						span {
+							position: relative;
+							margin-right: 10px;
+							padding-right: 10px;
+
+							&:after {
+								content: '';
+								position: absolute;
+								top: 50%;
+								right: 0;
+								width: 1px;
+								height: 10px;
+								margin-top: -4px;
+								background-color: #ddd;
+							}
+
+							&:last-child {
+								margin: 0;
+								padding: 0;
+
+								&:after {
+									background: none;
+								}
+							}
+
+						}
+
+
+						+p {
+							font-size: 30px;
+							font-weight: 500;
+							color: $black;
+							letter-spacing: -2px;
+						}
+					}
+				}
+
+				.insu_paid {
+					margin-bottom: 15px;
+					font-size: 60px;
+					font-weight: 600;
+					line-height: 60px;
+					text-align: center;
+					letter-spacing: -2px;
+
+					span {
+						font-size: 30px;
+					}
+				}
+
+				ul {
+					height: 100px;
+					text-align: center;
+
+					li {
+						display: inline-block;
+						color: #666;
+					}
+				}
+
+				.btn_product_info {
+					text-align: right;
+				}
+			}
+		}
+	}
+
+}
+
+.product_bottom_button {
+	.left {
+		.btn {
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.btn_primary {
+			background-color: $primary !important;
+			border: 1px solid $primary !important;
+			background-image: url(#{$url-img-common}/ico_check_primary@2x.png);
+			background-repeat: no-repeat;
+			background-size: 30px 30px;
+			background-position: 15px 7px;
+			padding-left: 44px;
+		}
+
+		.opt {
+			height: 46px;
+			margin-left: 6px;
+
+			dt {
+				a {
+					height: 46px;
+					min-width: 120px;
+					padding-right: 40px;
+					font-size: 16px;
+					font-weight: 400;
+					border: 1px solid #bbb;
+					border-radius: 50px;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+					>span {
+						height: 46px;
+						line-height: 44px;
+						margin: 0 0 0 30px;
+
+						&:after {
+							top: 24px;
+						}
+					}
+				}
+			}
+
+			&.active {
+				dt {
+					a {
+						background-color: $primary;
+					}
+
+				}
+
+				dd {
+					top: auto;
+					bottom: 56px;
+				}
+			}
+
+			dd {
+				ul {
+					max-height: 326px;
+					text-align: center;
+					border: 1px solid #bbb;
+					border-radius: 6px;
+				}
+
+				a {
+					span {
+						margin: 0 15px
+					}
+				}
+			}
+
+		}
+
+	}
+
+	.right {
+		.sms_url_send {
+			display: inline-block;
+			width: 60px;
+			height: 56px;
+			padding-top: 10px;
+			margin-left: 8px;
+			vertical-align: middle;
+			background: #fff;
+			border: 1px solid #bbb;
+			border-radius: 6px;
+			text-align: center;
+		}
+	}
+}
+
+.ico_pincette {
+	position: relative;
+	width: 32px;
+	height: 29px;
+	margin-right: 4px;
+	background-image: url(#{$url-img}/content/bg_service_default@2x.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+		position: absolute;
+		top: 4px;
+		left: 7px;
+		width: 17px;
+		height: 17px;
+		background-image: url(#{$url-img-common}/ico_pincette_default@2x.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}
+
+.scan_mask_area {
+	&.account_open {
+		.inner {
+			height: 300px;
+			margin-bottom: 0;
+
+			li {
+				color: $black;
+			}
+		}
+
+		.mask {
+			width: 400px;
+			height: 260px;
+		}
+	}
+
+}
+
+.scan_mask_result {
+	overflow: hidden;
+
+	.scan_left_area {
+		float: left;
+		width: 400px;
+		height: 260px;
+
+		img {
+			border-radius: 16px;
+		}
+	}
+
+	.scan_right_area {
+		float: right;
+		width: 350px;
+
+	}
+}
+
+.flex_justify_between {
+	&.width_half {
+		>div {
+			width: 50%;
+			margin: 0 -5px;
+
+			.tf_item_row {
+				margin: 0 5px;
+			}
+		}
+
+	}
+}
+
+.box_brd_red {
+	padding: 20px;
+	border: 1px solid $red;
+	border-radius: 6px;
+}
+
+.btn_keypad {
+	a {
+		width: 100%;
+		height: 56px;
+		font-size: 18px;
+		color: $black;
+	}
+
+	.ico_keypad {
+		width: 35px;
+		height: 19px;
+		background-image: url(#{$url-img-common}/ico_keyboard_default@2x.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}
+
+.customer_electro_doc {
+	margin: 35px 80px 40px;
+
+	.box_shadow {
+		height: 70px;
+		padding: 0;
+		margin: 0 0 15px 0;
+		text-align: center;
+		border-radius: 10px;
+
+		a {
+			display: block;
+			font-size: 22px;
+			color: $black;
+			line-height: 70px;
+		}
+	}
+}
+
+.doc_sign_area {
+	display: inline-table;
+	min-width: 212px;
+	height: 56px;
+	padding: 0 20px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	background: #fff;
+	vertical-align: middle;
+	text-align: center;
+
+	span {
+		line-height: 54px;
+		margin-right: 10px;
+	}
+
+	img {
+		width: 100%;
+		max-width: 67px;
+		margin-left: 10px;
+		vertical-align: text-bottom;
+	}
+}
+
+.tablet_toast_message {
+	display: none;
+	position: absolute;
+	width: 800px;
+	height: 50px;
+	bottom: 126px;
+	left: 50%;
+	margin-left: -400px;
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 50px;
+	text-align: center;
+
+	s &:before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0);
+	}
+
+	p {
+		padding-top: 14px;
+		color: $white;
+
+		span {
+			color: $primary;
+		}
+	}
+
+	a {
+		position: absolute;
+		top: 12px;
+		right: 33px
+	}
+
+
+}

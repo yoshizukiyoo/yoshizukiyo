@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		// 접촉정보 상세보기
+		$(document).ready(function () {
+			$(".contact_detail_view").hide();
+			$(".contact_detail_list").click(function () {
+				$(this).toggleClass("on").next().toggle();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<!-- [퍼블] .wrapper는 전체 공통 컨테이너로, 스타일 수정 금지합니다.
+		특수 레이아웃은 멀티클래스 .wrapper_* 추가 후 스타일링해 주세요 -->
+	<div class="wrapper">
+		<!-- s: 헤더 -->
+		<header class="header">
+			<div class="titlebar">
+				<div class="left">
+					<h1 class="tit_page">
+						<i class="ico ico_lg_user"></i>
+						<span class="user_name">나신규</span>
+						<small class="user_num ml_1">(12332233332)</small>
+					</h1>
+				</div>
+				<div class="right">
+					<div class="mr_4">
+
+						<div class="customer_status">
+							<ul>
+								<li class="on"><span>폰뱅킹</span></li>
+								<li class="on"><span>VM뱅킹</span></li>
+								<li><span>인터넷뱅킹</span></li>
+								<li class="on"><span>바이오</span></li>
+								<li class="on"><span>포스트페이</span></li>
+								<li class="on"><span>멤버십</span></li>
+								<li><span>제휴카드</span></li>
+								<li><span>자동이체</span></li>
+								<li><span>급여이체</span></li>
+							</ul>
+						</div>
+
+					</div>
+					<button type="button" class="btn btn_icon">
+						<i class="ico ico_lg_close"></i>
+						<span class="sr_only">닫기</span>
+					</button>
+				</div>
+			</div>
+		</header>
+		<!-- e: 헤더 -->
+
+		<!-- [퍼블] 본문 백그라운드컬러 적용시 #content에 멀티클래스 추가 후 스타일링 -->
+		<article id="content">
+			<!-- s: 본문 -->
+
+			<div class="container">
+
+				<div class="tbl tbl_data tbl_round mb_8">
+					<table>
+						<caption class="sr_only">고객정보조회</caption>
+						<thead>
+							<tr>
+								<th scope="col">구분</th>
+								<th scope="col">성별</th>
+								<th scope="col">나이</th>
+								<th scope="col" class="bg_lightprimary">예금 등급</th>
+								<th scope="col" class="bg_lightprimary">보험 등급</th>
+								<th scope="col" class="bg_lightgreen">가입진행중</th>
+								<th scope="col" class="bg_lightred">사고신고해제</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>개인</td>
+								<td>남자</td>
+								<td>69세</td>
+								<td>S-MVP</td>
+								<td>S-Silver</td>
+								<td>0건</td>
+								<td>없음</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<nav class="tab_menu tab_menu1">
+					<ul class="tab_list">
+						<li><a href="#;"><span>기본정보</span></a></li>
+						<li><a href="#;"><span>상세정보</span></a></li>
+						<li><a href="#;"><span>마케팅동의</span></a></li>
+						<li><a href="#;"><span>고객실적</span></a></li>
+						<li><a href="#;"><span>가입상품</span></a></li>
+						<li class="on"><a href="#;" title="선택됨"><span>접촉정보</span></a></li>
+					</ul>
+				</nav>
+
+				<nav class="tab_menu tab_menu2">
+					<ul class="tab_list">
+						<li class="on"><a href="#;" title="선택됨"><span>통합접촉</span></a></li>
+						<li><a href="#;"><span>캠페인</span></a></li>
+						<li><a href="#;"><span>상담정보</span></a></li>
+						<li><a href="#;"><span>예약상담</span></a></li>
+						<li><a href="#;"><span>통지정보</span></a></li>
+						<li><a href="#;"><span>VOC</span></a></li>
+					</ul>
+				</nav>
+
+				<div class="tbl tbl_data mb_10">
+					<table>
+						<caption class="sr_only">접촉정보 통합접촉 목록</caption>
+						<colgroup>
+							<col style="width: 10%;">
+							<col style="width: 15%;">
+							<col style="width: 15%;">
+							<col style="width: 10%;">
+							<col style="width: 35%;">
+							<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">접촉일자</th>
+								<th scope="col">접촉채널</th>
+								<th scope="col">접촉유형</th>
+								<th scope="col">접촉경로</th>
+								<th scope="col">접촉요약내용</th>
+								<th scope="col">결과</th>
+						</thead>
+						<tbody>
+							<tr class="contact_detail_list">
+								<td>2021.12.10</td>
+								<td>스마트예금</td>
+								<td>상품가입</td>
+								<td>상담예약</td>
+								<td class="txt_l">마미든든적금 가입 및 우대 조건 문의</td>
+								<td>강제자동종료</td>
+							</tr>
+							<tr class="contact_detail_view">
+								<td colspan="6">
+									<div class="flex_justify_between flex_align_center">
+										<div>
+											<ul class="list list1 txt_l">
+												<li class="d_i_b">접촉일자: 2021.12.10 12:11:00.01</li>
+												<li class="d_i_b ml_7">I/O: INBOUND</li>
+											</ul>
+										</div>
+										<div>
+											<ul class="list list1">
+												<li>접촉국/직원: OOOOOO 센터/김상담</li>
+											</ul>
+										</div>
+									</div>
+									<div class="box bg_lightgray txt_l mt_1 mb_1">
+										<p>마미든든적금 가입 및 우대 조건 문의. <br />창구 가입 상품으로 가까운 우체국 및 징구 서류 안내 완료.</p>
+									</div>
+									<ul class="list list1 txt_l">
+										<li>고객반응: 부정</li>
+									</ul>
+								</td>
+							</tr>
+							<tr class="contact_detail_list">
+								<td>2021.12.10</td>
+								<td>스마트예금</td>
+								<td>상품가입</td>
+								<td>상담예약</td>
+								<td class="txt_l">마미든든적금 가입 및 우대 조건 문의</td>
+								<td>강제자동종료</td>
+							</tr>
+							<tr class="contact_detail_view">
+								<td colspan="6">
+									<div class="flex_justify_between flex_align_center">
+										<div>
+											<ul class="list list1 txt_l">
+												<li class="d_i_b">접촉일자: 2021.12.10 12:11:00.01</li>
+												<li class="d_i_b ml_7">I/O: INBOUND</li>
+											</ul>
+										</div>
+										<div>
+											<ul class="list list1">
+												<li>접촉국/직원: OOOOOO 센터/김상담</li>
+											</ul>
+										</div>
+									</div>
+									<div class="box bg_lightgray txt_l mt_1 mb_1">
+										<p>마미든든적금 가입 및 우대 조건 문의. <br />창구 가입 상품으로 가까운 우체국 및 징구 서류 안내 완료.</p>
+									</div>
+									<ul class="list list1 txt_l">
+										<li>고객반응: 부정</li>
+									</ul>
+								</td>
+							</tr>
+							<tr class="contact_detail_list">
+								<td>2021.12.10</td>
+								<td>스마트예금</td>
+								<td>상품가입</td>
+								<td>상담예약</td>
+								<td class="txt_l">마미든든적금 가입 및 우대 조건 문의</td>
+								<td>강제자동종료</td>
+							</tr>
+							<tr class="contact_detail_view">
+								<td colspan="6">
+									<div class="flex_justify_between flex_align_center">
+										<div>
+											<ul class="list list1 txt_l">
+												<li class="d_i_b">접촉일자: 2021.12.10 12:11:00.01</li>
+												<li class="d_i_b ml_7">I/O: INBOUND</li>
+											</ul>
+										</div>
+										<div>
+											<ul class="list list1">
+												<li>접촉국/직원: OOOOOO 센터/김상담</li>
+											</ul>
+										</div>
+									</div>
+									<div class="box bg_lightgray txt_l mt_1 mb_1">
+										<p>마미든든적금 가입 및 우대 조건 문의. <br />창구 가입 상품으로 가까운 우체국 및 징구 서류 안내 완료.</p>
+									</div>
+									<ul class="list list1 txt_l">
+										<li>고객반응: 부정</li>
+									</ul>
+								</td>
+							</tr>
+							<tr class="contact_detail_list">
+								<td>2021.12.10</td>
+								<td>인터넷보험</td>
+								<td>가입조건상담</td>
+								<td>상담예약</td>
+								<td class="txt_l">통합접촉제목테스트</td>
+								<td>직원종료</td>
+							</tr>
+							<tr class="contact_detail_view">
+								<td colspan="6">
+									<div class="flex_justify_between flex_align_center">
+										<div>
+											<ul class="list list1 txt_l">
+												<li class="d_i_b">접촉일자: 2021.12.10 12:11:00.01</li>
+												<li class="d_i_b ml_7">I/O: INBOUND</li>
+											</ul>
+										</div>
+										<div>
+											<ul class="list list1">
+												<li>접촉국/직원: OOOOOO 센터/김상담</li>
+											</ul>
+										</div>
+									</div>
+									<div class="box bg_lightgray txt_l mt_1 mb_1">
+										<p>마미든든적금 가입 및 우대 조건 문의. <br />창구 가입 상품으로 가까운 우체국 및 징구 서류 안내 완료.</p>
+									</div>
+									<ul class="list list1 txt_l">
+										<li>고객반응: 부정</li>
+									</ul>
+								</td>
+							</tr>
+							<tr class="contact_detail_list">
+								<td>2021.12.10</td>
+								<td>스마트예금</td>
+								<td>상품가입</td>
+								<td>상담예약</td>
+								<td class="txt_l">마미든든적금 가입 및 우대 조건 문의</td>
+								<td>강제자동종료</td>
+							</tr>
+							<tr class="contact_detail_view">
+								<td colspan="6">
+									<div class="flex_justify_between flex_align_center">
+										<div>
+											<ul class="list list1 txt_l">
+												<li class="d_i_b">접촉일자: 2021.12.10 12:11:00.01</li>
+												<li class="d_i_b ml_7">I/O: INBOUND</li>
+											</ul>
+										</div>
+										<div>
+											<ul class="list list1">
+												<li>접촉국/직원: OOOOOO 센터/김상담</li>
+											</ul>
+										</div>
+									</div>
+									<div class="box bg_lightgray txt_l mt_1 mb_1">
+										<p>마미든든적금 가입 및 우대 조건 문의. <br />창구 가입 상품으로 가까운 우체국 및 징구 서류 안내 완료.</p>
+									</div>
+									<ul class="list list1 txt_l">
+										<li>고객반응: 부정</li>
+									</ul>
+								</td>
+							</tr>
+							<!--
+								[D] 마지막 목록일 경우 표시
+							-->
+							<tr>
+								<td colspan="6">
+									<p class="txt_lg ">마지막 목록입니다</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+			<!-- e: 본문 -->
+		</article>
+
+		<!-- s: 하단 고정 영역 -->
+		<div class="bottom_fixed_area">
+			<div class="add_data_list">
+				<a href="#;" class="btn  btn_darkgray btn_more">
+					<span>더보기</span>
+					<i class="ico ico_arr_down_white"></i>
+				</a>
+			</div>
+		</div>
+		<!-- e: 하단 고정 영역 -->
+	</div>
+</body>
+
+</html>
