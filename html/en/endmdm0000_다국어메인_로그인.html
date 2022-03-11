@@ -32,14 +32,16 @@
 				$(this).closest('.logged_info_layer').slideUp('fast');
 				$('body').removeClass('info_layer_opened');
 			});
-			$('.tab_conent').children('h4').text($('.sec_dep_list .tab_menu_type1 li a.current').text());
 
+
+			//03-11 수정
 			$('.sec_dep_list .tab_menu_type1 li a.current').attr('title', 'selected');
-			$(
-				'.sec_dep_list .tab_menu_type1 li a').on('click', function () {
+			$('.tab_content .tab_cont:eq(' + $('.sec_dep_list .tab_menu_type1 li a.current').parent().index() + ')').show()
+			$('.sec_dep_list .tab_menu_type1 li a').on('click', function () {
+				var tabCurrent = $(this).parent().index();
 				$(this).addClass('current').attr('title', 'selected').parent().siblings().children().removeClass(
 					'current').removeAttr('title');
-				$('.tab_conent').children('h4').text($('.sec_dep_list .tab_menu_type1 li a.current').text());
+				$('.tab_content .tab_cont:eq(' + tabCurrent + ')').show().siblings().hide();
 			});
 		});
 	</script>
@@ -51,7 +53,6 @@
 		<a href="#content" class="skip_nav">Go to main</a>
 		<!-- 대표홈 헤더에만 .header_global_main 추가 (서브메인은 서브 헤더 동일 적용) -->
 		<header class="header header_main_en" data-inc="_inc-header-main-en.html"></header>
-		<div class="quick_menu_wrap"></div>
 		<article id="content">
 			<!-- s: 메인 본문 -->
 
@@ -198,82 +199,160 @@
 									</div>
 									<a href="#;" class="f_r btn_more_sm">More <i class="ico ico_arrow_right_sm"></i></a>
 								</div>
+
 								<div class="tab_menu_type1 md">
 									<ul>
 										<li><a href="#;" class="current" title="selected">Cash</a></li>
 										<li><a href="#;">Wire Transfer</a></li>
 									</ul>
 								</div>
-								<div class="tab_conent">
-									<h4 class="sr_only">Cash</h4>
-									<div class="tbl_data tbl_list_data tbl_en_data">
-										<table>
-											<caption class="sr_only">info Exchange Rates</caption>
-											<colgroup>
-												<col>
-												<col style="width:140px">
-												<col style="width:140px">
-											</colgroup>
-											<thead>
-												<tr>
-													<th scope="col"><span class=" sr_only">Nation</span></th>
-													<th scope="col">Buying</th>
-													<th scope="col">Selling</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<th scope="row">
-														<span class="img">
-															<img src="/resources/img/main/img_nation_usa.jpg" alt="" class="thumb">
-														</span>
-														United States
-													</th>
-													<td class="txt_r pr_8">1137.56</td>
-													<td class="txt_r pr_8">1098.44</td>
-												</tr>
-												<tr>
-													<th scope="row">
-														<span class="img">
-															<img src="/resources/img/main/img_nation_jp.jpg" alt="" class="thumb">
-														</span>
-														Japan
-													</th>
-													<td class="txt_r pr_8">1034.71</td>
-													<td class="txt_r pr_8">999.13</td>
-												</tr>
-												<tr>
-													<th scope="row">
-														<span class="img">
-															<img src="/resources/img/main/img_nation_china.jpg" alt="" class="thumb">
-														</span>
-														China
-													</th>
-													<td class="txt_r pr_8">183.55</td>
-													<td class="txt_r pr_8">166.07</td>
-												</tr>
-												<tr>
-													<th scope="row">
-														<span class="img">
-															<img src="/resources/img/main/img_nation_eu.jpg" alt="" class="thumb">
-														</span>
-														The European Union
-													</th>
-													<td class="txt_r pr_8">1382.86</td>
-													<td class="txt_r pr_8">1329.18</td>
-												</tr>
-												<tr>
-													<th scope="row">
-														<span class="img">
-															<img src="/resources/img/main/img_nation_thailand.jpg" alt="" class="thumb">
-														</span>
-														Thailand
-													</th>
-													<td class="txt_r pr_8">37.65</td>
-													<td class="txt_r pr_8">33.35</td>
-												</tr>
-											</tbody>
-										</table>
+
+								<!-- 2022-03-11 수정-->
+								<div class="tab_content">
+									<div class="tab_cont">
+										<h4 class="sr_only">Cash</h4>
+										<div class="tbl_data tbl_list_data tbl_en_data">
+											<table>
+												<caption class="sr_only">info Exchange Rates</caption>
+												<colgroup>
+													<col>
+													<col style="width:140px">
+													<col style="width:140px">
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col"><span class=" sr_only">Nation</span></th>
+														<th scope="col">Buying</th>
+														<th scope="col">Selling</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_usa.jpg" alt="" class="thumb">
+															</span>
+															United States
+														</th>
+														<td class="txt_r pr_8">1137.56</td>
+														<td class="txt_r pr_8">1098.44</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_jp.jpg" alt="" class="thumb">
+															</span>
+															Japan
+														</th>
+														<td class="txt_r pr_8">1034.71</td>
+														<td class="txt_r pr_8">999.13</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_china.jpg" alt="" class="thumb">
+															</span>
+															China
+														</th>
+														<td class="txt_r pr_8">183.55</td>
+														<td class="txt_r pr_8">166.07</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_eu.jpg" alt="" class="thumb">
+															</span>
+															The European Union
+														</th>
+														<td class="txt_r pr_8">1382.86</td>
+														<td class="txt_r pr_8">1329.18</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_thailand.jpg" alt="" class="thumb">
+															</span>
+															Thailand
+														</th>
+														<td class="txt_r pr_8">37.65</td>
+														<td class="txt_r pr_8">33.35</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+									<div class="tab_cont">
+										<h4 class="sr_only">Wire Transfer</h4>
+										<div class="tbl_data tbl_list_data tbl_en_data">
+											<table>
+												<caption class="sr_only">info Exchange Rates</caption>
+												<colgroup>
+													<col>
+													<col style="width:140px">
+													<col style="width:140px">
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col"><span class=" sr_only">Nation</span></th>
+														<th scope="col">Sending</th>
+														<th scope="col">Receiving</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_usa.jpg" alt="" class="thumb">
+															</span>
+															United States
+														</th>
+														<td class="txt_r pr_8">1137.56</td>
+														<td class="txt_r pr_8">1098.44</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_jp.jpg" alt="" class="thumb">
+															</span>
+															Japan
+														</th>
+														<td class="txt_r pr_8">1034.71</td>
+														<td class="txt_r pr_8">999.13</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_china.jpg" alt="" class="thumb">
+															</span>
+															China
+														</th>
+														<td class="txt_r pr_8">183.55</td>
+														<td class="txt_r pr_8">166.07</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_eu.jpg" alt="" class="thumb">
+															</span>
+															The European Union
+														</th>
+														<td class="txt_r pr_8">1382.86</td>
+														<td class="txt_r pr_8">1329.18</td>
+													</tr>
+													<tr>
+														<th scope="row">
+															<span class="img">
+																<img src="/resources/img/main/img_nation_thailand.jpg" alt="" class="thumb">
+															</span>
+															Thailand
+														</th>
+														<td class="txt_r pr_8">37.65</td>
+														<td class="txt_r pr_8">33.35</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -338,7 +417,7 @@
 									</li>
 									<li>
 										<strong>Overseas</strong>
-										<span>82-31-888-8000</span>
+										<span>82-42-612-6000</span>
 									</li>
 								</ul>
 
