@@ -22,8 +22,17 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			//
+		$(document).on("touchstart", ".info_scroll", function () {
+			$(this).fadeOut();
+		});
+
+		$(document).on('click', '.menu_list h4', function () {
+			$(this).toggleClass('active');
+			if ($(this).hasClass('active')) {
+				$(this).find('a').attr('title', '접기');
+			} else {
+				$(this).find('a').attr('title', '펼치기');
+			}
 		});
 	</script>
 </head>
@@ -73,7 +82,7 @@
 				</div>
 			</div>
 			<div class="img_box mt_3">
-				<a href="#;">
+				<a href="#;" onclick="openModal('layer01',this)">
 					<img src="/resources/img/main/img_guide_smart01.jpg" alt="스마트뱅킹 이용 신청 메뉴 선택">
 				</a>
 			</div>
@@ -145,7 +154,7 @@
 			<div class="container p_4">
 				<div class="chk_tit"><strong>PUSH알림 메시지가 도착하지 않으셨나요?</strong></div>
 				<p class="txt_darkgray mt_1">PUSH알림 수신이 되지 않으셨다면, 스마트뱅킹 앱을
-					실행하여 <strong>인증/보안 > 개인인증서 > PC로그인/인증</strong> 메뉴에서 직접진행이 가능합니다.</p>
+					실행하여 <strong>인증/보안 &gt; 개인인증서 &gt; PC로그인/인증</strong> 메뉴에서 직접진행이 가능합니다.</p>
 				<div class="guide_start_con mt_6">
 					<h5><span class="step">06</span>인터넷뱅킹 표시 QR코드 스캔</h5>
 					<ul class="list list1">
@@ -158,7 +167,7 @@
 			</div>
 
 			<!-- s: Modal Popup 확대 이미지 보기 -->
-			<div class="modal_popup popup show" data-popup="layer01">
+			<div class="modal_popup popup hide" data-popup="layer01">
 				<div class="dimed"></div>
 				<div class="popup_inner">
 					<div class="popup_header">
@@ -167,6 +176,7 @@
 					</div>
 					<div class="popup_body">
 						<div class="expansion_img">
+							<div class="info_scroll"><span class="sr_only">확대 이미지 터치</span></div>
 							<img src="/resources/img/main/img_expansion.jpg" alt="스마트뱅킹 이용 신청 메뉴 선택">
 						</div>
 					</div>
@@ -174,9 +184,6 @@
 				</div>
 			</div>
 			<!-- e: Modal Popup 확대 이미지 보기 -->
-
-
-
 
 			<!-- s: 공통 레이어 로딩 -->
 			<div class="common_layers"></div>
