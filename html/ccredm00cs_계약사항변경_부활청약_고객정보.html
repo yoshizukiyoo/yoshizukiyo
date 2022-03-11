@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">부활청약</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li><span class="num">1</span><span class="txt">부활청약조회</span></li>
+						<li class="on"><span class="num">2</span><span class="txt">고객정보</span></li>
+						<li><span class="num">3</span><span class="txt">계약 전 고지의무</span></li>
+						<li><span class="num">4</span><span class="txt">결제하기</span></li>
+						<li><span class="num">5</span><span class="txt">완료</span></li>
+					</ul>
+				</div>
+
+				<div class="cont_apply mt_10">
+					<div class="apply_body">
+						<!-- s: 기본정보 -->
+						<div class="apply_sec">
+							<h2 class="tit1 mb_2">기본정보</h2>
+							<ul class="list list1 ml_1">
+								<li>휴대폰 번호와 이메일 주소가 없는 고객은 부활청약을 진행할 수 없습니다.</li>
+							</ul>
+
+							<p class="txt_r mt_2 mb_2">
+								<strong class="necessary">*</strong>
+								표시는 필수입력사항입니다.
+							</p>
+
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">기본정보</caption>
+									<colgroup>
+										<col style="width: 210px;">
+										<col>
+										<col style="width: 210px;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">피보험자</th>
+											<td>나봄미</td>
+											<th scope="row">주민등록번호</th>
+											<td>
+												210508-*******
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												이메일
+												<strong class="necessary">*</strong>
+											</th>
+											<td colspan="3">
+												<input type="text" class="tf" title="이메일 앞부분 입력" style="width: 150px" value="dsdsds1">
+												<span class="v_mid ml_1 mr_1">@</span>
+												<div class="selectbox_wrap" style="width: 180px;">
+													<dl>
+														<dt><a href="#;" title="이메일 선택"><span>naver.com</span></a></dt>
+														<dd>
+															<ul>
+																<li><a href="#;"><span>naver.com</span></a></li>
+																<li><a href="#;"><span>daum.net</span></a></li>
+															</ul>
+														</dd>
+													</dl>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												휴대폰 번호
+												<strong class="necessary">*</strong>
+											</th>
+											<td colspan="3">
+												<div class="phone_number">
+													<div class="selectbox_wrap disabled" style="width: 93px;">
+														<dl>
+															<dt><a href="#none" title="받는 분 휴대전화 번호 앞 자리"><span>010</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#none"><span>010</span></a></li>
+																	<li><a href="#none"><span>011</span></a></li>
+																	<li><a href="#none"><span>016</span></a></li>
+																	<li><a href="#none"><span>017</span></a></li>
+																	<li><a href="#none"><span>018</span></a></li>
+																	<li><a href="#none"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="받는 분 휴대전화 번호 가운데 자리" placeholder="1234"
+															style="width: 93px" disabled></div>
+													<div><input type="text" class="tf" title="받는 분 휴대전화 번호 마지막 자리" placeholder="1234"
+															style="width: 93px" disabled></div>
+												</div>
+												<a href="#;" class="btn btn_md btn_outline_default ml_1">휴대폰번호변경</a><span class="ml_2">휴대폰번호 변경은
+													휴대폰 본인인증이 필요합니다.</span>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">주소</th>
+											<td colspan="3">
+												<div class="address_form">
+													<div class="zip_code">
+														<input type="text" class="tf" title="우편번호 입력" disabled style="width: 150px;" value="22671">
+														<div class="btn_inline_box">
+															<a href="#;" class="btn btn_md btn_outline_default ml6">우편번호검색</a>
+														</div>
+													</div>
+													<div class="add1"><input type="text" class="tf" value="전시너인초 감봄  보생노자513이우 37"
+															title="도로명주소 예시) 서울종로구 세종대로 166" disabled style="width: 500px"></div>
+													<div class="add2">
+														<input type="text" class="tf" value="(김기다,범유종최)" title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)"
+															style="width: 500px"></div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- e: 기본정보 -->
+
+						<!-- s: 직장정보 -->
+						<div class="apply_sec mt_16">
+							<h2 class="tit1 ">직장정보</h2>
+
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">직장정보</caption>
+									<colgroup>
+										<col style="width: 210px;">
+										<col>
+										<col style="width: 210px;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th><label for="inp_01">직업 <strong class="necessary">*</strong></label></th>
+											<td colspan="3">
+												<input type="text" class="tf d_i_b" id="inp_01" style="width: 300px;" disabled>
+												<div class="btn_inline_box">
+													<a href="#;" class="btn btn_md btn_outline_default">직업검색</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">
+												<label for="tf-name1">직장명 <strong class="necessary">*</strong></label>
+											</th>
+											<td>
+												<input id="tf-name1" type="text" class="tf" style="width: 350px;" placeholder="직장명을 입력해주세요.">
+											</td>
+											<th scope="row">
+												<label for="tf-name2">부서명 <strong class="necessary">*</strong></label>
+											</th>
+											<td>
+												<input id="tf-name2" type="text" class="tf" style="width: 350px;" placeholder="부서명을 입력해주세요.">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">전화번호</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl>
+															<dt><a href="#;" title="전화번호 앞 자리 선택"><span>010</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#;"><span>010</span></a></li>
+																	<li><a href="#;"><span>011</span></a></li>
+																	<li><a href="#;"><span>016</span></a></li>
+																	<li><a href="#;"><span>017</span></a></li>
+																	<li><a href="#;"><span>018</span></a></li>
+																	<li><a href="#;"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="전화번호 가운데 자리 입력" style="width: 93px" value="1234">
+													</div>
+													<div><input type="text" class="tf" title="전화번호 마지막 자리 입력" style="width: 93px" value="1234">
+													</div>
+												</div>
+											</td>
+											<th scope="row">팩스번호</th>
+											<td>
+												<div class="phone_number">
+													<div class="selectbox_wrap" style="width: 93px;">
+														<dl>
+															<dt><a href="#;" title="팩스번호 앞 자리 선택"><span>010</span></a></dt>
+															<dd>
+																<ul>
+																	<li><a href="#;"><span>010</span></a></li>
+																	<li><a href="#;"><span>011</span></a></li>
+																	<li><a href="#;"><span>016</span></a></li>
+																	<li><a href="#;"><span>017</span></a></li>
+																	<li><a href="#;"><span>018</span></a></li>
+																	<li><a href="#;"><span>019</span></a></li>
+																</ul>
+															</dd>
+														</dl>
+													</div>
+													<div><input type="text" class="tf" title="팩스번호 가운데 자리 입력" style="width: 93px" value="1234">
+													</div>
+													<div><input type="text" class="tf" title="팩스번호 마지막 자리 입력" style="width: 93px" value="1234">
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">주소</th>
+											<td colspan="3">
+												<div class="address_form">
+													<div class="zip_code">
+														<input type="text" class="tf" title="우편번호 입력" disabled style="width: 150px;" value="22671">
+														<div class="btn_inline_box">
+															<a href="#;" class="btn btn_md btn_outline_default ml6">우편번호검색</a>
+														</div>
+													</div>
+													<div class="add1"><input type="text" class="tf" value="전시너인초 감봄  보생노자513이우 37"
+															title="도로명주소 예시) 서울종로구 세종대로 166" disabled style="width: 500px"></div>
+													<div class="add2">
+														<input type="text" class="tf" value="(김기다,범유종최)" title="도로명주소 예시) 00호 (종로1가, 건물명/상호 등)"
+															style="width: 500px"></div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- e: 직장정보 -->
+
+						<!-- s: 추가정보 -->
+						<div class="apply_sec mt_16">
+							<h2 class="tit1 ">추가정보</h2>
+
+							<div class="tbl_row2">
+								<table>
+									<caption class="sr_only">추가정보</caption>
+									<colgroup>
+										<col style="width: 210px;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>운전여부 <strong class="necessary">*</strong></th>
+											<td>
+												<p class="tit">
+													현재 운전(오토바이인 경우 최근 1년이내 운전/소유 포함) 또는 정기적 탑승을 하고 있습니까?
+												</p>
+
+												<div class="chk">
+													<span class="check_item">
+														<input type="radio" name="contract_chk2" id="contract_chk2_1">
+														<label for="contract_chk2_1">예</label>
+													</span>
+													<span class="check_item">
+														<input type="radio" name="contract_chk2" id="contract_chk2_2" checked>
+														<label for="contract_chk2_2">아니요</label>
+													</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>차종선택(중복가능) <strong class="necessary">*</strong></th>
+											<td>
+												<ul class="car_chk">
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_1">
+															<label for="contract_chk3_1">승용차(영업용)</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_2">
+															<label for="contract_chk3_2">승용차(자가용)</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_3">
+															<label for="contract_chk3_3">승합차(영업용)</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_4">
+															<label for="contract_chk3_4">승합차(자가용)</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_5">
+															<label for="contract_chk3_5">화물차(영업용)</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_6">
+															<label for="contract_chk3_6">화물차(자가용)</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_7">
+															<label for="contract_chk3_7">오토바이(50cc미만 포함)</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_8">
+															<label for="contract_chk3_8">건설기계</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_9">
+															<label for="contract_chk3_9">농기계</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_10">
+															<label for="contract_chk3_10">개인형 이동장치(전동킥보드, 전동휠 등)</label>
+														</span>
+													</li>
+													<li class="mt_2">
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk3" id="contract_chk3_11" disabled>
+															<label for="contract_chk3_11">기타(차종을 구체적으로 기재)</label>
+														</span>
+														<input type="text" class="tf ml_2" title="기타 입력" style="width:500px"
+															placeholder="차종을 구체적으로 입력해주세요." disabled>
+													</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<th>취미활동 여부</th>
+											<td>
+												<p class="tit">
+													최근 1년 이내에 다음과 같은 취미를 자주 반복적으로 하고 있거나 관련 자격증을 가지고 있습니까?
+												</p>
+
+												<div class="chk">
+													<span class="check_item">
+														<input type="radio" name="contract_chk4" id="contract_chk4_1">
+														<label for="contract_chk4_1">예</label>
+													</span>
+													<span class="check_item">
+														<input type="radio" name="contract_chk4" id="contract_chk4_2" checked>
+														<label for="contract_chk4_2">아니요</label>
+													</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>취미선택(중복가능) <strong class="necessary">*</strong></th>
+											<td>
+												<ul class="car_chk">
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_1">
+															<label for="contract_chk6_1">스쿠버다이빙</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_2">
+															<label for="contract_chk6_2">스카이다이빙</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_3">
+															<label for="contract_chk6_3">행글라이딩/패러글라이딩</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_4">
+															<label for="contract_chk6_4">수상스키/제트스키</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_5">
+															<label for="contract_chk6_5">자동차/오토바이 경주</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_6">
+															<label for="contract_chk6_6">번지점프</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_7">
+															<label for="contract_chk6_7">오빙벽/암벽등반</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_8">
+															<label for="contract_chk6_8">빙벽/암벽등반</label>
+														</span>
+													</li>
+													<li>
+														<span class="check_item square">
+															<input type="checkbox" name="contract_chk6" id="contract_chk6_9">
+															<label for="contract_chk6_9">레프팅</label>
+														</span>
+													</li>
+												</ul>
+												<div class="mt_2">
+													<span class="v_mid">연간 취미활동 횟수</span><input type="text" class="tf ml_2" title="연간 취미활동 횟수 입력"
+														style="width:70px" placeholder="0">
+													<span class="v_mid ml_1">회</span>
+													<span class="v_mid ml_5">자격증명</span><input type="text" class="tf ml_2" title="자격증명 입력"
+														style="width:500px" placeholder="취미와 관련하여 취득한 자격증명을 입력해주세요.">
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- e: 추가정보 -->
+
+					</div>
+				</div>
+
+				<div class="btn_group txt_c mt_16">
+					<a href="#;" class="btn btn_xl btn_outline_default">이전</a>
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
