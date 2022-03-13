@@ -42,6 +42,17 @@
 					'current').removeAttr('title');
 				$('.tab_content .tab_cont:eq(' + tabCurrent + ')').show().siblings().hide();
 			});
+
+			//gnb 메뉴
+			$(document).on('mouseenter click', '.header .gnb>ul>li>a', function (e) {
+				var gnbWidth = $(this).next().find('ul').width();
+				$(this).next().children().css('width', gnbWidth);
+				$(this).next().css('width', 'auto');
+			});
+
+			$(document).on('mousedown', '.selectbox_wrap', function () {
+				$(this).customSelect();
+			});
 		});
 	</script>
 </head>

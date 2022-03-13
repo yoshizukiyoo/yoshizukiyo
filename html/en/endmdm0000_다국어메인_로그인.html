@@ -43,6 +43,17 @@
 					'current').removeAttr('title');
 				$('.tab_content .tab_cont:eq(' + tabCurrent + ')').show().siblings().hide();
 			});
+
+			//gnb 메뉴
+			$(document).on('mouseenter click', '.header .gnb>ul>li>a', function (e) {
+				var gnbWidth = $(this).next().find('ul').width();
+				$(this).next().children().css('width', gnbWidth);
+				$(this).next().css('width', 'auto');
+			});
+
+			$(document).on('mousedown', '.selectbox_wrap', function () {
+				$(this).customSelect();
+			});
 		});
 	</script>
 </head>
@@ -52,7 +63,7 @@
 	<div class="wrapper wrapper_en">
 		<a href="#content" class="skip_nav">Go to main</a>
 		<!-- 대표홈 헤더에만 .header_global_main 추가 (서브메인은 서브 헤더 동일 적용) -->
-		<header class="header header_main_en" data-inc="_inc-header-main-en.html"></header>
+		<header class="header header_main_en" data-inc="_inc-header-main-en-login.html"></header>
 		<article id="content">
 			<!-- s: 메인 본문 -->
 

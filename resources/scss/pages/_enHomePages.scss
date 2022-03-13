@@ -21,8 +21,246 @@
 				display: inline-block;
 			}
 
-			.global-list {
+			.global_list {
+				height: 36px;
+				margin-left: 5px;
 				align-items: center;
+
+				dt {
+					a {
+						border-width: 0;
+
+						span {
+							margin-right: 34px;
+							font-size: 13px;
+							height: 34px;
+							line-height: 34px;
+
+							&:after {
+								top: 15px;
+								right: 10px;
+								background-image: url(#{$url-img}/main/ico_chevron_down_sm.png);
+							}
+						}
+					}
+				}
+
+				dd {
+					top: 35px;
+					border-radius: 0 0 6px 6px;
+
+					ul {
+						max-height: 240px;
+					}
+
+					a {
+						span {
+							margin-right: 10px;
+							height: 38px;
+							line-height: 38px;
+							font-size: 13px;
+						}
+					}
+				}
+
+				&.active {
+					dt {
+						a {
+							border-width: 1px;
+						}
+					}
+				}
+			}
+
+			.util_btn.bg_type1 {
+				height: 30px;
+
+				a {
+					&:before {
+						top: 0;
+						left: 0;
+					}
+				}
+			}
+		}
+	}
+
+	.btn_allmenu {
+		top: 84px;
+	}
+
+	.gnb {
+		padding: 22px 40px 0 0;
+
+		ul {
+			li {
+				position: relative;
+				flex: 1 1 auto;
+
+				a {
+
+					&.current,
+					&:focus,
+					&:hover {
+						&::before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+
+		.layer_memu_box {
+			position: absolute;
+			width: 400px;
+			top: 44px;
+			left: 50%;
+			padding: 14px 20px 15px;
+			border-radius: 8px;
+			border: 1px solid #3a82ca;
+			transform: translateX(-50%);
+
+			.menu_wrap {
+				width: 100%;
+				padding: 0;
+
+				.menu_list {
+					width: auto;
+					padding-right: 0;
+
+					li {
+						width: 100%;
+						margin-bottom: 12px;
+
+						a {
+							position: relative;
+							padding-left: 10px;
+							font-size: 18px;
+
+							&:after {
+								content: '';
+								position: absolute;
+								left: 0;
+								top: calc(50% - 1.5px);
+								width: 3px;
+								height: 3px;
+								background-color: #555;
+							}
+
+							&:hover,
+							&:focus {
+								color: #3a82ca;
+								border-color: #3a82ca;
+
+								&:after {
+									background-color: #3a82ca;
+								}
+							}
+						}
+
+						&:last-child {
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: -12px;
+				left: calc(50% - 6px);
+				width: 18px;
+				height: 12px;
+				background-image: url(#{$url-img}/main/bg_en_menu.png);
+				background-position: center top;
+				background-repeat: no-repeat;
+				background-size: 18px 12px;
+			}
+		}
+	}
+
+	.modal_popup {
+		.allmenu_top {
+			justify-content: center;
+		}
+
+		.en_allmenu {
+			padding: 20px 50px 0;
+		}
+
+		.allmenu_inner {
+			height: calc(100vh - 330px);
+		}
+	}
+
+	.allmenu_wrap {
+		overflow: initial;
+
+		.menu_section {
+			display: table;
+			width: 100%;
+			padding: 19px 0 18px;
+		}
+
+		h3,
+		.allmenu_list {
+			display: table-cell;
+		}
+
+		h3 {
+			width: 220px;
+			padding-top: 8px;
+			font-size: 20px;
+			color: #3a82ca;
+			font-weight: 400;
+		}
+
+		.allmenu_list {
+			width: calc(100% - 325px);
+
+			ul {
+				li {
+					position: relative;
+					display: inline-block;
+					padding: 3px 12px 3px 16px;
+
+					&:before {
+						content: '';
+						position: absolute;
+						top: 50%;
+						left: 0;
+						width: 1px;
+						height: 10px;
+						background-color: #ddd;
+						transform: translateY(-50%);
+					}
+
+					&:first-child {
+						padding-left: 0;
+
+						&::before {
+							display: none;
+						}
+					}
+
+					a {
+						color: $darkgray;
+
+						&:hover,
+						&:focus {
+							color: #3a82ca;
+						}
+					}
+
+					&.bd_none {
+						padding-left: 0;
+
+						&:before {
+							display: none;
+						}
+					}
+				}
 			}
 		}
 	}
