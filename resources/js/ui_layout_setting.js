@@ -424,7 +424,7 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 					}
 
 					$el.toggleClass('active');
-					if ($otherBtn.attr('title') != undefined) {
+					if ($btn.attr('title') != undefined) {
 						if ($el.hasClass('active')) {
 							$btn.attr('title', $btn.attr('title').replace('펼치기', '접기'));
 						} else {
@@ -447,7 +447,9 @@ $(document).on('click', '.tab_menu_double > .tab_menu_type1 a', function () {
 	};
 })(jQuery);
 $(function () {
-	$('.selectbox_wrap').customSelect();
+	setTimeout(function () {
+		$('.selectbox_wrap').customSelect();
+	}, 100);
 });
 
 // 
