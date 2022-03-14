@@ -193,13 +193,13 @@ $(function () {
 var fontZoom;
 
 function checkFontSize() {
-	$('#content .container *').not('#content .modal_popup .container *').each(function () {
+	$('#content *').not('#content .modal_popup *').each(function () {
 		$(this).attr('data-font', $(this).css('font-size'));
 	});
 }
 
 function fontSizeReset() {
-	$('#content .container *').each(function () {
+	$('#content *').each(function () {
 		$(this).removeAttr('style data-font');
 		fontZoom = 1;
 	});
@@ -215,7 +215,7 @@ function fontSize() {
 		return false;
 	}
 
-	$('#content .container *').not('#content .modal_popup .container *').each(function () {
+	$('#content *').not('#content .modal_popup *').each(function () {
 		var obj = $(this);
 		var font = Number($(obj).attr('data-font').slice(0, 2));
 		$(obj).attr('style', 'font-size:' + (font + 1) + 'px !important').attr('data-font', font + 1);
