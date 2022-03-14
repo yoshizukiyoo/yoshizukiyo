@@ -3,6 +3,13 @@
 
 // TODO : 이곳에 스타일을 정의해 주세요.
 // 클래스 네임 중복되지 않도록 네이밍은 2단어 이상으로 해주세요.
+.input_number {
+
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+		opacity: 1 !important;
+	}
+}
 
 /* 직원 신청상세정보 */
 .staff_apply_detail {
@@ -39,6 +46,7 @@
 
 					.btn {
 						margin-top: -4px;
+						padding: 0 16px 0 20px;
 					}
 
 					.user_name {
@@ -84,13 +92,13 @@
 
 			.info_box_body {
 				flex: 1 1 auto;
-				padding: 20px 30px;
+				padding: 16px 30px;
 				overflow-y: auto;
 			}
 
 			.info_box_footer {
 				flex: 0 0 auto;
-				padding: 30px;
+				padding: 27px 30px;
 
 				.ico {
 					margin-top: -2px;
@@ -101,10 +109,16 @@
 		&.right {
 			padding: 10px 0;
 			background-color: #f9e7dd;
-			overflow-y: auto;
+			overflow-y: hidden;
+
+			>div {
+				overflow-y: auto;
+				height: 100%;
+			}
 
 			.timeline_box {
-				padding: 19px 20px;
+				min-height: 75px;
+				padding: 19px 20px 15px 20px;
 				border-top: 1px solid $white;
 
 				.timeline_header {
@@ -137,6 +151,10 @@
 
 				&:first-child {
 					border-top: none;
+				}
+
+				&:last-child {
+					border-bottom: 1px solid $white;
 				}
 			}
 
@@ -177,6 +195,10 @@
 	border-radius: 10px;
 	padding: 30px;
 	overflow-y: auto;
+
+	&>p {
+		color: $black;
+	}
 }
 
 .customer_status {
@@ -210,6 +232,10 @@
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	border-radius: 100%;
+
+	&+p {
+		color: $black;
+	}
 }
 
 .popup_header {
@@ -218,7 +244,31 @@
 		font-weight: 200;
 		color: $black;
 		border-radius: 5px;
-		background: #cfdeea;
+		background: #ffebb5;
+
+		&.case1 {
+			background: #ffebb5;
+		}
+
+		&.case2 {
+			background: #d6d0cc;
+		}
+
+		&.case3 {
+			background: #c9d1df;
+		}
+
+		&.case4 {
+			background: #cfdeea;
+		}
+
+		&.case5 {
+			background: #d2e9e0;
+		}
+
+		&.case6 {
+			background: #f5c9c2;
+		}
 	}
 }
 
@@ -261,12 +311,49 @@
 				}
 			}
 		}
+
+		td {
+			padding: 15px;
+
+			.box {
+				padding: 12px 16px;
+				min-height: 90px;
+				border: none;
+			}
+
+			.list1 {
+				li {
+					padding-left: 6px;
+
+					&:before {
+						width: 3px;
+						height: 3px;
+						top: 10px;
+						border-radius: 0;
+					}
+				}
+			}
+		}
+
 	}
+
+	th {
+		&.bg_lightyellow {
+			background-color: #fef5e5;
+		}
+	}
+
+}
+
+.tit_black {
+	color: $black;
 }
 
 .quickmenu_check_area {
+	margin-left: 20px;
+
 	.check_item {
-		min-width: 168px;
+		min-width: 145px;
 		margin-bottom: 5px;
 	}
 
@@ -275,10 +362,15 @@
 	}
 }
 
+.btn_mt_100 {
+	margin-top: 300px;
+}
+
 .btn_page_move {
 	width: 95px;
 	height: 30px;
 	padding: 0 15px 0 30px;
+	font-weight: 500;
 	background-image: url(#{$url-img-common}/ico_page_move@2x.png);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -297,6 +389,8 @@
 .notice_alam {
 	margin: 60px 0 20px 0;
 	text-align: center;
+	font-size: $font-size-sm;
+	color: $gray;
 
 	p {
 		padding-top: 45px;
@@ -326,16 +420,28 @@
 }
 
 .customer_total_profit {
-	overflow: hidden;
+	position: relative;
+
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
 
 	dl {
 		float: left;
 		margin-right: 70px;
 
+		dt {
+			font-size: $font-size-sm;
+			color: $gray;
+		}
+
 		dd {
 			font-size: 35px;
 			font-weight: 500;
 			line-height: 35px;
+			color: $black;
 
 			span {
 				font-size: 30px;
@@ -377,7 +483,11 @@
 	}
 }
 
-.graph_chard_box1 {
+.graph_clock {
+	margin-top: -30px;
+}
+
+.graph_chart_box1 {
 	>div {
 		width: 310px;
 
@@ -387,7 +497,7 @@
 	}
 }
 
-.graph_chard_box2 {
+.graph_chart_box2 {
 
 
 	.box {
@@ -396,9 +506,10 @@
 		height: 320px;
 		border-radius: 40px 12px 12px 12px;
 		margin-bottom: 20px;
+		padding: 30px 35px 25px;
 	}
 
-	.graph_chard_area {
+	.graph_chart_area {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -408,10 +519,10 @@
 		.left {
 			flex: 0 0 auto;
 			position: relative;
-			width: 80px;
-			height: 75px;
+			width: 92px;
+			height: 83px;
 			background-repeat: no-repeat;
-			background-size: auto 75px;
+			background-size: cover;
 			background-image: url(#{$url-img}/content/bg_service2@2x.png);
 
 
@@ -441,7 +552,7 @@
 				align-items: center;
 				justify-content: center;
 				height: 100%;
-
+				padding-right: 2px;
 			}
 
 			.text {
@@ -499,7 +610,7 @@
 		bottom: 0;
 		overflow: hidden;
 		width: 100%;
-		margin: 0px -30px;
+		margin: 0px -35px;
 		background: $bg-lightgray;
 		border-radius: 12px;
 
@@ -541,7 +652,41 @@
 	}
 }
 
+.tbl_side_full {
+	.scroll_track {
+		padding: 0;
+	}
+}
 
+.box {
+	&.notice_box {
+		padding: 22px 30px;
+
+		.lab_square {
+			color: $black;
+		}
+	}
+}
+
+.box {
+	&.box_brd_none {
+		border: none;
+	}
+}
+
+.tab_menu1 {
+	+.tab_menu2 {
+		.tab_list {
+			.badge {
+				padding-left: 3.1px;
+			}
+		}
+	}
+}
+
+.txt_color_black {
+	color: $black;
+}
 
 // TODO : 이곳에 스타일을 정의해 주세요.
 // 클래스 네임 중복되지 않도록 네이밍은 2단어 이상으로 해주세요.
