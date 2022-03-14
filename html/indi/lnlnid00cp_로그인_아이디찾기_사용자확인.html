@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h2 class="tit_cont">아이디찾기</h2>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<div class="cont_body">
+				<!-- s: 본문 -->
+				<div class="cont_header_right">
+					<ul class="step">
+						<li class="on"><span class="num">1</span><span class="txt">사용자확인</span></li>
+						<li><span class="num">2</span><span class="txt">본인확인</span></li>
+						<li><span class="num">3</span><span class="txt">찾기완료</span></li>
+					</ul>
+				</div>
+
+				<div class="box first_section">
+					<ul class="list list1">
+						<li>인터넷뱅킹 이용고객을 위한 이용자 ID조회 서비스입니다.</li>
+						<li>고객님의 정보를 입력한 후 ‘찾기’버튼을 클릭하십시오.</li>
+					</ul>
+				</div>
+
+				<!-- s: 아이디찾기 정보입력 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="txt_right">
+							<strong class="necessary">*</strong>
+							표시는 필수입력사항입니다.
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">아이디찾기 표로 고객명, 생년월일, 예금/보험 구분, 계좌번호 정보제공</caption>
+							<colgroup>
+								<col style="width: 17%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">고객명 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf" title="고객명 입력" style="width: 350px;">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">생년월일 <strong class="necessary">*</strong></th>
+									<td>
+										<input type="text" class="tf tf_datepicker" style="width: 170px;">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">예금/보험 구분 <strong class="necessary">*</strong></th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="inputCheck1" id="inputCheck1_1" checked>
+											<label for="inputCheck1_1">계좌번호</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="inputCheck1" id="inputCheck1_2">
+											<label for="inputCheck1_2">증서번호</label>
+										</span>
+									</td>
+								</tr>
+								<!-- s: case1 계좌번호 선택 -->
+								<tr>
+									<th scope="row">계좌번호 <strong class="necessary">*</strong></th>
+									<td><input type="text" class="tf" title="계좌번호 입력" style="width: 350px"></td>
+								</tr>
+								<!-- e: case1 계좌번호 선택 -->
+								<!-- s: case2 증서번호 선택 -->
+								<tr>
+									<th scope="row">계약관계자 구분 <strong class="necessary">*</strong></th>
+									<td>
+										<span class="check_item">
+											<input type="radio" name="inputCheck2" id="inputCheck2_1" checked>
+											<label for="inputCheck2_1">보험계약자</label>
+										</span>
+										<span class="check_item">
+											<input type="radio" name="inputCheck2" id="inputCheck2_2">
+											<label for="inputCheck2_2">주피보험자</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">증서번호 <strong class="necessary">*</strong></th>
+									<td><input type="text" class="tf" title="증서번호 입력" style="width: 350px"></td>
+								</tr>
+								<!-- e: case2 증서번호 선택 -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: 아이디찾기 정보입력 -->
+
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
+					<a href="#;" class="btn btn_xl btn_primary">찾기</a>
+				</div>
+
+				<div class="section">
+					<dl class="box">
+						<dt>참고사항</dt>
+						<dd>
+							<ul class="list list2">
+								<li>보안매체 일련번호 오입력, 비밀번호 오입력 등 기타의 사유로 일시정지된 고객은 우체국 창구를 방문하십시오.</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- e: 본문 -->
+			</div>
+		</article>
+		<footer class=" footer"></footer>
+	</div>
+</body>
+
+</html>
