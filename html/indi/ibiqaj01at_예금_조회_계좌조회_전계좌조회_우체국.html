@@ -22,19 +22,26 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
+		// 접근성 title 수정 2022-03-15
 		$(document).ready(function () {
 			$('.total_price').click(function () {
-				var tit = $(this).attr('title');
-				$(this).parents('.total_account').toggleClass('active');
-				if (tit == '그룹 접기') {
-					$(this).attr('title', '그룹 펼치기');
-				} else if (tit == '그룹 펼치기') {
-					$(this).attr('title', '그룹 접기');
+				var active = $(this).parents('.total_account');
+				active.toggleClass('active');
+				if (active.hasClass('active')) {
+					$(this).attr('title', $(this).attr('title').replace('펼치기', '접기'));
+				} else {
+					$(this).attr('title', $(this).attr('title').replace('접기', '펼치기'));
 				}
 			});
 
 			$('.btn_view').click(function () {
-				$(this).parents('li').toggleClass('active');
+				var active = $(this).parents('li');
+				active.toggleClass('active');
+				if (active.hasClass('active')) {
+					$(this).attr('title', $(this).attr('title').replace('열기', '닫기'));
+				} else {
+					$(this).attr('title', $(this).attr('title').replace('닫기', '열기'));
+				}
 			});
 
 		});
@@ -99,7 +106,7 @@
 								<span class="num_circle ml_1">1</span>
 							</div>
 							<div class="txt_right">
-								<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+								<button type="button" title="입출금 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
 							</div>
 						</div>
 						<ul class="account_con">
@@ -114,7 +121,7 @@
 									<div class="r">
 										<span class="price"><strong>500,000</strong>원</span>
 										<div class="mt_4">
-											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
+											<button type="button" class="btn btn_md btn_outline_default btn_view" title="Young利한 통장 더보기 닫기">계좌관리</button>
 											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
 											<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
 										</div>
@@ -143,7 +150,7 @@
 								<span class="num_circle ml_1">1</span>
 							</div>
 							<div class="txt_right">
-								<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+								<button type="button" title="예금/적금 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
 							</div>
 						</div>
 						<ul class="account_con">
@@ -158,7 +165,7 @@
 									<div class="r">
 										<span class="price"><strong>500,000</strong>원</span>
 										<div class="mt_4">
-											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
+											<button type="button" class="btn btn_md btn_outline_default btn_view" title="Young利한 통장 더보기 닫기">계좌관리</button>
 											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
 										</div>
 									</div>
@@ -186,7 +193,7 @@
 								<span class="num_circle ml_1">2</span>
 							</div>
 							<div class="txt_right">
-								<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+								<button type="button" title="휴면/정리계좌 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
 							</div>
 						</div>
 						<ul class="account_con">
@@ -998,7 +1005,7 @@
 													<div class="phone_number">
 														<div class="selectbox_wrap" style="width: 93px;">
 															<dl title="조건 선택">
-																<dt><a href="#none" title="전화번호 식별번호 선택"><span>선택</span></a></dt>
+																<dt><a href="#none" title="전화번호 앞자리 선택"><span>선택</span></a></dt>
 																<dd>
 																	<ul>
 																		<li><a href="#none"><span>010</span></a></li>
@@ -1024,7 +1031,7 @@
 										</tr>
 										<tr>
 											<th scope="row">메시지</th>
-											<td><textarea name="" id="" class="tf" title="메세지 입력" style="height: 100px;"></textarea></td>
+											<td><textarea name="sms_message" id="sms_message" class="tf" title="메세지 입력" style="height: 100px;"></textarea></td>
 										</tr>
 									</tbody>
 								</table>

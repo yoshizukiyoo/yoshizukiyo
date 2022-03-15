@@ -22,19 +22,26 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
+		// 접근성 title 수정 2022-03-15
 		$(document).ready(function () {
 			$('.total_price').click(function () {
-				var tit = $(this).attr('title');
-				$(this).parents('.total_account').toggleClass('active');
-				if (tit == '그룹 접기') {
-					$(this).attr('title', '그룹 펼치기');
-				} else if (tit == '그룹 펼치기') {
-					$(this).attr('title', '그룹 접기');
+				var active = $(this).parents('.total_account');
+				active.toggleClass('active');
+				if (active.hasClass('active')) {
+					$(this).attr('title', $(this).attr('title').replace('펼치기', '접기'));
+				} else {
+					$(this).attr('title', $(this).attr('title').replace('접기', '펼치기'));
 				}
 			});
 
 			$('.btn_view').click(function () {
-				$(this).parents('li').toggleClass('active');
+				var active = $(this).parents('li');
+				active.toggleClass('active');
+				if (active.hasClass('active')) {
+					$(this).attr('title', $(this).attr('title').replace('열기', '닫기'));
+				} else {
+					$(this).attr('title', $(this).attr('title').replace('닫기', '열기'));
+				}
 			});
 		});
 	</script>
@@ -91,7 +98,7 @@
 							<span class="num_circle ml_1">1</span>
 						</div>
 						<div class="txt_right">
-							<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+							<button type="button" title="입출금 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
 						</div>
 					</div>
 					<ul class="account_con">
@@ -133,7 +140,7 @@
 							<span class="num_circle ml_1">1</span>
 						</div>
 						<div class="txt_right">
-							<button type="button" title="그룹 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
+							<button type="button" title="예금/적금 접기" class="total_price">잔액 <strong>500,000</strong>원</button>
 						</div>
 					</div>
 					<ul class="account_con">
@@ -170,7 +177,7 @@
 							<span class="num_circle">2</span>
 						</div>
 						<div class="txt_right">
-							<button type="button" title="그룹 펼치기" class="total_price">잔액 <strong>1,000,000</strong>원</button>
+							<button type="button" title="휴면/정리계좌 펼치기" class="total_price">잔액 <strong>1,000,000</strong>원</button>
 						</div>
 					</div>
 					<ul class="account_con">
