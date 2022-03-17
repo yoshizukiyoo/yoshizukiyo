@@ -22,19 +22,28 @@
 
 	<!-- 페이지 개별 스크립트 -->
 	<script>
+		// 웹접근성 수정 : 3월 3주차
 		$(document).ready(function () {
 			$('.total_price').click(function () {
-				var tit = $(this).attr('title');
-				$(this).parents('.total_account').toggleClass('active');
-				if (tit == '그룹 접기') {
-					$(this).attr('title', '그룹 펼치기');
-				} else if (tit == '그룹 펼치기') {
-					$(this).attr('title', '그룹 접기');
+				var active = $(this).parents('.total_account');
+				active.toggleClass('active');
+				if (active.hasClass('active')) {
+					$(this).attr('title', $(this).attr('title').replace('펼치기', '접기'));
+				} else {
+					$(this).attr('title', $(this).attr('title').replace('접기', '펼치기'));
 				}
 			});
 
 			$('.btn_view').click(function () {
-				$(this).parents('li').toggleClass('active');
+				var active = $(this).parents('li');
+				active.toggleClass('active');
+				if (active.hasClass('active')) {
+					$(this).attr('title', $(this).attr('title').replace('열기', '닫기'));
+					$(this).siblings('a.btn').attr('tabindex', -1);
+				} else {
+					$(this).attr('title', $(this).attr('title').replace('닫기', '열기'));
+					$(this).siblings('a.btn').attr('tabindex', 0);
+				}
 			});
 
 		});
@@ -99,27 +108,31 @@
 								<span class="num_circle">2</span>
 							</div>
 							<div class="txt_right">
-								<button type="button" title="그룹 펼치기" class="total_price">잔액 <strong>1000,000</strong>원</button>
+								<button type="button" title="입출금 접기" class="total_price">잔액 <strong>1000,000</strong>원</button>
 							</div>
 						</div>
 						<ul class="account_con">
 							<li class="active">
 								<div class="top">
 									<div class="l">
+										<!-- 웹접근성 h 태그 수정 : 3월 3주차 -->
 										<h4 class="tit2 mt_2 mb_2 txt_normal">Young利한 통장</h4>
 										<span>100057-02-000010</span>
 									</div>
 									<div class="r">
 										<span class="price"><strong>500,000</strong>원</span>
-										<div class="mt_4">
-											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
-											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
-											<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
+										<!-- s: 웹접근성 tab 마크업 수정 : 3월 3주차 -->
+										<div class="mt_4" role="tablist">
+											<button type="button" class="btn btn_md btn_outline_default btn_view" title="${계좌명} 더보기 닫기" role="tab" aria-selected="true" aria-controls="account-tab01" id="account01">계좌관리</button>
+											<a href="#;" class="btn btn_md btn_primary txt_medium" tabindex="-1" title="${계좌명}">거래내역</a>
+											<a href="#;" class="btn btn_md btn_primary txt_medium" tabindex="-1" title="${계좌명}">즉시이체</a>
 										</div>
+										<!-- e: 웹접근성 tab 마크업 수정 : 3월 3주차 -->
 									</div>
 								</div>
 								<!-- s: 20211209 전계좌조회_v1.01 -->
-								<div class="btm">
+								<!-- 웹접근성 마크업 수정 : 3월 3주차 -->
+								<div class="btm" role="tabpanel" id="account-tab01" aria-labelledby="account01">
 									<button type="button" onclick="openModal('layer04', this);">계좌별칭관리</button>
 									<button type="button" onclick="openModal('layer05', this);">등록해지</button>
 									<button type="button" onclick="openModal('layer07', this);">출금동의변경</button>
@@ -130,19 +143,23 @@
 							<li>
 								<div class="top">
 									<div class="l">
+										<!-- 웹접근성 h 태그 수정 : 3월 3주차 -->
 										<h4 class="tit2 mt_2 mb_2 txt_normal">Young利한 통장</h4>
 										<span>100057-02-000010</span>
 									</div>
 									<div class="r">
 										<span class="price"><strong>500,000</strong>원</span>
-										<div class="mt_6">
-											<button type="button" class="btn btn_md btn_outline_default btn_view">계좌관리</button>
-											<a href="#;" class="btn btn_md btn_primary txt_medium">거래내역</a>
-											<a href="#;" class="btn btn_md btn_primary txt_medium">즉시이체</a>
+										<!-- s: 웹접근성 tab 마크업 수정 : 3월 3주차 -->
+										<div class="mt_6" role="tablist">
+											<button type="button" class="btn btn_md btn_outline_default btn_view" title="${계좌명} 더보기 열기" role="tab" aria-selected="true" aria-controls="account-tab02" id="account02">계좌관리</button>
+											<a href="#;" class="btn btn_md btn_primary txt_medium" tabindex="0" title="${계좌명}">거래내역</a>
+											<a href="#;" class="btn btn_md btn_primary txt_medium" tabindex="0" title="${계좌명}">즉시이체</a>
 										</div>
+										<!-- e: 웹접근성 tab 마크업 수정 : 3월 3주차 -->
 									</div>
 								</div>
-								<div class="btm">
+								<!-- 웹접근성 마크업 수정 : 3월 3주차 -->
+								<div class="btm" role="tabpanel" id="account-tab02" aria-labelledby="account02">
 									<button type="button" onclick="openModal('layer04', this);">계좌별칭관리</button>
 									<button type="button" onclick="openModal('layer05', this);">등록해지</button>
 									<button type="button" onclick="openModal('layer06', this);">순서변경</button>
