@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- s: 헤더 -->
+		<header class="header">
+			<div class="titlebar">
+				<div class="left">
+					<a href="#;" class="btn btn_icon">
+						<i class="ico ico_lg_back"></i>
+						<span class="sr_only">뒤로가기</span>
+					</a>
+					<h1 class="tit_page">해외송금거래조회</h1>
+				</div>
+			</div>
+		</header>
+		<!-- e: 헤더 -->
+
+		<article id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 검색조건입력 -->
+			<form action="#;" class="search_form">
+				<div class="inner">
+					<div class="tbl tbl_search">
+						<table>
+							<caption class="sr_only">검색조건 입력</caption>
+							<colgroup>
+								<col style="width: 14%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">송금일자</th>
+									<td>
+										<span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_1">
+												<label for="radio4_1">당일</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_2">
+												<label for="radio4_2">7일</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_3">
+												<label for="radio4_3">15일</label>
+											</span>
+											<span class="check_item type_btn">
+												<input type="radio" name="radio4" id="radio4_4" checked>
+												<label for="radio4_4">1개월</label>
+											</span>
+										</span>
+										<span class="ml_2">
+											<input type="text" class="tf tf_datepicker" value="2022.01.01" title="송금일자 시작일"
+												style="width: 150px;">
+											<span class="datepicker_bar">-</span>
+											<input type="text" class="tf tf_datepicker" value="2022.01.01" title="송금일자 종료일"
+												style="width: 150px;">
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">진행상태</th>
+									<td class="search_type2">
+										<span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_1" checked>
+												<label for="check1_1">전체</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_2">
+												<label for="check1_2">해외발송전</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_3">
+												<label for="check1_3">해외발송후</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_4">
+												<label for="check1_4">퇴결요청</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_5">
+												<label for="check1_5">송금취소</label>
+											</span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">원부번호</th>
+									<td>
+										<label for="num1" class="sr_only">원부번호</label>
+										<input type="text" class="tf" id="num1" placeholder="" title="" style="width: 350px;">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<button type="button" class="btn btn_lg btn_primary btn_search">
+						<i class="ico ico_search_lg_white"></i>
+						<span>조회</span>
+					</button>
+				</div>
+				<button type="button" class="btn btn_search_more" title="펼치기">
+					<span>상세조건</span>
+					<i class="ico ico_arr_down_white"></i>
+				</button>
+			</form>
+			<!-- e: 검색조건입력 -->
+
+			<div class="container">
+				<div class="txt_r mb_2">
+					<p class="txt_xs">
+						<i class="ico ico_clock_gray mr_1"></i>
+						<span class="v_mid">조회시간: 2021.12.31 14:18:38</span>
+					</p>
+				</div>
+
+				<div class="tbl tbl_data">
+					<table style="min-width: 1000px; max-height: 497px;">
+						<caption class="sr_only">해외송금거래조회 검색결과 목록</caption>
+						<colgroup>
+							<col style="width: 8%;">
+							<col style="width: 12%;">
+							<col>
+							<col style="width: 12%;">
+							<col style="width: 14%;">
+							<col style="width: 14%;">
+							<col style="width: 10%;">
+							<col style="width: 12%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">순번</th>
+								<th scope="col">내도일자</th>
+								<th scope="col">송신구분</th>
+								<th scope="col">송수신일자</th>
+								<th scope="col">원부번호</th>
+								<th scope="col">처리국</th>
+								<th scope="col">상태</th>
+								<th scope="col">보고</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>9</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+							<tr>
+								<td>10</td>
+								<td>2018.04.23</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>광화문우체국<br />(홍길동)</td>
+								<td>완료</td>
+								<td><a href="#;" class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas1', this);">해외송금정보</a><br /><a href="#;"
+										class="btn btn_xs btn_outline_default btn_overseas_popup"
+										onclick="openModal('layerOverseas2', this);">송금영수증</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- e: 본문 -->
+		</article>
+	</div>
+
+	<!-- 모달 오픈상태로 보여줄 경우 클래스 hide / show 교체 사용 -->
+	<!-- 해외송금정보 -->
+	<div class="modal_popup modal_lg show" data-popup="layerOverseas1">
+		<div class="dimed"></div>
+		<div class="popup_inner">
+			<div class="popup_header">
+				<h2 class="popup_tit">해외송금정보</h2>
+				<i class="ico ico_clock_gray ml_4"></i>
+				<span class="txt_xs txt_gray ml_1">조회시간 : 2021년 12월 28일 17시 06분 23초</span>
+			</div>
+			<div class="popup_body">
+				<div class="tbl tbl_data ">
+					<table>
+						<caption class="sr_only">해외송금정보</caption>
+						<colgroup>
+							<col style="width: 17%;">
+							<col style="width: 33%;">
+							<col style="width: 17%;">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">원부번호</th>
+								<td class="txt_l">12021121800001</td>
+								<th scope="row">상태</th>
+								<td class="txt_l">해외발송전</td>
+							</tr>
+							<tr>
+								<th scope="row">송금액(외화)</th>
+								<td class="txt_r ">1000.00 USD</td>
+								<th scope="row">적용환율</th>
+								<td class="txt_r ">1193.30 원</td>
+							</tr>
+							<tr>
+								<th scope="row">원화환산금액①</th>
+								<td class="txt_r txt_medium ">1,111,700원</td>
+								<th scope="row">수수료②</th>
+								<td class="txt_r txt_medium ">5,000원</td>
+							</tr>
+							<tr>
+								<th scope="row">송금일</th>
+								<td colspan="3" class="txt_l">2021.12.30</td>
+							</tr>
+							<tr>
+								<th scope="row">총 출금액(①+②)</th>
+								<td colspan="3" class="total_payment txt_r txt_medium ">1,116,700원</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="txt_lg mb_3 mt_7 txt_color_black">송금인정보</p>
+				<div class="tbl tbl_data ">
+					<table>
+						<caption class="sr_only">송금인정보</caption>
+						<colgroup>
+							<col style="width: 17%;">
+							<col style="width: 33%;">
+							<col style="width: 17%;">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">송금인명</th>
+								<td class="txt_l">LEE Y</td>
+								<th scope="row">전화번호</th>
+								<td class="txt_l">0101341</td>
+							</tr>
+							<tr>
+								<th scope="row">주소</th>
+								<td class="txt_l " colspan="3">1 1 JEONGBOHWA-GIL NAJU-SI JEOLLANA M-DO SOUTH KOREA </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="txt_lg mb_3 mt_7 txt_color_black">수취인정보</p>
+				<div class="tbl tbl_data ">
+					<table>
+						<caption class="sr_only">수취인정보</caption>
+						<colgroup>
+							<col style="width: 17%;">
+							<col style="width: 33%;">
+							<col style="width: 17%;">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">수취인</th>
+								<td class="txt_l">KIM Y</td>
+								<th scope="row">전화번호</th>
+								<td class="txt_l">0101341</td>
+							</tr>
+							<tr>
+								<th scope="row">주소</th>
+								<td class="txt_l " colspan="3">1 1 JEONGBOHWA-GIL NAJU-SI JEOLLANA -DO SOUTH KOREA </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn_group">
+					<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerOverseas1');">확인</button>
+				</div>
+			</div>
+			<button type="button" class="btn btn_close_popup">닫기</button>
+		</div>
+	</div>
+	<!-- 해외송금영수증 -->
+	<div class="modal_popup modal_lg hide" data-popup="layerOverseas2">
+		<div class="dimed"></div>
+		<div class="popup_inner">
+			<div class="popup_header">
+				<h2 class="popup_tit">해외송금영수증</h2>
+				<i class="ico ico_clock_gray ml_4"></i>
+				<span class="txt_xs txt_gray ml_1">조회시간 : 2021년 12월 28일 17시 06분 23초</span>
+			</div>
+			<div class="popup_body">
+				<div class="tbl tbl_data ">
+					<table>
+						<caption class="sr_only">해외송금영수증</caption>
+						<colgroup>
+							<col style="width: 17%;">
+							<col style="width: 33%;">
+							<col style="width: 17%;">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">원부번호</th>
+								<td class="txt_l">12021121800001</td>
+								<th scope="row">상태</th>
+								<td class="txt_l">해외발송전</td>
+							</tr>
+							<tr>
+								<th scope="row">송금인</th>
+								<td class="txt_l">HONGGILDONG</td>
+								<th scope="row">실명번호</th>
+								<td class="txt_l">650519-********</td>
+							</tr>
+							<tr>
+								<th scope="row">송금액(외화)</th>
+								<td class="txt_r ">1000.00 USD</td>
+								<th scope="row">적용환율</th>
+								<td class="txt_r ">1193.30 원</td>
+							</tr>
+							<tr>
+								<th scope="row">원화환산금액①</th>
+								<td class="txt_r txt_medium ">1,111,700원</td>
+								<th scope="row">수수료②</th>
+								<td class="txt_r txt_medium ">5,000원</td>
+							</tr>
+							<tr>
+								<th scope="row">송금일</th>
+								<td colspan="3" class="txt_l">2021.12.30</td>
+							</tr>
+							<tr>
+								<th scope="row">총 출금액(①+②)</th>
+								<td colspan="3" class="txt_r txt_medium ">1,116,700원</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn_group">
+					<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('layerOverseas2');">확인</button>
+				</div>
+			</div>
+			<button type="button" class="btn btn_close_popup">닫기</button>
+		</div>
+	</div>
+	<!-- e: modal popup -->
+</body>
+
+</html>

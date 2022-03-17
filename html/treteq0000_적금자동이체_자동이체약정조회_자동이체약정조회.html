@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			$(".tbl .search_type2, .search_type_tbl2").hide();
+
+			$('.search_type_select input[type="radio"]').click(function () {
+				if ($('#radioSearch1_1').is(':checked')) {
+					$(".tbl .search_type1, .search_type_tbl1").show();
+					$(".tbl .search_type2, .search_type_tbl2").hide();
+				}
+				if ($('#radioSearch1_2').is(':checked')) {
+					$(".tbl .search_type1, .search_type_tbl1").hide();
+					$(".tbl .search_type2, .search_type_tbl2").show();
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- s: 헤더 -->
+		<header class="header">
+			<div class="titlebar">
+				<div class="left">
+					<a href="#;" class="btn btn_icon">
+						<i class="ico ico_lg_back"></i>
+						<span class="sr_only">뒤로가기</span>
+					</a>
+					<h1 class="tit_page">자동이체약정조회</h1>
+				</div>
+			</div>
+		</header>
+		<!-- e: 헤더 -->
+
+		<article id="content">
+			<!-- s: 본문 -->
+
+			<!-- s: 검색조건입력 -->
+			<form action="#;" class="search_form">
+				<div class="inner">
+					<div class="tbl tbl_search tbl_width_full">
+						<table>
+							<caption class="sr_only">검색조건 입력</caption>
+							<colgroup>
+								<col style="width: 14%;">
+								<col style="width: 29%;">
+								<col style="width: 12%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										약정계좌번호
+										<span class="req">필수항목</span>
+									</th>
+									<td>
+										<div class="opt" style="width: 260px;">
+											<dl>
+												<dt><a href="#;" title="약정계좌번호  선택"><span>00000000-00-00000000</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#;"><span>선택1</span></a></li>
+														<li><a href="#;"><span>선택2</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+									</td>
+									<th scope="row">
+										조회구분
+										<span class="req">필수항목</span>
+									</th>
+									<td>
+										<div class="search_type_select">
+											<span class="check_item">
+												<input type="radio" name="radioSearch1" id="radioSearch1_1" class="type1" checked>
+												<label for="radioSearch1_1">외부기관자동이체</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="radioSearch1" id="radioSearch1_2" class="type2">
+												<label for="radioSearch1_2">계좌간자동이체</label>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										약정상태
+									</th>
+									<td>
+										<span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_1" checked>
+												<label for="check1_1">전체</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_2">
+												<label for="check1_2">약정</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check1_3">
+												<label for="check1_3">해제</label>
+											</span>
+										</span>
+									</td>
+									<!-- [D] 
+										외부기관 자동이체
+									-->
+									<th scope="row" class="search_type1">
+										약정구분
+									</th>
+									<td class="search_type1">
+										<span>
+											<span class="check_item">
+												<input type="checkbox" id="check2_1" checked>
+												<label for="check2_1">출금계좌</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check2_2">
+												<label for="check2_2">입금계좌</label>
+											</span>
+										</span>
+									</td>
+									<!-- [D] 
+										계좌관 자동이체
+									-->
+									<th scope="row" class="search_type2">
+										기관구분
+									</th>
+									<td class="search_type2">
+										<span>
+											<span class="check_item">
+												<input type="checkbox" id="check3_1" checked>
+												<label for="check3_1">전체</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check3_2">
+												<label for="check3_2">지로</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check3_3">
+												<label for="check3_3">CMS</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check3_4">
+												<label for="check3_4">펌뱅킹</label>
+											</span>
+											<span class="check_item">
+												<input type="checkbox" id="check3_5">
+												<label for="check3_5">기타기관</label>
+											</span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<button type="button" class="btn btn_lg btn_primary btn_search">
+						<i class="ico ico_search_lg_white"></i>
+						<span>조회</span>
+					</button>
+				</div>
+				<button type="button" class="btn btn_search_more" title="펼치기">
+					<span>상세조건</span>
+					<i class="ico ico_arr_down_white"></i>
+				</button>
+			</form>
+			<!-- e: 검색조건입력 -->
+
+			<div class="container">
+				<div class="txt_r mb_2">
+					<p class="txt_xs">
+						<i class="ico ico_clock_gray mr_1"></i>
+						<span class="v_mid">조회시간: 2021.12.31 14:18:38</span>
+					</p>
+				</div>
+				<div class="tbl tbl_data search_type_tbl1">
+					<table style="min-width: 1000px;max-height:497px;">
+						<caption class="sr_only">외부기관자동이체 목록</caption>
+						<colgroup>
+							<col style="width: 8%;">
+							<col style="width: 11%;">
+							<col style="width: 15%;">
+							<col style="width: 15%;">
+							<col style="width: 8%;">
+							<col style="width: 8%;">
+							<col style="width: 12%;">
+							<col style="width: 12%;">
+							<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">순번</th>
+								<th scope="col">기관코드</th>
+								<th scope="col">이체기관명</th>
+								<th scope="col">납부자번호</th>
+								<th scope="col">상태</th>
+								<th scope="col">결과</th>
+								<th scope="col">약정일자</th>
+								<th scope="col">해지(예정)일</th>
+								<th scope="col">구분</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">40000919</td>
+								<td class="txt_l">한국전력공사</td>
+								<td></td>
+								<td>등록</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="txt_l">9952552519</td>
+								<td class="txt_l">주식회사전력기술</td>
+								<td></td>
+								<td>해제</td>
+								<td>정상</td>
+								<td>1999.10.12</td>
+								<td>1999.10.12</td>
+								<td>지로</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="tbl tbl_data search_type_tbl2">
+				<table style="min-width: 3000px; max-height:497px;">
+					<caption class="sr_only">계좌간자동이체 목록</caption>
+					<colgroup>
+						<col style="width: 2%;">
+						<col>
+						<col style="width: 5%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 4%;">
+						<col style="width: 6%;">
+						<col style="width: 6%;">
+						<col style="width: 6%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">순번</th>
+							<th scope="col">이체계좌번호</th>
+							<th scope="col">이체계좌고객명</th>
+							<th scope="col">은행명</th>
+							<th scope="col">상태</th>
+							<th scope="col">등록일</th>
+							<th scope="col">등록국</th>
+							<th scope="col">등록조작자</th>
+							<th scope="col">이체시작일</th>
+							<th scope="col">이체종료일</th>
+							<th scope="col">납기일</th>
+							<th scope="col">이체금액</th>
+							<th scope="col">이체종류</th>
+							<th scope="col">변경일</th>
+							<th scope="col">변경국</th>
+							<th scope="col">변경조작자</th>
+							<th scope="col">해지일</th>
+							<th scope="col">해지국</th>
+							<th scope="col">해지조작자</th>
+							<th scope="col">입금계좌명칭(별명)</th>
+							<th scope="col">입금통장 표시될 내용</th>
+							<th scope="col">출금계좌표시될 내용</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	</div>
+
+	<!-- e: 본문 -->
+	</article>
+	</div>
+</body>
+
+</html>

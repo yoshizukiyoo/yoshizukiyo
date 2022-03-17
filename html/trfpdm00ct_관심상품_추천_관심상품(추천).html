@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 상품군 카드 슬라이더
+			$('.service_wrap > .inner').not('.slick-initialized').slick({
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				variableWidth: true,
+				infinite: true,
+				dots: false,
+				arrows: false,
+				speed: 1000,
+				autoplay: false,
+				accessibility: false
+			});
+			// 상품선택
+			$('.service_wrap .service_item').click(function () {
+				$(this).find('.product_selected').toggle()
+				$(this).parent().parent().siblings().find('.product_selected').hide();
+			});
+			// 추천근거
+			if ($('.service_item').find('p.recommend_area').length !== 0) {
+				$(".btn_product_info").css({
+					"bottom": "60px"
+				});
+			};
+			// SMS상담신청
+			$(".sms_url_send").click(function () {
+				$(".tablet_toast_message.product").fadeIn();
+			});
+			$(".message_close").click(function () {
+				$(this).parent().fadeOut();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<!-- [퍼블] .wrapper는 전체 공통 컨테이너로, 스타일 수정 금지합니다.
+		특수 레이아웃은 멀티클래스 .wrapper_* 추가 후 스타일링해 주세요 -->
+	<div class="wrapper">
+		<!-- s: 헤더 -->
+		<header class="header">
+			<div class="titlebar">
+				<div class="left">
+					<a href="#;" class="btn btn_icon">
+						<i class="ico ico_lg_back"></i>
+						<span class="sr_only">뒤로가기</span>
+					</a>
+					<h1 class="tit_page">관심상품</h1>
+				</div>
+			</div>
+		</header>
+		<!-- e: 헤더 -->
+
+		<!-- [퍼블] 본문 백그라운드컬러 적용시 #content에 멀티클래스 추가 후 스타일링 -->
+		<article id="content" class="pb_0 bg_lightprimary">
+			<!-- s: 본문 -->
+
+			<div class="cont_inner">
+
+				<nav class="tab_menu tab_menu3 pt_1 bg_white">
+					<ul class="tab_list">
+						<li><a href="#;"><span>관심상품</span></a></li>
+						<li><a href="#;"><span>장바구니</span></a></li>
+						<li class="on"><a href="#;" title="선택됨"><span>추천</span></a></li>
+					</ul>
+				</nav>
+
+				<div class="service_wrap mt_4 mb_2">
+					<div class="inner">
+						<!-- [D] 상품별 클래스
+								- 예금 : new_product_bank
+								- 카드 : new_product_card
+								- 예금 : new_product_insu
+							-->
+						<div class="service_item new_product_bank">
+							<div class="product_info_area">
+								<p class="product_selected">
+									<i class="ico ico_check_lg_red"></i>
+									<span class="sr_only">상품선택</span>
+								</p>
+								<div>
+									<p>다드림(多Dream)통장(실버)</p>
+									<ul class="product_hashtag">
+										<li>#추가입금</li>
+										<li>#편리한</li>
+										<li>#목돈관리</li>
+									</ul>
+								</div>
+								<dl>
+									<dt class="txt_sm txt_medium">최고 우대 이율</dt>
+									<dd>0.1<span>%</span></dd>
+								</dl>
+								<p class="btn_product_info">
+									<a href="#;" class="btn btn_sm btn_round btn_outline_lightgray" target="_blank" title="새창열림">
+										<span>상품설명서</span><i class="ico ico_doc_xs"></i>
+									</a>
+								</p>
+								<p class="recommend_area">
+									<a href="#" target="_blank" title="새창열림"><i class="ico ico_arr_right_black_xs"></i>추천근거1</a>
+								</p>
+							</div>
+						</div>
+
+						<div class="service_item new_product_card">
+							<div class="product_info_area">
+								<p class="product_selected">
+									<i class="ico ico_check_lg_red"></i>
+									<span class="sr_only">상품선택</span>
+								</p>
+								<div>
+									<p>다드림(多Dreama) 체크카드</p>
+									<ul class="product_hashtag">
+										<li>#다드림통장</li>
+										<li>#우체국거래실적포인트</li>
+									</ul>
+								</div>
+
+								<p class="card_img"><img src="/resources/img/content/_sample_card2.jpg" alt="card 예시"></p>
+								<p class="btn_product_info">
+									<a href="#;" class="btn btn_sm btn_round btn_outline_lightgray" target="_blank" title="새창열림">
+										<span>상품설명서</span><i class="ico ico_doc_xs"></i>
+									</a>
+								</p>
+								<p class="recommend_area">
+									<a href="#" target="_blank" title="새창열림"><i class="ico ico_arr_right_black_xs"></i>추천근거2</a>
+								</p>
+							</div>
+						</div>
+
+						<div class="service_item new_product_insu">
+							<div class="product_info_area">
+								<p class="product_selected">
+									<i class="ico ico_check_lg_red"></i>
+									<span class="sr_only">상품선택</span>
+								</p>
+								<div>
+									<p><span>비갱신형</span><span>전기납</span><span>월납</span></p>
+									<p>무배당온라인암보험</p>
+								</div>
+								<p class="insu_paid"><span>월</span>1,800<span>원 부터</span></p>
+								<ul class="product_hashtag">
+									<li>#전기납</li>
+									<li>#암보험</li>
+									<li>#고액암</li>
+									<li>#일반암</li>
+									<li>#남여생식기암</li>
+									<li>#항암방선선</li>
+									<li>#약물치료비</li>
+								</ul>
+								<p class="btn_product_info">
+									<a href="#;" class="btn btn_sm btn_round btn_outline_lightgray" target="_blank" title="새창열림">
+										<span>상품설명서</span><i class="ico ico_doc_xs"></i>
+									</a>
+								</p>
+								<p class="recommend_area">
+									<a href="#" target="_blank" title="새창열림"><i class="ico ico_arr_right_black_xs"></i>추천근거1</a>
+								</p>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class="cont_footer">
+					<div class="container">
+						<div class="flex_justify_between product_bottom_button">
+							<div class="left">
+								<p class="mt_2 txt_md txt_normal txt_color_black"><i class="ico ico_pincette"></i>추천 상품은 빅데이터 분석 기반으로 맞춤
+									추천됩니다.</p>
+							</div>
+							<div class="right">
+								<button type="button" class="btn btn_xl btn_outline_default">이전</button>
+								<button type="button" class="btn btn_xl btn_black">가입</button>
+								<button type="button" class="sms_url_send">
+									<i class="ico ico_mail"></i><span class="sr_only">문자메시지로 설명서 URL 전달</span></button>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+			<!-- e: 본문 -->
+		</article>
+
+	</div>
+
+	<!-- [D] SMS 메세지
+		-->
+	<div class="tablet_toast_message product">
+		<p><span>상품설명서가 고객님 휴대폰번호로 전송</span>되었습니다. (김*규 | 010-****-1234)</p>
+		<a href="#" class="message_close"><span class="icon_area"><i class="ico ico_close_white"></i></span><span
+				class="sr_only">닫기</span></a>
+	</div>
+</body>
+
+</html>

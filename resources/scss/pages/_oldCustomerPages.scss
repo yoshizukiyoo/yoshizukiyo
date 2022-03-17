@@ -231,6 +231,156 @@
 			}
 		}
 	}
+}
+
+.service_wrap {
+
+	//개인정보변경
+	&.personal_info {
+		.inner {
+			.slick-list {
+				padding-left: 0;
+
+				.slick-slide {
+					width: 320px;
+					padding: 20px 15px 18px 0;
+
+					.service_item {
+						overflow: hidden;
+						height: 440px;
+						padding: 0 30px 20px;
+					}
+				}
+			}
+
+		}
+
+		.top_cicle {
+			width: 70px;
+			margin: 0 auto;
+
+			.ico_check_half_primary {
+				width: 70px;
+				height: 30px;
+				margin-bottom: 15px;
+				background-image: url(#{$url-img-common}/ico_check_half_primary@2x.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+		}
+
+
+		.tit_personal1 {
+			padding-bottom: 1px;
+			margin-bottom: 2px;
+			font-size: $font-size-xs;
+			font-weight: 400;
+			color: $gray;
+			border-bottom: 1px solid #9f9f9f;
+		}
+
+		.tit_personal2 {
+			font-size: $font-size-md;
+			font-weight: 400;
+			color: $black;
+			letter-spacing: -0.05em;
+		}
+
+		.tit_personal3 {
+			position: relative;
+
+			padding-left: 10px;
+			font-size: $font-size-sm;
+			font-weight: 400;
+			color: $black;
+			letter-spacing: -0.05em;
+
+			&:before {
+				content: "";
+				position: absolute;
+				width: 4px;
+				height: 6px;
+				top: 8px;
+				left: 0;
+				background: url(#{$url-img-common}/ico_arr_right_black_xs@2x.png) no-repeat;
+				background-size: cover;
+			}
+		}
+
+		.personal_section1 {
+			min-height: 72px;
+			margin-bottom: 20px;
+			border-bottom: 1px solid #eee;
+		}
+
+
+		.personal_txt_num {
+			font-size: 30px;
+			color: $black;
+			font-weight: 600;
+		}
+
+		.personal_txt_mail {
+			font-size: 23px;
+			color: $black;
+			font-weight: 600;
+		}
+
+		.personal_txt_address {
+			font-size: $font-size-md;
+			color: $black;
+			font-weight: 400;
+		}
+
+		.personal_info_empty {
+			padding: 13px 0;
+			font-size: $font-size-xl;
+			font-weight: 500;
+			color: $lightgray;
+			text-align: center;
+		}
+
+		.personal_line {
+			display: block;
+			margin: 9px 0;
+			height: 1px;
+			width: 100%;
+			background: #eee;
+		}
+
+		.btn_personal_gray {
+			width: 60px;
+			height: 24px;
+			line-height: 20px;
+			padding-right: 8px;
+			font-size: $font-size-xs;
+			font-weight: 400;
+			color: $white;
+			background-color: $bg-gray;
+			border-radius: 12px;
+			background-image: url(#{$url-img-common}/ico_arr_xs_right_white@2x.png);
+			background-size: 5px 8px;
+			background-position: top 8px right 8px;
+			background-repeat: no-repeat;
+		}
+
+		.check_item {
+
+			margin-bottom: 4px;
+
+			label {
+				min-width: 56px;
+				width: 56px;
+				height: 25px;
+				padding: 0 !important;
+				font-size: $font-size-xxs;
+			}
+
+			&+.type_btn {
+				margin-left: 2px;
+			}
+		}
+	}
 
 }
 
@@ -299,6 +449,12 @@
 				&:nth-child(4) {
 					span {
 						background-image: url(#{$url-img-common}/ico_customer_process6@2x.png);
+					}
+				}
+
+				&.overseas {
+					span {
+						background-image: url(#{$url-img-common}/ico_customer_process7@2x.png);
 					}
 				}
 			}
@@ -375,6 +531,12 @@
 			vertical-align: middle;
 		}
 	}
+
+	td {
+		&.total_payment {
+			background: $bg-lightgray;
+		}
+	}
 }
 
 .tf_datepicker_lg {
@@ -384,6 +546,12 @@
 		.tf {
 			height: 60px;
 		}
+	}
+}
+
+.tf {
+	&.tf_brd_black {
+		border: 1px solid $black;
 	}
 }
 
@@ -441,9 +609,29 @@
 		margin: 0;
 
 		.box_shadow {
+			position: relative;
 			border: 1px solid $border-base;
+
+
+			.lab_status {
+				position: absolute;
+				top: 20px;
+				left: 30px;
+			}
+
+			.check_switch {
+				position: absolute;
+				right: 30px;
+				top: 20px;
+			}
 		}
 	}
+
+	display: block;
+	font-size: 22px;
+	font-weight: 400;
+	color: $black;
+	line-height: 70px;
 }
 
 .checkcard_result_message {
@@ -519,7 +707,7 @@
 
 		&:first-child {
 			p {
-				margin-top: 6px;
+				margin-top: 13px;
 				font-size: $font-size-xl;
 				font-weight: 400;
 				color: $black;
@@ -552,8 +740,19 @@
 			background: $bg-lightgray;
 
 			div {
+				position: relative;
 				float: left;
-				width: 50%;
+				width: 217px;
+
+				&:first-child:after {
+					content: "";
+					position: absolute;
+					top: -5px;
+					right: 0;
+					width: 1px;
+					height: 65px;
+					background: $white;
+				}
 
 				p {
 					display: inline-block;
@@ -580,6 +779,10 @@
 					width: 54px;
 					height: 54px;
 					vertical-align: middle;
+				}
+
+				+div {
+					width: calc(100% - 217px);
 				}
 			}
 		}
@@ -647,8 +850,214 @@
 	}
 }
 
+.tbl_width_full {
+	table {
+		width: calc(100% + 122px);
+	}
 
+	&+.btn_search {
+		z-index: 10;
+	}
+}
 
+.box_default {
+	&.round_bottom_remove {
+		text-align: center;
+	}
+}
+
+.ico {
+	&.ico_overseas_paper {
+		width: 20px;
+		height: 25px;
+		line-height: 24px;
+		background-image: url(#{$url-img-common}/ico_overseas_paper@2x.png);
+		background-size: cover;
+	}
+}
+
+.btn {
+	&.btn_overseas_popup {
+		width: 86px;
+		margin: 2.5px 0;
+	}
+}
+
+.search_form {
+	&.search_default_open {
+		.inner {
+			height: auto;
+
+			tr {
+				display: table-row !important;
+			}
+		}
+
+	}
+}
+
+.transfer_bank_wrap {
+	display: flex;
+
+	>div {
+		flex: 1 1 auto;
+		margin-left: 10px;
+
+		&:nth-child(1) {
+			width: 240px;
+			margin-left: 0;
+		}
+
+		&:nth-child(2) {
+			width: 280px;
+		}
+
+		&:nth-child(3) {
+			width: 220px;
+		}
+
+		&:nth-child(4) {
+			width: 90px;
+		}
+	}
+
+	.tf_item_row {
+		.lab {
+			min-width: 90px;
+		}
+
+		&.transfer_bank_select {
+			overflow: visible;
+
+			.opt {
+				overflow: visible;
+				position: absolute;
+				top: -12px;
+				right: -20px;
+				width: 240px;
+				max-width: 240px;
+
+				dt {
+					padding: 0 1px 0 74px;
+
+					a {
+						text-align: right;
+						border: none;
+					}
+				}
+
+				dd {
+					top: 40px;
+				}
+			}
+		}
+	}
+
+	.btn_bank_confirm {
+		width: 90px;
+		height: 60px;
+		background: $bg-lightgray;
+		border: 1px solid $border-base;
+		border-radius: 6px;
+		color: $primary;
+		line-height: 20px;
+
+		&.on {
+			border: 1px solid $bg-old;
+			background: $bg-old;
+			color: $black;
+			font-size: $font-size-md;
+			font-weight: 400;
+
+			&:disabled {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.transfer_payment_wrap {
+	display: flex;
+
+	>div {
+		flex: 1 1 auto;
+		margin-left: 10px;
+
+		&:nth-child(1) {
+			width: 570px;
+			margin-left: 0;
+		}
+
+		&:nth-child(2) {
+			width: 280px;
+		}
+	}
+
+	.tf_item_row {
+		&.transfer_payment_select {
+			overflow: visible;
+
+			.btn_sm {
+				position: absolute;
+				right: 0;
+			}
+
+			.opt {
+				overflow: visible;
+				position: absolute;
+				top: -12px;
+				right: -20px;
+				width: 280px;
+				max-width: 280px;
+
+				dt {
+					padding: 0 1px 0 110px;
+
+					a {
+						text-align: right;
+						border: none;
+					}
+				}
+
+				dd {
+					top: 40px;
+				}
+			}
+		}
+	}
+
+}
+
+.tit_page {
+	&.personal {
+		.user_name {
+			z-index: 10;
+		}
+	}
+}
+
+.personal_change_result {
+	width: 468px;
+	padding: 13px 30px 15px 102px;
+	margin: 0 auto;
+	border-radius: 10px;
+	background: $bg-lightgray;
+
+	ul {
+		li {
+			color: $black;
+
+			&:before {
+				top: 12px;
+			}
+
+			span {
+				display: inline-block;
+				margin: 0 30px 0 0;
+			}
+		}
+	}
+}
 
 // TODO : 이곳에 스타일을 정의해 주세요.
 // 클래스 네임 중복되지 않도록 네이밍은 2단어 이상으로 해주세요.
