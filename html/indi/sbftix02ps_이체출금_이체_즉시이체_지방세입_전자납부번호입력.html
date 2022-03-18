@@ -35,9 +35,18 @@
 			<!-- s: 본문 -->
 
 			<div class="container p_4">
-				<h2 class="tit1">출금계좌정보</h2>
+				<!-- s: 이체 프로세스 변경 / 2022-03-17 -->
+				<div class="fx_lr fx_align_center mb_3">
+					<div class="l">
+						<h2 class="tit1 mb_0">출금계좌정보 <span class="req">필수항목</span></h2>
+					</div>
+					<div class="r">
+						<a href="#;" class="btn btn_sm btn_round btn_default"
+							onclick="openModal('commission_popup', this); return false;">수수료정보</a>
+					</div>
+				</div>
 				<div class="account_info_box">
-					<a href="#;" onclick="openModal('layerAccount'),this">
+					<a href="#;" onclick="openModal('layerAccount', this); return false;">
 						<span class="bank">
 							<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
 						</span>
@@ -51,6 +60,33 @@
 						</div>
 					</a>
 				</div>
+				<!-- e: 이체 프로세스 변경 / 2022-03-17 -->
+
+				<!-- s: 이체 프로세스 변경 / 2022-03-17 -->
+				<!-- s: 입금계좌정보 -->
+				<div class="mt_8">
+					<h2 class="tit1">입금계좌정보 <span class="req">필수항목</span></h2>
+					<div class="account_select">
+						<div class="bank_select">
+							<a href="#n" onclick="openModal('bank_select_popup', this);return false;">
+								<img src="../../resources/img/common/ico_bank_ntx.png" alt="지방세입 로고">
+								<span>지방세입</span>
+							</a>
+						</div>
+						<div class="account_number">
+							<a href="#n" class="acc_inp" onclick="openModal('deposit_bottom_sheet', this);return false;">
+								<!-- <span>입금계좌번호 입력</span> 플레이스홀더 텍스트 -->
+								<span>전자납부번호 숫자만 입력</span>
+							</a>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- e: 입금계좌정보 -->
+				<!-- e: 이체 프로세스 변경 / 2022-03-17 -->
 
 				<!-- s: 이체금액 입력 -->
 				<div class="account_amount mt_8">
@@ -76,30 +112,6 @@
 					<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
 				</div>
 				<!-- e: 이체금액 입력 -->
-
-				<!-- s: 입금계좌정보 -->
-				<div class="section">
-					<h2 class="tit1">입금계좌정보</h2>
-					<div class="account_select">
-						<div class="bank_select">
-							<a href="#n" onclick="openModal('bank_select_popup', this);return false;">
-								<img src="../../resources/img/common/ico_bank_ntx.png" alt="지방세입 로고">
-								<span>지방세입</span>
-							</a>
-						</div>
-						<div class="account_number">
-							<a href="#n" class="acc_inp" onclick="openModal('deposit_bottom_sheet', this);return false;">
-								<!-- <span>입금계좌번호 입력</span> 플레이스홀더 텍스트 -->
-								<span>전자납부번호 숫자만 입력</span>
-							</a>
-							<button type="button" class="btn btn_icon btn_reset">
-								<i class="ico ico_reset"></i>
-								<span class="sr_only">초기화</span>
-							</button>
-						</div>
-					</div>
-				</div>
-				<!-- e: 입금계좌정보 -->
 			</div>
 
 			<!-- s: 하단 고정 영역 -->
@@ -113,6 +125,51 @@
 				</div>
 			</div>
 			<!-- e: 하단 고정 영역 -->
+
+			<!-- s: 이체 프로세스 수정 / 2022-03-17 -->
+			<!-- s: 수수료정보 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="commission_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">수수료정보</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list_flex spacing_mt_1">
+								<li>
+									<div class="l txt_gray">면제기본건수</div>
+									<div class="r">무제한</div>
+								</li>
+								<li>
+									<div class="l txt_gray">면제사유</div>
+									<div class="r">오픈뱅킹가입자면제</div>
+								</li>
+								<li>
+									<div class="l txt_gray">감면구분</div>
+									<div class="r">전액면제</div>
+								</li>
+								<li>
+									<div class="l txt_gray">적용일자</div>
+									<div class="r">-</div>
+								</li>
+								<li>
+									<div class="l txt_gray">면제가능건수</div>
+									<div class="r">무제한</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('commission_popup'); return false;">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 수수료정보 bottom sheet -->
+			<!-- e: 이체 프로세스 수정 / 2022-03-17 -->
 
 			<!-- s: 이체금액 bottom sheet -->
 			<div class="modal_popup modal_bottom_sheet hide no_dimed" data-popup="amount_keypad">

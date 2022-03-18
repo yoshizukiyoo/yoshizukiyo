@@ -35,9 +35,18 @@
 			<!-- s: 본문 -->
 
 			<div class="container p_4">
-				<h2 class="tit1">출금계좌정보</h2>
+				<!-- s: 이체 프로세스 변경 / 2022-03-17 -->
+				<div class="fx_lr fx_align_center mb_3">
+					<div class="l">
+						<h2 class="tit1 mb_0">출금계좌정보 <span class="req">필수항목</span></h2>
+					</div>
+					<div class="r">
+						<a href="#;" class="btn btn_sm btn_round btn_default"
+							onclick="openModal('commission_popup', this); return false;">수수료정보</a>
+					</div>
+				</div>
 				<div class="account_info_box">
-					<a href="#;" onclick="openModal('layerAccount'),this">
+					<a href="#;" onclick="openModal('layerAccount', this); return false;">
 						<span class="bank">
 							<img src="../../resources/img/content/ico_epost02.png" alt="우체국">
 						</span>
@@ -51,6 +60,33 @@
 						</div>
 					</a>
 				</div>
+				<!-- e: 이체 프로세스 변경 / 2022-03-17 -->
+
+				<!-- s: 이체 프로세스 변경 / 2022-03-17 -->
+				<!-- s: 입금계좌정보 -->
+				<div class="mt_8">
+					<h2 class="tit1">입금계좌정보 <span class="req">필수항목</span></h2>
+					<div class="account_select">
+						<div class="bank_select">
+							<a href="#n" onclick="openModal('bank_select_popup', this);return false;">
+								<img src="../../resources/img/content/ico_epost02.png" alt="우체국 로고">
+								<span>우체국</span>
+							</a>
+						</div>
+						<div class="account_number">
+							<a href="#n" class="acc_inp" onclick="openModal('deposit_bottom_sheet', this);return false;">
+								<!-- <span>123456789012345</span> -->
+								<input type="text" value="123456789012345">
+							</a>
+							<button type="button" class="btn btn_icon btn_reset">
+								<i class="ico ico_reset"></i>
+								<span class="sr_only">초기화</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- s: 입금계좌정보 -->
+				<!-- e: 이체 프로세스 변경 / 2022-03-17 -->
 
 				<!-- s: 이체금액 입력 -->
 				<div class="account_amount mt_8">
@@ -76,7 +112,88 @@
 					<!-- <p class="mt_1 txt_invalid">1일 이체가능금액을 초과했습니다.</p> -->
 				</div>
 				<!-- e: 이체금액 입력 -->
+
+				<!-- s: 이체 프로세스 수정 / 2022-03-17 -->
+				<!-- s: 통장표기 입력 -->
+				<div class="tf_item mt_8 active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_2">내 통장 표기</label>
+							<input type="text" id="lb_tf_1_2" class="tf" placeholder="(선택) 최대 10글자" required>
+						</div>
+					</div>
+				</div>
+				<div class="tf_item mt_2 active">
+					<div class="tf_item_body">
+						<div class="input_area">
+							<label class="lab" for="lb_tf_1_3">받는분 통장 표기</label>
+							<input type="text" id="lb_tf_1_3" class="tf" placeholder="" value="나봄미" required>
+						</div>
+					</div>
+				</div>
+				<p class="bul_notice mt_2">
+					최대 한글 10자 입력 가능<br>
+					단 신한, 대구, 제주는 7자, 부산, 씨티는 9자만 입금계좌에 표시됩니다.
+				</p>
+				<!-- e: 통장표기 입력 -->
+				<!-- e: 이체 프로세스 수정 / 2022-03-17 -->
 			</div>
+
+			<!-- s: 이체 프로세스 수정 / 2022-03-17 -->
+			<div class="bottom_fixed_area">
+				<div class="btn_group btn_group_flex">
+					<a href="#;" class="btn btn_xl btn_primary btn_ico_next">
+						<span class="first_sp">다음</span>
+						<span class="icon_area"><i class="ico ico_chevron_right_xl"></i></span>
+					</a>
+				</div>
+			</div>
+			<!-- e: 이체 프로세스 수정 / 2022-03-17 -->
+
+			<!-- s: 이체 프로세스 수정 / 2022-03-17 -->
+			<!-- s: 수수료정보 bottom sheet -->
+			<div class="modal_popup modal_bottom_sheet hide" data-popup="commission_popup">
+				<div class="dimed"></div>
+				<div class="popup_inner" tabindex="0">
+					<div class="popup_header">
+						<h2 class="popup_tit">수수료정보</h2>
+					</div>
+					<div class="popup_body">
+						<div class="container">
+							<ul class="list list_flex spacing_mt_1">
+								<li>
+									<div class="l txt_gray">면제기본건수</div>
+									<div class="r">무제한</div>
+								</li>
+								<li>
+									<div class="l txt_gray">면제사유</div>
+									<div class="r">오픈뱅킹가입자면제</div>
+								</li>
+								<li>
+									<div class="l txt_gray">감면구분</div>
+									<div class="r">전액면제</div>
+								</li>
+								<li>
+									<div class="l txt_gray">적용일자</div>
+									<div class="r">-</div>
+								</li>
+								<li>
+									<div class="l txt_gray">면제가능건수</div>
+									<div class="r">무제한</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="popup_footer">
+						<div class="btn_group btn_group_flex">
+							<a href="#;" class="btn btn_lg btn_primary" onclick="closeModal('commission_popup'); return false;">확인</a>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 수수료정보 bottom sheet -->
+			<!-- e: 이체 프로세스 수정 / 2022-03-17 -->
 
 			<!-- s: 비밀번호 입력 팝업 -->
 			<div class="modal_popup popup hide" data-popup="pwd_full_popup">
