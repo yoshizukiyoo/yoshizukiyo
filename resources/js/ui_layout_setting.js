@@ -166,6 +166,24 @@ function tabmenu() {
 			$(this).addClass('col_drop');
 		}
 	});
+	//포스트페이 하단버튼 스크롤 3월 4주차 추가
+	$('.btn_group').each(function () {
+		var outerWidth = Math.floor($(this).width());
+		var innerWidth = 0;
+		var current = $('.btn_group input:checked').closest('.check_item', this).index();
+		$('.check_item').eq(current).addClass('on');
+		var checkCurrent = $('.check_item.on', this).index();
+		$('.check_item', this).each(function () {
+			innerWidth += Math.floor($(this).width());
+		});
+		if (outerWidth < innerWidth) {
+			$(this).addClass('scroll_enable');
+		}
+		if (checkCurrent > 1) {
+			var posL = $('.check_item', this).eq(checkCurrent - 1).position().left;
+			$(this).children().scrollLeft(posL);
+		}
+	});
 }
 
 // 인풋박스 스타일
