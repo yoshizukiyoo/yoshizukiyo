@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">보장분석</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<!-- s: 본문 -->
+			<div class="cont_body">
+				
+				<a href="#;" class="btn btn_sm btn_outline_default mt_2" onclick="openModal('select_anal', this);">
+					<span>분석항목 선택</span>
+				</a>				
+
+
+				<!-- s: 분석항목 선택 modal popup -->
+				<div class="modal_popup modal_xxl show" data-popup="select_anal">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h2 class="popup_tit">분석항목 선택</h2>
+						</div>
+						<div class="popup_body">
+							<p class="etc_txt mt_0">가족보장, 생활보장, 의료보장의 6개의 항목을 선택하여 주세요. <br>선택된 보장항목을 기준으로 고객님의 보험계약 분석을 시작합니다.</p>
+							<div class="clfx">
+							<button type="button" class="f_r btn btn_sm btn_outline_default">기본값</button>
+						</div>
+							<div class="tbl_data tbl_complex_data mt_4">
+								<table>
+									<caption class="sr_only">예상계약정보</caption>
+									<colgroup>
+										<col style="width:25%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row" class="txt_c bg_lightgray">가족보장</th>
+											<td>
+												<div class="checkbox_align">
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_1" checked>
+														<label for="list_chk_1">질병사망</label>
+													</span>
+													<span class="check_item square ">
+														<input type="checkbox" name="list_chk" id="list_chk_2">
+														<label for="list_chk_2">암사망</label>
+													</span>
+													<span class="check_item square ">
+														<input type="checkbox" name="list_chk" id="list_chk_3">
+														<label for="list_chk_3">재해사망</label>
+													</span>
+													<span class="check_item square ">
+														<input type="checkbox" name="list_chk" id="list_chk_4">
+														<label for="list_chk_4">교통재해사망</label>
+													</span>
+													<span class="check_item square ">
+														<input type="checkbox" name="list_chk" id="list_chk_5">
+														<label for="list_chk_5">재해100% 장해</label>
+													</span>
+													<span class="check_item square ">
+														<input type="checkbox" name="list_chk" id="list_chk_6">
+														<label for="list_chk_6">재해79% 장해</label>
+													</span>
+													<span class="check_item square ">
+														<input type="checkbox" name="list_chk" id="list_chk_7">
+														<label for="list_chk_7">재해3% 장해</label>
+													</span>
+													<span class="check_item square ">
+														<input type="checkbox" name="list_chk" id="list_chk_8">
+														<label for="list_chk_8">교통재해100% 장해</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_9" checked>
+														<label for="list_chk_9">교통재해79% 장해</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_10" checked>
+														<label for="list_chk_10">교통재해3% 장해</label>
+													</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row" class="txt_c bg_lightgray">생활보장</th>
+											<td>
+												<div class="checkbox_align">
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_11" checked>
+														<label for="list_chk_11">일반암</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_12" checked>
+														<label for="list_chk_12">고액암</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_13">
+														<label for="list_chk_13">소액암</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_14" checked>
+														<label for="list_chk_14">두번째암</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_15">
+														<label for="list_chk_15">뇌출혈</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_16" checked>
+														<label for="list_chk_16">뇌경색</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_17">
+														<label for="list_chk_17">뇌혈관질환</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_18">
+														<label for="list_chk_18">급성심근경색증</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_19">
+														<label for="list_chk_19">허혈성심장질환</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_20">
+														<label for="list_chk_20">말기간질환</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_21" checked>
+														<label for="list_chk_21">말기폐질환</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_22">
+														<label for="list_chk_22">말기신부전증</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_23">
+														<label for="list_chk_23">당뇨</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_24">
+														<label for="list_chk_24">중증치매</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_25">
+														<label for="list_chk_25">경증치매</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_26">
+														<label for="list_chk_26">장기요양1등급</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_27">
+														<label for="list_chk_27">골절</label>
+													</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row" class="txt_c bg_lightgray">의료보장</th>
+											<td>
+												<div class="checkbox_align">
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_28">
+														<label for="list_chk_28">질병수술</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_29" checked>
+														<label for="list_chk_29">질병(5종)수술</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_30">
+														<label for="list_chk_30">암수술</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_31">
+														<label for="list_chk_31">재해수술</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_32">
+														<label for="list_chk_32">5대장기이식수술</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_33">
+														<label for="list_chk_33">임플란트치료비</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_34">
+														<label for="list_chk_34">크라운치료비</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_35">
+														<label for="list_chk_35">질병(1일)이상 입원</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_36">
+														<label for="list_chk_36">질병(4일)이상 입원</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_37">
+														<label for="list_chk_37">재해(1일)이상 입원</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_38">
+														<label for="list_chk_38">재해(4일)이상 입원</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_39">
+														<label for="list_chk_39">암(4일)이상 입원</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_40">
+														<label for="list_chk_40">질병입원</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_41">
+														<label for="list_chk_41">상해입원</label>
+													</span>
+													<span class="check_item square">
+														<input type="checkbox" name="list_chk" id="list_chk_42">
+														<label for="list_chk_42">상해통원</label>
+													</span>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group mt_9">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('select_anal');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('select_anal');">적용</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: 분석항목 선택 modal popup -->
+
+
+			</div>
+			<!-- e: 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

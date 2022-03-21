@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+			$(".toggle_info .btn_more_white").click(function () {
+				if (!$(this).closest(".toggle_info").hasClass("on")) {
+					$(this).closest(".toggle_info").addClass("on");
+					$(this).addClass("on").text("열기");
+				} else {
+					$(this).closest(".toggle_info").removeClass("on");
+					$(this).removeClass("on").text("접기");
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">보장분석</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<!-- s: 본문 -->
+			<div class="cont_body">
+				
+				<a href="#;" class="btn btn_sm btn_outline_default mt_2" onclick="openModal('myinsu_pop', this);">
+					<span>보험가입내역</span>
+				</a>				
+
+
+			<!-- s: 보험가입내역 modal popup -->
+			<div class="modal_popup modal_xxl show" data-popup="myinsu_pop">
+				<div class="dimed"></div>
+				<div class="popup_inner">
+					<div class="popup_header">
+						<h2 class="popup_tit">보험가입 내역</h2>
+					</div>
+					<div class="popup_body">
+						<p class="etc_txt mt_0">고객님이 피보험자로 가입된 보험내역입니다. 일부 보험이 보이지 않을 수 있습니다.<br>가입된 보험을 클릭하시면 해당 보험의 보장별 금액을 확인할 수 있습니다.</p>
+						<!-- s: 우체국보험 가입내역 -->
+						<div class="section mt_10">
+							<h3 class="tit1">우체국보험 가입내역 (<strong class="txt_medium txt_darkprimary">2</strong>건)</h3>
+							<div class="contract_list left_small bottom_add">
+								<ul>
+									<li>
+										<span class="left_info">
+											<span class="top_info">
+												<span class="lab_status bg_red">우체국보험</span>
+												<span class="inline_info">
+													<span>
+														<em>가입년월</em>
+														<span>2020.05</span>
+													</span>
+												</span>
+											</span>
+											<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),종합형]</strong>
+										</span>
+										<span class="right_info">
+											<span class="inline_info">
+												<span>
+													<em>계약자</em>
+													<span>나봄미</span>
+												</span>
+											</span>
+											<span class="inline_info block">
+												<span>
+													<em>납입기간</em>
+													<span>20년</span>
+												</span>
+												<span>
+													<em>납입횟수</em>
+													<span>132/240</span>
+												</span>
+												<span>
+													<em>보장기간</em>
+													<span>80세</span>
+												</span>
+												<span>
+													<em>납입보험료(월)</em>
+													<span class="txt_darkprimary">59,750원</span>
+												</span>
+											</span>
+										</span>
+										<div class="toggle_info on">
+											<div class="tbl_row2">
+												<table class="bg_lightgray">
+													<caption class="sr_only">${보험} 보장금액 정보</caption>
+													<colgroup>
+														<col style="width: 220px;">
+														<col style="width: 430px;">
+														<col style="width: 220px;">
+														<col>
+													</colgroup>
+													<tbody>
+														<tr>
+															<th scope="row">사망</th>
+															<td class="txt_r">
+																<span class="f_l">질병</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<th scope="row">장해</th>
+															<td class="txt_r">
+																<span class="f_l">교통재해 100%</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">진단</th>
+															<td class="txt_r">
+																<span class="f_l">장기요양 1등급 진단</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">말기폐질환</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">골절</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">수술/치료</th>
+															<td class="txt_r">
+																<span class="f_l">질병수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">재해수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">5대장기이식수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<a href="#;" class="btn btn_more_white on" title="${보험} 보장금액 정보표 여닫기">열기</a>
+										</div>
+									</li>
+									<li>
+										<span class="left_info">
+											<span class="top_info">
+												<span class="lab_status bg_red">우체국보험</span>
+												<span class="inline_info">
+													<span>
+														<em>가입년월</em>
+														<span>2020.05</span>
+													</span>
+												</span>
+											</span>
+											<strong class="list_name">(무)우체국실손의료비보험[1종(선택형),종합형]</strong>
+										</span>
+										<span class="right_info">
+											<span class="inline_info">
+												<span>
+													<em>계약자</em>
+													<span>나봄미</span>
+												</span>
+											</span>
+											<span class="inline_info block">
+												<span>
+													<em>납입기간</em>
+													<span>20년</span>
+												</span>
+												<span>
+													<em>납입횟수</em>
+													<span>132/240</span>
+												</span>
+												<span>
+													<em>보장기간</em>
+													<span>80세</span>
+												</span>
+												<span>
+													<em>납입보험료(월)</em>
+													<span class="txt_darkprimary">59,750원</span>
+												</span>
+											</span>
+										</span>
+										<div class="toggle_info on">
+											<div class="tbl_row2">
+												<table class="bg_lightgray">
+													<caption class="sr_only">${보험} 보장금액 정보</caption>
+													<colgroup>
+														<col style="width: 220px;">
+														<col style="width: 430px;">
+														<col style="width: 220px;">
+														<col>
+													</colgroup>
+													<tbody>
+														<tr>
+															<th scope="row">사망</th>
+															<td class="txt_r">
+																<span class="f_l">질병</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<th scope="row">장해</th>
+															<td class="txt_r">
+																<span class="f_l">교통재해 100%</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">진단</th>
+															<td class="txt_r">
+																<span class="f_l">장기요양 1등급 진단</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">말기폐질환</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">골절</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">수술/치료</th>
+															<td class="txt_r">
+																<span class="f_l">질병수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">재해수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">5대장기이식수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<a href="#;" class="btn btn_more_white on" title="${보험} 보장금액 정보표 여닫기">열기</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- e: 우체국보험 가입내역 -->
+						<!-- s: 타보험사 가입내역 -->
+						<div class="section ">
+							<h3 class="tit1">타보험사 가입내역 (<strong class="txt_medium txt_darkprimary">2</strong>건)</h3>
+							<div class="contract_list left_small bottom_add">
+								<ul>
+									<li>
+										<span class="left_info">
+											<span class="top_info">
+												<span class="lab_status bg_gray">알리안츠생명</span>
+												<span class="inline_info">
+													<span>
+														<em>가입년월</em>
+														<span>2020.05</span>
+													</span>
+												</span>
+											</span>
+											<strong class="list_name">무배당 뉴 베스트 플랜</strong>
+										</span>
+										<span class="right_info">
+											<span class="inline_info">
+												<span>
+													<em>계약자</em>
+													<span>나봄미</span>
+												</span>
+											</span>
+											<span class="inline_info block">
+												<span>
+													<em>납입기간</em>
+													<span>20년</span>
+												</span>
+												<span>
+													<em>납입횟수</em>
+													<span>132/240</span>
+												</span>
+												<span>
+													<em>보장기간</em>
+													<span>80세</span>
+												</span>
+												<span>
+													<em>납입보험료(월)</em>
+													<span class="txt_darkprimary">59,750원</span>
+												</span>
+											</span>
+										</span>
+										<div class="toggle_info on">
+											<div class="tbl_row2">
+												<table class="bg_lightgray">
+													<caption class="sr_only">${보험} 보장금액 정보</caption>
+													<colgroup>
+														<col style="width: 220px;">
+														<col style="width: 430px;">
+														<col style="width: 220px;">
+														<col>
+													</colgroup>
+													<tbody>
+														<tr>
+															<th scope="row">사망</th>
+															<td class="txt_r">
+																<span class="f_l">질병</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<th scope="row">장해</th>
+															<td class="txt_r">
+																<span class="f_l">교통재해 100%</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">진단</th>
+															<td class="txt_r">
+																<span class="f_l">장기요양 1등급 진단</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">말기폐질환</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">골절</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">수술/치료</th>
+															<td class="txt_r">
+																<span class="f_l">질병수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">재해수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">5대장기이식수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<a href="#;" class="btn btn_more_white on" title="${보험} 보장금액 정보표 여닫기">열기</a>
+										</div>
+									</li>
+									<li>
+										<span class="left_info">
+											<span class="top_info">
+												<span class="lab_status bg_gray">동부생명</span>
+												<span class="inline_info">
+													<span>
+														<em>가입년월</em>
+														<span>2020.05</span>
+													</span>
+												</span>
+											</span>
+											<strong class="list_name">무배당 뉴 베스트 플랜</strong>
+										</span>
+										<span class="right_info">
+											<span class="inline_info">
+												<span>
+													<em>계약자</em>
+													<span>나봄미</span>
+												</span>
+											</span>
+											<span class="inline_info block">
+												<span>
+													<em>납입기간</em>
+													<span>20년</span>
+												</span>
+												<span>
+													<em>납입횟수</em>
+													<span>132/240</span>
+												</span>
+												<span>
+													<em>보장기간</em>
+													<span>80세</span>
+												</span>
+												<span>
+													<em>납입보험료(월)</em>
+													<span class="txt_darkprimary">59,750원</span>
+												</span>
+											</span>
+										</span>
+										<div class="toggle_info on">
+											<div class="tbl_row2">
+												<table class="bg_lightgray">
+													<caption class="sr_only">${보험} 보장금액 정보</caption>
+													<colgroup>
+														<col style="width: 220px;">
+														<col style="width: 430px;">
+														<col style="width: 220px;">
+														<col>
+													</colgroup>
+													<tbody>
+														<tr>
+															<th scope="row">사망</th>
+															<td class="txt_r">
+																<span class="f_l">질병</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<th scope="row">장해</th>
+															<td class="txt_r">
+																<span class="f_l">교통재해 100%</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">진단</th>
+															<td class="txt_r">
+																<span class="f_l">장기요양 1등급 진단</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">말기폐질환</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">골절</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row"></th>
+															<td class="txt_r"></td>
+														</tr>
+														<tr>
+															<th scope="row" rowspan="2">수술/치료</th>
+															<td class="txt_r">
+																<span class="f_l">질병수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">암수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+														<tr>
+															<td class="txt_r">
+																<span class="f_l">재해수술</span>
+																<span class="f_r">1,000 만원</span>
+															</td>
+															<th scope="row">5대장기이식수술</th>
+															<td class="txt_r">1,000 만원</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<a href="#;" class="btn btn_more_white on" title="${보험} 보장금액 정보표 여닫기">열기</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- e: 타보험사 가입내역 -->
+						<div class="btn_group mt_12">
+							<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('myinsu_pop');">확인</button>
+						</div>
+					</div>
+					<button type="button" class="btn btn_close_popup">닫기</button>
+				</div>
+			</div>
+			<!-- e: 보험가입내역 modal popup -->
+
+			</div>
+			<!-- e: 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>

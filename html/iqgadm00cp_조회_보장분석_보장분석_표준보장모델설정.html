@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			// 이곳에 정의
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<a href="#content" class="skip_nav">본문 바로가기</a>
+		<header class="header"></header>
+		<div class="quick_menu_wrap"></div>
+		<aside class="breadcrumb"></aside>
+		<article id="content">
+			<div class="cont_header">
+				<!-- s: 본문 헤더 -->
+				<h1 class="tit_cont">보장분석</h1>
+
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_gray"></i>
+					<span class="sr_only">마이메뉴 등록</span>
+				</button>
+				<!--
+				<button type="button" class="btn btn_favorite">
+					<i class="ico ico_star_primary"></i>
+					<span class="sr_only">마이메뉴 해제</span>
+				</button>
+				-->
+				<!-- e: 본문 헤더 -->
+			</div>
+
+			<!-- s: 본문 -->
+			<div class="cont_body">
+				
+				<a href="#;" class="btn btn_sm btn_outline_default mt_2" onclick="openModal('model_pop', this);">
+					<span>표준보장모델설정</span>
+				</a>				
+
+
+				<!-- s: modal popup -->
+				<div class="modal_popup modal_xxl show" data-popup="model_pop">
+					<div class="dimed"></div>
+					<div class="popup_inner">
+						<div class="popup_header">
+							<h2 class="popup_tit">표준보장모델설정</h2>
+						</div>
+						<div class="popup_body">
+							<p class="etc_txt mt_0">보장분석을 위해 표준보장모델을 선택해 주세요.<br>보장모델(표준형/고급형)을 선택하시면 고객님의 보험 가입현황과 비교 분석할 수 있습니다.</p>
+							<div class="tbl_data mt_9">
+								<table>
+									<caption class="sr_only">표준보장모델설정 보장내용</caption>
+									<colgroup>
+										<col>
+										<col>
+										<col>
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">구분</th>
+											<th scope="col">보장내용</th>
+											<th scope="col">
+												<span class="check_item">
+													<input type="radio" name="type" id="type_1" checked>
+													<label for="type_1">표준형</label>
+												</span>
+											</th>
+											<th scope="col">
+												<span class="check_item">
+													<input type="radio" name="type" id="type_2">
+													<label for="type_2">고급형</label>
+												</span>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="txt_c" rowspan="4">사망</td>
+											<td>질병</td>
+											<td class="txt_c">10,000</td>
+											<td class="txt_c">30,000</td>
+										</tr>
+										<tr>
+											<td>암</td>
+											<td class="txt_c">10,000</td>
+											<td class="txt_c">30,000</td>
+										</tr>
+										<tr>
+											<td>재해</td>
+											<td class="txt_c">10,000</td>
+											<td class="txt_c">30,000</td>
+										</tr>
+										<tr>
+											<td>교통재해</td>
+											<td class="txt_c">10,000</td>
+											<td class="txt_c">30,000</td>
+										</tr>
+										<tr>
+											<td class="txt_c" rowspan="6">장해</td>
+											<td>재해100%</td>
+											<td class="txt_c">7,000</td>
+											<td class="txt_c">20,000</td>
+										</tr>
+										<tr>
+											<td>재해79%</td>
+											<td class="txt_c">5,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>재해3%</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">10,000</td>
+										</tr>
+										<tr>
+											<td>교통재해100%</td>
+											<td class="txt_c">7,000</td>
+											<td class="txt_c">20,000</td>
+										</tr>
+										<tr>
+											<td>교통재해79%</td>
+											<td class="txt_c">5,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>교통재해3%</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td class="txt_c" rowspan="17">진단</td>
+											<td>일반암</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>고액암</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>소액암</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>두번째암</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>뇌출혈</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>뇌경색</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>뇌혈관질환</td>
+											<td class="txt_c">3,000</td>
+											<td class="txt_c">15,000</td>
+										</tr>
+										<tr>
+											<td>급성심근경색증</td>
+											<td class="txt_c"></td>
+											<td class="txt_c"></td>
+										</tr>
+										<tr>
+											<td>허혈성심장질환</td>
+											<td class="txt_c"></td>
+											<td class="txt_c"></td>
+										</tr>
+										<tr>
+											<td>말기간질환</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">20</td>
+										</tr>
+										<tr>
+											<td>말기폐질환</td>
+											<td class="txt_c">20</td>
+											<td class="txt_c">60</td>
+										</tr>
+										<tr>
+											<td>말기신부전증</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>당뇨</td>
+											<td class="txt_c">20</td>
+											<td class="txt_c">60</td>
+										</tr>
+										<tr>
+											<td>중증치매</td>
+											<td class="txt_c">30</td>
+											<td class="txt_c">100</td>
+										</tr>
+										<tr>
+											<td>경증치매</td>
+											<td class="txt_c">20</td>
+											<td class="txt_c">60</td>
+										</tr>
+										<tr>
+											<td>장기요양1등급</td>
+											<td class="txt_c">20</td>
+											<td class="txt_c">60</td>
+										</tr>
+										<tr>
+											<td>골절</td>
+											<td class="txt_c">20</td>
+											<td class="txt_c">60</td>
+										</tr>
+										<tr>
+											<td class="txt_c" rowspan="7">수술/치료</td>
+											<td>질병수술</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>질병(5종)수술</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>암수술</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>재해수술</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>5대장기이식수술</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>임플란트 치료비</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>크라운치료비</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td class="txt_c" rowspan="5">입원일당</td>
+											<td>질병(1일)이상</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>질병(4일)이상</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>재해(1일)이상</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>재해(4일)이상</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>암(4일)이상</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td class="txt_c" rowspan="4">실손의료</td>
+											<td>질병입원</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>질병통원</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>상해입원</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+										<tr>
+											<td>상해통원</td>
+											<td class="txt_c">10</td>
+											<td class="txt_c">30</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_lg btn_outline_default" onclick="closeModal('model_pop');">취소</button>
+								<button type="button" class="btn btn_lg btn_primary" onclick="closeModal('model_pop');">적용</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: modal popup -->
+
+
+			</div>
+			<!-- e: 본문 -->
+		</article>
+		<footer class="footer"></footer>
+	</div>
+</body>
+
+</html>
