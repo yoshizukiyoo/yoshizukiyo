@@ -90,7 +90,7 @@
 
 				<div class="box box_more first_section">
 					<ul class="list list1">
-						<li>고객님이 입력하신 이체정보입니다. 이체를 실행하신 뒤에는 취소가 불가하오니, 입력하신 입/출금 정보가 맞는지 다시 확인하시기 바랍니다.</li>
+						<li>고객님의 출금계좌에서 우체국 및 타은행의 계좌(입금계좌)로 즉시 이체할 수 있는 서비스입니다.</li>
 					</ul>
 				</div>
 
@@ -100,13 +100,20 @@
 					</ul>
 				</div>
 
+				<!-- s: 20220317 수정 / 이체 프로세스 변경 -->
 				<!-- s: 정보입력 1단계 -->
 				<div class="payment_write_box section">
+
 					<div class="fx_lr">
 						<h3 class="tit1 fx_left">출금정보</h3>
-						<button type="button" class="btn btn_plus fx_right">추가이체</button>
+						<!-- 정보입력 2단계 진입시 노출 -->
+						<!-- <a href="#;" class="btn btn_plus fx_right">추가이체</a> -->
 					</div>
+
+					<!-- s: 정보입력 2단계 진입시 감춤 -->
 					<div class="payment_inner mt_4">
+
+						<!-- s: 출금계좌정보 -->
 						<div class="tbl_data tbl_list_data tbl_payment">
 							<table>
 								<caption class="sr_only">출금정보 상세내용이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
@@ -141,12 +148,9 @@
 								</tbody>
 							</table>
 						</div>
-
-						<!-- s: 출금계좌정보 -->
-
 						<div class="tbl_row2">
 							<table>
-								<caption class="sr_only">이체금액 입력 폼이며 이체금액(원)을 입력하실 수 있습니다.</caption>
+								<caption class="sr_only">계좌비밀번호를 입력하는 폼 입니다.</caption>
 								<colgroup>
 									<col style="width: 16%;">
 									<col>
@@ -158,29 +162,8 @@
 											<strong class="necessary">*</strong>
 										</th>
 										<td>
-
 											<input type="password" class="tf" style="width: 200px;" title="계좌비밀번호 입력">
 											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">
-											이체금액(원)
-											<strong class="necessary">*</strong>
-										</th>
-										<td>
-											<div class="trans_money">
-												<input type="text" class="tf txt_r" title="이체금액 입력">
-												<span class="ml6">금액 원</span>
-												<div class="btn_trans_money">
-													<button type="button" class="btn btn_sm btn_default">1만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">3만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">5만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">10만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">100만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">정정</button>
-												</div>
-											</div>
 										</td>
 									</tr>
 								</tbody>
@@ -202,8 +185,6 @@
 
 							<!-- s: 최근입금계좌 테이블 -->
 							<div data-tab-table="tab_table01">
-								<!-- 웹접근성 h4 태그 추가 : 3월 3주차 -->
-								<h4 class="sr_only">최근입금계좌</h4>
 								<div class="tbl tbl_scroll_y tbl_tab">
 									<table>
 										<caption class="sr_only">최근입금계좌 목록 표이며 번호, 입금은행명, 입금계좌번호, 예금주, 거래일자, 계좌선택 정보를 제공하고 있습니다.</caption>
@@ -227,9 +208,12 @@
 										</thead>
 										<tbody>
 											<tr>
+												<td colspan="6">최근입금계좌가 없습니다.</td>
+											</tr>
+											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -237,7 +221,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -245,7 +229,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -253,7 +237,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -261,7 +245,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -269,7 +253,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -277,7 +261,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -285,7 +269,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -293,7 +277,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -301,7 +285,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>2021.06.30</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -314,8 +298,6 @@
 
 							<!-- s: 자주쓰는입금계좌 테이블 -->
 							<div data-tab-table="tab_table02" style="display: none;">
-								<!-- 웹접근성 h4 태그 추가 : 3월 3주차 -->
-								<h4 class="sr_only">자주쓰는입금계좌</h4>
 								<div class="txt_r">
 									그룹
 									<div class="selectbox_wrap selectbox_sm ml_1" style="width: 100px;">
@@ -339,8 +321,6 @@
 											<col style="width: 21%">
 											<col style="width: 19%">
 											<col>
-											<!-- col 추가 : 3월 3주차 -->
-											<col>
 										</colgroup>
 										<thead>
 											<tr>
@@ -354,9 +334,12 @@
 										</thead>
 										<tbody>
 											<tr>
+												<td colspan="6">자주쓰는입금계좌가 없습니다.</td>
+											</tr>
+											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>가족</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -364,7 +347,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>가족</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -372,7 +355,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -380,7 +363,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -388,7 +371,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -396,7 +379,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -404,7 +387,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -412,7 +395,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -420,7 +403,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -428,7 +411,7 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>홍길동</td>
 												<td>친구</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
@@ -441,8 +424,6 @@
 
 							<!-- s: 본인계좌 테이블 -->
 							<div data-tab-table="tab_table03" style="display: none;">
-								<!-- 웹접근성 h4 태그 추가 : 3월 3주차 -->
-								<h4 class="sr_only">본인계좌</h4>
 								<div class="tbl tbl_scroll_y tbl_tab mt_2">
 									<table>
 										<caption class="sr_only">본인계좌 목록 표이며 번호, 입금은행명, 입금계좌번호, 계좌별칭(상품명), 계좌선택 정보를 제공하고 있습니다.</caption>
@@ -466,70 +447,70 @@
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
-												<td class="txt_l">XXXXXXXXXXXXXX</td>
+												<td class="txt_c">XXXXXXXXXXXXXX</td>
 												<td>생활비(e-Postbank예금)</td>
 												<td><button type="button" class="btn btn_xs btn_default">선택</button></td>
 											</tr>
@@ -541,8 +522,6 @@
 
 							<!-- s: 직접입력 테이블 -->
 							<div data-tab-table="tab_table04" style="display: none;">
-								<!-- 웹접근성 h4 태그 추가 : 3월 3주차 -->
-								<h4 class="sr_only">직접입력</h4>
 								<div class="tbl_tit">
 									<div class="txt_right">
 										<strong class="necessary">*</strong>
@@ -564,8 +543,8 @@
 												</th>
 												<td>
 													<div class="selectbox_wrap" style="width: 355px;">
-														<dl title="은행 선택">
-															<dt><a href="#none"><span>은행을 선택하여 주십시오</span></a></dt>
+														<dl>
+															<dt><a href="#none" title="은행 선택"><span>은행을 선택하여 주십시오</span></a></dt>
 															<dd>
 																<ul>
 																	<li><a href="#none"><span>은행선택1</span></a></li>
@@ -583,9 +562,7 @@
 												</th>
 												<td>
 													<input type="text" class="tf" placeholder="-없이 입력하세요." style="width: 355px;">
-													<div class="btn_inline_box">
-														<button type="button" class="btn btn_md btn_outline_default">이체</button>
-													</div>
+													<!-- 20220317 수정 / 이체버튼 삭제 -->
 												</td>
 											</tr>
 										</tbody>
@@ -595,12 +572,57 @@
 							<!-- e: 직접입력 테이블 -->
 						</div>
 						<!-- e: 입금정보 -->
+
+						<!-- s: 이체금액입력 -->
+						<div class="tbl_row2 mt_4">
+							<table>
+								<caption class="sr_only">이체금액을 입력하는 폼 입니다.</caption>
+								<colgroup>
+									<col style="width: 17%;">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">
+											이체금액(원)
+											<strong class="necessary">*</strong>
+										</th>
+										<td>
+											<div class="trans_money">
+												<input type="text" class="tf txt_r mr_1" title="이체금액 입력">
+												<span class="money">금액</span>
+												원
+												<div class="btn_trans_money">
+													<button type="button" class="btn btn_sm btn_default">1만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- e: 이체금액입력 -->
+
 					</div>
+					<!-- e: 정보입력 2단계 진입시 감춤 -->
+
 				</div>
-				<!-- s: 정보입력 2단계 -->
+				<!-- e: 정보입력 1단계 -->
+				<!-- e: 20220317 수정 / 이체 프로세스 변경 -->
+
+				<!-- s: 20220317 수정 / 이체 프로세스 변경 -->
+				<div class="btn_tbl_btm">
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
+				</div>
+				<!-- e: 20220317 수정 / 이체 프로세스 변경 -->
 
 				<!-- s: 정보입력 2단계 -->
-				<div class="transfer_info_box mt_5">
+				<div class="section transfer_info_box">
 					<div class="tbl_data tbl_row_data">
 						<table>
 							<caption class="sr_only">출금계좌번호, 출금은행 정보를 제공하고 있습니다.</caption>
@@ -651,44 +673,15 @@
 									<td>XXXXXXXXXXXXXX</td>
 									<td class="txt_r">100,000</td>
 									<td>홍길동</td>
-									<td><input type="text" class="tf" value="홍길동" title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 출금계좌 입력" style="width: 100%;"></td>
-									<td><input type="text" class="tf" value="나봄미" title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 입금계좌 입력" style="width: 100%;"></td>
-									<td class="txt_c"><button type="button" class="btn btn_xs btn_default">삭제</button></td>
-								</tr>
-								<tr>
-									<td>신한</td>
-									<td>XXXXXXXXXXXXXX</td>
-									<td class="txt_r">100,000</td>
-									<td>홍길동</td>
-									<td><input type="text" class="tf" value="홍길동" title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 출금계좌 입력" style="width: 100%;"></td>
-									<td><input type="text" class="tf" value="나봄미" title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 입금계좌 입력" style="width: 100%;"></td>
-									<td class="txt_c"><button type="button" class="btn btn_xs btn_default">삭제</button></td>
-								</tr>
-								<tr>
-									<td>국민</td>
-									<td>XXXXXXXXXXXXXX</td>
-									<td class="txt_r">100,000</td>
-									<td>홍길동</td>
-									<td><input type="text" class="tf" value="홍길동" title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 출금계좌 입력" style="width: 100%;"></td>
-									<td><input type="text" class="tf" value="나봄미" title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 입금계좌 입력" style="width: 100%;"></td>
+									<td><input type="text" class="tf" value="홍길동"
+											title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 출금계좌 입력"
+											style="width: 100%;"></td>
+									<td><input type="text" class="tf" value="나봄미"
+											title="입금은행: ${계좌명}, 입금계좌번호: ${XXXXXX...}, 이체금액: ${이체금액}, 입금계좌 예금주: ${입금계좌예금주}, 입금계좌 입력"
+											style="width: 100%;"></td>
 									<td class="txt_c"><button type="button" class="btn btn_xs btn_default">삭제</button></td>
 								</tr>
 								<!-- e: 웹접근성 input title 수정 : 3월 3주차 -->
-							</tbody>
-						</table>
-					</div>
-					<div class="tbl_data tbl_row_data mt_4">
-						<table>
-							<caption class="sr_only">이체금액 정보입니다.</caption>
-							<colgroup>
-								<col style="width: 15%">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">이체금액</th>
-									<td class="txt_r">10,000원</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -756,10 +749,10 @@
 
 				<div class="btn_tbl_btm">
 					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
-					<a href="이체_자금이체_즉시이체_실행완료.html" class="btn btn_xl btn_primary">이체실행</a>
+					<a href="#;" class="btn btn_xl btn_primary">추가이체</a>
 					<a href="#;" class="btn btn_xl btn_primary" onclick="openModal('popup02', this);">결재선조회</a>
 					<a href="#;" class="btn btn_xl btn_primary">결제요청</a>
-					<a href="#;" class="btn btn_xl btn_primary">추가이체</a>
+					<a href="#;" class="btn btn_xl btn_primary">이체실행</a>
 				</div>
 
 				<!-- s: 참고사항 -->

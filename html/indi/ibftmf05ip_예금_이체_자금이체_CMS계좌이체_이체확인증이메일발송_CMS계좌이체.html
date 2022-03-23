@@ -24,6 +24,17 @@
 	<script>
 		$(document).ready(function () {
 
+			// 보내는 분 휴대전화 번호 박스
+			$('.sms_phone_check input[type=radio]').change(function () {
+				if ($(this).val() == 'sms_phone1') {
+					$('[data-sms-phone=phone1]').show();
+					$('[data-sms-phone=phone2]').hide();
+				} else {
+					$('[data-sms-phone=phone1]').hide();
+					$('[data-sms-phone=phone2]').show();
+				}
+			});
+
 		});
 	</script>
 </head>
@@ -38,12 +49,10 @@
 			<div class="cont_header">
 				<!-- s: 본문 헤더 -->
 				<h2 class="tit_cont">CMS계좌이체</h2>
-				<!-- e: 본문 헤더 -->
 			</div>
 
 			<div class="cont_body">
 				<!-- s: 본문 -->
-
 				<div class="cont_header_right">
 					<ul class="step">
 						<li><span class="num">1</span><span class="txt">정보입력</span></li>
@@ -54,11 +63,11 @@
 
 				<div class="box first_section">
 					<ul class="list list1">
-						<li>CMS이체가 아래와 같이 처리되었습니다.</li>
+						<li>CMS계좌이체가 아래와 같이 처리되었습니다</li>
 					</ul>
 				</div>
 
-				<!-- s: 출금계좌번호 입력 정보 -->
+				<!-- s: 실행결과 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="txt_right">
@@ -70,9 +79,9 @@
 						<table>
 							<caption class="sr_only">출금계좌번호, 출금은행 정보를 제공하고 있습니다.</caption>
 							<colgroup>
-								<col style="width: 19%">
+								<col style="width: 19%;">
 								<col>
-								<col style="width: 19%">
+								<col style="width: 19%;">
 								<col>
 							</colgroup>
 							<tbody>
@@ -85,20 +94,19 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="tbl_data tbl_complex_data mt_4">
+					<div class="tbl_data tbl_list_data mt_4">
 						<table>
-							<caption class="sr_only">입금은행, 입금계좌번호, 이체금액(원), 입금계좌 예금주, 출금계좌표시, 입금계좌표시, 수수료(원), 처리결과, 총 이체금액, 수수료, 처리결과,
-								총 이체금액, 수수료 정보를 제공하고 있습니다.</caption>
+							<caption class="sr_only">입금계좌번호, 입금기관, 출금계좌표시, 입금계좌표시, 처리결과 정보를 제공하고 있습니다.</caption>
 							<colgroup>
-								<col style="width: 22%;">
-								<col style="width: 23%;">
-								<col style="width: 23%;">
 								<col style="width: 21%;">
 								<col>
+								<col>
+								<col>
+								<col style="width: 9%;">
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">입금은행</th>
+									<th scope="col">입금계좌번호</th>
 									<th scope="col">입금기관</th>
 									<th scope="col">출금계좌표시</th>
 									<th scope="col">입금계좌표시</th>
@@ -107,9 +115,9 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td class="txt_c">XXXXXXXXXXXXXX</td>
-									<td>삼성화재나봄미</td>
-									<td>삼성화재나봄미</td>
+									<td>XXXXXXXXXXXXXX</td>
+									<td>삼성화재 나봄미</td>
+									<td>삼성화재 나봄미</td>
 									<td>나봄미</td>
 									<td class="txt_c">정상</td>
 								</tr>
@@ -118,41 +126,37 @@
 					</div>
 					<div class="tbl_data tbl_row_data mt_4">
 						<table>
-							<caption class="sr_only">이체금액 정보입니다.</caption>
+							<caption class="sr_only">이체금액, 수수료 정보를 제공하고 있습니다.</caption>
 							<colgroup>
-								<col style="width: 12.8%">
+								<col style="width: 15%;">
 								<col>
-								<col style="width: 12.8%">
+								<col style="width: 15%;">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row" class="txt_c">이체금액</th>
+									<th scope="row">이체금액</th>
 									<td class="txt_r">100,000원</td>
-									<th scope="row" class="txt_c">수수료</th>
-									<td class="txt_r">1,000원</td>
+									<th scope="row">수수료</th>
+									<td class="txt_r">0원</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="txt_r mt_4">
-						<!-- s: 20211227 SB v1.01 수정 / 자주쓰는입금계좌 팝업 > 링크로 변경 -->
-						<a href="#;" class="btn btn_sm btn_outline_gray">자주쓰는입금계좌관리</a>
-						<!-- e: 20211227 SB v1.01 수정 / 자주쓰는입금계좌 팝업 > 링크로 변경 -->
+						<button type="button" class="btn btn_sm btn_outline_gray"
+							onclick="openModal('confirm01', this)">자주쓰는입금계좌로등록</button>
 						<button type="button" class="btn btn_sm btn_outline_gray" onclick="openModal('sms_popup', this);">SMS전송(카카오톡
 							알림)</button>
 						<button type="button" class="btn btn_sm btn_outline_default"
 							onclick="openModal('transfer_popup', this);">이체확인증</button>
 						<button type="button" class="btn btn_sm btn_outline_default">증명서발급</button>
-						<!-- 20220317 수정 / 이메일 발송 기능 추가 -->
-						<button type="button" class="btn btn_sm btn_outline_default">증명서(이메일)</button>
-						<button type="button" class="btn btn_sm btn_outline_default" onclick="window.print();">화면인쇄</button>
 					</div>
 				</div>
-				<!-- e: 출금계좌번호 입력 정보 -->
+				<!-- e: 실행결과 -->
 
 				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_outline_default">확인</a>
+					<a href="#;" class="btn btn_xl btn_primary">이체계속</a>
 					<a href="#;" class="btn btn_xl btn_outline_default">이체결과조회</a>
 				</div>
 
@@ -278,26 +282,21 @@
 				<!-- e: SMS전송(카카오톡 알림) 팝업 -->
 
 				<!-- s: 이체확인증 팝업 -->
-				<div class="modal_popup modal_xl hide" data-popup="transfer_popup">
+				<div class="modal_popup modal_xl show" data-popup="transfer_mail_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
 							<h3 class="popup_tit">이체확인증</h3>
 						</div>
 						<div class="popup_body">
-							<div class="tbl_tit">
-								<div class="txt_right">
-									<span class="inpuiry_time">조회시간 2021년 05월 17일 14시45분46초</span>
-									<button type="button" class="btn_refresh"><span class="sr_only">새로고침</span></button>
-									<button type="button" class="btn btn_xs btn_outline_default ml_3"
-										onclick="$.print('.modal_popup[data-popup=transfer_popup]');">화면인쇄</button>
-								</div>
-							</div>
-							<div class="tbl_data tbl_row_data">
+							<ul class="list list1">
+								<li>증명서 검증은 발급일자 기준으로 180일 입니다.</li>
+								<li>전송 후 메일 회수가 불가능하오니 정보보호를 위하여 메일 주소를 정확히 입력하시기 바랍니다.</li>
+							</ul>
+							<div class="tbl_data tbl_row_data mt_4">
 								<table>
-									<caption class="sr_only">이체확인증 내용 안내(이체일시, 입금은행, 출금계좌번호, 입금계좌번호, 보낸느분, 받는분, 출금통장 표시내용, 입금통장
-										표시내용,
-										이체금액, 매체구분, 수수료, 이체결과, CMS번호/통신문, 전문번호)</caption>
+									<caption class="sr_only">이체확인증 내용 안내(이체일시, 매체구분, 출금계좌번호, 출금통장표시내용, 입금계좌번호, 입금통장표시내용, 입금은행, 전문번호, 이체금액,
+										수수료, CMS번호/통신문)</caption>
 									<colgroup>
 										<col style="width: 20%;">
 										<col>
@@ -308,51 +307,60 @@
 										<tr>
 											<th scope="row">이체일시</th>
 											<td>2020.12.29 10:44:08</td>
-											<th scope="row">입금은행</th>
-											<td>토스뱅크</td>
-										</tr>
-										<tr>
-											<th scope="row">출금계좌번호</th>
-											<td>010017-02-526***</td>
-											<th scope="row">입금계좌번호</th>
-											<td>010017-02-691911</td>
-										</tr>
-										<tr>
-											<th scope="row">보내는 분</th>
-											<td>나봄미</td>
-											<th scope="row">받는분</th>
-											<td>이덕용</td>
-										</tr>
-										<tr>
-											<th scope="row">출금통장 표시내용</th>
-											<td>이덕용</td>
-											<th scope="row">입금통장 표시내용</th>
-											<td>나봄미</td>
-										</tr>
-										<tr>
-											<th scope="row">이체금액</th>
-											<td class="txt_r">10,000원</td>
 											<th scope="row">매체구분</th>
 											<td>인터넷</td>
 										</tr>
 										<tr>
+											<th scope="row">출금계좌번호</th>
+											<td>010017-02-526***</td>
+											<th scope="row">출금통장 표시내용</th>
+											<td>이덕용</td>
+										</tr>
+										<tr>
+											<th scope="row">입금계좌번호</th>
+											<td>010017-02-691911</td>
+											<th scope="row">입금통장 표시내용</th>
+											<td>나봄미</td>
+										</tr>
+										<tr>
+											<th scope="row">입금은행</th>
+											<td>우체국</td>
+											<th scope="row">전문번호</th>
+											<td>0710D4E0C3710</td>
+										</tr>
+										<tr>
+											<th scope="row">이체금액</th>
+											<td class="txt_r">10,000원</td>
 											<th scope="row">수수료</th>
 											<td class="txt_r">0원</td>
-											<th scope="row">이체결과</th>
-											<td>정상</td>
 										</tr>
 										<tr>
 											<th scope="row">CMS번호/통신문</th>
-											<td></td>
-											<th scope="row">전문번호</th>
-											<td>0710D4E0C3710</td>
+											<td colspan="3">-</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
-							<ul class="list list1 mt_4">
-								<li>본 확인증은 영수증으로 사용할 수 없으며, 거래의 참고용으로만 사용할 수 있습니다.</li>
-							</ul>
+							<div class="tbl_data tbl_row_data mt_4">
+								<table>
+									<caption class="sr_only">이메일 주소 입력 양식입니다.</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">이메일 주소</th>
+											<td>
+												<input type="text" class="tf" style="width: 250px;" title="이메일 주소 입력">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btn_group">
+								<a href="#;" class="btn btn_lg btn_primary">메일발송</a>
+							</div>
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
@@ -392,6 +400,37 @@
 				<!-- e: alert 팝업 -->
 
 				<!-- s: confirm 팝업 -->
+				<div class="modal_popup modal_alert hide" data-popup="confirm01">
+					<div class="dimed"></div>
+					<div class="popup_inner" tabindex="0">
+						<div class="popup_header txt_l">
+							<h3 class="popup_tit">확인</h3>
+						</div>
+						<div class="popup_body">
+							<div class="alert_cont">
+								<div class="artwork">
+									<i class="ico_confirm_xxl_primary"></i>
+								</div>
+								<div class="cont">
+									<!-- s: confirm 메세지 입력 영역 -->
+									<p>
+										페이지를 벗어나게됩니다. 이동하시겠습니까?
+									</p>
+									<!-- e: confirm 메세지 입력 영역 -->
+								</div>
+							</div>
+							<div class="btn_group">
+								<button type="button" class="btn btn_md btn_outline_default"
+									onclick="closeModal('confirm01');">취소</button>
+								<a href="#;" class="btn btn_md btn_outline_default">확인</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn_close_popup">닫기</button>
+					</div>
+				</div>
+				<!-- e: confirm 팝업 -->
+
+				<!-- s: confirm 팝업 -->
 				<div class="modal_popup modal_alert hide" data-popup="confirm_popup">
 					<div class="dimed"></div>
 					<div class="popup_inner" tabindex="0">
@@ -426,7 +465,7 @@
 				<!-- e: 본문 -->
 			</div>
 		</article>
-		<footer class="footer"></footer>
+		<footer class=" footer"></footer>
 	</div>
 </body>
 

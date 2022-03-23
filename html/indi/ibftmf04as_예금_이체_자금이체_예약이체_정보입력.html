@@ -84,12 +84,20 @@
 					</ul>
 				</div>
 
+				<!-- s: 20220317 수정 / 이체 프로세스 변경 -->
 				<!-- s: 정보입력 1단계 -->
 				<div class="payment_write_box section">
+
 					<div class="fx_lr">
 						<h3 class="tit1 fx_left">출금정보</h3>
+						<!-- 정보입력 2단계 진입시 노출 -->
+						<!-- <a href="#;" class="btn btn_plus fx_right">추가이체</a> -->
 					</div>
+
+					<!-- s: 정보입력 2단계 진입시 감춤 -->
 					<div class="payment_inner mt_4">
+
+						<!-- s: 출금계좌정보 -->
 						<div class="tbl_data tbl_list_data tbl_payment">
 							<table>
 								<caption class="sr_only">출금정보 상세내용이며 계좌정보(출금계좌번호, 출금은행, 계좌별칭(상품명)), 잔액(원), 출금가능금액(원), 1일 송금가능금액(원) 정보를
@@ -111,14 +119,11 @@
 								<tbody>
 									<tr>
 										<td>
-											<!-- s: 20220209 -->
 											<div class="fx_lr fx_align_center">
 												<span class="fx_left">000000-00-000000 ㅣ 우체국 ㅣ 우리가족여행계좌</span>
-												<!-- 20220216 수정 / btn class 변경 -->
 												<button type="button" class="btn btn_md btn_outline_default v_base fx_right"
 													onclick="openModal('popup01', this);">전체계좌</button>
 											</div>
-											<!-- e: 20220209 -->
 										</td>
 										<td class="txt_r">3,100,000</td>
 										<td class="txt_r">100,000</td>
@@ -127,12 +132,9 @@
 								</tbody>
 							</table>
 						</div>
-
-						<!-- s: 출금계좌정보 -->
-
 						<div class="tbl_row2">
 							<table>
-								<caption class="sr_only">이체금액 입력 폼이며 이체금액(원)을 입력하실 수 있습니다.</caption>
+								<caption class="sr_only">계좌비밀번호를 입력하는 폼 입니다.</caption>
 								<colgroup>
 									<col style="width: 16%;">
 									<col>
@@ -146,26 +148,6 @@
 										<td>
 											<input type="password" class="tf" style="width: 200px;" title="계좌비밀번호 입력">
 											<span class="ml6">※ 비밀번호 오류 회수는 0/5회 입니다.</span>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">
-											이체금액(원)
-											<strong class="necessary">*</strong>
-										</th>
-										<td>
-											<div class="trans_money">
-												<input type="text" class="tf txt_r" title="이체금액 입력">
-												<span class="ml6">금액 원</span>
-												<div class="btn_trans_money">
-													<button type="button" class="btn btn_sm btn_default">1만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">3만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">5만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">10만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">100만</button>
-													<button type="button" class="btn btn_sm btn_outline_default">정정</button>
-												</div>
-											</div>
 										</td>
 									</tr>
 								</tbody>
@@ -302,6 +284,9 @@
 										</thead>
 										<tbody>
 											<tr>
+												<td colspan="6">최근입금계좌가 없습니다.</td>
+											</tr>
+											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
 												<td class="txt_c">XXXXXXXXXXXXXX</td>
@@ -424,6 +409,9 @@
 											</tr>
 										</thead>
 										<tbody>
+											<tr>
+												<td colspan="6">자주쓰는입금계좌가 없습니다.</td>
+											</tr>
 											<tr>
 												<td>1</td>
 												<td class="txt_l">우체국</td>
@@ -650,9 +638,7 @@
 												</th>
 												<td>
 													<input type="text" class="tf" placeholder="-없이 입력하세요." style="width: 355px;">
-													<div class="btn_inline_box">
-														<button type="button" class="btn btn_md btn_outline_default">이체</button>
-													</div>
+													<!-- 20220317 수정 / 이체버튼 삭제 -->
 												</td>
 											</tr>
 										</tbody>
@@ -660,67 +646,87 @@
 								</div>
 							</div>
 							<!-- e: 직접입력 테이블 -->
-
-							<!-- s: 예약일 설정 -->
-							<div class="tbl_tit mt_8">
-								<div class="txt_right">
-									<strong class="necessary">*</strong> 표시는 필수입력사항입니다.
-								</div>
-							</div>
-							<div class="tbl_row2">
-								<table>
-									<caption class="sr_only">예약이체 설정 양식이며 예약이체일, 예약이체시간을 선택하실 수 있습니다</caption>
-									<colgroup>
-										<col style="width: 16%;">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">예약이체일
-												<strong class="necessary">*</strong>
-											</th>
-											<td>
-												<input type="text" class="tf tf_datepicker" title="예약이체일 선택">
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">예약이체시간
-												<strong class="necessary">*</strong>
-											</th>
-											<td>
-												<span class="check_item">
-													<input type="radio" name="check1" id="check1_1" checked="">
-													<label for="check1_1">9시</label>
-												</span>
-												<span class="check_item">
-													<input type="radio" name="check1" id="check1_2">
-													<label for="check1_2">11시</label>
-												</span>
-												<span class="check_item">
-													<input type="radio" name="check1" id="check1_3">
-													<label for="check1_3">14시</label>
-												</span>
-												<span class="check_item">
-													<input type="radio" name="check1" id="check1_4">
-													<label for="check1_4">17시</label>
-												</span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- e: 예약일 설정 -->
 						</div>
 						<!-- e: 입금정보 -->
+
+						<!-- s: 이체정보입력 -->
+						<div class="tbl_row2 mt_4">
+							<table>
+								<caption class="sr_only">이체금액을 입력하는 폼 입니다.</caption>
+								<colgroup>
+									<col style="width: 17%;">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">
+											이체금액(원)
+											<strong class="necessary">*</strong>
+										</th>
+										<td>
+											<div class="trans_money">
+												<input type="text" class="tf txt_r mr_1" title="이체금액 입력">
+												<span class="money">금액</span>
+												원
+												<div class="btn_trans_money">
+													<button type="button" class="btn btn_sm btn_default">1만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">3만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">5만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">10만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">100만</button>
+													<button type="button" class="btn btn_sm btn_outline_default">정정</button>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">예약이체일
+											<strong class="necessary">*</strong>
+										</th>
+										<td>
+											<input type="text" class="tf tf_datepicker" title="예약이체일 선택">
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">예약이체시간
+											<strong class="necessary">*</strong>
+										</th>
+										<td>
+											<span class="check_item">
+												<input type="radio" name="check1" id="check1_1" checked="">
+												<label for="check1_1">9시</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1" id="check1_2">
+												<label for="check1_2">11시</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1" id="check1_3">
+												<label for="check1_3">14시</label>
+											</span>
+											<span class="check_item">
+												<input type="radio" name="check1" id="check1_4">
+												<label for="check1_4">17시</label>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- e: 이체정보입력 -->
+
 					</div>
+					<!-- e: 정보입력 2단계 진입시 감춤 -->
+
 				</div>
 				<!-- e: 정보입력 1단계 -->
+				<!-- e: 20220317 수정 / 이체 프로세스 변경 -->
 
+				<!-- s: 20220317 수정 / 이체 프로세스 변경 -->
 				<div class="btn_tbl_btm">
-					<a href="#;" class="btn btn_xl btn_outline_default">재입력</a>
-					<a href="예금_이체_자금이체_예약이체_실행완료.html" class="btn btn_xl btn_primary">이체실행</a>
-					<a href="#;" class="btn btn_xl btn_primary">추가이체</a>
+					<a href="#;" class="btn btn_xl btn_primary">다음</a>
 				</div>
+				<!-- e: 20220317 수정 / 이체 프로세스 변경 -->
 
 				<!-- s: 장기미이체 거래제한 안내문구 -->
 				<div class="section">
