@@ -343,8 +343,9 @@
 													<td class="txt_r pr_6">6.00%</td>
 													<th scope="row">대출신청금액</th>
 													<td class="txt_r pr_6">
+														<!-- disabled 추가 : 3월 4주차 -->
 														<input type="text" class="tf txt_r" title="대출신청금액 입력" style="width: 300px" value="500,000"
-															id="tf_text_box4">
+															id="tf_text_box4" disabled>
 														<label for="tf_text_box4" class="sr_only">대출신청금액 입력</label>
 														<span class="v_mid ml_1">원</span>
 													</td>
@@ -416,32 +417,28 @@
 					</div>
 				</div>
 				<!-- e 환급금대출 신청정보 -->
-
-				<!-- s 계좌정보 -->
+				<!-- s: 계좌정보 case 추가 : 3월 4주차 -->
+				<!-- s: case 1 기대출일 경우 계좌정보 -->
 				<div class="section">
 					<div class="tbl_tit">
 						<div class="tit_left">
-							<h3 class="tit1">계좌정보</h3>
+							<h3 class="tit1">입금계좌</h3>
 						</div>
 					</div>
-
-					<!-- s: 마크업수정 2022-01-25 -->
-					<div class="tbl_row2 transfer_info_box">
+					<div class="tbl_row2">
 						<table>
-							<caption class="sr_only">계좌정보</caption>
+							<caption class="sr_only">입금계좌정보</caption>
 							<colgroup>
 								<col style="width: 16%">
 								<col>
 							</colgroup>
-
-							<!-- s: 20220315 수정 / 내용 변경 -->
 							<tbody>
 								<tr>
 									<th scope="row">계좌번호</th>
 									<td>
 										<div class="selectbox_wrap" style="width: 150px;">
 											<dl>
-												<dt><a href="#none" title="은행 선택"><span>우체국</span></a></dt>
+												<dt><a href="#none" title="계좌 은행 선택"><span>우체국</span></a></dt>
 												<dd>
 													<ul>
 														<li><a href="#none"><span>그룹1</span></a></li>
@@ -451,36 +448,64 @@
 												</dd>
 											</dl>
 										</div>
+										<input type="text" class="tf ml_1" title="계좌번호 입력" style="width:350px;">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">계좌인증</button>
+											<!-- 계좌 확인 후 변경 
+											<button type="button" class="btn btn_md btn_default">계좌인증완료</button>
+											-->
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">예금주</th>
+									<td>나봄미</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: case 1 기대출일 경우 계좌정보 -->
 
-										<!-- s: case01 전자약정 유 약정일 -->
-										<div class="selectbox_wrap" style="width: 360px;">
+				<!-- s: case 2 신규대출일 경우 계좌정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">출금계좌</h3>
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">출금계좌정보</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">계좌번호</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 150px;">
 											<dl>
-												<dt><a href="#none" title="계좌 선택"><span>계좌선택</span></a></dt>
+												<dt><a href="#none" title="계좌 은행 선택"><span>우체국</span></a></dt>
 												<dd>
 													<ul>
 														<li><a href="#none"><span>그룹1</span></a></li>
 														<li><a href="#none"><span>그룹2</span></a></li>
+														<li><a href="#none"><span>그룹3</span></a></li>
 													</ul>
 												</dd>
 											</dl>
 										</div>
-										<!-- e: case01 전자약정 유 약정일 -->
-
-										<!-- s: case02 전자약정 무 약정일 -->
-
-										<!-- <input type="text" class="tf ml_2" placeholder="계좌번호를 입력해주세요." title="계좌번호를 입력해주세요."
-										 	style="width: 360px;"> -->
-										<!-- <a href="#;" class="btn btn_md btn_outline_default ml_2">계좌인증</a> -->
-
-										<!-- s: 계좌 확인 완료 상태 -->
-										<!-- <a href="#;" class="btn btn_md btn_outline_default ml_2">계좌확인완료</a> -->
-										<!-- e: 계좌 확인 완료 상태 -->
-
-										<!-- e: case02 전자약정 무 약정일 -->
-
+										<input type="text" class="tf ml_1" title="계좌번호 입력" style="width:350px;">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">계좌인증</button>
+											<!-- 계좌 확인 후 변경 
+											<button type="button" class="btn btn_md btn_default">계좌인증완료</button>
+											-->
+										</div>
 									</td>
 								</tr>
-
 								<tr>
 									<th scope="row">예금주</th>
 									<td>나봄미</td>
@@ -489,26 +514,71 @@
 									<th scope="row">이체약정일</th>
 									<td>
 										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_1" checked>
-											<label for="chk1_1">11일</label>
+											<input type="radio" name="transfer_time" id="transfer_1" checked>
+											<label for="transfer_1">11일</label>
 										</span>
 										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_2">
-											<label for="chk1_2">21일</label>
+											<input type="radio" name="transfer_time" id="transfer_2">
+											<label for="transfer_2">21일</label>
 										</span>
 										<span class="check_item">
-											<input type="radio" name="chk1" id="chk1_3">
-											<label for="chk1_3">26일</label>
+											<input type="radio" name="transfer_time" id="transfer_3">
+											<label for="transfer_3">26일</label>
 										</span>
 									</td>
 								</tr>
 							</tbody>
-							<!-- e: 20220315 수정 / 내용 변경 -->
 						</table>
 					</div>
-					<!-- e: 마크업수정 2022-01-25 -->
 				</div>
-				<!-- e 계좌정보 -->
+				<div class="section">
+					<div class="tbl_tit">
+						<div class="tit_left">
+							<h3 class="tit1">입금계좌</h3>
+						</div>
+					</div>
+					<div class="tbl_row2">
+						<table>
+							<caption class="sr_only">입금계좌정보</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">계좌번호</th>
+									<td>
+										<div class="selectbox_wrap" style="width: 150px;">
+											<dl>
+												<dt><a href="#none" title="계좌 은행 선택"><span>우체국</span></a></dt>
+												<dd>
+													<ul>
+														<li><a href="#none"><span>그룹1</span></a></li>
+														<li><a href="#none"><span>그룹2</span></a></li>
+														<li><a href="#none"><span>그룹3</span></a></li>
+													</ul>
+												</dd>
+											</dl>
+										</div>
+										<input type="text" class="tf ml_1" title="계좌번호 입력" style="width:350px;">
+										<div class="btn_inline_box">
+											<button type="button" class="btn btn_md btn_outline_default">계좌인증</button>
+											<!-- 계좌 확인 후 변경 
+											<button type="button" class="btn btn_md btn_default">계좌인증완료</button>
+											-->
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">예금주</th>
+									<td>나봄미</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- e: case 2 신규대출일 경우 계좌정보 -->
+				<!-- e: 계좌정보 case 추가 : 3월 4주차 -->
 
 				<!-- s 추가 인증 -->
 				<div class="section">
