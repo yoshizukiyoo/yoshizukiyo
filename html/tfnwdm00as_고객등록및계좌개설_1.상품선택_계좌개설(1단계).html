@@ -36,10 +36,12 @@
 				autoplay: false,
 				accessibility: false
 			});
+
 			// 상품선택
-			$('.service_wrap .service_item').click(function () {
-				$(this).find('.product_selected').toggle()
-				$(this).parent().parent().siblings().find('.product_selected').hide();
+			//20220323 수정 / 스크립트 변경
+			$('.service_wrap .service_item').on('click', function () {
+				$(this).toggleClass('on');
+				$('.service_wrap .service_item').not($(this)).removeClass('on');
 			});
 		});
 	</script>
@@ -59,12 +61,12 @@
 				</div>
 				<div class="right">
 					<div class="mr_3 process_underline1">
-						<i class="d_i_b ico ico_clock_gray mr_1 "></i>
-						<p class="d_i_b txt_xs">소요예상시간 : 5분</p>
+						<i class="d_i_b ico ico_clock_gray"></i>
+						<p class="d_i_b">소요예상시간 : 5분</p>
 					</div>
 					<div class="mr_4 process_underline2">
-						<i class="d_i_b ico ico_clock_gray mr_1 "></i>
-						<p class="d_i_b txt_xs">진행시간 01 : 03 </p>
+						<i class="d_i_b ico ico_clock_gray "></i>
+						<p class="d_i_b">진행시간<span class="running_time">01 : 03</span> </p>
 					</div>
 				</div>
 			</div>
@@ -78,6 +80,7 @@
 				<div class="cont_step">
 					<div class="container">
 						<ol class="apply_step">
+							<!-- s: 20220323 수정 / step명 수정 -->
 							<li class="on">
 								<span class="num txt_sm">1</span>
 								<span class="txt_sm">상품선택</span>
@@ -100,8 +103,9 @@
 							</li>
 							<li>
 								<span class="num txt_sm">6</span>
-								<span class="txt_sm">완료</span>
+								<span class="txt_sm">신청완료</span>
 							</li>
+							<!-- e: 20220323 수정 / step명 수정 -->
 						</ol>
 					</div>
 				</div>
