@@ -6,6 +6,7 @@ $popup-size: (alert: 300px,
 	md: 600px,
 	lg: 900px,
 	expand: 100%,
+	full: 100%,
 	// xl: 880px,
 	// xxl: 1200px,
 );
@@ -280,6 +281,84 @@ $popup-size: (alert: 300px,
 			height: 34px;
 			background: url(#{$url-img-common}/ico_lg_collapse@2x.png) no-repeat center center;
 			background-size: 34px auto;
+		}
+
+		&.hide {
+			.popup_inner {
+				transform: scale(.6);
+			}
+		}
+
+		&.show {
+			.popup_inner {
+				transform: scale(1);
+			}
+		}
+	}
+
+	/* 전체화면 팝업 : 개발요청사항 */
+
+	&.modal_full {
+		transition-duration: 0.3s;
+
+		.popup_inner {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			border-radius: 0;
+		}
+
+		.popup_header {
+			position: relative;
+			flex: 0 0 auto;
+			display: flex;
+			justify-content: space-between;
+			height: 74px;
+			padding-right: 75px;
+			line-height: 1.25;
+
+			.left,
+			.right {
+				flex: 0 0 auto;
+				display: flex;
+				align-items: center;
+			}
+
+			.left {
+				max-width: calc(100vw - 340px);
+			}
+
+			.center {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate3d(-50%, -50%, 0);
+			}
+
+			.popup_tit {
+				display: block;
+				max-width: 100%;
+				@include text-ellipsis(1, 1.2em);
+				font-size: 26px;
+				font-weight: 500;
+			}
+		}
+
+		.popup_body {
+			flex: 1 1 auto;
+			overflow-x: hidden;
+			overflow-y: auto;
+			max-height: none;
+			padding: 0 0 30px;
+
+			.body_cont {
+				padding: 30px;
+			}
+		}
+
+		.btn_close_popup {
+			width: 74px;
+			height: 74px;
 		}
 
 		&.hide {
