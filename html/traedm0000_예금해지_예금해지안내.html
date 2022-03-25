@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>현재화면명 | 메뉴명 | 사이트명</title>
+	<link rel="stylesheet" href="/resources/css/style.css">
+
+	<!-- JavaScript -->
+	<script src="/resources/js/jquery-3.3.1.js"></script>
+	<script src="/resources/js/jquery-ui.js"></script>
+	<script src="/resources/js/jquery.print.js"></script>
+	<script src="/resources/js/slick.js"></script>
+
+	<!-- TODO : 기능과 무관한 UI 레이아웃 관련 스크립트 (필수 코드, 삭제 금지) -->
+	<script src="/resources/js/ui_global.js"></script>
+
+	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
+	<script src="/resources/js/ui_layout_setting.js"></script>
+
+	<!-- 페이지 개별 스크립트 -->
+	<script>
+		$(document).ready(function () {
+			//고객선택
+			$('[data-toggle-btn]').click(function () {
+				var $btn = $(this);
+				var toggleContent = $(this).data('toggle-btn');
+				var $cont = $('[data-toggle-content=' + toggleContent + ']');
+				$cont.toggle();
+			});
+			$(".multiple_number .list_area li").click(function () {
+				$(this).addClass("on").siblings().removeClass("on");
+				$(".multiple_number .top_area a span").text($(this).text());
+				$(".list_area").hide();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- s: 헤더 -->
+		<header class="header">
+			<div class="titlebar">
+				<div class="left">
+					<a href="#;" class="btn btn_icon">
+						<i class="ico ico_lg_back"></i>
+						<span class="sr_only">뒤로가기</span>
+					</a>
+					<h1 class="tit_page">예금해지</h1>
+				</div>
+				<div class="right">
+					<div class="mr_4 process_underline1">
+						<i class="d_i_b ico ico_clock_gray"></i>
+						<p class="d_i_b">소요예상시간 : 5분</p>
+					</div>
+					<!--[D] 고객확인-->
+					<div class="mr_2">
+						<a href="#;" class="btn btn_lg btn_outline_lightgray olduser_top_btn " title="새창열림" target="_blank">
+							<i class="ico ico_user_gray mr_0"></i>
+							<span class="user_name">고객본인확인</span>
+						</a>
+					</div>
+					<!--[D] 고객확인후 -->
+					<!-- <div class="mr_2">
+						<a href="#;" class="btn btn_lg btn_primary olduser_top_btn " title="새창열림" target="_blank">
+							<i class="ico ico_user"></i>
+							<span class="user_name">나신규(1234)</span>
+						</a>
+					</div> -->
+					<!--[D] 고객번호가 여러가지일 경우
+					.multiple_number 추가
+					-->
+					<!-- 	<div class="mr_2 multiple_number">
+						<div class="top_area">
+							<a href="#">
+								<i class="ico ico_user"></i><span>나신규(1234)</span>
+							</a>
+							<button type="button" class="btn ml_2" data-toggle-btn="content1"><span
+									class="sr_only">목록보기</span></button>
+						</div>
+						<div class="list_area" data-toggle-content="content1">
+							<ul>
+								<li><a href="#;"><span>나신규(1234)</span></a></li>
+								<li><a href="#;"><span>나신규(5678)</span></a></li>
+								<li><a href="#;"><span>나나신규(2345)</span></a></li>
+							</ul>
+						</div>
+					</div> -->
+
+				</div>
+			</div>
+		</header>
+		<!-- e: 헤더 -->
+
+		<article id="content" class="pb_0 bg_lightprimary">
+			<!-- s: 본문 -->
+			<div class="cont_inner">
+				<div class="cont_body">
+					<div class="customer_process_intro process_num4">
+						<p class="txt_c txt_xxl">예금해지는 다음과 같은 절차로 진행됩니다.</p>
+						<ol class="deposit_cancel">
+							<li><span></span>전자서류작성</li>
+							<li><span></span>작성확인</li>
+							<li><span></span>책임자승인</li>
+							<li><span></span>변경완료</li>
+						</ol>
+
+						<div class="process_btn txt_c process_btn_md">
+							<button type="button" class="btn btn_xl btn_round btn_black">예금 해지</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- e: 본문 -->
+		</article>
+	</div>
+</body>
+
+</html>
