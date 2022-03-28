@@ -59,63 +59,162 @@
 					onclick="openModal('layerCustomerInquiry', this);">고객인증거래조회</a>
 
 				<!-- s: modal popup -->
-				<div class="modal_popup modal_md show" data-popup="layerCustomerInquiry">
+				<div class="modal_popup modal_full show" data-popup="layerCustomerInquiry">
 					<div class="dimed"></div>
 					<div class="popup_inner">
 						<div class="popup_header">
 							<h2 class="popup_tit">고객인증거래조회</h2>
 						</div>
 						<div class="popup_body">
-							<div class="mb_6">
-								<div class="opt" style="width: 170px;">
-									<dl>
-										<dt><a href="#;" title="휴대폰번호 선택"><span>010-1234-1234</span></a></dt>
-										<dd>
-											<ul>
-												<li><a href="#;"><span>선택1</span></a></li>
-												<li><a href="#;"><span>선택2</span></a></li>
-											</ul>
-										</dd>
-									</dl>
+							<!-- s: 검색조건입력 -->
+							<form action="#;" class="search_form">
+								<div class="inner">
+									<div class="tbl tbl_search">
+										<table>
+											<caption class="sr_only">검색조건 입력</caption>
+											<colgroup>
+												<col style="width: 14%;">
+												<col style="width: 35%;">
+												<col style="width: 16%;">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">
+														조회구분
+														<span class="req">필수항목</span>
+													</th>
+													<td>
+														<span class="check_item">
+															<input type="radio" name="radioSearch1" id="radioSearch1_1" checked>
+															<label for="radioSearch1_1">신분증</label>
+														</span>
+														<span class="check_item">
+															<input type="radio" name="radioSearch1" id="radioSearch1_2">
+															<label for="radioSearch1_2">휴대폰</label>
+														</span>
+													</td>
+													<th scope="row">
+														고객실명번호
+														<!-- s: case2 조회구분 === 휴대폰 -->
+														<!-- 휴대폰번호 -->
+														<!-- s: case2 조회구분 === 휴대폰 -->
+														<span class="req">필수항목</span>
+													</th>
+													<td>
+														<input type="text" class="tf" style="width: 260px;" title="고객실명번호 입력">
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														거래기간
+														<span class="req">필수항목</span>
+													</th>
+													<td colspan="3">
+														<span>
+															<span class="check_item type_btn">
+																<input type="radio" name="radio4" id="radio4_1">
+																<label for="radio4_1">당일</label>
+															</span>
+															<span class="check_item type_btn">
+																<input type="radio" name="radio4" id="radio4_2">
+																<label for="radio4_2">7일</label>
+															</span>
+															<span class="check_item type_btn">
+																<input type="radio" name="radio4" id="radio4_3">
+																<label for="radio4_3">15일</label>
+															</span>
+															<span class="check_item type_btn">
+																<input type="radio" name="radio4" id="radio4_4" checked>
+																<label for="radio4_4">1개월</label>
+															</span>
+														</span>
+														<span class="ml_2">
+															<input type="text" class="tf tf_datepicker" value="2022.01.01" title="거래기간 시작일"
+																style="width: 150px;">
+															<span class="datepicker_bar">-</span>
+															<input type="text" class="tf tf_datepicker" value="2022.01.01" title="거래기간 종료일"
+																style="width: 150px;">
+														</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<button type="button" class="btn btn_lg btn_primary btn_search">
+										<i class="ico ico_search_lg_white"></i>
+										<span>조회</span>
+									</button>
 								</div>
-								<span class="ml_1">
-									<span class="check_item type_btn">
-										<input type="radio" name="radio1" id="radio1_1" checked>
-										<label for="radio1_1">오늘</label>
+								<button type="button" class="btn btn_search_more" title="펼치기">
+									<span>상세조건</span>
+									<i class="ico ico_arr_down_white"></i>
+								</button>
+							</form>
+							<!-- e: 검색조건입력 -->
+
+							<div class="body_cont">
+								<div class="mb_6">
+									<div class="opt" style="width: 170px;">
+										<dl>
+											<dt><a href="#;" title="휴대폰번호 선택"><span>010-1234-1234</span></a></dt>
+											<dd>
+												<ul>
+													<li><a href="#;"><span>선택1</span></a></li>
+													<li><a href="#;"><span>선택2</span></a></li>
+												</ul>
+											</dd>
+										</dl>
+									</div>
+									<span class="ml_1">
+										<span class="check_item type_btn">
+											<input type="radio" name="radio1" id="radio1_1" checked>
+											<label for="radio1_1">오늘</label>
+										</span>
+										<span class="check_item type_btn ml_0">
+											<input type="radio" name="radio1" id="radio1_2">
+											<label for="radio1_2">1주일</label>
+										</span>
 									</span>
-									<span class="check_item type_btn ml_0">
-										<input type="radio" name="radio1" id="radio1_2">
-										<label for="radio1_2">1주일</label>
-									</span>
-								</span>
+								</div>
+								<div class="tbl tbl_data tbl_round">
+									<table>
+										<caption class="sr_only">고객인증거래조회 목록</caption>
+										<colgroup>
+											<col>
+											<col>
+											<col>
+											<col>
+											<col>
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">스캔일자</th>
+												<th scope="col">종류</th>
+												<th scope="col" class="bg_lightgreen">실명번호</th>
+												<th scope="col" class="bg_lightgreen">고객명</th>
+												<th scope="col" class="bg_lightprimary2">발급일자</th>
+												<th scope="col" class="bg_lightprimary2">고객구분</th>
+												<th scope="col" class="bg_lightprimary2">응답코드</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>2022.08.21<br>12:00</td>
+												<td>운전면허증</td>
+												<td>880117-2******</td>
+												<td>김예금</td>
+												<td class="txt_c">2011.09.10</td>
+												<td>본인</td>
+												<td>정상</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
-							<div class="tbl tbl_data tbl_round">
-								<table>
-									<caption class="sr_only">고객인증거래조회 목록</caption>
-									<colgroup>
-										<col style="width: 25%;">
-										<col style="width: 25%;">
-										<col style="width: 25%;">
-										<col>
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col">업무구분</th>
-											<th scope="col" class="bg_lightgreen">전문전송시각</th>
-											<th scope="col" class="bg_lightprimary2">통신사</th>
-											<th scope="col" class="bg_lightprimary2">결과코드</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+
 						</div>
 						<button type="button" class="btn btn_close_popup">닫기</button>
 					</div>
