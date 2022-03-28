@@ -20,11 +20,65 @@
 	<!-- TODO : 개발시 반드시 삭제, 레이아웃 세팅용 JS -->
 	<script src="/resources/js/ui_layout_setting.js"></script>
 
+	<script src="/resources/js/chart.min.js"></script>
+	<script src="/resources/js/chartjs-plugin-datalabels@2.0.0.js"></script>
+
 	<!-- 페이지 개별 스크립트 -->
 	<script>
-		$(document).ready(function () {
-			// 이곳에 정의
-
+		$(function(){
+			var radarCtx = document.querySelector('#radarChart');
+			var radarCtx = new Chart(radarCtx, {
+					type: 'radar',
+					data: {
+							labels: ['질병사망', '암사망', '재해사망', '교통재해사망', '재해100%', '재해79%'],
+							datasets: [{
+									data: [10000, 5000, 5000, 4000, 2000, 2000],
+									backgroundColor: 'rgba(233,255,255, 0.45)',
+									borderColor: 'rgb(171,216,215)',
+									borderWidth: 4,
+									pointRaduis:3,
+									pointBorderColor:'#02a2aa',
+									pointBackgroundColor:'#02a2aa',
+									fill: true,
+									pointBorderWidth:2,
+							}]
+					},
+					options: {
+						responsive:false,
+						scales:{
+							r:{
+								beginAtZero: true,
+								ticks:{
+									display:false,
+								},
+								grid:{
+									lineWidth: 2,
+									color:'#ddd',
+								},
+								angleLines:{
+									color:'#ddd',
+								},
+								pointLabels:{
+									color:'#000',
+									fontSize:20,
+								},
+							},
+							ticks:{
+								display:false,
+								min:0,
+								max:10000,
+							},
+						},
+						plugins:{
+							legend:{
+								display:false,
+							},
+							tooltip:{
+								enalbed:false,
+							}
+						}
+					}
+			});
 		});
 	</script>
 </head>
@@ -128,8 +182,14 @@
 						</div>
 						<div class="graph_wrap bg_lightgray mt_12">
 							<div class="clfx">
-								<div class="chart_wrap f_l">chart</div>
-								<div class="progress_wrap f_r">
+								<div class="chart_wrap">
+									<!-- s: 차트 -->
+									<div class="chart_area">
+										<canvas id="radarChart" style="width:100%;height:450px;"></canvas>
+									</div>
+									<!-- e: 차트 -->
+								</div>
+								<div class="progress_wrap">
 									<ul>
 										<li>
 											<label for="anal_1" class="txt_normal"><i class="ico ico_status_circle"></i>질병사망</label>
